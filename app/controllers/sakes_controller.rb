@@ -28,7 +28,7 @@ class SakesController < ApplicationController
 
     respond_to do |format|
       if @sake.save
-        format.html { redirect_to @sake, notice: 'Sake was successfully created.' }
+        format.html { redirect_to @sake, notice: "Sake was successfully created." }
         format.json { render :show, status: :created, location: @sake }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class SakesController < ApplicationController
   def update
     respond_to do |format|
       if @sake.update(sake_params)
-        format.html { redirect_to @sake, notice: 'Sake was successfully updated.' }
+        format.html { redirect_to @sake, notice: "Sake was successfully updated." }
         format.json { render :show, status: :ok, location: @sake }
       else
         format.html { render :edit }
@@ -56,19 +56,29 @@ class SakesController < ApplicationController
   def destroy
     @sake.destroy
     respond_to do |format|
-      format.html { redirect_to sakes_url, notice: 'Sake was successfully destroyed.' }
+      format.html { redirect_to sakes_url, notice: "Sake was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_sake
-      @sake = Sake.find(params[:id])
+  def search
+    if params[:name].present?
+      @sakes = Sake.where("name LIKE ?", "%#{params[:name]}%")
+    else
+      @sakes = Sake.all
     end
+    render :index
+  end
 
-    # Only allow a list of trusted parameters through.
-    def sake_params
-      params.require(:sake).permit(:name, :kura, :photo, :touroku, :bindume, :by, :product_of, :taste_int, :aroma_int, :sake_metre_value, :acidity, :aroma_text, :color, :taste_text, :is_namadume, :is_namacho, :nigori, :awa, :tokutei_meisho, :genryoumai, :kakemai, :koubo, :alcohol, :amino_acid, :aged, :is_genshu, :moto, :rice_polishing, :roka, :shibori, :memo)
-    end
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_sake
+    @sake = Sake.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def sake_params
+    params.require(:sake).permit(:name, :kura, :photo, :touroku, :bindume, :by, :product_of, :taste_int, :aroma_int, :sake_metre_value, :acidity, :aroma_text, :color, :taste_text, :is_namadume, :is_namacho, :nigori, :awa, :tokutei_meisho, :genryoumai, :kakemai, :koubo, :alcohol, :amino_acid, :aged, :is_genshu, :moto, :rice_polishing, :roka, :shibori, :memo)
+  end
 end

@@ -2,6 +2,10 @@
 
 <h1>日本酒リスト</h1>
 
+<%= form_with url: search_sakes_path, method: :get, local: true do |f| %>
+<%= f.text_field :name %>
+<%= f.submit :search %>
+<% end %>
 <table>
   <thead>
     <tr>
@@ -15,17 +19,17 @@
   </thead>
   <tbody>
     <% @sakes.each do |sake| %>
-      <tr>
-        <td><%= sake.name %></td>
-        <td><%= sake.kura %></td>
-        <td><%= sake.photo %></td>
-        <td><%= sake.taste_int %></td>
-        <td><%= sake.aroma_int %></td>
-        <td><%= sake.tokutei_meisho %></td>
-        <td><%= link_to '詳細', sake %></td>
-        <td><%= link_to '編集', edit_sake_path(sake) %></td>
-        <td><%= link_to '削除', sake, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <tr>
+      <td><%= sake.name %></td>
+      <td><%= sake.kura %></td>
+      <td><%= sake.photo %></td>
+      <td><%= sake.taste_int %></td>
+      <td><%= sake.aroma_int %></td>
+      <td><%= sake.tokutei_meisho %></td>
+      <td><%= link_to '詳細', sake %></td>
+      <td><%= link_to '編集', edit_sake_path(sake) %></td>
+      <td><%= link_to '削除', sake, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
     <% end %>
   </tbody>
 </table>
