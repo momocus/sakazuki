@@ -1,0 +1,87 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Sakes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Kura</th>
+      <th>Photo</th>
+      <th>Touroku</th>
+      <th>Bindume</th>
+      <th>By</th>
+      <th>Product of</th>
+      <th>Taste int</th>
+      <th>Aroma int</th>
+      <th>Sake metre value</th>
+      <th>Acidity</th>
+      <th>Aroma text</th>
+      <th>Color</th>
+      <th>Taste text</th>
+      <th>Is namadume</th>
+      <th>Is namacho</th>
+      <th>Nigori</th>
+      <th>Awa</th>
+      <th>Tokutei meisho</th>
+      <th>Genryoumai</th>
+      <th>Kakemai</th>
+      <th>Koubo</th>
+      <th>Alcohol</th>
+      <th>Amino acid</th>
+      <th>Aged</th>
+      <th>Is genshu</th>
+      <th>Moto</th>
+      <th>Rice polishing</th>
+      <th>Roka</th>
+      <th>Shibori</th>
+      <th>Memo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sakes.each do |sake| %>
+      <tr>
+        <td><%= sake.name %></td>
+        <td><%= sake.kura %></td>
+        <td><%= sake.photo %></td>
+        <td><%= sake.touroku %></td>
+        <td><%= sake.bindume %></td>
+        <td><%= sake.by %></td>
+        <td><%= sake.product_of %></td>
+        <td><%= sake.taste_int %></td>
+        <td><%= sake.aroma_int %></td>
+        <td><%= sake.sake_metre_value %></td>
+        <td><%= sake.acidity %></td>
+        <td><%= sake.aroma_text %></td>
+        <td><%= sake.color %></td>
+        <td><%= sake.taste_text %></td>
+        <td><%= sake.is_namadume %></td>
+        <td><%= sake.is_namacho %></td>
+        <td><%= sake.nigori %></td>
+        <td><%= sake.awa %></td>
+        <td><%= sake.tokutei_meisho %></td>
+        <td><%= sake.genryoumai %></td>
+        <td><%= sake.kakemai %></td>
+        <td><%= sake.koubo %></td>
+        <td><%= sake.alcohol %></td>
+        <td><%= sake.amino_acid %></td>
+        <td><%= sake.aged %></td>
+        <td><%= sake.is_genshu %></td>
+        <td><%= sake.moto %></td>
+        <td><%= sake.rice_polishing %></td>
+        <td><%= sake.roka %></td>
+        <td><%= sake.shibori %></td>
+        <td><%= sake.memo %></td>
+        <td><%= link_to 'Show', sake %></td>
+        <td><%= link_to 'Edit', edit_sake_path(sake) %></td>
+        <td><%= link_to 'Destroy', sake, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sake', new_sake_path %>

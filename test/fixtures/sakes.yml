@@ -1,0 +1,67 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  kura: MyString
+  photo: 
+  touroku: 2020-05-10 16:36:27
+  bindume: 2020-05-10 16:36:27
+  by: 2020-05-10 16:36:27
+  product_of: MyString
+  taste_int: 1
+  aroma_int: 1
+  sake_metre_value: 1
+  acidity: 1
+  aroma_text: MyText
+  color: MyString
+  taste_text: MyText
+  is_namadume: false
+  is_namacho: false
+  nigori: MyString
+  awa: MyString
+  tokutei_meisho: MyString
+  genryoumai: MyString
+  kakemai: MyString
+  koubo: MyString
+  alcohol: 1
+  amino_acid: 1
+  aged: MyString
+  is_genshu: false
+  moto: MyString
+  rice_polishing: 1
+  roka: MyString
+  shibori: MyString
+  memo: MyText
+
+two:
+  name: MyString
+  kura: MyString
+  photo: 
+  touroku: 2020-05-10 16:36:27
+  bindume: 2020-05-10 16:36:27
+  by: 2020-05-10 16:36:27
+  product_of: MyString
+  taste_int: 1
+  aroma_int: 1
+  sake_metre_value: 1
+  acidity: 1
+  aroma_text: MyText
+  color: MyString
+  taste_text: MyText
+  is_namadume: false
+  is_namacho: false
+  nigori: MyString
+  awa: MyString
+  tokutei_meisho: MyString
+  genryoumai: MyString
+  kakemai: MyString
+  koubo: MyString
+  alcohol: 1
+  amino_acid: 1
+  aged: MyString
+  is_genshu: false
+  moto: MyString
+  rice_polishing: 1
+  roka: MyString
+  shibori: MyString
+  memo: MyText

@@ -1,0 +1,2 @@
+module SakesHelper
+end

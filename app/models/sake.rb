@@ -1,0 +1,2 @@
+class Sake < ApplicationRecord
+end
