@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_10_073627) do
+ActiveRecord::Schema.define(version: 2020_05_11_125608) do
 
   create_table "sakes", force: :cascade do |t|
     t.string "name"
     t.string "kura"
     t.binary "photo"
-    t.datetime "touroku"
     t.datetime "bindume"
     t.datetime "by"
     t.string "product_of"
