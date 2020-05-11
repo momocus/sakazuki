@@ -157,6 +157,11 @@
 </div>
 
 <div class="field">
+  <%= form.label :bottle_state %>
+  <%= form.select :bottle_state, Sake.bottle_states.keys.to_a %>
+</div>
+
+<div class="field">
   <%= form.label :memo %>
   <%= form.text_area :memo %>
 </div>
