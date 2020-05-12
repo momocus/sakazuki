@@ -1,172 +1,177 @@
 <%= form_with(model: sake, local: true) do |form| %>
-<% if sake.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(sake.errors.count, "error") %> prohibited this sake from being saved:</h2>
 
-  <ul>
-    <% sake.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
-</div>
-<% end %>
+  <!-- error message -->
+  <% if sake.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(sake.errors.count, "error") %>
+        prohibited this sake from being saved:
+      </h2>
+      <ul>
+        <% sake.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<div class="field">
-  <%= form.label :name %>
-  <%= form.text_field :name %>
-</div>
+  <!-- form -->
+  <div class="field">
+    <%= form.label :name, "名前" %>
+    <%= form.text_field :name %>
+  </div>
 
-<div class="field">
-  <%= form.label :kura %>
-  <%= form.text_field :kura %>
-</div>
+  <div class="field">
+    <%= form.label :kura, "蔵" %>
+    <%= form.text_field :kura %>
+  </div>
 
-<div class="field">
-  <%= form.label :photo %>
-  <%= form.text_field :photo %>
-</div>
+  <div class="field">
+    <%= form.label :photo, "画像" %>
+    <%= form.text_field :photo %>
+  </div>
 
-<div class="field">
-  <%= form.label :bindume %>
-  <%= form.datetime_select :bindume %>
-</div>
+  <div class="field">
+    <%= form.label :bindume, "製造年月日" %>
+    <%= form.datetime_select :bindume %>
+  </div>
 
-<div class="field">
-  <%= form.label :by %>
-  <%= form.datetime_select :by %>
-</div>
+  <div class="field">
+    <%= form.label :by, "BY" %>
+    <%= form.datetime_select :by %>
+  </div>
 
-<div class="field">
-  <%= form.label :product_of %>
-  <%= form.text_field :product_of %>
-</div>
+  <div class="field">
+    <%= form.label :product_of, "都道府県" %>
+    <%= form.text_field :product_of %>
+  </div>
 
-<div class="field">
-  <%= form.label :taste_int %>
-  <%= form.number_field :taste_int %>
-</div>
+  <div class="field">
+    <%= form.label :taste_int, "味の濃淡" %>
+    <%= form.number_field :taste_int %>
+  </div>
 
-<div class="field">
-  <%= form.label :aroma_int %>
-  <%= form.number_field :aroma_int %>
-</div>
+  <div class="field">
+    <%= form.label :aroma_int, "香りの高低" %>
+    <%= form.number_field :aroma_int %>
+  </div>
 
-<div class="field">
-  <%= form.label :sake_metre_value %>
-  <%= form.number_field :sake_metre_value %>
-</div>
+  <div class="field">
+    <%= form.label :sake_metre_value, "日本酒度" %>
+    <%= form.number_field :sake_metre_value %>
+  </div>
 
-<div class="field">
-  <%= form.label :acidity %>
-  <%= form.number_field :acidity %>
-</div>
+  <div class="field">
+    <%= form.label :acidity, "酸度" %>
+    <%= form.number_field :acidity %>
+  </div>
 
-<div class="field">
-  <%= form.label :aroma_text %>
-  <%= form.text_area :aroma_text %>
-</div>
+  <div class="field">
+    <%= form.label :aroma_text, "香り" %>
+    <%= form.text_area :aroma_text %>
+  </div>
 
-<div class="field">
-  <%= form.label :color %>
-  <%= form.text_field :color %>
-</div>
+  <div class="field">
+    <%= form.label :color, "色" %>
+    <%= form.text_field :color %>
+  </div>
 
-<div class="field">
-  <%= form.label :taste_text %>
-  <%= form.text_area :taste_text %>
-</div>
+  <div class="field">
+    <%= form.label :taste_text, "味" %>
+    <%= form.text_area :taste_text %>
+  </div>
 
-<div class="field">
-  <%= form.label :is_namadume %>
-  <%= form.check_box :is_namadume %>
-</div>
+  <div class="field">
+    <%= form.label :is_namadume, "生詰め" %>
+    <%= form.check_box :is_namadume %>
+  </div>
 
-<div class="field">
-  <%= form.label :is_namacho %>
-  <%= form.check_box :is_namacho %>
-</div>
+  <div class="field">
+    <%= form.label :is_namacho, "生貯蔵" %>
+    <%= form.check_box :is_namacho %>
+  </div>
 
-<div class="field">
-  <%= form.label :nigori %>
-  <%= form.text_field :nigori %>
-</div>
+  <div class="field">
+    <%= form.label :nigori, "にごり" %>
+    <%= form.text_field :nigori %>
+  </div>
 
-<div class="field">
-  <%= form.label :awa %>
-  <%= form.text_field :awa %>
-</div>
+  <div class="field">
+    <%= form.label :awa, "炭酸" %>
+    <%= form.text_field :awa %>
+  </div>
 
-<div class="field">
-  <%= form.label :tokutei_meisho %>
-  <%= form.text_field :tokutei_meisho %>
-</div>
+  <div class="field">
+    <%= form.label :tokutei_meisho, "特定名称" %>
+    <%= form.text_field :tokutei_meisho %>
+  </div>
 
-<div class="field">
-  <%= form.label :genryoumai %>
-  <%= form.text_field :genryoumai %>
-</div>
+  <div class="field">
+    <%= form.label :genryoumai, "原料米" %>
+    <%= form.text_field :genryoumai %>
+  </div>
 
-<div class="field">
-  <%= form.label :kakemai %>
-  <%= form.text_field :kakemai %>
-</div>
+  <div class="field">
+    <%= form.label :kakemai, "掛米" %>
+    <%= form.text_field :kakemai %>
+  </div>
 
-<div class="field">
-  <%= form.label :koubo %>
-  <%= form.text_field :koubo %>
-</div>
+  <div class="field">
+    <%= form.label :koubo, "酵母" %>
+    <%= form.text_field :koubo %>
+  </div>
 
-<div class="field">
-  <%= form.label :alcohol %>
-  <%= form.number_field :alcohol %>
-</div>
+  <div class="field">
+    <%= form.label :alcohol, "度数" %>
+    <%= form.number_field :alcohol %>
+  </div>
 
-<div class="field">
-  <%= form.label :amino_acid %>
-  <%= form.number_field :amino_acid %>
-</div>
+  <div class="field">
+    <%= form.label :amino_acid, "アミノ酸度" %>
+    <%= form.number_field :amino_acid %>
+  </div>
 
-<div class="field">
-  <%= form.label :aged %>
-  <%= form.text_field :aged %>
-</div>
+  <div class="field">
+    <%= form.label :aged, "新酒、夏酒、ひやおろし、古酒" %>
+    <%= form.text_field :aged %>
+  </div>
 
-<div class="field">
-  <%= form.label :is_genshu %>
-  <%= form.check_box :is_genshu %>
-</div>
+  <div class="field">
+    <%= form.label :is_genshu, "原酒" %>
+    <%= form.check_box :is_genshu %>
+  </div>
 
-<div class="field">
-  <%= form.label :moto %>
-  <%= form.text_field :moto %>
-</div>
+  <div class="field">
+    <%= form.label :moto, "酛" %>
+    <%= form.text_field :moto %>
+  </div>
 
-<div class="field">
-  <%= form.label :rice_polishing %>
-  <%= form.number_field :rice_polishing %>
-</div>
+  <div class="field">
+    <%= form.label :rice_polishing, "精米歩合" %>
+    <%= form.number_field :rice_polishing %>
+  </div>
 
-<div class="field">
-  <%= form.label :roka %>
-  <%= form.text_field :roka %>
-</div>
+  <div class="field">
+    <%= form.label :roka, "ろ過" %>
+    <%= form.text_field :roka %>
+  </div>
 
-<div class="field">
-  <%= form.label :shibori %>
-  <%= form.text_field :shibori %>
-</div>
+  <div class="field">
+    <%= form.label :shibori, "絞り" %>
+    <%= form.text_field :shibori %>
+  </div>
 
-<div class="field">
-  <%= form.label :bottle_state %>
-  <%= form.select :bottle_state, Sake.bottle_states.keys.to_a %>
-</div>
+  <div class="field">
+    <%= form.label :bottle_state, "瓶の状態" %>
+    <%= form.select :bottle_state, Sake.bottle_states.keys.to_a %>
+  </div>
 
-<div class="field">
-  <%= form.label :memo %>
-  <%= form.text_area :memo %>
-</div>
+  <div class="field">
+    <%= form.label :memo, "備考" %>
+    <%= form.text_area :memo %>
+  </div>
 
-<div class="actions">
-  <%= form.submit %>
-</div>
+  <div class="actions">
+    <%= form.submit "登録" %>
+  </div>
 <% end %>
