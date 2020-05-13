@@ -10,6 +10,7 @@ class SakesController < ApplicationController
   # GET /sakes/1
   # GET /sakes/1.json
   def show
+    @sakes = Sake.all
   end
 
   # GET /sakes/new
