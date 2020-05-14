@@ -35,6 +35,9 @@ ja:
         shibori: 絞り
         bottle_state: 瓶の状態
         memo: 備考
+        created_at: 登録日
+        update_at: 更新日
+
   enums:
     sake:
       bottle_state:
