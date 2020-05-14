@@ -4,34 +4,40 @@ ja:
       sake: 酒
     attributes:
       sake:
-        name: "名前"
-        kura: "蔵"
-        photo: "画像"
-        bindume: "製造年月日"
-        by: "BY"
-        product_of: "都道府県"
-        taste_int: "味の濃淡"
-        aroma_int: "香りの高低"
-        sake_metre_value: "日本酒度"
-        acidity: "酸度"
-        aroma_text: "香り"
-        color: "色"
-        taste_text: "味"
-        is_namadume: "生詰め"
-        is_namacho: "生貯蔵"
-        nigori: "にごり"
-        awa: "炭酸"
-        tokutei_meisho: "特定名称"
-        genryoumai: "原料米"
-        kakemai: "掛米"
-        koubo: "酵母"
-        alcohol: "度数"
-        amino_acid: "アミノ酸度"
-        aged: "新酒、夏酒、ひやおろし、古酒"
-        is_genshu: "原酒"
-        moto: "酛"
-        rice_polishing: "精米歩合"
-        roka: "ろ過"
-        shibori: "絞り"
-        bottle_state: "瓶の状態"
-        memo: "備考"
+        name: 名前
+        kura: 蔵
+        photo: 画像
+        bindume: 製造年月日
+        by: BY
+        product_of: 都道府県
+        taste_int: 味の濃淡
+        aroma_int: 香りの高低
+        sake_metre_value: 日本酒度
+        acidity: 酸度
+        aroma_text: 香り
+        color: 色
+        taste_text: 味
+        is_namadume: 生詰め
+        is_namacho: 生貯蔵
+        nigori: にごり
+        awa: 炭酸
+        tokutei_meisho: 特定名称
+        genryoumai: 原料米
+        kakemai: 掛米
+        koubo: 酵母
+        alcohol: 度数
+        amino_acid: アミノ酸度
+        aged: 新酒、夏酒、ひやおろし、古酒
+        is_genshu: 原酒
+        moto: 酛
+        rice_polishing: 精米歩合
+        roka: ろ過
+        shibori: 絞り
+        bottle_state: 瓶の状態
+        memo: 備考
+  enums:
+    sake:
+      bottle_state:
+        sealed: 未開封
+        opened: 開封済
+        empty: 空
