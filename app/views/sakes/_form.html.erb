@@ -163,7 +163,7 @@
 
   <div class="field">
     <%= form.label :bottle_state %>
-    <%= form.select :bottle_state, Sake.bottle_states_i18n.values %>
+    <%= form.select :bottle_state, Sake.bottle_states_i18n.keys.map{|k| [I18n.t("enums.sake.bottle_state.#{k}"),k]} %>
   </div>
 
   <div class="field">
