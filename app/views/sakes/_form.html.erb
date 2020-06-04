@@ -82,13 +82,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :is_namadume %>
-    <%= form.check_box :is_namadume %>
-  </div>
-
-  <div class="field">
-    <%= form.label :is_namacho %>
-    <%= form.check_box :is_namacho %>
+    <%= form.label :hiire_state %>
+    <%= form.select :hiire_state, Sake.hiire_states_i18n.keys.map{|k| [I18n.t("enums.sake.hiire_state.#{k}"),k]} %>
   </div>
 
   <div class="field">

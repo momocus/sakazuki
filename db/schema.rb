@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_11_144406) do
+ActiveRecord::Schema.define(version: 2020_06_04_073233) do
 
   create_table "sakes", force: :cascade do |t|
     t.string "name"
@@ -26,8 +26,6 @@ ActiveRecord::Schema.define(version: 2020_05_11_144406) do
     t.text "aroma_text"
     t.string "color"
     t.text "taste_text"
-    t.boolean "is_namadume"
-    t.boolean "is_namacho"
     t.string "nigori"
     t.string "awa"
     t.string "tokutei_meisho"
@@ -46,6 +44,7 @@ ActiveRecord::Schema.define(version: 2020_05_11_144406) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "bottle_state", default: 0
+    t.integer "hiire_state"
   end
 
 end
