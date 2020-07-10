@@ -17,8 +17,8 @@
       <th><%= @sakes.human_attribute_name :name %></th>
       <th><%= @sakes.human_attribute_name :kura %></th>
       <th><%= @sakes.human_attribute_name :photo %></th>
-      <th><%= @sakes.human_attribute_name :taste_int %></th>
-      <th><%= @sakes.human_attribute_name :aroma_int %></th>
+      <th><%= @sakes.human_attribute_name :taste_value %></th>
+      <th><%= @sakes.human_attribute_name :aroma_value %></th>
       <th><%= @sakes.human_attribute_name :tokutei_meisho %></th>
     </tr>
   </thead>
@@ -28,8 +28,8 @@
         <td><%= sake.name %></td>
         <td><%= sake.kura %></td>
         <td><%= sake.photo %></td>
-        <td><%= sake.taste_int %></td>
-        <td><%= sake.aroma_int %></td>
+        <td><%= sake.taste_value %></td>
+        <td><%= sake.aroma_value %></td>
         <td><%= sake.tokutei_meisho %></td>
         <td><%= link_to '詳細', sake %></td>
         <td><%= link_to '編集', edit_sake_path(sake) %></td>

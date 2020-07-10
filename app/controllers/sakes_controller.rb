@@ -77,14 +77,15 @@ class SakesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def sake_params
-    params.require(:sake).permit(:name, :kura, :photo, :bindume, :by,
-                                 :product_of, :taste_int, :aroma_int,
-                                 :sake_metre_value, :acidity, :aroma_text,
-                                 :color, :taste_text, :nigori, :awa,
-                                 :tokutei_meisho, :genryoumai, :kakemai,
-                                 :koubo, :alcohol, :amino_acid, :aged,
-                                 :is_genshu, :moto, :rice_polishing, :roka,
-                                 :shibori, :memo, :bottle_state, :hiire_state)
+    params.require(:sake)
+          .permit(:name, :kura, :photo, :bindume_date, :brew_year,
+                  :todouhuken, :taste_value, :aroma_value,
+                  :nihonshudo, :sando, :aroma_impression,
+                  :color, :taste_impression, :nigori, :awa,
+                  :tokutei_meisho, :genryoumai, :kakemai,
+                  :koubo, :alcohol, :aminosando, :season,
+                  :is_genshu, :moto, :seimai_buai, :roka,
+                  :shibori, :note, :bottle_state, :hiire_state)
   end
 
   def filter_params
