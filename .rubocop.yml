@@ -1,0 +1,68 @@
+require:
+  - rubocop-rails
+
+AllCops:
+  TargetRubyVersion: 2.7.1
+  Exclude:
+    - "bin/*"
+    - "db/**/*"
+    # 以下デフォルト
+    - "node_modules/**/*"
+    - "tmp/**/*"
+    - "vendor/**/*"
+    - ".git/**/*"
+
+# 文字列はダブルクオート
+Style/StringLiterals:
+  Enabled: false
+  EnforcedStyle: double_quotes
+
+# 先頭行のfrozen stringマジックコメントはなしでもよい
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# ドキュメント無しを許可
+Style/Documentation:
+  Enabled: false
+
+# hash最後のカンマを許可
+Style/TrailingCommaInHashLiteral:
+  Enabled: true
+  EnforcedStyleForMultiline: comma
+
+# テストファイルは長さ制限をなくす
+Metrics/ClassLength:
+  Exclude:
+    - '**/*_test.rb'
+
+Metrics/BlockLength:
+  Exclude:
+    - '**/*_test.rb'
+
+# 以下、設定していないとrubocopに求められる設定
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
+Lint/RaiseException:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
+
+Style/ExponentialNotation:
+  Enabled: true
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Style/SlicingWithRange:
+  Enabled: true
