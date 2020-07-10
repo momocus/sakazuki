@@ -61,12 +61,10 @@ class SakesController < ApplicationController
     end
   end
 
-  def search
-    @sakes = if params[:name].present?
-               Sake.where("name LIKE ?", "%#{params[:name]}%")
-             else
-               Sake.all
-             end
+  def filter
+    filter_sake_params = params[:filter].present? ? filter_params : nil
+    @sake = Search::Sake.new(filter_sake_params)
+    @sakes = @sake.filter
     render :index
   end
 
@@ -88,4 +86,10 @@ class SakesController < ApplicationController
                                  :is_genshu, :moto, :rice_polishing, :roka,
                                  :shibori, :memo, :bottle_state, :hiire_state)
   end
+
+  def filter_params
+    puts params
+    params.require(:filter).permit(:word, :only_in_stock)
+  end
+
 end

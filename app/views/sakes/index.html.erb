@@ -2,9 +2,14 @@
 
 <h1>日本酒リスト</h1>
 
-<%= form_with url: search_sakes_path, method: :get, local: true do |f| %>
-  <%= f.text_field :name %>
-  <%= f.submit :search %>
+<%= form_with scope: :filter, url: filter_sakes_path, method: :get, local: true do |f| %>
+  <%= f.label :word %>
+  <%= f.text_field :word %>
+  <%= f.label :only_in_stock, class: "checkbox inline" do %>
+    <%= f.check_box :only_in_stock %>
+    <span>Only in stock</span>
+  <% end %>
+  <%= f.submit :filter %>
 <% end %>
 <table>
   <thead>
@@ -36,4 +41,5 @@
 
 <br>
 
-<%= link_to '登録', new_sake_path %>
+<%= link_to '登録', new_sake_path %> |
+<%= link_to 'Home', sakes_path %>
