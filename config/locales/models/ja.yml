@@ -50,12 +50,17 @@ ja:
         ato_hiire: 後火入れ
         nido_hiire: 二度火入れ
       tokutei_meisho:
-          nothing: なし
-          honjozo: 本醸造
-          ginjo: 吟醸
-          daiginjo: 大吟醸
-          junmai: 純米
-          junmai_ginjo: 純米吟醸
-          junmai_daiginjo: 純米大吟醸
-          tokubetsu_honjozo: 特別本醸造
-          tokubetsu_junmai: 特別純米
+        nothing: なし
+        honjozo: 本醸造
+        ginjo: 吟醸
+        daiginjo: 大吟醸
+        junmai: 純米
+        junmai_ginjo: 純米吟醸
+        junmai_daiginjo: 純米大吟醸
+        tokubetsu_honjozo: 特別本醸造
+        tokubetsu_junmai: 特別純米
+      moto: 
+        unknown: 不明
+        kimoto: 生酛
+        yamahai: 山廃
+        sokujo: 速醸

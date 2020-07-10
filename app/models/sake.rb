@@ -10,7 +10,7 @@ class Sake < ApplicationRecord
     mae_hiire: 2,
     ato_hiire: 3,
     nido_hiire: 4,
-  }
+  }, _prefix: true
   enum tokutei_meisho: {
     nothing: 0,
     honjozo: 1,
@@ -21,6 +21,12 @@ class Sake < ApplicationRecord
     junmai_daiginjo: 6,
     tokubetsu_honjozo: 7,
     tokubetsu_junmai: 8,
-  }
+  }, _prefix: true
+  enum moto: {
+    unknown: 0,
+    kimoto: 1,
+    yamahai: 2,
+    sokujo: 3,
+  }, _prefix: true
   validates :name, presence: true
 end

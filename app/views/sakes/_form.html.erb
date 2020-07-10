@@ -138,7 +138,7 @@
 
   <div class="field">
     <%= form.label :moto %>
-    <%= form.text_field :moto %>
+    <%= form.select :moto, Sake.motos_i18n.keys.map{|k| [I18n.t("enums.sake.moto.#{k}"),k]} %>
   </div>
 
   <div class="field">
