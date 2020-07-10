@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_10_091954) do
+ActiveRecord::Schema.define(version: 2020_07_10_093752) do
 
   create_table "sakes", force: :cascade do |t|
     t.string "name"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2020_07_10_091954) do
     t.integer "taste_value"
     t.integer "aroma_value"
     t.integer "nihonshudo"
-    t.integer "sando"
+    t.float "sando"
     t.text "aroma_impression"
     t.string "color"
     t.text "taste_impression"
@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(version: 2020_07_10_091954) do
     t.string "genryoumai"
     t.string "kakemai"
     t.string "koubo"
-    t.integer "alcohol"
-    t.integer "aminosando"
+    t.float "alcohol"
+    t.float "aminosando"
     t.string "season"
     t.boolean "is_genshu"
     t.integer "moto"
