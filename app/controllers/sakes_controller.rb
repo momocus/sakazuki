@@ -88,8 +88,6 @@ class SakesController < ApplicationController
   end
 
   def filter_params
-    puts params
     params.require(:filter).permit(:word, :only_in_stock)
   end
-
 end
