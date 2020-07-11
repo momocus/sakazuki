@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_10_094742) do
+ActiveRecord::Schema.define(version: 2020_07_11_145334) do
 
   create_table "sakes", force: :cascade do |t|
     t.string "name"
     t.string "kura"
     t.binary "photo"
-    t.datetime "bindume_date"
-    t.datetime "brew_year"
+    t.date "bindume_date"
+    t.date "brew_year"
     t.string "todouhuken"
     t.integer "taste_value"
     t.integer "aroma_value"
