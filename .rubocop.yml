@@ -25,9 +25,14 @@ Style/FrozenStringLiteralComment:
 Style/Documentation:
   Enabled: false
 
-# hash最後のカンマを許可
+# Arg/Array/Hashの最後のカンマを許可
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+
 Style/TrailingCommaInHashLiteral:
-  Enabled: true
   EnforcedStyleForMultiline: comma
 
 # テストファイルは長さ制限をなくす
