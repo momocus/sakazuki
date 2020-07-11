@@ -50,7 +50,7 @@ ja:
         ato_hiire: 後火入れ
         nido_hiire: 二度火入れ
       tokutei_meisho:
-        nothing: なし
+        none: なし
         honjozo: 本醸造
         ginjo: 吟醸
         daiginjo: 大吟醸

@@ -12,7 +12,7 @@ class Sake < ApplicationRecord
     nido_hiire: 4,
   }, _prefix: true
   enum tokutei_meisho: {
-    nothing: 0,
+    none: 0,
     honjozo: 1,
     ginjo: 2,
     daiginjo: 3,

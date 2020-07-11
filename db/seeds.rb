@@ -23,7 +23,7 @@ Sake.create!(
   nigori: "",
   awa: "",
   tokutei_meisho: nil,
-  #   nothing: 0,
+  #   none: 0,
   #   honjozo: 1,
   #   ginjo: 2,
   #   daiginjo: 3,
@@ -58,5 +58,5 @@ Sake.create!(
   #   mae_hiire: 2,
   #   ato_hiire: 3,
   #   nido_hiire: 4,
-  price: nil
+  price: nil,
 )
