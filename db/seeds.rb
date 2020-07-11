@@ -34,7 +34,7 @@ Sake.create!(
   #   tokubetsu_junmai: 8,
   genryoumai: "",
   kakemai: "",
-  koubo: "",
+  kobo: "",
   alcohol: nil,
   aminosando: nil,
   season: "",

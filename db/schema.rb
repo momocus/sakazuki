@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_11_150834) do
+ActiveRecord::Schema.define(version: 2020_07_11_151348) do
 
   create_table "sakes", force: :cascade do |t|
     t.string "name"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2020_07_11_150834) do
     t.integer "tokutei_meisho"
     t.string "genryoumai"
     t.string "kakemai"
-    t.string "koubo"
+    t.string "kobo"
     t.float "alcohol"
     t.float "aminosando"
     t.string "season"
