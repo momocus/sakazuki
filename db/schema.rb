@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_11_145334) do
+ActiveRecord::Schema.define(version: 2020_07_11_150834) do
 
   create_table "sakes", force: :cascade do |t|
     t.string "name"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2020_07_11_145334) do
     t.binary "photo"
     t.date "bindume_date"
     t.date "brew_year"
-    t.string "todouhuken"
+    t.string "todofuken"
     t.integer "taste_value"
     t.integer "aroma_value"
     t.integer "nihonshudo"

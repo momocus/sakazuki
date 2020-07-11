@@ -12,7 +12,7 @@ Sake.create!(
   photo: nil,
   bindume_date: DateTime.new(2020, 6, 1),
   brew_year: DateTime.new(2020, 6, 1),
-  todouhuken: "",
+  todofuken: "",
   taste_value: nil, # integer 0 - 10
   aroma_value: nil, # integer 0 - 10
   nihonshudo: nil,
