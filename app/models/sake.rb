@@ -1,10 +1,10 @@
 class Sake < ApplicationRecord
-  enum bottle_state: {
+  enum bottle_level: {
     sealed: 0,
     opened: 1,
     empty: 2,
   }
-  enum hiire_state: {
+  enum hiire: {
     unknown: 0,
     namanama: 1,
     mae_hiire: 2,

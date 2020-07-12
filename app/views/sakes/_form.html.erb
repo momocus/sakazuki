@@ -82,8 +82,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :hiire_state %>
-    <%= form.select :hiire_state, Sake.hiire_states_i18n.keys.map{|k| [I18n.t("enums.sake.hiire_state.#{k}"),k]} %>
+    <%= form.label :hiire %>
+    <%= form.select :hiire, Sake.hiires_i18n.keys.map{|k| [I18n.t("enums.sake.hiire.#{k}"),k]} %>
   </div>
 
   <div class="field">
@@ -132,8 +132,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :is_genshu %>
-    <%= form.check_box :is_genshu %>
+    <%= form.label :warimizu %>
+    <%= form.check_box :warimizu %>
   </div>
 
   <div class="field">
@@ -157,8 +157,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :bottle_state %>
-    <%= form.select :bottle_state, Sake.bottle_states_i18n.keys.map{|k| [I18n.t("enums.sake.bottle_state.#{k}"),k]} %>
+    <%= form.label :bottle_level %>
+    <%= form.select :bottle_level, Sake.bottle_levels_i18n.keys.map{|k| [I18n.t("enums.sake.bottle_level.#{k}"),k]} %>
   </div>
 
   <div class="field">

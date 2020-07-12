@@ -6,7 +6,7 @@ module Search
     def filter
       results = ::Sake.all
       results = word_filter(results) if word.present?
-      results = exclude(results, "bottle_state", "2") if only_in_stock?
+      results = exclude(results, "bottle_level", "2") if only_in_stock?
       results
     end
 
