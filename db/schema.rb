@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_12_015709) do
+ActiveRecord::Schema.define(version: 2020_07_12_021213) do
 
   create_table "sakes", force: :cascade do |t|
     t.string "name"
@@ -28,15 +28,15 @@ ActiveRecord::Schema.define(version: 2020_07_12_015709) do
     t.text "taste_impression"
     t.string "nigori"
     t.string "awa"
-    t.integer "tokutei_meisho"
+    t.integer "tokutei_meisho", default: 0
     t.string "genryoumai"
     t.string "kakemai"
     t.string "kobo"
     t.float "alcohol"
     t.float "aminosando"
     t.string "season"
-    t.integer "warimizu"
-    t.integer "moto"
+    t.integer "warimizu", default: 0
+    t.integer "moto", default: 0
     t.integer "seimai_buai"
     t.string "roka"
     t.string "shibori"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2020_07_12_015709) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "bottle_level", default: 0
-    t.integer "hiire"
+    t.integer "hiire", default: 0
     t.integer "price"
   end
 
