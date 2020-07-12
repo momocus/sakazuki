@@ -43,8 +43,8 @@ Style/TrailingCommaInHashLiteral:
 # テストファイルは長さ制限をなくす
 Metrics/ClassLength:
   Exclude:
-    - '**/*_test.rb'
+    - "**/*_test.rb"
 
 Metrics/BlockLength:
   Exclude:
-    - '**/*_test.rb'
+    - "**/*_test.rb"
