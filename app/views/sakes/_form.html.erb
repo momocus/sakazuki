@@ -33,12 +33,12 @@
 
   <div class="field">
     <%= form.label :bindume_date %>
-    <%= form.datetime_select :bindume_date %>
+    <%= form.date_select(:bindume_date, discard_day:true) %>
   </div>
 
   <div class="field">
     <%= form.label :brew_year %>
-    <%= form.datetime_select :brew_year %>
+    <%= form.date_select(:brew_year,discard_day:true,discard_month:true) %>
   </div>
 
   <div class="field">
