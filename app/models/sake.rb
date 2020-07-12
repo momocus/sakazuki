@@ -33,5 +33,49 @@ class Sake < ApplicationRecord
     kasui: 1,
     genshu: 2,
   }, _prefix: true
+
   validates :name, presence: true
+  validates :kura, exclusion: { in: [nil] }
+  # validates :photo
+  # validates :bindume_date,
+  # validates :brew_year,
+  validates :todofuken, exclusion: { in: [nil] }
+  validates :taste_value,
+            numericality:
+            {
+              allow_nil: true,
+              greater_than_or_equal_to: 0,
+              less_than_or_equal_to: 10,
+            }
+  validates :aroma_value,
+            numericality:
+            {
+              allow_nil: true,
+              greater_than_or_equal_to: 0,
+              less_than_or_equal_to: 10,
+            }
+  validates :nihonshudo, numericality: { allow_nil: true }
+  validates :sando, numericality: { allow_nil: true }
+  validates :aroma_impression, exclusion: { in: [nil] }
+  validates :color, exclusion: { in: [nil] }
+  validates :taste_impression, exclusion: { in: [nil] }
+  validates :nigori, exclusion: { in: [nil] }
+  validates :awa, exclusion: { in: [nil] }
+  validates :tokutei_meisho, presence: true
+  validates :genryoumai, exclusion: { in: [nil] }
+  validates :kakemai, exclusion: { in: [nil] }
+  validates :kobo, exclusion: { in: [nil] }
+  validates :alcohol, presence: true
+  validates :aminosando, numericality: { allow_nil: true }
+  validates :season, exclusion: { in: [nil] }
+  validates :warimizu, presence: true
+  validates :moto, exclusion: { in: [nil] }
+  validates :seimai_buai, numericality: { allow_nil: true }
+  validates :roka, exclusion: { in: [nil] }
+  validates :shibori, exclusion: { in: [nil] }
+  validates :note, exclusion: { in: [nil] }
+  validates :bottle_level, presence: true
+  validates :hiire, presence: true
+  validates :price, numericality: { allow_nil: true }
+  validates :size, numericality: true
 end
