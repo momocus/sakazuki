@@ -5,7 +5,8 @@ AllCops:
   TargetRubyVersion: 2.7.1
   Exclude:
     - "bin/*"
-    - "db/**/*"
+    - "db/schema.rb"
+    - "db/migrate/*"
     # 以下デフォルト
     - "node_modules/**/*"
     - "tmp/**/*"
