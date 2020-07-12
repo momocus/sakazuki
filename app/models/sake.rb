@@ -28,5 +28,10 @@ class Sake < ApplicationRecord
     yamahai: 2,
     sokujo: 3,
   }, _prefix: true
+  enum warimizu: {
+    unknown: 0,
+    kasui: 1,
+    genshu: 2,
+  }, _prefix: true
   validates :name, presence: true
 end

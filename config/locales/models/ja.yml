@@ -27,7 +27,7 @@ ja:
         alcohol: 度数
         aminosando: アミノ酸度
         season: 新酒、夏酒、ひやおろし、古酒
-        warimizu: 原酒
+        warimizu: 加水・原酒
         moto: 酛
         seimai_buai: 精米歩合
         roka: ろ過
@@ -64,3 +64,7 @@ ja:
         kimoto: 生酛
         yamahai: 山廃
         sokujo: 速醸
+      warimizu:
+        unknown: 不明
+        kasui: 加水
+        genshu: 原酒（無加水）

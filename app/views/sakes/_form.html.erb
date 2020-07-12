@@ -133,7 +133,7 @@
 
   <div class="field">
     <%= form.label :warimizu %>
-    <%= form.check_box :warimizu %>
+    <%= form.select :warimizu, Sake.warimizus_i18n.keys.map{|k| [I18n.t("enums.sake.warimizu.#{k}"),k]} %>
   </div>
 
   <div class="field">
