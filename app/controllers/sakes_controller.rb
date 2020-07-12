@@ -85,7 +85,8 @@ class SakesController < ApplicationController
                   :tokutei_meisho, :genryoumai, :kakemai,
                   :kobo, :alcohol, :aminosando, :season,
                   :warimizu, :moto, :seimai_buai, :roka,
-                  :shibori, :note, :bottle_level, :hiire)
+                  :shibori, :note, :bottle_level, :hiire,
+                  :size)
   end
 
   def filter_params
