@@ -33,6 +33,7 @@ ja:
         roka: ろ過
         shibori: 絞り
         bottle_level: 瓶の状態
+        price: 価格(円)
         size: 内容量(ml)
         memo: 備考
         created_at: 登録日
