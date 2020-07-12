@@ -13,6 +13,9 @@ AllCops:
     - "vendor/**/*"
     - ".git/**/*"
 
+Style/AsciiComments:
+  Enabled: false
+
 # 文字列はダブルクオート
 Style/StringLiterals:
   Enabled: false
