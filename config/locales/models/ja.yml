@@ -9,7 +9,7 @@ ja:
         photo: 画像
         bindume_date: 製造年月日
         brew_year: BY
-        todouhuken: 都道府県
+        todofuken: 都道府県
         taste_value: 味の濃淡
         aroma_value: 香りの高低
         nihonshudo: 日本酒度
@@ -17,40 +17,42 @@ ja:
         aroma_impression: 香り
         color: 色
         taste_impression: 味
-        hiire_state: 火入れ状態
+        hiire: 火入れ状態
         nigori: にごり
         awa: 炭酸
         tokutei_meisho: 特定名称
         genryoumai: 原料米
         kakemai: 掛米
-        koubo: 酵母
+        kobo: 酵母
         alcohol: 度数
         aminosando: アミノ酸度
         season: 新酒、夏酒、ひやおろし、古酒
-        is_genshu: 原酒
+        warimizu: 加水・原酒
         moto: 酛
         seimai_buai: 精米歩合
         roka: ろ過
         shibori: 絞り
-        bottle_state: 瓶の状態
+        bottle_level: 瓶の状態
+        price: 価格(円)
+        size: 内容量(ml)
         memo: 備考
         created_at: 登録日
         update_at: 更新日
 
   enums:
     sake:
-      bottle_state:
+      bottle_level:
         sealed: 未開封
         opened: 開封済
         empty: 空
-      hiire_state:
+      hiire:
         unknown: 不明
         namanama: 生生
         mae_hiire: 前火入れ
         ato_hiire: 後火入れ
         nido_hiire: 二度火入れ
       tokutei_meisho:
-        nothing: なし
+        none: なし
         honjozo: 本醸造
         ginjo: 吟醸
         daiginjo: 大吟醸
@@ -64,3 +66,7 @@ ja:
         kimoto: 生酛
         yamahai: 山廃
         sokujo: 速醸
+      warimizu:
+        unknown: 不明
+        kasui: 加水
+        genshu: 原酒（無加水）

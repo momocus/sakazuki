@@ -79,13 +79,14 @@ class SakesController < ApplicationController
   def sake_params
     params.require(:sake)
           .permit(:name, :kura, :photo, :bindume_date, :brew_year,
-                  :todouhuken, :taste_value, :aroma_value,
+                  :todofuken, :taste_value, :aroma_value,
                   :nihonshudo, :sando, :aroma_impression,
                   :color, :taste_impression, :nigori, :awa,
                   :tokutei_meisho, :genryoumai, :kakemai,
-                  :koubo, :alcohol, :aminosando, :season,
-                  :is_genshu, :moto, :seimai_buai, :roka,
-                  :shibori, :note, :bottle_state, :hiire_state)
+                  :kobo, :alcohol, :aminosando, :season,
+                  :warimizu, :moto, :seimai_buai, :roka,
+                  :shibori, :note, :bottle_level, :hiire,
+                  :size, :price)
   end
 
   def filter_params

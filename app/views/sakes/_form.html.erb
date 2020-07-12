@@ -33,17 +33,17 @@
 
   <div class="field">
     <%= form.label :bindume_date %>
-    <%= form.datetime_select :bindume_date %>
+    <%= form.date_select(:bindume_date, discard_day:true) %>
   </div>
 
   <div class="field">
     <%= form.label :brew_year %>
-    <%= form.datetime_select :brew_year %>
+    <%= form.date_select(:brew_year,discard_day:true,discard_month:true) %>
   </div>
 
   <div class="field">
-    <%= form.label :todouhuken %>
-    <%= form.text_field :todouhuken %>
+    <%= form.label :todofuken %>
+    <%= form.text_field :todofuken %>
   </div>
 
   <div class="field">
@@ -82,8 +82,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :hiire_state %>
-    <%= form.select :hiire_state, Sake.hiire_states_i18n.keys.map{|k| [I18n.t("enums.sake.hiire_state.#{k}"),k]} %>
+    <%= form.label :hiire %>
+    <%= form.select :hiire, Sake.hiires_i18n.keys.map{|k| [I18n.t("enums.sake.hiire.#{k}"),k]} %>
   </div>
 
   <div class="field">
@@ -112,8 +112,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :koubo %>
-    <%= form.text_field :koubo %>
+    <%= form.label :kobo %>
+    <%= form.text_field :kobo %>
   </div>
 
   <div class="field">
@@ -132,8 +132,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :is_genshu %>
-    <%= form.check_box :is_genshu %>
+    <%= form.label :warimizu %>
+    <%= form.select :warimizu, Sake.warimizus_i18n.keys.map{|k| [I18n.t("enums.sake.warimizu.#{k}"),k]} %>
   </div>
 
   <div class="field">
@@ -157,8 +157,18 @@
   </div>
 
   <div class="field">
-    <%= form.label :bottle_state %>
-    <%= form.select :bottle_state, Sake.bottle_states_i18n.keys.map{|k| [I18n.t("enums.sake.bottle_state.#{k}"),k]} %>
+    <%= form.label :bottle_level %>
+    <%= form.select :bottle_level, Sake.bottle_levels_i18n.keys.map{|k| [I18n.t("enums.sake.bottle_level.#{k}"),k]} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.number_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :size %>
+    <%= form.number_field :size %>
   </div>
 
   <div class="field">
