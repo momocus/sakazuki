@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_12_021213) do
+ActiveRecord::Schema.define(version: 2020_07_12_044802) do
 
   create_table "sakes", force: :cascade do |t|
     t.string "name"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2020_07_12_021213) do
     t.integer "bottle_level", default: 0
     t.integer "hiire", default: 0
     t.integer "price"
+    t.integer "size"
   end
 
 end
