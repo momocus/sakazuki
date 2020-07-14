@@ -20,21 +20,18 @@
       <th><%= @sakes.human_attribute_name :taste_value %></th>
       <th><%= @sakes.human_attribute_name :aroma_value %></th>
       <th><%= @sakes.human_attribute_name :tokutei_meisho %></th>
-      <th colspan="3"></th>
     </tr>
   </thead>
   <tbody>
     <% @sakes.each do |sake| %>
-      <tr>
+      <tr class="clickable"
+        onclick='window.location="/sakes/<%= sake.id.to_s %>"' role="link">
         <td><%= sake.name %></td>
         <td><%= sake.kura %></td>
         <td><%= sake.photo %></td>
         <td><%= sake.taste_value %></td>
         <td><%= sake.aroma_value %></td>
         <td><%= sake.tokutei_meisho_i18n %></td>
-        <td><%= link_to '詳細', sake %></td>
-        <td><%= link_to '編集', edit_sake_path(sake) %></td>
-        <td><%= link_to '削除', sake, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
