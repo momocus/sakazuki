@@ -11,8 +11,8 @@
   <% end %>
   <%= f.submit :filter %>
 <% end %>
-<table>
-  <thead>
+<table class="table table-sm table-hover">
+  <thead class="thead-light">
     <tr>
       <th><%= @sakes.human_attribute_name :name %></th>
       <th><%= @sakes.human_attribute_name :kura %></th>
@@ -20,6 +20,7 @@
       <th><%= @sakes.human_attribute_name :taste_value %></th>
       <th><%= @sakes.human_attribute_name :aroma_value %></th>
       <th><%= @sakes.human_attribute_name :tokutei_meisho %></th>
+      <th colspan="3"></th>
     </tr>
   </thead>
   <tbody>
