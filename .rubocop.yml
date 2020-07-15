@@ -5,12 +5,17 @@ AllCops:
   TargetRubyVersion: 2.7.1
   Exclude:
     - "bin/*"
-    - "db/**/*"
+    - "db/schema.rb"
+    - "db/migrate/*"
     # 以下デフォルト
     - "node_modules/**/*"
     - "tmp/**/*"
     - "vendor/**/*"
     - ".git/**/*"
+  NewCops: enable               # 新規追加のPendingCopsを有効化
+
+Style/AsciiComments:
+  Enabled: false
 
 # 文字列はダブルクオート
 Style/StringLiterals:
@@ -38,36 +43,8 @@ Style/TrailingCommaInHashLiteral:
 # テストファイルは長さ制限をなくす
 Metrics/ClassLength:
   Exclude:
-    - '**/*_test.rb'
+    - "**/*_test.rb"
 
 Metrics/BlockLength:
   Exclude:
-    - '**/*_test.rb'
-
-# 以下、設定していないとrubocopに求められる設定
-Layout/EmptyLinesAroundAttributeAccessor:
-  Enabled: true
-
-Layout/SpaceAroundMethodCallOperator:
-  Enabled: true
-
-Lint/RaiseException:
-  Enabled: true
-
-Lint/StructNewOverride:
-  Enabled: true
-
-Style/ExponentialNotation:
-  Enabled: true
-
-Style/HashEachMethods:
-  Enabled: true
-
-Style/HashTransformKeys:
-  Enabled: true
-
-Style/HashTransformValues:
-  Enabled: true
-
-Style/SlicingWithRange:
-  Enabled: true
+    - "**/*_test.rb"
