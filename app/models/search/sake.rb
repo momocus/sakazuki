@@ -1,7 +1,6 @@
 module Search
   class Sake < Search::Base
-    attr_accessor :word
-    attr_accessor :only_in_stock
+    attr_accessor :word, :only_in_stock
 
     def filter
       results = ::Sake.all
