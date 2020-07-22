@@ -20,7 +20,6 @@ Style/AsciiComments:
 
 # 文字列はダブルクオート
 Style/StringLiterals:
-  Enabled: false
   EnforcedStyle: double_quotes
 
 # 先頭行のfrozen stringマジックコメントはなしでもよい
