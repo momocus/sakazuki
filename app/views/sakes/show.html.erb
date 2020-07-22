@@ -171,4 +171,8 @@
 </p>
 
 <%= link_to 'Edit', edit_sake_path(@sake) %> |
+<%= link_to 'Remove',
+             @sake,
+             method: :delete,
+             data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', sakes_path %>
