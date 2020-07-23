@@ -14,12 +14,12 @@ AllCops:
     - ".git/**/*"
   NewCops: enable               # 新規追加のPendingCopsを有効化
 
+# 日本語コメントを許可
 Style/AsciiComments:
   Enabled: false
 
 # 文字列はダブルクオート
 Style/StringLiterals:
-  Enabled: false
   EnforcedStyle: double_quotes
 
 # 先頭行のfrozen stringマジックコメントはなしでもよい
