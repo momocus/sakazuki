@@ -1,4 +1,14 @@
 ja:
+  index:
+    title: 一覧
+  message:
+    delete: 本当に削除しますか？
+  helpers:
+    submit:
+      create: 登録
+      update: 更新
+      edit: 編集
+      delete: 削除
   activerecord:
     models:
       sake: 酒

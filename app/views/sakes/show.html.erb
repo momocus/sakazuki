@@ -170,9 +170,9 @@
   <%= @sake.created_at.strftime("%Y-%m-%d %H:%M") %>
 </p>
 
-<%= link_to 'Edit', edit_sake_path(@sake) %> |
-<%= link_to 'Remove',
-             @sake,
-             method: :delete,
-             data: { confirm: 'Are you sure?' } %> |
-<%= link_to 'Back', sakes_path %>
+<%= link_to t("helpers.submit.edit"), edit_sake_path(@sake) %> |
+<%= link_to t("helpers.submit.delete"),
+            @sake,
+            method: :delete,
+            data: { confirm: t("message.delete") } %> |
+<%= link_to t("index.title")', sakes_path %>
