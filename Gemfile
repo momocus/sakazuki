@@ -63,4 +63,4 @@ gem "enum_help"
 gem "rails-i18n"
 
 # For secure password
-gem 'bcrypt'
+gem "bcrypt"
