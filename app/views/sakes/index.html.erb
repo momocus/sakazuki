@@ -37,7 +37,8 @@
   </tbody>
 </table>
 
-<br>
-
-<%= link_to t("helpers.submit.create"), new_sake_path %> |
-<%= link_to 'Home', sakes_path %>
+<div class="row justify-content-center">
+  <%= link_to(t("helpers.submit.create"),
+              new_sake_path,
+              { class: "btn btn-outline-primary" }) %>
+</div>
