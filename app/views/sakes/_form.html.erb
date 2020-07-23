@@ -15,168 +15,211 @@
     </div>
   <% end %>
 
-  <!-- form -->
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <!-- 表示義務あり -->
+  <div class="form-group row">
+    <%= form.label :name, { class: "col-4" } %>
+    <%= form.text_field :name, { class: "form-control col-8" } %>
   </div>
 
-  <div class="field">
-    <%= form.label :kura %>
-    <%= form.text_field :kura %>
+  <div class="form-group row">
+    <%= form.label :kura, { class: "col-4"} %>
+    <%= form.text_field :kura, { class: "form-control col-8" } %>
   </div>
 
-  <div class="field">
-    <%= form.label :photo %>
-    <%= form.text_field :photo %>
+  <div class="form-group row">
+    <%= form.label :todofuken, { class: "col-4" } %>
+    <%= form.text_field :todofuken, { class: "form-control col-8" } %>
   </div>
 
-  <div class="field">
-    <%= form.label :bindume_date %>
-    <%= form.date_select(:bindume_date, discard_day:true) %>
+  <div class="form-group row">
+    <%= form.label :photo, { class: "col-4" } %>
+    <%= form.file_field :photo, { class: "form-control-file col-8" } %>
   </div>
 
-  <div class="field">
-    <%= form.label :brew_year %>
-    <%= form.date_select(:brew_year,discard_day:true,discard_month:true) %>
+  <div class="form-group row">
+    <%= form.label :tokutei_meisho, { class: "col-4" } %>
+    <%= form.select(:tokutei_meisho,
+                    Sake.tokutei_meishos_i18n.keys.map{
+                      |k| [ I18n.t("enums.sake.tokutei_meisho.#{k}"), k ] },
+                    {},
+                    { class: "form-control col-8" }) %>
   </div>
 
-  <div class="field">
-    <%= form.label :todofuken %>
-    <%= form.text_field :todofuken %>
+  <div class="form-group row">
+    <%= form.label :seimai_buai, { class: "col-4" } %>
+    <%= form.number_field :seimai_buai, { class: "form-control col-8" } %>
   </div>
 
-  <div class="field">
-    <%= form.label :taste_value %>
-    <%= form.number_field :taste_value %>
+  <div class="form-group row">
+    <%= form.label :bindume_date, { class: "col-4" } %>
+    <%= form.date_select(:bindume_date,
+                         { discard_day: true },
+                         { class: "form-control col-4" }) %>
   </div>
 
-  <div class="field">
-    <%= form.label :aroma_value %>
-    <%= form.number_field :aroma_value %>
+  <div class="form-group row">
+    <%= form.label :brew_year, { class: "col-4" } %>
+    <%= form.date_select(:brew_year,
+                         { discard_day: true, discard_month: true },
+                         { class: "form-control col-4" }) %>
   </div>
 
-  <div class="field">
-    <%= form.label :nihonshudo %>
-    <%= form.number_field :nihonshudo %>
+  <div class="form-group row">
+    <%= form.label :size, { class: "col-4" } %>
+    <%= form.number_field(:size,
+                          { value: "720", class: "form-control col-8" }) %>
   </div>
 
-  <div class="field">
-    <%= form.label :sando %>
-    <%= form.number_field :sando %>
+  <div class="form-group row">
+    <%= form.label :alcohol, { class: "col-4" } %>
+    <%= form.number_field(:alcohol,
+                          { value: "15", class: "form-control col-8" }) %>
   </div>
 
-  <div class="field">
-    <%= form.label :aroma_impression %>
-    <%= form.text_area :aroma_impression %>
+  <div class="form-group row">
+    <%= form.label :price, { class: "col-4" } %>
+    <%= form.number_field :price, { class: "form-control col-8" } %>
   </div>
 
-  <div class="field">
-    <%= form.label :color %>
-    <%= form.text_field :color %>
+  <!-- 表示義務なし -->
+  <div class="form-group row">
+    <%= form.label :genryoumai, { class: "col-4" } %>
+    <%= form.text_field :genryoumai, { class: "form-control col-8" } %>
   </div>
 
-  <div class="field">
-    <%= form.label :taste_impression %>
-    <%= form.text_area :taste_impression %>
+  <div class="form-group row">
+    <%= form.label :kakemai, { class: "col-4" } %>
+    <%= form.text_field :kakemai, { class: "form-control col-8" } %>
   </div>
 
-  <div class="field">
-    <%= form.label :hiire %>
-    <%= form.select :hiire, Sake.hiires_i18n.keys.map{|k| [I18n.t("enums.sake.hiire.#{k}"),k]} %>
+  <div class="form-group row">
+    <%= form.label :kobo, { class: "col-4" } %>
+    <%= form.text_field :kobo, { class: "form-control col-8" } %>
   </div>
 
-  <div class="field">
-    <%= form.label :nigori %>
-    <%= form.text_field :nigori %>
+  <div class="form-group row">
+    <%= form.label :moto, { class: "col-4" } %>
+    <%= form.select(:moto,
+                    Sake.motos_i18n.keys.map{
+                      |k| [ I18n.t("enums.sake.moto.#{k}"), k ] },
+                    {},
+                    { class: "form-control col-8" }) %>
   </div>
 
-  <div class="field">
-    <%= form.label :awa %>
-    <%= form.text_field :awa %>
+  <div class="form-group row">
+    <%= form.label :roka, { class: "col-4" } %>
+    <%= form.text_field :roka, { class: "form-control col-8" } %>
   </div>
 
-  <div class="field">
-    <%= form.label :tokutei_meisho %>
-    <%= form.select :tokutei_meisho, Sake.tokutei_meishos_i18n.keys.map{|k| [I18n.t("enums.sake.tokutei_meisho.#{k}"),k]} %>
+  <div class="form-group row">
+    <%= form.label :shibori, { class: "col-4" } %>
+    <%= form.text_field :shibori, { class: "form-control col-8" } %>
   </div>
 
-  <div class="field">
-    <%= form.label :genryoumai %>
-    <%= form.text_field :genryoumai %>
+  <div class="form-group row">
+    <%= form.label :hiire, { class: "col-4" } %>
+    <%= form.select(:hiire,
+                    Sake.hiires_i18n.keys.map{
+                      |k| [ I18n.t("enums.sake.hiire.#{k}"), k ] },
+                    {},
+                    { class: "form-control col-8", title: "test" }) %>
   </div>
 
-  <div class="field">
-    <%= form.label :kakemai %>
-    <%= form.text_field :kakemai %>
+  <div class="form-group row">
+    <%= form.label :season, { class: "col-4" } %>
+    <%= form.text_field :season, { class: "form-control col-8" } %>
   </div>
 
-  <div class="field">
-    <%= form.label :kobo %>
-    <%= form.text_field :kobo %>
+  <div class="form-group row">
+    <%= form.label :nihonshudo, { class: "col-4" } %>
+    <%= form.number_field :nihonshudo,
+        { class: "form-control col-8" } %>
   </div>
 
-  <div class="field">
-    <%= form.label :alcohol %>
-    <%= form.number_field :alcohol %>
+  <div class="form-group row">
+    <%= form.label :sando, { class: "col-4" } %>
+    <%= form.number_field(:sando,
+                          { step: "0.1",
+                            class: "form-control col" }) %>
   </div>
 
-  <div class="field">
-    <%= form.label :aminosando %>
-    <%= form.number_field :aminosando %>
+  <div class="form-group row">
+    <%= form.label :aminosando, { class: "col-4" } %>
+    <%= form.number_field :aminosando, { class: "form-control col-8" } %>
   </div>
 
-  <div class="field">
-    <%= form.label :season %>
-    <%= form.text_field :season %>
+  <div class="form-group row">
+    <%= form.label :warimizu, { class: "col-4" } %>
+    <%= form.select(:warimizu,
+                    Sake.warimizus_i18n.keys.map{
+                      |k| [ I18n.t("enums.sake.warimizu.#{k}"), k ] },
+                    {},
+                    { class: "form-control col-8" }) %>
   </div>
 
-  <div class="field">
-    <%= form.label :warimizu %>
-    <%= form.select :warimizu, Sake.warimizus_i18n.keys.map{|k| [I18n.t("enums.sake.warimizu.#{k}"),k]} %>
+  <!-- 家に来てから -->
+  <div class="form-group row">
+    <%= form.label :bottle_level, { class: "col-4" } %>
+    <%= form.select(:bottle_level,
+                    Sake.bottle_levels_i18n.keys.map{
+                      |k| [ I18n.t("enums.sake.bottle_level.#{k}"), k ] },
+                    {},
+                    { class: "form-control col-8" }) %>
   </div>
 
-  <div class="field">
-    <%= form.label :moto %>
-    <%= form.select :moto, Sake.motos_i18n.keys.map{|k| [I18n.t("enums.sake.moto.#{k}"),k]} %>
+  <div class="form-group row">
+    <%= form.label :color, { class: "col-4" } %>
+    <%= form.text_field :color, { class: "form-control col-8" } %>
   </div>
 
-  <div class="field">
-    <%= form.label :seimai_buai %>
-    <%= form.number_field :seimai_buai %>
+  <div class="form-group row">
+    <%= form.label :nigori, { class: "col-4" } %>
+    <%= form.text_field :nigori, { class: "form-control col-8" } %>
   </div>
 
-  <div class="field">
-    <%= form.label :roka %>
-    <%= form.text_field :roka %>
+  <div class="form-group row">
+    <%= form.label :aroma_value, { class: "col-4" } %>
+    <%= form.number_field(:aroma_value,
+                          { type: "range",
+                            min: "0",
+                            max: "10",
+                            class: "custom-range col-8" }) %>
   </div>
 
-  <div class="field">
-    <%= form.label :shibori %>
-    <%= form.text_field :shibori %>
+  <div class="form-group row">
+    <%= form.label :aroma_impression, { class: "col-4" } %>
+    <%= form.text_area :aroma_impression, { class: "form-control col-8" } %>
   </div>
 
-  <div class="field">
-    <%= form.label :bottle_level %>
-    <%= form.select :bottle_level, Sake.bottle_levels_i18n.keys.map{|k| [I18n.t("enums.sake.bottle_level.#{k}"),k]} %>
+  <div class="form-group row">
+    <%= form.label :taste_value, { class: "col-4" } %>
+    <%= form.number_field(:taste_value,
+                          { type: "range",
+                            min: "0",
+                            max: "10",
+                            class: "custom-range col-8" }) %>
   </div>
 
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.number_field :price %>
+  <div class="form-group row">
+    <%= form.label :taste_impression, { class: "col-4" } %>
+    <%= form.text_area :taste_impression, { class: "form-control col-8" } %>
   </div>
 
-  <div class="field">
-    <%= form.label :size %>
-    <%= form.number_field :size %>
+  <div class="form-group row">
+    <%= form.label :awa, { class: "col-4" } %>
+    <%= form.text_field :awa, { class: "form-control col-8" } %>
   </div>
 
-  <div class="field">
-    <%= form.label :note %>
-    <%= form.text_area :note %>
+  <div class="form-group row">
+    <%= form.label :note, { class: "col-4" } %>
+    <%= form.text_area :note, { class: "form-control col-8" } %>
   </div>
 
-  <div class="actions">
+  <div class="row justify-content-center">
     <%= form.submit nil, { class: "btn btn-outline-primary" } %>
+    <%= link_to(t("index.title"),
+                sakes_path,
+                { class: "btn btn-outline-secondary" }) %>
   </div>
+
 <% end %>
