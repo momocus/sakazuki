@@ -1,0 +1,13 @@
+<header class="navbar navbar-dark bg-dark">
+  <div class="container">
+    <%= link_to "Sakazuki", root_path, id: "logo" %>
+    <nav class="navbar-nav navbar-dark bg-dark">
+    <%# todo: 位置ずれるので整える %>
+      <ul>
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Sign in", '#' %></li>
+        <li><%= link_to "Sign up", signup_path %></li>
+      </ul>
+    </nav>
+  </div>
+</header>

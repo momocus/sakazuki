@@ -61,3 +61,6 @@ gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 # For Japanese
 gem "enum_help"
 gem "rails-i18n"
+
+# For secure password
+gem "bcrypt"
