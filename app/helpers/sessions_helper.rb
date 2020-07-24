@@ -11,6 +11,10 @@ module SessionsHelper
     # rubocop:enable Rails/HelperInstanceVariable
   end
 
+  def current_user?(user)
+    user && user == current_user
+  end
+
   def signed_in?
     !current_user.nil?
   end
