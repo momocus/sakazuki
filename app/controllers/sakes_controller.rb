@@ -1,10 +1,17 @@
 class SakesController < ApplicationController
   before_action :set_sake, only: %i[show edit update destroy]
+  before_action :signed_in_user, only: %i[new create edit update destroy]
+  before_action :correct_user, only: :destroy
 
   # GET /sakes
   # GET /sakes.json
   def index
-    @sakes = Sake.all
+    @sakes =
+      if signed_in?
+        current_user.sakes.all
+      else
+        Sake.all
+      end
   end
 
   # GET /sakes/1
@@ -24,8 +31,7 @@ class SakesController < ApplicationController
   # POST /sakes
   # POST /sakes.json
   def create
-    @sake = Sake.new(sake_params)
-
+    @sake = current_user.sakes.build(sake_params)
     respond_to do |format|
       if @sake.save
         format.html { redirect_to @sake, notice: "Create successfully." }
@@ -86,10 +92,10 @@ class SakesController < ApplicationController
                   :kobo, :alcohol, :aminosando, :season,
                   :warimizu, :moto, :seimai_buai, :roka,
                   :shibori, :note, :bottle_level, :hiire,
-                  :size, :price)
+                  :size, :price, :user_id)
   end
 
   def filter_params
-    params.require(:filter).permit(:word, :only_in_stock)
+    params.require(:filter).permit(:word, :only_in_stock, :user_id)
   end
 end

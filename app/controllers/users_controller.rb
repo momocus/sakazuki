@@ -53,14 +53,6 @@ class UsersController < ApplicationController
                                  :password_confirmation)
   end
 
-  def signed_in_user
-    return if signed_in?
-
-    store_location
-    flash[:danger] = "Please sign in."
-    redirect_to signin_url
-  end
-
   def correct_user
     @user = User.find(params[:id])
     redirect_to(root_url) unless @user == current_user
