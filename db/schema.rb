@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_23_084108) do
+ActiveRecord::Schema.define(version: 2020_07_24_093851) do
 
   create_table "sakes", force: :cascade do |t|
     t.string "name"
@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(version: 2020_07_23_084108) do
     t.integer "hiire", default: 0
     t.integer "price"
     t.integer "size"
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_sakes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -59,4 +61,5 @@ ActiveRecord::Schema.define(version: 2020_07_23_084108) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "sakes", "users"
 end

@@ -1,4 +1,6 @@
 class Sake < ApplicationRecord
+  belongs_to :user
+  validates :user_id, presence: true
   enum bottle_level: {
     sealed: 0,
     opened: 1,
