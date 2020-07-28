@@ -1,7 +1,6 @@
 class SakesController < ApplicationController
   before_action :set_sake, only: %i[show edit update destroy]
   before_action :signed_in_user, only: %i[new create edit update destroy]
-  before_action :correct_user, only: :destroy
 
   # GET /sakes
   # GET /sakes.json
