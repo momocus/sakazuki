@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :correct_user,   only: %i[show edit update]
-  before_action :admin_user,     only: %i[new create index destroy]
+  before_action :self_or_admin_user, only: %i[show edit update]
+  before_action :admin_user, only: %i[new create index destroy]
 
   def index
     @users = User.all
@@ -51,12 +51,11 @@ class UsersController < ApplicationController
                                  :password_confirmation)
   end
 
-  def correct_user
+  def self_or_admin_user
     @user = User.find(params[:id])
-    return if @user == (current_user || current_user.admin?)
+    return if @user == current_user
 
-    flash[:danger] = "Permission denied."
-    redirect_to(root_url)
+    admin_user
   end
 
   def admin_user
