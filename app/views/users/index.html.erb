@@ -1,0 +1,21 @@
+<% provide(:title, 'All users') %>
+<h1>All users</h1>
+
+<ul class="users">
+  <% @users.each do |user| %>
+    <li>
+      <%= gravatar_for user, size: 50 %>
+      <%= link_to user.name, user %>
+       <% if current_user.admin? && !current_user?(user) %>
+        | <%= link_to(t("helpers.submit.delete"), user,
+            method: :delete,
+            data: { confirm: t("message.delete") } ) %>
+       <% end %>
+    </li>
+  <% end %>
+</ul>
+<div class="row justify-content-center">
+  <%= link_to(t("helpers.submit.create"),
+              new_user_path,
+              { class: "btn btn-outline-primary" }) %>
+</div>

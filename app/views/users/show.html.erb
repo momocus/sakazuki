@@ -1,11 +1,12 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
-  </aside>
+  <div class="row-cols-1">
+    <div class="col"><%= gravatar_for @user %></div>
+    <div class="col">Name: <%= @user.name %></div>
+    <div class="col">Email: <%= @user.email %></div>
+  </div>
+</div>
+<div class="row justify-content-center">
+  <%= link_to(t("helpers.submit.edit"),
+               edit_user_path(current_user),
+              { class: "btn btn-outline-primary" }) %>
 </div>
