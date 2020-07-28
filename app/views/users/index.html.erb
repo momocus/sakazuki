@@ -7,9 +7,15 @@
       <%= gravatar_for user, size: 50 %>
       <%= link_to user.name, user %>
        <% if current_user.admin? && !current_user?(user) %>
-        | <%= link_to "delete", user, method: :delete,
-                                      data: { confirm: "You sure?" } %>
+        | <%= link_to(t("helpers.submit.delete"), user,
+            method: :delete,
+            data: { confirm: t("message.delete") } ) %>
        <% end %>
     </li>
   <% end %>
 </ul>
+<div class="row justify-content-center">
+  <%= link_to(t("helpers.submit.create"),
+              new_user_path,
+              { class: "btn btn-outline-primary" }) %>
+</div>
