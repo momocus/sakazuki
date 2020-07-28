@@ -12,15 +12,13 @@ class UsersController < ApplicationController
   end
 
   def new
-    raise "error"
-    # @user = User.new
+    @user = User.new
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
-      sign_in @user
-      flash[:success] = "Welcome to the Sakazuki!"
+      flash[:success] = "User created"
       redirect_to @user
     else
       render "new"
