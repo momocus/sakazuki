@@ -178,26 +178,23 @@
   </div>
 
   <div class="form-group row">
-    <%= form.label :aroma_value, { class: "col-4" } %>
-    <%= form.number_field(:aroma_value,
-                          { type: "range",
-                            min: "0",
-                            max: "10",
-                            class: "custom-range col-8" }) %>
+    <%= form.label((t("activerecord.attributes.sake.taste_value") + ", " +
+                    t("activerecord.attributes.sake.aroma_value")),
+                   { class: "col-4" }) %>
+    <div class="col-8">
+      <canvas id="taste_graph"></canvas>
+      <%= form.number_field(:taste_value,
+                            hidden: true,
+                            data: { taste_value: @sake.taste_value }) %>
+      <%= form.number_field(:aroma_value,
+                            hidden: true,
+                            data: { aroma_value: @sake.aroma_value }) %>
+    </div>
   </div>
 
   <div class="form-group row">
     <%= form.label :aroma_impression, { class: "col-4" } %>
     <%= form.text_area :aroma_impression, { class: "form-control col-8" } %>
-  </div>
-
-  <div class="form-group row">
-    <%= form.label :taste_value, { class: "col-4" } %>
-    <%= form.number_field(:taste_value,
-                          { type: "range",
-                            min: "0",
-                            max: "10",
-                            class: "custom-range col-8" }) %>
   </div>
 
   <div class="form-group row">
@@ -223,3 +220,5 @@
   </div>
 
 <% end %>
+
+<%= javascript_pack_tag 'taste_graph' %>
