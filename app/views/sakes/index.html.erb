@@ -22,8 +22,7 @@
   </thead>
   <tbody>
     <% @sakes.each do |sake| %>
-      <tr class="clickable"
-        onclick='window.location="/sakes/<%= sake.id.to_s %>"' role="link">
+      <tr class="clickable" data-sake-id="<%= sake.id.to_s %>" role="link">
         <td><%= sake.name %></td>
         <td><%= sake.kura %></td>
         <td><%= sake.photo %></td>
@@ -40,3 +39,5 @@
               new_sake_path,
               { class: "btn btn-outline-primary" }) %>
 </div>
+
+<%= javascript_pack_tag 'clickable_sakeindex' %>
