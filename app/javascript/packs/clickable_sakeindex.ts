@@ -1,12 +1,12 @@
 const trsColl =
-  document.getElementsByClassName("clickable") as
+  document.getElementsByClassName('clickable') as
   HTMLCollectionOf<HTMLTableRowElement>
 const trs = Array.from(trsColl)
 
-for (let tr of trs) {
+for (const tr of trs) {
   const id = tr.dataset.sakeId
-  const newLocation = "/sakes/" + id
-  tr.onclick = (_) => {
+  const newLocation = '/sakes/' + id
+  tr.onclick = () => {
     window.location.assign(newLocation)
   }
 }
