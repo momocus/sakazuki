@@ -6,7 +6,7 @@
 files=$(find . \
              -not -path "./node_modules/*" -not -path "./public/*" \
              -not -path "./vendor/*" \
-             -type f -regex '.*\.\(rb\|erb\|css\|scss\|js\|yml\)')
+             -type f -regex '.*\.\(rb\|erb\|css\|scss\|js\|ts\|yml\)')
 
 error_files=""
 for file in ${files}; do
