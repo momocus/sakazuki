@@ -24,6 +24,6 @@
     "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
-    "eslint": "eslint --ext .js,.jsx,.ts,.tsx ./app/javascript/packs/"
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./app/javascript/packs/"
   }
 }
