@@ -4,17 +4,14 @@ module.exports = {
     es2020: true,
   },
   extends: [
-    'standard',
-    'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'plugin:prettier/recommended',
     'prettier/@typescript-eslint',
   ],
-  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 11,
     sourceType: 'module',
-    tsconfigRootDir: __dirname,
+    tsconfigRootDir: ".",
     project: ['./tsconfig.json'],
   },
   plugins: [
