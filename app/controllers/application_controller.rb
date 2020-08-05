@@ -1,9 +1,8 @@
 class ApplicationController < ActionController::Base
-  include SessionsHelper
   def signed_in_user
-    return if signed_in?
+    return if user_signed_in?
 
     flash[:danger] = "Please sign in."
-    redirect_to signin_url
+    redirect_to new_user_session_path
   end
 end
