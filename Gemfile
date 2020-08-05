@@ -64,4 +64,5 @@ gem "rails-i18n"
 
 # For authentication
 gem "bcrypt"
+gem "config"
 gem "devise"
