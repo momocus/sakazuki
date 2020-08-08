@@ -16,35 +16,22 @@ interface ClickableChart extends Chart {
  */
 const middle = 3
 
-function toGraphPoint(documentData: Chart.Point): Chart.Point {
+export function toGraphPoint(documentData: Chart.Point): Chart.Point {
   return { x: documentData.x - middle, y: documentData.y - middle }
 }
 
-function toDomPoint(graphData: Chart.Point): Chart.Point {
+export function toDomPoint(graphData: Chart.Point): Chart.Point {
   return { x: graphData.x + middle, y: graphData.y + middle }
 }
 
-const graphZeroP = { x: 0, y: 0 }
-const domZeroP = toDomPoint(graphZeroP)
+export const graphZeroP = { x: 0, y: 0 }
+export const domZeroP = toDomPoint(graphZeroP)
 
 interface InteractiveGraph {
   update(data: Chart.Point): void
 }
 
-function updateDomValue(data: Chart.Point): void {
-  const tasteInput = document.getElementById(
-    'sake_taste_value'
-  ) as HTMLInputElement
-  const aromaInput = document.getElementById(
-    'sake_aroma_value'
-  ) as HTMLInputElement
-  if (tasteInput != null && aromaInput != null) {
-    tasteInput.setAttribute('value', data.x.toString())
-    aromaInput.setAttribute('value', data.y.toString())
-  }
-}
-
-class TasteGraph implements InteractiveGraph {
+export class TasteGraph implements InteractiveGraph {
   public graph: Chart
 
   /*
@@ -71,8 +58,8 @@ class TasteGraph implements InteractiveGraph {
   public update(data: Chart.Point): void {
     this.popData()
     this.pushData(data)
-    updateDomValue(toDomPoint(data))
     this.graph.update()
+    this.callbackUpdate(toDomPoint(data))
   }
 
   private getClickedData(event: MouseEvent): Chart.Point {
@@ -158,38 +145,13 @@ class TasteGraph implements InteractiveGraph {
     return config
   }
 
-  constructor(canvas: HTMLCanvasElement, public data: Chart.Point) {
-    const cd = this.makeChartData(toGraphPoint(data))
-    const config = this.makeChartConfiguration(cd)
+  constructor(
+    canvas: HTMLCanvasElement,
+    data: Chart.Point,
+    private callbackUpdate: (data: Chart.Point) => void = (data) => {}
+  ) {
+    const p = this.makeChartData(toGraphPoint(data))
+    const config = this.makeChartConfiguration(p)
     this.graph = new Chart(canvas, config)
   }
-}
-
-// DOMにデータがない場合はデータセットをする副作用がある
-function syncAndGetDomValue(): Chart.Point {
-  const tasteInput = document.getElementById(
-    'sake_taste_value'
-  ) as HTMLInputElement
-  const aromaInput = document.getElementById(
-    'sake_aroma_value'
-  ) as HTMLInputElement
-  if (tasteInput != null && aromaInput != null) {
-    if (aromaInput.value != '' && tasteInput.value != '') {
-      const taste = parseInt(tasteInput.value)
-      const aroma = parseInt(aromaInput.value)
-      if (taste != NaN && aroma != NaN) return { x: taste, y: aroma }
-    }
-  }
-  // データがとれなかった場合はグラフの原点をセットする
-  updateDomValue(domZeroP)
-  return domZeroP
-}
-
-// Main
-{
-  // get datas from DOM
-  const canvas = document.getElementById('taste_graph') as HTMLCanvasElement
-  const domData = syncAndGetDomValue() // dataは0~6の二次元データ
-  // make graph
-  new TasteGraph(canvas, domData)
 }
