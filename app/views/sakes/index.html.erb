@@ -9,30 +9,42 @@
   <% end %>
   <%= f.submit :filter %>
 <% end %>
-<table class="table table-sm table-hover">
-  <thead class="thead-light">
-    <tr>
-      <th><%= @sakes.human_attribute_name :name %></th>
-      <th><%= @sakes.human_attribute_name :kura %></th>
-      <th><%= @sakes.human_attribute_name :photo %></th>
-      <th><%= @sakes.human_attribute_name :taste_value %></th>
-      <th><%= @sakes.human_attribute_name :aroma_value %></th>
-      <th><%= @sakes.human_attribute_name :tokutei_meisho %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @sakes.each do |sake| %>
-      <tr class="clickable" data-sake-id="<%= sake.id.to_s %>" role="link">
-        <td><%= sake.name %></td>
-        <td><%= sake.kura %></td>
-        <td><%= sake.photo %></td>
-        <td><%= sake.taste_value %></td>
-        <td><%= sake.aroma_value %></td>
-        <td><%= sake.tokutei_meisho_i18n %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
+<div class="table-responsive">
+  <table class="table table-hover" caption="Sake List">
+    <thead></thead>
+    <tbody>
+      <% @sakes.each do |sake| %>
+        <tr class="clickable" data-sake-id="<%= sake.id %>">
+          <td class="col-6">
+            <div class="row">
+              <div class="col table-string">
+                <%= sake.name %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col table-string">
+                <%= sake.tokutei_meisho_i18n %>
+              </div>
+              <div class="col table-string">
+                <%= sake.todofuken %>
+              </div>
+            </div>
+          </td>
+          <td class="col-3 table-image">
+            <canvas id="sake-<%= sake.id %>"
+                    data-taste-value="<%= sake.taste_value %>"
+                    data-aroma-value="<%= sake.aroma_value %>">
+            </canvas>
+          </td>
+          <td class="col-3 table-image">
+            <canvas></canvas>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <div class="row justify-content-center">
   <%= link_to(t("helpers.submit.create"),
@@ -41,3 +53,5 @@
 </div>
 
 <%= javascript_pack_tag "clickable_sakeindex" %>
+<%= javascript_pack_tag "taste_graph" %>
+<%= javascript_pack_tag "index_graph" %>
