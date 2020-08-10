@@ -1,0 +1,6 @@
+mail:
+     smtp: "xxxx"
+     domain: "xxxx"
+     port: 0000
+     user_name: "xxxx"
+     password: "xxxx"

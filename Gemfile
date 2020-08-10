@@ -62,5 +62,8 @@ gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem "enum_help"
 gem "rails-i18n"
 
-# For secure password
+# For authentication
 gem "bcrypt"
+gem "config"
+gem "devise"
+gem "devise-i18n"
