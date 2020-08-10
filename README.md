@@ -10,8 +10,9 @@
 
 # How to use
 
-- `bundle install`
-- `yarn install --check-files`
+- 依存関係のインストール
+    - `bundle install`
+    - `yarn install --check-files`
 - メーラの設定
     - ユーザのメールアドレスに通知するために使われる
 ```yaml
@@ -24,14 +25,10 @@ mail:
      password: "your_gmail_password"
 ```
 - 最初のユーザの設定
-```ruby
-# db/seed.rb
-User.create!(
-  email: "your_email_address@example.com",
-  password: "your_password",
-  admin: true,
-)
-```
+    - `bundle exec rails db:seed`
+- サーバの起動
+    - `bundle exec rails server`
+- http://localhost:3000/ へアクセスする
 - localユーザの設定
     - まだ
 
