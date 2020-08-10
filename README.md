@@ -6,7 +6,7 @@
 
 - Ruby >= 2.7.1
 - Rails >= 6.0.3.2
-- Yarn >= 1.22.4
+- Yarn🐈 >= 1.22.4
 
 # How to use
 
