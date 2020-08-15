@@ -29,6 +29,9 @@ mail:
 - サーバの起動
     - `bundle exec rails server`
 - http://localhost:3000/ へアクセスする
+- ログイン
+    - メールアドレス: `example@example.com`
+    - パスワード: `rootroot`
 - localユーザの設定
     - まだ
 
