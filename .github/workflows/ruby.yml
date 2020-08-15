@@ -41,4 +41,4 @@ jobs:
     # - name: Run tests
     #   run: bundle exec rake
     - name: End of File with Newline
-      run: ./scripts/check_endoffile_with_newline.sh
+      run: ./cli-scripts/check_endoffile_with_newline.sh
