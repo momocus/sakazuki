@@ -1,0 +1,14 @@
+name: Generic Checks
+
+on:
+  push:
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: End of File with Newline
+      run: ./cli-scripts/check_endoffile_with_newline.sh

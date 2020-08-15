@@ -5,8 +5,9 @@
 #   対象は拡張子で指定している
 files=$(find . \
              -not -path "./node_modules/*" -not -path "./public/*" \
-             -not -path "./vendor/*" \
-             -type f -regex '.*\.\(rb\|erb\|css\|scss\|js\|ts\|yml\)')
+             -not -path "./vendor/*" -not -path "./tmp/*" \
+             -type f \
+             -regex '.*\.\(rb\|erb\|html\|css\|scss\|json\|js\|ts\|yml\|md\)')
 
 error_files=""
 for file in ${files}; do

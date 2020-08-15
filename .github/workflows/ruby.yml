@@ -40,5 +40,3 @@ jobs:
     # 将来的には使いたいね
     # - name: Run tests
     #   run: bundle exec rake
-    - name: End of File with Newline
-      run: ./cli-scripts/check_endoffile_with_newline.sh
