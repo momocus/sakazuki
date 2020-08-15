@@ -37,6 +37,8 @@ jobs:
         bundle install
     - name: Run Rubocop
       run: bundle exec rubocop
+    - name: Run ERB Lint
+      run: bundle exec erblint --lint-all
     # 将来的には使いたいね
     # - name: Run tests
     #   run: bundle exec rake
