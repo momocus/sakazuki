@@ -22,7 +22,7 @@
   </div>
 
   <div class="form-group row">
-    <%= form.label :kura, { class: "col-4"} %>
+    <%= form.label :kura, { class: "col-4" } %>
     <%= form.text_field :kura, { class: "form-control col-8" } %>
   </div>
 
@@ -39,8 +39,9 @@
   <div class="form-group row">
     <%= form.label :tokutei_meisho, { class: "col-4" } %>
     <%= form.select(:tokutei_meisho,
-                    Sake.tokutei_meishos_i18n.keys.map{
-                      |k| [ I18n.t("enums.sake.tokutei_meisho.#{k}"), k ] },
+                    Sake.tokutei_meishos_i18n.keys.map do |k|
+                      [I18n.t("enums.sake.tokutei_meisho.#{k}"), k]
+                    end,
                     {},
                     { class: "form-control col-8" }) %>
   </div>
@@ -100,8 +101,9 @@
   <div class="form-group row">
     <%= form.label :moto, { class: "col-4" } %>
     <%= form.select(:moto,
-                    Sake.motos_i18n.keys.map{
-                      |k| [ I18n.t("enums.sake.moto.#{k}"), k ] },
+                    Sake.motos_i18n.keys.map do |k|
+                      [I18n.t("enums.sake.moto.#{k}"), k]
+                    end,
                     {},
                     { class: "form-control col-8" }) %>
   </div>
@@ -119,8 +121,9 @@
   <div class="form-group row">
     <%= form.label :hiire, { class: "col-4" } %>
     <%= form.select(:hiire,
-                    Sake.hiires_i18n.keys.map{
-                      |k| [ I18n.t("enums.sake.hiire.#{k}"), k ] },
+                    Sake.hiires_i18n.keys.map do |k|
+                      [I18n.t("enums.sake.hiire.#{k}"), k]
+                    end,
                     {},
                     { class: "form-control col-8", title: "test" }) %>
   </div>
@@ -133,7 +136,7 @@
   <div class="form-group row">
     <%= form.label :nihonshudo, { class: "col-4" } %>
     <%= form.number_field :nihonshudo,
-        { class: "form-control col-8" } %>
+                          { class: "form-control col-8" } %>
   </div>
 
   <div class="form-group row">
@@ -151,8 +154,9 @@
   <div class="form-group row">
     <%= form.label :warimizu, { class: "col-4" } %>
     <%= form.select(:warimizu,
-                    Sake.warimizus_i18n.keys.map{
-                      |k| [ I18n.t("enums.sake.warimizu.#{k}"), k ] },
+                    Sake.warimizus_i18n.keys.map do |k|
+                      [I18n.t("enums.sake.warimizu.#{k}"), k]
+                    end,
                     {},
                     { class: "form-control col-8" }) %>
   </div>
@@ -161,8 +165,9 @@
   <div class="form-group row">
     <%= form.label :bottle_level, { class: "col-4" } %>
     <%= form.select(:bottle_level,
-                    Sake.bottle_levels_i18n.keys.map{
-                      |k| [ I18n.t("enums.sake.bottle_level.#{k}"), k ] },
+                    Sake.bottle_levels_i18n.keys.map do |k|
+                      [I18n.t("enums.sake.bottle_level.#{k}"), k]
+                    end,
                     {},
                     { class: "form-control col-8" }) %>
   </div>
@@ -221,4 +226,4 @@
 
 <% end %>
 
-<%= javascript_pack_tag 'taste_graph' %>
+<%= javascript_pack_tag "taste_graph" %>
