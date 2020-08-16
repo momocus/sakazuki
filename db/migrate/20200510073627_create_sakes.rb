@@ -19,15 +19,15 @@ class CreateSakes < ActiveRecord::Migration[6.0]
       t.boolean :is_namacho
       t.string :nigori
       t.string :awa
-      t.string :tokutei_meisho
+      t.integer :tokutei_meisho
       t.string :genryoumai
       t.string :kakemai
       t.string :koubo
       t.integer :alcohol
       t.integer :amino_acid
       t.string :aged
-      t.boolean :is_genshu
-      t.string :moto
+      t.integer :warimizu
+      t.integer :moto
       t.integer :rice_polishing
       t.string :roka
       t.string :shibori
