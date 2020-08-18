@@ -1,7 +1,7 @@
 import { Chart } from 'chart.js'
-import { TasteGraph, toGraphPoint } from './taste_graph'
+import { GraphP, TasteGraph, toGraphPoint } from './taste_graph'
 
-function getDomValueFromCanvas(canvas: HTMLCanvasElement): Chart.Point {
+function getDomValueFromCanvas(canvas: HTMLCanvasElement): GraphP {
   const tasteS = canvas.dataset.tasteValue
   const aromaS = canvas.dataset.aromaValue
   // not (undefined or empty string)
@@ -11,7 +11,7 @@ function getDomValueFromCanvas(canvas: HTMLCanvasElement): Chart.Point {
     if (taste != NaN && aroma != NaN) return { x: taste, y: aroma }
   }
   // データがないなら範囲外を描く
-  return toGraphPoint({ x: -1, y: -1 })
+  return null
 }
 
 const hasCanvasID = (elem: HTMLCanvasElement): boolean => {

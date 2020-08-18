@@ -1,7 +1,20 @@
-import { TasteGraph, domZeroP } from './taste_graph'
+import { GraphP, TasteGraph, domZeroP } from './taste_graph'
+
+function updateDomValue(data: GraphP): void {
+  const x = data ? data.x.toString() : ''
+  const y = data ? data.y.toString() : ''
+  const tasteInput = document.getElementById(
+    'sake_taste_value'
+  ) as HTMLInputElement
+  const aromaInput = document.getElementById(
+    'sake_aroma_value'
+  ) as HTMLInputElement
+  tasteInput.setAttribute('value', x)
+  aromaInput.setAttribute('value', y)
+}
 
 // DOMにデータがない場合はデータセットをする副作用がある
-function syncAndGetDomValue(): Chart.Point {
+function syncAndGetDomValue(): GraphP {
   const tasteInput = document.getElementById(
     'sake_taste_value'
   ) as HTMLInputElement
@@ -13,27 +26,21 @@ function syncAndGetDomValue(): Chart.Point {
     const aroma = parseInt(aromaInput.value)
     if (taste != NaN && aroma != NaN) return { x: taste, y: aroma }
   }
-  // データがとれなかった場合はグラフの原点をセットする
-  updateDomValue(domZeroP)
-  return domZeroP
+  return null // データがない場合
 }
 
-function updateDomValue(data: Chart.Point): void {
-  const tasteInput = document.getElementById(
-    'sake_taste_value'
-  ) as HTMLInputElement
-  const aromaInput = document.getElementById(
-    'sake_aroma_value'
-  ) as HTMLInputElement
-  tasteInput.setAttribute('value', data.x.toString())
-  aromaInput.setAttribute('value', data.y.toString())
-}
-
-// Main
 {
-  // get datas from DOM
+  // DOMから味・香りの値を取る
   const canvas = document.getElementById('taste_graph') as HTMLCanvasElement
   const domData = syncAndGetDomValue() // dataは0~6の二次元データ
-  // make graph
-  new TasteGraph(canvas, domData, updateDomValue)
+
+  // グラフをセットする
+  const graph = new TasteGraph(canvas, domData, updateDomValue)
+
+  // グラフのリセットボタンをセットする
+  const button = document.getElementById('graph-reset') as HTMLDivElement
+  button.onclick = () => {
+    graph.update(null)
+    updateDomValue(null)
+  }
 }

@@ -189,8 +189,15 @@
   </div>
 
   <div class="form-group row">
-    <%= form.label("#{t('activerecord.attributes.sake.taste_value')}, #{t('activerecord.attributes.sake.aroma_value')}",
-                   { class: "col-3" }) %>
+    <div class="col-3">
+      <%= form.label(
+            "#{t('activerecord.attributes.sake.taste_value')}, #{t('activerecord.attributes.sake.aroma_value')}",
+            { class: "row" },
+          ) %>
+      <div class="row btn btn-secondary" id="graph-reset">
+        <%= t("helpers.button.reset") %>
+      </div>
+    </div>
     <div class="col">
       <canvas id="taste_graph"></canvas>
       <%= form.number_field(:taste_value,

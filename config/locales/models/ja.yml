@@ -11,6 +11,8 @@ ja:
       delete: 削除
     badge:
       presence: 必須
+    button:
+      reset: リセット
   activerecord:
     models:
       sake: 酒
