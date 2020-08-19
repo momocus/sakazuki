@@ -17,175 +17,181 @@
 
   <!-- 表示義務あり -->
   <div class="form-group row">
-    <%= form.label :name, { class: "col-4" } %>
-    <%= form.text_field :name, { class: "form-control col-8" } %>
+    <%= form.label :name, { class: "col-2" } %>
+    <div class="col-1">
+      <span class="badge badge-primary"><%= t("helpers.badge.presence") %></span>
+    </div>
+    <%= form.text_field :name, { class: "form-control col" } %>
   </div>
 
   <div class="form-group row">
-    <%= form.label :kura, { class: "col-4" } %>
-    <%= form.text_field :kura, { class: "form-control col-8" } %>
+    <%= form.label :kura, { class: "col-3" } %>
+    <%= form.text_field :kura, { class: "form-control col" } %>
   </div>
 
   <div class="form-group row">
-    <%= form.label :todofuken, { class: "col-4" } %>
-    <%= form.text_field :todofuken, { class: "form-control col-8" } %>
+    <%= form.label :todofuken, { class: "col-3" } %>
+    <%= form.text_field :todofuken, { class: "form-control col" } %>
   </div>
 
   <div class="form-group row">
-    <%= form.label :photo, { class: "col-4" } %>
-    <%= form.file_field :photo, { class: "form-control-file col-8" } %>
+    <%= form.label :photo, { class: "col-3" } %>
+    <%= form.file_field :photo, { class: "form-control-file col" } %>
   </div>
 
   <div class="form-group row">
-    <%= form.label :tokutei_meisho, { class: "col-4" } %>
+    <%= form.label :tokutei_meisho, { class: "col-3" } %>
     <%= form.select(:tokutei_meisho,
                     Sake.tokutei_meishos_i18n.keys.map do |k|
                       [I18n.t("enums.sake.tokutei_meisho.#{k}"), k]
                     end,
                     {},
-                    { class: "form-control col-8" }) %>
+                    { class: "form-control col" }) %>
   </div>
 
   <div class="form-group row">
-    <%= form.label :seimai_buai, { class: "col-4" } %>
-    <%= form.number_field :seimai_buai, { class: "form-control col-8" } %>
+    <%= form.label :seimai_buai, { class: "col-3" } %>
+    <%= form.number_field :seimai_buai, { class: "form-control col" } %>
   </div>
 
   <div class="form-group row">
-    <%= form.label :bindume_date, { class: "col-4" } %>
+    <%= form.label :bindume_date, { class: "col-3" } %>
     <%= form.date_select(:bindume_date,
                          { discard_day: true },
-                         { class: "form-control col-4" }) %>
+                         { class: "form-control col-3" }) %>
   </div>
 
   <div class="form-group row">
-    <%= form.label :brew_year, { class: "col-4" } %>
+    <%= form.label :brew_year, { class: "col-3" } %>
     <%= form.date_select(:brew_year,
                          { discard_day: true, discard_month: true },
-                         { class: "form-control col-4" }) %>
+                         { class: "form-control col-3" }) %>
   </div>
 
   <div class="form-group row">
-    <%= form.label :size, { class: "col-4" } %>
+    <%= form.label :size, { class: "col-3" } %>
     <%= form.number_field(:size,
-                          { value: "720", class: "form-control col-8" }) %>
+                          { value: "720", class: "form-control col" }) %>
   </div>
 
   <div class="form-group row">
-    <%= form.label :alcohol, { class: "col-4" } %>
+    <%= form.label :alcohol, { class: "col-2" } %>
+    <div class="col-1">
+      <span class="badge badge-primary"><%= t("helpers.badge.presence") %></span>
+    </div>
     <%= form.number_field(:alcohol,
-                          { value: "15", class: "form-control col-8" }) %>
+                          { value: "15", class: "form-control col" }) %>
   </div>
 
   <div class="form-group row">
-    <%= form.label :price, { class: "col-4" } %>
-    <%= form.number_field :price, { class: "form-control col-8" } %>
+    <%= form.label :price, { class: "col-3" } %>
+    <%= form.number_field :price, { class: "form-control col" } %>
   </div>
 
   <!-- 表示義務なし -->
   <div class="form-group row">
-    <%= form.label :genryoumai, { class: "col-4" } %>
-    <%= form.text_field :genryoumai, { class: "form-control col-8" } %>
+    <%= form.label :genryoumai, { class: "col-3" } %>
+    <%= form.text_field :genryoumai, { class: "form-control col" } %>
   </div>
 
   <div class="form-group row">
-    <%= form.label :kakemai, { class: "col-4" } %>
-    <%= form.text_field :kakemai, { class: "form-control col-8" } %>
+    <%= form.label :kakemai, { class: "col-3" } %>
+    <%= form.text_field :kakemai, { class: "form-control col" } %>
   </div>
 
   <div class="form-group row">
-    <%= form.label :kobo, { class: "col-4" } %>
-    <%= form.text_field :kobo, { class: "form-control col-8" } %>
+    <%= form.label :kobo, { class: "col-3" } %>
+    <%= form.text_field :kobo, { class: "form-control col" } %>
   </div>
 
   <div class="form-group row">
-    <%= form.label :moto, { class: "col-4" } %>
+    <%= form.label :moto, { class: "col-3" } %>
     <%= form.select(:moto,
                     Sake.motos_i18n.keys.map do |k|
                       [I18n.t("enums.sake.moto.#{k}"), k]
                     end,
                     {},
-                    { class: "form-control col-8" }) %>
+                    { class: "form-control col" }) %>
   </div>
 
   <div class="form-group row">
-    <%= form.label :roka, { class: "col-4" } %>
-    <%= form.text_field :roka, { class: "form-control col-8" } %>
+    <%= form.label :roka, { class: "col-3" } %>
+    <%= form.text_field :roka, { class: "form-control col" } %>
   </div>
 
   <div class="form-group row">
-    <%= form.label :shibori, { class: "col-4" } %>
-    <%= form.text_field :shibori, { class: "form-control col-8" } %>
+    <%= form.label :shibori, { class: "col-3" } %>
+    <%= form.text_field :shibori, { class: "form-control col" } %>
   </div>
 
   <div class="form-group row">
-    <%= form.label :hiire, { class: "col-4" } %>
+    <%= form.label :hiire, { class: "col-3" } %>
     <%= form.select(:hiire,
                     Sake.hiires_i18n.keys.map do |k|
                       [I18n.t("enums.sake.hiire.#{k}"), k]
                     end,
                     {},
-                    { class: "form-control col-8", title: "test" }) %>
+                    { class: "form-control col", title: "test" }) %>
   </div>
 
   <div class="form-group row">
-    <%= form.label :season, { class: "col-4" } %>
-    <%= form.text_field :season, { class: "form-control col-8" } %>
+    <%= form.label :season, { class: "col-3" } %>
+    <%= form.text_field :season, { class: "form-control col" } %>
   </div>
 
   <div class="form-group row">
-    <%= form.label :nihonshudo, { class: "col-4" } %>
+    <%= form.label :nihonshudo, { class: "col-3" } %>
     <%= form.number_field :nihonshudo,
-                          { class: "form-control col-8" } %>
+                          { class: "form-control col" } %>
   </div>
 
   <div class="form-group row">
-    <%= form.label :sando, { class: "col-4" } %>
+    <%= form.label :sando, { class: "col-3" } %>
     <%= form.number_field(:sando,
                           { step: "0.1",
                             class: "form-control col" }) %>
   </div>
 
   <div class="form-group row">
-    <%= form.label :aminosando, { class: "col-4" } %>
-    <%= form.number_field :aminosando, { class: "form-control col-8" } %>
+    <%= form.label :aminosando, { class: "col-3" } %>
+    <%= form.number_field :aminosando, { class: "form-control col" } %>
   </div>
 
   <div class="form-group row">
-    <%= form.label :warimizu, { class: "col-4" } %>
+    <%= form.label :warimizu, { class: "col-3" } %>
     <%= form.select(:warimizu,
                     Sake.warimizus_i18n.keys.map do |k|
                       [I18n.t("enums.sake.warimizu.#{k}"), k]
                     end,
                     {},
-                    { class: "form-control col-8" }) %>
+                    { class: "form-control col" }) %>
   </div>
 
   <!-- 家に来てから -->
   <div class="form-group row">
-    <%= form.label :bottle_level, { class: "col-4" } %>
+    <%= form.label :bottle_level, { class: "col-3" } %>
     <%= form.select(:bottle_level,
                     Sake.bottle_levels_i18n.keys.map do |k|
                       [I18n.t("enums.sake.bottle_level.#{k}"), k]
                     end,
                     {},
-                    { class: "form-control col-8" }) %>
+                    { class: "form-control col" }) %>
   </div>
 
   <div class="form-group row">
-    <%= form.label :color, { class: "col-4" } %>
-    <%= form.text_field :color, { class: "form-control col-8" } %>
+    <%= form.label :color, { class: "col-3" } %>
+    <%= form.text_field :color, { class: "form-control col" } %>
   </div>
 
   <div class="form-group row">
-    <%= form.label :nigori, { class: "col-4" } %>
-    <%= form.text_field :nigori, { class: "form-control col-8" } %>
+    <%= form.label :nigori, { class: "col-3" } %>
+    <%= form.text_field :nigori, { class: "form-control col" } %>
   </div>
 
   <div class="form-group row">
     <%= form.label("#{t('activerecord.attributes.sake.taste_value')}, #{t('activerecord.attributes.sake.aroma_value')}",
-                   { class: "col-4" }) %>
-    <div class="col-8">
+                   { class: "col-3" }) %>
+    <div class="col">
       <canvas id="taste_graph"></canvas>
       <%= form.number_field(:taste_value,
                             hidden: true,
@@ -197,23 +203,23 @@
   </div>
 
   <div class="form-group row">
-    <%= form.label :aroma_impression, { class: "col-4" } %>
-    <%= form.text_area :aroma_impression, { class: "form-control col-8" } %>
+    <%= form.label :aroma_impression, { class: "col-3" } %>
+    <%= form.text_area :aroma_impression, { class: "form-control col" } %>
   </div>
 
   <div class="form-group row">
-    <%= form.label :taste_impression, { class: "col-4" } %>
-    <%= form.text_area :taste_impression, { class: "form-control col-8" } %>
+    <%= form.label :taste_impression, { class: "col-3" } %>
+    <%= form.text_area :taste_impression, { class: "form-control col" } %>
   </div>
 
   <div class="form-group row">
-    <%= form.label :awa, { class: "col-4" } %>
-    <%= form.text_field :awa, { class: "form-control col-8" } %>
+    <%= form.label :awa, { class: "col-3" } %>
+    <%= form.text_field :awa, { class: "form-control col" } %>
   </div>
 
   <div class="form-group row">
-    <%= form.label :note, { class: "col-4" } %>
-    <%= form.text_area :note, { class: "form-control col-8" } %>
+    <%= form.label :note, { class: "col-3" } %>
+    <%= form.text_area :note, { class: "form-control col" } %>
   </div>
 
   <div class="row justify-content-center">

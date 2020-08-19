@@ -9,6 +9,8 @@ ja:
       update: 更新
       edit: 編集
       delete: 削除
+    badge:
+      presence: 必須
   activerecord:
     models:
       sake: 酒
