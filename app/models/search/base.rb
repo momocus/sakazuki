@@ -5,13 +5,13 @@ module Search
     def contain(data, column, value)
       return data if data.count.zero?
 
-      data.where("#{column} LIKE ?", "%#{value}%")
+      data.where("#{column}::text LIKE ?", "%#{value}%")
     end
 
     def exclude(data, column, value)
       return data if data.count.zero?
 
-      data.where.not("#{column} LIKE ?", "%#{value}%")
+      data.where.not("#{column}::text LIKE ?", "%#{value}%")
     end
 
     def value_to_boolean(value)
