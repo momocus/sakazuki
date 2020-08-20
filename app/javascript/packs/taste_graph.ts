@@ -63,10 +63,10 @@ export class TasteGraph implements InteractiveGraph {
 
   public update(newData: GraphP): void {
     if (this.data != null) this.popData()
-    this.data = newData
     if (newData != null) this.pushData(newData)
     this.graph.update()
-    this.callbackUpdate(toDomPoint(this.data))
+    this.callbackUpdate(toDomPoint(newData))
+    this.data = newData
   }
 
   private getClickedData(event: MouseEvent): GraphP {
