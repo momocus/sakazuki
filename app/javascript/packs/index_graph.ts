@@ -9,7 +9,7 @@ function getDomValueFromCanvas(canvas: HTMLCanvasElement): GraphP {
     const aroma = parseInt(aromaS)
     if (taste != NaN && aroma != NaN) return { x: taste, y: aroma }
   }
-  // データがないなら範囲外を描く
+  // データがないなど、Domからデータが取れない場合
   return null
 }
 
