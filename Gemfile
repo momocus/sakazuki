@@ -36,6 +36,7 @@ group :development, :test do
 end
 
 group :development do
+  gem "annotate"
   gem "erb_lint", require: false
   # Access an interactive console on exception pages or by calling 'console'
   # anywhere in the code.
