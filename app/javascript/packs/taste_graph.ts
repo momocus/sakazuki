@@ -69,7 +69,7 @@ export class TasteGraph implements InteractiveGraph {
     this.callbackUpdate(toDomPoint(this.data))
   }
 
-  private getClickedData(event: MouseEvent): Chart.Point {
+  private getClickedData(event: MouseEvent): GraphP {
     // @types/chart.jsに型宣言がないので型を潰して独自宣言で上書きする
     const g = this.graph as ClickableChart
     let x = g.chart.scales['x-axis-1'].getValueForPixel(event.offsetX)
@@ -79,11 +79,11 @@ export class TasteGraph implements InteractiveGraph {
       x = Math.round(x)
       y = Math.round(y)
       return { x, y }
-    } else return graphZeroP
+    } else return null
   }
 
   // JSに渡すときにthis問題を防ぐため、アロー関数で書いておく
-  private onClickFn = (event: MouseEvent): void => {
+  private onClickUpdate = (event: MouseEvent): void => {
     const data = this.getClickedData(event)
     this.update(data)
   }
@@ -118,7 +118,7 @@ export class TasteGraph implements InteractiveGraph {
       zeroLineWidth: 7,
     }
     const options: Chart.ChartOptions = {
-      onClick: this.onClickFn,
+      onClick: this.clickable ? this.onClickUpdate : (event) => {},
       legend: { display: false },
       elements: { point: { radius: 10 } },
       scales: {
@@ -155,6 +155,7 @@ export class TasteGraph implements InteractiveGraph {
   constructor(
     canvas: HTMLCanvasElement,
     private data: GraphP,
+    private clickable: boolean = false,
     private callbackUpdate: (data: GraphP) => void = (data) => {}
   ) {
     const p = this.makeChartData(toGraphPoint(data))
