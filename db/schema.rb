@@ -44,12 +44,12 @@ ActiveRecord::Schema.define(version: 2020_08_02_053115) do
     t.string "roka"
     t.string "shibori"
     t.text "note"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.integer "bottle_level", default: 0
     t.integer "hiire", default: 0
     t.integer "price"
     t.integer "size"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|

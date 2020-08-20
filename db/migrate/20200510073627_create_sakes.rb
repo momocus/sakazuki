@@ -4,34 +4,35 @@ class CreateSakes < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :kura
       t.binary :photo
-      t.datetime :touroku
-      t.datetime :bindume
-      t.datetime :by
-      t.string :product_of
-      t.integer :taste_int
-      t.integer :aroma_int
-      t.integer :sake_metre_value
-      t.integer :acidity
-      t.text :aroma_text
+      t.date :bindume_date
+      t.date :brew_year
+      t.string :todofuken
+      t.integer :taste_value
+      t.integer :aroma_value
+      t.integer :nihonshudo
+      t.float :sando
+      t.text :aroma_impression
       t.string :color
-      t.text :taste_text
-      t.boolean :is_namadume
-      t.boolean :is_namacho
+      t.text :taste_impression
       t.string :nigori
       t.string :awa
-      t.integer :tokutei_meisho
+      t.integer :tokutei_meisho, default: 0
       t.string :genryoumai
       t.string :kakemai
-      t.string :koubo
-      t.integer :alcohol
-      t.integer :amino_acid
-      t.string :aged
-      t.integer :warimizu
-      t.integer :moto
-      t.integer :rice_polishing
+      t.string :kobo
+      t.float :alcohol
+      t.float :aminosando
+      t.string :season
+      t.integer :warimizu, default: 0
+      t.integer :moto, default: 0
+      t.integer :seimai_buai
       t.string :roka
       t.string :shibori
-      t.text :memo
+      t.text :note
+      t.integer :bottle_level, default: 0
+      t.integer :hiire, default: 0
+      t.integer :price
+      t.integer :size
 
       t.timestamps
     end
