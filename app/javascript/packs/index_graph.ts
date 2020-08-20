@@ -1,4 +1,3 @@
-import { Chart } from 'chart.js'
 import { GraphP, TasteGraph, toGraphPoint } from './taste_graph'
 
 function getDomValueFromCanvas(canvas: HTMLCanvasElement): GraphP {
