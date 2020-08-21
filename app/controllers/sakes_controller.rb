@@ -78,7 +78,7 @@ class SakesController < ApplicationController
                   :todofuken, :taste_value, :aroma_value,
                   :nihonshudo, :sando, :aroma_impression,
                   :color, :taste_impression, :nigori, :awa,
-                  :tokutei_meisho, :genryoumai, :kakemai,
+                  :tokutei_meisho, :genryomai, :kakemai,
                   :kobo, :alcohol, :aminosando, :season,
                   :warimizu, :moto, :seimai_buai, :roka,
                   :shibori, :note, :bottle_level, :hiire,

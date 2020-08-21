@@ -17,7 +17,7 @@ class CreateSakes < ActiveRecord::Migration[6.0]
       t.string :nigori
       t.string :awa
       t.integer :tokutei_meisho, default: 0
-      t.string :genryoumai
+      t.string :genryomai
       t.string :kakemai
       t.string :kobo
       t.float :alcohol

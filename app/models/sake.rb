@@ -12,7 +12,7 @@
 #  bottle_level     :integer          default("sealed")
 #  brew_year        :date
 #  color            :string
-#  genryoumai       :string
+#  genryomai        :string
 #  hiire            :integer          default("unknown")
 #  kakemai          :string
 #  kobo             :string
@@ -100,7 +100,7 @@ class Sake < ApplicationRecord
   validates :nigori, exclusion: { in: [nil] }
   validates :awa, exclusion: { in: [nil] }
   validates :tokutei_meisho, presence: true
-  validates :genryoumai, exclusion: { in: [nil] }
+  validates :genryomai, exclusion: { in: [nil] }
   validates :kakemai, exclusion: { in: [nil] }
   validates :kobo, exclusion: { in: [nil] }
   validates :alcohol, presence: true

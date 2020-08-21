@@ -12,7 +12,7 @@
 #  bottle_level     :integer          default("sealed")
 #  brew_year        :date
 #  color            :string
-#  genryoumai       :string
+#  genryomai        :string
 #  hiire            :integer          default("unknown")
 #  kakemai          :string
 #  kobo             :string

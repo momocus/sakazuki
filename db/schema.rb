@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2020_08_02_053115) do
     t.string "nigori"
     t.string "awa"
     t.integer "tokutei_meisho", default: 0
-    t.string "genryoumai"
+    t.string "genryomai"
     t.string "kakemai"
     t.string "kobo"
     t.float "alcohol"
