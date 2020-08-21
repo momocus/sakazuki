@@ -118,7 +118,7 @@ export class TasteGraph implements InteractiveGraph {
       zeroLineWidth: 7,
     }
     const options: Chart.ChartOptions = {
-      onClick: this.clickable ? this.onClickUpdate : (event) => {},
+      onClick: this.clickable ? this.onClickUpdate : (_event) => {},
       legend: { display: false },
       elements: { point: { radius: 10 } },
       scales: {
@@ -156,7 +156,7 @@ export class TasteGraph implements InteractiveGraph {
     canvas: HTMLCanvasElement,
     private data: GraphP,
     private clickable: boolean = false,
-    private callbackUpdate: (data: GraphP) => void = (data) => {}
+    private callbackUpdate: (data: GraphP) => void = (_data) => {}
   ) {
     const p = this.makeChartData(toGraphPoint(data))
     const config = this.makeChartConfiguration(p)

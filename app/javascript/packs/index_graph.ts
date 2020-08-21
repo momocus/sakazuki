@@ -1,4 +1,4 @@
-import { GraphP, TasteGraph, toGraphPoint } from './taste_graph'
+import { GraphP, TasteGraph } from './taste_graph'
 
 function getDomValueFromCanvas(canvas: HTMLCanvasElement): GraphP {
   const tasteS = canvas.dataset.tasteValue

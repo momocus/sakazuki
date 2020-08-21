@@ -1,4 +1,4 @@
-import { GraphP, TasteGraph, domZeroP } from './taste_graph'
+import { GraphP, TasteGraph } from './taste_graph'
 
 function updateDomValue(data: GraphP): void {
   const x = data ? data.x.toString() : ''
