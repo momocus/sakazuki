@@ -1,6 +1,8 @@
 ja:
   index:
     title: 一覧
+    stocked: 在庫あり
+    filter: 検索
   message:
     delete: 本当に削除しますか？
   helpers:
@@ -13,6 +15,9 @@ ja:
       presence: 必須
     button:
       reset: リセット
+  sakes:
+    index:
+      title: 日本酒リスト
   activerecord:
     models:
       sake: 酒
