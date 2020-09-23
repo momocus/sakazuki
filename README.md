@@ -58,6 +58,21 @@ User.create!(
 - localユーザの設定
     - まだ
 
+## Dockerの場合
+
+- 初回
+```sh
+docker-compose build
+docker-compose run --rm web bundle exec rails db:create
+docker-compose run --rm web bundle exec rails db:migrate
+docker-compose run --rm web bundle exec rails db:seed
+```
+
+- 起動
+```
+docker-compose up
+```
+
 # How to Contribute
 
 - まだ
