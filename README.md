@@ -92,6 +92,32 @@ cloudinary:
   - `heroku config:set RAILS_MASTER_KEY=`cat config/credentials/production.key`
     - ※production.keyファイルはメーラとCloudinaryの設定をしたときに作られる。
 
+## How to build Docker image
+
+- 初回
+```sh
+docker-compose build
+docker-compose run --rm web bundle exec rails db:create
+docker-compose run --rm web bundle exec rails db:migrate
+docker-compose run --rm web bundle exec rails db:seed
+```
+
+- config/database.yml の編集
+
+```yaml
+development:
+  <<: *default
+  database: sakazuki_development
+  host: db # 追加
+  username: postgres # 追加
+  password: password # 追加
+```
+
+- 起動
+```
+docker-compose up
+```
+
 ## How to Contribute
 
 - GitHubのIssue/Pull Requestにて受けつけています
