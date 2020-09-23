@@ -13,11 +13,19 @@ ja:
       delete: 削除
     badge:
       presence: 必須
-    button:
-      reset: リセット
+      obligation: 表示義務
+    subtitle:
+      labelinfo: ラベル
+      tasteinfo: 味わい
   sakes:
     index:
       title: 日本酒リスト
+    new:
+      title: 新規登録
+    edit:
+      title: 編集
+    form:
+      reset: リセット
   activerecord:
     models:
       sake: 酒
