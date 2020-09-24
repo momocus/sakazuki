@@ -26,6 +26,8 @@ ja:
       title: 編集
     form:
       reset: リセット
+    show:
+      title: 詳細
   activerecord:
     models:
       sake: 酒
