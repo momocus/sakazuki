@@ -68,3 +68,6 @@ gem "bcrypt"
 gem "config"
 gem "devise"
 gem "devise-i18n"
+
+# Create seed data files from the existing data in database
+gem "seed_dump"
