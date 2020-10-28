@@ -78,7 +78,8 @@
     <b><%= @sakes.human_attribute_name :price %></b>
   </div>
   <div class="col-md-9 col-12">
-    <%= @sake.price.nil? ? "-" : @sake.price.to_s(:delimited) %> yen
+    <%= @sake.price.nil? ? "-" : @sake.price.to_s(:delimited) %>
+    <%= t("activerecord.attributes.sake.price_unit") %>
   </div>
 
   <div class="col-md-3 col-12">
