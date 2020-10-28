@@ -1,6 +1,8 @@
 ja:
   index:
     title: 一覧
+    stocked: 在庫あり
+    filter: 検索
   message:
     delete: 本当に削除しますか？
   helpers:
@@ -11,8 +13,21 @@ ja:
       delete: 削除
     badge:
       presence: 必須
-    button:
+      obligation: 表示義務
+    subtitle:
+      labelinfo: ラベル
+      tasteinfo: 味わい
+  sakes:
+    index:
+      title: 日本酒リスト
+    new:
+      title: 新規登録
+    edit:
+      title: 編集
+    form:
       reset: リセット
+    show:
+      title: 詳細
   activerecord:
     models:
       sake: 酒
@@ -48,6 +63,7 @@ ja:
         shibori: 絞り
         bottle_level: 瓶の状態
         price: 価格(円)
+        price_unit: 円
         size: 内容量(ml)
         memo: 備考
         created_at: 登録日
