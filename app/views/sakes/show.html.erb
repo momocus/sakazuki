@@ -26,10 +26,12 @@
   </div>
 
   <div class="col-md-3 col-12">
-    <b><%= Sake.human_attribute_name :photo %></b>
+    <b><%= Sake.human_attribute_name :photos %></b>
   </div>
   <div class="col-md-9 col-12">
-    <canvas></canvas>
+    <% @sake.photos.each do |photo| %>
+      <%= link_to cl_image_tag(photo.image.thumb.url), show_photo_path(photo_id: photo) %>
+    <% end %>
   </div>
 
   <div class="col-md-3 col-12">

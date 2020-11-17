@@ -11,6 +11,7 @@ ja:
       update: 更新
       edit: 編集
       delete: 削除
+      back: 戻る
     badge:
       presence: 必須
       obligation: 表示義務

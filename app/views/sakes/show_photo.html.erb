@@ -1,0 +1,6 @@
+<div class="row justify-content-center">
+  <%= cl_image_tag @photo.image.url, { class: "img-fluid" } %>
+</div>
+<div class="row justify-content-center">
+  <%= link_to t("helpers.submit.back"), sake_path, class: "btn btn-outline-secondary mx-3" %>
+</div>
