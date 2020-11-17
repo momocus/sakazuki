@@ -22,7 +22,6 @@
 #  nigori           :string
 #  nihonshudo       :integer
 #  note             :text
-#  photo            :binary
 #  price            :integer
 #  roka             :string
 #  sando            :float
@@ -39,6 +38,7 @@
 #  updated_at       :datetime         not null
 #
 class Sake < ApplicationRecord
+  has_many :photos, dependent: :destroy
   enum bottle_level: {
     sealed: 0,
     opened: 1,

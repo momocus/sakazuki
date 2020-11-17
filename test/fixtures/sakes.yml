@@ -22,7 +22,6 @@
 #  nigori           :string
 #  nihonshudo       :integer
 #  note             :text
-#  photo            :binary
 #  price            :integer
 #  roka             :string
 #  sando            :float
