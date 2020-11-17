@@ -51,17 +51,18 @@
   <div class="form-group row">
     <%= form.label :photos, { class: "col-md-3 col-12 col-form-label" } %>
     <div class="col">
-      <%= form.file_field :photos, { multiple: true, class: "form-control-file" } %>
-    </div>
-    <div class="col">
       <% if @sake.photos.any? %>
-        <%= t(".please_check_if_you_want_to_delete") %><br>
+        <%= t(".please_check_if_you_want_to_delete") %>
         <% @sake.photos.each do |photo| %>
-          <%= check_box_tag photo.id, "delete" %>
-          <%= cl_image_tag(photo.image.thumb.url) %><br>
+          <div class="form-check">
+            <%= check_box_tag photo.chackbox_name, "delete", nil, { class: "form-check-input" } %>
+            <%= cl_image_tag(photo.image.thumb.url) %>
+          </div>
         <% end %>
       <% end %>
+      <%= form.file_field :photos, { multiple: true, class: "form-control-file" } %>
     </div>
+
   </div>
 
   <div class="form-group row">
