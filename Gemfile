@@ -71,3 +71,6 @@ gem "devise-i18n"
 
 # Create seed data files from the existing data in database
 gem "seed_dump"
+# For image uploading
+gem "carrierwave"
+gem "cloudinary"
