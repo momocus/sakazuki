@@ -27,6 +27,7 @@ class SakesController < ApplicationController
 
     respond_to do |format|
       if @sake.save
+        store_photos
         format.html { redirect_to @sake, notice: "Create successfully." }
       else
         format.html { render :new }
@@ -39,6 +40,8 @@ class SakesController < ApplicationController
   def update
     respond_to do |format|
       if @sake.update(sake_params)
+        delete_photos
+        store_photos
         format.html { redirect_to @sake, notice: "Update successfully." }
       else
         format.html { render :edit }
@@ -85,5 +88,16 @@ class SakesController < ApplicationController
 
   def filter_params
     params.require(:filter).permit(:word, :only_in_stock)
+  end
+
+  def store_photos
+    photos = params[:sake][:photos]
+    photos&.each { |photo| @sake.photos.create(image: photo) }
+  end
+
+  def delete_photos
+    @sake.photos.each do |photo|
+      photo.destroy if params[photo.id.to_s] == "delete"
+    end
   end
 end
