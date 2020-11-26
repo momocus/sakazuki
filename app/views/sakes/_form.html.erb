@@ -56,7 +56,7 @@
         <% @sake.photos.each do |photo| %>
           <div class="form-check">
             <%= check_box_tag photo.chackbox_name, "delete", nil, { class: "form-check-input" } %>
-            <%= cl_image_tag(photo.image.thumb.url) %>
+            <%= wrap_image_tag(photo.image.thumb.url) %>
           </div>
         <% end %>
       <% end %>

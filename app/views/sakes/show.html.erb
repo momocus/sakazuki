@@ -30,7 +30,7 @@
   </div>
   <div class="col-md-9 col-12">
     <% @sake.photos.each do |photo| %>
-      <%= link_to cl_image_tag(photo.image.thumb.url), show_photo_path(photo_id: photo) %>
+      <%= link_to wrap_image_tag(photo.image.thumb.url), show_photo_path(photo_id: photo) %>
     <% end %>
   </div>
 
