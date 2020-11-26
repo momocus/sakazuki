@@ -1,5 +1,5 @@
 class SakesController < ApplicationController
-  before_action :set_sake, only: %i[show edit update destroy show_photo]
+  before_action :set_sake, only: %i[show edit update destroy]
   before_action :signed_in_user, only: %i[new create edit update destroy]
 
   # GET /sakes
