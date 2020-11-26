@@ -27,7 +27,7 @@ ja:
       title: 編集
     form:
       reset: リセット
-      please_check_if_you_want_to_delete: 削除する画像に☑
+      delete_photo: 削除する画像に☑
     show:
       title: 詳細
   activerecord:

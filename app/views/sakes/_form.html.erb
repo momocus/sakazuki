@@ -52,7 +52,7 @@
     <%= form.label :photos, { class: "col-md-3 col-12 col-form-label" } %>
     <div class="col">
       <% if @sake.photos.any? %>
-        <%= t(".please_check_if_you_want_to_delete") %>
+        <%= t(".delete_photo") %>
         <% @sake.photos.each do |photo| %>
           <div class="form-check">
             <%= check_box_tag photo.chackbox_name, "delete", nil, { class: "form-check-input" } %>
