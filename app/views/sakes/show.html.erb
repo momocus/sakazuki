@@ -5,77 +5,79 @@
 
 <div class="row">
   <div class="col-md-3 col-12">
-    <b><%= @sakes.human_attribute_name :name %></b>
+    <b><%= Sake.human_attribute_name :name %></b>
   </div>
   <div class="col-md-9 col-12">
     <%= @sake.name %>
   </div>
 
   <div class="col-md-3 col-12">
-    <b><%= @sakes.human_attribute_name :kura %></b>
+    <b><%= Sake.human_attribute_name :kura %></b>
   </div>
   <div class="col-md-9 col-12">
     <%= empty_to_default @sake.kura %>
   </div>
 
   <div class="col-md-3 col-12">
-    <b><%= @sakes.human_attribute_name :todofuken %></b>
+    <b><%= Sake.human_attribute_name :todofuken %></b>
   </div>
   <div class="col-md-9 col-12">
     <%= empty_to_default @sake.todofuken %>
   </div>
 
   <div class="col-md-3 col-12">
-    <b><%= @sakes.human_attribute_name :photo %></b>
+    <b><%= Sake.human_attribute_name :photos %></b>
   </div>
   <div class="col-md-9 col-12">
-    <canvas></canvas>
+    <% @sake.photos.each do |photo| %>
+      <%= link_to wrap_image_tag(photo.image.thumb.url), show_photo_path(photo_id: photo) %>
+    <% end %>
   </div>
 
   <div class="col-md-3 col-12">
-    <b><%= @sakes.human_attribute_name :tokutei_meisho %></b>
+    <b><%= Sake.human_attribute_name :tokutei_meisho %></b>
   </div>
   <div class="col-md-9 col-12">
     <%= @sake.tokutei_meisho_i18n %>
   </div>
 
   <div class="col-md-3 col-12">
-    <b><%= @sakes.human_attribute_name :seimai_buai %></b>
+    <b><%= Sake.human_attribute_name :seimai_buai %></b>
   </div>
   <div class="col-md-9 col-12">
     <%= empty_to_default @sake.seimai_buai %> %
   </div>
 
   <div class="col-md-3 col-12">
-    <b><%= @sakes.human_attribute_name :bindume_date %></b>
+    <b><%= Sake.human_attribute_name :bindume_date %></b>
   </div>
   <div class="col-md-9 col-12">
     <%= @sake.bindume_date.strftime("%Y / %m") %>
   </div>
 
   <div class="col-md-3 col-12">
-    <b><%= @sakes.human_attribute_name :brew_year %></b>
+    <b><%= Sake.human_attribute_name :brew_year %></b>
   </div>
   <div class="col-md-9 col-12">
     <%= @sake.brew_year.strftime("%Y") %>
   </div>
 
   <div class="col-md-3 col-12">
-    <b><%= @sakes.human_attribute_name :size %></b>
+    <b><%= Sake.human_attribute_name :size %></b>
   </div>
   <div class="col-md-9 col-12">
     <%= empty_to_default @sake.size %> ml
   </div>
 
   <div class="col-md-3 col-12">
-    <b><%= @sakes.human_attribute_name :alcohol %></b>
+    <b><%= Sake.human_attribute_name :alcohol %></b>
   </div>
   <div class="col-md-9 col-12">
     <%= @sake.alcohol %>
   </div>
 
   <div class="col-md-3 col-12">
-    <b><%= @sakes.human_attribute_name :price %></b>
+    <b><%= Sake.human_attribute_name :price %></b>
   </div>
   <div class="col-md-9 col-12">
     <%= @sake.price.nil? ? "-" : @sake.price.to_s(:delimited) %>
@@ -83,91 +85,91 @@
   </div>
 
   <div class="col-md-3 col-12">
-    <b><%= @sakes.human_attribute_name :genryomai %></b>
+    <b><%= Sake.human_attribute_name :genryomai %></b>
   </div>
   <div class="col-md-9 col-12">
     <%= empty_to_default @sake.genryomai %>
   </div>
 
   <div class="col-md-3 col-12">
-    <b><%= @sakes.human_attribute_name :kakemai %></b>
+    <b><%= Sake.human_attribute_name :kakemai %></b>
   </div>
   <div class="col-md-9 col-12">
     <%= empty_to_default @sake.kakemai %>
   </div>
 
   <div class="col-md-3 col-12">
-    <b><%= @sakes.human_attribute_name :kobo %></b>
+    <b><%= Sake.human_attribute_name :kobo %></b>
   </div>
   <div class="col-md-9 col-12">
     <%= empty_to_default @sake.kobo %>
   </div>
 
   <div class="col-md-3 col-12">
-    <b><%= @sakes.human_attribute_name :moto %></b>
+    <b><%= Sake.human_attribute_name :moto %></b>
   </div>
   <div class="col-md-9 col-12">
     <%= @sake.moto_i18n %>
   </div>
 
   <div class="col-md-3 col-12">
-    <b><%= @sakes.human_attribute_name :roka %></b>
+    <b><%= Sake.human_attribute_name :roka %></b>
   </div>
   <div class="col-md-9 col-12">
     <%= empty_to_default @sake.roka %>
   </div>
 
   <div class="col-md-3 col-12">
-    <b><%= @sakes.human_attribute_name :shibori %></b>
+    <b><%= Sake.human_attribute_name :shibori %></b>
   </div>
   <div class="col-md-9 col-12">
     <%= empty_to_default @sake.shibori %>
   </div>
 
   <div class="col-md-3 col-12">
-    <b><%= @sakes.human_attribute_name :hiire %></b>
+    <b><%= Sake.human_attribute_name :hiire %></b>
   </div>
   <div class="col-md-9 col-12">
     <%= @sake.hiire_i18n %>
   </div>
 
   <div class="col-md-3 col-12">
-    <b><%= @sakes.human_attribute_name :season %></b>
+    <b><%= Sake.human_attribute_name :season %></b>
   </div>
   <div class="col-md-9 col-12">
     <%= empty_to_default @sake.season %>
   </div>
 
   <div class="col-md-3 col-12">
-    <b><%= @sakes.human_attribute_name :nihonshudo %></b>
+    <b><%= Sake.human_attribute_name :nihonshudo %></b>
   </div>
   <div class="col-md-9 col-12">
     <%= empty_to_default @sake.nihonshudo %>
   </div>
 
   <div class="col-md-3 col-12">
-    <b><%= @sakes.human_attribute_name :sando %></b>
+    <b><%= Sake.human_attribute_name :sando %></b>
   </div>
   <div class="col-md-9 col-12">
     <%= empty_to_default @sake.sando %>
   </div>
 
   <div class="col-md-3 col-12">
-    <b><%= @sakes.human_attribute_name :aminosando %></b>
+    <b><%= Sake.human_attribute_name :aminosando %></b>
   </div>
   <div class="col-md-9 col-12">
     <%= empty_to_default @sake.aminosando %>
   </div>
 
   <div class="col-md-3 col-12">
-    <b><%= @sakes.human_attribute_name :warimizu %></b>
+    <b><%= Sake.human_attribute_name :warimizu %></b>
   </div>
   <div class="col-md-9 col-12">
     <%= @sake.warimizu_i18n %>
   </div>
 
   <div class="col-md-3 col-12">
-    <b><%= @sakes.human_attribute_name :bottle_level %></b>
+    <b><%= Sake.human_attribute_name :bottle_level %></b>
   </div>
   <div class="col-md-9 col-12">
     <%= @sake.bottle_level_i18n %>
@@ -179,14 +181,14 @@
 
 <div class="row">
   <div class="col-md-3 col-12">
-    <b><%= @sakes.human_attribute_name :color %></b>
+    <b><%= Sake.human_attribute_name :color %></b>
   </div>
   <div class="col-md-9 col-12">
     <%= empty_to_default @sake.color %>
   </div>
 
   <div class="col-md-3 col-12">
-    <b><%= @sakes.human_attribute_name :nigori %></b>
+    <b><%= Sake.human_attribute_name :nigori %></b>
   </div>
   <div class="col-md-9 col-12">
     <%= empty_to_default @sake.nigori %>
@@ -203,28 +205,28 @@
   </div>
 
   <div class="col-md-3 col-12">
-    <b><%= @sakes.human_attribute_name :aroma_impression %></b>
+    <b><%= Sake.human_attribute_name :aroma_impression %></b>
   </div>
   <div class="col-md-9 col-12">
     <%= empty_to_default @sake.aroma_impression %>
   </div>
 
   <div class="col-md-3 col-12">
-    <b><%= @sakes.human_attribute_name :taste_impression %></b>
+    <b><%= Sake.human_attribute_name :taste_impression %></b>
   </div>
   <div class="col-md-9 col-12">
     <%= empty_to_default @sake.taste_impression %>
   </div>
 
   <div class="col-md-3 col-12">
-    <b><%= @sakes.human_attribute_name :awa %></b>
+    <b><%= Sake.human_attribute_name :awa %></b>
   </div>
   <div class="col-md-9 col-12">
     <%= empty_to_default @sake.awa %>
   </div>
 
   <div class="col-md-3 col-12">
-    <b><%= @sakes.human_attribute_name :note %></b>
+    <b><%= Sake.human_attribute_name :note %></b>
   </div>
   <div class="col-md-9 col-12">
     <%= empty_to_default @sake.note %>

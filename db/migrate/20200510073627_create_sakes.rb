@@ -3,7 +3,6 @@ class CreateSakes < ActiveRecord::Migration[6.0]
     create_table :sakes do |t|
       t.string :name
       t.string :kura
-      t.binary :photo
       t.date :bindume_date
       t.date :brew_year
       t.string :todofuken
