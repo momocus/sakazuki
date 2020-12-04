@@ -73,7 +73,4 @@ yarn-debug.log*
 yarn-debug.log*
 .yarn-integrity
 
-config/settings.local.yml
-config/settings/*.local.yml
-config/environments/*.local.yml
 config/cloudinary.yml
