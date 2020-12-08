@@ -7,4 +7,6 @@ Rails.application.routes.draw do
     get :filter, on: :collection
   end
   get "sakes/:id/show_photo" => "sakes#show_photo", as: "show_photo"
+
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" unless Rails.env.production?
 end
