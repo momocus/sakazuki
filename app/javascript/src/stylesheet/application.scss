@@ -1,5 +1,10 @@
 @import "~bootstrap/scss/bootstrap";
 
+.container-fluid-with-maxwidth {
+  @extend .container-fluid;
+  max-width: 1140px;
+}
+
 #notice {
   color: green;
 }
