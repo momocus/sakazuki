@@ -22,8 +22,7 @@
     <div class="col">
       <% message = t(".leave_blank_if_you_don_t_want_to_change_it") %>
       <% if @minimum_password_length %>
-        <% minimum_message = t("devise.shared.minimum_password_length", count: @minimum_password_length) %>
-        <% message = "#{message}, #{minimum_message}" %>
+        <% message = "#{message}, #{minimum_password_message(@minimum_password_length)}" %>
       <% end %>
       <%= f.password_field :password, autocomplete: "new-password", placeholder: message, class: "form-control" %>
     </div>

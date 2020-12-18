@@ -12,4 +12,12 @@ module DeviseHelper
     else message_type
     end
   end
+
+  def minimum_password_message(minimum_password_length)
+    if minimum_password_length
+      t("devise.shared.minimum_password_length", count: minimum_password_length)
+    else
+      ""
+    end
+  end
 end
