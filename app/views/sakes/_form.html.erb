@@ -11,8 +11,8 @@
   <h3><%= t("helpers.subtitle.labelinfo") %></h3>
 
   <div class="form-group row">
-    <%= form.label :name, { class: "col-md-2 col-8 col-form-label" } %>
-    <div class="col-md-1 col-4 col-form-label">
+    <%= form.label :name, { class: "col-lg-2 col-8 col-form-label" } %>
+    <div class="col-lg-1 col-4 col-form-label">
       <span class="badge badge-primary"><%= t("helpers.badge.presence") %></span>
     </div>
     <div class="col">
@@ -21,8 +21,8 @@
   </div>
 
   <div class="form-group row">
-    <%= form.label :kura, { class: "col-md-2 col-8 col-form-label" } %>
-    <div class="col-md-1 col-4 col-form-label">
+    <%= form.label :kura, { class: "col-lg-2 col-8 col-form-label" } %>
+    <div class="col-lg-1 col-4 col-form-label">
       <span class="badge badge-secondary"><%= t("helpers.badge.obligation") %></span>
     </div>
     <div class="col">
@@ -31,8 +31,8 @@
   </div>
 
   <div class="form-group row">
-    <%= form.label :todofuken, { class: "col-md-2 col-8 col-form-label" } %>
-    <div class="col-md-1 col-4 col-form-label">
+    <%= form.label :todofuken, { class: "col-lg-2 col-8 col-form-label" } %>
+    <div class="col-lg-1 col-4 col-form-label">
       <span class="badge badge-secondary"><%= t("helpers.badge.obligation") %></span>
     </div>
     <div class="col">
@@ -41,7 +41,7 @@
   </div>
 
   <div class="form-group row">
-    <%= form.label :photos, { class: "col-md-3 col-12 col-form-label" } %>
+    <%= form.label :photos, { class: "col-lg-3 col-12 col-form-label" } %>
     <div class="col">
       <% if @sake.photos.any? %>
         <%= t(".delete_photo") %>
@@ -58,11 +58,11 @@
   </div>
 
   <div class="form-group row">
-    <%= form.label :tokutei_meisho, { class: "col-md-2 col-8 col-form-label" } %>
-    <div class="col-md-1 col-4 col-form-label col-form-label">
+    <%= form.label :tokutei_meisho, { class: "col-lg-2 col-8 col-form-label" } %>
+    <div class="col-lg-1 col-4 col-form-label col-form-label">
       <span class="badge badge-secondary"><%= t("helpers.badge.obligation") %></span>
     </div>
-    <div class="col-md-4 col">
+    <div class="col-lg-4 col">
       <%= form.select(:tokutei_meisho,
                       Sake.tokutei_meishos_i18n.keys.map do |k|
                         [I18n.t("enums.sake.tokutei_meisho.#{k}"), k]
@@ -73,26 +73,26 @@
   </div>
 
   <div class="form-group row">
-    <%= form.label :seimai_buai, { class: "col-md-2 col-8 col-form-label" } %>
-    <div class="col-md-1 col-4 col-form-label">
+    <%= form.label :seimai_buai, { class: "col-lg-2 col-8 col-form-label" } %>
+    <div class="col-lg-1 col-4 col-form-label">
       <span class="badge badge-secondary"><%= t("helpers.badge.obligation") %></span>
     </div>
-    <div class="col-md-4 col">
+    <div class="col-lg-4 col">
       <%= form.number_field :seimai_buai, { class: "form-control" } %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= form.label :bindume_date, { class: "col-md-2 col-8 col-form-label" } %>
-    <div class="col-md-1 col-4 col-form-label">
+    <%= form.label :bindume_date, { class: "col-lg-2 col-8 col-form-label" } %>
+    <div class="col-lg-1 col-4 col-form-label">
       <span class="badge badge-secondary"><%= t("helpers.badge.obligation") %></span>
     </div>
-    <div class="col-md-4 col-6">
+    <div class="col-lg-4 col-6">
       <%= form.date_select(:bindume_date,
                            { discard_day: true, discard_month: true },
                            { class: "form-control" }) %>
     </div>
-    <div class="col-md-4 col-6">
+    <div class="col-lg-4 col-6">
       <%= form.date_select(:bindume_date,
                            { discard_day: true, discard_year: true },
                            { class: "form-control" }) %>
@@ -100,8 +100,8 @@
   </div>
 
   <div class="form-group row">
-    <%= form.label :brew_year, { class: "col-md-3 col-12 col-form-label" } %>
-    <div class="col-md-4 col-6">
+    <%= form.label :brew_year, { class: "col-lg-3 col-12 col-form-label" } %>
+    <div class="col-lg-4 col-6">
       <%= form.date_select(:brew_year,
                            { discard_day: true, discard_month: true },
                            { class: "form-control" }) %>
@@ -109,33 +109,33 @@
   </div>
 
   <div class="form-group row">
-    <%= form.label :size, { class: "col-md-2 col-8 col-form-label" } %>
-    <div class="col-md-1 col-4 col-form-label">
+    <%= form.label :size, { class: "col-lg-2 col-8 col-form-label" } %>
+    <div class="col-lg-1 col-4 col-form-label">
       <span class="badge badge-secondary"><%= t("helpers.badge.obligation") %></span>
     </div>
-    <div class="col-md-4 col">
+    <div class="col-lg-4 col">
       <%= form.number_field(:size,
                             { value: "720", class: "form-control" }) %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= form.label :alcohol, { class: "col-md-2 col-8 col-form-label" } %>
-    <div class="col-md-1 col-4 col-form-label">
+    <%= form.label :alcohol, { class: "col-lg-2 col-8 col-form-label" } %>
+    <div class="col-lg-1 col-4 col-form-label">
       <span class="badge badge-secondary"><%= t("helpers.badge.obligation") %></span>
     </div>
-    <div class="col-md-4 col">
+    <div class="col-lg-4 col">
       <%= form.number_field(:alcohol,
                             { value: "15", class: "form-control" }) %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= form.label :price, { class: "col-md-2 col-8 col-form-label" } %>
-    <div class="col-md-1 col-4 col-form-label">
+    <%= form.label :price, { class: "col-lg-2 col-8 col-form-label" } %>
+    <div class="col-lg-1 col-4 col-form-label">
       <span class="badge badge-secondary"><%= t("helpers.badge.obligation") %></span>
     </div>
-    <div class="col-md-4 col">
+    <div class="col-lg-4 col">
       <%= form.number_field :price, { class: "form-control" } %>
     </div>
   </div>
@@ -143,29 +143,29 @@
   <!-- 表示義務なしのラベル情報 -->
 
   <div class="form-group row">
-    <%= form.label :genryomai, { class: "col-md-3 col-12 col-form-label" } %>
+    <%= form.label :genryomai, { class: "col-lg-3 col-12 col-form-label" } %>
     <div class="col">
       <%= form.text_field :genryomai, { class: "form-control" } %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= form.label :kakemai, { class: "col-md-3 col-12 col-form-label" } %>
+    <%= form.label :kakemai, { class: "col-lg-3 col-12 col-form-label" } %>
     <div class="col">
       <%= form.text_field :kakemai, { class: "form-control" } %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= form.label :kobo, { class: "col-md-3 col-12 col-form-label" } %>
+    <%= form.label :kobo, { class: "col-lg-3 col-12 col-form-label" } %>
     <div class="col">
       <%= form.text_field :kobo, { class: "form-control" } %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= form.label :moto, { class: "col-md-3 col-12 col-form-label" } %>
-    <div class="col-md-4 col">
+    <%= form.label :moto, { class: "col-lg-3 col-12 col-form-label" } %>
+    <div class="col-lg-4 col">
       <%= form.select(:moto,
                       Sake.motos_i18n.keys.map do |k|
                         [I18n.t("enums.sake.moto.#{k}"), k]
@@ -176,22 +176,22 @@
   </div>
 
   <div class="form-group row">
-    <%= form.label :roka, { class: "col-md-3 col-12 col-form-label" } %>
+    <%= form.label :roka, { class: "col-lg-3 col-12 col-form-label" } %>
     <div class="col">
       <%= form.text_field :roka, { class: "form-control" } %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= form.label :shibori, { class: "col-md-3 col-12 col-form-label" } %>
+    <%= form.label :shibori, { class: "col-lg-3 col-12 col-form-label" } %>
     <div class="col">
       <%= form.text_field :shibori, { class: "form-control" } %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= form.label :hiire, { class: "col-md-3 col-12 col-form-label" } %>
-    <div class="col-md-4 col">
+    <%= form.label :hiire, { class: "col-lg-3 col-12 col-form-label" } %>
+    <div class="col-lg-4 col">
       <%= form.select(:hiire,
                       Sake.hiires_i18n.keys.map do |k|
                         [I18n.t("enums.sake.hiire.#{k}"), k]
@@ -202,22 +202,22 @@
   </div>
 
   <div class="form-group row">
-    <%= form.label :season, { class: "col-md-3 col-12 col-form-label" } %>
+    <%= form.label :season, { class: "col-lg-3 col-12 col-form-label" } %>
     <div class="col">
       <%= form.text_field :season, { class: "form-control" } %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= form.label :nihonshudo, { class: "col-md-3 col-12 col-form-label" } %>
-    <div class="col-md-4 col">
+    <%= form.label :nihonshudo, { class: "col-lg-3 col-12 col-form-label" } %>
+    <div class="col-lg-4 col">
       <%= form.number_field :nihonshudo, { class: "form-control" } %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= form.label :sando, { class: "col-md-3 col-12 col-form-label" } %>
-    <div class="col-md-4 col">
+    <%= form.label :sando, { class: "col-lg-3 col-12 col-form-label" } %>
+    <div class="col-lg-4 col">
       <%= form.number_field(:sando,
                             { step: "0.1",
                               class: "form-control" }) %>
@@ -225,15 +225,15 @@
   </div>
 
   <div class="form-group row">
-    <%= form.label :aminosando, { class: "col-md-3 col-12 col-form-label" } %>
-    <div class="col-md-4 col">
+    <%= form.label :aminosando, { class: "col-lg-3 col-12 col-form-label" } %>
+    <div class="col-lg-4 col">
       <%= form.number_field :aminosando, { class: "form-control" } %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= form.label :warimizu, { class: "col-md-3 col-12 col-form-label" } %>
-    <div class="col-md-4 col">
+    <%= form.label :warimizu, { class: "col-lg-3 col-12 col-form-label" } %>
+    <div class="col-lg-4 col">
       <%= form.select(:warimizu,
                       Sake.warimizus_i18n.keys.map do |k|
                         [I18n.t("enums.sake.warimizu.#{k}"), k]
@@ -244,8 +244,8 @@
   </div>
 
   <div class="form-group row">
-    <%= form.label :bottle_level, { class: "col-md-3 col-12 col-form-label" } %>
-    <div class="col-md-4 col">
+    <%= form.label :bottle_level, { class: "col-lg-3 col-12 col-form-label" } %>
+    <div class="col-lg-4 col">
       <%= form.select(:bottle_level,
                       Sake.bottle_levels_i18n.keys.map do |k|
                         [I18n.t("enums.sake.bottle_level.#{k}"), k]
@@ -259,14 +259,14 @@
   <h3><%= t("helpers.subtitle.tasteinfo") %></h3>
 
   <div class="form-group row">
-    <%= form.label :color, { class: "col-md-3 col-12 col-form-label" } %>
+    <%= form.label :color, { class: "col-lg-3 col-12 col-form-label" } %>
     <div class="col">
       <%= form.text_field :color, { class: "form-control" } %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= form.label :nigori, { class: "col-md-3 col-12 col-form-label" } %>
+    <%= form.label :nigori, { class: "col-lg-3 col-12 col-form-label" } %>
     <div class="col">
       <%= form.text_field :nigori, { class: "form-control" } %>
     </div>
@@ -275,14 +275,14 @@
   <div class="form-group row">
 
     <%= form.label("#{t('activerecord.attributes.sake.taste_value')}, #{t('activerecord.attributes.sake.aroma_value')}",
-                   { class: "col-md-3 col-7 col-form-label" }) %>
-    <div class="col-md-9 col-5">
+                   { class: "col-lg-3 col-7 col-form-label" }) %>
+    <div class="col-lg-9 col-5">
       <div class="btn btn-secondary" id="graph-reset">
         <%= t(".reset") %>
       </div>
     </div>
-    <div class="col-md-3"> </div>
-    <div class="col-md-9 col">
+    <div class="col-lg-3"> </div>
+    <div class="col-lg-9 col">
       <canvas class="mt-3" id="taste_graph"></canvas>
       <%= form.number_field(:taste_value,
                             hidden: true,
@@ -295,28 +295,28 @@
   </div>
 
   <div class="form-group row">
-    <%= form.label :aroma_impression, { class: "col-md-3 col-12 col-form-label" } %>
+    <%= form.label :aroma_impression, { class: "col-lg-3 col-12 col-form-label" } %>
     <div class="col">
       <%= form.text_area :aroma_impression, { class: "form-control" } %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= form.label :taste_impression, { class: "col-md-3 col-12 col-form-label" } %>
+    <%= form.label :taste_impression, { class: "col-lg-3 col-12 col-form-label" } %>
     <div class="col">
       <%= form.text_area :taste_impression, { class: "form-control" } %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= form.label :awa, { class: "col-md-3 col-12 col-form-label" } %>
+    <%= form.label :awa, { class: "col-lg-3 col-12 col-form-label" } %>
     <div class="col">
       <%= form.text_field :awa, { class: "form-control" } %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= form.label :note, { class: "col-md-3 col-12 col-form-label" } %>
+    <%= form.label :note, { class: "col-lg-3 col-12 col-form-label" } %>
     <div class="col">
       <%= form.text_area :note, { class: "form-control" } %>
     </div>
