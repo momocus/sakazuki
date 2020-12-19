@@ -4,7 +4,7 @@ html, body {
   font-size: 1rem;
 }
 
-@media screen and (max-width: 1200px) { body, html { font-size: 1.2rem; } }
+@media screen and (max-width: 992px) { body, html { font-size: 1.2rem; } }
 
 .container-fluid-with-maxwidth {
   @extend .container-fluid;
