@@ -2,17 +2,9 @@
 
   <!-- error message -->
   <% if sake.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(sake.errors.count, "error") %>
-        prohibited this sake from being saved:
-      </h2>
-      <ul>
-        <% sake.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+    <% sake.errors.full_messages.each do |message| %>
+      <% flash.now[:danger] = message %>
+    <% end %>
   <% end %>
 
   <!-- 表示義務ありのラベル情報 -->
@@ -339,5 +331,4 @@
 
 <% end %>
 
-<%= javascript_pack_tag "taste_graph" %>
-<%= javascript_pack_tag "input_taste_graph" %>
+<%= javascript_pack_tag "sakes_form" %>
