@@ -11,6 +11,47 @@ html, body {
   max-width: 1140px;
 }
 
+.sakazuki_label {
+  @extend .col-lg-3;
+  @extend .col-12;
+  @extend .col-form-label;
+}
+
+// バッジ付きラベル
+.sakazuki_badged_label {
+  @extend .col-lg-2;
+  @extend .col-8;
+  @extend .col-form-label;
+}
+
+.sakazuki_badge {
+  @extend .col-lg-1;
+  @extend .col-4;
+  @extend .col-form-label;
+}
+
+// 半分サイズのフォーム
+.sakazuki_half_form {
+  @extend .col-lg-4;
+  @extend .col;
+}
+
+// 半分サイズのフォームを常に2つ並べる
+.sakazuki_half_forms {
+  @extend .col-lg-4;
+  @extend .col-6;
+}
+
+.show_label {
+  @extend .col-lg-3;
+  @extend .col-12;
+}
+
+.show_body {
+  @extend .col-lg-9;
+  @extend .col-12;
+}
+
 .field_with_errors {
   display: contents;
   input {
