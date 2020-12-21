@@ -3,21 +3,24 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-lg-0">
     <div class="container-fluid-with-maxwidth">
       <%= link_to "Sakazuki", root_path, class: "navbar-brand" %>
-      <button class="navbar-toggler" type="button" data-toggle="collapse"
-              data-target="#navbarNav" aria-controls="navbarNav"
-              aria-expanded="false" aria-label="Toggle navigation">
+
+      <% if user_signed_in? %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarNav" aria-controls="navbarNav"
+                aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse d-lg-flex justify-content-end" id="navbarNav">
-        <div class="navbar-nav">
-          <% if user_signed_in? %>
+        </button>
+        <div class="collapse navbar-collapse d-lg-flex justify-content-end" id="navbarNav">
+          <div class="navbar-nav">
             <%= link_to current_user.email, edit_user_registration_path, class: "nav-item nav-link" %>
             <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-item nav-link" %>
-          <% else %>
-            <%= link_to "Sign in", new_user_session_path, class: "nav-item nav-link" %>
-          <% end %>
+          </div>
         </div>
-      </div>
+      <% else %>
+        <div class="navbar-nav">
+          <%= link_to "Sign in", new_user_session_path, class: "nav-item nav-link" %>
+        </div>
+      <% end %>
     </div>
   </nav>
 </header>
