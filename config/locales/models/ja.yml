@@ -18,6 +18,9 @@ ja:
     subtitle:
       labelinfo: ラベル
       tasteinfo: 味わい
+    tweet:
+      punctuation: 。
+      honorific_title: さんの
   sakes:
     index:
       title: 日本酒リスト
