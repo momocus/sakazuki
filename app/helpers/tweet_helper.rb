@@ -7,24 +7,22 @@ module TweetHelper
           data: { text: tweet_text, hashtags: "Sakazuki", show_count: false }
   end
 
-  def add_postfix(text, postfix, period = "")
-    postfix.empty? ? text : "#{postfix}#{period}#{text}"
+  def add_period(text, period = t("helpers.tweet.punctuation"))
+    if text.empty? || text.end_with?(period) then text
+    else "#{text}#{period}" end
   end
 
-  # 酒の香りなどに「。」があったりなかったりする可能性があるため、
-  # PREFIXEにPERIODがない場合は自動で付加する。
-  def add_prefix(text, prefix, period = "")
-    if prefix.empty? then text
-    elsif prefix.end_with? period then "#{text}#{prefix}"
-    else "#{text}#{prefix}#{period}" end
+  def to_kakkokabu(text)
+    text.gsub("株式会社", "㈱").to_s
   end
 
   # 酒の名前のみがnon nilのため、他パラメータは空の場合を考慮する。
   def make_text(name, kura, color, aroma, taste)
-    text = "#{name}#{t('helpers.tweet.punctuation')}"
-    text = add_postfix(text, kura.gsub("株式会社", "㈱").to_s, t("helpers.tweet.honorific_title"))
-    text = add_prefix(text, color, t("helpers.tweet.punctuation"))
-    text = add_prefix(text, aroma, t("helpers.tweet.punctuation"))
-    add_prefix(text, taste, t("helpers.tweet.punctuation"))
+    kura = add_period(to_kakkokabu(kura), t("helpers.tweet.honorific_title"))
+    name = add_period(name)
+    color = add_period(color)
+    aroma = add_period(aroma)
+    taste = add_period(taste)
+    "#{kura}#{name}#{color}#{aroma}#{taste}"
   end
 end
