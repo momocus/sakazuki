@@ -12,13 +12,21 @@ module TweetHelper
     else "#{text}#{period}" end
   end
 
-  def to_kakkokabu(text)
-    text.gsub("株式会社", "㈱").to_s
+  # 囲み文字
+  # https://0g0.org/
+  # 法人等略語一覧表
+  # https://hiramatu-hifuka.com/onyak/kotoba-1/hojin.html
+  def to_enclosed(text)
+    text = text.gsub("株式会社", "㈱")
+    text = text.gsub("有限会社", "㈲")
+    text = text.gsub("合名会社", "㈴")
+    text = text.gsub("合資会社", "㈾")
+    text.gsub("合同会社", "(同)")
   end
 
   # 酒の名前のみがnon nilのため、他パラメータは空の場合を考慮する。
   def make_text(name, kura, color, aroma, taste)
-    kura = add_period(to_kakkokabu(kura), t("helpers.tweet.honorific_title"))
+    kura = add_period(to_enclosed(kura), t("helpers.tweet.honorific_title"))
     name = add_period(name)
     color = add_period(color)
     aroma = add_period(aroma)
