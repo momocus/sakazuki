@@ -1,10 +1,10 @@
 module TweetHelper
   def tweet_button(tweet_text)
-    hashed_twitter = "https://twitter.com/intent/tweet?button_hashtag=Sakazuki&ref_src=twsrc%5Etfw"
+    share_twitter = "https://twitter.com/share?ref_src=twsrc%5Etfw"
     tag.a "Tweet",
-          href: hashed_twitter,
-          class: "twitter-hashtag-button",
-          data: { text: tweet_text, show_count: false }
+          href: share_twitter,
+          class: "twitter-share-button",
+          data: { text: tweet_text, hashtags: "Sakazuki", show_count: false }
   end
 
   def add_postfix(text, postfix, period = "")
