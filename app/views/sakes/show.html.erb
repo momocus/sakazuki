@@ -1,5 +1,9 @@
 <h2><%= t ".title" %></h2>
 
+<!-- ツイートボタン -->
+<%= tweet_button make_text(@sake.name, @sake.kura, @sake.color, @sake.aroma_impression, @sake.taste_impression) %>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 <!-- 表示義務ありのラベル情報 -->
 <h3 class="my-2"><%= t "helpers.subtitle.labelinfo" %></h3>
 
