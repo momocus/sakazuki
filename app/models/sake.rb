@@ -103,7 +103,7 @@ class Sake < ApplicationRecord
   validates :genryomai, exclusion: { in: [nil] }
   validates :kakemai, exclusion: { in: [nil] }
   validates :kobo, exclusion: { in: [nil] }
-  validates :alcohol, presence: true
+  validates :alcohol, numericality: { allow_nil: true }
   validates :aminosando, numericality: { allow_nil: true }
   validates :season, exclusion: { in: [nil] }
   validates :warimizu, presence: true

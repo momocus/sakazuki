@@ -77,7 +77,7 @@
     <b><%= Sake.human_attribute_name :alcohol %></b>
   </div>
   <div class="show_body">
-    <%= @sake.alcohol %>
+    <%= empty_to_default @sake.alcohol %>
   </div>
 
   <div class="show_label">
