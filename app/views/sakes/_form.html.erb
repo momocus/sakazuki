@@ -115,7 +115,8 @@
     </div>
     <div class="sakazuki_half_form">
       <%= form.number_field(:size,
-                            { value: "720", class: "form-control" }) %>
+                            { value: empty_to_default(sake.size, "720"),
+                              class: "form-control" }) %>
     </div>
   </div>
 
@@ -126,7 +127,7 @@
     </div>
     <div class="sakazuki_half_form">
       <%= form.number_field(:alcohol,
-                            { value: "15", class: "form-control" }) %>
+                            { step: "any", class: "form-control" }) %>
     </div>
   </div>
 
