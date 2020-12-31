@@ -212,23 +212,21 @@
   <div class="form-group row">
     <%= form.label :nihonshudo, { class: "sakazuki_label" } %>
     <div class="sakazuki_half_form">
-      <%= form.number_field :nihonshudo, { class: "form-control" } %>
+      <%= form.number_field :nihonshudo, { step: "any", class: "form-control" } %>
     </div>
   </div>
 
   <div class="form-group row">
     <%= form.label :sando, { class: "sakazuki_label" } %>
     <div class="sakazuki_half_form">
-      <%= form.number_field(:sando,
-                            { step: "0.1",
-                              class: "form-control" }) %>
+      <%= form.number_field(:sando, { step: "any", class: "form-control" }) %>
     </div>
   </div>
 
   <div class="form-group row">
     <%= form.label :aminosando, { class: "sakazuki_label" } %>
     <div class="sakazuki_half_form">
-      <%= form.number_field :aminosando, { class: "form-control" } %>
+      <%= form.number_field :aminosando, { step: "any", class: "form-control" } %>
     </div>
   </div>
 
