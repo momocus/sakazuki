@@ -7,47 +7,48 @@
   max-width: 1140px;
 }
 
-.sakazuki_label {
+.sakazuki-label {
   @extend .col-lg-3;
   @extend .col-12;
   @extend .col-form-label;
 }
 
 // バッジ付きラベル
-.sakazuki_badged_label {
+.sakazuki-badged-label {
   @extend .col-lg-2;
   @extend .col-8;
   @extend .col-form-label;
 }
 
-.sakazuki_badge {
+.sakazuki-badge {
   @extend .col-lg-1;
   @extend .col-4;
   @extend .col-form-label;
 }
 
 // 半分サイズのフォーム
-.sakazuki_half_form {
+.sakazuki-half-form {
   @extend .col-lg-4;
   @extend .col;
 }
 
 // 半分サイズのフォームを常に2つ並べる
-.sakazuki_half_forms {
+.sakazuki-half-forms {
   @extend .col-lg-4;
   @extend .col-6;
 }
 
-.show_label {
+.show-label {
   @extend .col-lg-3;
   @extend .col-12;
 }
 
-.show_body {
+.show-body {
   @extend .col-lg-9;
   @extend .col-12;
 }
 
+// Ruby on Railsが生成するエラー用スタイルなので、アンダーバーのままにする
 .field_with_errors {
   display: contents;
   input {
