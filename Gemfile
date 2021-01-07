@@ -31,6 +31,11 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger
   # console
   gem "byebug", platforms: %i[mri mingw x64_mingw]
+  # useful repl pry
+  gem "pry"
+  gem "pry-byebug"
+  gem "pry-doc"
+  gem "pry-rails"
   gem "dotenv"
   gem "letter_opener_web"
   gem "rubocop", require: false
