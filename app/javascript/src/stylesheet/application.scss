@@ -1,7 +1,5 @@
 @import "~bootstrap/scss/bootstrap";
 
-@media screen and (max-width: 992px) { html { font-size: 2.7rem; } }
-
 .container-fluid-with-maxwidth {
   @extend .container-fluid;
   max-width: 1140px;
