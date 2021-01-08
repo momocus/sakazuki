@@ -1,5 +1,6 @@
 ja:
   index:
+    all_bottles: 空瓶を表示
     filter: 検索
   message:
     delete: 本当に削除しますか？

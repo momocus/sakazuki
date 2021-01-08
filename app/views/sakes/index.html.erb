@@ -6,6 +6,8 @@
   <%= f.submit t("index.filter"), class: "btn btn-secondary mb-2" %>
 <% end %>
 
+<%= link_to(t("index.all_bottles"), sakes_path({all_bottles: "yes"}), { class: "btn btn-outline-secondary mb-2" }) %>
+
 <table class="table table-hover table-bordered" caption="Sake List">
   <thead></thead>
   <tbody>

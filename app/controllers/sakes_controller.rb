@@ -5,7 +5,7 @@ class SakesController < ApplicationController
   # GET /sakes
   # GET /sakes.json
   def index
-    @sakes = Sake.all
+    @sakes = all_bottles(params[:all_bottles]).order(id: :desc)
   end
 
   # GET /sakes/1
@@ -70,6 +70,11 @@ class SakesController < ApplicationController
   end
 
   private
+
+  # flagがないときは、空瓶を除外したSakeモデルを取得して返す
+  def all_bottles(flag)
+    flag.blank? ? Sake.where.not(bottle_level: :empty) : Sake.all
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_sake
