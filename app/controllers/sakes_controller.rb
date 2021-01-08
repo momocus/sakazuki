@@ -2,10 +2,14 @@ class SakesController < ApplicationController
   before_action :set_sake, only: %i[show edit update destroy]
   before_action :signed_in_user, only: %i[new create edit update destroy]
 
+  include SakesHelper
+
   # GET /sakes
   # GET /sakes.json
   def index
-    @sakes = all_bottles(params[:all_bottles]).order(id: :desc)
+    sort_key = empty_to_default(params[:sort], "id").intern
+    sort_order = params[:order] == "asc" ? :asc : :desc
+    @sakes = all_bottles(params[:all_bottles]).order(sort_key => sort_order)
   end
 
   # GET /sakes/1

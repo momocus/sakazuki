@@ -1,12 +1,24 @@
 <h2><%= t(".title") %></h2>
 
-<%= form_with scope: :filter, url: filter_sakes_path, method: :get, local: true, class: "form-inline" do |f| %>
+<%= form_with scope: :filter, url: filter_sakes_path, method: :get, local: true, class: "form-inline my-1" do |f| %>
   <%= f.label "search", class: "sr-only" %>
-  <%= f.text_field :word, placeholder: "Search", class: "form-control mb-2 mr-sm-2" %>
-  <%= f.submit t("index.filter"), class: "btn btn-secondary mb-2" %>
+  <%= f.text_field :word, placeholder: "Search", class: "form-control mr-sm-2" %>
+  <%= f.submit t(".filter"), class: "btn btn-secondary" %>
 <% end %>
 
-<%= link_to(t("index.all_bottles"), sakes_path({all_bottles: "yes"}), { class: "btn btn-outline-secondary mb-2" }) %>
+<div>
+  <div class="btn-group my-1" role="group" aria-label="Sort">
+    <%= link_to(t("activerecord.attributes.sake.tokutei_meisho"),
+                sakes_path({ sort: "tokutei_meisho" }),
+                { class: "btn btn-info" }) %>
+    <%= link_to(t("activerecord.attributes.sake.todofuken"),
+                sakes_path({ sort: "todofuken" }),
+                { class: "btn btn-info" }) %>
+    <%= link_to(t("activerecord.attributes.sake.bottle_level"),
+                sakes_path({ sort: "bottle_level" }),
+                { class: "btn btn-info" }) %>
+  </div>
+</div>
 
 <table class="table table-hover table-bordered" caption="Sake List">
   <thead></thead>
@@ -51,7 +63,10 @@
 <div class="row justify-content-center">
   <%= link_to(t("helpers.submit.create"),
               new_sake_path,
-              { class: "btn btn-primary" }) %>
+              { class: "btn btn-primary mx-3" }) %>
+  <%= link_to(t(".all_bottles"),
+              sakes_path({ all_bottles: "yes" }),
+              { class: "btn btn-outline-secondary mx-3" }) %>
 </div>
 
 <%= javascript_pack_tag "sakes_index" %>
