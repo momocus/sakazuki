@@ -3,12 +3,6 @@
 <%= form_with scope: :filter, url: filter_sakes_path, method: :get, local: true, class: "form-inline" do |f| %>
   <%= f.label "search", class: "sr-only" %>
   <%= f.text_field :word, placeholder: "Search", class: "form-control mb-2 mr-sm-2" %>
-
-  <div class="form-check mb-2 mr-sm-2">
-    <%= f.check_box :only_in_stock, class: "form-check-input" %>
-    <%= f.label t("index.stocked"), class: "form-check-label" %>
-  </div>
-
   <%= f.submit t("index.filter"), class: "btn btn-outline-secondary mb-2" %>
 <% end %>
 

@@ -1,6 +1,5 @@
 ja:
   index:
-    stocked: 在庫あり
     filter: 検索
   message:
     delete: 本当に削除しますか？
