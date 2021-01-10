@@ -128,9 +128,7 @@
       <span class="badge badge-secondary"><%= t("helpers.badge.obligation") %></span>
     </div>
     <div class="sakazuki-half-form">
-      <%= form.number_field(:size,
-                            { value: empty_to_default(sake.size, "720"),
-                              class: "form-control" }) %>
+      <%= form.number_field(:size, { class: "form-control" }) %>
     </div>
   </div>
 
