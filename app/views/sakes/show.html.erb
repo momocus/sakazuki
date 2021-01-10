@@ -34,7 +34,7 @@
   </div>
   <div class="show-body">
     <% @sake.photos.each do |photo| %>
-      <%= link_to cl_image_tag(photo.image.url, { class: "show_image" }), show_photo_path(photo_id: photo) %>
+      <%= link_to cl_image_tag(photo.image.thumb.url), show_photo_path(photo_id: photo) %>
     <% end %>
   </div>
 
