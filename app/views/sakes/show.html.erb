@@ -68,7 +68,7 @@
     <b><%= Sake.human_attribute_name :brew_year %></b>
   </div>
   <div class="show-body">
-    <%= @sake.brew_year.strftime("%Y") %>
+    <%= @sake.brew_year ? @sake.brew_year.strftime("%Y") : "-" %>
   </div>
 
   <div class="show-label">

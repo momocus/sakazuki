@@ -115,7 +115,9 @@
     <%= form.label :brew_year, { class: "sakazuki-label" } %>
     <div class="sakazuki-half-forms">
       <%= form.date_select(:brew_year,
-                           { discard_day: true, discard_month: true },
+                           { discard_day: true,
+                             discard_month: true,
+                             include_blank: true },
                            { class: "form-control" }) %>
     </div>
   </div>
