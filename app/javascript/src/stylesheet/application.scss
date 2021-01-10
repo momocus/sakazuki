@@ -50,6 +50,11 @@
   @extend .col-3;
 }
 
+.thumb_image {
+  @extend .img-fluid;
+  max-height: 200px;
+}
+
 // Ruby on Railsが生成するエラー用スタイルなので、アンダーバーのままにする
 .field_with_errors {
   display: contents;

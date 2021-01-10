@@ -45,7 +45,7 @@
           </canvas>
         </td>
         <td class="col-lg-3 col-md-6 col-11">
-          <%= cl_image_tag(sake.photos.first.image.thumb.url) if sake.photos.any? %>
+          <%= cl_image_tag(sake.photos.first.image.url, { class: "thumb_image" }) if sake.photos.any? %>
         </td>
       </tr>
     <% end %>
