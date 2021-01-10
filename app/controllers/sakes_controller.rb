@@ -23,6 +23,7 @@ class SakesController < ApplicationController
   # GET /sakes/new
   def new
     @sake = Sake.new
+    @sake.brew_year = to_by(Time.zone.today)
   end
 
   # GET /sakes/1/edit
@@ -78,6 +79,12 @@ class SakesController < ApplicationController
   # flagがないときは、空瓶を除外したSakeモデルを取得して返す
   def all_bottles(flag)
     flag.blank? ? Sake.where.not(bottle_level: :empty) : Sake.all
+  end
+
+  def to_by(date)
+    by_year = date.year - (date.month >= 7 ? 0 : 1)
+    # BYは年のみ、使わない月日はBY始まりの7/1とする
+    Date.new(by_year, 7)
   end
 
   # Use callbacks to share common setup or constraints between actions.
