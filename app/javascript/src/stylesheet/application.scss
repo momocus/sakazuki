@@ -46,6 +46,10 @@
   @extend .col-12;
 }
 
+.show_image {
+  @extend .col-3;
+}
+
 // Ruby on Railsが生成するエラー用スタイルなので、アンダーバーのままにする
 .field_with_errors {
   display: contents;
