@@ -7,7 +7,8 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   version :thumb do
-    process resize_to_fit: [100, 100]
+    # HACK: 1:1でスマホで２つ並んでも潰れないサイズ
+    process resize_to_fill: [600, 600]
   end
 
   def store_dir
