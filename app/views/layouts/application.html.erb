@@ -2,25 +2,21 @@
 <html>
   <head>
     <title>Sakazuki</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= twitter_meta_tag %>
 
-    <%= javascript_pack_tag "application" %>
-    <%= stylesheet_pack_tag "application" %>
-
-    <%= stylesheet_link_tag "application", media: "all", 'data-turbolinks-track': "reload" %>
-    <%= javascript_pack_tag "application", 'data-turbolinks-track': "reload" %>
+    <%= stylesheet_pack_tag "application", media: "all", "data-turbolinks-track": "reload" %>
+    <%= javascript_pack_tag "application", "data-turbolinks-track": "reload" %>
   </head>
 
   <body>
     <%= render "layouts/header" %>
-    <div class="container">
-      <% flash.each do |message_type, message| %>
-        <% next if message_type == "timedout" %>
-        <div class="alert alert-<%= message_type %>"><%= message %></div>
-      <% end %>
+    <div class="container-fluid-with-maxwidth">
+      <%= render "layouts/flashes" %>
       <%= yield %>
-      <%= render "layouts/footer" %>
+      <hr>
       <%= debug(params) if Rails.env.development? %>
     </div>
   </body>

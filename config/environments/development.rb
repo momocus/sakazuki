@@ -1,4 +1,3 @@
-# rubocop:disable Metrics/BlockLength
 Rails.application.configure do
   # Settings specified here will take precedence over those in
   # config/application.rb.
@@ -40,14 +39,7 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
-
-  config.action_mailer.smtp_settings = {
-    user_name: Settings.mail[:user_name],
-    address: Settings.mail[:smtp],
-    password: Settings.mail[:password],
-    port: Settings.mail[:port],
-    authentication: "login",
-  }
+  config.action_mailer.delivery_method = :letter_opener_web
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -73,4 +65,3 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 end
-# rubocop:enable Metrics/BlockLength

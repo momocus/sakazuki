@@ -20,9 +20,8 @@
 #  moto             :integer          default("unknown")
 #  name             :string
 #  nigori           :string
-#  nihonshudo       :integer
+#  nihonshudo       :float
 #  note             :text
-#  photo            :binary
 #  price            :integer
 #  roka             :string
 #  sando            :float
@@ -39,6 +38,7 @@
 #  updated_at       :datetime         not null
 #
 class Sake < ApplicationRecord
+  has_many :photos, dependent: :destroy
   enum bottle_level: {
     sealed: 0,
     opened: 1,
@@ -103,7 +103,7 @@ class Sake < ApplicationRecord
   validates :genryomai, exclusion: { in: [nil] }
   validates :kakemai, exclusion: { in: [nil] }
   validates :kobo, exclusion: { in: [nil] }
-  validates :alcohol, presence: true
+  validates :alcohol, numericality: { allow_nil: true }
   validates :aminosando, numericality: { allow_nil: true }
   validates :season, exclusion: { in: [nil] }
   validates :warimizu, presence: true

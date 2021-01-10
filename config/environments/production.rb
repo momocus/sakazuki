@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/BlockLength
 Rails.application.configure do
   # Settings specified here will take precedence over those in
   # config/application.rb.
@@ -67,6 +68,15 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "sakazuki_production"
 
   config.action_mailer.perform_caching = false
+  config.action_mailer.default_url_options = { host: "sakazuki.herokuapp.com" }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    user_name: Rails.application.credentials.mail[:user_name],
+    address: Rails.application.credentials.mail[:smtp],
+    password: Rails.application.credentials.mail[:password],
+    port: Rails.application.credentials.mail[:port],
+    authentication: "login",
+  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to
@@ -120,3 +130,4 @@ Rails.application.configure do
   # config.active_record.database_resolver_context =
   #   ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 end
+# rubocop:enable Metrics/BlockLength

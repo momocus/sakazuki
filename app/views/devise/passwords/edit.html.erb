@@ -4,21 +4,26 @@
   <%= render "devise/shared/error_messages", resource: resource %>
   <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password, t(".new_password") %><br>
-    <% if @minimum_password_length %>
-      <em><%= t("devise.shared.minimum_password_length", count: @minimum_password_length) %></em><br>
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+  <div class="row form-group">
+    <%= f.label :password, t(".new_password"), class: "sakazuki-label" %>
+    <div class="col">
+      <%= f.password_field :password,
+                           autofocus: true,
+                           autocomplete: "new-password",
+                           placeholder: minimum_password_message(@minimum_password_length),
+                           class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, t(".confirm_new_password") %><br>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="row form-group">
+    <%= f.label :password_confirmation, t(".confirm_new_password"), class: "sakazuki-label" %>
+    <div class="col">
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit t(".change_my_password") %>
+  <div class="row justify-content-center">
+    <%= f.submit t(".change_my_password"), class: "btn btn-outline-primary" %>
   </div>
 <% end %>
 

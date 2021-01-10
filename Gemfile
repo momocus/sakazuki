@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.7.1"
+ruby "2.7.2"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "rails", "~> 6.0.2", ">= 6.0.2.2"
@@ -31,12 +31,21 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger
   # console
   gem "byebug", platforms: %i[mri mingw x64_mingw]
+  gem "dotenv"
+  gem "letter_opener_web"
+  # useful repl pry
+  gem "pry"
+  gem "pry-byebug"
+  gem "pry-doc"
+  gem "pry-rails"
   gem "rubocop", require: false
   gem "rubocop-rails", require: false
 end
 
 group :development do
   gem "annotate"
+  gem "better_errors"
+  gem "binding_of_caller"
   gem "erb_lint", require: false
   # Access an interactive console on exception pages or by calling 'console'
   # anywhere in the code.
@@ -65,6 +74,11 @@ gem "rails-i18n"
 
 # For authentication
 gem "bcrypt"
-gem "config"
 gem "devise"
 gem "devise-i18n"
+
+# Create seed data files from the existing data in database
+gem "seed_dump"
+# For image uploading
+gem "carrierwave"
+gem "cloudinary"

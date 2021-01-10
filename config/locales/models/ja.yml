@@ -1,6 +1,7 @@
 ja:
   index:
-    title: 一覧
+    stocked: 在庫あり
+    filter: 検索
   message:
     delete: 本当に削除しますか？
   helpers:
@@ -9,10 +10,28 @@ ja:
       update: 更新
       edit: 編集
       delete: 削除
+      back: 戻る
     badge:
       presence: 必須
-    button:
+      obligation: 表示義務
+    subtitle:
+      labelinfo: ラベル
+      tasteinfo: 味わい
+    tweet:
+      punctuation: 。
+      honorific_title: さんの
+  sakes:
+    index:
+      title: 日本酒リスト
+    new:
+      title: 新規登録
+    edit:
+      title: 編集
+    form:
       reset: リセット
+      delete_photo: 削除する画像に☑
+    show:
+      title: 詳細
   activerecord:
     models:
       sake: 酒
@@ -20,7 +39,7 @@ ja:
       sake:
         name: 名前
         kura: 蔵
-        photo: 画像
+        photos: 画像
         bindume_date: 製造年月日
         brew_year: BY
         todofuken: 都道府県
@@ -48,6 +67,7 @@ ja:
         shibori: 絞り
         bottle_level: 瓶の状態
         price: 価格(円)
+        price_unit: 円
         size: 内容量(ml)
         memo: 備考
         created_at: 登録日

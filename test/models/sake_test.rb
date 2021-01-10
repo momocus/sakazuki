@@ -20,9 +20,8 @@
 #  moto             :integer          default("unknown")
 #  name             :string
 #  nigori           :string
-#  nihonshudo       :integer
+#  nihonshudo       :float
 #  note             :text
-#  photo            :binary
 #  price            :integer
 #  roka             :string
 #  sando            :float
