@@ -9,9 +9,11 @@ WORKDIR /sakazuki
 COPY Gemfile /sakazuki/Gemfile
 COPY Gemfile.lock /sakazuki/Gemfile.lock
 RUN bundle install -j4
-COPY . /sakazuki
 
+COPY package.json /sakazuki/package.json
 RUN yarn
+
+COPY . /sakazuki
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
