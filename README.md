@@ -1,3 +1,7 @@
+![Generic Checks](https://github.com/momocus/sakazuki/workflows/Generic%20Checks/badge.svg)
+![JavaScript and TypeScript](https://github.com/momocus/sakazuki/workflows/JavaScript%20and%20TypeScript/badge.svg)
+![Ruby](https://github.com/momocus/sakazuki/workflows/Ruby/badge.svg)
+
 # Sakazuki
 
 自宅の酒を管理するアプリケーション
