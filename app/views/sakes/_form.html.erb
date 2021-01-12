@@ -43,18 +43,30 @@
   <div class="form-group row">
     <%= form.label :photos, { class: "sakazuki-label" } %>
     <div class="col">
-      <% if @sake.photos.any? %>
-        <%= t(".delete_photo") %>
-        <% @sake.photos.each do |photo| %>
-          <div class="form-check">
-            <%= check_box_tag photo.chackbox_name, "delete", nil, { class: "form-check-input" } %>
-            <%= cl_image_tag(photo.image.thumb.url) %>
-          </div>
+      <div class="row">
+        <% if @sake.photos.any? %>
+          <p id="photoHelp" class="form-text col-12">
+            <%= t(".delete_photo") %>
+          </p>
+          <% @sake.photos.each do |photo| %>
+            <div class="col-lg-4 col-6">
+              <div class="form-check form-check-inline">
+                <%# Hack: min-widthを設定することで、 %>
+                <%#       スマホ表示のときチェックボックスが小さくなりすぎるのを防ぐ %>
+                <%= check_box_tag(photo.chackbox_name,
+                                  "delete",
+                                  nil,
+                                  { class: "form-check-input", style: "min-width:32px" }) %>
+                <label class="form-check-label" for="<%= photo.chackbox_name %>">
+                  <%= cl_image_tag(photo.image.thumb.url, { class: "img-thumbnail" }) %>
+                </label>
+              </div>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
-      <%= form.file_field :photos, { multiple: true, class: "form-control-file" } %>
+        <%= form.file_field :photos, { multiple: true, class: "form-control-file col-12" } %>
+      </div>
     </div>
-
   </div>
 
   <div class="form-group row">
