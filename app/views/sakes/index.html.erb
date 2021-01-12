@@ -1,22 +1,25 @@
 <h2><%= t(".title") %></h2>
 
-<%= form_with scope: :filter, url: filter_sakes_path, method: :get, local: true, class: "form-inline my-1" do |f| %>
-  <%= f.label "search", class: "sr-only" %>
-  <%= f.text_field :word, placeholder: "Search", class: "form-control mr-sm-2" %>
-  <%= f.submit t(".filter"), class: "btn btn-secondary" %>
-<% end %>
-
-<div>
-  <div class="btn-group my-1" role="group" aria-label="Sort">
-    <%= link_to(t("activerecord.attributes.sake.tokutei_meisho"),
-                sakes_path({ sort: "tokutei_meisho" }),
-                { class: "btn btn-info" }) %>
-    <%= link_to(t("activerecord.attributes.sake.todofuken"),
-                sakes_path({ sort: "todofuken" }),
-                { class: "btn btn-info" }) %>
-    <%= link_to(t("activerecord.attributes.sake.bottle_level"),
-                sakes_path({ sort: "bottle_level" }),
-                { class: "btn btn-info" }) %>
+<div class="row">
+  <div class="col">
+    <%= form_with scope: :filter, url: filter_sakes_path, method: :get, local: true, class: "form-inline my-1" do |f| %>
+      <%= f.label "search", class: "sr-only" %>
+      <%= f.text_field :word, placeholder: "Search", class: "form-control mr-sm-2" %>
+      <%= f.submit t(".filter"), class: "btn btn-secondary" %>
+    <% end %>
+  </div>
+  <div class="col-md-6 col-12">
+    <div class="btn-group my-1 float-md-right" role="group" aria-label="Sort">
+      <%= link_to(t("activerecord.attributes.sake.tokutei_meisho"),
+                  sakes_path({ sort: "tokutei_meisho" }),
+                  { class: "btn btn-info" }) %>
+      <%= link_to(t("activerecord.attributes.sake.todofuken"),
+                  sakes_path({ sort: "todofuken" }),
+                  { class: "btn btn-info" }) %>
+      <%= link_to(t("activerecord.attributes.sake.bottle_level"),
+                  sakes_path({ sort: "bottle_level" }),
+                  { class: "btn btn-info" }) %>
+    </div>
   </div>
 </div>
 
