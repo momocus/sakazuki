@@ -2,10 +2,14 @@ class SakesController < ApplicationController
   before_action :set_sake, only: %i[show edit update destroy]
   before_action :signed_in_user, only: %i[new create edit update destroy]
 
+  include SakesHelper
+
   # GET /sakes
   # GET /sakes.json
   def index
-    @sakes = Sake.all
+    sort_key = empty_to_default(params[:sort], "id").intern
+    sort_order = params[:order] == "asc" ? :asc : :desc
+    @sakes = all_bottles(params[:all_bottles]).order(sort_key => sort_order)
   end
 
   # GET /sakes/1
@@ -70,6 +74,11 @@ class SakesController < ApplicationController
   end
 
   private
+
+  # flagがないときは、空瓶を除外したSakeモデルを取得して返す
+  def all_bottles(flag)
+    flag.blank? ? Sake.where.not(bottle_level: :empty) : Sake.all
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_sake

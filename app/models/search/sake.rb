@@ -5,7 +5,6 @@ module Search
     def filter
       results = ::Sake.all
       results = word_filter(results) if word.present?
-      results = exclude(results, "bottle_level", "2") if only_in_stock?
       results
     end
 
@@ -16,10 +15,6 @@ module Search
       result2 = contain(data, "kura", word)
       result3 = contain(data, "tokutei_meisho", word)
       result1.or(result2).or(result3)
-    end
-
-    def only_in_stock?
-      value_to_boolean(only_in_stock)
     end
   end
 end

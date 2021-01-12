@@ -1,7 +1,4 @@
 ja:
-  index:
-    stocked: 在庫あり
-    filter: 検索
   message:
     delete: 本当に削除しますか？
   helpers:
@@ -23,6 +20,8 @@ ja:
   sakes:
     index:
       title: 日本酒リスト
+      filter: 検索
+      all_bottles: 空瓶を表示
     new:
       title: 新規登録
     edit:
