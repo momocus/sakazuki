@@ -45,7 +45,8 @@
           </canvas>
         </td>
         <td class="col-lg-3 col-md-6 col-11" style="text-align: center">
-        <%# Hack: 画像を置くセルの縦横比がだいたい2:1、画像自体の縦横比が1:1なので、画像の横幅を50%にすることで行が縦長になるのを防ぐ %>
+          <%# Hack: セルの縦横比が約2:1、サムネイル画像の縦横比が1:1である。 %>
+          <%#       そこで、セルの50%幅を指定することでセルが縦長になるのを防ぐ %>
           <%= if sake.photos.any?
                 cl_image_tag(sake.photos.first.image.thumb.url, { class: "img-fulid", style: "width: 50%" })
               end %>
