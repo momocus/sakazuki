@@ -26,7 +26,8 @@
       <span class="badge badge-secondary"><%= t("helpers.badge.obligation") %></span>
     </div>
     <div class="col">
-      <%= form.text_field :kura, { class: "form-control" } %>
+      <%= form.text_field :kura, { class: "form-control", autocomplete: "on", list: "sakagura" } %>
+      <%= render "sakagura-datalist" %>
     </div>
   </div>
 
