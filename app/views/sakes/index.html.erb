@@ -29,12 +29,12 @@
     <% @sakes.each do |sake| %>
       <tr class="row m-0 clickable" data-sake-id="<%= sake.id %>">
         <td class="col-lg-6 col-12">
-          <div class="row m-0">
+          <div class="row m-0 border-bottom">
             <div class="col p-0">
               <%= sake.name %>
             </div>
           </div>
-          <div class="row m-0 mt-2">
+          <div class="row m-0 mt-2 border-bottom">
             <div class="col p-0">
               <%= sake.tokutei_meisho_i18n %>
             </div>
