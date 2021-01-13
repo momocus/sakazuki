@@ -29,15 +29,8 @@
       <%= form.text_field :kura, { class: "form-control", autocomplete: "on", list: "sakagura" } %>
       <%= render "sakagura-datalist" %>
     </div>
-  </div>
-
-  <div class="form-group row">
-    <%= form.label :todofuken, { class: "sakazuki-badged-label" } %>
-    <div class="sakazuki-badge">
-      <span class="badge badge-secondary"><%= t("helpers.badge.obligation") %></span>
-    </div>
-    <div class="col">
-      <%= form.text_field :todofuken, { class: "form-control" } %>
+    <div>
+      <%= form.text_field(:todofuken, { class: "form-control", hidden: true }) %>
     </div>
   </div>
 
