@@ -95,13 +95,13 @@ class SakesController < ApplicationController
     Date.new(by_year, 7)
   end
 
+  # DBの蔵名に（県名）をつけて_formの描画でつかう形にする
   def add_todofuken(kura, todofuken)
-    # _formの描画では、dbのデータに（県名）をつける
     "#{kura}（#{todofuken}）"
   end
 
+  # _formでの蔵名（県名）から県名を取り除いてDBへ保存する形にする
   def strip_todofuken(kura)
-    # _formから（県名）を取り除いてから、dbへデータを保存する
     kura.gsub(/（.*）/, "")
   end
 
