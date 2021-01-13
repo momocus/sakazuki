@@ -29,12 +29,15 @@ class SakesController < ApplicationController
   end
 
   # GET /sakes/1/edit
-  def edit; end
+  def edit
+    @sake.kura = add_todofuken(@sake.kura, @sake.todofuken)
+  end
 
   # POST /sakes
   # POST /sakes.json
   def create
     @sake = Sake.new(sake_params)
+    @sake.kura = strip_todofuken(@sake.kura)
 
     respond_to do |format|
       if @sake.save
@@ -49,6 +52,9 @@ class SakesController < ApplicationController
   # PATCH/PUT /sakes/1
   # PATCH/PUT /sakes/1.json
   def update
+    # sake_paramsを変更してもデータは変わらない
+    params["sake"]["kura"] = strip_todofuken(params["sake"]["kura"])
+
     respond_to do |format|
       if @sake.update(sake_params)
         delete_photos
@@ -87,6 +93,16 @@ class SakesController < ApplicationController
     by_year = date.year - (date.month >= 7 ? 0 : 1)
     # BYは年のみ、使わない月日はBY始まりの7/1とする
     Date.new(by_year, 7)
+  end
+
+  def add_todofuken(kura, todofuken)
+    # _formの描画では、dbのデータに（県名）をつける
+    "#{kura}（#{todofuken}）"
+  end
+
+  def strip_todofuken(kura)
+    # _formから（県名）を取り除いてから、dbへデータを保存する
+    kura.gsub(/（.*）/, "")
   end
 
   # Use callbacks to share common setup or constraints between actions.
