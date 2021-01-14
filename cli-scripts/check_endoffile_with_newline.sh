@@ -1,13 +1,16 @@
 #!/bin/bash
 
 # 対象ファイルのリスト
-#   一部パスを除外している
-#   対象は拡張子で指定している
-files=$(find . \
-             -not -path "./node_modules/*" -not -path "./public/*" \
-             -not -path "./vendor/*" -not -path "./tmp/*" \
-             -type f \
-             -regex '.*\.\(rb\|erb\|html\|css\|scss\|json\|js\|ts\|yml\|md\)')
+#   Gitの管理下でcacheされているファイルを対象とする
+#   除外するファイルは以下
+#     - Railsによる空ディレクトリキープのための.keep
+#     - 画像ファイル
+#     - 暗号化された.yml.enc
+files=$(git ls-files | \
+            grep --invert-match '\.keep$' | \
+            grep --invert-match '\.png$' | \
+            grep --invert-match '\.ico$' | \
+            grep --invert-match '\.yml\.enc$')
 
 error_files=""
 for file in ${files}; do
