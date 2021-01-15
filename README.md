@@ -78,7 +78,7 @@ cloudinary:
   - `heroku config:set RAILS_MASTER_KEY=`cat config/credentials/production.key`
     - ※production.keyファイルはメーラとCloudinaryの設定をしたときに作られる。
 
-## Dockerの場合
+## How to use with Docker
 
 - 初回
 ```sh
