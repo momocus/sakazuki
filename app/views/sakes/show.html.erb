@@ -245,12 +245,12 @@
 <div class="row justify-content-center">
   <%= link_to(t("helpers.submit.edit"),
               edit_sake_path(@sake),
-              { class: "btn btn-primary mx-2" }) %>
+              { class: "btn btn-primary mx-3" }) %>
   <%= link_to(t("helpers.submit.delete"),
               @sake,
               method: :delete,
               data: { confirm: t("message.delete") },
-              class: "btn btn-danger mx-2") %>
+              class: "btn btn-danger mx-3") %>
 </div>
 
 <%= javascript_pack_tag "sakes_show" %>
