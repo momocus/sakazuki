@@ -11,6 +11,7 @@ COPY Gemfile.lock /sakazuki/Gemfile.lock
 RUN bundle install -j4
 
 COPY package.json /sakazuki/package.json
+COPY yarn.lock /sakazuki/yarn.lock
 RUN yarn
 
 COPY . /sakazuki
