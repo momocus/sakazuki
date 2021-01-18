@@ -8,9 +8,10 @@
 
 # Requirements
 
-- Ruby >= 2.7.1
-- Rails >= 6.0.3.2
+- Ruby = 2.7.2
+- Bundler
 - Yarn🐈 >= 1.22.4
+- Node.js >= 12.20.1
 - PostgreSQL >= 12.0
 
 # How to use
