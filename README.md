@@ -84,4 +84,7 @@ cloudinary:
 
 # How to Contribute
 
-- まだ
+- GitHubのIssue/Pull Requestにて受けつけています
+    - 現状では少数開発なので、受け入れるレベルは明確化されていません
+- Pull RequestはGitHubActionsを通してください
+    - 手動でチェックを走らせる場合は`cli-scripts/run-all-checks.sh`で実行できます
