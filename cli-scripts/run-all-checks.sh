@@ -8,12 +8,15 @@ cd $(cd $(dirname $0); pwd)/../ # cd to project root
 echo "##### Run EOF Check"
 ./cli-scripts/check_endoffile_with_newline.sh
 
-# js-ts
+# node packages
 
 echo "##### Run ESLint"
-yarn lint
+yarn lint-ts
 
-# ruby
+echo "##### Run markdownlint"
+yarn lint-md
+
+# gems
 
 echo "##### Run Rubocop"
 bundle exec rubocop
