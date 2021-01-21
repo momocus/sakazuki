@@ -26,3 +26,5 @@ jobs:
         yarn lint-ts
     - name: Run Markdownlint
         yarn lint-md
+    - name: Run Stylelint
+        yarn lint-style
