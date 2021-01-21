@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# exit by error
-set -e
+set -e # exit by error
+cd $(cd $(dirname $0); pwd)/../ # cd to project root
 
 # generic
 
 echo "##### Run EOF Check"
-$(cd $(dirname $0); pwd)/check_endoffile_with_newline.sh
+./cli-scripts/check_endoffile_with_newline.sh
 
 # js-ts
 
