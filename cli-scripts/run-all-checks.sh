@@ -26,3 +26,8 @@ bundle exec rubocop
 
 echo "##### Run ERBLint"
 bundle exec erblint --lint-all
+
+# docker
+
+echo "##### Run Hadolint"
+hadolint Dockerfile
