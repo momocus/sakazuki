@@ -94,6 +94,14 @@ cloudinary:
 
 ## How to build Docker image
 
+- 環境変数の設定（.env）
+```sh
+# .env
+POSTGRESQL_NAME=your_postgresql_name
+POSTGRESQL_PASS=your_postgresql_password
+POSTGRESQL_HOST=db # 追加
+```
+
 - Dockerイメージのビルド
 
 ```console
@@ -113,17 +121,6 @@ $ docker-compose run --rm web bundle exec rails db:seed
 ```
 
 - Dockerイメージの起動
-
-```yaml
-development:
-  <<: *default
-  database: sakazuki_development
-  host: db # 追加
-  username: postgres # 追加
-  password: password # 追加
-```
-
-- 起動
 
 ```console
 $ docker-compose up
