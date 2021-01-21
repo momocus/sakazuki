@@ -16,6 +16,9 @@ yarn lint-ts
 echo "##### Run markdownlint"
 yarn lint-md
 
+echo "##### Run stylelint"
+yarn lint-style
+
 # gems
 
 echo "##### Run Rubocop"
