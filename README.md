@@ -21,11 +21,13 @@
     - `yarn install --check-files`
 - PostgreSQLのユーザの設定
     - PostgreSQLへの接続に使われる
+
 ```shell
 # .envファイルに記載 or 環境変数に設定
 POSTGRESQL_NAME=your_postgresql_name
 POSTGRESQL_PASS=your_postgresql_password
 ```
+
 - 最初のユーザの設定
     - `bundle exec rails db:seed`
 - サーバの起動
@@ -33,6 +35,7 @@ POSTGRESQL_PASS=your_postgresql_password
 - http://localhost:3000/ へアクセスする
 - 最初の管理者ユーザの設定（オプション）
     - Sakazukiへのログインに使われる
+
 ```ruby
 # db/seed.rb
 User.create!(
@@ -41,6 +44,7 @@ User.create!(
   admin: true,
 )
 ```
+
 - ログイン
     - メールアドレス: `example@example.com`
     - パスワード: `rootroot`
@@ -56,6 +60,7 @@ User.create!(
 
 - メーラの設定
     - ユーザのメールアドレスに通知するために使われる
+
 ```yaml
 # config/credentials/production.yml.enc
 # EDITOR="好きなエディタ" bin/rails credentials:edit --environment production にて開く
@@ -66,8 +71,10 @@ mail:
      user_name: "your_mail_address@gmail.com"
      password: "your_gmail_password"
 ```
+
 - Cloudinaryの設定
-  - 画像アップロード用のクラウドサービスCloudinaryの接続に使われる。
+    - 画像アップロード用のクラウドサービスCloudinaryの接続に使われる。
+
 ```yaml
 # config/credentials/production.yml.enc
 # EDITOR="好きなエディタ" bin/rails credentials:edit --environment production にて開く
@@ -78,10 +85,11 @@ cloudinary:
      enhance_image_tag: true
      static_file_support: false
 ```
+
 - CredentialsのKeyを登録
-  - Credentialsで暗号化されたファイルを復号するためのKeyを登録する。
-  - `heroku config:set RAILS_MASTER_KEY=`cat config/credentials/production.key`
-    - ※production.keyファイルはメーラとCloudinaryの設定をしたときに作られる。
+    - Credentialsで暗号化されたファイルを復号するためのKeyを登録する。
+    - `heroku config:set RAILS_MASTER_KEY=`cat config/credentials/production.key`
+        - ※production.keyファイルはメーラとCloudinaryの設定をしたときに作られる。
 
 # How to Contribute
 
