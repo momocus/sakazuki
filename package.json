@@ -23,10 +23,16 @@
     "eslint": "^7.6.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "markdownlint-cli": "^0.26.0",
     "prettier": "^2.0.5",
+    "stylelint": "^13.9.0",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-scss": "^3.18.0",
     "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./app/javascript/packs/"
+    "lint-ts": "eslint --ext .js,.jsx,.ts,.tsx ./app/javascript/packs/",
+    "lint-md": "markdownlint README.md",
+    "lint-style": "stylelint '**/*.scss' '**/*.css'"
   }
 }

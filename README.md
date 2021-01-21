@@ -1,12 +1,12 @@
+# Sakazuki
+
 ![Generic Checks](https://github.com/momocus/sakazuki/workflows/Generic%20Checks/badge.svg)
 ![JavaScript and TypeScript](https://github.com/momocus/sakazuki/workflows/JavaScript%20and%20TypeScript/badge.svg)
 ![Ruby](https://github.com/momocus/sakazuki/workflows/Ruby/badge.svg)
 
-# Sakazuki
-
 自宅の酒を管理するアプリケーション
 
-# Requirements
+## Requirements
 
 - Ruby = 2.7.2
 - Bundler
@@ -14,13 +14,13 @@
 - Node.js >= 12.20.1
 - PostgreSQL >= 12.0
 
-# How to use
+## How to use
 
 - 依存関係のインストール
-    - `bundle install`
-    - `yarn install --check-files`
+  - `bundle install`
+  - `yarn install --check-files`
 - PostgreSQLのユーザの設定
-    - PostgreSQLへの接続に使われる
+  - PostgreSQLへの接続に使われる
 
 ```shell
 # .envファイルに記載 or 環境変数に設定
@@ -29,12 +29,12 @@ POSTGRESQL_PASS=your_postgresql_password
 ```
 
 - 最初のユーザの設定
-    - `bundle exec rails db:seed`
+  - `bundle exec rails db:seed`
 - サーバの起動
-    - `bundle exec rails server`
-- http://localhost:3000/ へアクセスする
+  - `bundle exec rails server`
+- [http://localhost:3000/]へアクセスする
 - 最初の管理者ユーザの設定（オプション）
-    - Sakazukiへのログインに使われる
+  - Sakazukiへのログインに使われる
 
 ```ruby
 # db/seed.rb
@@ -46,20 +46,20 @@ User.create!(
 ```
 
 - ログイン
-    - メールアドレス: `example@example.com`
-    - パスワード: `rootroot`
-    - または前項で書き換えた内容でログイン
+  - メールアドレス: `example@example.com`
+  - パスワード: `rootroot`
+  - または前項で書き換えた内容でログイン
 - localユーザの設定
-    - まだ
+  - まだ
 - 送信メールの確認
-    - http://localhost:3000/letter_opener にアクセス
+  - [http://localhost:3000/letter_opener]にアクセス
 
-# How to deploy to heroku
+## How to deploy to heroku
 
 本番環境では、実際にメールの送受信をする、画像をCloudinaryにアップロードするという点が開発環境と異なる。デプロイする前にこれらの設定が必要。
 
 - メーラの設定
-    - ユーザのメールアドレスに通知するために使われる
+  - ユーザのメールアドレスに通知するために使われる
 
 ```yaml
 # config/credentials/production.yml.enc
@@ -73,7 +73,7 @@ mail:
 ```
 
 - Cloudinaryの設定
-    - 画像アップロード用のクラウドサービスCloudinaryの接続に使われる。
+  - 画像アップロード用のクラウドサービスCloudinaryの接続に使われる。
 
 ```yaml
 # config/credentials/production.yml.enc
@@ -87,13 +87,13 @@ cloudinary:
 ```
 
 - CredentialsのKeyを登録
-    - Credentialsで暗号化されたファイルを復号するためのKeyを登録する。
-    - `heroku config:set RAILS_MASTER_KEY=`cat config/credentials/production.key`
-        - ※production.keyファイルはメーラとCloudinaryの設定をしたときに作られる。
+  - Credentialsで暗号化されたファイルを復号するためのKeyを登録する。
+  - `heroku config:set RAILS_MASTER_KEY=`cat config/credentials/production.key`
+    - ※production.keyファイルはメーラとCloudinaryの設定をしたときに作られる。
 
-# How to Contribute
+## How to Contribute
 
 - GitHubのIssue/Pull Requestにて受けつけています
-    - 現状では少数開発なので、受け入れるレベルは明確化されていません
+  - 現状では少数開発なので、受け入れるレベルは明確化されていません
 - Pull RequestはGitHubActionsを通してください
-    - 手動でチェックを走らせる場合は`cli-scripts/run-all-checks.sh`で実行できます
+  - 手動でチェックを走らせる場合は`cli-scripts/run-all-checks.sh`で実行できます

@@ -1,4 +1,4 @@
-name: JavaScript and TypeScript
+name: Checks by Node packages
 
 on: [push, pull_request]
 
@@ -23,4 +23,8 @@ jobs:
       run: yarn install
     - name: Run ESLint
       run:
-        yarn lint
+        yarn lint-ts
+    - name: Run Markdownlint
+        yarn lint-md
+    - name: Run Stylelint
+        yarn lint-style

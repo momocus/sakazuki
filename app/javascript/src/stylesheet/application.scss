@@ -2,6 +2,7 @@
 
 .container-fluid-with-maxwidth {
   @extend .container-fluid;
+
   max-width: 1140px;
 }
 
@@ -49,6 +50,7 @@
 // Ruby on Railsが生成するエラー用スタイルなので、アンダーバーのままにする
 .field_with_errors {
   display: contents;
+
   input {
     @extend .is-invalid;
   }
