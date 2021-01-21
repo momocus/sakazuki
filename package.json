@@ -28,6 +28,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./app/javascript/packs/"
+    "lint-ts": "eslint --ext .js,.jsx,.ts,.tsx ./app/javascript/packs/",
+    "lint-md": "markdownlint README.md"
   }
 }
