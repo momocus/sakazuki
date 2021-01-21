@@ -20,6 +20,7 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: db
 
 development:
   <<: *default
@@ -29,10 +30,10 @@ development:
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  username: <%= ENV["POSTGRESQL_NAME"] %>
+  username: postgres
 
   # The password associated with the postgres role (username).
-  password: <%= ENV["POSTGRESQL_PASS"] %>
+  password: password
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -58,8 +59,8 @@ development:
 test:
   <<: *default
   database: sakazuki_test
-  username: <%= ENV["POSTGRESQL_NAME"] %>
-  password: <%= ENV["POSTGRESQL_PASS"] %>
+  username: postgres
+  password: password
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
