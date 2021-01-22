@@ -10,6 +10,8 @@ class SakesController < ApplicationController
     sort_key = empty_to_default(params[:sort], "id").intern
     sort_order = params[:order] == "asc" ? :asc : :desc
     @sakes = all_bottles(params[:all_bottles]).order(sort_key => sort_order)
+    @searched = @sakes.ransack(params[:q])
+    @sakes = @searched.result(distinct: true)
   end
 
   # GET /sakes/1
