@@ -75,13 +75,6 @@ class SakesController < ApplicationController
     end
   end
 
-  def filter
-    filter_sake_params = params[:filter].present? ? filter_params : nil
-    @sake = Search::Sake.new(filter_sake_params)
-    @sakes = @sake.filter
-    render :index
-  end
-
   private
 
   # flagがないときは、空瓶を除外したSakeモデルを取得して返す
@@ -116,10 +109,6 @@ class SakesController < ApplicationController
                   :warimizu, :moto, :seimai_buai, :roka,
                   :shibori, :note, :bottle_level, :hiire,
                   :size, :price)
-  end
-
-  def filter_params
-    params.require(:filter).permit(:word, :only_in_stock)
   end
 
   def store_photos

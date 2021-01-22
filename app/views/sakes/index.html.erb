@@ -2,11 +2,6 @@
 
 <div class="row">
   <div class="col">
-    <%= form_with scope: :filter, url: filter_sakes_path, method: :get, local: true, class: "form-inline my-1" do |f| %>
-      <%= f.label "search", class: "sr-only" %>
-      <%= f.text_field :word, placeholder: "Search", class: "form-control mr-sm-2" %>
-      <%= f.submit t(".filter"), class: "btn btn-secondary" %>
-    <% end %>
   </div>
   <div class="col-md-6 col-12">
     <div class="btn-group my-1 float-md-right" role="group" aria-label="Sort">
