@@ -1,15 +1,15 @@
 <h2><%= t(".title") %></h2>
 
-<div class="row">
+<div class="row my-1">
   <div class="col">
-    <%= search_form_for @searched, { class: "form-inline my-1" } do |f| %>
+    <%= search_form_for @searched, { class: "form-inline" } do |f| %>
       <%= f.search_field(:aroma_impression_or_awa_or_color_or_genryomai_or_kakemai_or_kobo_or_kura_or_name_or_nigori_or_note_or_roka_or_season_or_shibori_or_taste_impression_or_todofuken_cont,
                          { class: "form-control mr-sm-2" }) %>
       <%= f.submit({ class: "btn btn-secondary" }) %>
     <% end %>
   </div>
   <div class="col-md-6 col-12">
-    <div class="btn-group my-1 float-md-right" role="group" aria-label="Sort">
+    <div class="btn-group float-md-right" role="group" aria-label="Sort">
       <%= link_to(t("activerecord.attributes.sake.tokutei_meisho"),
                   sakes_path({ sort: "tokutei_meisho" }),
                   { class: "btn btn-info" }) %>
