@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/ClassLength
 class SakesController < ApplicationController
   before_action :set_sake, only: %i[show edit update destroy]
   before_action :signed_in_user, only: %i[new create edit update destroy]
@@ -6,13 +7,21 @@ class SakesController < ApplicationController
 
   # GET /sakes
   # GET /sakes.json
+  # rubocop:disable Metrics/AbcSize
   def index
-    sort_key = empty_to_default(params[:sort], "id").intern
-    sort_order = params[:order] == "asc" ? :asc : :desc
-    @sakes = all_bottles(params[:all_bottles]).order(sort_key => sort_order)
+    # SORT
+    sort_conf = make_sort_conf(params[:sort], params[:order])
+    @sakes = all_bottles(params[:all_bottles]).order(sort_conf)
+
+    # SEARCH
+    if params[:q].present?
+      @search_input = params[:q].delete(search_query)
+      params[:q][:groupings] = separate_words(@search_input)
+    end
     @searched = @sakes.ransack(params[:q])
     @sakes = @searched.result(distinct: true)
   end
+  # rubocop:enable Metrics/AbcSize
 
   # GET /sakes/1
   # GET /sakes/1.json
@@ -84,6 +93,22 @@ class SakesController < ApplicationController
     flag.blank? ? Sake.where.not(bottle_level: :empty) : Sake.all
   end
 
+  def make_sort_conf(key, order)
+    sort_key = empty_to_default(key, "id").intern
+    sort_order = order == "asc" ? :asc : :desc
+    { sort_key => sort_order }
+  end
+
+  def separate_words(words)
+    separated = []
+    # 全角空白または半角空白で区切ることを許可
+    words.split(/[ 　]/).each_with_index do |word, i|
+      # { :name_cont => "" }があり得るがransackがSQL変換で削除するのでOK
+      separated[i] = { search_query => word }
+    end
+    separated
+  end
+
   # DBの蔵名に（県名）をつけて_formの描画でつかう形にする
   def add_todofuken(kura, todofuken)
     "#{kura}（#{todofuken}）"
@@ -124,3 +149,4 @@ class SakesController < ApplicationController
     end
   end
 end
+# rubocop:enable Metrics/ClassLength
