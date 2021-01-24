@@ -89,12 +89,6 @@ class SakesController < ApplicationController
     flag.blank? ? Sake.where.not(bottle_level: :empty) : Sake.all
   end
 
-  def to_by(date)
-    by_year = date.year - (date.month >= 7 ? 0 : 1)
-    # BYは年のみ、使わない月日はBY始まりの7/1とする
-    Date.new(by_year, 7)
-  end
-
   # DBの蔵名に（県名）をつけて_formの描画でつかう形にする
   def add_todofuken(kura, todofuken)
     "#{kura}（#{todofuken}）"
