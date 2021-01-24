@@ -49,6 +49,11 @@ def request_todofuken
   regions
 end
 
+# 酒蔵の社名の変更を適用する
+def fix_sakagura_name(name)
+  name.gsub(/阿部勘酒造店/, "阿部勘酒造株式会社")
+end
+
 # SakeTimesの酒蔵一覧を取得し、ファイルにNDJSON形式で保存する
 # rubocop:disable Metrics/MethodLength
 def write_ndjson(regions)
@@ -59,7 +64,8 @@ def write_ndjson(regions)
       html = URI.parse(url).open
       doc = Nokogiri::HTML(html).css("table span.main a")
       doc.each do |table|
-        JSON.dump({ id: index, name: table.content, region: regions[url] }, f)
+        name = fix_sakagura_name(table.content)
+        JSON.dump({ id: index, name: name, region: regions[url] }, f)
         f.write("\n")
         index += 1
       end
