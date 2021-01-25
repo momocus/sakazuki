@@ -1,4 +1,3 @@
-# rubocop:disable Metrics/ClassLength
 class SakesController < ApplicationController
   before_action :set_sake, only: %i[show edit update destroy]
   before_action :signed_in_user, only: %i[new create edit update destroy]
@@ -100,13 +99,9 @@ class SakesController < ApplicationController
   end
 
   def separate_words(words)
-    separated = []
     # 全角空白または半角空白で区切ることを許可
-    words.split(/[ 　]/).each_with_index do |word, i|
-      # { :name_cont => "" }があり得るがransackがSQL変換で削除するのでOK
-      separated[i] = { search_query => word }
-    end
-    separated
+    # { :name_cont => "" }があり得るがransackがSQL変換で削除するのでOK
+    words.split(/[ 　]/).map { |word| { search_query => word } }
   end
 
   # DBの蔵名に（県名）をつけて_formの描画でつかう形にする
@@ -149,4 +144,3 @@ class SakesController < ApplicationController
     end
   end
 end
-# rubocop:enable Metrics/ClassLength
