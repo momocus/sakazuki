@@ -86,3 +86,6 @@ gem "cloudinary"
 
 # For complex search
 gem "ransack"
+
+# Pagination
+gem "kaminari"
