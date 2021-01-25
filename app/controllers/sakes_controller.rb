@@ -144,10 +144,14 @@ class SakesController < ApplicationController
     end
   end
 
+  def exist_search_query?(params_q)
+    params_q.present? && params_q[search_query].present?
+  end
+
   # ransackで検索するため、params[:q][search_query]を@search_inputに退避し
   # params[:q][:groupings]に検索キーワードを当てはめる
   def rewrite_search_query!
-    return if params[:q].blank?
+    return unless exist_search_query?(params[:q])
 
     @search_input = params[:q].delete(search_query)
     params[:q][:groupings] = separate_words(@search_input)
@@ -156,7 +160,7 @@ class SakesController < ApplicationController
   # ページ遷移後も検索ボックスに検索キーワードを残すために、
   # @search_inputに退避していたparams[:q][search_query]を復元する
   def rebase_search_query!
-    return if params[:q].blank?
+    return unless exist_search_query?(params[:q])
 
     params[:q][search_query] = @search_input
   end
