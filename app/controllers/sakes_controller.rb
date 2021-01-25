@@ -19,6 +19,7 @@ class SakesController < ApplicationController
     end
     @searched = @sakes.ransack(params[:q])
     @sakes = @searched.result(distinct: true)
+                      .page(params[:page])
   end
   # rubocop:enable Metrics/AbcSize
 
