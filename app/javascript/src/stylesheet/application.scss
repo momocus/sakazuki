@@ -47,6 +47,12 @@
   @extend .col-12;
 }
 
+// Ransackが生成するスタイルにbootstrapを適用する
+.btn-group .sort_link {
+  @extend .btn;
+  @extend .btn-info;
+}
+
 // Ruby on Railsが生成するエラー用スタイルなので、アンダーバーのままにする
 .field_with_errors {
   display: contents;

@@ -13,15 +13,18 @@
   </div>
   <div class="col-md-6 col-12">
     <div class="btn-group float-md-right" role="group" aria-label="Sort">
-      <%= link_to(t("activerecord.attributes.sake.tokutei_meisho"),
-                  sakes_path({ sort: "tokutei_meisho" }),
-                  { class: "btn btn-info" }) %>
-      <%= link_to(t("activerecord.attributes.sake.todofuken"),
-                  sakes_path({ sort: "todofuken" }),
-                  { class: "btn btn-info" }) %>
-      <%= link_to(t("activerecord.attributes.sake.bottle_level"),
-                  sakes_path({ sort: "bottle_level" }),
-                  { class: "btn btn-info" }) %>
+      <%= sort_link(@searched,
+                    :tokutei_meisho,
+                    t("activerecord.attributes.sake.tokutei_meisho"),
+                    default_order: :desc) %>
+      <%= sort_link(@searched,
+                    :todofuken,
+                    t("activerecord.attributes.sake.todofuken"),
+                    default_order: :desc) %>
+      <%= sort_link(@searched,
+                    :bottle_level,
+                    t("activerecord.attributes.sake.bottle_level"),
+                    default_order: :desc) %>
     </div>
   </div>
 </div>
