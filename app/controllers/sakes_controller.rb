@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/ClassLength
 class SakesController < ApplicationController
   before_action :set_sake, only: %i[show edit update destroy]
   before_action :signed_in_user, only: %i[new create edit update destroy]
@@ -13,13 +14,11 @@ class SakesController < ApplicationController
     @sakes = all_bottles(params[:all_bottles]).order(sort_conf)
 
     # SEARCH
-    if params[:q].present?
-      @search_input = params[:q].delete(search_query)
-      params[:q][:groupings] = separate_words(@search_input)
-    end
+    rewrite_search_query!
     @searched = @sakes.ransack(params[:q])
     @sakes = @searched.result(distinct: true)
                       .page(params[:page])
+    rebase_search_query!
   end
   # rubocop:enable Metrics/AbcSize
 
@@ -144,4 +143,22 @@ class SakesController < ApplicationController
       photo.destroy if params[photo.chackbox_name] == "delete"
     end
   end
+
+  # ransackで検索するため、params[:q][search_query]を@search_inputに退避し
+  # params[:q][:groupings]に検索キーワードを当てはめる
+  def rewrite_search_query!
+    return if params[:q].blank?
+
+    @search_input = params[:q].delete(search_query)
+    params[:q][:groupings] = separate_words(@search_input)
+  end
+
+  # ページ遷移後も検索ボックスに検索キーワードを残すために、
+  # @search_inputに退避していたparams[:q][search_query]を復元する
+  def rebase_search_query!
+    return if params[:q].blank?
+
+    params[:q][search_query] = @search_input
+  end
 end
+# rubocop:enable Metrics/ClassLength

@@ -3,9 +3,11 @@
 <div class="row my-1">
   <div class="col">
     <%= search_form_for @searched, { class: "form-inline" } do |f| %>
-      <%= f.search_field(search_query,
-                         { class: "form-control mr-sm-2",
-                           value: @search_input }) %>
+      <%= f.search_field(
+            search_query,
+            { class: "form-control mr-sm-2",
+              value: params[:q].present? && params[:q][search_query].present? ? params[:q][search_query] : "" },
+          ) %>
       <%= f.submit({ class: "btn btn-secondary" }) %>
     <% end %>
   </div>
