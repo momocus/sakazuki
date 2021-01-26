@@ -94,12 +94,13 @@ cloudinary:
 
 ## How to build Docker image
 
-- 環境変数の設定（.env）
-```sh
+- ローカルな環境変数の設定ファイル（.env）を作成
+
+```shell
 # .env
-POSTGRESQL_NAME=your_postgresql_name
-POSTGRESQL_PASS=your_postgresql_password
-POSTGRESQL_HOST=db # 追加
+POSTGRESQL_NAME=postgres
+POSTGRESQL_PASS=password
+POSTGRESQL_HOST=db
 ```
 
 - Dockerイメージのビルド
