@@ -1,16 +1,25 @@
 version: "3.9"
+volumes:
+  db_storage:
+    driver:
+      local
 services:
   db:
+    env_file:
+      - .env
     image: postgres
     volumes:
-      - ./tmp/db:/var/lib/postgresql/data
+      - db_storage:/var/lib/postgresql/data
     environment:
-      POSTGRES_PASSWORD: password
+      POSTGRES_PASSWORD: ${POSTGRESQL_PASS}
+    ports:
+      - "5432:5432"
+    hostname: ${POSTGRESQL_HOST}
   web:
+    env_file:
+      - .env
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
-    volumes:
-      - .:/sakazuki
     ports:
       - "3000:3000"
     depends_on:
