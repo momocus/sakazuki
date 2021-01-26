@@ -2,7 +2,7 @@
 
 <div class="row my-1">
   <div class="col">
-    <%= search_form_for @searched, { class: "form-inline" } do |f| %>
+    <%= search_form_for(@searched, { class: "form-inline" }) do |f| %>
       <%= f.search_field(search_query,
                          { class: "form-control mr-sm-2",
                            value: params.dig(:q, search_query) }) %>
@@ -52,16 +52,17 @@
         <%# HACK: col-12だとグラフが無限に大きくなったりグラフが縮まなくなる --%>
         <td class="col-lg-3 col-md-6 col-11">
           <canvas id="sake-<%= sake.id %>"
-                    data-taste-value="<%= sake.taste_value %>"
-                    data-aroma-value="<%= sake.aroma_value %>">
+                  data-taste-value="<%= sake.taste_value %>"
+                  data-aroma-value="<%= sake.aroma_value %>">
           </canvas>
         </td>
         <td class="col-lg-3 col-md-6 col-12" style="text-align: center">
           <%# Hack: セルの縦横比が約2:1、サムネイル画像の縦横比が1:1である。 %>
           <%#       そこで、セルの50%幅を指定することでセルが縦長になるのを防ぐ %>
-          <%= if sake.photos.any?
-                cl_image_tag(sake.photos.first.image.thumb.url, { class: "img-fulid", style: "width: 50%" })
-              end %>
+          <% if sake.photos.any? %>
+            <%= cl_image_tag(sake.photos.first.image.thumb.url,
+                             { class: "img-fulid", style: "width: 50%" }) %>
+          <% end %>
         </td>
       </tr>
     <% end %>
