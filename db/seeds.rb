@@ -13,4 +13,6 @@ User.create!(
   email: "example@example.com",
   password: "rootroot",
   admin: true,
+  # HACK: confirmed_atカラムに値が入っていれば、deviseが認証済みと判断する
+  confirmed_at: Time.current,
 )

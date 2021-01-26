@@ -42,6 +42,7 @@ User.create!(
   email: "<your emacs address>",      # この2行を
   password: "your account password>", # 編集する
   admin: true,
+  confirmed_at: Time.current,
 )
 ```
 
