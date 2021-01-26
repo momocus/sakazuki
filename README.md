@@ -94,15 +94,25 @@ cloudinary:
 
 ## How to build Docker image
 
-- 初回
-```sh
-docker-compose build
-docker-compose run --rm web bundle exec rails db:create
-docker-compose run --rm web bundle exec rails db:migrate
-docker-compose run --rm web bundle exec rails db:seed
+- Dockerイメージのビルド
+
+```console
+$ docker-compose build
+...
 ```
 
-- config/database.yml の編集
+- PostgreSQLコンテナの初期設定
+
+```console
+$ docker-compose run --rm web bundle exec rails db:create
+...
+$ docker-compose run --rm web bundle exec rails db:migrate
+...
+$ docker-compose run --rm web bundle exec rails db:seed
+...
+```
+
+- Dockerイメージの起動
 
 ```yaml
 development:
@@ -114,8 +124,10 @@ development:
 ```
 
 - 起動
-```
-docker-compose up
+
+```console
+$ docker-compose up
+...
 ```
 
 ## How to Contribute
