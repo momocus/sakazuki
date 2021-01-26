@@ -6,21 +6,16 @@ class SakesController < ApplicationController
 
   # GET /sakes
   # GET /sakes.json
-  # rubocop:disable Metrics/AbcSize
   def index
-    # SORT
-    sort_conf = make_sort_conf(params[:sort], params[:order])
-    @sakes = all_bottles(params[:all_bottles]).order(sort_conf)
+    # default sort
+    @sakes = all_bottles(params[:all_bottles]).order({ id: :desc })
 
-    # SEARCH
-    if params[:q].present?
-      @search_input = params[:q].delete(search_query)
-      params[:q][:groupings] = separate_words(@search_input)
-    end
-    @searched = @sakes.ransack(params[:q])
+    # search
+    query = params[:q].deep_dup
+    to_multi_search!(query) if exist_search?(query)
+    @searched = @sakes.ransack(query)
     @sakes = @searched.result(distinct: true)
   end
-  # rubocop:enable Metrics/AbcSize
 
   # GET /sakes/1
   # GET /sakes/1.json
@@ -92,10 +87,15 @@ class SakesController < ApplicationController
     flag.blank? ? Sake.where.not(bottle_level: :empty) : Sake.all
   end
 
-  def make_sort_conf(key, order)
-    sort_key = empty_to_default(key, "id").intern
-    sort_order = order == "asc" ? :asc : :desc
-    { sort_key => sort_order }
+  # query[search_query]が存在すればtrueを返す。
+  # queryがnil、または、query[search_query]がnilならばfalseを返す。
+  def exist_search?(query)
+    query.try(:[], search_query)
+  end
+
+  def to_multi_search!(query)
+    words = query.delete(search_query)
+    query[:groupings] = separate_words(words)
   end
 
   def separate_words(words)
