@@ -1,5 +1,6 @@
 module ApplicationHelper
-  def twitter_meta_tag
-    tag.meta name: "twitter:card", content: "summary_large_image"
+  def twitter_meta_tags
+    display_meta_tags(twitter: { card: "summary" },
+                      og: { title: "Sakazuki" })
   end
 end

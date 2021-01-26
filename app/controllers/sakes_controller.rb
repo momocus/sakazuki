@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/ClassLength
 class SakesController < ApplicationController
   before_action :set_sake, only: %i[show edit update destroy]
   before_action :signed_in_user, only: %i[new create edit update destroy]
@@ -19,7 +20,9 @@ class SakesController < ApplicationController
 
   # GET /sakes/1
   # GET /sakes/1.json
-  def show; end
+  def show
+    set_twitter_meta_tags
+  end
 
   def show_photo
     @photo = Photo.find(params[:photo_id])
@@ -114,6 +117,11 @@ class SakesController < ApplicationController
     kura.gsub(/（.*）/, "")
   end
 
+  def set_twitter_meta_tags
+    set_meta_tags(og: { title: "Sakazuki - #{@sake.name}" })
+    set_meta_tags(og: { image: @sake.photos.first.image.thumb.url }) if @sake.photos.any?
+  end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_sake
     @sake = Sake.find(params[:id])
@@ -144,3 +152,4 @@ class SakesController < ApplicationController
     end
   end
 end
+# rubocop:enable Metrics/ClassLength
