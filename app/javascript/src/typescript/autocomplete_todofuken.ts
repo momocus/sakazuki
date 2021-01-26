@@ -6,7 +6,7 @@ function stripKura(kuraTodofuken: String) {
   return todofuken == kuraTodofuken ? '' : todofuken
 }
 
-function setEvent() {
+function setKuraEvent() {
   const kuraForm = document.getElementById('sake_kura') as HTMLInputElement
   const todofukenForm = document.getElementById(
     'sake_todofuken'
@@ -21,5 +21,5 @@ function setEvent() {
 
 // Main
 {
-  setEvent()
+  setKuraEvent()
 }
