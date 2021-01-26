@@ -84,5 +84,8 @@ gem "seed_dump"
 gem "carrierwave"
 gem "cloudinary"
 
+# For twitter card
+gem "meta-tags"
+
 # For complex search
 gem "ransack"
