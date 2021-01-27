@@ -1,4 +1,3 @@
-# rubocop:disable Metrics/ClassLength
 class SakesController < ApplicationController
   before_action :set_sake, only: %i[show edit update destroy]
   before_action :signed_in_user, only: %i[new create edit update destroy]
@@ -7,13 +6,24 @@ class SakesController < ApplicationController
 
   # GET /sakes
   # GET /sakes.json
+  # rubocop:disable Metrics/AbcSize
   def index
+    # avoid nil
+    params[:q] = {} unless params[:q]
+
+    # default, not empty bottle
+    params[:q].merge!({ bottle_level_not_eq: 2 }) unless params.dig(:q, :bottle_level_not_eq)
+
+    # default, sort by id
+    params[:q].merge!({ s: "id desc" }) unless params.dig(:q, :s)
+
     # search
     query = params[:q].deep_dup
-    to_multi_search!(query) if exist_search?(query)
+    to_multi_search!(query) if query[search_query]
     @searched = Sake.ransack(query)
     @sakes = @searched.result(distinct: true)
   end
+  # rubocop:enable Metrics/AbcSize
 
   # GET /sakes/1
   # GET /sakes/1.json
@@ -82,12 +92,6 @@ class SakesController < ApplicationController
 
   private
 
-  # query[search_query]が存在すればtrueを返す。
-  # queryがnil、または、query[search_query]がnilならばfalseを返す。
-  def exist_search?(query)
-    query.try(:[], search_query)
-  end
-
   def to_multi_search!(query)
     words = query.delete(search_query)
     query[:groupings] = separate_words(words)
@@ -144,4 +148,3 @@ class SakesController < ApplicationController
     end
   end
 end
-# rubocop:enable Metrics/ClassLength
