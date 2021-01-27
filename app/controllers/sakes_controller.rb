@@ -19,7 +19,7 @@ class SakesController < ApplicationController
 
     # search
     query = params[:q].deep_dup
-    to_multi_search!(query) if query[search_query]
+    to_multi_search!(query) if query[:all_text_cont]
     @searched = Sake.ransack(query)
     @sakes = @searched.result(distinct: true)
   end
@@ -93,14 +93,14 @@ class SakesController < ApplicationController
   private
 
   def to_multi_search!(query)
-    words = query.delete(search_query)
+    words = query.delete(:all_text_cont)
     query[:groupings] = separate_words(words)
   end
 
   def separate_words(words)
     # 全角空白または半角空白で区切ることを許可
     # { :name_cont => "" }があり得るがransackがSQL変換で削除するのでOK
-    words.split(/[ 　]/).map { |word| { search_query => word } }
+    words.split(/[ 　]/).map { |word| { all_text_cont: word } }
   end
 
   # DBの蔵名に（県名）をつけて_formの描画でつかう形にする

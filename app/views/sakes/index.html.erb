@@ -3,9 +3,9 @@
 <div class="row my-1">
   <div class="col">
     <%= search_form_for(@searched, { class: "form-inline" }) do |f| %>
-      <%= f.search_field(search_query,
+      <%= f.search_field(:all_text_cont,
                          { class: "form-control mr-sm-2",
-                           value: params.dig(:q, search_query) }) %>
+                           value: params.dig(:q, :all_text_cont) }) %>
 
       <div class="custom-control custom-switch ml-sm-2 mr-2">
         <%= f.check_box(:bottle_level_not_eq,
