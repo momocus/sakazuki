@@ -11,10 +11,6 @@ linters:
     rubocop_config:
       inherit_from:
         - .rubocop.yml
-      # ERBでは120文字を採用する
-      Layout/LineLength:
-        Enabled: true
-        Max: 120
       # ERBでは<% %>が分離するため誤検知が多い
       # 以下、公式おすすめのオフ設定を持ってきた
       Layout/InitialIndentation:
