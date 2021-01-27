@@ -8,13 +8,10 @@ class SakesController < ApplicationController
   # GET /sakes
   # GET /sakes.json
   def index
-    # default sort
-    @sakes = all_bottles(params[:all_bottles]).order({ id: :desc })
-
     # search
     query = params[:q].deep_dup
     to_multi_search!(query) if exist_search?(query)
-    @searched = @sakes.ransack(query)
+    @searched = Sake.ransack(query)
     @sakes = @searched.result(distinct: true)
   end
 
@@ -84,11 +81,6 @@ class SakesController < ApplicationController
   end
 
   private
-
-  # flagがないときは、空瓶を除外したSakeモデルを取得して返す
-  def all_bottles(flag)
-    flag.blank? ? Sake.where.not(bottle_level: :empty) : Sake.all
-  end
 
   # query[search_query]が存在すればtrueを返す。
   # queryがnil、または、query[search_query]がnilならばfalseを返す。
