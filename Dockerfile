@@ -15,7 +15,6 @@ RUN bundle install -j4
 COPY package.json /sakazuki/package.json
 COPY yarn.lock /sakazuki/yarn.lock
 RUN yarn
-RUN yarn install --check-files
 
 COPY . /sakazuki
 
