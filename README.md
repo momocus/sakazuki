@@ -92,6 +92,42 @@ cloudinary:
   - `heroku config:set RAILS_MASTER_KEY=`cat config/credentials/production.key`
     - ※production.keyファイルはメーラとCloudinaryの設定をしたときに作られる。
 
+## How to build Docker image
+
+- ローカルな環境変数の設定ファイル（.env）を作成
+
+```shell
+# .env
+POSTGRESQL_NAME=postgres
+POSTGRESQL_PASS=password
+POSTGRESQL_HOST=db
+```
+
+- Dockerイメージのビルド
+
+```console
+$ docker-compose build
+...
+```
+
+- PostgreSQLコンテナの初期設定
+
+```console
+$ docker-compose run --rm web bundle exec rails db:create
+...
+$ docker-compose run --rm web bundle exec rails db:migrate
+...
+$ docker-compose run --rm web bundle exec rails db:seed
+...
+```
+
+- Dockerイメージの起動
+
+```console
+$ docker-compose up
+...
+```
+
 ## How to Contribute
 
 - GitHubのIssue/Pull Requestにて受けつけています
