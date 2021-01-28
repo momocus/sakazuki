@@ -10,7 +10,9 @@
       <div class="custom-control custom-switch ml-sm-2 mr-2">
         <%= f.check_box(:bottle_level_not_eq,
                         { class: "custom-control-input",
-                          id: "all_bottle_level" }, "-1", Sake.bottle_levels["empty"]) %>
+                          id: "all_bottle_level" },
+                        bottom_bottle,
+                        Sake.bottle_levels["empty"]) %>
         <%= f.label(t(".all_bottles"),
                     { class: "custom-control-label",
                       for: "all_bottle_level" }) %>

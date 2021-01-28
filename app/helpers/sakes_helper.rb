@@ -12,4 +12,9 @@ module SakesHelper
     # BYは年のみ、使わない月日はBY始まりの7/1とする
     Date.new(by_year, 7)
   end
+
+  # どの瓶状態（bottle_level）にもマッチしない値
+  def bottom_bottle
+    -1
+  end
 end

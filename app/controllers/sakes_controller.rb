@@ -12,7 +12,7 @@ class SakesController < ApplicationController
     params[:q] = {} unless params[:q]
 
     # default, not empty bottle
-    params[:q].merge!({ bottle_level_not_eq: 2 }) unless params.dig(:q, :bottle_level_not_eq)
+    params[:q].merge!({ bottle_level_not_eq: Sake.bottle_levels["empty"] }) unless params.dig(:q, :bottle_level_not_eq)
 
     # default, sort by id
     params[:q].merge!({ s: "id desc" }) unless params.dig(:q, :s)
