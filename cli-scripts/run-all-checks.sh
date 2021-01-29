@@ -3,35 +3,47 @@
 set -e # exit by error
 cd $(cd $(dirname $0); pwd)/../ # cd to project root
 
+NORMAL=$(tput sgr0)
+YELLOW=$(tput setaf 3)
+GRAY=$(tput setaf 8)
+
+function message() {
+    echo -e "$GRAY$*$NORMAL"
+}
+
+function warning() {
+    echo -e "$YELLOW$*$NORMAL"
+}
+
 # generic
 
-echo "##### Run EOF Check"
+message "##### Run EOF Check"
 ./cli-scripts/check_endoffile_with_newline.sh
 
 # node packages
 
-echo "##### Run ESLint"
+message "##### Run ESLint"
 yarn lint-ts
 
-echo "##### Run markdownlint"
+message "##### Run markdownlint"
 yarn lint-md
 
-echo "##### Run stylelint"
+message "##### Run stylelint"
 yarn lint-style
 
 # gems
 
-echo "##### Run Rubocop"
+message "##### Run Rubocop"
 bundle exec rubocop
 
-echo "##### Run ERBLint"
+message "##### Run ERBLint"
 bundle exec erblint --lint-all
 
 # docker
 
-echo "##### Run Hadolint"
+message "##### Run Hadolint"
 if type hadolint > /dev/null 2>&1; then
     hadolint Dockerfile
 else
-    echo "[SKIP] hadolint is not installed."
+    warning "[SKIP] hadolint is not installed."
 fi
