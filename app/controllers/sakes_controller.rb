@@ -1,4 +1,3 @@
-# rubocop:disable Metrics/ClassLength
 class SakesController < ApplicationController
   before_action :set_sake, only: %i[show edit update destroy]
   before_action :signed_in_user, only: %i[new create edit update destroy]
@@ -7,16 +6,24 @@ class SakesController < ApplicationController
 
   # GET /sakes
   # GET /sakes.json
+  # rubocop:disable Metrics/AbcSize
   def index
-    # default sort
-    @sakes = all_bottles(params[:all_bottles]).order({ id: :desc })
+    # avoid nil
+    params[:q] = {} unless params[:q]
+
+    # default, not empty bottle
+    params[:q].merge!({ bottle_level_not_eq: Sake.bottle_levels["empty"] }) unless params.dig(:q, :bottle_level_not_eq)
+
+    # default, sort by id
+    params[:q].merge!({ s: "id desc" }) unless params.dig(:q, :s)
 
     # search
     query = params[:q].deep_dup
-    to_multi_search!(query) if exist_search?(query)
-    @searched = @sakes.ransack(query)
+    to_multi_search!(query) if query[:all_text_cont]
+    @searched = Sake.ransack(query)
     @sakes = @searched.result(distinct: true)
   end
+  # rubocop:enable Metrics/AbcSize
 
   # GET /sakes/1
   # GET /sakes/1.json
@@ -85,26 +92,15 @@ class SakesController < ApplicationController
 
   private
 
-  # flagがないときは、空瓶を除外したSakeモデルを取得して返す
-  def all_bottles(flag)
-    flag.blank? ? Sake.where.not(bottle_level: :empty) : Sake.all
-  end
-
-  # query[search_query]が存在すればtrueを返す。
-  # queryがnil、または、query[search_query]がnilならばfalseを返す。
-  def exist_search?(query)
-    query.try(:[], search_query)
-  end
-
   def to_multi_search!(query)
-    words = query.delete(search_query)
+    words = query.delete(:all_text_cont)
     query[:groupings] = separate_words(words)
   end
 
   def separate_words(words)
     # 全角空白または半角空白で区切ることを許可
     # { :name_cont => "" }があり得るがransackがSQL変換で削除するのでOK
-    words.split(/[ 　]/).map { |word| { search_query => word } }
+    words.split(/[ 　]/).map { |word| { all_text_cont: word } }
   end
 
   # DBの蔵名に（県名）をつけて_formの描画でつかう形にする
@@ -152,4 +148,3 @@ class SakesController < ApplicationController
     end
   end
 end
-# rubocop:enable Metrics/ClassLength
