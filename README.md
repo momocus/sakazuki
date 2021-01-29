@@ -3,6 +3,7 @@
 ![Generic Checks](https://github.com/momocus/sakazuki/workflows/Generic%20Checks/badge.svg)
 ![Checks by Node packages](https://github.com/momocus/sakazuki/workflows/Checks%20by%20Node%20packages/badge.svg)
 ![Checks by Gems](https://github.com/momocus/sakazuki/workflows/Checks%20by%20Gems/badge.svg)
+![Check Dockerfile](https://github.com/momocus/sakazuki/workflows/Check%20Dockerfile/badge.svg)
 
 自宅の酒を管理するアプリケーション
 
