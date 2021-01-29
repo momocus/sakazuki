@@ -24,8 +24,8 @@
 
 ```shell
 # .envファイルに記載 or 環境変数に設定
-POSTGRESQL_NAME=your_postgresql_name
-POSTGRESQL_PASS=your_postgresql_password
+POSTGRES_USERNAME=your_postgresql_name
+POSTGRES_PASSWORD=your_postgresql_password
 ```
 
 - 最初のユーザの設定
@@ -98,9 +98,9 @@ cloudinary:
 
 ```shell
 # .env
-POSTGRESQL_NAME=postgres
-POSTGRESQL_PASS=password
-POSTGRESQL_HOST=db
+POSTGRES_USERNAME=postgres
+POSTGRES_PASSWORD=password
+POSTGRES_HOSTNAME=db
 ```
 
 - Dockerイメージのビルド

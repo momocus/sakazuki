@@ -11,10 +11,10 @@ services:
     volumes:
       - db_storage:/var/lib/postgresql/data
     environment:
-      POSTGRES_PASSWORD: ${POSTGRESQL_PASS}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - "5432:5432"
-    hostname: ${POSTGRESQL_HOST}
+    hostname: ${POSTGRES_HOSTNAME}
   web:
     env_file:
       - .env
