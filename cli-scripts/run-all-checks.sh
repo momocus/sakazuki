@@ -30,4 +30,8 @@ bundle exec erblint --lint-all
 # docker
 
 echo "##### Run Hadolint"
-hadolint Dockerfile
+if type hadolint > /dev/null 2>&1; then
+    hadolint Dockerfile
+else
+    echo "[SKIP] hadolint is not installed."
+fi
