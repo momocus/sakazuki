@@ -89,3 +89,6 @@ gem "meta-tags"
 
 # For complex search
 gem "ransack"
+
+# Pagination
+gem "kaminari"
