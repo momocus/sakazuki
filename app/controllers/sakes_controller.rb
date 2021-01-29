@@ -22,6 +22,7 @@ class SakesController < ApplicationController
     to_multi_search!(query) if query[:all_text_cont]
     @searched = Sake.ransack(query)
     @sakes = @searched.result(distinct: true)
+                      .page(params[:page])
   end
   # rubocop:enable Metrics/AbcSize
 
