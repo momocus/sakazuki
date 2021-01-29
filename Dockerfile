@@ -2,10 +2,14 @@ FROM ruby:2.7.2
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
-  && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+    && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
-  apt-get update -qq && apt-get install -y nodejs postgresql-client yarn
+    apt-get update -qq && \
+    apt-get install --no-install-recommends -y nodejs=12.* postgresql-client-11=11.* yarn=1.* && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 RUN mkdir /sakazuki
 WORKDIR /sakazuki
 COPY Gemfile /sakazuki/Gemfile
