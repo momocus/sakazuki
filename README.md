@@ -95,6 +95,8 @@ cloudinary:
 
 ## How to build Docker image
 
+レポジトリをDocker Bindするため、レポジトリをWSLファイルシステムに置くと動きません。
+
 - ローカルな環境変数の設定ファイル（.env）を作成
 
 ```shell
@@ -128,6 +130,8 @@ $ docker-compose run --rm web bundle exec rails db:seed
 $ docker-compose up
 ...
 ```
+
+- Gem/Node Packageの更新があった場合は、`docker-compose build`でイメージを更新する
 
 ## How to Contribute
 

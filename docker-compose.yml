@@ -1,13 +1,12 @@
 version: "3.9"
 volumes:
   db_storage:
-    driver:
-      local
+    driver: local
 services:
   db:
     env_file:
       - .env
-    image: postgres:11
+    image: postgres:13
     volumes:
       - db_storage:/var/lib/postgresql/data
     environment:
@@ -16,6 +15,11 @@ services:
       - "5432:5432"
     hostname: ${POSTGRES_HOSTNAME}
   web:
+    volumes:
+      - .:/sakazuki:cached
+      - /sakazuki/node_modules
+      - /sakazuki/log
+      - /sakazuki/tmp
     env_file:
       - .env
     build: .
