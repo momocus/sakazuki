@@ -3,6 +3,6 @@ ja:
     pagination:
       first: "<<"
       last: ">>"
-      previous: "<"
-      next: ">"
+      previous: "< 前へ"
+      next: "次へ >"
       truncate: "..."
