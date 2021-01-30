@@ -93,18 +93,9 @@ cloudinary:
   - `heroku config:set RAILS_MASTER_KEY=`cat config/credentials/production.key`
     - ※production.keyファイルはメーラとCloudinaryの設定をしたときに作られる。
 
-## How to build Docker image
+## How to develop with Docker
 
 レポジトリをDocker Bindするため、レポジトリをWSLファイルシステムに置くと動きません。
-
-- ローカルな環境変数の設定ファイル（.env）を作成
-
-```shell
-# .env
-POSTGRES_USERNAME=postgres
-POSTGRES_PASSWORD=password
-POSTGRES_HOSTNAME=db
-```
 
 - Dockerイメージのビルド
 
