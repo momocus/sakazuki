@@ -44,6 +44,8 @@ bundle exec erblint --lint-all
 message "##### Run Hadolint"
 if type hadolint > /dev/null 2>&1; then
     hadolint Dockerfile
+elif type docker > /dev/null 2>&1; then
+    docker run --rm -i hadolint/hadolint < Dockerfile
 else
     warning "[SKIP] hadolint is not installed."
 fi
