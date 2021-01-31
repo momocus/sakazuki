@@ -14,6 +14,8 @@
 - Yarn🐈 >= 1.22.4
 - Node.js >= 12.20.1
 - PostgreSQL >= 12.0
+- ElasticSearch >= 7.10.2
+  - [Japanese (kuromoji) Analysis Plugin](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-kuromoji.html)
 
 ## How to use
 
@@ -33,7 +35,9 @@ POSTGRES_PASSWORD=your_postgresql_password
   - `bundle exec rails db:seed`
 - サーバの起動
   - `bundle exec rails server`
-- [http://localhost:3000/]へアクセスする
+- ElasticSearchへデータをインポート
+  - `bundle exec rake environment elasticsearch:import:model CLASS='Sake'`
+- [http://localhost:3000/] へアクセスする
 - 最初の管理者ユーザの設定（オプション）
   - Sakazukiへのログインに使われる
 
