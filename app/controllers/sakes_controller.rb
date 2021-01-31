@@ -90,6 +90,13 @@ class SakesController < ApplicationController
     end
   end
 
+  # GET /sakes/search
+  def search
+    search_sake_params = params[:search].present? ? search_params : nil
+    @sakes = Sake.search(search_sake_params[:word]).records
+    render :index
+  end
+
   private
 
   def to_multi_search!(query)
@@ -135,6 +142,10 @@ class SakesController < ApplicationController
                   :warimizu, :moto, :seimai_buai, :roka,
                   :shibori, :note, :bottle_level, :hiire,
                   :size, :price)
+  end
+
+  def search_params
+    params.require(:search).permit(:word)
   end
 
   def store_photos

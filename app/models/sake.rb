@@ -37,7 +37,13 @@
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #
+
+require "elasticsearch/model"
+
 class Sake < ApplicationRecord
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+
   has_many :photos, dependent: :destroy
   enum bottle_level: {
     sealed: 0,

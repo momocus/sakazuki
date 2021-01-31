@@ -89,3 +89,7 @@ gem "meta-tags"
 
 # For complex search
 gem "ransack"
+# ElasticSearch
+gem "bonsai-elasticsearch-rails"
+gem "elasticsearch-model"
+gem "elasticsearch-rails"
