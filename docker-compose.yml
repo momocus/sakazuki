@@ -2,6 +2,10 @@ version: "3.9"
 volumes:
   db_storage:
     driver: local
+  es_strage:
+    driver: local
+  redis_strage:
+    driver: local
 services:
   db:
     image: postgres:13
@@ -23,11 +27,48 @@ services:
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_HOSTNAME: db
-    env_file:
-      - .env
-    build: .
+      ELASTICSEARCH_HOST: elasticsearch-custom
+      ELASTICSEARCH_PORT: 9200
+    build:
+      context: .
+      dockerfile: ./docker/web/Dockerfile
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     ports:
       - "3000:3000"
     depends_on:
       - db
+      - elasticsearch-custom
+  elasticsearch-custom:
+    build:
+      context: .
+      dockerfile: ./docker/elasticsearch-custom/Dockerfile
+    environment:
+      - discovery.type=single-node
+      - cluster.name=es-docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - es_strage:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+  kibana:
+    image: docker.elastic.co/kibana/kibana-oss:7.10.2
+    ports:
+      - 5601:5601
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch-custom:9200
+    depends_on:
+      - elasticsearch-custom
+  redis:
+    image: redis:latest
+    ports:
+      - 6379:6379
+    volumes:
+      - redis_strage:/data
+  # sidekiq:
+  #   build: .
+  #   command: bundle exec sidekiq

@@ -40,12 +40,16 @@ message "##### Run ERBLint"
 bundle exec erblint --lint-all
 
 # docker
-
 message "##### Run Hadolint"
+files=$(git ls-files docker/\*\*/Dockerfile)
 if type hadolint > /dev/null 2>&1; then
-    hadolint Dockerfile
+    for file in ${files}; do
+        hadolint ${file}
+    done
 elif type docker > /dev/null 2>&1; then
-    docker run --rm -i hadolint/hadolint < Dockerfile
+    for file in ${files}; do
+        docker run --rm -i hadolint/hadolint < ${file}
+    done
 else
     warning "[SKIP] hadolint is not installed."
 fi
