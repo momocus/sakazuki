@@ -62,10 +62,6 @@
   }
 }
 
-.pagination {
-  justify-content: center;
-}
-
 // ページネーションのボタンのうち、ディスプレイサイズが大きいときだけ表示するもの
 .page-item-lg {
   @extend .page-item;
