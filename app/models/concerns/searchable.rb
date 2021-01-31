@@ -7,28 +7,29 @@ module Searchable
     include Elasticsearch::Model::Callbacks
 
     index_name [Rails.application.engine_name, Rails.env].join("_")
+    sake_settings = YAML.load_file(Rails.root.join("config/elasticsearch.yml"))
 
-    settings index: { number_of_shards: 1, number_of_replicas: 0 } do
+    settings sake_settings do
       mapping do
-        indexes :aroma_impression, analyzer: "kuromoji"
-        indexes :awa, analyzer: "kuromoji"
-        indexes :color, analyzer: "kuromoji"
-        indexes :genryomai, analyzer: "kuromoji"
-        indexes :kakemai, analyzer: "kuromoji"
-        indexes :kobo, analyzer: "kuromoji"
-        indexes :kura, analyzer: "kuromoji"
-        indexes :name, analyzer: "kuromoji"
-        indexes :nigori, analyzer: "kuromoji"
-        indexes :note, analyzer: "kuromoji"
-        indexes :roka, analyzer: "kuromoji"
-        indexes :season, analyzer: "kuromoji"
-        indexes :shibori, analyzer: "kuromoji"
-        indexes :taste_impression, analyzer: "kuromoji"
-        indexes :todofuken, analyzer: "kuromoji"
+        indexes :aroma_impression, analyzer: "ja"
+        indexes :awa, analyzer: "ja"
+        indexes :color, analyzer: "ja"
+        indexes :genryomai, analyzer: "ja"
+        indexes :kakemai, analyzer: "ja"
+        indexes :kobo, analyzer: "ja"
+        indexes :kura, analyzer: "ja"
+        indexes :name, analyzer: "ja"
+        indexes :nigori, analyzer: "ja"
+        indexes :note, analyzer: "ja"
+        indexes :roka, analyzer: "ja"
+        indexes :season, analyzer: "ja"
+        indexes :shibori, analyzer: "ja"
+        indexes :taste_impression, analyzer: "ja"
+        indexes :todofuken, analyzer: "ja"
       end
     end
 
-    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+    # rubocop:disable Metrics/MethodLength
     def as_indexed_json(_options = {})
       {
         name: name,
@@ -39,20 +40,28 @@ module Searchable
         taste_impression: taste_impression,
         nigori: nigori,
         awa: awa,
-        tokutei_meisho: tokutei_meisho_i18n,
         genryomai: genryomai,
         kakemai: kakemai,
         kobo: kobo,
         season: season,
-        warimizu: warimizu_i18n,
-        moto: moto_i18n,
         roka: roka,
         shibori: shibori,
         note: note,
-        hiire: hiire_i18n,
       }.as_json
     end
-    # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
+    # rubocop:enable Metrics/MethodLength
+
+    def self.simple_search(keyword)
+      search(
+        query: {
+          multi_match: {
+            query: keyword,
+            fields: ["*"],
+            operator: "and",
+          },
+        },
+      )
+    end
   end
   # rubocop:enable Metrics/BlockLength
 end

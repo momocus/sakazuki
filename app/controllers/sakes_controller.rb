@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/ClassLength
 class SakesController < ApplicationController
   before_action :set_sake, only: %i[show edit update destroy]
   before_action :signed_in_user, only: %i[new create edit update destroy]
@@ -93,7 +94,7 @@ class SakesController < ApplicationController
   # GET /sakes/search
   def search
     search_sake_params = params[:search].present? ? search_params : nil
-    @sakes = Sake.search(search_sake_params[:word]).records
+    @sakes = Sake.simple_search(search_sake_params[:word]).records
     render :index
   end
 
@@ -159,3 +160,4 @@ class SakesController < ApplicationController
     end
   end
 end
+# rubocop:enable Metrics/ClassLength

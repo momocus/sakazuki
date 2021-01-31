@@ -1,0 +1,41 @@
+index:
+  analysis:
+    filter:
+      katakana_stemmer:
+        type: kuromoji_stemmer
+        minimum_length: 4
+      kana_converter:
+        type: icu_transform
+        id: Hiragana-Katakana
+      custom_synonym:
+        type: synonym
+        synonyms:
+          - 純米吟醸,純吟
+          - 大吟醸,大吟
+          - 純米大吟醸,純米大吟
+    tokenizer:
+      ja_tokenizer:
+        type: kuromoji_tokenizer
+        mode: search
+        user_dictionary_rules:
+          - 大吟醸,大吟醸,ダイギンジョウ,カスタム名詞
+          - 純米吟醸,純米吟醸,ジュンマイギンジョウ,カスタム名詞
+          - 純米大吟醸,純米大吟醸,ジュンマイダイギンジョウ,カスタム名詞
+          - 特別本醸造,特別本醸造,トクベツホンジョウゾウ,カスタム名詞
+          - 特別純米,特別純米,トクベツジュンマイ,カスタム名詞
+    analyzer:
+      # 今回使うanalyzer
+      ja:
+        type: custom
+        # kuromojiでトークナイズ(単語分割)
+        tokenizer: ja_tokenizer
+        # 文字単位のフィルター。トークナイズ前に適用される。
+        char_filter:
+          - icu_normalizer
+          - kuromoji_iteration_mark
+        # トークン単位のフィルター。トークナイズ後に実行される。
+        filter:
+          - katakana_stemmer # コンピューター -> コンピュータ 変換
+          - kuromoji_part_of_speech # 助詞等を除外
+          - kana_converter # ひらがな -> カタカナ 変換
+          - custom_synonym
