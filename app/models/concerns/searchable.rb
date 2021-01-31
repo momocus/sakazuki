@@ -27,6 +27,9 @@ module Searchable
         indexes :taste_impression, analyzer: "ja"
         indexes :todofuken, analyzer: "ja"
       end
+
+      # after_save    { Indexer.perform_async(:index,  self.id) }
+      # after_destroy { Indexer.perform_async(:delete, self.id) }
     end
 
     # rubocop:disable Metrics/MethodLength
