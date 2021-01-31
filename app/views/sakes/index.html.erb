@@ -22,7 +22,12 @@
     <% end %>
     <%= form_with scope: :search, url: search_sakes_path, method: :get, local: true, class: "form-inline my-1" do |f| %>
       <%= f.label "search", class: "sr-only" %>
-      <%= f.text_field :word, placeholder: "Search", class: "form-control mr-sm-2" %>
+      <%= f.text_field(
+            :word,
+            placeholder: "Search",
+            value: params[:search].present? ? params[:search][:word] : "",
+            class: "form-control mr-sm-2",
+          ) %>
       <%= f.submit t(".search"), class: "btn btn-secondary" %>
     <% end %>
   </div>
