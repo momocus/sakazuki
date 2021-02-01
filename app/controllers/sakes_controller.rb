@@ -91,10 +91,11 @@ class SakesController < ApplicationController
     end
   end
 
-  # GET /sakes/search
-  def search
-    search_sake_params = params[:search].present? ? search_params : nil
-    @sakes = Sake.simple_search(search_sake_params[:word]).records
+  # GET /sakes/elasticsearch
+  def elasticsearch
+    @sakes = Sake.simple_search(params.dig(:elasticsearch, :word)).records
+    # HACK: indexビュー表示にエラーが出ないようにするため、ransack用のインスタンス変数をセット
+    @searched = Sake.ransack(nil)
     render :index
   end
 
@@ -146,7 +147,7 @@ class SakesController < ApplicationController
   end
 
   def search_params
-    params.require(:search).permit(:word)
+    params.require(:elasticsearch).permit(:word)
   end
 
   def store_photos
