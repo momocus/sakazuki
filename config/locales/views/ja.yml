@@ -1,8 +1,6 @@
 ja:
   views:
     pagination:
-      first: "<<"
-      last: ">>"
       previous: "< 前へ"
       next: "次へ >"
       truncate: "..."
