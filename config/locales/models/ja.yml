@@ -4,8 +4,6 @@ ja:
   helpers:
     submit:
       create: 登録
-      update: 更新
-      edit: 編集
       delete: 削除
       back: 戻る
     badge:

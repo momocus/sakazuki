@@ -1,5 +1,7 @@
 <h2><%= t ".title" %></h2>
 
+<%= render "sake-buttons" %>
+
 <!-- ツイートボタン -->
 <%= tweet_button make_text(@sake.name, @sake.kura, @sake.color, @sake.aroma_impression, @sake.taste_impression) %>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -243,9 +245,6 @@
 </div>
 
 <div class="row justify-content-center">
-  <%= link_to(t("helpers.submit.edit"),
-              edit_sake_path(@sake),
-              { class: "btn btn-primary mx-3" }) %>
   <%= link_to(t("helpers.submit.delete"),
               @sake,
               method: :delete,
