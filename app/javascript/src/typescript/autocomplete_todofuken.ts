@@ -1,6 +1,6 @@
 // '原田酒造合資会社（愛知県）'から'愛知県'のみを抽出する
 // 不正な入力の場合は空文字を返す
-function stripKura(kuraTodofuken: String) {
+function stripKura(kuraTodofuken: string) {
   const re = /.+（(.+)）/
   const todofuken = kuraTodofuken.replace(re, '$1')
   return todofuken == kuraTodofuken ? '' : todofuken
