@@ -1,5 +1,7 @@
 <h2><%= t(".title") %></h2>
 
+<%= render "sake-buttons" %>
+
 <div class="row my-1">
   <div class="col">
     <%= search_form_for(@searched, { class: "form-inline" }) do |f| %>
@@ -81,12 +83,7 @@
     <% end %>
   </tbody>
 </table>
-<%= paginate(@sakes) %>
 
-<div class="row justify-content-center">
-  <%= link_to(t("helpers.submit.create"),
-              new_sake_path,
-              { class: "btn btn-primary mx-3" }) %>
-</div>
+<%= paginate(@sakes) %>
 
 <%= javascript_pack_tag "sakes_index" %>
