@@ -14,6 +14,9 @@
 - Yarn🐈 >= 1.22.4
 - Node.js >= 12.20.1
 - PostgreSQL >= 12.0
+- ElasticSearch >= 7.10.2
+  - [Japanese (kuromoji) Analysis Plugin](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-kuromoji.html)
+  - [ICU Analysis Plugin](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-icu.html)
 
 ## How to use
 
@@ -33,7 +36,9 @@ POSTGRES_PASSWORD=your_postgresql_password
   - `bundle exec rails db:seed`
 - サーバの起動
   - `bundle exec rails server`
-- [http://localhost:3000/]へアクセスする
+- ElasticSearchへデータをインポート
+  - `bundle exec rake environment elasticsearch:import:model CLASS='Sake'`
+- [http://localhost:3000/] へアクセスする
 - 最初の管理者ユーザの設定（オプション）
   - Sakazukiへのログインに使われる
 
@@ -54,7 +59,7 @@ User.create!(
 - localユーザの設定
   - まだ
 - 送信メールの確認
-  - [http://localhost:3000/letter_opener]にアクセス
+  - <http://localhost:3000/letter_opener>にアクセス
 
 ## How to deploy to heroku
 
@@ -119,6 +124,16 @@ $ docker-compose run --rm web bundle exec rails db:seed
 
 ```console
 $ docker-compose up
+...
+```
+
+- ElasticSearchコンテナの初期設定
+
+```console
+$ docker-compose run --rm web bundle exec rake elasticsearch:create_index
+...
+$ docker-compose run --rm web bundle exec rake environment \
+  elasticsearch:import:model CLASS='Sake'
 ...
 ```
 
