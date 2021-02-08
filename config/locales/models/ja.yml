@@ -18,6 +18,7 @@ ja:
   sakes:
     index:
       title: 日本酒リスト
+      search: 検索
       all_bottles: 空瓶を表示
     new:
       title: 新規登録

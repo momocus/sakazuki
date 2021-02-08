@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   }
   root "sakes#index"
   resources :sakes do
-    get :filter, on: :collection
+    get :elasticsearch, on: :collection
   end
   get "sakes/:id/show_photo" => "sakes#show_photo", as: "show_photo"
 
