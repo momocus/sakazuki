@@ -58,12 +58,14 @@ group :development, :test do
   # console
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   gem "dotenv-rails"
+  gem "factory_bot_rails"
   gem "letter_opener_web"
   # useful repl pry
   gem "pry"
   gem "pry-byebug"
   gem "pry-doc"
   gem "pry-rails"
+  gem "rspec-rails"
   gem "rubocop", require: false
   gem "rubocop-rails", require: false
 end
