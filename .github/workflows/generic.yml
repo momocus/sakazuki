@@ -11,3 +11,5 @@ jobs:
     - uses: actions/checkout@v2
     - name: End of File with Newline
       run: ./cli-scripts/check_endoffile_with_newline.sh
+    - name: Lint Dockerfile
+      run: ./cli-scripts/run-hadolint.sh
