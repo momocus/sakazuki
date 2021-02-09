@@ -3,9 +3,8 @@ Rails.application.routes.draw do
     registrations: "users/registrations",
   }
   root "sakes#index"
-  resources :sakes do
-    get :filter, on: :collection
-  end
+  resources :sakes
+
   get "sakes/:id/show_photo" => "sakes#show_photo", as: "show_photo"
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" unless Rails.env.production?
