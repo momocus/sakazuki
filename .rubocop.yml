@@ -49,6 +49,7 @@ Metrics/ClassLength:
 Metrics/BlockLength:
   Exclude:
     - "**/*_test.rb"
+    - "spec/**/*"
 
 # rubocop-rspec
 
