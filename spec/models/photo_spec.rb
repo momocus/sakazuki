@@ -12,8 +12,10 @@ require "rails_helper"
 
 RSpec.describe Photo, type: :model do
   describe "chackbox_name" do
-    let(:photo) { FactoryBot.create(:photo) }
     subject { photo.chackbox_name }
+
+    let(:photo) { FactoryBot.create(:photo) }
+
     it { is_expected.to eq "photo_delete_1" }
   end
 end

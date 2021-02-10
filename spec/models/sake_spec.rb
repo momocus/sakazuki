@@ -43,13 +43,15 @@ RSpec.describe Sake, type: :model do
   describe "validates" do
     subject { sake.save }
 
-    context "name is missing" do
+    context "if name is missing" do
       let(:sake) { FactoryBot.build(:sake, name: "") }
+
       it { is_expected.to be_falsy }
     end
 
-    context "kura is nil" do
+    context "if kura is nil" do
       let(:sake) { FactoryBot.build(:sake, kura: nil) }
+
       it { is_expected.to be_falsy }
     end
   end
