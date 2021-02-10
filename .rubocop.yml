@@ -1,5 +1,6 @@
 require:
   - rubocop-rails
+  - rubocop-rspec
 
 AllCops:
   TargetRubyVersion: 2.7.1
@@ -48,3 +49,17 @@ Metrics/ClassLength:
 Metrics/BlockLength:
   Exclude:
     - "**/*_test.rb"
+
+# rubocop-rspec
+
+RSpec/ContextWording:
+  Prefixes:
+    - when
+    - with
+    - without
+    - if
+    - unless
+    - for
+    - before
+    - after
+    - during
