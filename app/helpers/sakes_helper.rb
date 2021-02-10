@@ -3,7 +3,7 @@ module SakesHelper
     value.presence || default
   end
 
-  def start_year_limt
+  def start_year_limit
     30
   end
 

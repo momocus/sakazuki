@@ -98,7 +98,7 @@
       <%= form.date_select(:bindume_date,
                            { discard_day: true,
                              discard_month: true,
-                             start_year: Date.current.year - start_year_limt,
+                             start_year: Date.current.year - start_year_limit,
                              end_year: Date.current.year },
                            { class: "form-control", id: "bindume_year" }) %>
     </div>
@@ -117,7 +117,7 @@
                            { discard_day: true,
                              discard_month: true,
                              include_blank: true,
-                             start_year: current_by - start_year_limt,
+                             start_year: current_by - start_year_limit,
                              end_year: current_by },
                            { class: "form-control" }) %>
     </div>
