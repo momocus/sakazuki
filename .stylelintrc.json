@@ -9,6 +9,7 @@
   },
   "ignoreFiles": [
     "node_modules/**",
-    "public/**"
+    "public/**",
+    "coverage/**"
   ]
 }
