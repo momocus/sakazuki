@@ -1,0 +1,10 @@
+# Update configurations in this file, and rename to '.env'.
+
+# Configurations of PostgreSQL.
+
+# Hostname of PostgreSQL. default is 'localhost'.
+POSTGRES_HOSTNAME=localhost
+
+# User name and password to access PostgreSQL.
+POSTGRES_USERNAME=
+POSTGRES_PASSWORD=

@@ -23,6 +23,10 @@
 - PostgreSQLのユーザの設定
   - PostgreSQLへの接続に使われる
 
+```console
+mv dotenv.sample .env
+```
+
 ```shell
 # .envファイルに記載 or 環境変数に設定
 POSTGRES_USERNAME=your_postgresql_name
