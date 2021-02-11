@@ -9,15 +9,15 @@
 #  aroma_value      :integer
 #  awa              :string
 #  bindume_date     :date
-#  bottle_level     :integer          default('sealed')
+#  bottle_level     :integer          default("sealed")
 #  brew_year        :date
 #  color            :string
 #  genryomai        :string
-#  hiire            :integer          default('unknown')
+#  hiire            :integer          default("unknown")
 #  kakemai          :string
 #  kobo             :string
 #  kura             :string
-#  moto             :integer          default('unknown')
+#  moto             :integer          default("unknown")
 #  name             :string
 #  nigori           :string
 #  nihonshudo       :float
@@ -32,8 +32,8 @@
 #  taste_impression :text
 #  taste_value      :integer
 #  todofuken        :string
-#  tokutei_meisho   :integer          default('none')
-#  warimizu         :integer          default('unknown')
+#  tokutei_meisho   :integer          default("none")
+#  warimizu         :integer          default("unknown")
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #
