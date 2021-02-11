@@ -14,6 +14,9 @@
 - Yarn🐈 >= 1.22.4
 - Node.js >= 12.20.1
 - PostgreSQL >= 12.0
+- ElasticSearch >= 7.10.2
+  - Japanese (kuromoji) Analysis Plugin
+  - ICU Analysis Plugin
 
 ## How to use
 
@@ -108,7 +111,7 @@ $ docker-compose build
 ...
 ```
 
-- PostgreSQLコンテナの初期設定
+- PostgreSQLコンテナ、ElasticSearchコンテナの初期設定
 
 ```console
 $ docker-compose run --rm web bundle exec rails db:create
@@ -116,6 +119,13 @@ $ docker-compose run --rm web bundle exec rails db:create
 $ docker-compose run --rm web bundle exec rails db:migrate
 ...
 $ docker-compose run --rm web bundle exec rails db:seed
+...
+$ docker-compose run --rm es elasticsearch-plugin install analysis-icu
+...
+$ docker-compose run --rm es elasticsearch-plugin install analysis-kuromoji
+...
+$ docker-compose run --rm web bundle exec rake environment \
+  elasticsearch:import:model CLASS='Sake' FORCE=y
 ...
 ```
 
