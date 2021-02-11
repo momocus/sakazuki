@@ -28,18 +28,13 @@ mv dotenv.sample .env
 ```
 
 ```shell
-# .envファイルに記載 or 環境変数に設定
+# .env
 POSTGRES_USERNAME=your_postgresql_name
 POSTGRES_PASSWORD=your_postgresql_password
 ```
 
-- 最初のユーザの設定
-  - `bundle exec rails db:seed`
-- サーバの起動
-  - `bundle exec rails server`
-- [http://localhost:3000/]へアクセスする
-- 最初の管理者ユーザの設定（オプション）
-  - Sakazukiへのログインに使われる
+- 管理者ユーザの設定（オプション）
+  - 管理者ユーザのメールアドレスとパスワードを設定する
 
 ```ruby
 # db/seed.rb
@@ -51,51 +46,67 @@ User.create!(
 )
 ```
 
-- ログイン
+- 管理者ユーザの作成
+  - `bundle exec rails db:seed`
+- サーバの起動
+  - `bundle exec rails server`
+- Sakazukiへのログイン
+  - <http://localhost:3000/>へアクセスする
   - メールアドレス: `example@example.com`
   - パスワード: `rootroot`
   - または前項で書き換えた内容でログイン
 - localユーザの設定
   - まだ
-- 送信メールの確認
-  - [http://localhost:3000/letter_opener]にアクセス
 
-## How to deploy to heroku
+### How to recieve EMail from Sakazuki in development environment
 
-本番環境では、実際にメールの送受信をする、画像をCloudinaryにアップロードするという点が開発環境と異なる。デプロイする前にこれらの設定が必要。
+Sakazukiにてユーザのパスワードリセットはメールで通知される。
+Development環境では、letter_openerを使ってメールを確認する。
 
-- メーラの設定
-  - ユーザのメールアドレスに通知するために使われる
+- <http://localhost:3000/letter_opener>にアクセス
+
+## How to deploy to Heroku
+
+SakazukiはHerokuで動かせる。
+Sakazukiの画像はCloudinaryにアップロードされるため、Herokuで使うにはメールとCloudinaryの設定が必要。
+2つの設定はRailsのcredentialsを使って管理する。
+
+- メールとCloudinaryの設定
+
+```console
+# デフォルトの設定の削除
+$ rm config/credentials/production.yml.enc
+$ rm config/credentials/production.key
+# config/credentials/production.yml.encを編集する
+$ EDITOR="好きなエディタ" bundle exec rails credentials:edit --environment production
+# config/credentials/production.yml.encとconfig/credentials/production.keyが生成される
+```
 
 ```yaml
 # config/credentials/production.yml.enc
-# EDITOR="好きなエディタ" bin/rails credentials:edit --environment production にて開く
 mail:
-     smtp: "smtp.gmail.com"
-     domain: "gmail.com"
-     port: 587
-     user_name: "your_mail_address@gmail.com"
-     password: "your_gmail_password"
-```
-
-- Cloudinaryの設定
-  - 画像アップロード用のクラウドサービスCloudinaryの接続に使われる。
-
-```yaml
-# config/credentials/production.yml.enc
-# EDITOR="好きなエディタ" bin/rails credentials:edit --environment production にて開く
+    smtp: "smtp.gmail.com"
+    domain: "gmail.com"
+    port: 587
+    user_name: "your_mail_address@gmail.com"
+    password: "your_gmail_password"
 cloudinary:
-     cloud_name: your_cloud_name
-     api_key: your_api_key
-     api_secret: your_api_secret
-     enhance_image_tag: true
-     static_file_support: false
+    cloud_name: your_cloud_name
+    api_key: your_api_key
+    api_secret: your_api_secret
+    enhance_image_tag: true
+    static_file_support: false
 ```
 
-- CredentialsのKeyを登録
-  - Credentialsで暗号化されたファイルを復号するためのKeyを登録する。
-  - `heroku config:set RAILS_MASTER_KEY=`cat config/credentials/production.key`
-    - ※production.keyファイルはメーラとCloudinaryの設定をしたときに作られる。
+- CredentialsのKeyをHerokuに登録
+
+```console
+# Herokuに登録、heroku-cliをインストールしておく
+$ heroku config:set RAILS_MASTER_KEY=$(cat config/credentials/production.key)
+```
+
+- HerokuにSakazukiをデプロイする
+  - まだ
 
 ## How to develop with Docker
 
