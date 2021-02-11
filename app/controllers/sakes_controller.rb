@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/ClassLength
 class SakesController < ApplicationController
   before_action :set_sake, only: %i[show edit update destroy]
   before_action :signed_in_user, only: %i[new create edit update destroy]
@@ -90,6 +91,14 @@ class SakesController < ApplicationController
     end
   end
 
+  # GET /sakes/elasticsearch
+  def elasticsearch
+    @sakes = Sake.simple_search(params.dig(:elasticsearch, :word)).records
+    # HACK: indexビュー表示にエラーが出ないようにするため、ransack用のインスタンス変数をセット
+    @searched = Sake.ransack(nil)
+    render :index
+  end
+
   private
 
   def to_multi_search!(query)
@@ -148,3 +157,4 @@ class SakesController < ApplicationController
     end
   end
 end
+# rubocop:enable Metrics/ClassLength
