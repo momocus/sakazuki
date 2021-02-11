@@ -1,5 +1,6 @@
 class SakesController < ApplicationController
   before_action :set_sake, only: %i[show edit update destroy]
+  before_action :strip_todofuken_from_params!, only: %i[update]
   before_action :signed_in_user, only: %i[new create edit update destroy]
 
   include SakesHelper
@@ -67,9 +68,6 @@ class SakesController < ApplicationController
   # PATCH/PUT /sakes/1
   # PATCH/PUT /sakes/1.json
   def update
-    # sake_paramsを変更してもデータは変わらない
-    params["sake"]["kura"] = strip_todofuken(params["sake"]["kura"])
-
     respond_to do |format|
       if @sake.update(sake_params)
         delete_photos
@@ -103,14 +101,21 @@ class SakesController < ApplicationController
     words.split(/[ 　]/).map { |word| { all_text_cont: word } }
   end
 
-  # DBの蔵名に（県名）をつけて_formの描画でつかう形にする
+  # DBの蔵名に（県名）をつけて、_formの描画でつかうフォーマットにする
+  #   add_todofuken("原田酒造合資会社", "愛知県")  #=> "原田酒造合資会社（愛知県）"
   def add_todofuken(kura, todofuken)
     "#{kura}（#{todofuken}）"
   end
 
-  # _formでの蔵名（県名）から県名を取り除いてDBへ保存する形にする
+  # _formでオートコンプリートされたフォーマットから県名を取り除き、DBへ保存するフォーマットにする
+  #   strip_todofuken("原田酒造合資会社（愛知県）")  #=> "原田酒造合資会社"
   def strip_todofuken(kura)
     kura.gsub(/（.*）/, "")
+  end
+
+  # paramsの件名つき蔵名から県名を取り除く
+  def strip_todofuken_from_params!
+    params["sake"]["kura"] = strip_todofuken(params["sake"]["kura"]) if params.dig(:sake, :kura)
   end
 
   def set_twitter_meta_tags
