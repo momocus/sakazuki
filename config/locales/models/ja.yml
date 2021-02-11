@@ -1,5 +1,6 @@
 ja:
   message:
+    empty: 飲みきった？
     delete: 本当に削除しますか？
   helpers:
     submit:
@@ -19,6 +20,7 @@ ja:
     index:
       title: 日本酒リスト
       all_bottles: 空瓶を表示
+      empty: 空にする
     new:
       title: 新規登録
     edit:
