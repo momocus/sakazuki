@@ -63,11 +63,11 @@
               <%= sake.bottle_level_i18n %>
               <% if sake.bottle_level == "sealed" %>
                 <%= link_to(html_escape(t(".open")) + bootstrap_icon("droplet-half", { width: "1em", height: "1em" }),
-                            edit_sake_path(sake, params: { sake: { bottle_level: "opened" }}),
+                            edit_sake_path(sake, params: { sake: { bottle_level: "opened" } }),
                             { class: "badge badge-pill badge-primary ml-2" }) %>
               <% elsif sake.bottle_level == "opened" %>
                 <%= link_to(html_escape(t(".empty")) + bootstrap_icon("droplet", { width: "1em", height: "1em" }),
-                            sake_path(sake, params: { sake: { bottle_level: "empty" }}),
+                            sake_path(sake, params: { sake: { bottle_level: "empty" } }),
                             { method: :patch,
                               data: { confirm: t("message.empty") },
                               class: "badge badge-pill badge-light ml-2" }) %>
