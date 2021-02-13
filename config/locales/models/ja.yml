@@ -1,5 +1,6 @@
 ja:
   message:
+    open: 栓を開けます？
     empty: 飲みきった？
     delete: 本当に削除しますか？
   helpers:
@@ -20,6 +21,7 @@ ja:
     index:
       title: 日本酒リスト
       all_bottles: 空瓶を表示
+      open: 開封する
       empty: 空にする
     new:
       title: 新規登録
