@@ -39,21 +39,21 @@
 #
 FactoryBot.define do
   factory :sake do
-    name { "名前" }
-    kura { "蔵" }
-    todofuken { "都道府県" }
-    aroma_impression { "香り" }
-    color { "赤" }
-    taste_impression { "味" }
-    nigori { "にごり" }
-    awa { "炭酸" }
-    genryomai { "原料米" }
-    kakemai { "掛米" }
-    kobo { "酵母" }
-    season { "新酒" }
-    roka { "ろ過" }
-    shibori { "絞り" }
-    note { "note" }
-    size { 100 }
+    name { "生道井" }
+    kura { "" }
+    todofuken { "" }
+    size { 720 }
+    genryomai { "" }
+    kakemai { "" }
+    kobo { "" }
+    season { "" }
+    roka { "" }
+    shibori { "" }
+    color { "" }
+    nigori { "" }
+    aroma_impression { "" }
+    taste_impression { "" }
+    awa { "" }
+    note { "" }
   end
 end
