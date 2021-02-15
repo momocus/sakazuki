@@ -111,7 +111,7 @@ class SakesController < ApplicationController
   # _formでオートコンプリートされたフォーマットから県名を取り除き、DBへ保存するフォーマットにする
   #   strip_todofuken("原田酒造合資会社（愛知県）")  #=> "原田酒造合資会社"
   def strip_todofuken(kura)
-    kura.gsub(/（.*）/, "")
+    kura.nil? ? kura : kura.gsub(/（.*）/, "")
   end
 
   # paramsの件名つき蔵名から県名を取り除く
