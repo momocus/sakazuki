@@ -63,7 +63,7 @@
     <b><%= Sake.human_attribute_name :bindume_date %></b>
   </div>
   <div class="show-body">
-    <%= @sake.bindume_date.strftime("%Y / %m") %>
+    <%= @sake.bindume_date ? @sake.bindume_date.strftime("%Y / %m") : "- / -" %>
   </div>
 
   <div class="show-label">
