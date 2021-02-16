@@ -152,6 +152,8 @@ Sake.create!(
   price: nil,
 )
 
+# 笹井酒造
+
 Sake.create!(
   alcohol: 16.0,
   aminosando: nil,
@@ -222,6 +224,8 @@ Sake.create!(
   warimizu: :kasui,
 )
 
+# EH酒造
+
 Sake.create!(
   alcohol: 15.0,
   aminosando: nil,
@@ -255,4 +259,76 @@ Sake.create!(
   todofuken: "長野",
   tokutei_meisho: :junmai_ginjo,
   warimizu: :kasui,
+)
+
+# 善哉酒造
+
+Sake.create!(
+  alcohol: 19.0,
+  aminosando: nil,
+  aroma_impression: "ややヒネの弱い香り",
+  aroma_value: 3,
+  awa: "",
+  bindume_date: Date.new(2020, 8),
+  bottle_level: :opened,
+  brew_year: Date.new(2019),
+  color: "薄い黄色",
+  genryomai: "美山錦",
+  hiire: :nido_hiire,
+  kakemai: "美山錦",
+  kobo: "",
+  kura: "善哉酒造株式会社",
+  moto: :unknown,
+  name: "女鳥羽の泉 吟醸辛口 無濾過原酒",
+  nigori: "",
+  nihonshudo: nil,
+  note: "",
+  photos: [],
+  price: nil,
+  roka: "無濾過",
+  sando: nil,
+  season: "",
+  seimai_buai: 59,
+  shibori: "",
+  size: 720,
+  taste_impression: "味はふたコブラクダ。先にくるのは吟醸らしく淡く儚い甘さ。あとからググッとあがるアルコール感がきて、名前の通りのキレの良さを出してる。飲み続けるとふたコブが一緒になって、よりしんみりした味わい。",
+  taste_value: 1,
+  todofuken: "長野",
+  tokutei_meisho: :ginjo,
+  warimizu: :genshu,
+)
+
+Sake.create!(
+  alcohol: 18.0,
+  aminosando: nil,
+  aroma_impression: "弱いアルコールとヒネ感と旨さ",
+  aroma_value: 1,
+  awa: "",
+  bindume_date: Date.new(2020, 8),
+  bottle_level: :opened,
+  brew_year: Date.new(2019),
+  color: "薄い黄色",
+  genryomai: "",
+  hiire: :ato_hiire,
+  kakemai: "",
+  kobo: "",
+  kura: "善哉酒造株式会社",
+  moto: :unknown,
+  name: "女鳥羽の泉 夏純米 生貯蔵原酒",
+  nigori: "",
+  nihonshudo: nil,
+  note: "暑い日に氷を浮かべてより爽やかにも楽しめる。",
+  photos: [],
+  price: nil,
+  roka: "",
+  sando: nil,
+  season: "",
+  seimai_buai: 65,
+  shibori: "",
+  size: 720,
+  taste_impression: "味は濃さを感じる旨味がグリグリくる。めちゃ濃いのに嫌な感じがせず、なぜかキレもよく爽やかに終わる。",
+  taste_value: 4,
+  todofuken: "長野",
+  tokutei_meisho: :ginjo,
+  warimizu: :genshu,
 )
