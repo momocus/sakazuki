@@ -54,6 +54,7 @@ gem "kaminari"
 gem "bootstrap-icons-helper"
 
 group :development, :test do
+  gem "annotate"
   # Call 'byebug' anywhere in the code to stop execution and get a debugger
   # console
   gem "byebug", platforms: %i[mri mingw x64_mingw]
@@ -72,7 +73,6 @@ group :development, :test do
 end
 
 group :development do
-  gem "annotate"
   gem "better_errors"
   gem "binding_of_caller"
   gem "erb_lint", require: false
