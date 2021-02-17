@@ -132,12 +132,21 @@ $ docker-compose run --rm web bundle exec rails db:migrate
 $ docker-compose run --rm web bundle exec rails db:seed
 ...
 $ docker-compose run --rm es elasticsearch-plugin install analysis-icu
-...
+Creating sakazuki_es_run ... done
+-> Installing analysis-icu
+-> Downloading analysis-icu from elastic
+[=================================================] 100%??
+-> Installed analysis-icu
 $ docker-compose run --rm es elasticsearch-plugin install analysis-kuromoji
-...
+Creating sakazuki_es_run ... done
+-> Installing analysis-kuromoji
+-> Downloading analysis-kuromoji from elastic
+[=================================================] 100%??
+-> Installed analysis-kuromoji
 $ docker-compose run --rm web bundle exec rake environment \
   elasticsearch:import:model CLASS='Sake' FORCE=y
-...
+Creating sakazuki_web_run ... done
+[IMPORT] Done
 ```
 
 - Dockerイメージの起動
