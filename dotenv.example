@@ -9,6 +9,8 @@ POSTGRES_HOSTNAME=localhost
 POSTGRES_USERNAME=
 POSTGRES_PASSWORD=
 
+# Configurations of Elasticsearch.
+
 # Hostname of Elasticsearch. default is 'localhost'.
 ELASTICSEARCH_HOSTNAME=localhost
 
