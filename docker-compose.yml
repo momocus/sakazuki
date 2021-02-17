@@ -2,6 +2,10 @@ version: "3.9"
 volumes:
   db_storage:
     driver: local
+  es_data:
+    driver: local
+  es_plugins:
+    driver: local
 services:
   db:
     image: postgres:13
@@ -23,11 +27,36 @@ services:
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_HOSTNAME: db
-    env_file:
-      - .env
+      ELASTICSEARCH_HOST: es
+      ELASTICSEARCH_PORT: 9200
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     ports:
       - "3000:3000"
     depends_on:
       - db
+      - es
+  es:
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2
+    environment:
+      - discovery.type=single-node
+      - cluster.name=es-docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+      - es_plugins:/usr/share/elasticsearch/plugins
+    ports:
+      - 9200:9200
+  kibana:
+    image: docker.elastic.co/kibana/kibana-oss:7.10.2
+    ports:
+      - 5601:5601
+    environment:
+      - ELASTICSEARCH_HOSTS=http://es:9200
+    depends_on:
+      - es
