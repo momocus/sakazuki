@@ -4,6 +4,18 @@
     <div class="container-fluid-with-maxwidth">
       <%= link_to "Sakazuki", root_path, class: "navbar-brand" %>
 
+      <%= form_with({ scope: :elasticsearch,
+                      url: elasticsearch_sakes_path,
+                      method: :get,
+                      local: true,
+                      class: "form-inline my-1" }) do |f| %>
+        <%= f.label "search", class: "sr-only" %>
+        <%= f.text_field(:word,
+                         { placeholder: "Search",
+                           value: params.dig(:elasticsearch, :word),
+                           class: "form-control mr-sm-2" }) %>
+        <%= f.submit("Elastic Search", { class: "btn btn-secondary" }) %>
+      <% end %>
       <% if user_signed_in? %>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarNav" aria-controls="navbarNav"

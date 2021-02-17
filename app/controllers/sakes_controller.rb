@@ -89,6 +89,14 @@ class SakesController < ApplicationController
     end
   end
 
+  # GET /sakes/elasticsearch
+  def elasticsearch
+    @sakes = Sake.simple_search(params.dig(:elasticsearch, :word)).records
+    # HACK: indexビュー表示にエラーが出ないようにするため、ransack用のインスタンス変数をセット
+    @searched = Sake.ransack(nil)
+    render :index
+  end
+
   private
 
   def to_multi_search!(query)
