@@ -1,0 +1,42 @@
+<h2><%= link_to(t("views.elasticsearch.title"), elasticsearch_path, { class: "text-dark" }) %></h2>
+
+<%= form_with({ scope: :elasticsearch,
+                url: elasticsearch_path,
+                method: :get,
+                local: true,
+                class: "form-inline my-1" }) do |f| %>
+  <%= f.label "search", class: "sr-only" %>
+  <%= f.text_field(:word,
+                   { placeholder: "Keyword",
+                     value: params.dig(:elasticsearch, :word),
+                     class: "form-control mr-sm-2" }) %>
+  <%= button_tag(type: :submit, class: "btn btn-secondary") do %>
+    <%= bootstrap_icon("search") %>
+  <% end %>
+<% end %>
+
+<% @sakes.each do |sake| %>
+  <div class="row">
+    <div class="col-12">
+      <%= link_to("#{sake.name} #{sake.todofuken} #{sake.kura}", sake_path(sake.id)) %>
+    </div>
+  </div>
+  <div class="row mb-2">
+    <div class="col-12">
+      <%= sake.season %>
+      <%= sake.shibori %>
+      <%= sake.awa %>
+      <%= sake.color %>
+      <%= sake.genryomai %>
+      <%= sake.kakemai %>
+      <%= sake.kobo %>
+      <%= sake.nigori %>
+      <%= sake.roka %>
+      <%= sake.aroma_impression %>
+      <%= sake.taste_impression %>
+      <%= sake.note %>
+    </div>
+  </div>
+<% end %>
+
+<%= paginate(@sakes) %>
