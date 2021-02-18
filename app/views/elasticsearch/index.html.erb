@@ -23,18 +23,18 @@
   </div>
   <div class="row mb-2">
     <div class="col-12">
-      <%= sake.season %>
-      <%= sake.shibori %>
-      <%= sake.awa %>
-      <%= sake.color %>
-      <%= "#{Sake.human_attribute_name :genryomai}: #{sake.genryomai}" if sake.genryomai.present? %>
-      <%= "#{Sake.human_attribute_name :kakemai}: #{sake.kakemai}" if sake.kakemai.present? %>
-      <%= sake.kobo %>
-      <%= sake.nigori %>
-      <%= sake.roka %>
-      <%= sake.aroma_impression %>
-      <%= sake.taste_impression %>
-      <%= sake.note %>
+      <span><%= sake.season %></span>
+      <span><%= sake.shibori %></span>
+      <span><%= sake.awa %></span>
+      <span><%= sake.color %></span>
+      <span><%= sake.genryomai %></span>
+      <span><%= sake.kakemai %></span>
+      <span><%= sake.kobo %></span>
+      <span><%= sake.nigori %></span>
+      <span><%= sake.roka %></span>
+      <span><%= sake.aroma_impression %></span>
+      <span><%= sake.taste_impression %></span>
+      <span><%= sake.note %></span>
     </div>
   </div>
 <% end %>
