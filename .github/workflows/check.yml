@@ -15,14 +15,15 @@ jobs:
     - name: Cache node modules
       uses: actions/cache@v2
       env:
-        cache-name: cache-node-modules
+        cache-name: node_modules
+        cache-env: dev
       with:
-        path: node_modules
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+        path: '**/node_modules'
+        key: ${{ runner.os }}-${{ env.cache-name }}-${{ env.cache-env }}-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
-          ${{ runner.os }}-build-${{ env.cache-name }}-
-          ${{ runner.os }}-build-
-          ${{ runner.os }}-
+          ${{ runner.os }}-${{ env.cache-name }}-${{ env.cache-env }}-
+          # packageが少ないproduction環境のキャッシュを使い回せる
+          ${{ runner.os }}-${{ env.cache-name }}-
     - name: Install Dependencies
       run: yarn install
     - name: Run ESLint
@@ -39,11 +40,14 @@ jobs:
         ruby-version: 2.7
     - name: Cache gems
       uses: actions/cache@v2
+      env:
+        cache-name: gems
+        cache-env: dev
       with:
         path: vendor/bundle
-        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+        key: ${{ runner.os }}-${{ env.cache-name }}-${{ env.cache-env }}-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
-          ${{ runner.os }}-gems-
+          ${{ runner.os }}-${{ env.cache-name }}-${{ env.cache-env }}-
     - name: Install bundle dependencies
       run: |
         bundle config path vendor/bundle
