@@ -24,7 +24,7 @@
   - PostgreSQLへの接続に使われる
 
 ```console
-mv dotenv.sample .env
+cp dotenv.example .env
 ```
 
 ```shell
