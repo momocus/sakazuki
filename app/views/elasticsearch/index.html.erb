@@ -27,8 +27,8 @@
       <%= sake.shibori %>
       <%= sake.awa %>
       <%= sake.color %>
-      <%= sake.genryomai %>
-      <%= sake.kakemai %>
+      <%= "#{Sake.human_attribute_name :genryomai}: #{sake.genryomai}" if sake.genryomai.present? %>
+      <%= "#{Sake.human_attribute_name :kakemai}: #{sake.kakemai}" if sake.kakemai.present? %>
       <%= sake.kobo %>
       <%= sake.nigori %>
       <%= sake.roka %>
