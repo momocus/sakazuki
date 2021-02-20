@@ -88,7 +88,7 @@ RSpec.describe "DrinkButtons", type: :system do
         expect(page).to have_css(".alert-success")
       end
 
-      it "makes bottle empty" do
+      it "makes bottle empty", retry: 5 do
         expect do
           sake_opened.reload
         end.to change(sake_opened, :bottle_level).from("opened").to("empty")
