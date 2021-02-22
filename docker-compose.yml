@@ -35,4 +35,5 @@ services:
   # For RSpec Test
   webdriver:
     image: selenium/standalone-firefox:latest
-    ports: "4444:4444"
+    ports:
+      - "4444:4444"
