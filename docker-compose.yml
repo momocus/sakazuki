@@ -31,9 +31,9 @@ services:
       - "3000:3000"
     depends_on:
       - db
-      - webdriver
+      - selenium
   # For RSpec Test
-  webdriver:
+  selenium:
     image: selenium/standalone-firefox:latest
     ports:
       - "4444:4444"

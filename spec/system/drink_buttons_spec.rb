@@ -73,7 +73,7 @@ RSpec.describe "DrinkButtons", type: :system do
 
     describe "clicking button to make bottle empty" do
       before do
-        Capybara.current_driver = :selenium_headless
+        Capybara.current_driver = Capybara.javascript_driver
         visit sakes_path
         accept_confirm do
           click_link "empty-#{sake_opened.id}"
