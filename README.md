@@ -114,26 +114,50 @@ $ heroku config:set RAILS_MASTER_KEY=$(cat config/credentials/production.key)
 
 ```console
 $ docker-compose build
+Building web
 ...
+Successfully tagged sakazuki:latest
 ```
 
 - PostgreSQLコンテナの初期設定
 
 ```console
 $ docker-compose run --rm web bundle exec rails db:create
+Creating network "sakazuki_default" with the default driver
 ...
+Created database 'sakazuki_development'
+Created database 'sakazuki_test'
 $ docker-compose run --rm web bundle exec rails db:migrate
+Creating sakazuki_web_run ... done
 ...
+== 20210126072328 AddColumnToUsers: migrating =================================
+-- add_column(:users, :confirmation_token, :string)
+   -> 0.0070s
+-- add_column(:users, :confirmed_at, :datetime)
+   -> 0.0051s
+-- add_column(:users, :confirmation_sent_at, :datetime)
+   -> 0.0046s
+-- add_column(:users, :unconfirmed_email, :string)
+   -> 0.0040s
+== 20210126072328 AddColumnToUsers: migrated (0.0225s) ========================
+
+Model files unchanged.
 $ docker-compose run --rm web bundle exec rails db:seed
-...
+Creating sakazuki_web_run ... done
 ```
 
 - Dockerイメージの起動
 
 ```console
 $ docker-compose up
+sakazuki_db_1 is up-to-date
+sakazuki_webdriver_1 is up-to-date
+Creating sakazuki_web_1 ... done
 ...
 ```
+
+- Sakazukiへのアクセス
+  - 上記consoleを起動したままブラウザで<http://localhost:3000>へアクセスする
 
 - Gem/Node Packageの更新があった場合は、`docker-compose build`でイメージを更新する
 
