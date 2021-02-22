@@ -405,7 +405,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   bootstrap-icons-helper
   byebug
-  capybara (>= 2.15)
+  capybara
   carrierwave
   cloudinary
   devise
