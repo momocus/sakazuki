@@ -90,6 +90,7 @@ RSpec.describe "DrinkButtons", type: :system do
 
       it "makes bottle empty" do
         expect do
+          wait_for_page
           sake_opened.reload
         end.to change(sake_opened, :bottle_level).from("opened").to("empty")
       end
