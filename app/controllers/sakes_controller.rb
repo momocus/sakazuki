@@ -48,6 +48,8 @@ class SakesController < ApplicationController
   # GET /sakes/1/edit
   def edit
     @sake.kura = add_todofuken(@sake.kura, @sake.todofuken)
+    # 開けたボタン経由での処理
+    @sake.bottle_level = params["sake"]["bottle_level"] if params.dig(:sake, :bottle_level)
   end
 
   # POST /sakes
