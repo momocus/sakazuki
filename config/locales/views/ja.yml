@@ -4,3 +4,5 @@ ja:
       previous: "< 前へ"
       next: "次へ >"
       truncate: "..."
+    elasticsearch:
+      title: "Elastic Search"

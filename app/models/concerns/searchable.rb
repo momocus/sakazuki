@@ -51,17 +51,25 @@ module Searchable
     end
     # rubocop:enable Metrics/MethodLength
 
+    # rubocop:disable Metrics/MethodLength
     def self.simple_search(keyword)
-      __elasticsearch__.search(
-        query: {
-          multi_match: {
-            query: keyword,
-            fields: ["*"],
-            operator: "and",
+      if keyword.blank?
+        __elasticsearch__.search(
+          query: { match_all: {} },
+        )
+      else
+        __elasticsearch__.search(
+          query: {
+            multi_match: {
+              query: keyword,
+              fields: ["*"],
+              operator: "and",
+            },
           },
-        },
-      )
+        )
+      end
     end
+    # rubocop:enable Metrics/MethodLength
   end
   # rubocop:enable Metrics/BlockLength
 end
