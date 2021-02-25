@@ -58,7 +58,9 @@
             </div>
           <% end %>
         <% end %>
-        <%= form.file_field :photos, { multiple: true, class: "form-control-file col-12" } %>
+        <%= form.file_field :photos, { multiple: true,
+                                       class: "form-control-file col-12",
+                                       accept: "image/*" } %>
       </div>
     </div>
   </div>
