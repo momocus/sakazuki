@@ -12,6 +12,7 @@
 - Yarn🐈 >= 1.22.4
 - Node.js >= 12.20.1
 - PostgreSQL >= 12.0
+- ImageMagick >= 6.9
 
 ## How to use
 
