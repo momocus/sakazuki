@@ -5,6 +5,9 @@ module Searchable
   included do
     include Elasticsearch::Model
 
+    after_save    { Indexer.perform_async(:index,  id) }
+    after_destroy { Indexer.perform_async(:delete, id) }
+
     index_name [Rails.application.engine_name, Rails.env].join("_")
     sake_settings = YAML.load_file(Rails.root.join("config/elasticsearch.yml"))
 
@@ -45,9 +48,6 @@ module Searchable
         indexes :created_at, type: "date"
         indexes :updated_at, type: "date"
       end
-
-      after_save    { Indexer.perform_async(:index,  self.id) }
-      after_destroy { Indexer.perform_async(:delete, self.id) }
     end
 
     def as_indexed_json(_options = {})
