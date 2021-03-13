@@ -57,6 +57,7 @@ gem "era_ja"
 gem "bonsai-elasticsearch-rails"
 gem "elasticsearch-model", github: "indirect/elasticsearch-rails"
 gem "elasticsearch-rails"
+gem "sidekiq"
 
 group :development, :test do
   gem "annotate"

@@ -6,6 +6,8 @@ volumes:
     driver: local
   es_plugins:
     driver: local
+  redis_storage:
+    driver: local
 services:
   db:
     image: postgres:13
@@ -28,6 +30,7 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_HOSTNAME: db
       ELASTICSEARCH_HOSTS: http://es:9200
+      REDIS_URL: redis://redis:6379
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     ports:
@@ -59,3 +62,12 @@ services:
       ELASTICSEARCH_HOSTS: http://es:9200
     depends_on:
       - es
+  redis:
+    image: redis:latest
+    ports:
+      - 6379:6379
+    volumes:
+      - redis_storage:/data
+  # sidekiq:
+  #   build: .
+  #   command: bundle exec sidekiq
