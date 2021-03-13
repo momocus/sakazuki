@@ -18,28 +18,29 @@
 <% @sakes.each do |sake| %>
   <div class="row">
     <div class="col-12">
-      <%= link_to("#{sake.name} #{sake.todofuken} #{sake.kura}", sake_path(sake.id)) %>
+      <%= link_to("#{sake.name} #{sake.kura}", sake_path(sake.id)) %>
     </div>
   </div>
   <div class="row mb-2">
     <div class="col-12">
-      <span><%= sake.season %></span>
-      <span><%= sake.shibori %></span>
-      <span><%= sake.awa %></span>
-      <span><%= sake.color %></span>
+      <span><%= sake.todofuken %></span>
+      <span><%= sake.tokutei_meisho %></span>
       <span><%= sake.genryomai %></span>
       <span><%= sake.kakemai %></span>
       <span><%= sake.kobo %></span>
-      <span><%= sake.nigori %></span>
+      <span><%= sake.moto %></span>
       <span><%= sake.roka %></span>
+      <span><%= sake.shibori %></span>
+      <span><%= sake.hiire %></span>
+      <span><%= sake.season %></span>
+      <span><%= sake.warimizu %></span>
+      <span><%= sake.bottle_level %></span>
+      <span><%= sake.color %></span>
+      <span><%= sake.nigori %></span>
       <span><%= sake.aroma_impression %></span>
       <span><%= sake.taste_impression %></span>
+      <span><%= sake.awa %></span>
       <span><%= sake.note %></span>
-      <span><%= sake.tokutei_meisho %></span>
-      <span><%= sake.warimizu %></span>
-      <span><%= sake.moto %></span>
-      <span><%= sake.hiire %></span>
-      <span><%= sake.bottle_level %></span>
     </div>
   </div>
 <% end %>
