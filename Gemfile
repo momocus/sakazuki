@@ -59,6 +59,7 @@ gem "elasticsearch-model"
 gem "elasticsearch-rails"
 
 group :development, :test do
+  gem "annotate"
   # Call 'byebug' anywhere in the code to stop execution and get a debugger
   # console
   gem "byebug", platforms: %i[mri mingw x64_mingw]
@@ -77,7 +78,6 @@ group :development, :test do
 end
 
 group :development do
-  gem "annotate"
   gem "better_errors"
   gem "binding_of_caller"
   gem "erb_lint", require: false
@@ -92,7 +92,7 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem "capybara", ">= 2.15"
+  gem "capybara"
   gem "selenium-webdriver"
   gem "simplecov"
   # Easy installation and use of web drivers to run system tests with browsers

@@ -39,15 +39,15 @@
   </div>
 </div>
 
-<table class="table table-hover table-bordered" caption="Sake List">
+<table class="table table-bordered" caption="Sake List">
   <thead></thead>
   <tbody>
     <% @sakes.each do |sake| %>
-      <tr class="row m-0 clickable" data-sake-id="<%= sake.id %>">
+      <tr class="row m-0">
         <td class="col-lg-6 col-12">
           <div class="row m-0 border-bottom">
             <div class="col p-0">
-              <%= sake.name %>
+              <%= link_to(sake.name, sake_path(sake), { class: "sake-name-link" }) %>
             </div>
           </div>
           <div class="row m-0 mt-2 border-bottom">
@@ -61,6 +61,19 @@
           <div class="row m-0 mt-2">
             <div calss="col p-0">
               <%= sake.bottle_level_i18n %>
+              <% if sake.bottle_level == "sealed" %>
+                <%= link_to(html_escape(t(".open")) + bootstrap_icon("droplet-half", { width: "1em", height: "1em" }),
+                            edit_sake_path(sake, params: { sake: { bottle_level: "opened" } }),
+                            { id: "open-#{sake.id}",
+                              class: "badge badge-pill badge-primary ml-2" }) %>
+              <% elsif sake.bottle_level == "opened" %>
+                <%= link_to(html_escape(t(".empty")) + bootstrap_icon("droplet", { width: "1em", height: "1em" }),
+                            sake_path(sake, params: { sake: { bottle_level: "empty" } }),
+                            { method: :patch,
+                              data: { confirm: t("message.empty") },
+                              id: "empty-#{sake.id}",
+                              class: "badge badge-pill badge-light ml-2" }) %>
+              <% end %>
             </div>
           </div>
         </td>

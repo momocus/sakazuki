@@ -1,9 +1,7 @@
 # Sakazuki
 
-![Generic Checks](https://github.com/momocus/sakazuki/workflows/Generic%20Checks/badge.svg)
-![Checks by Node packages](https://github.com/momocus/sakazuki/workflows/Checks%20by%20Node%20packages/badge.svg)
-![Checks by Gems](https://github.com/momocus/sakazuki/workflows/Checks%20by%20Gems/badge.svg)
-![Check Dockerfile](https://github.com/momocus/sakazuki/workflows/Check%20Dockerfile/badge.svg)
+![Check](https://github.com/momocus/sakazuki/workflows/Check/badge.svg)
+![Test](https://github.com/momocus/sakazuki/workflows/Test/badge.svg)
 
 自宅の酒を管理するアプリケーション
 
@@ -17,6 +15,7 @@
 - ElasticSearch >= 7.10.2
   - Japanese (kuromoji) Analysis Plugin
   - ICU Analysis Plugin
+- ImageMagick >= 6.9
 
 ## How to use
 
@@ -27,7 +26,7 @@
   - PostgreSQLへの接続に使われる
 
 ```console
-mv dotenv.sample .env
+cp dotenv.example .env
 ```
 
 ```shell

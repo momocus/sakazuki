@@ -1,0 +1,64 @@
+name: Check
+
+on: [push, pull_request]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+    # lint by sh scripts
+    - uses: actions/checkout@v2
+    - name: End of File with Newline
+      run: ./cli-scripts/check_endoffile_with_newline.sh
+
+    # lint by node modules
+    - name: Cache node modules
+      uses: actions/cache@v2
+      env:
+        cache-name: node_modules
+        cache-env: dev
+      with:
+        path: '**/node_modules'
+        key: ${{ runner.os }}-${{ env.cache-name }}-${{ env.cache-env }}-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-${{ env.cache-name }}-${{ env.cache-env }}-
+          # packageが少ないproduction環境のキャッシュを使い回せる
+          ${{ runner.os }}-${{ env.cache-name }}-
+    - name: Install Dependencies
+      run: yarn install
+    - name: Run ESLint
+      run: yarn lint-ts
+    - name: Run Markdownlint
+      run: yarn lint-md
+    - name: Run Stylelint
+      run: yarn lint-style
+
+    # lint by rubocop
+    - name: Set up Ruby 2.7
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.7
+    - name: Cache gems
+      uses: actions/cache@v2
+      env:
+        cache-name: gems
+        cache-env: dev
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-${{ env.cache-name }}-${{ env.cache-env }}-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-${{ env.cache-name }}-${{ env.cache-env }}-
+    - name: Install bundle dependencies
+      run: |
+        bundle config path vendor/bundle
+        bundle install
+    - name: Run Rubocop
+      run: bundle exec rubocop
+    - name: Run ERB Lint
+      run: bundle exec erblint --lint-all
+
+    # lint by hadolint
+    - name: Hadolint
+      uses: brpaz/hadolint-action@master
+      with:
+        dockerfile: Dockerfile
