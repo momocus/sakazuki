@@ -58,6 +58,7 @@ gem "bonsai-elasticsearch-rails"
 gem "elasticsearch-model", github: "indirect/elasticsearch-rails"
 gem "elasticsearch-rails"
 gem "sidekiq"
+gem "redis-namespace"
 
 group :development, :test do
   gem "annotate"
