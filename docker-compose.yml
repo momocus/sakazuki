@@ -18,7 +18,7 @@ services:
     ports:
       - "5432:5432"
     hostname: db
-  web:
+  web: &web
     image: sakazuki
     volumes:
       - .:/sakazuki:cached
@@ -64,10 +64,10 @@ services:
       - es
   redis:
     image: redis:latest
-    ports:
-      - 6379:6379
     volumes:
       - redis_storage:/data
-  # sidekiq:
-  #   build: .
-  #   command: bundle exec sidekiq
+  sidekiq:
+    <<: *web
+    command: bundle exec sidekiq --queue elasticsearch --verbose
+    ports:
+      - 6379:6379
