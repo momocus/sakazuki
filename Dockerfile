@@ -1,4 +1,4 @@
-FROM ruby:2.7.2-slim-buster
+FROM ruby:2.7.3-slim-buster
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 

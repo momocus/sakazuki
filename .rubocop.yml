@@ -3,7 +3,7 @@ require:
   - rubocop-rspec
 
 AllCops:
-  TargetRubyVersion: 2.7.2
+  TargetRubyVersion: 2.7.3
   Exclude:
     - "bin/*"
     - "db/schema.rb"
