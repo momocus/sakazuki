@@ -6,6 +6,10 @@
   max-width: 1140px;
 }
 
+.click-transparent {
+  pointer-events: none;
+}
+
 .sakazuki-label {
   @extend .col-lg-3;
   @extend .col-12;
