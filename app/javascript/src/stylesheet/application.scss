@@ -6,6 +6,7 @@
   max-width: 1140px;
 }
 
+// 各ページにオーバーレイする新規作成・編集ボタン用
 .click-transparent {
   pointer-events: none;
 }
@@ -14,65 +15,20 @@
   pointer-events: all;
 }
 
-.sakazuki-label {
+// deviseで使うスタイル
+// 現在はformと揃えている
+.devise-label {
   @extend .col-lg-3;
   @extend .col-12;
   @extend .col-form-label;
 }
 
-// バッジ付きラベル
-.sakazuki-badged-label {
-  @extend .col-lg-2;
-  @extend .col-8;
-  @extend .col-form-label;
-}
-
-.sakazuki-badge {
-  @extend .col-lg-1;
-  @extend .col-4;
-  @extend .col-form-label;
-}
-
-// 半分サイズのフォーム
-.sakazuki-half-form {
-  @extend .col-lg-4;
-  @extend .col;
-}
-
-// 半分サイズのフォームを常に2つ並べる
-.sakazuki-half-forms {
-  @extend .col-lg-4;
-  @extend .col-6;
-}
-
-.show-label {
-  @extend .col-lg-3;
-  @extend .col-12;
-}
-
-.show-body {
-  @extend .col-lg-9;
-  @extend .col-12;
-}
-
-// Ransackが生成するスタイル
-.btn-group .sort_link {
-  @extend .btn;
-  @extend .btn-info;
-}
-
-// Ruby on Railsが生成するエラー用スタイルなので、アンダーバーのままにする
+// Ruby on Railsが生成するエラー用スタイル
+// アンダーバーのままにする
 .field_with_errors {
   display: contents;
 
   input {
     @extend .is-invalid;
   }
-}
-
-// ページネーションのボタンのうち、ディスプレイサイズが大きいときだけ表示するもの
-.page-item-lg {
-  @extend .page-item;
-  @extend .d-none;
-  @extend .d-md-block;
 }

@@ -5,7 +5,7 @@
   <%= f.hidden_field :reset_password_token %>
 
   <div class="row form-group">
-    <%= f.label :password, t(".new_password"), class: "sakazuki-label" %>
+    <%= f.label :password, t(".new_password"), class: "devise-label" %>
     <div class="col">
       <%= f.password_field :password,
                            autofocus: true,
@@ -16,7 +16,7 @@
   </div>
 
   <div class="row form-group">
-    <%= f.label :password_confirmation, t(".confirm_new_password"), class: "sakazuki-label" %>
+    <%= f.label :password_confirmation, t(".confirm_new_password"), class: "devise-label" %>
     <div class="col">
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
     </div>

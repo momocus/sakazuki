@@ -1,5 +1,21 @@
+@import "~bootstrap/scss/bootstrap";
+
 .sake-name-link {
   font-size: 1.1em;
   font-weight: 600;
   color: #212529;
+}
+
+// Ransackが生成するスタイル
+.btn-group .sort_link {
+  @extend .btn;
+  @extend .btn-info;
+}
+
+// kaminariが生成するページネーションボタン
+// ディスプレイサイズが大きい場合に表示する
+.page-item-lg {
+  @extend .page-item;
+  @extend .d-none;
+  @extend .d-md-block;
 }
