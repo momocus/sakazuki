@@ -10,6 +10,10 @@
   pointer-events: none;
 }
 
+.click-nontransparent {
+  pointer-events: all;
+}
+
 .sakazuki-label {
   @extend .col-lg-3;
   @extend .col-12;

@@ -3,11 +3,11 @@
     <% if params["action"] == "show" %>
       <%= link_to(bootstrap_icon("pencil-square", { width: "2em", height: "2em" }),
                   edit_sake_path(@sake),
-                  { class: "btn btn-info mx-1" }) %>
+                  { class: "btn btn-info mx-1 click-nontransparent" }) %>
     <% end %>
 
     <%= link_to(bootstrap_icon("plus-square", { width: "2em", height: "2em" }),
                 new_sake_path,
-                { class: "btn btn-primary ml-1" }) %>
+                { class: "btn btn-primary ml-1 click-nontransparent" }) %>
   </div>
 </div>
