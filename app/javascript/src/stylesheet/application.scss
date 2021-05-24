@@ -14,6 +14,38 @@
   pointer-events: all;
 }
 
+// Ruby on Railsが生成するエラー用スタイルなので、アンダーバーのままにする
+.field_with_errors {
+  display: contents;
+
+  input {
+    @extend .is-invalid;
+  }
+}
+
+//------ index ------
+
+.sake-name-link {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #212529;
+}
+
+// Ransackが生成するスタイル
+.btn-group .sort_link {
+  @extend .btn;
+  @extend .btn-info;
+}
+
+// ディスプレイサイズが大きいときだけ表示されるページネーションボタン
+.page-item-lg {
+  @extend .page-item;
+  @extend .d-none;
+  @extend .d-md-block;
+}
+
+//------ _form (new and edit) ------
+
 .sakazuki-label {
   @extend .col-lg-3;
   @extend .col-12;
@@ -45,6 +77,8 @@
   @extend .col-6;
 }
 
+//------ show ------
+
 .show-label {
   @extend .col-lg-3;
   @extend .col-12;
@@ -53,26 +87,4 @@
 .show-body {
   @extend .col-lg-9;
   @extend .col-12;
-}
-
-// Ransackが生成するスタイル
-.btn-group .sort_link {
-  @extend .btn;
-  @extend .btn-info;
-}
-
-// Ruby on Railsが生成するエラー用スタイルなので、アンダーバーのままにする
-.field_with_errors {
-  display: contents;
-
-  input {
-    @extend .is-invalid;
-  }
-}
-
-// ページネーションのボタンのうち、ディスプレイサイズが大きいときだけ表示するもの
-.page-item-lg {
-  @extend .page-item;
-  @extend .d-none;
-  @extend .d-md-block;
 }
