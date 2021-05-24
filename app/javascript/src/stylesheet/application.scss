@@ -23,6 +23,13 @@
   }
 }
 
+// devise
+.devise-label {
+  @extend .col-lg-3;
+  @extend .col-12;
+  @extend .col-form-label;
+}
+
 //------ index ------
 
 .sake-name-link {
