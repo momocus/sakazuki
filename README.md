@@ -1,4 +1,4 @@
-# Sakazuki
+# SAKAZUKI
 
 ![Check](https://github.com/momocus/sakazuki/workflows/Check/badge.svg)
 ![Test](https://github.com/momocus/sakazuki/workflows/Test/badge.svg)
@@ -49,7 +49,7 @@ User.create!(
   - `bundle exec rails db:seed`
 - サーバの起動
   - `bundle exec rails server`
-- Sakazukiへのログイン
+- SAKAZUKIへのログイン
   - <http://localhost:3000/>へアクセスする
   - メールアドレス: `example@example.com`
   - パスワード: `rootroot`
@@ -57,17 +57,17 @@ User.create!(
 - localユーザの設定
   - まだ
 
-### How to recieve EMail from Sakazuki in development environment
+### How to recieve EMail from SAKAZUKI in development environment
 
-Sakazukiにてユーザのパスワードリセットはメールで通知される。
+SAKAZUKIにてユーザのパスワードリセットはメールで通知される。
 Development環境では、letter_openerを使ってメールを確認する。
 
 - <http://localhost:3000/letter_opener>にアクセス
 
 ## How to deploy to Heroku
 
-SakazukiはHerokuで動かせる。
-Sakazukiの画像はCloudinaryにアップロードされるため、Herokuで使うにはメールとCloudinaryの設定が必要。
+SAKAZUKIはHerokuで動かせる。
+SAKAZUKIの画像はCloudinaryにアップロードされるため、Herokuで使うにはメールとCloudinaryの設定が必要。
 2つの設定はRailsのcredentialsを使って管理する。
 
 - メールとCloudinaryの設定
@@ -104,7 +104,7 @@ cloudinary:
 $ heroku config:set RAILS_MASTER_KEY=$(cat config/credentials/production.key)
 ```
 
-- HerokuにSakazukiをデプロイする
+- HerokuにSAKAZUKIをデプロイする
   - まだ
 
 ## How to develop with Docker
