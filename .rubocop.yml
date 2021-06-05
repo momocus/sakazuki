@@ -1,5 +1,7 @@
 inherit_from:
-  - https://raw.githubusercontent.com/cookpad/global-style-guides/8221378c9104362be782ec42365ebedb4a4f8863/.rubocop.yml
+  - https://raw.githubusercontent.com/cookpad/global-style-guides/8221378c9104362be782ec42365ebedb4a4f8863/.rubocop.ruby.yml
+  - https://raw.githubusercontent.com/cookpad/global-style-guides/8221378c9104362be782ec42365ebedb4a4f8863/.rubocop.rails.yml
+  - https://raw.githubusercontent.com/cookpad/global-style-guides/8221378c9104362be782ec42365ebedb4a4f8863/.rubocop.performance.yml
 
 require:
   - rubocop-rails
