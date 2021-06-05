@@ -87,9 +87,11 @@
 label.sakazuki-label + div input[type="checkbox"] {
   display: none;
 }
+
 label.sakazuki-label + div input:checked[type="checkbox"] + label img {
   border: 10px solid #f66;
 }
+
 label.sakazuki-label + div input:checked[type="checkbox"] + label::after {
   content: "❌";
   font-size: 40px;
