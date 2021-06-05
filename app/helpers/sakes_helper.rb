@@ -1,4 +1,4 @@
-require 'era_ja/date'
+require "era_ja/date"
 
 module SakesHelper
   def empty_to_default(value, default)
@@ -17,7 +17,7 @@ module SakesHelper
 
   # @param [Date] date
   def with_japanese_era(date)
-    [date.year, " / ", date.to_era("%O%-E年")].join("")
+    [date.year, " / ", date.to_era("%O%-E年")].join
   end
 
   # @param [String] id
