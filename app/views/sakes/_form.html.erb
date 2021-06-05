@@ -99,7 +99,9 @@
     <%#       Railsデフォルトでは年月が縦並びになってしまう。%>
     <%#       そのため、2つフォームを設置してTSで同期する。 %>
     <div class="sakazuki-half-forms">
-      <%= year_select_with_japanese_era(:bindume_date, Date.current.year) %>
+      <%= year_select_with_japanese_era(id="bindume_year",
+                                        name="sake[bindume_date(1i)]",
+                                        begin_year=Date.current.year) %>
     </div>
     <div class="sakazuki-half-forms">
       <%= form.date_select(:bindume_date,
@@ -112,7 +114,10 @@
     <%= form.label(:brew_year, { class: "sakazuki-label" }) %>
     <div class="sakazuki-half-forms">
       <% current_by = to_by(Date.current).year %>
-      <%= year_select_with_japanese_era(:brew_year, Date.current.year, current_by ) %>
+      <%= year_select_with_japanese_era(id="sake_brew_year_1i",
+                                        name="sake[brew_year(1i)]",
+                                        begin_year=Date.current.year,
+                                        selected_year=current_by ) %>
       <%# 使わない月日はBY始まりの7/1とする. See to_by %>
       <input type="hidden" id="sake_<%= :brew_year %>_2i" name="sake[<%= :brew_year %>(2i)]" value="7" />
       <input type="hidden" id="sake_<%= :brew_year %>_3i" name="sake[<%= :brew_year %>(3i)]" value="1" />

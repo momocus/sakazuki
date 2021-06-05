@@ -32,17 +32,16 @@ module SakesHelper
     select_tag(id, options_for_select(options, selected: selected_year), class: "form-control", name: name)
   end
 
-  # @param [Symbol] raw_id
+  # @param [String] id
+  # @param [String] name
   # @param [Integer] begin_year
   # @param [Integer] selected_year
-  def year_select_with_japanese_era(raw_id, begin_year, selected_year=begin_year)
-    year_range = begin_year - start_year_limit .. begin_year
+  def year_select_with_japanese_era(id, name, begin_year, selected_year = begin_year)
+    year_range = begin_year - start_year_limit..begin_year
     options = year_range.collect do |year|
       [with_japanese_era(to_by(Date.new(year + 1))), year]
     end
-    id = ["sake_", raw_id, "_1i"].join
-    name = ["sake[", raw_id, "(1i)]"].join
-    select_tag id, options_for_select(options, selected: selected_year), class:"form-control", name: name
+    select_tag id, options_for_select(options, selected: selected_year), class: "form-control", name: name
   end
 
   # どの瓶状態（bottle_level）にもマッチしない値
