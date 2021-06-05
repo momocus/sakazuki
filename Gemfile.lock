@@ -308,6 +308,9 @@ GEM
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.5.0)
       parser (>= 3.0.1.1)
+    rubocop-performance (1.11.3)
+      rubocop (>= 1.7.0, < 2.0)
+      rubocop-ast (>= 0.4.0)
     rubocop-rails (2.10.1)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
@@ -425,6 +428,7 @@ DEPENDENCIES
   ransack
   rspec-rails
   rubocop
+  rubocop-performance
   rubocop-rails
   rubocop-rspec
   sass-rails (>= 6)
@@ -443,4 +447,4 @@ RUBY VERSION
    ruby 2.7.3p183
 
 BUNDLED WITH
-   2.2.9
+   2.2.19
