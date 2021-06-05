@@ -134,6 +134,7 @@ GEM
       railties (>= 3.2)
     enum_help (0.0.17)
       activesupport (>= 3.0.0)
+    era_ja (1.2.2)
     erb_lint (0.0.37)
       activesupport
       better_html (~> 1.0.7)
@@ -408,6 +409,7 @@ DEPENDENCIES
   devise-i18n
   dotenv-rails
   enum_help
+  era_ja
   erb_lint
   factory_bot_rails
   jbuilder (~> 2.7)

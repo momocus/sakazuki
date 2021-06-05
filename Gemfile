@@ -53,6 +53,9 @@ gem "kaminari"
 # Bootstrap icons
 gem "bootstrap-icons-helper"
 
+# Japanese Era
+gem 'era_ja'
+
 group :development, :test do
   gem "annotate"
   # Call 'byebug' anywhere in the code to stop execution and get a debugger

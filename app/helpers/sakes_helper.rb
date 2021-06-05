@@ -1,3 +1,5 @@
+require 'era_ja/date'
+
 module SakesHelper
   def empty_to_default(value, default)
     value.presence || default
@@ -11,6 +13,11 @@ module SakesHelper
     by_year = date.year - (date.month >= 7 ? 0 : 1)
     # BYは年のみ、使わない月日はBY始まりの7/1とする
     Date.new(by_year, 7)
+  end
+
+  # @param [Date] date
+  def with_japanese_era(date)
+    [date.year, " / ", date.to_era("%O%-E年")].join("")
   end
 
   # どの瓶状態（bottle_level）にもマッチしない値
