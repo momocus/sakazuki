@@ -95,7 +95,9 @@
     <div class="sakazuki-badge">
       <span class="badge badge-secondary"><%= t("helpers.badge.obligation") %></span>
     </div>
-    <%# HACK: bootstrapで配置するために2つのdate_selectを設置しTSで同期する %>
+    <%# HACK: 年と月の入力フォームを分けて横並びに配置する。 %>
+    <%#       Railsデフォルトでは年月が縦並びになってしまう。%>
+    <%#       そのため、2つフォームを設置してTSで同期する。 %>
     <div class="sakazuki-half-forms">
       <%= year_select_with_japanese_era(id = "bindume_year",
                                         name = "sake[bindume_date(1i)]",

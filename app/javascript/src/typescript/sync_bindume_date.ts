@@ -8,7 +8,6 @@ function syncElement(srcId: string, dstId: string) {
 
 function setBindumeDateEvent() {
   syncElement('bindume_year', 'sake_bindume_date_1i')
-  syncElement('bindume_month', 'sake_bindume_date_2i')
 }
 
 // Main
