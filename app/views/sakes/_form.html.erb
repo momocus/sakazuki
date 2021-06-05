@@ -99,10 +99,15 @@
     <%#       Railsデフォルトでは年月が縦並びになってしまう。%>
     <%#       そのため、2つフォームを設置してTSで同期する。 %>
     <div class="sakazuki-half-forms">
-      <%= year_select_with_japanese_era(id = "bindume_year",
-                                        name = "sake[bindume_date(1i)]",
-                                        begin_year = Date.current.year,
-                                        selected_year = @sake.bindume_date&.year || Date.current.year) %>
+      <% current_year = Date.current.year %>
+      <select id="sake_<%= :bindume_date %>_1i" name="sake[<%= :bindume_date %>(1i)]" class="form-control">
+        <option value="" label=" "></option>
+        <% (current_year-start_year_limit .. current_year).each do |year| %>
+          <option value="<%= year %>" <%= "selected" if year == current_year %>>
+            <%= with_japanese_era(to_by(Date.new(year + 1 ))) %>
+          </option>
+        <% end %>
+      </select>
     </div>
     <div class="sakazuki-half-forms">
       <%= form.date_select(:bindume_date,
@@ -114,14 +119,18 @@
   <div class="form-group row">
     <%= form.label(:brew_year, { class: "sakazuki-label" }) %>
     <div class="sakazuki-half-forms">
-      <% default_by = to_by(Date.current).year %>
-      <%= year_select_with_japanese_era(id = "sake_brew_year_1i",
-                                        name = "sake[brew_year(1i)]",
-                                        begin_year = Date.current.year,
-                                        selected_year = @sake.brew_year&.year || default_by) %>
+      <% current_by = to_by(Date.current).year %>
+      <select id="sake_<%= :brew_year %>_1i" name="sake[<%= :brew_year %>(1i)]" class="form-control">
+        <option value="" label=" "></option>
+        <% (current_by-start_year_limit .. current_by).each do |year| %>
+        <option value="<%= year %>" <%= "selected" if year == current_by %>>
+          <%= with_japanese_era(to_by(Date.new(year + 1 ))) %>
+        </option>
+        <% end %>
+      </select>
       <%# 使わない月日はBY始まりの7/1とする. See to_by %>
-      <input type="hidden" id="sake_<%= :brew_year %>_2i" name="sake[<%= :brew_year %>(2i)]" value="7">
-      <input type="hidden" id="sake_<%= :brew_year %>_3i" name="sake[<%= :brew_year %>(3i)]" value="1">
+      <input type="hidden" id="sake_<%= :brew_year %>_2i" name="sake[<%= :brew_year %>(2i)]" value="7" />
+      <input type="hidden" id="sake_<%= :brew_year %>_3i" name="sake[<%= :brew_year %>(3i)]" value="1" />
     </div>
   </div>
 

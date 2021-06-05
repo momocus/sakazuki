@@ -54,7 +54,7 @@ gem "kaminari"
 gem "bootstrap-icons-helper"
 
 # Japanese Era
-gem "era_ja"
+gem 'era_ja'
 
 group :development, :test do
   gem "annotate"

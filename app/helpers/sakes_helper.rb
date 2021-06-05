@@ -1,4 +1,4 @@
-require "era_ja/date"
+require 'era_ja/date'
 
 module SakesHelper
   def empty_to_default(value, default)
