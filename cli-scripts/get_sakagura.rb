@@ -55,7 +55,6 @@ def fix_sakagura_name(name)
 end
 
 # SakeTimesの酒蔵一覧を取得し、ファイルにNDJSON形式で保存する
-# rubocop:disable Metrics/MethodLength
 def write_ndjson(regions)
   filename = "sakagura-list.ndjson"
   File.open(filename, "wb") do |f|
@@ -72,7 +71,6 @@ def write_ndjson(regions)
     end
   end
 end
-# rubocop:enable Metrics/MethodLength
 
 def main
   regions = request_todofuken

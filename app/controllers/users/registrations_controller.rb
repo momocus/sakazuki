@@ -1,7 +1,7 @@
 module Users
   include ApplicationHelper
   class RegistrationsController < Devise::RegistrationsController
-    before_action :redirect_to_root, only: %i[new create]
+    before_action :redirect_to_root, only: %i(new create)
 
     # GET /resource/sign_up
     # rubocop:disable Lint/UselessMethodDefinition
@@ -43,9 +43,9 @@ module Users
 
     private
 
-    def redirect_to_root
-      flash[:danger] = "Permission denied."
-      redirect_to(root_url)
-    end
+      def redirect_to_root
+        flash[:danger] = "Permission denied."
+        redirect_to(root_url)
+      end
   end
 end

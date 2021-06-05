@@ -81,17 +81,17 @@ class Sake < ApplicationRecord
   # validates :brew_year,
   validates :todofuken, exclusion: { in: [nil] }
   validates :taste_value,
-            numericality: {
-              allow_nil: true,
-              greater_than_or_equal_to: 0,
-              less_than_or_equal_to: 6,
-            }
+    numericality: {
+      allow_nil: true,
+      greater_than_or_equal_to: 0,
+      less_than_or_equal_to: 6,
+    }
   validates :aroma_value,
-            numericality: {
-              allow_nil: true,
-              greater_than_or_equal_to: 0,
-              less_than_or_equal_to: 6,
-            }
+    numericality: {
+      allow_nil: true,
+      greater_than_or_equal_to: 0,
+      less_than_or_equal_to: 6,
+    }
   validates :nihonshudo, numericality: { allow_nil: true }
   validates :sando, numericality: { allow_nil: true }
   validates :aroma_impression, exclusion: { in: [nil] }
