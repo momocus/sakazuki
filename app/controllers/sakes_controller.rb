@@ -92,66 +92,66 @@ class SakesController < ApplicationController
 
   private
 
-    def to_multi_search!(query)
-      words = query.delete(:all_text_cont)
-      query[:groupings] = separate_words(words)
-    end
+  def to_multi_search!(query)
+    words = query.delete(:all_text_cont)
+    query[:groupings] = separate_words(words)
+  end
 
-    def separate_words(words)
-      # 全角空白または半角空白で区切ることを許可
-      # { :name_cont => "" }があり得るがransackがSQL変換で削除するのでOK
-      words.split(/[ 　]/).map { |word| { all_text_cont: word } }
-    end
+  def separate_words(words)
+    # 全角空白または半角空白で区切ることを許可
+    # { :name_cont => "" }があり得るがransackがSQL変換で削除するのでOK
+    words.split(/[ 　]/).map { |word| { all_text_cont: word } }
+  end
 
-    # DBの蔵名に（県名）をつけて、_formの描画でつかうフォーマットにする
-    #   add_todofuken("原田酒造合資会社", "愛知県")  #=> "原田酒造合資会社（愛知県）"
-    def add_todofuken(kura, todofuken)
-      "#{kura}（#{todofuken}）"
-    end
+  # DBの蔵名に（県名）をつけて、_formの描画でつかうフォーマットにする
+  #   add_todofuken("原田酒造合資会社", "愛知県")  #=> "原田酒造合資会社（愛知県）"
+  def add_todofuken(kura, todofuken)
+    "#{kura}（#{todofuken}）"
+  end
 
-    # _formでオートコンプリートされたフォーマットから県名を取り除き、DBへ保存するフォーマットにする
-    #   strip_todofuken("原田酒造合資会社（愛知県）")  #=> "原田酒造合資会社"
-    def strip_todofuken(kura)
-      kura.nil? ? kura : kura.gsub(/（.*）/, "")
-    end
+  # _formでオートコンプリートされたフォーマットから県名を取り除き、DBへ保存するフォーマットにする
+  #   strip_todofuken("原田酒造合資会社（愛知県）")  #=> "原田酒造合資会社"
+  def strip_todofuken(kura)
+    kura.nil? ? kura : kura.gsub(/（.*）/, "")
+  end
 
-    # paramsの件名つき蔵名から県名を取り除く
-    def strip_todofuken_from_params!
-      params["sake"]["kura"] = strip_todofuken(params["sake"]["kura"]) if params.dig(:sake, :kura)
-    end
+  # paramsの件名つき蔵名から県名を取り除く
+  def strip_todofuken_from_params!
+    params["sake"]["kura"] = strip_todofuken(params["sake"]["kura"]) if params.dig(:sake, :kura)
+  end
 
-    def set_twitter_meta_tags
-      set_meta_tags(og: { title: "Sakazuki - #{@sake.name}" })
-      set_meta_tags(og: { image: @sake.photos.first.image.thumb.url }) if @sake.photos.any?
-    end
+  def set_twitter_meta_tags
+    set_meta_tags(og: { title: "Sakazuki - #{@sake.name}" })
+    set_meta_tags(og: { image: @sake.photos.first.image.thumb.url }) if @sake.photos.any?
+  end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_sake
-      @sake = Sake.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_sake
+    @sake = Sake.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def sake_params
-      params.require(:sake).
-        permit(:name, :kura, :photo, :bindume_date, :brew_year,
-          :todofuken, :taste_value, :aroma_value,
-          :nihonshudo, :sando, :aroma_impression,
-          :color, :taste_impression, :nigori, :awa,
-          :tokutei_meisho, :genryomai, :kakemai,
-          :kobo, :alcohol, :aminosando, :season,
-          :warimizu, :moto, :seimai_buai, :roka,
-          :shibori, :note, :bottle_level, :hiire,
-          :size, :price)
-    end
+  # Only allow a list of trusted parameters through.
+  def sake_params
+    params.require(:sake).
+      permit(:name, :kura, :photo, :bindume_date, :brew_year,
+        :todofuken, :taste_value, :aroma_value,
+        :nihonshudo, :sando, :aroma_impression,
+        :color, :taste_impression, :nigori, :awa,
+        :tokutei_meisho, :genryomai, :kakemai,
+        :kobo, :alcohol, :aminosando, :season,
+        :warimizu, :moto, :seimai_buai, :roka,
+        :shibori, :note, :bottle_level, :hiire,
+        :size, :price)
+  end
 
-    def store_photos
-      photos = params[:sake][:photos]
-      photos&.each { |photo| @sake.photos.create(image: photo) }
-    end
+  def store_photos
+    photos = params[:sake][:photos]
+    photos&.each { |photo| @sake.photos.create(image: photo) }
+  end
 
-    def delete_photos
-      @sake.photos.each do |photo|
-        photo.destroy if params[photo.chackbox_name] == "delete"
-      end
+  def delete_photos
+    @sake.photos.each do |photo|
+      photo.destroy if params[photo.chackbox_name] == "delete"
     end
+  end
 end

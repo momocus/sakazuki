@@ -43,9 +43,9 @@ module Users
 
     private
 
-      def redirect_to_root
-        flash[:danger] = "Permission denied."
-        redirect_to(root_url)
-      end
+    def redirect_to_root
+      flash[:danger] = "Permission denied."
+      redirect_to(root_url)
+    end
   end
 end
