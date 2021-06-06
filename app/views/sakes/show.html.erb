@@ -39,7 +39,7 @@
       <% @sake.photos.each do |photo| %>
           <div class="col-lg-4 col-6">
             <%= link_to cl_image_tag(photo.image.thumb.url, { class: "img-thumbnail" }),
-                        show_photo_path(photo_id: photo) %>
+                  show_photo_path(photo_id: photo) %>
             </div>
       <% end %>
     </div>
@@ -246,10 +246,10 @@
 
 <div class="row justify-content-center">
   <%= link_to(t("helpers.submit.delete"),
-              @sake,
-              method: :delete,
-              data: { confirm: t("message.delete") },
-              class: "btn btn-danger mx-3") %>
+        @sake,
+        method: :delete,
+        data: { confirm: t("message.delete") },
+        class: "btn btn-danger mx-3") %>
 </div>
 
 <%= javascript_pack_tag "sakes_show" %>

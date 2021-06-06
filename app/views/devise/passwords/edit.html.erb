@@ -8,10 +8,10 @@
     <%= f.label :password, t(".new_password"), class: "devise-label" %>
     <div class="col">
       <%= f.password_field :password,
-                           autofocus: true,
-                           autocomplete: "new-password",
-                           placeholder: minimum_password_message(@minimum_password_length),
-                           class: "form-control" %>
+            autofocus: true,
+            autocomplete: "new-password",
+            placeholder: minimum_password_message(@minimum_password_length),
+            class: "form-control" %>
     </div>
   </div>
 

@@ -48,9 +48,9 @@
                 <%# Hack: min-widthを設定することで、 %>
                 <%#       スマホ表示のときチェックボックスが小さくなりすぎるのを防ぐ %>
                 <%= check_box_tag(photo.chackbox_name,
-                                  "delete",
-                                  nil,
-                                  { class: "form-check-input", style: "min-width:32px" }) %>
+                      "delete",
+                      nil,
+                      { class: "form-check-input", style: "min-width:32px" }) %>
                 <label class="form-check-label" for="<%= photo.chackbox_name %>">
                   <%= cl_image_tag(photo.image.thumb.url, { class: "img-thumbnail" }) %>
                 </label>
@@ -72,11 +72,11 @@
     </div>
     <div class="sakazuki-half-form">
       <%= form.select(:tokutei_meisho,
-                      Sake.tokutei_meishos_i18n.keys.map do |k|
-                        [I18n.t("enums.sake.tokutei_meisho.#{k}"), k]
-                      end,
-                      {},
-                      { class: "form-control" }) %>
+            Sake.tokutei_meishos_i18n.keys.map do |k|
+              [I18n.t("enums.sake.tokutei_meisho.#{k}"), k]
+            end,
+            {},
+            { class: "form-control" }) %>
     </div>
   </div>
 
@@ -98,16 +98,16 @@
     <%# HACK: bootstrapで配置するために2つのdate_selectを設置しTSで同期する %>
     <div class="sakazuki-half-forms">
       <%= form.date_select(:bindume_date,
-                           { discard_day: true,
-                             discard_month: true,
-                             start_year: Date.current.year - start_year_limit,
-                             end_year: Date.current.year },
-                           { class: "form-control", id: "bindume_year" }) %>
+            { discard_day: true,
+              discard_month: true,
+              start_year: Date.current.year - start_year_limit,
+              end_year: Date.current.year },
+            { class: "form-control", id: "bindume_year" }) %>
     </div>
     <div class="sakazuki-half-forms">
       <%= form.date_select(:bindume_date,
-                           { discard_day: true, discard_year: true },
-                           { class: "form-control", id: "bindume_month" }) %>
+            { discard_day: true, discard_year: true },
+            { class: "form-control", id: "bindume_month" }) %>
     </div>
   </div>
 
@@ -116,12 +116,12 @@
     <div class="sakazuki-half-forms">
       <% current_by = to_by(Date.current).year %>
       <%= form.date_select(:brew_year,
-                           { discard_day: true,
-                             discard_month: true,
-                             include_blank: true,
-                             start_year: current_by - start_year_limit,
-                             end_year: current_by },
-                           { class: "form-control" }) %>
+            { discard_day: true,
+              discard_month: true,
+              include_blank: true,
+              start_year: current_by - start_year_limit,
+              end_year: current_by },
+            { class: "form-control" }) %>
     </div>
   </div>
 
@@ -142,7 +142,7 @@
     </div>
     <div class="sakazuki-half-form">
       <%= form.number_field(:alcohol,
-                            { step: "any", class: "form-control" }) %>
+            { step: "any", class: "form-control" }) %>
     </div>
   </div>
 
@@ -183,11 +183,11 @@
     <%= form.label(:moto, { class: "sakazuki-label" }) %>
     <div class="sakazuki-half-form">
       <%= form.select(:moto,
-                      Sake.motos_i18n.keys.map do |k|
-                        [I18n.t("enums.sake.moto.#{k}"), k]
-                      end,
-                      {},
-                      { class: "form-control" }) %>
+            Sake.motos_i18n.keys.map do |k|
+              [I18n.t("enums.sake.moto.#{k}"), k]
+            end,
+            {},
+            { class: "form-control" }) %>
     </div>
   </div>
 
@@ -209,11 +209,11 @@
     <%= form.label(:hiire, { class: "sakazuki-label" }) %>
     <div class="sakazuki-half-form">
       <%= form.select(:hiire,
-                      Sake.hiires_i18n.keys.map do |k|
-                        [I18n.t("enums.sake.hiire.#{k}"), k]
-                      end,
-                      {},
-                      { class: "form-control", title: "test" }) %>
+            Sake.hiires_i18n.keys.map do |k|
+              [I18n.t("enums.sake.hiire.#{k}"), k]
+            end,
+            {},
+            { class: "form-control", title: "test" }) %>
     </div>
   </div>
 
@@ -249,11 +249,11 @@
     <%= form.label(:warimizu, { class: "sakazuki-label" }) %>
     <div class="sakazuki-half-form">
       <%= form.select(:warimizu,
-                      Sake.warimizus_i18n.keys.map do |k|
-                        [I18n.t("enums.sake.warimizu.#{k}"), k]
-                      end,
-                      {},
-                      { class: "form-control" }) %>
+            Sake.warimizus_i18n.keys.map do |k|
+              [I18n.t("enums.sake.warimizu.#{k}"), k]
+            end,
+            {},
+            { class: "form-control" }) %>
     </div>
   </div>
 
@@ -261,11 +261,11 @@
     <%= form.label(:bottle_level, { class: "sakazuki-label" }) %>
     <div class="sakazuki-half-form">
       <%= form.select(:bottle_level,
-                      Sake.bottle_levels_i18n.keys.map do |k|
-                        [I18n.t("enums.sake.bottle_level.#{k}"), k]
-                      end,
-                      {},
-                      { class: "form-control" }) %>
+            Sake.bottle_levels_i18n.keys.map do |k|
+              [I18n.t("enums.sake.bottle_level.#{k}"), k]
+            end,
+            {},
+            { class: "form-control" }) %>
     </div>
   </div>
 
@@ -289,7 +289,7 @@
   <div class="form-group row">
 
     <%= form.label("#{t('activerecord.attributes.sake.taste_value')}, #{t('activerecord.attributes.sake.aroma_value')}",
-                   { class: "col-lg-3 col-7 col-form-label" }) %>
+          { class: "col-lg-3 col-7 col-form-label" }) %>
     <div class="col-lg-9 col-5">
       <div class="btn btn-secondary" id="graph-reset">
         <%= t(".reset") %>
@@ -299,11 +299,11 @@
     <div class="col-lg-9 col">
       <canvas class="mt-3" id="taste_graph"></canvas>
       <%= form.number_field(:taste_value,
-                            hidden: true,
-                            data: { taste_value: @sake.taste_value }) %>
+            hidden: true,
+            data: { taste_value: @sake.taste_value }) %>
       <%= form.number_field(:aroma_value,
-                            hidden: true,
-                            data: { aroma_value: @sake.aroma_value }) %>
+            hidden: true,
+            data: { aroma_value: @sake.aroma_value }) %>
     </div>
 
   </div>

@@ -26,8 +26,8 @@
   <%- resource_class.omniauth_providers.each do |provider| %>
     <div class="row">
       <%= link_to t(".sign_in_with_provider", provider: OmniAuth::Utils.camelize(provider)),
-                  omniauth_authorize_path(resource_name, provider),
-                  class: "col" %>
+            omniauth_authorize_path(resource_name, provider),
+            class: "col" %>
     </div>
   <% end %>
 <% end %>

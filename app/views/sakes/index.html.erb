@@ -6,18 +6,18 @@
   <div class="col">
     <%= search_form_for(@searched, { class: "form-inline" }) do |f| %>
       <%= f.search_field(:all_text_cont,
-                         { class: "form-control mr-sm-2",
-                           value: params.dig(:q, :all_text_cont) }) %>
+            { class: "form-control mr-sm-2",
+              value: params.dig(:q, :all_text_cont) }) %>
 
       <div class="custom-control custom-switch ml-sm-2 mr-2">
         <%= f.check_box(:bottle_level_not_eq,
-                        { class: "custom-control-input",
-                          id: "all_bottle_level" },
-                        bottom_bottle,
-                        Sake.bottle_levels["empty"]) %>
+              { class: "custom-control-input",
+                id: "all_bottle_level" },
+              bottom_bottle,
+              Sake.bottle_levels["empty"]) %>
         <%= f.label(t(".all_bottles"),
-                    { class: "custom-control-label",
-                      for: "all_bottle_level" }) %>
+              { class: "custom-control-label",
+                for: "all_bottle_level" }) %>
       </div>
 
       <%= f.submit({ class: "btn btn-secondary mx-2" }) %>
@@ -27,14 +27,14 @@
   <div class="col-md-6 col-12">
     <div class="btn-group float-md-right" role="group" aria-label="Sort">
       <%= sort_link(@searched,
-                    :tokutei_meisho,
-                    t("activerecord.attributes.sake.tokutei_meisho")) %>
+            :tokutei_meisho,
+            t("activerecord.attributes.sake.tokutei_meisho")) %>
       <%= sort_link(@searched,
-                    :todofuken,
-                    t("activerecord.attributes.sake.todofuken")) %>
+            :todofuken,
+            t("activerecord.attributes.sake.todofuken")) %>
       <%= sort_link(@searched,
-                    :bottle_level,
-                    t("activerecord.attributes.sake.bottle_level")) %>
+            :bottle_level,
+            t("activerecord.attributes.sake.bottle_level")) %>
     </div>
   </div>
 </div>
@@ -63,16 +63,16 @@
               <%= sake.bottle_level_i18n %>
               <% if sake.bottle_level == "sealed" %>
                 <%= link_to(html_escape(t(".open")) + bootstrap_icon("droplet-half", { width: "1em", height: "1em" }),
-                            edit_sake_path(sake, params: { sake: { bottle_level: "opened" } }),
-                            { id: "open-#{sake.id}",
-                              class: "badge badge-pill badge-primary ml-2" }) %>
+                      edit_sake_path(sake, params: { sake: { bottle_level: "opened" } }),
+                      { id: "open-#{sake.id}",
+                        class: "badge badge-pill badge-primary ml-2" }) %>
               <% elsif sake.bottle_level == "opened" %>
                 <%= link_to(html_escape(t(".empty")) + bootstrap_icon("droplet", { width: "1em", height: "1em" }),
-                            sake_path(sake, params: { sake: { bottle_level: "empty" } }),
-                            { method: :patch,
-                              data: { confirm: t("message.empty") },
-                              id: "empty-#{sake.id}",
-                              class: "badge badge-pill badge-light ml-2" }) %>
+                      sake_path(sake, params: { sake: { bottle_level: "empty" } }),
+                      { method: :patch,
+                        data: { confirm: t("message.empty") },
+                        id: "empty-#{sake.id}",
+                        class: "badge badge-pill badge-light ml-2" }) %>
               <% end %>
             </div>
           </div>
@@ -89,7 +89,7 @@
           <%#       そこで、セルの50%幅を指定することでセルが縦長になるのを防ぐ %>
           <% if sake.photos.any? %>
             <%= cl_image_tag(sake.photos.first.image.thumb.url,
-                             { class: "img-fulid", style: "width: 50%" }) %>
+                  { class: "img-fulid", style: "width: 50%" }) %>
           <% end %>
         </td>
       </tr>
