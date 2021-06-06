@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/ClassLength
 class SakesController < ApplicationController
   before_action :set_sake, only: %i(show edit update destroy)
   before_action :strip_todofuken_from_params!, only: %i(update)
