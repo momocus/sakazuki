@@ -1,3 +1,6 @@
+inherit_from:
+  - https://raw.githubusercontent.com/cookpad/styleguide/5a2d036bd80c801678c76d133662d29d42247099/.rubocop.yml
+
 require:
   - rubocop-rails
   - rubocop-rspec
