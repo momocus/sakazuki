@@ -1,4 +1,5 @@
 require "simplecov"
+require "capybara"
 
 SimpleCov.start("rails")
 
@@ -95,4 +96,17 @@ RSpec.configure do |config|
   #   # test failures related to randomization by passing the same `--seed` value
   #   # as the one that triggered the failure.
   #   Kernel.srand config.seed
+end
+
+# Capybara configuration
+Capybara.configure do |config|
+  # "data-testid"をCapybaraのclick_linkなどで使えるように、Optional attributeに登録する
+  config.test_id = "data-testid"
+end
+
+# Capybaraのカスタムセレクタ
+# find(:test_id, "email")でfind("[data-testid='email']")と同じく、data-testidが指定値のタグを取得できる
+# 参考: https://speakerdeck.com/yasaichi/tokyurubykaigi12
+Capybara.add_selector(:test_id) do
+  css { |val| %([data-testid="#{val}"]) }
 end
