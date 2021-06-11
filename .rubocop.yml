@@ -34,10 +34,6 @@ Style/FrozenStringLiteralComment:
 Style/Documentation:
   Enabled: false
 
-# Argの最後のカンマを許可
-Style/TrailingCommaInArguments:
-  EnforcedStyleForMultiline: comma
-
 # メソッド呼び出しのカッコの省略を禁止
 # specとfactoryは英文っぽく書きたいので許可
 Style/MethodCallWithArgsParentheses:
@@ -46,6 +42,8 @@ Style/MethodCallWithArgsParentheses:
     - "spec/**/*_spec.rb"
     - "spec/factories/*.rb"
 
+# メソッド名のエイリアスをつけるときは"alias"を使い、"alias_method"は使わない
+# aliasの方が自由度は低いが安全であるため
 Style/Alias:
   EnforcedStyle: prefer_alias
 
