@@ -4,10 +4,10 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="row form-group">
-    <%= f.label :email, class: "devise-label" %>
+    <%= f.label(:email, class: "devise-label") %>
     <div class="col">
-      <%= f.email_field :email,
-                        autofocus: true, autocomplete: "email", placeholder: "mail@example.com", class: "form-control" %>
+      <%= f.email_field(:email,
+                        autofocus: true, autocomplete: "email", placeholder: "mail@example.com", class: "form-control") %>
     </div>
   </div>
 
@@ -18,34 +18,34 @@
   <% end %>
 
   <div class="row form-group">
-    <%= f.label :password, class: "devise-label" %>
+    <%= f.label(:password, class: "devise-label") %>
     <div class="col">
       <% message = t(".leave_blank_if_you_don_t_want_to_change_it") %>
       <% if @minimum_password_length %>
         <% message = "#{message}, #{minimum_password_message(@minimum_password_length)}" %>
       <% end %>
-      <%= f.password_field :password, autocomplete: "new-password", placeholder: message, class: "form-control" %>
+      <%= f.password_field(:password, autocomplete: "new-password", placeholder: message, class: "form-control") %>
     </div>
   </div>
 
   <div class="row form-group">
-    <%= f.label :password_confirmation, class: "devise-label" %>
+    <%= f.label(:password_confirmation, class: "devise-label") %>
     <div class="col">
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+      <%= f.password_field(:password_confirmation, autocomplete: "new-password", class: "form-control") %>
     </div>
   </div>
 
   <div class="row form-group">
-    <%= f.label :current_password, class: "devise-label" %>
+    <%= f.label(:current_password, class: "devise-label") %>
     <div class="col">
       <% currentpass = t(".we_need_your_current_password_to_confirm_your_changes") %>
-      <%= f.password_field :current_password,
-                           autocomplete: "current-password", placeholder: currentpass, class: "form-control" %>
+      <%= f.password_field(:current_password,
+                           autocomplete: "current-password", placeholder: currentpass, class: "form-control") %>
     </div>
   </div>
 
   <div class="row justify-content-center">
-    <%= f.submit t(".update"), class: "btn btn-primary mx-3" %>
+    <%= f.submit(t(".update"), class: "btn btn-primary mx-3") %>
   </div>
 <% end %>
 

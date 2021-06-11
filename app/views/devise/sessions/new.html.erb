@@ -3,28 +3,28 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
   <div class="row form-group">
-    <%= f.label :email, class: "devise-label" %>
+    <%= f.label(:email, class: "devise-label") %>
     <div class="col">
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+      <%= f.email_field(:email, autofocus: true, autocomplete: "email", class: "form-control") %>
     </div>
   </div>
 
   <div class="row form-group">
-    <%= f.label :password, class: "devise-label" %>
+    <%= f.label(:password, class: "devise-label") %>
     <div class="col">
-      <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+      <%= f.password_field(:password, autocomplete: "current-password", class: "form-control") %>
     </div>
   </div>
 
   <% if devise_mapping.rememberable? %>
     <div class="form-group form-check">
-      <%= f.check_box :remember_me, class: "form-check-input" %>
-      <%= f.label :remember_me, class: "form-check-label" %>
+      <%= f.check_box(:remember_me, class: "form-check-input") %>
+      <%= f.label(:remember_me, class: "form-check-label") %>
     </div>
   <% end %>
 
   <div class="row justify-content-center">
-    <%= f.submit t(".sign_in"), class: "btn btn-primary" %>
+    <%= f.submit(t(".sign_in"), class: "btn btn-primary") %>
   </div>
 <% end %>
 

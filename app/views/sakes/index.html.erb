@@ -7,17 +7,17 @@
     <%= search_form_for(@searched, { class: "form-inline" }) do |f| %>
       <%= f.search_field(:all_text_cont,
                          { class: "form-control mr-sm-2",
-                           value: params.dig(:q, :all_text_cont) }) %>
+                           value: params.dig(:q, :all_text_cont), }) %>
 
       <div class="custom-control custom-switch ml-sm-2 mr-2">
         <%= f.check_box(:bottle_level_not_eq,
                         { class: "custom-control-input",
-                          id: "all_bottle_level" },
+                          id: "all_bottle_level", },
                         bottom_bottle,
                         Sake.bottle_levels["empty"]) %>
         <%= f.label(t(".all_bottles"),
                     { class: "custom-control-label",
-                      for: "all_bottle_level" }) %>
+                      for: "all_bottle_level", }) %>
       </div>
 
       <%= f.submit({ class: "btn btn-secondary mx-2" }) %>
@@ -65,14 +65,14 @@
                 <%= link_to(html_escape(t(".open")) + bootstrap_icon("droplet-half", { width: "1em", height: "1em" }),
                             edit_sake_path(sake, params: { sake: { bottle_level: "opened" } }),
                             { id: "open-#{sake.id}",
-                              class: "badge badge-pill badge-primary ml-2" }) %>
+                              class: "badge badge-pill badge-primary ml-2", }) %>
               <% elsif sake.bottle_level == "opened" %>
                 <%= link_to(html_escape(t(".empty")) + bootstrap_icon("droplet", { width: "1em", height: "1em" }),
                             sake_path(sake, params: { sake: { bottle_level: "empty" } }),
                             { method: :patch,
                               data: { confirm: t("message.empty") },
                               id: "empty-#{sake.id}",
-                              class: "badge badge-pill badge-light ml-2" }) %>
+                              class: "badge badge-pill badge-light ml-2", }) %>
               <% end %>
             </div>
           </div>
