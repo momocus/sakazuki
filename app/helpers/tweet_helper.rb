@@ -1,10 +1,10 @@
 module TweetHelper
   def tweet_button(tweet_text)
     share_twitter = "https://twitter.com/share?ref_src=twsrc%5Etfw"
-    tag.a "Tweet",
+    tag.a("Tweet",
           href: share_twitter,
           class: "twitter-share-button",
-          data: { text: tweet_text, hashtags: "Sakazuki", show_count: false }
+          data: { text: tweet_text, hashtags: "Sakazuki", show_count: false })
   end
 
   def add_period(text, period = t("helpers.tweet.punctuation"))

@@ -1,1 +1,1 @@
-json.array! @sakes, partial: "sakes/sake", as: :sake
+json.array!(@sakes, partial: "sakes/sake", as: :sake)

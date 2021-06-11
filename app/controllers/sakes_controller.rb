@@ -61,9 +61,9 @@ class SakesController < ApplicationController
     respond_to do |format|
       if @sake.save
         store_photos
-        format.html { redirect_to @sake, notice: "Create successfully." }
+        format.html { redirect_to(@sake, notice: "Create successfully.") }
       else
-        format.html { render :new }
+        format.html { render(:new) }
       end
     end
   end
@@ -75,9 +75,9 @@ class SakesController < ApplicationController
       if @sake.update(sake_params)
         delete_photos
         store_photos
-        format.html { redirect_to @sake, notice: "Update successfully." }
+        format.html { redirect_to(@sake, notice: "Update successfully.") }
       else
-        format.html { render :edit }
+        format.html { render(:edit) }
       end
     end
   end
@@ -87,7 +87,7 @@ class SakesController < ApplicationController
   def destroy
     @sake.destroy
     respond_to do |format|
-      format.html { redirect_to sakes_url, notice: "Destroy successfully." }
+      format.html { redirect_to(sakes_url, notice: "Destroy successfully.") }
     end
   end
 
