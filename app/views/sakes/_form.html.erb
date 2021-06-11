@@ -60,7 +60,7 @@
         <% end %>
         <%= form.file_field(:photos, { multiple: true,
                                        class: "form-control-file col-12",
-                                       accept: "image/*" }) %>
+                                       accept: "image/*", }) %>
       </div>
     </div>
   </div>
@@ -101,7 +101,7 @@
                            { discard_day: true,
                              discard_month: true,
                              start_year: Date.current.year - start_year_limit,
-                             end_year: Date.current.year },
+                             end_year: Date.current.year, },
                            { class: "form-control", id: "bindume_year" }) %>
     </div>
     <div class="sakazuki-half-forms">
@@ -120,7 +120,7 @@
                              discard_month: true,
                              include_blank: true,
                              start_year: current_by - start_year_limit,
-                             end_year: current_by },
+                             end_year: current_by, },
                            { class: "form-control" }) %>
     </div>
   </div>
