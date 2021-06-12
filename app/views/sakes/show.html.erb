@@ -35,11 +35,11 @@
     <b><%= Sake.human_attribute_name(:photos) %></b>
   </div>
   <div class="show-body">
-    <div class="row">
+    <div class="row photo-gallery">
       <% @sake.photos.each do |photo| %>
           <div class="col-lg-4 col-6">
             <%= link_to cl_image_tag(photo.image.thumb.url, { class: "img-thumbnail" }),
-                        show_photo_path(photo_id: photo) %>
+                        photo.image.url %>
             </div>
       <% end %>
     </div>
