@@ -8,7 +8,7 @@ RSpec.describe "DrinkButtons", type: :system do
   let!(:sealed_sake) { FactoryBot.create(:sake, bottle_level: "sealed") }
   let!(:opened_sake) { FactoryBot.create(:sake, bottle_level: "opened") }
   let!(:impressed_sake) { FactoryBot.create(:sake, bottle_level: "opened", taste_value: 1, aroma_value: 2) }
-  # let!(:empty_sake) { FactoryBot.create(:sake, bottle_level: "empty", taste_value: 1, aroma_value: 2) }
+  let!(:empty_sake) { FactoryBot.create(:sake, bottle_level: "empty", taste_value: 1, aroma_value: 2) }
 
   describe "sake column in index page" do
     before do
@@ -70,8 +70,28 @@ RSpec.describe "DrinkButtons", type: :system do
       end
     end
 
-    # TODO: 空ボトルのボタンテスト、vistにうまくparamを渡す方法がわからない
-    # describe "empty bottle column" do end
+    describe "empty bottle" do
+      before do
+        visit sakes_path
+        page.check("check_empty_bottle")
+        click_button("submit_search")
+      end
+
+      it "does not have open button with i18n text" do
+        id = "bottle-level-#{empty_sake.id}"
+        expect(find(:test_id, id)).to have_no_text(open_text)
+      end
+
+      it "does not have impress button with i18n text" do
+        id = "bottle-level-#{empty_sake.id}"
+        expect(find(:test_id, id)).to have_no_text(impress_text)
+      end
+
+      it "does not have empty button with i18n text" do
+        id = "bottle-level-#{empty_sake.id}"
+        expect(find(:test_id, id)).to have_no_text(empty_text)
+      end
+    end
   end
 
   context "without login" do
