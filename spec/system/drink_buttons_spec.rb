@@ -132,11 +132,11 @@ RSpec.describe "DrinkButtons", type: :system do
 
     describe "clicking open button of sealed bottle" do
       it "updates sake to opened" do
-        expect do
+        expect {
           click_link "open-button-#{sealed_sake.id}"
           wait_for_page
           sealed_sake.reload
-        end.to change(sealed_sake, :bottle_level).from("sealed").to("opened")
+        }.to change(sealed_sake, :bottle_level).from("sealed").to("opened")
       end
     end
 
@@ -183,10 +183,10 @@ RSpec.describe "DrinkButtons", type: :system do
       end
 
       it "updates sake to empty" do
-        expect do
+        expect {
           wait_for_page
           impressed_sake.reload
-        end.to change(impressed_sake, :bottle_level).from("opened").to("empty")
+        }.to change(impressed_sake, :bottle_level).from("opened").to("empty")
       end
     end
   end
