@@ -17,25 +17,4 @@ module SakesHelper
   def bottom_bottle
     -1
   end
-
-  # 酒が未開封か
-  # @param [Sake] 酒
-  # @return [Boolean] 酒が未開封ならture、さもなくばfalse
-  def sealed?(sake)
-    sake.bottle_level == "sealed"
-  end
-
-  # 酒が開封されてまだ残っているか
-  # @param [Sake] 酒
-  # @return [Boolean] 酒が開封済みで中身が残っていたらture、未開封や空ならfalse
-  def opened?(sake)
-    sake.bottle_level == "opened"
-  end
-
-  # 酒が未評価か
-  # @param [Sake] 酒
-  # @return [Boolean] 酒の味・香りが評価されていないとtrue、評価済みならfalse
-  def unimpressed?(sake)
-    sake.taste_value.nil? && sake.aroma_value.nil?
-  end
 end
