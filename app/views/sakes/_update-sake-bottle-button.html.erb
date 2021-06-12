@@ -1,0 +1,26 @@
+<% if sake.sealed? %>
+  <%= link_to(html_escape(t("sakes.index.open")) + bootstrap_icon("droplet-half", { width: "1em", height: "1em" }),
+              sake_path(sake, params: { sake: { bottle_level: "opened" } }),
+              { method: :patch,
+                data: { confirm: t("message.open") },
+                class: "badge badge-pill badge-primary ml-2",
+                "data-testid": "open-button-#{sake.id}", }) %>
+  <%= link_to(html_escape(t("sakes.index.impress")) + bootstrap_icon("cup-fill", { width: "1em", height: "1em" }),
+              edit_sake_path(sake, params: { sake: { bottle_level: "opened" } }),
+              { class: "badge badge-pill badge-secondary ml-2",
+                "data-testid": "open-and-impress-button-#{sake.id}", }) %>
+<% end %>
+<% if sake.opened? && sake.unimpressed? %>
+  <%= link_to(html_escape(t("sakes.index.impress")) + bootstrap_icon("cup-fill", { width: "1em", height: "1em" }),
+              edit_sake_path(sake),
+              { class: "badge badge-pill badge-secondary ml-2",
+                "data-testid": "impress-button-#{sake.id}", }) %>
+<% end %>
+<% if sake.opened? %>
+  <%= link_to(html_escape(t("sakes.index.empty")) + bootstrap_icon("droplet", { width: "1em", height: "1em" }),
+              sake_path(sake, params: { sake: { bottle_level: "empty" } }),
+              { method: :patch,
+                data: { confirm: t("message.empty") },
+                class: "badge badge-pill badge-light ml-2",
+                "data-testid": "empty-button-#{sake.id}", }) %>
+<% end %>

@@ -12,7 +12,8 @@
       <div class="custom-control custom-switch ml-sm-2 mr-2">
         <%= f.check_box(:bottle_level_not_eq,
                         { class: "custom-control-input",
-                          id: "all_bottle_level", },
+                          id: "all_bottle_level",
+                          "data-testid": "check_empty_bottle", },
                         bottom_bottle,
                         Sake.bottle_levels["empty"]) %>
         <%= f.label(t(".all_bottles"),
@@ -20,7 +21,7 @@
                       for: "all_bottle_level", }) %>
       </div>
 
-      <%= f.submit({ class: "btn btn-secondary mx-2" }) %>
+      <%= f.submit({ class: "btn btn-secondary mx-2", "data-testid": "submit_search" }) %>
     <% end %>
   </div>
 
@@ -59,21 +60,9 @@
             </div>
           </div>
           <div class="row m-0 mt-2">
-            <div calss="col p-0">
+            <div calss="col p-0" data-testid="bottle-level-<%= sake.id %>">
               <%= sake.bottle_level_i18n %>
-              <% if sake.bottle_level == "sealed" %>
-                <%= link_to(html_escape(t(".open")) + bootstrap_icon("droplet-half", { width: "1em", height: "1em" }),
-                            edit_sake_path(sake, params: { sake: { bottle_level: "opened" } }),
-                            { id: "open-#{sake.id}",
-                              class: "badge badge-pill badge-primary ml-2", }) %>
-              <% elsif sake.bottle_level == "opened" %>
-                <%= link_to(html_escape(t(".empty")) + bootstrap_icon("droplet", { width: "1em", height: "1em" }),
-                            sake_path(sake, params: { sake: { bottle_level: "empty" } }),
-                            { method: :patch,
-                              data: { confirm: t("message.empty") },
-                              id: "empty-#{sake.id}",
-                              class: "badge badge-pill badge-light ml-2", }) %>
-              <% end %>
+              <%= render "update-sake-bottle-button", sake: sake %>
             </div>
           </div>
         </td>

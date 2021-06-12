@@ -22,6 +22,7 @@ ja:
       title: 日本酒リスト
       all_bottles: 空瓶を表示
       open: 開封する
+      impress: 評価する
       empty: 空にする
     new:
       title: 新規登録

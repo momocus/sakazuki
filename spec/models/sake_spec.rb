@@ -55,4 +55,35 @@ RSpec.describe Sake, type: :model do
       it { is_expected.to be_falsy }
     end
   end
+
+  let(:sealed_sake) { FactoryBot.create(:sake, bottle_level: "sealed") }
+  let(:opened_sake) { FactoryBot.create(:sake, bottle_level: "opened") }
+  let(:impressed_sake) { FactoryBot.create(:sake, bottle_level: "opened", aroma_value: 1, taste_value: 2) }
+
+  describe "check sealed" do
+    it "returns true" do
+      expect(sealed_sake.sealed?).to be_truthy
+    end
+    it "returns false" do
+      expect(opened_sake.sealed?).to be_falsy
+    end
+  end
+
+  describe "check opened" do
+    it "returns true" do
+      expect(opened_sake.opened?).to be_truthy
+    end
+    it "returns false" do
+      expect(sealed_sake.opened?).to be_falsy
+    end
+  end
+
+  describe "check unimpressed" do
+    it "returns true" do
+      expect(opened_sake.unimpressed?).to be_truthy
+    end
+    it "returns false" do
+      expect(impressed_sake.unimpressed?).to be_falsy
+    end
+  end
 end
