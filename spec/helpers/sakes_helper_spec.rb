@@ -80,5 +80,4 @@ RSpec.describe SakesHelper, type: :helper do
       expect(bottom_bottle).to eq(-1)
     end
   end
-
 end
