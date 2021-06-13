@@ -1,4 +1,4 @@
-import { GraphP, TasteGraph } from './taste_graph'
+import { GraphP, TasteGraph } from "./taste_graph"
 
 function getDomValueFromCanvas(canvas: HTMLCanvasElement): GraphP {
   const tasteS = canvas.dataset.tasteValue
@@ -14,13 +14,13 @@ function getDomValueFromCanvas(canvas: HTMLCanvasElement): GraphP {
 }
 
 const hasCanvasID = (elem: HTMLCanvasElement): boolean => {
-  const id = elem.getAttribute('id')
+  const id = elem.getAttribute("id")
   return id != null
 }
 
 // Main
 {
-  const canvases = Array.from(document.getElementsByTagName('canvas'))
+  const canvases = Array.from(document.getElementsByTagName("canvas"))
   const graphs = canvases.filter(hasCanvasID)
   graphs.forEach((canvas) => {
     const p = getDomValueFromCanvas(canvas)
