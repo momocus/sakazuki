@@ -40,8 +40,6 @@ class SakesController < ApplicationController
   # GET /sakes/new
   def new
     @sake = Sake.new
-    # デフォルト値を設定する
-    @sake.brew_year = to_by(Time.zone.today)
     @sake.size = 720
   end
 
