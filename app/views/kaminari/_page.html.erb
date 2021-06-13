@@ -1,6 +1,6 @@
 <% if page.current? %>
   <li class="page-item-lg active">
-    <%= tag.a(page, { data: { remote: remote }, rel: page.rel, class: "page-link" }) %>
+    <%= tag.a(page, data: { remote: remote }, class: "page-link", rel: page.rel) %>
   </li>
 <% else %>
   <li class="page-item-lg">
