@@ -95,14 +95,14 @@
     <div class="sakazuki-badge">
       <span class="badge badge-secondary"><%= t("helpers.badge.obligation") %></span>
     </div>
-    <%# HACK: bootstrapで配置するために2つのdate_selectを設置しTSで同期する %>
+    <%# HACK: 年と月の入力フォームを分けて横並びに配置する。 %>
+    <%#       Railsデフォルトでは年月が縦並びになってしまう。%>
+    <%#       そのため、2つフォームを設置してTSで同期する。 %>
     <div class="sakazuki-half-forms">
-      <%= form.date_select(:bindume_date,
-                           { discard_day: true,
-                             discard_month: true,
-                             start_year: Date.current.year - start_year_limit,
-                             end_year: Date.current.year, },
-                           { class: "form-control", id: "bindume_year" }) %>
+      <%= year_select_with_japanese_era(id = "bindume_year",
+                                        name = "sake[bindume_date(1i)]",
+                                        begin_year = Date.current.year,
+                                        selected_year = @sake.bindume_date&.year || Date.current.year) %>
     </div>
     <div class="sakazuki-half-forms">
       <%= form.date_select(:bindume_date,
@@ -115,13 +115,13 @@
     <%= form.label(:brew_year, { class: "sakazuki-label" }) %>
     <div class="sakazuki-half-forms">
       <% current_by = to_by(Date.current).year %>
-      <%= form.date_select(:brew_year,
-                           { discard_day: true,
-                             discard_month: true,
-                             include_blank: true,
-                             start_year: current_by - start_year_limit,
-                             end_year: current_by, },
-                           { class: "form-control" }) %>
+      <%= year_select_with_japanese_era(id = "sake_brew_year_1i",
+                                        name = "sake[brew_year(1i)]",
+                                        begin_year = current_by,
+                                        selected_year = @sake.brew_year&.year || current_by) %>
+      <%# 使わない月日はBY始まりの7/1とする. See to_by %>
+      <input type="hidden" id="sake_<%= :brew_year %>_2i" name="sake[<%= :brew_year %>(2i)]" value="7">
+      <input type="hidden" id="sake_<%= :brew_year %>_3i" name="sake[<%= :brew_year %>(3i)]" value="1">
     </div>
   </div>
 
