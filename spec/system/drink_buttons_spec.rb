@@ -140,7 +140,7 @@ RSpec.describe "DrinkButtons", type: :system do
       it "redirects to sake edit page" do
         path = edit_sake_path(sealed_sake.id)
         # クエリ "?sake[bottle_level]=opened" 部を無視する
-        expect(page).to have_current_path(path, { ignore_query: true })
+        expect(page).to have_current_path(path, ignore_query: true)
       end
 
       it "moves to edit page and has 'opened' state" do
