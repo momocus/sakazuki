@@ -1,13 +1,13 @@
 <%= form_with(model: sake, local: true) do |form| %>
 
-  <!-- error message -->
+  <%# error message %>
   <% if sake.errors.any? %>
     <% sake.errors.full_messages.each do |message| %>
       <% flash.now[:danger] = message %>
     <% end %>
   <% end %>
 
-  <!-- 表示義務ありのラベル情報 -->
+  <%# 表示義務ありのラベル情報 %>
   <h3><%= t("helpers.subtitle.labelinfo") %></h3>
 
   <div class="form-group row">
@@ -156,7 +156,7 @@
     </div>
   </div>
 
-  <!-- 表示義務なしのラベル情報 -->
+  <%# 表示義務なしのラベル情報 %>
 
   <div class="form-group row">
     <%= form.label(:genryomai, { class: "sakazuki-label" }) %>
@@ -269,7 +269,7 @@
     </div>
   </div>
 
-  <!-- 開けてから -->
+  <%# 開けてから %>
   <h3><%= t("helpers.subtitle.tasteinfo") %></h3>
 
   <div class="form-group row">
