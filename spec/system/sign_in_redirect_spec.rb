@@ -21,7 +21,7 @@ RSpec.describe "Sign-in redirect", type: :system do
     end
 
     it "redirect to edit_sake_path after user sign-in" do
-      fill_sign_column(user)
+      signin_process_on_signin_page(user)
       expect(page).to have_current_path edit_sake_path(id)
     end
   end
@@ -37,7 +37,7 @@ RSpec.describe "Sign-in redirect", type: :system do
     end
 
     it "redirects user to new_sake_path after user sign-in" do
-      fill_sign_column(user)
+      signin_process_on_signin_page(user)
       expect(page).to have_current_path new_sake_path
     end
   end
