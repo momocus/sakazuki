@@ -10,16 +10,24 @@ class ApplicationController < ActionController::Base
     redirect_to(new_user_session_path)
   end
 
-  # 以下の場合にユーザーが居たパスを保存する
+  # サインイン時にユーザーが元いたパスへ戻れるようにするため、
+  # deviseのstore_location_forを使ってユーザーが居たパスを保存する
+  def store_location
+    if storable_location?
+      store_location_for(:user, request.fullpath)
+    end
+  end
+
+  private
+
+  # 下記すべての条件を満たすとき、ユーザーが居たパスを保存してよいと判定する。
   # - リクエストがGETメソッドである。
   # - Ajaxリクエストではない。
   # - ユーザー認証ページへのパスではない。
   #   （リダイレクトループが発生するのを避けるため）
-  def store_location
-    if request.get? &&
-       !request.xhr? &&
-       !request.path.match?("\/users\/.*")
-      store_location_for(:user, request.fullpath)
-    end
+  # 参考: https://github.com/heartcombo/devise/wiki/How-To:-Redirect-back-to-current-page-after-sign-in,-sign-out,-sign-up,-update
+  # @return [Boolean] ユーザーが居たパスを保存していいときにtrueを返す。
+  def storable_location?
+    request.get? && !request.xhr? && !request.path.match?("\/users\/.*")
   end
 end
