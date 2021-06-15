@@ -59,7 +59,7 @@ RSpec.describe "Sign-in redirect", type: :system do
       sign_in_via_header_button(user)
     end
 
-    it "redirects user to root url (does not occur redirection loop)" do
+    it "redirects to root url (does not occur redirection loop)" do
       expect(page).to have_current_path root_path
     end
   end
