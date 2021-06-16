@@ -13,6 +13,7 @@ require("channels")
 /* eslint-enable @typescript-eslint/no-unsafe-call */
 
 import "bootstrap"
+import "bootstrap-icons/font/bootstrap-icons"
 import "../src/stylesheet/application.scss"
 
 // Uncomment to copy all static images under ../images to the output folder and reference

@@ -49,9 +49,6 @@ gem "ransack"
 # Pagination
 gem "kaminari"
 
-# Bootstrap icons
-gem "bootstrap-icons-helper"
-
 # Japanese Era
 gem "era_ja"
 
