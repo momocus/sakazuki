@@ -1,7 +1,7 @@
 <header>
   <%# HACK: 画面サイズがlg以上のときだけのnavbarのタイトルがずれる対策にpx-lg-0をいれる %>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-lg-0">
-    <div class="container-fluid-with-maxwidth">
+    <div class="container-xxl">
       <%= link_to "Sakazuki", root_path, class: "navbar-brand" %>
 
       <% if user_signed_in? %>

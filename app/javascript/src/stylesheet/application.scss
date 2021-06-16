@@ -1,12 +1,6 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~simplelightbox/dist/simple-lightbox.min";
 
-.container-fluid-with-maxwidth {
-  @extend .container-fluid;
-
-  max-width: 1140px;
-}
-
 .click-transparent {
   pointer-events: none;
 }
