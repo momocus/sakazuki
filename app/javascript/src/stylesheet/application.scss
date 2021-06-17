@@ -36,7 +36,7 @@
 // Ransackが生成するスタイル
 .btn-group .sort_link {
   @extend .btn;
-  @extend .btn-info;
+  @extend .btn-primary;
 }
 
 // ディスプレイサイズが大きいときだけ表示されるページネーションボタン
