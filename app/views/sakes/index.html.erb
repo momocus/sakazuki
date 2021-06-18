@@ -2,31 +2,31 @@
 
 <%= render "float-button" %>
 
-<div class="row my-1">
+<%= search_form_for(@searched, { class: "row my-2 align-items-center" }) do |f| %>
   <div class="col">
-    <%= search_form_for(@searched, { class: "form-inline" }) do |f| %>
-      <%= f.search_field(:all_text_cont,
-                         { class: "form-control mr-sm-2",
-                           value: params.dig(:q, :all_text_cont), }) %>
-
-      <div class="custom-control custom-switch ml-sm-2 mr-2">
-        <%= f.check_box(:bottle_level_not_eq,
-                        { class: "custom-control-input",
-                          id: "all_bottle_level",
-                          "data-testid": "check_empty_bottle", },
-                        bottom_bottle,
-                        Sake.bottle_levels["empty"]) %>
-        <%= f.label(t(".all_bottles"),
-                    { class: "custom-control-label",
-                      for: "all_bottle_level", }) %>
-      </div>
-
-      <%= f.submit({ class: "btn btn-secondary mx-2", "data-testid": "submit_search" }) %>
-    <% end %>
+    <%= f.search_field(:all_text_cont,
+                       { class: "form-control",
+                         value: params.dig(:q, :all_text_cont), }) %>
+  </div>
+  <div class="col-auto">
+    <div class="form-check form-switch">
+      <%= f.check_box(:bottle_level_not_eq,
+                      { class: "form-check-input",
+                        id: "all_bottle_level",
+                        "data-testid": "check_empty_bottle", },
+                      bottom_bottle,
+                      Sake.bottle_levels["empty"]) %>
+      <%= f.label(t(".all_bottles"),
+                  { class: "form-check-label",
+                    for: "all_bottle_level", }) %>
+    </div>
+  </div>
+  <div class="col-auto">
+    <%= f.submit({ class: "btn btn-secondary", "data-testid": "submit_search" }) %>
   </div>
 
-  <div class="col-md-6 col-12">
-    <div class="btn-group float-md-right" role="group" aria-label="Sort">
+  <div class="col-md mt-md-0 col-12 mt-2">
+    <div class="btn-group float-md-end" role="group" aria-label="Sort">
       <%= sort_link(@searched,
                     :tokutei_meisho,
                     t("activerecord.attributes.sake.tokutei_meisho")) %>
@@ -38,7 +38,7 @@
                     t("activerecord.attributes.sake.bottle_level")) %>
     </div>
   </div>
-</div>
+<% end %>
 
 <table class="table table-bordered" caption="Sake List">
   <thead></thead>
