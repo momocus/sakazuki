@@ -18,7 +18,6 @@ RSpec.describe "Sign in redirect with drink buttons", type: :system do
       signin_process_on_signin_page(user)
       # クエリ "?sake[bottle_level]=opened" 部を無視する
       expect(page).to have_current_path(edit_sake_path(id), ignore_query: true)
-      sign_out(user)
     end
   end
 
