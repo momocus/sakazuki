@@ -1,9 +1,6 @@
 require "rails_helper"
 
 RSpec.describe "DrinkButtons", type: :system do
-  before do
-    driven_by(:rack_test)
-  end
 
   let!(:sealed_sake) { FactoryBot.create(:sake, bottle_level: "sealed") }
   let!(:opened_sake) { FactoryBot.create(:sake, bottle_level: "opened") }
@@ -109,9 +106,8 @@ RSpec.describe "DrinkButtons", type: :system do
     end
   end
 
-  context "without login with confirm modal" do
+  context "without login with confirm modal", js: true do
     before do
-      Capybara.current_driver = :selenium_headless
       visit sakes_path
     end
 
@@ -213,9 +209,8 @@ RSpec.describe "DrinkButtons", type: :system do
     end
   end
 
-  context "with login by selenium driver" do
+  context "with login by selenium driver", js: true do
     before do
-      Capybara.current_driver = :selenium_headless
       user = FactoryBot.create(:user)
       sign_in(user)
       visit sakes_path

@@ -5,10 +5,6 @@ RSpec.describe "Sign in redirect with drink buttons", type: :system do
   let!(:impressed_sake) { FactoryBot.create(:sake, bottle_level: "opened", taste_value: 1, aroma_value: 2) }
   let(:user) { FactoryBot.create(:user) }
 
-  before do
-    driven_by(:rack_test)
-  end
-
   describe "impress button" do
     it "redirects edit page after sign in" do
       sign_out(user)
@@ -22,8 +18,7 @@ RSpec.describe "Sign in redirect with drink buttons", type: :system do
   end
 
   describe "open button of sealed sake" do
-    it "redirects index page after sign in" do
-      Capybara.current_driver = :selenium_headless
+    it "redirects index page after sign in", js: true do
       sign_out(user)
       visit sakes_path
       id = sealed_sake.id
@@ -37,8 +32,7 @@ RSpec.describe "Sign in redirect with drink buttons", type: :system do
   end
 
   describe "empty button" do
-    it "redirects index page after sign in" do
-      Capybara.current_driver = :selenium_headless
+    it "redirects index page after sign in", js: true do
       sign_out(user)
       visit sakes_path
       id = impressed_sake.id
