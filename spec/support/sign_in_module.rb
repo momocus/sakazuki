@@ -9,7 +9,7 @@ module SignInModule
   # @raise [RuntimeError] 現在のページがSign inページではない場合
   def signin_process_on_signin_page(user)
     if current_path != new_user_session_path
-      raise
+      raise("signin_process_on_signin_page: called on not sign in page")
     end
 
     fill_in("user_email", with: user.email)
