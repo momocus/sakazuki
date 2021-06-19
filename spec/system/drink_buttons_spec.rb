@@ -9,6 +9,7 @@ RSpec.describe "DrinkButtons", type: :system do
   let!(:opened_sake) { FactoryBot.create(:sake, bottle_level: "opened") }
   let!(:impressed_sake) { FactoryBot.create(:sake, bottle_level: "opened", taste_value: 1, aroma_value: 2) }
   let!(:empty_sake) { FactoryBot.create(:sake, bottle_level: "empty", taste_value: 1, aroma_value: 2) }
+  let(:user) { FactoryBot.create(:user) }
 
   describe "sake column in index page" do
     before do
@@ -99,14 +100,6 @@ RSpec.describe "DrinkButtons", type: :system do
       visit sakes_path
     end
 
-    describe "clicking open button in sealed bottle" do
-      it "redirects to user login page" do
-        id = "open-button-#{sealed_sake.id}"
-        click_link id
-        expect(page).to have_current_path new_user_session_path
-      end
-    end
-
     describe "clicking impress button in opened bottle" do
       it "redirects to user login page" do
         id = "impress-button-#{opened_sake.id}"
@@ -114,12 +107,53 @@ RSpec.describe "DrinkButtons", type: :system do
         expect(page).to have_current_path new_user_session_path
       end
     end
+  end
+
+  context "without login with confirm modal" do
+    before do
+      Capybara.current_driver = :selenium_headless
+      visit sakes_path
+    end
+
+    describe "clicking open button in sealed bottle" do
+      it "redirects to user login page" do
+        id = "open-button-#{sealed_sake.id}"
+        accept_confirm do
+          click_link id
+        end
+        wait_for_page
+        expect(page).to have_current_path new_user_session_path
+      end
+
+      it "does not change bottle state after sign in" do
+        id = "open-button-#{sealed_sake.id}"
+        accept_confirm do
+          click_link id
+        end
+        wait_for_page
+        signin_process_on_signin_page(user)
+        expect { sealed_sake.reload }.to_not change(sealed_sake, :bottle_level)
+      end
+    end
 
     describe "clicking empty button in impressed bottle" do
       it "redirects to user login page" do
         id = "empty-button-#{impressed_sake.id}"
-        click_link id
+        accept_confirm do
+          click_link id
+        end
+        wait_for_page
         expect(page).to have_current_path new_user_session_path
+      end
+
+      it "does not change bottle state after sign in" do
+        id = "empty-button-#{impressed_sake.id}"
+        accept_confirm do
+          click_link id
+        end
+        wait_for_page
+        signin_process_on_signin_page(user)
+        expect { impressed_sake.reload }.to_not change(sealed_sake, :bottle_level)
       end
     end
   end
