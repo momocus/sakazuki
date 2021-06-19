@@ -60,7 +60,7 @@ jobs:
           POSTGRES_USERNAME: postgres
           POSTGRES_PASSWORD: password
         run: bundle exec rails db:create
-      - name: Configure sysctl limits
+      - name: Configure system parameter
         run: |
           sudo swapoff -a
           sudo sysctl -w vm.swappiness=1
