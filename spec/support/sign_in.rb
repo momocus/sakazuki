@@ -1,4 +1,4 @@
-module SignInModule
+module SignIn
   # ヘッダーのSign inボタンをクリックし、サインインする
   def sign_in_via_header_button(user)
     find(:test_id, "sign-in").click
