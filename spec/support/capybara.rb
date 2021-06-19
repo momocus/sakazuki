@@ -3,6 +3,18 @@ require "capybara/rspec"
 Capybara.default_driver = :rack_test
 Capybara.javascript_driver = :selenium_headless
 
+# "data-testid"をCapybaraのclick_linkなどで使えるように、Optional attributeに登録する
+Capybara.configure do |config|
+  config.test_id = "data-testid"
+end
+
+# Capybaraのカスタムセレクタ
+# find(:test_id, "email")でfind("[data-testid='email']")と同じく、data-testidが指定値のタグを取得できる
+# 参考: https://speakerdeck.com/yasaichi/tokyurubykaigi12
+Capybara.add_selector(:test_id) do
+  css { |val| %([data-testid="#{val}"]) }
+end
+
 # ページ遷移を待つ
 #
 # Capybaraのfindはページロードを待つため、これを使えばもっと効率のよいwaitが実装できる。
