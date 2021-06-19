@@ -11,7 +11,9 @@
   </div>
 
   <div class="row justify-content-center">
-    <%= f.submit(t(".resend_unlock_instructions"), class: "btn btn-primary") %>
+    <div class="col-auto">
+      <%= f.submit(t(".resend_unlock_instructions"), class: "btn btn-primary") %>
+    </div>
   </div>
 <% end %>
 

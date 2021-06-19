@@ -245,11 +245,13 @@
 </div>
 
 <div class="row justify-content-center">
-  <%= link_to(t("helpers.submit.delete"),
-              @sake,
-              method: :delete,
-              data: { confirm: t("message.delete") },
-              class: "btn btn-danger mx-3") %>
+  <div class="col-auto">
+    <%= link_to(t("helpers.submit.delete"),
+                @sake,
+                method: :delete,
+                data: { confirm: t("message.delete") },
+                class: "btn btn-danger mx-3") %>
+  </div>
 </div>
 
 <%= javascript_pack_tag "sakes_show" %>
