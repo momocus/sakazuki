@@ -13,7 +13,7 @@
   <div class="form-group row">
     <%= form.label(:name, { class: "sakazuki-badged-label" }) %>
     <div class="sakazuki-badge">
-      <span class="badge badge-primary"><%= t("helpers.badge.presence") %></span>
+      <span class="badge bg-primary"><%= t("helpers.badge.presence") %></span>
     </div>
     <div class="col">
       <%= form.text_field(:name, { class: "form-control" }) %>
@@ -23,7 +23,7 @@
   <div class="form-group row">
     <%= form.label(:kura, { class: "sakazuki-badged-label" }) %>
     <div class="sakazuki-badge">
-      <span class="badge badge-secondary"><%= t("helpers.badge.obligation") %></span>
+      <span class="badge bg-secondary"><%= t("helpers.badge.obligation") %></span>
     </div>
     <div class="col">
       <%= form.text_field(:kura, { class: "form-control", autocomplete: "on", list: "sakagura" }) %>
@@ -68,7 +68,7 @@
   <div class="form-group row">
     <%= form.label(:tokutei_meisho, { class: "sakazuki-badged-label" }) %>
     <div class="sakazuki-badge">
-      <span class="badge badge-secondary"><%= t("helpers.badge.obligation") %></span>
+      <span class="badge bg-secondary"><%= t("helpers.badge.obligation") %></span>
     </div>
     <div class="sakazuki-half-form">
       <%= form.select(:tokutei_meisho,
@@ -83,7 +83,7 @@
   <div class="form-group row">
     <%= form.label(:seimai_buai, { class: "sakazuki-badged-label" }) %>
     <div class="sakazuki-badge">
-      <span class="badge badge-secondary"><%= t("helpers.badge.obligation") %></span>
+      <span class="badge bg-secondary"><%= t("helpers.badge.obligation") %></span>
     </div>
     <div class="sakazuki-half-form">
       <%= form.number_field(:seimai_buai, { class: "form-control" }) %>
@@ -93,7 +93,7 @@
   <div class="form-group row">
     <%= form.label(:bindume_date, { class: "sakazuki-badged-label" }) %>
     <div class="sakazuki-badge">
-      <span class="badge badge-secondary"><%= t("helpers.badge.obligation") %></span>
+      <span class="badge bg-secondary"><%= t("helpers.badge.obligation") %></span>
     </div>
     <%# HACK: 年と月の入力フォームを分けて横並びに配置する。 %>
     <%#       Railsデフォルトでは年月が縦並びになってしまう。%>
@@ -128,7 +128,7 @@
   <div class="form-group row">
     <%= form.label(:size, { class: "sakazuki-badged-label" }) %>
     <div class="sakazuki-badge">
-      <span class="badge badge-secondary"><%= t("helpers.badge.obligation") %></span>
+      <span class="badge bg-secondary"><%= t("helpers.badge.obligation") %></span>
     </div>
     <div class="sakazuki-half-form">
       <%= form.number_field(:size, { class: "form-control" }) %>
@@ -138,7 +138,7 @@
   <div class="form-group row">
     <%= form.label(:alcohol, { class: "sakazuki-badged-label" }) %>
     <div class="sakazuki-badge">
-      <span class="badge badge-secondary"><%= t("helpers.badge.obligation") %></span>
+      <span class="badge bg-secondary"><%= t("helpers.badge.obligation") %></span>
     </div>
     <div class="sakazuki-half-form">
       <%= form.number_field(:alcohol,
@@ -149,7 +149,7 @@
   <div class="form-group row">
     <%= form.label(:price, { class: "sakazuki-badged-label" }) %>
     <div class="sakazuki-badge">
-      <span class="badge badge-secondary"><%= t("helpers.badge.obligation") %></span>
+      <span class="badge bg-secondary"><%= t("helpers.badge.obligation") %></span>
     </div>
     <div class="sakazuki-half-form">
       <%= form.number_field(:price, { class: "form-control" }) %>
