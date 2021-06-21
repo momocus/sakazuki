@@ -37,6 +37,6 @@
     "yard": "yard doc {lib,app,spec,ext}/**/*.rb",
     "lint-ts": "eslint --ext .js,.jsx,.ts,.tsx ./app/javascript/",
     "lint-md": "markdownlint README.md",
-    "lint-style": "stylelint '**/*.scss' '**/*.css'"
+    "lint-style": "stylelint '**/*.scss' '**/*.css' --ignore-path .gitignore"
   }
 }
