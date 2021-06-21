@@ -25,10 +25,14 @@ end
 
 # ページ遷移を待つ
 #
-# Capybaraのfindはページロードを待つため、これを使えばもっと効率のよいwaitが実装できる。
-# しかし、findでページ遷移をwaitするには、遷移前と遷移後で変化する要素が必要となる
-# 任意のページ遷移で該当する要素が思いつかず、汎用関数にできていない。
-def wait_for_page
-  sleep(1)
-  nil
+# Capybaraでselenium driverなどを使うと、テスト処理にページ遷移が追いつかずテストが落ちることがある。
+# このメソッドでページ遷移を待つことができる。
+# 対象ページにはdata-testidに自身のパスを持つことを想定している。
+#
+# @example index.htmlの場合
+#   wait_for_page(sakes_path)
+#
+# @param [String] page_path ページのパス
+def wait_for_page(page_path)
+  find(:test_id, page_path, visible: false)
 end

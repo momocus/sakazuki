@@ -117,7 +117,7 @@ RSpec.describe "DrinkButtons", type: :system do
         accept_confirm do
           click_link id
         end
-        wait_for_page
+        wait_for_page new_user_session_path
         expect(page).to have_current_path new_user_session_path
       end
 
@@ -126,7 +126,7 @@ RSpec.describe "DrinkButtons", type: :system do
         accept_confirm do
           click_link id
         end
-        wait_for_page
+        wait_for_page new_user_session_path
         signin_process_on_signin_page(user)
         expect { sealed_sake.reload }.to_not change(sealed_sake, :bottle_level)
       end
@@ -138,7 +138,7 @@ RSpec.describe "DrinkButtons", type: :system do
         accept_confirm do
           click_link id
         end
-        wait_for_page
+        wait_for_page new_user_session_path
         expect(page).to have_current_path new_user_session_path
       end
 
@@ -147,7 +147,7 @@ RSpec.describe "DrinkButtons", type: :system do
         accept_confirm do
           click_link id
         end
-        wait_for_page
+        wait_for_page new_user_session_path
         signin_process_on_signin_page(user)
         expect { impressed_sake.reload }.to_not change(sealed_sake, :bottle_level)
       end
@@ -184,7 +184,7 @@ RSpec.describe "DrinkButtons", type: :system do
       it "updates sake to opened" do
         expect {
           click_link "open-button-#{sealed_sake.id}"
-          wait_for_page
+          wait_for_page sake_path(sealed_sake.id)
           sealed_sake.reload
         }.to change(sealed_sake, :bottle_level).from("sealed").to("opened")
       end
@@ -233,7 +233,7 @@ RSpec.describe "DrinkButtons", type: :system do
 
       it "updates sake to empty" do
         expect {
-          wait_for_page
+          wait_for_page sake_path(impressed_sake.id)
           impressed_sake.reload
         }.to change(impressed_sake, :bottle_level).from("opened").to("empty")
       end

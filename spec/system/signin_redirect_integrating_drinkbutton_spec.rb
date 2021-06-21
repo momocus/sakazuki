@@ -26,7 +26,7 @@ RSpec.describe "Sign in redirect with drink buttons", type: :system do
       accept_confirm do
         click_link("open-button-#{id}")
       end
-      wait_for_page
+      wait_for_page new_user_session_path
       signin_process_on_signin_page(user)
       expect(page).to have_current_path(sakes_path)
     end
@@ -38,7 +38,7 @@ RSpec.describe "Sign in redirect with drink buttons", type: :system do
       accept_confirm do
         click_link("empty-button-#{id}")
       end
-      wait_for_page
+      wait_for_page new_user_session_path
       signin_process_on_signin_page(user)
       expect(page).to have_current_path(sakes_path)
     end
