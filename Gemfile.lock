@@ -422,6 +422,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 5.4)
+  yard
 
 RUBY VERSION
    ruby 3.0.1p64

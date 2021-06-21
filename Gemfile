@@ -82,6 +82,7 @@ group :development do
   # background. Read more: https://github.com/rails/spring
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
+  gem "yard"
 end
 
 group :test do
