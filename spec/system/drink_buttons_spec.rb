@@ -8,11 +8,11 @@ RSpec.describe "DrinkButtons", type: :system do
   let!(:empty_sake) { FactoryBot.create(:sake, bottle_level: "empty", taste_value: 1, aroma_value: 2) }
   let(:user) { FactoryBot.create(:user) }
 
-  describe "sake column in index page" do
-    before do
-      visit sakes_path
-    end
+  before do
+    visit sakes_path
+  end
 
+  describe "drink button text in index page" do
     open_text = I18n.t("sakes.index.open")
     impress_text = I18n.t("sakes.index.impress")
     empty_text = I18n.t("sakes.index.empty")
@@ -70,7 +70,6 @@ RSpec.describe "DrinkButtons", type: :system do
 
     describe "empty bottle" do
       before do
-        visit sakes_path
         page.check("check_empty_bottle")
         click_button("submit_search")
       end
@@ -94,60 +93,50 @@ RSpec.describe "DrinkButtons", type: :system do
 
   context "without login" do
     before do
-      visit sakes_path
+      sign_out(user)
     end
 
-    describe "clicking impress button in opened bottle" do
+    describe "clicking impress button of opened bottle" do
       it "redirects to user login page" do
         id = "impress-button-#{opened_sake.id}"
         click_link id
         expect(page).to have_current_path new_user_session_path
       end
     end
-  end
 
-  context "without login with confirm modal", js: true do
-    before do
-      visit sakes_path
-    end
-
-    describe "clicking open button in sealed bottle" do
-      it "redirects to user login page" do
+    describe "clicking open button of sealed bottle", js: true do
+      before do
         id = "open-button-#{sealed_sake.id}"
         accept_confirm do
           click_link id
         end
         wait_for_page new_user_session_path
+      end
+
+      it "redirects to user login page" do
         expect(page).to have_current_path new_user_session_path
       end
 
       it "does not change bottle state after sign in" do
-        id = "open-button-#{sealed_sake.id}"
-        accept_confirm do
-          click_link id
-        end
-        wait_for_page new_user_session_path
         signin_process_on_signin_page(user)
         expect { sealed_sake.reload }.to_not change(sealed_sake, :bottle_level)
       end
     end
 
-    describe "clicking empty button in impressed bottle" do
-      it "redirects to user login page" do
+    describe "clicking empty button of impressed bottle", js: true do
+      before do
         id = "empty-button-#{impressed_sake.id}"
         accept_confirm do
           click_link id
         end
         wait_for_page new_user_session_path
+      end
+
+      it "redirects to user login page" do
         expect(page).to have_current_path new_user_session_path
       end
 
       it "does not change bottle state after sign in" do
-        id = "empty-button-#{impressed_sake.id}"
-        accept_confirm do
-          click_link id
-        end
-        wait_for_page new_user_session_path
         signin_process_on_signin_page(user)
         expect { impressed_sake.reload }.to_not change(sealed_sake, :bottle_level)
       end
@@ -156,9 +145,7 @@ RSpec.describe "DrinkButtons", type: :system do
 
   context "with login" do
     before do
-      user = FactoryBot.create(:user)
       sign_in(user)
-      visit sakes_path
     end
 
     describe "clicking impress button of sealed bottle" do
@@ -180,16 +167,6 @@ RSpec.describe "DrinkButtons", type: :system do
       end
     end
 
-    describe "clicking open button of sealed bottle" do
-      it "updates sake to opened" do
-        expect {
-          click_link "open-button-#{sealed_sake.id}"
-          wait_for_page sake_path(sealed_sake.id)
-          sealed_sake.reload
-        }.to change(sealed_sake, :bottle_level).from("sealed").to("opened")
-      end
-    end
-
     describe "clicking impress button of opened bottle" do
       before do
         id = "impress-button-#{opened_sake.id}"
@@ -207,16 +184,21 @@ RSpec.describe "DrinkButtons", type: :system do
         expect(page).to have_select(id: id, selected: text)
       end
     end
-  end
 
-  context "with login by selenium driver", js: true do
-    before do
-      user = FactoryBot.create(:user)
-      sign_in(user)
-      visit sakes_path
+    describe "clicking open button of sealed bottle", js: true do
+      it "updates sake to opened" do
+        expect {
+          id = "open-button-#{sealed_sake.id}"
+          accept_confirm do
+            click_link id
+          end
+          wait_for_page sake_path(sealed_sake.id)
+          sealed_sake.reload
+        }.to change(sealed_sake, :bottle_level).from("sealed").to("opened")
+      end
     end
 
-    describe "clicking empty button of impressed bottle" do
+    describe "clicking empty button of impressed bottle", js: true do
       before do
         accept_confirm do
           click_link "empty-button-#{impressed_sake.id}"
