@@ -102,10 +102,18 @@ class SakesController < ApplicationController
     words.split(/[ 　]/).map { |word| { all_text_cont: word } }
   end
 
-  # DBの蔵名に（県名）をつけて、_formの描画でつかうフォーマットにする
-  #   add_todofuken("原田酒造合資会社", "愛知県")  #=> "原田酒造合資会社（愛知県）"
+  # DBに保存された蔵名に括弧つきで県名をつけて、_formの描画でつかうフォーマットにする
+  #
+  # @example 蔵名がある場合
+  #   add_todofuken("原田酒造合資会社", "愛知県") #=> "原田酒造合資会社（愛知県）"
+  # @example 蔵名がない場合
+  #   add_todofuken("", "") #=> ""
   def add_todofuken(kura, todofuken)
-    "#{kura}（#{todofuken}）"
+    if kura == "" && todofuken == ""
+      ""
+    else
+      "#{kura}（#{todofuken}）"
+    end
   end
 
   # _formでオートコンプリートされたフォーマットから県名を取り除き、DBへ保存するフォーマットにする
