@@ -32,7 +32,7 @@ module SakesHelper
     options = year_range(begin_year).map do |year|
       [with_japanese_era(Date.new(year)), year]
     end
-    select_tag(id, options_for_select(options, selected: selected_year), { class: "form-control", name: name })
+    select_tag(id, options_for_select(options, selected: selected_year), { class: "form-select", name: name })
   end
 
   # どの瓶状態（bottle_level）にもマッチしない値
