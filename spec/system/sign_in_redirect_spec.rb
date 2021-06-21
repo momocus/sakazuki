@@ -6,7 +6,6 @@ RSpec.describe "Sign-in redirect", type: :system do
   let(:user) { FactoryBot.create(:user) }
 
   before do
-    driven_by(:rack_test)
     sign_out(user)
   end
 
