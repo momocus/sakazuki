@@ -27,7 +27,7 @@
 
 //------ index ------
 
-.sake-name-link {
+.index-sake-name-link {
   font-size: 1.1em;
   font-weight: 600;
   color: #212529;
@@ -48,53 +48,53 @@
 
 //------ _form (new and edit) ------
 
-.sakazuki-row {
+.form-row {
   @extend .row;
   @extend .mb-lg-2;
 }
 
-.sakazuki-label {
+.form-label {
   @extend .col-lg-3;
   @extend .col-12;
   @extend .col-form-label;
 }
 
 // バッジ付きラベル
-.sakazuki-badged-label {
+.form-badged-label {
   @extend .col-lg-2;
   @extend .col-8;
   @extend .col-form-label;
 }
 
-.sakazuki-badge {
+.form-badge {
   @extend .col-lg-1;
   @extend .col-4;
   @extend .col-form-label;
 }
 
 // 半分サイズのフォーム
-.sakazuki-half-form {
+.form-half-form-lg {
   @extend .col-lg-4;
   @extend .col;
 }
 
 // 半分サイズのフォームを常に2つ並べる
-.sakazuki-half-forms {
+.form-half-form {
   @extend .col-lg-4;
   @extend .col-6;
 }
 
 // new
 
-div.sakazuki-label + div input[type="checkbox"] {
+div.form-label + div input[type="checkbox"] {
   display: none;
 }
 
-div.sakazuki-label + div input:checked[type="checkbox"] + label img {
+div.form-label + div input:checked[type="checkbox"] + label img {
   border: 10px solid #f66;
 }
 
-div.sakazuki-label + div input:checked[type="checkbox"] + label::after {
+div.form-label + div input:checked[type="checkbox"] + label::after {
   content: "❌";
   font-size: 40px;
   display: block;
