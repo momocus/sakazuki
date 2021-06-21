@@ -27,9 +27,12 @@ end
 #
 # Capybaraでselenium driverなどを使うと、テスト処理にページ遷移が追いつかずテストが落ちることがある。
 # このメソッドでページ遷移を待つことができる。
-# 例えば酒indexなら、`wait_for_page(sakes_path)`と呼び出せばよい。
+# 対象ページにはdata-testidに自身のパスを持つことを想定している。
 #
-# @param [String] page_key ページのパス
-def wait_for_page(page_key)
-  find(:test_id, page_key, visible: false)
+# @example index.htmlの場合
+#   wait_for_page(sakes_path)
+#
+# @param [String] page_path ページのパス
+def wait_for_page(page_path)
+  find(:test_id, page_path, visible: false)
 end
