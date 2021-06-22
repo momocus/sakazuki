@@ -4,7 +4,7 @@
   <%= render "devise/shared/error_messages", resource: resource %>
   <%= f.hidden_field(:reset_password_token) %>
 
-  <div class="row form-group">
+  <div class="devise-row">
     <%= f.label(:password, t(".new_password"), class: "devise-label") %>
     <div class="col">
       <%= f.password_field(:password,
@@ -15,14 +15,14 @@
     </div>
   </div>
 
-  <div class="row form-group">
+  <div class="devise-row">
     <%= f.label(:password_confirmation, t(".confirm_new_password"), class: "devise-label") %>
     <div class="col">
       <%= f.password_field(:password_confirmation, autocomplete: "new-password", class: "form-control") %>
     </div>
   </div>
 
-  <div class="row justify-content-center">
+  <div class="devise-row mt-2 justify-content-center">
     <div class="col-auto">
       <%= f.submit(t(".change_my_password"), class: "btn btn-primary") %>
     </div>

@@ -19,6 +19,11 @@
 }
 
 // devise
+.devise-row {
+  @extend .row;
+  @extend .mb-lg-2;
+}
+
 .devise-label {
   @extend .col-lg-3;
   @extend .col-12;
