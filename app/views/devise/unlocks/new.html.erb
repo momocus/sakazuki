@@ -3,15 +3,17 @@
 <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="row form-group">
+  <div class="devise-row">
     <%= f.label(:email, class: "devise-label") %>
     <div class="col">
       <%= f.email_field(:email, autofocus: true, autocomplete: "email", class: "form-control") %>
     </div>
   </div>
 
-  <div class="row justify-content-center">
-    <%= f.submit(t(".resend_unlock_instructions"), class: "btn btn-primary") %>
+  <div class="devise-submit-row">
+    <div class="col-auto">
+      <%= f.submit(t(".resend_unlock_instructions"), class: "btn btn-primary") %>
+    </div>
   </div>
 <% end %>
 

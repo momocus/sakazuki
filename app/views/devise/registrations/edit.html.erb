@@ -3,7 +3,7 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="row form-group">
+  <div class="devise-row">
     <%= f.label(:email, class: "devise-label") %>
     <div class="col">
       <%= f.email_field(:email,
@@ -17,7 +17,7 @@
     </div>
   <% end %>
 
-  <div class="row form-group">
+  <div class="devise-row">
     <%= f.label(:password, class: "devise-label") %>
     <div class="col">
       <% message = t(".leave_blank_if_you_don_t_want_to_change_it") %>
@@ -28,14 +28,14 @@
     </div>
   </div>
 
-  <div class="row form-group">
+  <div class="devise-row">
     <%= f.label(:password_confirmation, class: "devise-label") %>
     <div class="col">
       <%= f.password_field(:password_confirmation, autocomplete: "new-password", class: "form-control") %>
     </div>
   </div>
 
-  <div class="row form-group">
+  <div class="devise-row">
     <%= f.label(:current_password, class: "devise-label") %>
     <div class="col">
       <% currentpass = t(".we_need_your_current_password_to_confirm_your_changes") %>
@@ -44,17 +44,21 @@
     </div>
   </div>
 
-  <div class="row justify-content-center">
-    <%= f.submit(t(".update"), class: "btn btn-primary mx-3") %>
+  <div class="devise-submit-row">
+    <div class="col-auto">
+      <%= f.submit(t(".update"), class: "btn btn-primary mx-3") %>
+    </div>
   </div>
 <% end %>
 
 <h3><%= t(".unhappy") %></h3>
 
-<div class="row justify-content-center">
-  <%= button_to t(".cancel_my_account"),
-                registration_path(resource_name),
-                data: { confirm: t(".are_you_sure") },
-                method: :delete,
-                class: "btn btn-danger mx-3" %>
+<div class="devise-submit-row">
+  <div class="col-auto">
+    <%= button_to t(".cancel_my_account"),
+     registration_path(resource_name),
+     data: { confirm: t(".are_you_sure") },
+     method: :delete,
+     class: "btn btn-danger mx-3" %>
+  </div>
 </div>

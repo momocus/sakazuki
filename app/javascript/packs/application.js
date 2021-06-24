@@ -16,7 +16,7 @@ ActiveStorage.start()
 /* eslint-enable @typescript-eslint/no-unsafe-member-access */
 /* eslint-enable @typescript-eslint/no-unsafe-call */
 
-import "bootstrap"
+import "../src/javascript/bootstrap_plugins.js"
 import "bootstrap-icons/font/bootstrap-icons"
 import "../src/stylesheet/application.scss"
 

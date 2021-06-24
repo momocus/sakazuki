@@ -10,31 +10,31 @@
 <h3 class="my-2"><%= t "helpers.subtitle.labelinfo" %></h3>
 
 <div class="row">
-  <div class="show-label">
+  <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:name) %></b>
   </div>
-  <div class="show-body">
+  <div class="sakes-show-body">
     <%= @sake.name %>
   </div>
 
-  <div class="show-label">
+  <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:kura) %></b>
   </div>
-  <div class="show-body">
+  <div class="sakes-show-body">
     <%= empty_to_default(@sake.kura, "-") %>
   </div>
 
-  <div class="show-label">
+  <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:todofuken) %></b>
   </div>
-  <div class="show-body">
+  <div class="sakes-show-body">
     <%= empty_to_default(@sake.todofuken, "-") %>
   </div>
 
-  <div class="show-label">
+  <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:photos) %></b>
   </div>
-  <div class="show-body">
+  <div class="sakes-show-body">
     <div class="row photo-gallery">
       <% @sake.photos.each do |photo| %>
           <div class="col-lg-4 col-6">
@@ -45,144 +45,144 @@
     </div>
   </div>
 
-  <div class="show-label">
+  <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:tokutei_meisho) %></b>
   </div>
-  <div class="show-body">
+  <div class="sakes-show-body">
     <%= @sake.tokutei_meisho_i18n %>
   </div>
 
-  <div class="show-label">
+  <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:seimai_buai) %></b>
   </div>
-  <div class="show-body">
+  <div class="sakes-show-body">
     <%= empty_to_default(@sake.seimai_buai, "-") %> %
   </div>
 
-  <div class="show-label">
+  <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:bindume_date) %></b>
   </div>
-  <div class="show-body">
+  <div class="sakes-show-body">
     <%= @sake.bindume_date ? @sake.bindume_date.strftime("%Y / %m") : "- / -" %>
   </div>
 
-  <div class="show-label">
+  <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:brew_year) %></b>
   </div>
-  <div class="show-body">
+  <div class="sakes-show-body">
     <%= @sake.brew_year ? @sake.brew_year.strftime("%Y") : "-" %>
   </div>
 
-  <div class="show-label">
+  <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:size) %></b>
   </div>
-  <div class="show-body">
+  <div class="sakes-show-body">
     <%= empty_to_default(@sake.size, "-") %> ml
   </div>
 
-  <div class="show-label">
+  <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:alcohol) %></b>
   </div>
-  <div class="show-body">
+  <div class="sakes-show-body">
     <%= empty_to_default(@sake.alcohol, "-") %>
   </div>
 
-  <div class="show-label">
+  <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:price) %></b>
   </div>
-  <div class="show-body">
+  <div class="sakes-show-body">
     <%= @sake.price.nil? ? "-" : @sake.price.to_s(:delimited) %>
     <%= t("activerecord.attributes.sake.price_unit") %>
   </div>
 
-  <div class="show-label">
+  <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:genryomai) %></b>
   </div>
-  <div class="show-body">
+  <div class="sakes-show-body">
     <%= empty_to_default(@sake.genryomai, "-") %>
   </div>
 
-  <div class="show-label">
+  <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:kakemai) %></b>
   </div>
-  <div class="show-body">
+  <div class="sakes-show-body">
     <%= empty_to_default(@sake.kakemai, "-") %>
   </div>
 
-  <div class="show-label">
+  <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:kobo) %></b>
   </div>
-  <div class="show-body">
+  <div class="sakes-show-body">
     <%= empty_to_default(@sake.kobo, "-") %>
   </div>
 
-  <div class="show-label">
+  <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:moto) %></b>
   </div>
-  <div class="show-body">
+  <div class="sakes-show-body">
     <%= @sake.moto_i18n %>
   </div>
 
-  <div class="show-label">
+  <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:roka) %></b>
   </div>
-  <div class="show-body">
+  <div class="sakes-show-body">
     <%= empty_to_default(@sake.roka, "-") %>
   </div>
 
-  <div class="show-label">
+  <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:shibori) %></b>
   </div>
-  <div class="show-body">
+  <div class="sakes-show-body">
     <%= empty_to_default(@sake.shibori, "-") %>
   </div>
 
-  <div class="show-label">
+  <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:hiire) %></b>
   </div>
-  <div class="show-body">
+  <div class="sakes-show-body">
     <%= @sake.hiire_i18n %>
   </div>
 
-  <div class="show-label">
+  <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:season) %></b>
   </div>
-  <div class="show-body">
+  <div class="sakes-show-body">
     <%= empty_to_default(@sake.season, "-") %>
   </div>
 
-  <div class="show-label">
+  <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:nihonshudo) %></b>
   </div>
-  <div class="show-body">
+  <div class="sakes-show-body">
     <%= empty_to_default(@sake.nihonshudo, "-") %>
   </div>
 
-  <div class="show-label">
+  <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:sando) %></b>
   </div>
-  <div class="show-body">
+  <div class="sakes-show-body">
     <%= empty_to_default(@sake.sando, "-") %>
   </div>
 
-  <div class="show-label">
+  <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:aminosando) %></b>
   </div>
-  <div class="show-body">
+  <div class="sakes-show-body">
     <%= empty_to_default(@sake.aminosando, "-") %>
   </div>
 
-  <div class="show-label">
+  <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:warimizu) %></b>
   </div>
-  <div class="show-body">
+  <div class="sakes-show-body">
     <%= @sake.warimizu_i18n %>
   </div>
 
-  <div class="show-label">
+  <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:bottle_level) %></b>
   </div>
-  <div class="show-body">
+  <div class="sakes-show-body">
     <%= @sake.bottle_level_i18n %>
   </div>
 </div>
@@ -191,65 +191,67 @@
 <h3 class="my-2"><%= t "helpers.subtitle.tasteinfo" %></h3>
 
 <div class="row">
-  <div class="show-label">
+  <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:color) %></b>
   </div>
-  <div class="show-body">
+  <div class="sakes-show-body">
     <%= empty_to_default(@sake.color, "-") %>
   </div>
 
-  <div class="show-label">
+  <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:nigori) %></b>
   </div>
-  <div class="show-body">
+  <div class="sakes-show-body">
     <%= empty_to_default(@sake.nigori, "-") %>
   </div>
 
-  <div class="show-label">
+  <div class="sakes-show-label">
     <b><%= "#{t('activerecord.attributes.sake.taste_value')}, #{t('activerecord.attributes.sake.aroma_value')}" %></b>
   </div>
-  <div class="show-body">
+  <div class="sakes-show-body">
     <canvas id="sake-<%= @sake.id %>"
             data-taste-value="<%= @sake.taste_value %>"
             data-aroma-value="<%= @sake.aroma_value %>">
     </canvas>
   </div>
 
-  <div class="show-label">
+  <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:aroma_impression) %></b>
   </div>
-  <div class="show-body">
+  <div class="sakes-show-body">
     <%= empty_to_default(@sake.aroma_impression, "-") %>
   </div>
 
-  <div class="show-label">
+  <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:taste_impression) %></b>
   </div>
-  <div class="show-body">
+  <div class="sakes-show-body">
     <%= empty_to_default(@sake.taste_impression, "-") %>
   </div>
 
-  <div class="show-label">
+  <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:awa) %></b>
   </div>
-  <div class="show-body">
+  <div class="sakes-show-body">
     <%= empty_to_default(@sake.awa, "-") %>
   </div>
 
-  <div class="show-label">
+  <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:note) %></b>
   </div>
-  <div class="show-body">
+  <div class="sakes-show-body">
     <%= empty_to_default(@sake.note, "-") %>
   </div>
 </div>
 
 <div class="row justify-content-center">
-  <%= link_to(t("helpers.submit.delete"),
-              @sake,
-              method: :delete,
-              data: { confirm: t("message.delete") },
-              class: "btn btn-danger mx-3") %>
+  <div class="col-auto">
+    <%= link_to(t("helpers.submit.delete"),
+                @sake,
+                method: :delete,
+                data: { confirm: t("message.delete") },
+                class: "btn btn-danger mx-3") %>
+  </div>
 </div>
 
 <%= javascript_pack_tag "sakes_show" %>

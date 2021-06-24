@@ -3,17 +3,17 @@
               sake_path(sake, params: { sake: { bottle_level: "opened" } }),
               { method: :patch,
                 data: { confirm: t("message.open") },
-                class: "badge badge-pill badge-primary ml-2",
+                class: "badge rounded-pill bg-primary ms-2",
                 "data-testid": "open-button-#{sake.id}", }) %>
   <%= link_to(html_escape(t("sakes.index.impress")) + tag.i(class: "bi-cup-fill", style: "font-size: 1em;"),
               edit_sake_path(sake, params: { sake: { bottle_level: "opened" } }),
-              { class: "badge badge-pill badge-secondary ml-2",
+              { class: "badge rounded-pill bg-secondary ms-2",
                 "data-testid": "open-and-impress-button-#{sake.id}", }) %>
 <% end %>
 <% if sake.opened? && sake.unimpressed? %>
   <%= link_to(html_escape(t("sakes.index.impress")) + tag.i(class: "bi-cup-fill", style: "font-size: 1em;"),
               edit_sake_path(sake),
-              { class: "badge badge-pill badge-secondary ml-2",
+              { class: "badge rounded-pill bg-secondary ms-2",
                 "data-testid": "impress-button-#{sake.id}", }) %>
 <% end %>
 <% if sake.opened? %>
@@ -21,6 +21,6 @@
               sake_path(sake, params: { sake: { bottle_level: "empty" } }),
               { method: :patch,
                 data: { confirm: t("message.empty") },
-                class: "badge badge-pill badge-light ml-2",
+                class: "badge rounded-pill bg-light text-dark ms-2",
                 "data-testid": "empty-button-#{sake.id}", }) %>
 <% end %>

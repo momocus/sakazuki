@@ -1,12 +1,6 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~simplelightbox/dist/simple-lightbox.min";
 
-.container-fluid-with-maxwidth {
-  @extend .container-fluid;
-
-  max-width: 1140px;
-}
-
 .click-transparent {
   pointer-events: none;
 }
@@ -25,6 +19,17 @@
 }
 
 // devise
+.devise-row {
+  @extend .row;
+  @extend .mb-lg-2;
+}
+
+.devise-submit-row {
+  @extend .devise-row;
+  @extend .mt-2;
+  @extend .justify-content-center;
+}
+
 .devise-label {
   @extend .col-lg-3;
   @extend .col-12;
@@ -33,7 +38,7 @@
 
 //------ index ------
 
-.sake-name-link {
+.sakes-index-name-link {
   font-size: 1.1em;
   font-weight: 600;
   color: #212529;
@@ -42,10 +47,10 @@
 // Ransackが生成するスタイル
 .btn-group .sort_link {
   @extend .btn;
-  @extend .btn-info;
+  @extend .btn-primary;
 }
 
-// ディスプレイサイズが大きいときだけ表示されるページネーションボタン
+// ウィンドウサイズがlg以上のとき表示されるページネーションボタン
 .page-item-lg {
   @extend .page-item;
   @extend .d-none;
@@ -54,46 +59,53 @@
 
 //------ _form (new and edit) ------
 
-.sakazuki-label {
+.sakes-form-row {
+  @extend .row;
+  @extend .mb-lg-2;
+}
+
+.sakes-form-label {
   @extend .col-lg-3;
   @extend .col-12;
   @extend .col-form-label;
 }
 
 // バッジ付きラベル
-.sakazuki-badged-label {
+.sakes-form-badged-label {
   @extend .col-lg-2;
   @extend .col-8;
   @extend .col-form-label;
 }
 
-.sakazuki-badge {
+.sakes-form-badge {
   @extend .col-lg-1;
   @extend .col-4;
   @extend .col-form-label;
 }
 
-// 半分サイズのフォーム
-.sakazuki-half-form {
-  @extend .col-lg-4;
-  @extend .col;
-}
-
-// 半分サイズのフォームを常に2つ並べる
-.sakazuki-half-forms {
+// 常に二段組となる入力フォーム
+.sakes-form-two-column-form {
   @extend .col-lg-4;
   @extend .col-6;
 }
 
-label.sakazuki-label + div input[type="checkbox"] {
+// ウィンドウサイズがlg以上のときに二段組入力フォームと同じサイズになる入力フォーム
+.sakes-form-short-form {
+  @extend .col-lg-4;
+  @extend .col;
+}
+
+// new
+
+div.sakes-form-label + div input[type="checkbox"] {
   display: none;
 }
 
-label.sakazuki-label + div input:checked[type="checkbox"] + label img {
+div.sakes-form-label + div input:checked[type="checkbox"] + label img {
   border: 10px solid #f66;
 }
 
-label.sakazuki-label + div input:checked[type="checkbox"] + label::after {
+div.sakes-form-label + div input:checked[type="checkbox"] + label::after {
   content: "❌";
   font-size: 40px;
   display: block;
@@ -103,12 +115,12 @@ label.sakazuki-label + div input:checked[type="checkbox"] + label::after {
 
 //------ show ------
 
-.show-label {
+.sakes-show-label {
   @extend .col-lg-3;
   @extend .col-12;
 }
 
-.show-body {
+.sakes-show-body {
   @extend .col-lg-9;
   @extend .col-12;
 }
