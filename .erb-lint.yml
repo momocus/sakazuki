@@ -25,3 +25,5 @@ linters:
         Enabled: false
       Rails/OutputSafety:
         Enabled: false
+      Style/MethodCallWithArgsParentheses:
+        IgnoreMacros: false
