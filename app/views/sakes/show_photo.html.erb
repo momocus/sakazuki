@@ -1,8 +1,8 @@
 <div class="row justify-content-center">
-  <%= cl_image_tag @photo.image.url, { class: "img-fluid" } %>
+  <%= cl_image_tag(@photo.image.url, { class: "img-fluid" }) %>
 </div>
 <div class="row justify-content-center">
   <div class="col-auto">
-    <%= link_to t("helpers.submit.back"), sake_path, class: "btn btn-secondary mx-3" %>
+    <%= link_to(t("helpers.submit.back"), sake_path, class: "btn btn-secondary mx-3") %>
   </div>
 </div>
