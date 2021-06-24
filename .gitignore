@@ -48,3 +48,6 @@ yarn-debug.log*
 # YARD files
 /.yardoc/
 /doc/
+
+# Ignore uploaded images and files compiled by webpacker
+/public
