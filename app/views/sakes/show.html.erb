@@ -37,10 +37,10 @@
   <div class="sakes-show-body">
     <div class="row photo-gallery">
       <% @sake.photos.each do |photo| %>
-          <div class="col-lg-4 col-6">
-            <%= link_to cl_image_tag(photo.image.thumb.url, { class: "img-thumbnail" }),
-                        photo.image.url %>
-            </div>
+        <div class="col-lg-4 col-6">
+          <%= link_to cl_image_tag(photo.image.thumb.url, { class: "img-thumbnail" }),
+           photo.image.url %>
+        </div>
       <% end %>
     </div>
   </div>
