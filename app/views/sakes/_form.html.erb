@@ -10,9 +10,9 @@
   <%# 表示義務ありのラベル情報 %>
   <h3><%= t("helpers.subtitle.labelinfo") %></h3>
 
-  <div class="form-row">
-    <%= form.label(:name, { class: "form-badged-label" }) %>
-    <div class="form-badge">
+  <div class="sakes-form-row">
+    <%= form.label(:name, { class: "sakes-form-badged-label" }) %>
+    <div class="sakes-form-badge">
       <span class="badge bg-primary"><%= t("helpers.badge.presence") %></span>
     </div>
     <div class="col">
@@ -20,9 +20,9 @@
     </div>
   </div>
 
-  <div class="form-row">
-    <%= form.label(:kura, { class: "form-badged-label" }) %>
-    <div class="form-badge">
+  <div class="sakes-form-row">
+    <%= form.label(:kura, { class: "sakes-form-badged-label" }) %>
+    <div class="sakes-form-badge">
       <span class="badge bg-secondary"><%= t("helpers.badge.obligation") %></span>
     </div>
     <div class="col">
@@ -34,8 +34,8 @@
     </div>
   </div>
 
-  <div class="form-row">
-    <%= form.label(:photos, { class: "form-label" }) %>
+  <div class="sakes-form-row">
+    <%= form.label(:photos, { class: "sakes-form-label" }) %>
     <div class="col">
       <%= form.file_field(:photos,
                           { multiple: true,
@@ -46,7 +46,7 @@
 
   <% if @sake.photos.any? %>
     <div class="row">
-      <div class="form-label"></div>
+      <div class="sakes-form-label"></div>
       <div class="col">
         <div class="row">
           <span class="form-text col-12">
@@ -70,12 +70,12 @@
     </div>
   <% end %>
 
-  <div class="form-row">
-    <%= form.label(:tokutei_meisho, { class: "form-badged-label" }) %>
-    <div class="form-badge">
+  <div class="sakes-form-row">
+    <%= form.label(:tokutei_meisho, { class: "sakes-form-badged-label" }) %>
+    <div class="sakes-form-badge">
       <span class="badge bg-secondary"><%= t("helpers.badge.obligation") %></span>
     </div>
-    <div class="form-half-form-lg">
+    <div class="sakes-form-short-form">
       <%= form.select(:tokutei_meisho,
                       Sake.tokutei_meishos_i18n.keys.map do |k|
                         [I18n.t("enums.sake.tokutei_meisho.#{k}"), k]
@@ -85,40 +85,40 @@
     </div>
   </div>
 
-  <div class="form-row">
-    <%= form.label(:seimai_buai, { class: "form-badged-label" }) %>
-    <div class="form-badge">
+  <div class="sakes-form-row">
+    <%= form.label(:seimai_buai, { class: "sakes-form-badged-label" }) %>
+    <div class="sakes-form-badge">
       <span class="badge bg-secondary"><%= t("helpers.badge.obligation") %></span>
     </div>
-    <div class="form-half-form-lg">
+    <div class="sakes-form-short-form">
       <%= form.number_field(:seimai_buai, { class: "form-control" }) %>
     </div>
   </div>
 
-  <div class="form-row">
-    <%= form.label(:bindume_date, { class: "form-badged-label" }) %>
-    <div class="form-badge">
+  <div class="sakes-form-row">
+    <%= form.label(:bindume_date, { class: "sakes-form-badged-label" }) %>
+    <div class="sakes-form-badge">
       <span class="badge bg-secondary"><%= t("helpers.badge.obligation") %></span>
     </div>
     <%# HACK: 年と月の入力フォームを分けて横並びに配置する。 %>
     <%#       Railsデフォルトでは年月が縦並びになってしまう。%>
     <%#       そのため、2つフォームを設置してTSで同期する。 %>
-    <div class="form-half-form">
+    <div class="sakes-form-two-column-form">
       <%= year_select_with_japanese_era(id = "bindume_year",
                                         name = "sake[bindume_date(1i)]",
                                         begin_year = Date.current.year,
                                         selected_year = @sake.bindume_date&.year || Date.current.year) %>
     </div>
-    <div class="form-half-form">
+    <div class="sakes-form-two-column-form">
       <%= form.date_select(:bindume_date,
                            { discard_day: true, discard_year: true },
                            { class: "form-select", id: "bindume_month" }) %>
     </div>
   </div>
 
-  <div class="form-row">
-    <%= form.label(:brew_year, { class: "form-label" }) %>
-    <div class="form-half-form">
+  <div class="sakes-form-row">
+    <%= form.label(:brew_year, { class: "sakes-form-label" }) %>
+    <div class="sakes-form-two-column-form">
       <% current_by = to_by(Date.current).year %>
       <%= year_select_with_japanese_era(id = "sake_brew_year_1i",
                                         name = "sake[brew_year(1i)]",
@@ -130,63 +130,63 @@
     </div>
   </div>
 
-  <div class="form-row">
-    <%= form.label(:size, { class: "form-badged-label" }) %>
-    <div class="form-badge">
+  <div class="sakes-form-row">
+    <%= form.label(:size, { class: "sakes-form-badged-label" }) %>
+    <div class="sakes-form-badge">
       <span class="badge bg-secondary"><%= t("helpers.badge.obligation") %></span>
     </div>
-    <div class="form-half-form-lg">
+    <div class="sakes-form-short-form">
       <%= form.number_field(:size, { class: "form-control" }) %>
     </div>
   </div>
 
-  <div class="form-row">
-    <%= form.label(:alcohol, { class: "form-badged-label" }) %>
-    <div class="form-badge">
+  <div class="sakes-form-row">
+    <%= form.label(:alcohol, { class: "sakes-form-badged-label" }) %>
+    <div class="sakes-form-badge">
       <span class="badge bg-secondary"><%= t("helpers.badge.obligation") %></span>
     </div>
-    <div class="form-half-form-lg">
+    <div class="sakes-form-short-form">
       <%= form.number_field(:alcohol,
                             { step: "any", class: "form-control" }) %>
     </div>
   </div>
 
-  <div class="form-row">
-    <%= form.label(:price, { class: "form-badged-label" }) %>
-    <div class="form-badge">
+  <div class="sakes-form-row">
+    <%= form.label(:price, { class: "sakes-form-badged-label" }) %>
+    <div class="sakes-form-badge">
       <span class="badge bg-secondary"><%= t("helpers.badge.obligation") %></span>
     </div>
-    <div class="form-half-form-lg">
+    <div class="sakes-form-short-form">
       <%= form.number_field(:price, { class: "form-control" }) %>
     </div>
   </div>
 
   <%# 表示義務なしのラベル情報 %>
 
-  <div class="form-row">
-    <%= form.label(:genryomai, { class: "form-label" }) %>
+  <div class="sakes-form-row">
+    <%= form.label(:genryomai, { class: "sakes-form-label" }) %>
     <div class="col">
       <%= form.text_field(:genryomai, { class: "form-control" }) %>
     </div>
   </div>
 
-  <div class="form-row">
-    <%= form.label(:kakemai, { class: "form-label" }) %>
+  <div class="sakes-form-row">
+    <%= form.label(:kakemai, { class: "sakes-form-label" }) %>
     <div class="col">
       <%= form.text_field(:kakemai, { class: "form-control" }) %>
     </div>
   </div>
 
-  <div class="form-row">
-    <%= form.label(:kobo, { class: "form-label" }) %>
+  <div class="sakes-form-row">
+    <%= form.label(:kobo, { class: "sakes-form-label" }) %>
     <div class="col">
       <%= form.text_field(:kobo, { class: "form-control" }) %>
     </div>
   </div>
 
-  <div class="form-row">
-    <%= form.label(:moto, { class: "form-label" }) %>
-    <div class="form-half-form-lg">
+  <div class="sakes-form-row">
+    <%= form.label(:moto, { class: "sakes-form-label" }) %>
+    <div class="sakes-form-short-form">
       <%= form.select(:moto,
                       Sake.motos_i18n.keys.map do |k|
                         [I18n.t("enums.sake.moto.#{k}"), k]
@@ -196,23 +196,23 @@
     </div>
   </div>
 
-  <div class="form-row">
-    <%= form.label(:roka, { class: "form-label" }) %>
+  <div class="sakes-form-row">
+    <%= form.label(:roka, { class: "sakes-form-label" }) %>
     <div class="col">
       <%= form.text_field(:roka, { class: "form-control" }) %>
     </div>
   </div>
 
-  <div class="form-row">
-    <%= form.label(:shibori, { class: "form-label" }) %>
+  <div class="sakes-form-row">
+    <%= form.label(:shibori, { class: "sakes-form-label" }) %>
     <div class="col">
       <%= form.text_field(:shibori, { class: "form-control" }) %>
     </div>
   </div>
 
-  <div class="form-row">
-    <%= form.label(:hiire, { class: "form-label" }) %>
-    <div class="form-half-form-lg">
+  <div class="sakes-form-row">
+    <%= form.label(:hiire, { class: "sakes-form-label" }) %>
+    <div class="sakes-form-short-form">
       <%= form.select(:hiire,
                       Sake.hiires_i18n.keys.map do |k|
                         [I18n.t("enums.sake.hiire.#{k}"), k]
@@ -222,37 +222,37 @@
     </div>
   </div>
 
-  <div class="form-row">
-    <%= form.label(:season, { class: "form-label" }) %>
+  <div class="sakes-form-row">
+    <%= form.label(:season, { class: "sakes-form-label" }) %>
     <div class="col">
       <%= form.text_field(:season, { class: "form-control" }) %>
     </div>
   </div>
 
-  <div class="form-row">
-    <%= form.label(:nihonshudo, { class: "form-label" }) %>
-    <div class="form-half-form-lg">
+  <div class="sakes-form-row">
+    <%= form.label(:nihonshudo, { class: "sakes-form-label" }) %>
+    <div class="sakes-form-short-form">
       <%= form.number_field(:nihonshudo, { step: "any", class: "form-control" }) %>
     </div>
   </div>
 
-  <div class="form-row">
-    <%= form.label(:sando, { class: "form-label" }) %>
-    <div class="form-half-form-lg">
+  <div class="sakes-form-row">
+    <%= form.label(:sando, { class: "sakes-form-label" }) %>
+    <div class="sakes-form-short-form">
       <%= form.number_field(:sando, { step: "any", class: "form-control" }) %>
     </div>
   </div>
 
-  <div class="form-row">
-    <%= form.label(:aminosando, { class: "form-label" }) %>
-    <div class="form-half-form-lg">
+  <div class="sakes-form-row">
+    <%= form.label(:aminosando, { class: "sakes-form-label" }) %>
+    <div class="sakes-form-short-form">
       <%= form.number_field(:aminosando, { step: "any", class: "form-control" }) %>
     </div>
   </div>
 
-  <div class="form-row">
-    <%= form.label(:warimizu, { class: "form-label" }) %>
-    <div class="form-half-form-lg">
+  <div class="sakes-form-row">
+    <%= form.label(:warimizu, { class: "sakes-form-label" }) %>
+    <div class="sakes-form-short-form">
       <%= form.select(:warimizu,
                       Sake.warimizus_i18n.keys.map do |k|
                         [I18n.t("enums.sake.warimizu.#{k}"), k]
@@ -262,9 +262,9 @@
     </div>
   </div>
 
-  <div class="form-row">
-    <%= form.label(:bottle_level, { class: "form-label" }) %>
-    <div class="form-half-form-lg">
+  <div class="sakes-form-row">
+    <%= form.label(:bottle_level, { class: "sakes-form-label" }) %>
+    <div class="sakes-form-short-form">
       <%= form.select(:bottle_level,
                       Sake.bottle_levels_i18n.keys.map do |k|
                         [I18n.t("enums.sake.bottle_level.#{k}"), k]
@@ -277,21 +277,21 @@
   <%# 開けてから %>
   <h3><%= t("helpers.subtitle.tasteinfo") %></h3>
 
-  <div class="form-row">
-    <%= form.label(:color, { class: "form-label" }) %>
+  <div class="sakes-form-row">
+    <%= form.label(:color, { class: "sakes-form-label" }) %>
     <div class="col">
       <%= form.text_field(:color, { class: "form-control" }) %>
     </div>
   </div>
 
-  <div class="form-row">
-    <%= form.label(:nigori, { class: "form-label" }) %>
+  <div class="sakes-form-row">
+    <%= form.label(:nigori, { class: "sakes-form-label" }) %>
     <div class="col">
       <%= form.text_field(:nigori, { class: "form-control" }) %>
     </div>
   </div>
 
-  <div class="form-row mt-2">
+  <div class="sakes-form-row mt-2">
     <%= form.label("#{t('activerecord.attributes.sake.taste_value')}, #{t('activerecord.attributes.sake.aroma_value')}",
                    { class: "col-lg-3 col-7 col-form-label" }) %>
     <div class="col-lg-9 col-5">
@@ -311,35 +311,35 @@
     </div>
   </div>
 
-  <div class="form-row">
-    <%= form.label(:aroma_impression, { class: "form-label" }) %>
+  <div class="sakes-form-row">
+    <%= form.label(:aroma_impression, { class: "sakes-form-label" }) %>
     <div class="col">
       <%= form.text_area(:aroma_impression, { class: "form-control" }) %>
     </div>
   </div>
 
-  <div class="form-row">
-    <%= form.label(:taste_impression, { class: "form-label" }) %>
+  <div class="sakes-form-row">
+    <%= form.label(:taste_impression, { class: "sakes-form-label" }) %>
     <div class="col">
       <%= form.text_area(:taste_impression, { class: "form-control" }) %>
     </div>
   </div>
 
-  <div class="form-row">
-    <%= form.label(:awa, { class: "form-label" }) %>
+  <div class="sakes-form-row">
+    <%= form.label(:awa, { class: "sakes-form-label" }) %>
     <div class="col">
       <%= form.text_field(:awa, { class: "form-control" }) %>
     </div>
   </div>
 
-  <div class="form-row">
-    <%= form.label(:note, { class: "form-label" }) %>
+  <div class="sakes-form-row">
+    <%= form.label(:note, { class: "sakes-form-label" }) %>
     <div class="col">
       <%= form.text_area(:note, { class: "form-control" }) %>
     </div>
   </div>
 
-  <div class="form-row mt-2 justify-content-center">
+  <div class="sakes-form-row mt-2 justify-content-center">
     <div class="col-auto">
       <%= form.submit(nil, { class: "btn btn-primary mx-3" }) %>
     </div>
