@@ -10,6 +10,7 @@ import SimpleLightbox from "simplelightbox"
     fadeSpeed: 100,
     animationSlide: false,
     history: false,
+    close: false,
   })
   /* eslint-enable @typescript-eslint/no-unsafe-call */
 }
