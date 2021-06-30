@@ -1,6 +1,6 @@
 <h2><%= t(".title") %></h2>
 
-<%= render "float-button" %>
+<%= render("float-button") %>
 
 <%= search_form_for(@searched, { class: "row my-2 align-items-center" }) do |f| %>
   <div class="col">
@@ -62,7 +62,7 @@
           <div class="row m-0 mt-2 border-bottom">
             <div class="col p-0" data-testid="bottle-level-<%= sake.id %>">
               <%= sake.bottle_level_i18n %>
-              <%= render "drink-button", sake: sake %>
+              <%= render("drink-button", sake: sake) %>
             </div>
           </div>
         </td>
@@ -88,4 +88,4 @@
 
 <%= paginate(@sakes) %>
 
-<%= javascript_pack_tag "sakes_index" %>
+<%= javascript_pack_tag("sakes_index") %>
