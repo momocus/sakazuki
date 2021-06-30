@@ -25,5 +25,7 @@ linters:
         Enabled: false
       Rails/OutputSafety:
         Enabled: false
+      # ERBではメソッドだけでなくマクロも括弧省略を許さない
+      # renderやlink_toなどが当てはまる
       Style/MethodCallWithArgsParentheses:
         IgnoreMacros: false
