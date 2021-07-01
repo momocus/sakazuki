@@ -1,16 +1,15 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.7.2"
+ruby "3.0.1"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "rails", "~> 6.1.1"
 # Use Puma as the app server
-gem "puma", "~> 5.2"
+gem "puma", "~> 5.3"
 # Use SCSS for stylesheets
-gem "sass-rails", ">= 6"
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem "webpacker", "~> 5.2.1"
+gem "webpacker", "~> 5.4"
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem "turbolinks", "~> 5"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -50,8 +49,8 @@ gem "ransack"
 # Pagination
 gem "kaminari"
 
-# Bootstrap icons
-gem "bootstrap-icons-helper"
+# Japanese Era
+gem "era_ja"
 
 # ElasticSearch
 gem "bonsai-elasticsearch-rails"
@@ -88,6 +87,7 @@ group :development do
   # background. Read more: https://github.com/rails/spring
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
+  gem "yard"
 end
 
 group :test do

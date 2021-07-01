@@ -34,10 +34,10 @@ jobs:
             ${{ runner.os }}-${{ env.cache-name }}-${{ env.cache-env }}-
       - name: Install Dependencies
         run: yarn install --production=true
-      - name: Set up Ruby 2.7
+      - name: Set up Ruby 3
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7
+          ruby-version: 3.0
       - name: Cache gems
         uses: actions/cache@v2
         env:

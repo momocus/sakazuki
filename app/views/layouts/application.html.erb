@@ -7,14 +7,14 @@
     <%= csp_meta_tag %>
     <%= twitter_meta_tags %>
 
-    <%= stylesheet_pack_tag "application", media: "all", "data-turbolinks-track": "reload" %>
-    <%= javascript_pack_tag "application", "data-turbolinks-track": "reload" %>
+    <%= stylesheet_pack_tag("application", media: "all", "data-turbolinks-track": "reload") %>
+    <%= javascript_pack_tag("application", "data-turbolinks-track": "reload") %>
   </head>
 
   <body>
-    <%= render "layouts/header" %>
-    <div class="container-fluid-with-maxwidth">
-      <%= render "layouts/flashes" %>
+    <%= render("layouts/header") %>
+    <div class="container-xxl">
+      <%= render("layouts/flashes") %>
       <%= yield %>
       <% if Rails.env.development? %>
         <%= tag.hr %>

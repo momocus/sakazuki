@@ -9,7 +9,7 @@ Bundler.require(*Rails.groups)
 module Sakazuki
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 6.0
+    config.load_defaults(6.0)
 
     # Settings in config/environments/* take precedence over those
     # specified here.
@@ -29,7 +29,7 @@ module Sakazuki
 
     # RSpec
     config.generators do |g|
-      g.test_framework :rspec
+      g.test_framework(:rspec)
     end
   end
 end

@@ -1,10 +1,10 @@
-import { Chart } from 'chart.js'
+import { Chart } from "chart.js"
 
 interface ClickableChart extends Chart {
   chart: {
     scales: {
-      'x-axis-1': { getValueForPixel: (x: number) => number | undefined }
-      'y-axis-1': { getValueForPixel: (y: number) => number | undefined }
+      "x-axis-1": { getValueForPixel: (x: number) => number | undefined }
+      "y-axis-1": { getValueForPixel: (y: number) => number | undefined }
     }
   }
 }
@@ -72,8 +72,8 @@ export class TasteGraph implements InteractiveGraph {
   private getClickedData(event: MouseEvent): GraphP {
     // @types/chart.jsに型宣言がないので型を潰して独自宣言で上書きする
     const g = this.graph as ClickableChart
-    let x = g.chart.scales['x-axis-1'].getValueForPixel(event.offsetX)
-    let y = g.chart.scales['y-axis-1'].getValueForPixel(event.offsetY)
+    let x = g.chart.scales["x-axis-1"].getValueForPixel(event.offsetX)
+    let y = g.chart.scales["y-axis-1"].getValueForPixel(event.offsetY)
     // undefinedチェック
     if (x != null && y != null) {
       x = Math.round(x)
@@ -92,8 +92,8 @@ export class TasteGraph implements InteractiveGraph {
     const points = data != null ? [data] : []
     const datasets: Chart.ChartDataSets = {
       data: points,
-      pointBackgroundColor: 'rgba(190, 20, 20, 0.7)',
-      pointBorderColor: 'rgba(190, 20, 20, 0.9)',
+      pointBackgroundColor: "rgba(190, 20, 20, 0.7)",
+      pointBorderColor: "rgba(190, 20, 20, 0.9)",
     }
     const cd: Chart.ChartData = {
       datasets: [datasets],
@@ -128,7 +128,7 @@ export class TasteGraph implements InteractiveGraph {
             gridLines: gridLines,
             scaleLabel: {
               display: true,
-              labelString: '香',
+              labelString: "香",
             },
           },
         ],
@@ -138,14 +138,14 @@ export class TasteGraph implements InteractiveGraph {
             gridLines: gridLines,
             scaleLabel: {
               display: true,
-              labelString: '味',
+              labelString: "味",
             },
           },
         ],
       },
     }
     const config: Chart.ChartConfiguration = {
-      type: 'scatter',
+      type: "scatter",
       data: dataset,
       options: options,
     }

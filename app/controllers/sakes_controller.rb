@@ -40,8 +40,6 @@ class SakesController < ApplicationController
   # GET /sakes/new
   def new
     @sake = Sake.new
-    # デフォルト値を設定する
-    @sake.brew_year = to_by(Time.zone.today)
     @sake.size = 720
   end
 
@@ -61,9 +59,9 @@ class SakesController < ApplicationController
     respond_to do |format|
       if @sake.save
         store_photos
-        format.html { redirect_to @sake, notice: "Create successfully." }
+        format.html { redirect_to(@sake, notice: "Create successfully.") }
       else
-        format.html { render :new }
+        format.html { render(:new) }
       end
     end
   end
@@ -75,9 +73,9 @@ class SakesController < ApplicationController
       if @sake.update(sake_params)
         delete_photos
         store_photos
-        format.html { redirect_to @sake, notice: "Update successfully." }
+        format.html { redirect_to(@sake, notice: "Update successfully.") }
       else
-        format.html { render :edit }
+        format.html { render(:edit) }
       end
     end
   end
@@ -87,7 +85,7 @@ class SakesController < ApplicationController
   def destroy
     @sake.destroy
     respond_to do |format|
-      format.html { redirect_to sakes_url, notice: "Destroy successfully." }
+      format.html { redirect_to(sakes_url, notice: "Destroy successfully.") }
     end
   end
 
@@ -104,10 +102,18 @@ class SakesController < ApplicationController
     words.split(/[ 　]/).map { |word| { all_text_cont: word } }
   end
 
-  # DBの蔵名に（県名）をつけて、_formの描画でつかうフォーマットにする
-  #   add_todofuken("原田酒造合資会社", "愛知県")  #=> "原田酒造合資会社（愛知県）"
+  # DBに保存された蔵名に括弧つきで県名をつけて、_formの描画でつかうフォーマットにする
+  #
+  # @example 蔵名がある場合
+  #   add_todofuken("原田酒造合資会社", "愛知県") #=> "原田酒造合資会社（愛知県）"
+  # @example 蔵名がない場合
+  #   add_todofuken("", "") #=> ""
   def add_todofuken(kura, todofuken)
-    "#{kura}（#{todofuken}）"
+    if kura == "" && todofuken == ""
+      ""
+    else
+      "#{kura}（#{todofuken}）"
+    end
   end
 
   # _formでオートコンプリートされたフォーマットから県名を取り除き、DBへ保存するフォーマットにする

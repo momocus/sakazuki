@@ -4,12 +4,12 @@
                 url: elasticsearch_path,
                 method: :get,
                 local: true,
-                class: "form-inline my-1" }) do |f| %>
-  <%= f.label "search", class: "sr-only" %>
+                class: "form-inline my-1", }) do |f| %>
+  <%= f.label("search", class: "sr-only") %>
   <%= f.text_field(:word,
                    { placeholder: "Keyword",
                      value: params.dig(:elasticsearch, :word),
-                     class: "form-control mr-sm-2" }) %>
+                     class: "form-control mr-sm-2", }) %>
   <%= button_tag(type: :submit, class: "btn btn-secondary") do %>
     <%= bootstrap_icon("search") %>
   <% end %>

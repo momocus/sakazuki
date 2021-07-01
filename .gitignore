@@ -10,6 +10,7 @@ capybara-*.html
 *.orig
 rerun.txt
 pickle-email-*.html
+.rubocop-https---*
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -43,3 +44,10 @@ yarn-debug.log*
 # Ignore uploaded files in development
 /storage/*
 !/storage/.keep
+
+# YARD files
+/.yardoc/
+/doc/
+
+# Ignore uploaded images and files compiled by webpacker
+/public

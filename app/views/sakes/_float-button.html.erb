@@ -1,0 +1,14 @@
+<div class="fixed-bottom mb-4 click-transparent">
+  <div class="px-xxl-5 px-3 text-end">
+    <% if params["action"] == "show" %>
+      <%= link_to(tag.i(class: "bi-pencil-square", style: "font-size: 2em"),
+                  edit_sake_path(@sake),
+                  { class: "btn btn-secondary mx-1 click-nontransparent",
+                    "data-testid": "edit-#{@sake.id}", }) %>
+    <% end %>
+    <%= link_to(tag.i(class: "bi-plus-square", style: "font-size: 2em"),
+                new_sake_path,
+                { class: "btn btn-primary mx-1 click-nontransparent",
+                  "data-testid": "new-sake", }) %>
+  </div>
+</div>

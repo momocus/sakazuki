@@ -1,56 +1,11 @@
 @import "~bootstrap/scss/bootstrap";
 
-.container-fluid-with-maxwidth {
-  @extend .container-fluid;
-
-  max-width: 1140px;
+.click-transparent {
+  pointer-events: none;
 }
 
-.sakazuki-label {
-  @extend .col-lg-3;
-  @extend .col-12;
-  @extend .col-form-label;
-}
-
-// バッジ付きラベル
-.sakazuki-badged-label {
-  @extend .col-lg-2;
-  @extend .col-8;
-  @extend .col-form-label;
-}
-
-.sakazuki-badge {
-  @extend .col-lg-1;
-  @extend .col-4;
-  @extend .col-form-label;
-}
-
-// 半分サイズのフォーム
-.sakazuki-half-form {
-  @extend .col-lg-4;
-  @extend .col;
-}
-
-// 半分サイズのフォームを常に2つ並べる
-.sakazuki-half-forms {
-  @extend .col-lg-4;
-  @extend .col-6;
-}
-
-.show-label {
-  @extend .col-lg-3;
-  @extend .col-12;
-}
-
-.show-body {
-  @extend .col-lg-9;
-  @extend .col-12;
-}
-
-// Ransackが生成するスタイル
-.btn-group .sort_link {
-  @extend .btn;
-  @extend .btn-info;
+.click-nontransparent {
+  pointer-events: all;
 }
 
 // Ruby on Railsが生成するエラー用スタイルなので、アンダーバーのままにする
@@ -62,9 +17,109 @@
   }
 }
 
-// ページネーションのボタンのうち、ディスプレイサイズが大きいときだけ表示するもの
+// devise
+.devise-row {
+  @extend .row;
+  @extend .mb-lg-2;
+}
+
+.devise-submit-row {
+  @extend .devise-row;
+  @extend .mt-2;
+  @extend .justify-content-center;
+}
+
+.devise-label {
+  @extend .col-lg-3;
+  @extend .col-12;
+  @extend .col-form-label;
+}
+
+//------ index ------
+
+.sakes-index-name-link {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #212529;
+}
+
+// Ransackが生成するスタイル
+.btn-group .sort_link {
+  @extend .btn;
+  @extend .btn-primary;
+}
+
+// ウィンドウサイズがlg以上のとき表示されるページネーションボタン
 .page-item-lg {
   @extend .page-item;
   @extend .d-none;
   @extend .d-md-block;
+}
+
+//------ _form (new and edit) ------
+
+.sakes-form-row {
+  @extend .row;
+  @extend .mb-lg-2;
+}
+
+.sakes-form-label {
+  @extend .col-lg-3;
+  @extend .col-12;
+  @extend .col-form-label;
+}
+
+// バッジ付きラベル
+.sakes-form-badged-label {
+  @extend .col-lg-2;
+  @extend .col-8;
+  @extend .col-form-label;
+}
+
+.sakes-form-badge {
+  @extend .col-lg-1;
+  @extend .col-4;
+  @extend .col-form-label;
+}
+
+// 常に二段組となる入力フォーム
+.sakes-form-two-column-form {
+  @extend .col-lg-4;
+  @extend .col-6;
+}
+
+// ウィンドウサイズがlg以上のときに二段組入力フォームと同じサイズになる入力フォーム
+.sakes-form-short-form {
+  @extend .col-lg-4;
+  @extend .col;
+}
+
+// new
+
+div.sakes-form-label + div input[type="checkbox"] {
+  display: none;
+}
+
+div.sakes-form-label + div input:checked[type="checkbox"] + label img {
+  border: 10px solid #f66;
+}
+
+div.sakes-form-label + div input:checked[type="checkbox"] + label::after {
+  content: "❌";
+  font-size: 40px;
+  display: block;
+  margin-top: -40px;
+  margin-left: -10px;
+}
+
+//------ show ------
+
+.sakes-show-label {
+  @extend .col-lg-3;
+  @extend .col-12;
+}
+
+.sakes-show-body {
+  @extend .col-lg-9;
+  @extend .col-12;
 }

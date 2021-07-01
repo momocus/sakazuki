@@ -2,16 +2,16 @@
 // 不正な入力の場合は空文字を返す
 function stripKura(kuraTodofuken: string) {
   const re = /.+（(.+)）/
-  const todofuken = kuraTodofuken.replace(re, '$1')
-  return todofuken == kuraTodofuken ? '' : todofuken
+  const todofuken = kuraTodofuken.replace(re, "$1")
+  return todofuken == kuraTodofuken ? "" : todofuken
 }
 
 function setKuraEvent() {
-  const kuraForm = document.getElementById('sake_kura') as HTMLInputElement
+  const kuraForm = document.getElementById("sake_kura") as HTMLInputElement
   const todofukenForm = document.getElementById(
-    'sake_todofuken'
+    "sake_todofuken"
   ) as HTMLInputElement
-  kuraForm.addEventListener('change', (event) => {
+  kuraForm.addEventListener("change", (event) => {
     const kuraForm = event.target as HTMLInputElement
     const inputKura = kuraForm.value
     const todofuken = stripKura(inputKura)

@@ -3,12 +3,21 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-require("@rails/ujs").start()
-require("turbolinks").start()
-require("@rails/activestorage").start()
-require("channels")
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+import Rails from "@rails/ujs"
+import Turbolinks from "turbolinks"
+import * as ActiveStorage from "@rails/activestorage"
+import "channels"
 
-import "bootstrap"
+Rails.start()
+Turbolinks.start()
+ActiveStorage.start()
+/* eslint-enable @typescript-eslint/no-unsafe-member-access */
+/* eslint-enable @typescript-eslint/no-unsafe-call */
+
+import "../src/javascript/bootstrap_plugins.js"
+import "bootstrap-icons/font/bootstrap-icons"
 import "../src/stylesheet/application.scss"
 
 // Uncomment to copy all static images under ../images to the output folder and reference

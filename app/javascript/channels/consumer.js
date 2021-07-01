@@ -3,4 +3,6 @@
 
 import { createConsumer } from "@rails/actioncable"
 
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 export default createConsumer()
+/* eslint-enable @typescript-eslint/no-unsafe-call */

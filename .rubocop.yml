@@ -1,9 +1,12 @@
+inherit_from:
+  - https://raw.githubusercontent.com/cookpad/styleguide/5a2d036bd80c801678c76d133662d29d42247099/.rubocop.yml
+
 require:
   - rubocop-rails
   - rubocop-rspec
 
 AllCops:
-  TargetRubyVersion: 2.7.2
+  TargetRubyVersion: 3.0.1
   Exclude:
     - "bin/*"
     - "db/schema.rb"
@@ -31,15 +34,18 @@ Style/FrozenStringLiteralComment:
 Style/Documentation:
   Enabled: false
 
-# Arg/Array/Hashの最後のカンマを許可
-Style/TrailingCommaInArguments:
-  EnforcedStyleForMultiline: comma
+# メソッド呼び出しのカッコの省略を禁止
+# specとfactoryは英文っぽく書きたいので許可
+Style/MethodCallWithArgsParentheses:
+  Enabled: true
+  Exclude:
+    - "spec/**/*_spec.rb"
+    - "spec/factories/*.rb"
 
-Style/TrailingCommaInArrayLiteral:
-  EnforcedStyleForMultiline: comma
-
-Style/TrailingCommaInHashLiteral:
-  EnforcedStyleForMultiline: comma
+# メソッド名のエイリアスをつけるときは"alias"を使い、"alias_method"は使わない
+# aliasの方が自由度は低いが安全であるため
+Style/Alias:
+  EnforcedStyle: prefer_alias
 
 # テストファイルは長さ制限をなくす
 Metrics/ClassLength:
