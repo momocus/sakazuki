@@ -39,10 +39,17 @@
       <% @sake.photos.each do |photo| %>
         <div class="col-lg-4 col-6">
           <%= link_to(cl_image_tag(photo.image.thumb.url, { class: "img-thumbnail" }),
-           photo.image.url) %>
+                      photo.image.url) %>
         </div>
       <% end %>
     </div>
+  </div>
+
+  <div class="sakes-show-label">
+    <b><%= Sake.human_attribute_name(:alcohol) %></b>
+  </div>
+  <div class="sakes-show-body">
+    <%= empty_to_default(@sake.alcohol, "-") %>
   </div>
 
   <div class="sakes-show-label">
@@ -78,13 +85,6 @@
   </div>
   <div class="sakes-show-body">
     <%= empty_to_default(@sake.size, "-") %> ml
-  </div>
-
-  <div class="sakes-show-label">
-    <b><%= Sake.human_attribute_name(:alcohol) %></b>
-  </div>
-  <div class="sakes-show-body">
-    <%= empty_to_default(@sake.alcohol, "-") %>
   </div>
 
   <div class="sakes-show-label">
@@ -145,6 +145,13 @@
   </div>
 
   <div class="sakes-show-label">
+    <b><%= Sake.human_attribute_name(:warimizu) %></b>
+  </div>
+  <div class="sakes-show-body">
+    <%= @sake.warimizu_i18n %>
+  </div>
+
+  <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:season) %></b>
   </div>
   <div class="sakes-show-body">
@@ -170,13 +177,6 @@
   </div>
   <div class="sakes-show-body">
     <%= empty_to_default(@sake.aminosando, "-") %>
-  </div>
-
-  <div class="sakes-show-label">
-    <b><%= Sake.human_attribute_name(:warimizu) %></b>
-  </div>
-  <div class="sakes-show-body">
-    <%= @sake.warimizu_i18n %>
   </div>
 
   <div class="sakes-show-label">
