@@ -11,8 +11,5 @@ POSTGRES_PASSWORD=
 
 # Configurations of Elasticsearch.
 
-# Hostname of Elasticsearch. default is 'localhost'.
-ELASTICSEARCH_HOSTNAME=localhost
-
-# Port of Elasticsearch. default is '9200'.
-ELASTICSEARCH_PORT=9200
+# Hostname of Elasticsearch. default is 'http://localhost:9200'.
+ELASTICSEARCH_HOSTS=http://localhost:9200
