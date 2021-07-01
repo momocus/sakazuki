@@ -123,7 +123,8 @@
       <%= year_select_with_japanese_era(id = "sake_brew_year_1i",
                                         name = "sake[brew_year(1i)]",
                                         begin_year = current_by,
-                                        selected_year = @sake.brew_year&.year || current_by) %>
+                                        selected_year = @sake.brew_year&.year || current_by,
+                                        include_blank: true) %>
       <%# 使わない月日はBY始まりの7/1とする. See to_by %>
       <input type="hidden" id="sake_<%= :brew_year %>_2i" name="sake[<%= :brew_year %>(2i)]" value="7">
       <input type="hidden" id="sake_<%= :brew_year %>_3i" name="sake[<%= :brew_year %>(3i)]" value="1">
