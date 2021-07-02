@@ -52,6 +52,11 @@ gem "kaminari"
 # Japanese Era
 gem "era_ja"
 
+# ElasticSearch
+gem "bonsai-elasticsearch-rails"
+gem "elasticsearch-model"
+gem "elasticsearch-rails"
+
 group :development, :test do
   gem "annotate"
   # Call 'byebug' anywhere in the code to stop execution and get a debugger
