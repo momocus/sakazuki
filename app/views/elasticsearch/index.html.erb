@@ -1,18 +1,22 @@
 <h2><%= link_to(t("views.elasticsearch.title"), elasticsearch_path, { class: "text-dark" }) %></h2>
 
-<%= form_with({ scope: :elasticsearch,
-                url: elasticsearch_path,
-                method: :get,
-                local: true,
-                class: "form-inline my-1", }) do |f| %>
-  <%= f.label("search", class: "sr-only") %>
-  <%= f.text_field(:word,
-                   { placeholder: "Keyword",
-                     value: params.dig(:elasticsearch, :word),
-                     class: "form-control mr-sm-2", }) %>
-  <%= button_tag(type: :submit, class: "btn btn-secondary") do %>
-    <%= bootstrap_icon("search") %>
-  <% end %>
+<%= form_with( scope: :elasticsearch,
+               url: elasticsearch_path,
+               method: :get,
+               local: true,
+               class: "row my-1",) do |f| %>
+  <div class="col-auto">
+    <%= f.label("search", class: "visually-hidden") %>
+    <%= f.text_field(:word,
+                    { placeholder: "Keyword",
+                      value: params.dig(:elasticsearch, :word),
+                      class: "form-control mr-sm-2", }) %>
+  </div>
+  <div class="col-auto">
+    <%= button_tag(type: :submit, class: "btn btn-secondary") do %>
+      <%= tag.i(class: "bi-search") %>
+    <% end %>
+  </div>
 <% end %>
 
 <% @sakes.each do |sake| %>
