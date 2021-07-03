@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/indirect/elasticsearch-rails.git
+  revision: 20efbf2ca6a4d310b3e11638334d85017d923ffe
+  specs:
+    elasticsearch-model (7.1.0)
+      activesupport (> 3)
+      elasticsearch (~> 7)
+      hashie
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -135,10 +144,6 @@ GEM
       elasticsearch-transport (= 7.13.1)
     elasticsearch-api (7.13.1)
       multi_json
-    elasticsearch-model (7.1.1)
-      activesupport (> 3)
-      elasticsearch (> 1)
-      hashie
     elasticsearch-rails (7.1.1)
     elasticsearch-transport (7.13.1)
       faraday (~> 1)
@@ -426,7 +431,7 @@ DEPENDENCIES
   devise
   devise-i18n
   dotenv-rails
-  elasticsearch-model
+  elasticsearch-model!
   elasticsearch-rails
   enum_help
   era_ja

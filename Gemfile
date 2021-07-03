@@ -54,7 +54,7 @@ gem "era_ja"
 
 # ElasticSearch
 gem "bonsai-elasticsearch-rails"
-gem "elasticsearch-model"
+gem "elasticsearch-model", github: "indirect/elasticsearch-rails"
 gem "elasticsearch-rails"
 
 group :development, :test do
