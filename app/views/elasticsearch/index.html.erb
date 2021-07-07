@@ -6,15 +6,15 @@
               local: true,
               class: "row my-1",) do |f| %>
   <div class="col-auto">
-    <%= f.label(:word, { class: "form-label visually-hidden" }) %>
-    <%= f.text_field(:word,
-                     { value: params.dig(:elasticsearch, :word),
-                       class: "form-control", }) %>
-  </div>
-  <div class="col-auto">
-    <%= button_tag(type: :submit, class: "btn btn-secondary") do %>
-      <%= tag.i(class: "bi-search") %>
-    <% end %>
+    <div class="input-group">
+      <%= f.label(:word, "search word", { class: "form-label visually-hidden" }) %>
+      <%= f.text_field(:word,
+                       { value: params.dig(:elasticsearch, :word),
+                         class: "form-control", }) %>
+      <%= tag.button(tag.i(class: "bi-search"),
+                     type: "submit",
+                     class: "input-group-text btn btn-secondary") %>
+    </div>
   </div>
 <% end %>
 
