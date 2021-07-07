@@ -24,6 +24,6 @@ const hasCanvasID = (elem: HTMLCanvasElement): boolean => {
   const graphs = canvases.filter(hasCanvasID)
   graphs.forEach((canvas) => {
     const p = getDomValueFromCanvas(canvas)
-    new TasteGraph(canvas, p)
+    new TasteGraph(canvas, p, { pointRadius: 6, zeroLineWidth: 3 })
   })
 }

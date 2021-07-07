@@ -102,8 +102,16 @@ export class TasteGraph implements InteractiveGraph {
   }
 
   private makeChartConfiguration(
-    dataset: Chart.ChartData
+    dataset: Chart.ChartData,
+    config: {
+      pointRadius?: number
+      zeroLineWidth?: number
+    }
   ): Chart.ChartConfiguration {
+    const defaultedConfig = {
+      ...{ pointRadius: 10, zeroLineWidth: 7 },
+      ...config,
+    }
     const margin = 0.2
     const ticks: Chart.TickOptions = {
       display: false,
@@ -115,12 +123,12 @@ export class TasteGraph implements InteractiveGraph {
       drawBorder: true,
       drawTicks: false,
       drawOnChartArea: true,
-      zeroLineWidth: 7,
+      zeroLineWidth: defaultedConfig.zeroLineWidth,
     }
     const options: Chart.ChartOptions = {
       onClick: this.clickable ? this.onClickUpdate : (_event) => {},
       legend: { display: false },
-      elements: { point: { radius: 10 } },
+      elements: { point: { radius: defaultedConfig.pointRadius } },
       scales: {
         xAxes: [
           {
@@ -144,22 +152,23 @@ export class TasteGraph implements InteractiveGraph {
         ],
       },
     }
-    const config: Chart.ChartConfiguration = {
+    const chartConfig: Chart.ChartConfiguration = {
       type: "scatter",
       data: dataset,
       options: options,
     }
-    return config
+    return chartConfig
   }
 
   constructor(
     canvas: HTMLCanvasElement,
     private data: GraphP,
+    config: { pointRadius?: number; zeroLineWidth?: number },
     private clickable: boolean = false,
     private callbackUpdate: (data: GraphP) => void = (_data) => {}
   ) {
     const p = this.makeChartData(toGraphPoint(data))
-    const config = this.makeChartConfiguration(p)
-    this.graph = new Chart(canvas, config)
+    const chartConfig = this.makeChartConfiguration(p, config)
+    this.graph = new Chart(canvas, chartConfig)
   }
 }
