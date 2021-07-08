@@ -93,5 +93,13 @@ RSpec.describe SakesHelper, type: :helper do
     it "returns value without new unit over 10 Koku" do
       expect(to_shakkan(2_222_100)).to eq("12石3斗4升5合")
     end
+
+    it "returns without the not beggiest zero" do
+      expect(to_shakkan(18000)).to eq("1斗")
+    end
+
+    it "returns zero with Go" do
+      expect(to_shakkan(0)).to eq("0合")
+    end
   end
 end

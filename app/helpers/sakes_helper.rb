@@ -53,10 +53,18 @@ module SakesHelper
   #   to_shakkan(300) #=> "1合"
   # @example 石より大きな単位はないため、10石を越えても新たな単位はつかない
   #   to_shakkan(2_222_100) #=> "12石3斗4升5合"
+  # @example 1斗ぴったりでは升や合は省略される
+  #   to_shakkan(18000) #=> "1斗"
+  # @example 0には合をつけて返す
+  #   to_shakkan(0) #=> "0合"
   # @param [Integer] amount 酒の量[ml]
   # @return [String] 尺貫法の体積で表した酒量の文字列
   def to_shakkan(amount)
-    (amount / 180).to_s.reverse.each_char.zip(UNITS).reverse.join
+    if amount == 0
+      "0合"
+    else
+      (amount / 180).to_s.reverse.each_char.zip(UNITS).filter { |value, _| value != "0" }.reverse.join
+    end
   end
 
   private_constant :UNITS
