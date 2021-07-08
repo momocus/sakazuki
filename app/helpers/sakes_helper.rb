@@ -17,7 +17,7 @@ module SakesHelper
 
   # @param [Date] date
   def with_japanese_era(date)
-    "#{date.year} / #{date.to_era('%O%-E年')}"
+    "#{date.year} / #{date.to_era("%O%-E年")}"
   end
 
   def year_range(begin_year)
