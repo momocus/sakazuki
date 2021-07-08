@@ -9,7 +9,7 @@
 
 - Ruby = 3.0.2
 - Bundler
-- Yarn🐈 >= 1.22.4 < 2
+- Yarn🐈 >= 1.22.4, < 2
 - Node.js >= 12.20.1
 - PostgreSQL >= 12.0
 - ImageMagick >= 6.9
