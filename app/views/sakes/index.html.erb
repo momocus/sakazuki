@@ -1,4 +1,5 @@
-<h2><%= "#{t('.title')} - #{to_shakkan(Sake.alcohol_stock)}" %></h2>
+<% include_empty = params.dig(:q, :bottle_level_not_eq) == bottom_bottle.to_s %>
+<h2><%= "#{t('.title')} - #{to_shakkan(Sake.alcohol_stock(include_empty: include_empty))}" %></h2>
 
 <%= render("float-button") %>
 
