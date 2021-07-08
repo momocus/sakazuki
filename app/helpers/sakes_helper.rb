@@ -42,6 +42,9 @@ module SakesHelper
     -1
   end
 
+  # @type [Array<String>]
+  UNITS = %w[合 升 斗 石]
+
   # 酒の量[ml]を尺貫法の体積にした文字列で返す
   #
   # @example 4500 mlは2升5合
@@ -56,6 +59,5 @@ module SakesHelper
     (amount / 180).to_s.reverse.each_char.zip(UNITS).reverse.join
   end
 
-  private
-  UNITS = %w[合 升 斗 石]
+  private_constant :UNITS
 end
