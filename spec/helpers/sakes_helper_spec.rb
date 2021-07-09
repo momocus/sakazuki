@@ -32,12 +32,6 @@ RSpec.describe SakesHelper, type: :helper do
     end
   end
 
-  describe "start_year_limit" do
-    it "must always return 30" do
-      expect(start_year_limit).to eq(30)
-    end
-  end
-
   describe "year_range" do
     it "must generate a range starting from 30 years ago to the given year" do
       expect(year_range(2021).last).to eq(2021)
