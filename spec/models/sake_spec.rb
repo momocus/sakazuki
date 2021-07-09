@@ -56,9 +56,9 @@ RSpec.describe Sake, type: :model do
     end
   end
 
-  let(:sealed_sake) { FactoryBot.create(:sake, bottle_level: "sealed") }
-  let(:opened_sake) { FactoryBot.create(:sake, bottle_level: "opened") }
-  let(:impressed_sake) { FactoryBot.create(:sake, bottle_level: "opened", aroma_value: 1, taste_value: 2) }
+  let!(:sealed_sake) { FactoryBot.create(:sake, bottle_level: "sealed", size: 720) }
+  let!(:opened_sake) { FactoryBot.create(:sake, bottle_level: "opened", size: 1800) }
+  let!(:impressed_sake) { FactoryBot.create(:sake, bottle_level: "opened", aroma_value: 1, taste_value: 2, size: 1800) }
 
   describe "check sealed" do
     it "returns true" do
@@ -84,6 +84,16 @@ RSpec.describe Sake, type: :model do
     end
     it "returns false" do
       expect(impressed_sake.unimpressed?).to be_falsy
+    end
+  end
+
+  describe "alcohol stock" do
+    it "returns 2520" do
+      expect(Sake.alcohol_stock).to eq(2520)
+    end
+
+    it "returns 4320 including empty bottle" do
+      expect(Sake.alcohol_stock(include_empty: true)).to eq(4320)
     end
   end
 end
