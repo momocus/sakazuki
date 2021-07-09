@@ -4,26 +4,29 @@
 <%= render("float-button") %>
 
 <%= search_form_for(@searched, { class: "row my-2 align-items-center" }) do |f| %>
-  <div class="col">
+  <div class="col input-group">
+    <%= f.label(:all_text_cont, "search word", class: "form-label visually-hidden") %>
     <%= f.search_field(:all_text_cont,
                        { class: "form-control",
                          value: params.dig(:q, :all_text_cont), }) %>
+    <%= tag.button(tag.i(class: "bi-search"),
+                   type: "submit",
+                   class: "input-group-text btn btn-secondary", "data-testid": "submit_search") %>
   </div>
+
   <div class="col-auto">
     <div class="form-check form-switch">
       <%= f.check_box(:bottle_level_not_eq,
                       { class: "form-check-input",
                         id: "all_bottle_level",
-                        "data-testid": "check_empty_bottle", },
+                        "data-testid": "check_empty_bottle",
+                        onChange: "this.form.submit()", },
                       bottom_bottle,
                       Sake.bottle_levels["empty"]) %>
       <%= f.label(t(".all_bottles"),
                   { class: "form-check-label",
                     for: "all_bottle_level", }) %>
     </div>
-  </div>
-  <div class="col-auto">
-    <%= f.submit({ class: "btn btn-secondary", "data-testid": "submit_search" }) %>
   </div>
 
   <div class="col-md mt-md-0 col-12 mt-2">
