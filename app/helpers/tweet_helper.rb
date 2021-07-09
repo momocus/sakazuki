@@ -4,12 +4,11 @@ module TweetHelper
     tag.a("Tweet",
           href: share_twitter,
           class: "twitter-share-button",
-          data: { text: tweet_text, hashtags: "Sakazuki", show_count: false })
+          data: { text: tweet_text, hashtags: "SAKAZUKI", show_count: false })
   end
 
   def add_period(text, period = t("helpers.tweet.punctuation"))
-    if text.empty? || text.end_with?(period) then text
-    else "#{text}#{period}" end
+    if text.empty? || text.end_with?(period) then text else "#{text}#{period}" end
   end
 
   # 囲み文字

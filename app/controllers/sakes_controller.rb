@@ -25,6 +25,7 @@ class SakesController < ApplicationController
     @searched = Sake.ransack(query)
     @sakes = @searched.result(distinct: true).page(params[:page])
   end
+
   # rubocop:enable Metrics/AbcSize
 
   # GET /sakes/1
@@ -128,7 +129,7 @@ class SakesController < ApplicationController
   end
 
   def set_twitter_meta_tags
-    set_meta_tags(og: { title: "Sakazuki - #{@sake.name}" })
+    set_meta_tags(og: { title: "SAKAZUKI - #{@sake.name}" })
     set_meta_tags(og: { image: @sake.photos.first.image.thumb.url }) if @sake.photos.any?
   end
 
@@ -162,4 +163,5 @@ class SakesController < ApplicationController
     end
   end
 end
+
 # rubocop:enable Metrics/ClassLength
