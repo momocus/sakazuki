@@ -57,10 +57,12 @@ module SakesHelper
   #   to_shakkan(18000) #=> "1斗"
   # @example 0には合をつけて返す
   #   to_shakkan(0) #=> "0合"
+  # @example 180ml未満は0合を返す
+  #   to_shakkan(100) #=> "0合"
   # @param [Integer] amount 酒の量[ml]
   # @return [String] 尺貫法の体積で表した酒量の文字列
   def to_shakkan(amount)
-    if amount == 0
+    if amount < 180
       "0合"
     else
       (amount / 180).to_s.reverse.each_char.zip(UNITS).filter { |value, _| value != "0" }.reverse.join

@@ -101,5 +101,9 @@ RSpec.describe SakesHelper, type: :helper do
     it "returns zero with Go" do
       expect(to_shakkan(0)).to eq("0合")
     end
+
+    it "returns zero Go with argument less than 180" do
+      expect(to_shakkan(100)).to eq ("0合")
+    end
   end
 end
