@@ -19,7 +19,8 @@
       <%= f.check_box(:bottle_level_not_eq,
                       { class: "form-check-input",
                         id: "all_bottle_level",
-                        "data-testid": "check_empty_bottle", },
+                        "data-testid": "check_empty_bottle",
+                        onChange: "this.form.submit()", },
                       bottom_bottle,
                       Sake.bottle_levels["empty"]) %>
       <%= f.label(t(".all_bottles"),
