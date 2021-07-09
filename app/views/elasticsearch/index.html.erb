@@ -1,0 +1,51 @@
+<h2><%= t("views.elasticsearch.title") %></h2>
+
+<%= form_with(scope: :elasticsearch,
+              url: elasticsearch_path,
+              method: :get,
+              local: true,
+              class: "row my-1",) do |f| %>
+  <div class="col-auto">
+    <%= f.label(:word, { class: "form-label visually-hidden" }) %>
+    <%= f.text_field(:word,
+                     { value: params.dig(:elasticsearch, :word),
+                       class: "form-control", }) %>
+  </div>
+  <div class="col-auto">
+    <%= button_tag(type: :submit, class: "btn btn-secondary") do %>
+      <%= tag.i(class: "bi-search") %>
+    <% end %>
+  </div>
+<% end %>
+
+<% @sakes.each do |sake| %>
+  <div class="row">
+    <div class="col-12">
+      <%= link_to("#{sake.name} #{sake.kura}", sake_path(sake.id)) %>
+    </div>
+  </div>
+  <div class="row mb-2">
+    <div class="col-12">
+      <span><%= sake.todofuken %></span>
+      <span><%= sake.tokutei_meisho %></span>
+      <span><%= sake.genryomai %></span>
+      <span><%= sake.kakemai %></span>
+      <span><%= sake.kobo %></span>
+      <span><%= sake.moto %></span>
+      <span><%= sake.roka %></span>
+      <span><%= sake.shibori %></span>
+      <span><%= sake.hiire %></span>
+      <span><%= sake.season %></span>
+      <span><%= sake.warimizu %></span>
+      <span><%= sake.bottle_level %></span>
+      <span><%= sake.color %></span>
+      <span><%= sake.nigori %></span>
+      <span><%= sake.aroma_impression %></span>
+      <span><%= sake.taste_impression %></span>
+      <span><%= sake.awa %></span>
+      <span><%= sake.note %></span>
+    </div>
+  </div>
+<% end %>
+
+<%= paginate(@sakes) %>

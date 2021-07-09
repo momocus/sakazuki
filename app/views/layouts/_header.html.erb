@@ -1,28 +1,32 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-dark bg-dark">
     <div class="container-xxl">
       <%= link_to("Sakazuki", root_path, class: "navbar-brand") %>
 
-      <% if user_signed_in? %>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse d-lg-flex justify-content-end" id="navbarSupportedContent">
-          <ul class="navbar-nav">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <%= link_to("Elasticsearch", elasticsearch_path, class: "nav-link") %>
+          </li>
+          <span class="border-bottom border-secondary"></span>
+          <% if user_signed_in? %>
             <li class="nav-item">
               <%= link_to(current_user.email, edit_user_registration_path, class: "nav-link") %>
             </li>
             <li class="nav-item">
               <%= link_to("Sign out", destroy_user_session_path, method: :delete, class: "nav-link") %>
             </li>
-          </ul>
-        </div>
-      <% else %>
-        <div class="d-flex navbar-nav">
-          <%= link_to("Sign in", new_user_session_path, class: "nav-link", "data-testid": "sign-in") %>
-        </div>
-      <% end %>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to("Sign in", new_user_session_path, class: "nav-link", "data-testid": "sign-in") %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </nav>
 </header>
