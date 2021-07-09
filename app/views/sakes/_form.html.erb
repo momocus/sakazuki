@@ -71,6 +71,17 @@
   <% end %>
 
   <div class="sakes-form-row">
+    <%= form.label(:alcohol, { class: "sakes-form-badged-label" }) %>
+    <div class="sakes-form-badge">
+      <span class="badge bg-secondary"><%= t("helpers.badge.obligation") %></span>
+    </div>
+    <div class="sakes-form-short-form">
+      <%= form.number_field(:alcohol,
+                            { step: "any", class: "form-control" }) %>
+    </div>
+  </div>
+
+  <div class="sakes-form-row">
     <%= form.label(:tokutei_meisho, { class: "sakes-form-badged-label" }) %>
     <div class="sakes-form-badge">
       <span class="badge bg-secondary"><%= t("helpers.badge.obligation") %></span>
@@ -123,7 +134,8 @@
       <%= year_select_with_japanese_era(id = "sake_brew_year_1i",
                                         name = "sake[brew_year(1i)]",
                                         begin_year = current_by,
-                                        selected_year = @sake.brew_year&.year || current_by) %>
+                                        selected_year = @sake.brew_year&.year || current_by,
+                                        include_blank: true) %>
       <%# 使わない月日はBY始まりの7/1とする. See to_by %>
       <input type="hidden" id="sake_<%= :brew_year %>_2i" name="sake[<%= :brew_year %>(2i)]" value="7">
       <input type="hidden" id="sake_<%= :brew_year %>_3i" name="sake[<%= :brew_year %>(3i)]" value="1">
@@ -137,17 +149,6 @@
     </div>
     <div class="sakes-form-short-form">
       <%= form.number_field(:size, { class: "form-control" }) %>
-    </div>
-  </div>
-
-  <div class="sakes-form-row">
-    <%= form.label(:alcohol, { class: "sakes-form-badged-label" }) %>
-    <div class="sakes-form-badge">
-      <span class="badge bg-secondary"><%= t("helpers.badge.obligation") %></span>
-    </div>
-    <div class="sakes-form-short-form">
-      <%= form.number_field(:alcohol,
-                            { step: "any", class: "form-control" }) %>
     </div>
   </div>
 
@@ -223,6 +224,18 @@
   </div>
 
   <div class="sakes-form-row">
+    <%= form.label(:warimizu, { class: "sakes-form-label" }) %>
+    <div class="sakes-form-short-form">
+      <%= form.select(:warimizu,
+                      Sake.warimizus_i18n.keys.map do |k|
+                        [I18n.t("enums.sake.warimizu.#{k}"), k]
+                      end,
+                      {},
+                      { class: "form-select" }) %>
+    </div>
+  </div>
+
+  <div class="sakes-form-row">
     <%= form.label(:season, { class: "sakes-form-label" }) %>
     <div class="col">
       <%= form.text_field(:season, { class: "form-control" }) %>
@@ -247,18 +260,6 @@
     <%= form.label(:aminosando, { class: "sakes-form-label" }) %>
     <div class="sakes-form-short-form">
       <%= form.number_field(:aminosando, { step: "any", class: "form-control" }) %>
-    </div>
-  </div>
-
-  <div class="sakes-form-row">
-    <%= form.label(:warimizu, { class: "sakes-form-label" }) %>
-    <div class="sakes-form-short-form">
-      <%= form.select(:warimizu,
-                      Sake.warimizus_i18n.keys.map do |k|
-                        [I18n.t("enums.sake.warimizu.#{k}"), k]
-                      end,
-                      {},
-                      { class: "form-select" }) %>
     </div>
   </div>
 

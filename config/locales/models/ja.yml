@@ -26,6 +26,7 @@ ja:
       empty: 空にする
     new:
       title: 新規登録
+      unknown: 不明
     edit:
       title: 編集
     form:

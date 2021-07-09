@@ -80,4 +80,30 @@ RSpec.describe SakesHelper, type: :helper do
       expect(bottom_bottle).to eq(-1)
     end
   end
+
+  describe "to_shakkan" do
+    it "returns value by Shakkan" do
+      expect(to_shakkan(4500)).to eq("2升5合")
+    end
+
+    it "truncates and returns value" do
+      expect(to_shakkan(300)).to eq("1合")
+    end
+
+    it "returns value without new unit over 10 Koku" do
+      expect(to_shakkan(2_222_100)).to eq("12石3斗4升5合")
+    end
+
+    it "returns without the not beggiest zero" do
+      expect(to_shakkan(18000)).to eq("1斗")
+    end
+
+    it "returns zero with Go" do
+      expect(to_shakkan(0)).to eq("0合")
+    end
+
+    it "returns zero Go with argument less than 180" do
+      expect(to_shakkan(100)).to eq ("0合")
+    end
+  end
 end

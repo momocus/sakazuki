@@ -7,9 +7,9 @@
 
 ## Requirements
 
-- Ruby = 3.0.1
+- Ruby = 3.0.2
 - Bundler
-- Yarn🐈 >= 1.22.4
+- Yarn🐈 >= 1.22.4, < 2
 - Node.js >= 12.20.1
 - PostgreSQL >= 12.0
 - ElasticSearch >= 7.10.2

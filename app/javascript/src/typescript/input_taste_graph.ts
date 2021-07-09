@@ -35,7 +35,7 @@ function syncAndGetDomValue(): GraphP {
   const domData = syncAndGetDomValue() // dataは0~6の二次元データ
 
   // グラフをセットする
-  const graph = new TasteGraph(canvas, domData, true, updateDomValue)
+  const graph = new TasteGraph(canvas, domData, {}, true, updateDomValue)
 
   // グラフのリセットボタンをセットする
   const button = document.getElementById("graph-reset") as HTMLDivElement

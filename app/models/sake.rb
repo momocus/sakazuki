@@ -142,4 +142,17 @@ class Sake < ApplicationRecord
   def unimpressed?
     self.taste_value.nil? && self.aroma_value.nil?
   end
+
+  # 残っている酒の総量をmlで返す
+  #
+  # 開封済みのお酒は瓶の半量が残っているとして概算する。
+  # @param [Boolean] include_empty trueなら飲んだ分も含めた総量を計算する
+  # @return [Integer] 酒の総量[ml]
+  def self.alcohol_stock(include_empty: false)
+    if include_empty
+      all.sum(:size)
+    else
+      where(bottle_level: "sealed").sum(:size) + where(bottle_level: "opened").sum(:size) / 2
+    end
+  end
 end
