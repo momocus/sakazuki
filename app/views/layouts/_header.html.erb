@@ -1,7 +1,9 @@
 <header>
   <nav class="navbar navbar-dark bg-dark">
     <div class="container-xxl">
-      <%= link_to("SAKAZUKI", root_path, class: "navbar-brand") %>
+      <%= link_to(image_tag("SAKAZUKI_choko.svg", { class: "sakazuki-logo" }) + "SAKAZUKI",
+                  root_path,
+                  { class: "navbar-brand d-flex align-items-center" },) %>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
