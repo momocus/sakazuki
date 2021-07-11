@@ -6,12 +6,13 @@ exclude:
   - test/**/*
   - vendor/**/*
   - ".bundle/**/*"
-require:
-  - rails_helper
+require: []
 domains: []
 reporters:
   - rubocop
-  - require_not_found
+  - require_not_found:
+      exclude:
+        - spec/**/*
   - typecheck:typed
 formatter:
   rubocop:
