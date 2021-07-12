@@ -2,3 +2,8 @@ ja:
   controllers:
     user:
       permission_denied: 権限がありません。
+    sake:
+      success:
+        create: 作成成功しました。
+        update: 更新成功しました。
+        destroy: 削除成功しました。
