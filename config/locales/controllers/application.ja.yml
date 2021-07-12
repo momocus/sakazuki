@@ -1,0 +1,4 @@
+ja:
+  controllers:
+    user:
+      permission_denied: 権限がありません。

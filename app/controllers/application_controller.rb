@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
     # 未ログインユーザーが酒作成・編集しようとしたときにパスを保存する
     store_location
-    flash[:danger] = "Please sign in."
+    flash[:danger] = t("devise.failure.unauthenticated")
     redirect_to(new_user_session_path)
   end
 

@@ -44,7 +44,7 @@ module Users
     private
 
     def redirect_to_root
-      flash[:danger] = "Permission denied."
+      flash[:danger] = t("controllers.user.permission_denied")
       redirect_to(root_url)
     end
   end
