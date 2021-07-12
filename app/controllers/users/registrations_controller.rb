@@ -1,20 +1,21 @@
 module Users
   include ApplicationHelper
+
   class RegistrationsController < Devise::RegistrationsController
     before_action :redirect_to_root, only: %i[new create]
 
-    # GET /resource/sign_up
     # rubocop:disable Lint/UselessMethodDefinition
+
+    # GET /resource/sign_up
     def new
       super
     end
-    # rubocop:enable Lint/UselessMethodDefinition
 
     # POST /resource
-    # rubocop:disable Lint/UselessMethodDefinition
     def create
       super
     end
+
     # rubocop:enable Lint/UselessMethodDefinition
 
     # GET /resource/edit
