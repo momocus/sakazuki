@@ -1,0 +1,32 @@
+ja:
+  enums:
+    sake:
+      bottle_level:
+        sealed: 未開封
+        opened: 開封済
+        empty: 空
+      hiire:
+        unknown: 不明
+        namanama: 生生
+        mae_hiire: 前火入れ
+        ato_hiire: 後火入れ
+        nido_hiire: 二度火入れ
+      tokutei_meisho:
+        none: なし
+        honjozo: 本醸造
+        ginjo: 吟醸
+        daiginjo: 大吟醸
+        junmai: 純米
+        junmai_ginjo: 純米吟醸
+        junmai_daiginjo: 純米大吟醸
+        tokubetsu_honjozo: 特別本醸造
+        tokubetsu_junmai: 特別純米
+      moto:
+        unknown: 不明
+        kimoto: 生酛
+        yamahai: 山廃
+        sokujo: 速醸
+      warimizu:
+        unknown: 不明
+        kasui: 加水
+        genshu: 原酒（無加水）
