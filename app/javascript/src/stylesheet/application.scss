@@ -123,3 +123,12 @@ div.sakes-form-label + div input:checked[type="checkbox"] + label::after {
   @extend .col-lg-9;
   @extend .col-12;
 }
+
+//------ header ------
+
+.sakazuki-header-logo {
+  @extend .me-3;
+
+  width: 2rem;
+  height: 2rem;
+}
