@@ -1,0 +1,37 @@
+ja:
+  helpers:
+    tweet:
+      punctuation: 。
+      honorific_title: さんの
+    submit:
+      create: 登録
+      update: 更新
+  sakes:
+    index:
+      title: 日本酒リスト
+      all_bottles: 空瓶を表示
+    show:
+      title: 詳細
+      delete: 削除
+      confirm_delete: 本当に削除しますか？
+      labelinfo: ラベル
+      tasteinfo: 味わい
+    drink-button:
+      open: 開封する
+      impress: 評価する
+      confirm_open: 栓を開けます？
+      empty: 空にする
+      confirm_empty: 飲みきった？
+    new:
+      title: 新規登録
+      unknown: 不明
+    edit:
+      title: 編集
+    form:
+      reset: リセット
+      select_delete_photo: 削除する画像を選択してください
+      labelinfo: :sakes.show.labelinfo
+      tasteinfo: :sakes.show.tasteinfo
+      badge:
+        presence: 必須
+        obligation: 表示義務

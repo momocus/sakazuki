@@ -1,26 +1,26 @@
 <% if sake.sealed? %>
-  <%= link_to(html_escape(t("sakes.index.open")) + tag.i(class: "bi-droplet-half", style: "font-size: 1em;"),
+  <%= link_to(html_escape(t(".open")) + tag.i(class: "bi-droplet-half", style: "font-size: 1em;"),
               sake_path(sake, params: { sake: { bottle_level: "opened" } }),
               { method: :patch,
-                data: { confirm: t("message.open") },
+                data: { confirm: t(".confirm_open") },
                 class: "badge rounded-pill bg-primary ms-2",
                 "data-testid": "open-button-#{sake.id}", }) %>
-  <%= link_to(html_escape(t("sakes.index.impress")) + tag.i(class: "bi-cup-fill", style: "font-size: 1em;"),
+  <%= link_to(html_escape(t(".impress")) + tag.i(class: "bi-cup-fill", style: "font-size: 1em;"),
               edit_sake_path(sake, params: { sake: { bottle_level: "opened" } }),
               { class: "badge rounded-pill bg-secondary ms-2",
                 "data-testid": "open-and-impress-button-#{sake.id}", }) %>
 <% end %>
 <% if sake.opened? && sake.unimpressed? %>
-  <%= link_to(html_escape(t("sakes.index.impress")) + tag.i(class: "bi-cup-fill", style: "font-size: 1em;"),
+  <%= link_to(html_escape(t(".impress")) + tag.i(class: "bi-cup-fill", style: "font-size: 1em;"),
               edit_sake_path(sake),
               { class: "badge rounded-pill bg-secondary ms-2",
                 "data-testid": "impress-button-#{sake.id}", }) %>
 <% end %>
 <% if sake.opened? %>
-  <%= link_to(html_escape(t("sakes.index.empty")) + tag.i(class: "bi-droplet", style: "font-size: 1em;"),
+  <%= link_to(html_escape(t(".empty")) + tag.i(class: "bi-droplet", style: "font-size: 1em;"),
               sake_path(sake, params: { sake: { bottle_level: "empty" } }),
               { method: :patch,
-                data: { confirm: t("message.empty") },
+                data: { confirm: t(".confirm_empty") },
                 class: "badge rounded-pill bg-light text-dark ms-2",
                 "data-testid": "empty-button-#{sake.id}", }) %>
 <% end %>
