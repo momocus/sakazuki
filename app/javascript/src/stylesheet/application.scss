@@ -127,8 +127,8 @@ div.sakes-form-label + div input:checked[type="checkbox"] + label::after {
 //------ header ------
 
 .sakazuki-header-logo {
-  @extend .me-2;
+  @extend .me-3;
 
-  width: 30px;
-  height: 30px;
+  width: 2rem;
+  height: 2rem;
 }
