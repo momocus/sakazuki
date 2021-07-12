@@ -1,8 +1,5 @@
 ja:
   helpers:
-    tweet:
-      punctuation: 。
-      honorific_title: さんの
     submit:
       create: 登録
       update: 更新
