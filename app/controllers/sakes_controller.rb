@@ -174,9 +174,10 @@ class SakesController < ApplicationController
   end
 
   # update後のリダイレクト処理
-  # 編集画面からupdateする場合: 詳細ページにリダイレクト
-  # HTTP_REFERERが設定されていない場合: 詳細ページにリダイレクト
-  # 上記のどちらにも当てはまらない場合: ユーザーが直前にいたページにリダイレクト
+  #
+  # 編集画面からupdateする場合、詳細ページにリダイレクトする。
+  # HTTP_REFERERが設定されていない場合、詳細ページにリダイレクトする。
+  # 上記のどちらにも当てはまらない場合、ユーザーが直前にいたページにリダイレクトする。
   def redirect_after_update
     if update_from_edit?
       redirect_to(@sake)
@@ -185,7 +186,7 @@ class SakesController < ApplicationController
     end
   end
 
-  # @return [Boolean] 編集画面からUpdateが行われた
+  # @return [Boolean] 編集画面からUpdateが行われたらtrueを返す
   def update_from_edit?
     request.referer && request.referer.match?("\/sakes\/[0-9]+\/edit")
   end
