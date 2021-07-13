@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe "DrinkButtons", type: :system do
-
   let!(:sealed_sake) { FactoryBot.create(:sake, bottle_level: "sealed") }
   let!(:opened_sake) { FactoryBot.create(:sake, bottle_level: "opened") }
   let!(:impressed_sake) { FactoryBot.create(:sake, bottle_level: "opened", taste_value: 1, aroma_value: 2) }
@@ -13,9 +12,9 @@ RSpec.describe "DrinkButtons", type: :system do
   end
 
   describe "drink button text in index page" do
-    open_text = I18n.t("sakes.index.open")
-    impress_text = I18n.t("sakes.index.impress")
-    empty_text = I18n.t("sakes.index.empty")
+    open_text = I18n.t("sakes.drink-button.open")
+    impress_text = I18n.t("sakes.drink-button.impress")
+    empty_text = I18n.t("sakes.drink-button.empty")
 
     describe "sealed bottle" do
       it "has open button with i18n text" do

@@ -48,6 +48,7 @@ gem "ransack"
 
 # Pagination
 gem "kaminari"
+gem "kaminari-i18n"
 
 # Japanese Era
 gem "era_ja"
