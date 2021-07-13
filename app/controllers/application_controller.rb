@@ -18,6 +18,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # flashメッセージ内に表示するリンクを生成する
+  # @param text [String]
+  # @param path [String]
+  def alert_link_tag(text, path)
+    view_context.link_to(text, path, { class: "alert-link" })
+  end
+
   private
 
   # 下記すべての条件を満たすとき、ユーザーが居たパスを保存してよいと判定する。
