@@ -34,10 +34,6 @@ class SakesController < ApplicationController
     set_twitter_meta_tags
   end
 
-  def show_photo
-    @photo = Photo.find(params[:photo_id])
-  end
-
   # GET /sakes/new
   def new
     @sake = Sake.new
