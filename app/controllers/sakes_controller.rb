@@ -74,7 +74,10 @@ class SakesController < ApplicationController
       if @sake.update(sake_params)
         delete_photos
         store_photos
-        format.html { redirect_to(@sake, notice: t("controllers.sake.success.update")) }
+        format.html {
+          redirect_after_update
+          flash[:notice] = t("controllers.sake.success.update")
+        }
       else
         format.html { render(:edit) }
       end
@@ -161,6 +164,23 @@ class SakesController < ApplicationController
     @sake.photos.each do |photo|
       photo.destroy if params[photo.chackbox_name] == "delete"
     end
+  end
+
+  # update後のリダイレクト処理
+  # 編集画面からupdateする場合: 詳細ページにリダイレクト
+  # HTTP_REFERERが設定されていない場合: 詳細ページにリダイレクト
+  # 上記のどちらにも当てはまらない場合: ユーザーが直前にいたページにリダイレクト
+  def redirect_after_update
+    if update_from_edit?
+      redirect_to(@sake)
+    else
+      redirect_back(fallback_location: @sake)
+    end
+  end
+
+  # @return [Boolean] 編集画面からUpdateが行われた
+  def update_from_edit?
+    request.referer && request.referer.match?("\/sakes/.*\/edit")
   end
 end
 
