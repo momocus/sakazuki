@@ -60,7 +60,10 @@ class SakesController < ApplicationController
     respond_to do |format|
       if @sake.save
         store_photos
-        format.html { redirect_to(@sake, notice: t("controllers.sake.success.create")) }
+        format.html {
+          redirect_to(@sake)
+          flash[:notice] = t("controllers.sake.success.create", name: @sake.name)
+        }
       else
         format.html { render(:new) }
       end
@@ -76,7 +79,7 @@ class SakesController < ApplicationController
         store_photos
         format.html {
           redirect_after_update
-          flash[:notice] = t("controllers.sake.success.update")
+          flash[:notice] = t("controllers.sake.success.update", name: alert_link_tag(@sake.name, sake_path(@sake)))
         }
       else
         format.html { render(:edit) }
@@ -87,9 +90,13 @@ class SakesController < ApplicationController
   # DELETE /sakes/1
   # DELETE /sakes/1.json
   def destroy
+    deleted_name = @sake.name
     @sake.destroy
     respond_to do |format|
-      format.html { redirect_to(sakes_url, notice: t("controllers.sake.success.destroy")) }
+      format.html {
+        redirect_to(sakes_url)
+        flash[:notice] = t("controllers.sake.success.destroy", name: deleted_name)
+      }
     end
   end
 
