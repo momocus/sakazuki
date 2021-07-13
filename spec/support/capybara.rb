@@ -36,3 +36,10 @@ end
 def wait_for_page(page_path)
   find(:test_id, page_path, visible: false)
 end
+
+# alertが表示されるまで待つ
+#
+# ユーザーが現在いるページにリダイレクトされたとき、何らかのアラートが表示されるまで待つ。
+def wait_for_alert
+  find(".alert")
+end
