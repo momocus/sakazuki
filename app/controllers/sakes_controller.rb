@@ -187,7 +187,7 @@ class SakesController < ApplicationController
 
   # @return [Boolean] 編集画面からUpdateが行われた
   def update_from_edit?
-    request.referer && request.referer.match?("\/sakes/.*\/edit")
+    request.referer && request.referer.match?("\/sakes\/[0-9]+\/edit")
   end
 end
 
