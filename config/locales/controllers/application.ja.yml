@@ -4,6 +4,6 @@ ja:
       permission_denied: 権限がありません。
     sake:
       success:
-        create: "%{name}を登録しました。"
-        update: "%{name}を更新しました。"
-        destroy: "%{name}を削除しました。"
+        create: "%{name} を登録しました。"
+        update: "%{name} を更新しました。"
+        destroy: "%{name} を削除しました。"
