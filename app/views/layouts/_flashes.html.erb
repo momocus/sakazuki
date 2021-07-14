@@ -1,7 +1,7 @@
 <% flash.each do |message_type, message| %>
   <%# timedoutのときだけdeviseが意味のない0メッセージを生成するため飛ばす %>
   <% next if message_type == "timedout" %>
-  <div class="alert alert-<%= bootstrap_alert(message_type) %>" data-testid="alert">
+  <div class="alert alert-<%= bootstrap_alert(message_type) %>" data-testid="flash-message">
     <%= sanitize(message) %>
   </div>
 <% end %>

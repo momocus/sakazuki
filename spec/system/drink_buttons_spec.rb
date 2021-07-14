@@ -201,7 +201,7 @@ RSpec.describe "DrinkButtons", type: :system do
       end
 
       it "has flash message containing link to updated sake" do
-        expect(find(:test_id, "alert")).to have_link(sealed_sake.name, href: sake_path(sealed_sake.id))
+        expect(find(:test_id, "flash-message")).to have_link(sealed_sake.name, href: sake_path(sealed_sake.id))
       end
 
       it "updates sake to opened" do
@@ -228,7 +228,7 @@ RSpec.describe "DrinkButtons", type: :system do
       end
 
       it "has flash message containing link to updated sake" do
-        expect(find(:test_id, "alert")).to have_link(impressed_sake.name, href: sake_path(impressed_sake.id))
+        expect(find(:test_id, "flash-message")).to have_link(impressed_sake.name, href: sake_path(impressed_sake.id))
       end
 
       it "updates sake to empty" do
