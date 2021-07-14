@@ -62,7 +62,7 @@ class SakesController < ApplicationController
         store_photos
         format.html {
           redirect_to(@sake)
-          flash[:success] = t("controllers.sake.success.create", name: @sake.name)
+          flash[:success] = t("controllers.sake.success.create", name: alert_link_tag(@sake.name, sake_path(@sake)))
         }
       else
         format.html { render(:new) }
