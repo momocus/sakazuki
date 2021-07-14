@@ -185,13 +185,27 @@ RSpec.describe "DrinkButtons", type: :system do
     end
 
     describe "clicking open button of sealed bottle", js: true do
+      before do
+        accept_confirm do
+          click_link "open-button-#{sealed_sake.id}"
+        end
+        wait_for_alert
+      end
+
+      it "reloads index page" do
+        expect(page).to have_current_path(sakes_path)
+      end
+
+      it "has success flash message" do
+        expect(page).to have_css(".alert-success")
+      end
+
+      it "has flash message containing link to updated sake" do
+        expect(find(:test_id, "flash-message")).to have_link(sealed_sake.name, href: sake_path(sealed_sake.id))
+      end
+
       it "updates sake to opened" do
         expect {
-          id = "open-button-#{sealed_sake.id}"
-          accept_confirm do
-            click_link id
-          end
-          wait_for_page sake_path(sealed_sake.id)
           sealed_sake.reload
         }.to change(sealed_sake, :bottle_level).from("sealed").to("opened")
       end
@@ -202,19 +216,23 @@ RSpec.describe "DrinkButtons", type: :system do
         accept_confirm do
           click_link "empty-button-#{impressed_sake.id}"
         end
+        wait_for_alert
       end
 
-      it "moves to sake show page" do
-        expect(page).to have_current_path sake_path(impressed_sake.id)
+      it "reloads to index page" do
+        expect(page).to have_current_path(sakes_path)
       end
 
       it "has success flash message" do
         expect(page).to have_css(".alert-success")
       end
 
+      it "has flash message containing link to updated sake" do
+        expect(find(:test_id, "flash-message")).to have_link(impressed_sake.name, href: sake_path(impressed_sake.id))
+      end
+
       it "updates sake to empty" do
         expect {
-          wait_for_page sake_path(impressed_sake.id)
           impressed_sake.reload
         }.to change(impressed_sake, :bottle_level).from("opened").to("empty")
       end
