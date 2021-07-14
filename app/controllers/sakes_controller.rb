@@ -190,6 +190,16 @@ class SakesController < ApplicationController
   def update_from_edit?
     request.referer && request.referer.match?("\/sakes\/[0-9]+\/edit")
   end
+
+  # flashメッセージ内に表示するリンクを生成する
+  # @example
+  #   alert_link_tag("text","path/to/somewhere") #=> "<a class="alert-link" href="path/to/somewhere">text</a>"
+  # @param text [String] 表示するテキスト
+  # @param path [String] リンクするパス
+  # @return [String] アンカーリンク
+  def alert_link_tag(text, path)
+    view_context.link_to(text, path, { class: "alert-link" })
+  end
 end
 
 # rubocop:enable Metrics/ClassLength
