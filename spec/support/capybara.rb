@@ -41,5 +41,5 @@ end
 #
 # ユーザーが現在いるページにリダイレクトされたとき、何らかのアラートが表示されるまで待つ。
 def wait_for_alert
-  find(".alert")
+  find(:test_id, "flash-message")
 end

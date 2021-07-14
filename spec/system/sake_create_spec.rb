@@ -8,7 +8,7 @@ RSpec.describe "AfterUpdateAction", type: :system do
     before do
       sign_in(user)
       visit new_sake_path
-      fill_in("name-textfield", with: sake_name)
+      find(:test_id, "name-textfield").set(sake_name)
       find(:test_id, "form-submit").click
       wait_for_alert # 新しく作られる酒のIDが不明なため、アラートを待つ
     end
@@ -28,7 +28,7 @@ RSpec.describe "AfterUpdateAction", type: :system do
 
     it "has flash message containing link to created sake" do
       # 酒のIDが不明なため、フラッシュメッセージのリンク先が現在のパスと同じことを確認する
-      expect(find(".alert")).to have_link(sake_name, href: current_path)
+      expect(find(:test_id, "flash-message")).to have_link(sake_name, href: current_path)
     end
   end
 end

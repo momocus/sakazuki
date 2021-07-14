@@ -22,7 +22,7 @@ RSpec.describe "AfterUpdateAction", type: :system do
     end
 
     it "has link to the updated sake" do
-      expect(find(".alert")).to have_link(sake_name, href: sake_path(sake_id))
+      expect(find(:test_id, "flash-message")).to have_link(sake_name, href: sake_path(sake_id))
     end
   end
 end
