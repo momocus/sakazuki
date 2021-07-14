@@ -56,7 +56,10 @@ class SakesController < ApplicationController
     respond_to do |format|
       if @sake.save
         store_photos
-        format.html { redirect_to(@sake, notice: t("controllers.sake.success.create")) }
+        format.html {
+          redirect_to(@sake)
+          flash[:success] = t("controllers.sake.success.create", name: alert_link_tag(@sake.name, sake_path(@sake)))
+        }
       else
         format.html { render(:new) }
       end
@@ -70,7 +73,10 @@ class SakesController < ApplicationController
       if @sake.update(sake_params)
         delete_photos
         store_photos
-        format.html { redirect_to(@sake, notice: t("controllers.sake.success.update")) }
+        format.html {
+          redirect_after_update
+          flash[:success] = t("controllers.sake.success.update", name: alert_link_tag(@sake.name, sake_path(@sake)))
+        }
       else
         format.html { render(:edit) }
       end
@@ -80,9 +86,13 @@ class SakesController < ApplicationController
   # DELETE /sakes/1
   # DELETE /sakes/1.json
   def destroy
+    deleted_name = @sake.name
     @sake.destroy
     respond_to do |format|
-      format.html { redirect_to(sakes_url, notice: t("controllers.sake.success.destroy")) }
+      format.html {
+        redirect_to(sakes_url)
+        flash[:success] = t("controllers.sake.success.destroy", name: deleted_name)
+      }
     end
   end
 
@@ -157,6 +167,34 @@ class SakesController < ApplicationController
     @sake.photos.each do |photo|
       photo.destroy if params[photo.chackbox_name] == "delete"
     end
+  end
+
+  # update後のリダイレクト処理
+  #
+  # 編集画面からupdateする場合、詳細ページにリダイレクトする。
+  # HTTP_REFERERが設定されていない場合、詳細ページにリダイレクトする。
+  # 上記のどちらにも当てはまらない場合、ユーザーが直前にいたページにリダイレクトする。
+  def redirect_after_update
+    if update_from_edit?
+      redirect_to(@sake)
+    else
+      redirect_back(fallback_location: @sake)
+    end
+  end
+
+  # @return [Boolean] 編集画面からUpdateが行われたらtrueを返す
+  def update_from_edit?
+    request.referer && request.referer.match?("\/sakes\/[0-9]+\/edit")
+  end
+
+  # flashメッセージ内に表示するリンクを生成する
+  # @example
+  #   alert_link_tag("text","path/to/somewhere") #=> "<a class="alert-link" href="path/to/somewhere">text</a>"
+  # @param text [String] 表示するテキスト
+  # @param path [String] リンクするパス
+  # @return [String] アンカーリンク
+  def alert_link_tag(text, path)
+    view_context.link_to(text, path, { class: "alert-link" })
   end
 end
 
