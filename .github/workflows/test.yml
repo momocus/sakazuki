@@ -33,7 +33,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-${{ env.cache-name }}-${{ env.cache-env }}-
       - name: Install Dependencies
-        run: yarn install --production=true
+        run: yarn install
       - name: Set up Ruby 3
         uses: ruby/setup-ruby@v1
         with:
