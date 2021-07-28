@@ -9,7 +9,7 @@
 
 - Ruby = 3.0.2
 - Bundler
-- Yarn🐈 >= 1.22.4, < 2
+- Yarn🐈 >= 1.22.4
 - Node.js >= 12.20.1
 - PostgreSQL >= 12.0
 - ElasticSearch >= 7.10.2
@@ -21,7 +21,7 @@
 
 - 依存関係のインストール
   - `bundle install`
-  - `yarn install --check-files`
+  - `yarn install`
 - PostgreSQLのユーザの設定
   - PostgreSQLへの接続に使われる
 
