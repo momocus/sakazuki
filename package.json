@@ -33,7 +33,7 @@
   },
   "scripts": {
     "yard": "yard doc --tag type:\"TYPE\" {lib,app,spec,ext}/**/*.rb",
-    "lint-ts": "eslint --ext .js,.jsx,.ts,.tsx ./app/javascript/",
+    "lint-ts": "eslint --ext .js,.jsx,.ts,.tsx ./app/packs/",
     "lint-md": "markdownlint README.md",
     "lint-style": "stylelint '**/*.scss' '**/*.css' --ignore-path .gitignore"
   },
