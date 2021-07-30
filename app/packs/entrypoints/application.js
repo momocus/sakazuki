@@ -20,9 +20,13 @@ import "../src/javascript/bootstrap_plugins.js"
 import "bootstrap-icons/font/bootstrap-icons"
 import "../src/stylesheet/application.scss"
 
+import "images/SAKAZUKI_choko.svg"
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
-//
-// const images = require.context('../images', true)
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+const images = require.context("../images", true)
+/* eslint-enable @typescript-eslint/no-unsafe-assignment */
+/* eslint-enable @typescript-eslint/no-unsafe-call */
 // const imagePath = (name) => images(name, true)
