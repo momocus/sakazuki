@@ -20,10 +20,12 @@ const hasCanvasID = (elem: HTMLCanvasElement): boolean => {
 
 // Main
 {
-  const canvases = Array.from(document.getElementsByTagName("canvas"))
-  const graphs = canvases.filter(hasCanvasID)
-  graphs.forEach((canvas) => {
-    const p = getDomValueFromCanvas(canvas)
-    new TasteGraph(canvas, p, { pointRadius: 6, zeroLineWidth: 3 })
+  document.addEventListener("DOMContentLoaded", function () {
+    const canvases = Array.from(document.getElementsByTagName("canvas"))
+    const graphs = canvases.filter(hasCanvasID)
+    graphs.forEach((canvas) => {
+      const p = getDomValueFromCanvas(canvas)
+      new TasteGraph(canvas, p, { pointRadius: 6, zeroLineWidth: 3 })
+    })
   })
 }
