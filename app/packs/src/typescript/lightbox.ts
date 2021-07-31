@@ -5,12 +5,14 @@ import SimpleLightbox from "simplelightbox"
 
 // Main
 {
-  /* eslint-disable @typescript-eslint/no-unsafe-call */
-  new SimpleLightbox(".photo-gallery a", {
-    fadeSpeed: 100,
-    animationSlide: false,
-    history: false,
-    close: false,
+  document.addEventListener("DOMContentLoaded", function () {
+    /* eslint-disable @typescript-eslint/no-unsafe-call */
+    new SimpleLightbox(".photo-gallery a", {
+      fadeSpeed: 100,
+      animationSlide: false,
+      history: false,
+      close: false,
+    })
+    /* eslint-enable @typescript-eslint/no-unsafe-call */
   })
-  /* eslint-enable @typescript-eslint/no-unsafe-call */
 }

@@ -12,5 +12,7 @@ function setBindumeDateEvent() {
 
 // Main
 {
-  setBindumeDateEvent()
+  document.addEventListener("DOMContentLoaded", function () {
+    setBindumeDateEvent()
+  })
 }
