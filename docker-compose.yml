@@ -51,11 +51,3 @@ services:
       - es_plugins:/usr/share/elasticsearch/plugins
     ports:
       - "9200:9200"
-  kibana:
-    image: docker.elastic.co/kibana/kibana-oss:7.10.2
-    ports:
-      - "5601:5601"
-    environment:
-      ELASTICSEARCH_HOSTS: http://es:9200
-    depends_on:
-      - es
