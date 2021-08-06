@@ -30,17 +30,19 @@ function syncAndGetDomValue(): GraphP {
 }
 
 {
-  // DOMから味・香りの値を取る
-  const canvas = document.getElementById("taste_graph") as HTMLCanvasElement
-  const domData = syncAndGetDomValue() // dataは0~6の二次元データ
+  document.addEventListener("DOMContentLoaded", function () {
+    // DOMから味・香りの値を取る
+    const canvas = document.getElementById("taste_graph") as HTMLCanvasElement
+    const domData = syncAndGetDomValue() // dataは0~6の二次元データ
 
-  // グラフをセットする
-  const graph = new TasteGraph(canvas, domData, {}, true, updateDomValue)
+    // グラフをセットする
+    const graph = new TasteGraph(canvas, domData, {}, true, updateDomValue)
 
-  // グラフのリセットボタンをセットする
-  const button = document.getElementById("graph-reset") as HTMLDivElement
-  button.onclick = () => {
-    graph.update(null)
-    updateDomValue(null)
-  }
+    // グラフのリセットボタンをセットする
+    const button = document.getElementById("graph-reset") as HTMLDivElement
+    button.onclick = () => {
+      graph.update(null)
+      updateDomValue(null)
+    }
+  })
 }

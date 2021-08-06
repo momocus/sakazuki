@@ -1,3 +1,7 @@
+<% content_for(:pack_js) do %>
+  <%= javascript_pack_tag("common", "sakes_form", "data-turbolinks-track": "reload") %>
+<% end %>
+
 <%= form_with(model: sake, local: true) do |form| %>
 
   <%# error message %>
@@ -347,5 +351,3 @@
   </div>
 
 <% end %>
-
-<%= javascript_pack_tag("sakes_form") %>

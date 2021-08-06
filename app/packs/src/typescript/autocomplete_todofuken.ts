@@ -21,5 +21,7 @@ function setKuraEvent() {
 
 // Main
 {
-  setKuraEvent()
+  document.addEventListener("DOMContentLoaded", function () {
+    setKuraEvent()
+  })
 }

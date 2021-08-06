@@ -19,10 +19,12 @@ services:
   web:
     image: sakazuki
     volumes:
-      - .:/sakazuki:cached
-      - /sakazuki/node_modules
-      - /sakazuki/log
-      - /sakazuki/tmp
+      - ./app:/sakazuki/app:cached
+      - ./config:/sakazuki/config:cached
+      - ./bin:/sakazuki/bin:cached
+      - ./config.ru:/sakazuki/config.ru:cached
+      - ./babel.config.js:/sakazuki/babel.config.js:cached
+      - ./postcss.config.js:/sakazuki/postcss.config.js:cached
     environment:
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: password

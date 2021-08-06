@@ -1,3 +1,7 @@
+<% content_for(:pack_js) do %>
+  <%= javascript_pack_tag("common", "sakes_index", "data-turbolinks-track": "reload") %>
+<% end %>
+
 <% include_empty = params.dig(:q, :bottle_level_not_eq) == bottom_bottle.to_s %>
 <h2><%= "#{t('.title')} - #{to_shakkan(Sake.alcohol_stock(include_empty: include_empty))}" %></h2>
 
@@ -90,5 +94,3 @@
 </table>
 
 <%= paginate(@sakes) %>
-
-<%= javascript_pack_tag("sakes_index") %>
