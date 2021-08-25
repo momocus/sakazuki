@@ -7,13 +7,13 @@
                 "data-testid": "open-button-#{sake.id}", }) %>
   <%= link_to(html_escape(t(".impress")) + tag.i(class: "bi-cup-fill", style: "font-size: 1em;"),
               edit_sake_path(sake, params: { sake: { bottle_level: "opened" } }),
-              { class: "badge rounded-pill bg-secondary ms-2",
+              { class: "badge rounded-pill bg-secondary text-dark ms-2",
                 "data-testid": "open-and-impress-button-#{sake.id}", }) %>
 <% end %>
 <% if sake.opened? && sake.unimpressed? %>
   <%= link_to(html_escape(t(".impress")) + tag.i(class: "bi-cup-fill", style: "font-size: 1em;"),
               edit_sake_path(sake),
-              { class: "badge rounded-pill bg-secondary ms-2",
+              { class: "badge rounded-pill bg-secondary text-dark ms-2",
                 "data-testid": "impress-button-#{sake.id}", }) %>
 <% end %>
 <% if sake.opened? %>
