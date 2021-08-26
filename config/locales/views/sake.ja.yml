@@ -3,6 +3,7 @@ ja:
     index:
       title: 日本酒リスト
       all_bottles: 空瓶を表示
+      edit: 編集
     show:
       title: 詳細
       delete: 削除
