@@ -27,7 +27,7 @@
   <div class="sakes-form-row">
     <%= form.label(:kura, { class: "sakes-form-badged-label" }) %>
     <div class="sakes-form-badge">
-      <span class="badge bg-secondary"><%= t(".badge.obligation") %></span>
+      <span class="badge bg-secondary text-dark"><%= t(".badge.obligation") %></span>
     </div>
     <div class="col">
       <%= form.text_field(:kura, { class: "form-control", autocomplete: "on", list: "sakagura" }) %>
@@ -77,7 +77,7 @@
   <div class="sakes-form-row">
     <%= form.label(:alcohol, { class: "sakes-form-badged-label" }) %>
     <div class="sakes-form-badge">
-      <span class="badge bg-secondary"><%= t(".badge.obligation") %></span>
+      <span class="badge bg-secondary text-dark"><%= t(".badge.obligation") %></span>
     </div>
     <div class="sakes-form-short-form">
       <%= form.number_field(:alcohol,
@@ -88,7 +88,7 @@
   <div class="sakes-form-row">
     <%= form.label(:tokutei_meisho, { class: "sakes-form-badged-label" }) %>
     <div class="sakes-form-badge">
-      <span class="badge bg-secondary"><%= t(".badge.obligation") %></span>
+      <span class="badge bg-secondary text-dark"><%= t(".badge.obligation") %></span>
     </div>
     <div class="sakes-form-short-form">
       <%= form.select(:tokutei_meisho,
@@ -103,7 +103,7 @@
   <div class="sakes-form-row">
     <%= form.label(:seimai_buai, { class: "sakes-form-badged-label" }) %>
     <div class="sakes-form-badge">
-      <span class="badge bg-secondary"><%= t(".badge.obligation") %></span>
+      <span class="badge bg-secondary text-dark"><%= t(".badge.obligation") %></span>
     </div>
     <div class="sakes-form-short-form">
       <%= form.number_field(:seimai_buai, { class: "form-control" }) %>
@@ -113,7 +113,7 @@
   <div class="sakes-form-row">
     <%= form.label(:bindume_date, { class: "sakes-form-badged-label" }) %>
     <div class="sakes-form-badge">
-      <span class="badge bg-secondary"><%= t(".badge.obligation") %></span>
+      <span class="badge bg-secondary text-dark"><%= t(".badge.obligation") %></span>
     </div>
     <%# HACK: 年と月の入力フォームを分けて横並びに配置する。 %>
     <%#       Railsデフォルトでは年月が縦並びになってしまう。%>
@@ -149,7 +149,7 @@
   <div class="sakes-form-row">
     <%= form.label(:size, { class: "sakes-form-badged-label" }) %>
     <div class="sakes-form-badge">
-      <span class="badge bg-secondary"><%= t(".badge.obligation") %></span>
+      <span class="badge bg-secondary text-dark"><%= t(".badge.obligation") %></span>
     </div>
     <div class="sakes-form-short-form">
       <%= form.number_field(:size, { class: "form-control" }) %>
@@ -159,7 +159,7 @@
   <div class="sakes-form-row">
     <%= form.label(:price, { class: "sakes-form-badged-label" }) %>
     <div class="sakes-form-badge">
-      <span class="badge bg-secondary"><%= t(".badge.obligation") %></span>
+      <span class="badge bg-secondary text-dark"><%= t(".badge.obligation") %></span>
     </div>
     <div class="sakes-form-short-form">
       <%= form.number_field(:price, { class: "form-control" }) %>
