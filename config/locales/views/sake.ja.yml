@@ -30,5 +30,5 @@ ja:
         presence: 必須
         obligation: 表示義務
     float-button:
-      edit: 編集
+      edit: :sakes.index.edit
       new: 新規
