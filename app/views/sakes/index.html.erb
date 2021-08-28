@@ -58,6 +58,11 @@
             <div class="col p-0">
               <%= link_to(sake.name, sake_path(sake), { class: "sakes-index-name-link" }) %>
             </div>
+            <div class="col-auto">
+              <%= link_to(tag.i(class: "bi-pencil-square me-2", style: "font-size: 1.05em;") + t(".edit"),
+                          edit_sake_path(sake),
+                          "data-testid": "sakes-index-edit-link") %>
+            </div>
           </div>
           <div class="row m-0 mt-2 border-bottom">
             <div class="col p-0">

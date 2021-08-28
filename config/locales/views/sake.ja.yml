@@ -3,6 +3,7 @@ ja:
     index:
       title: 日本酒リスト
       all_bottles: 空瓶を表示
+      edit: 編集
     show:
       title: 詳細
       delete: 削除
@@ -29,5 +30,5 @@ ja:
         presence: 必須
         obligation: 表示義務
     float-button:
-      edit: 編集
+      edit: :sakes.index.edit
       new: 新規
