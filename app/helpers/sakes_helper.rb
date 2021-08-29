@@ -2,8 +2,8 @@ require "era_ja/date"
 
 module SakesHelper
   # nilと空文字列を指定の値に変換する
-  # @param [Object, nil] value 対象の値
-  # @param [Object] default 空のとき返す値
+  # @param value [Object, nil] 対象の値
+  # @param default [Object] 空のとき返す値
   # @return [Object] valueをそのまま返すか、valueが空ならdefaultを返す
   def empty_to_default(value, default)
     value.presence || default
@@ -13,7 +13,7 @@ module SakesHelper
   # @example
   #   to_by(Date(2021, 6, 30)) #=> Date(2020, 7, 1)
   #   to_by(Date(2021, 7, 2)) #=> Date(2021, 7, 1)
-  # @param [Date] date 日付
+  # @param date [Date] 日付
   # @return [Date] 入力された日付に対応するBY、月日はBYの始まりである7/1となる
   def to_by(date)
     by_year = date.year - (date.month >= 7 ? 0 : 1)
@@ -22,11 +22,11 @@ module SakesHelper
   end
 
   # 和暦付きの年のHTMLセレクタを生成する
-  # @param [String] id HTMLのid
-  # @param [String] name HTMLのname
-  # @param [Integer] begin_year 開始年
-  # @param [Integer] selected_year 初期選択年
-  # @param [Boolean] include_blank trueなら選択肢に空が含まれる
+  # @param id [String] HTMLのid
+  # @param name [String] HTMLのname
+  # @param begin_year [Integer] 開始年
+  # @param selected_year [Integer] 初期選択年
+  # @param include_blank [Boolean] trueなら選択肢に空が含まれる
   # @return [String] 年のHTMLセレクタ
   def year_select_with_japanese_era(id, name, begin_year, selected_year: begin_year, include_blank: false)
     options = year_range(begin_year).map do |year|
@@ -61,7 +61,7 @@ module SakesHelper
   #   to_shakkan(0) #=> "0合"
   # @example 180ml未満は0合を返す
   #   to_shakkan(100) #=> "0合"
-  # @param [Integer] amount 酒の量[ml]
+  # @param amount [Integer] 酒の量[ml]
   # @return [String] 尺貫法の体積で表した酒量の文字列
   def to_shakkan(amount)
     if amount < 180
@@ -80,14 +80,14 @@ module SakesHelper
   end
 
   # 日付を和暦付き文字列に変換する
-  # @param [Date] date 日付
+  # @param date [Date] 日付
   # @return [String] "2021 / 令和3年"のような文字列
   def with_japanese_era(date)
     "#{date.year} / #{date.to_era("%O%-E年")}"
   end
 
   # 酒情報に入力可能な年範囲を作成する
-  # @param [Integer] begin_year 開始年
+  # @param begin_year [Integer] 開始年
   # @return [Range<Integer>] 年範囲
   def year_range(begin_year)
     (begin_year - start_year_limit)..begin_year
