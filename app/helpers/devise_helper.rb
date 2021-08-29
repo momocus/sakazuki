@@ -6,7 +6,7 @@ module DeviseHelper
   #   bootstrap_alert("notice") #=> "success" ex. ログイン成功
   #   bootstrap_alert("alert") #=> "danger" ex. パスワードミス
   #   bootstrap_alert("timedout") #=> "timedout" ex. タイムアウト
-  # @param [String] message_type deviseが生成するメッセージタイプ
+  # @param message_type [String] deviseが生成するメッセージタイプ
   # @return [String] bootstrapのアラートタイプ
   def bootstrap_alert(message_type)
     case message_type
@@ -20,7 +20,7 @@ module DeviseHelper
   # @example
   #   minimum_password_message(6) #=> "（6文字以上）"
   #   minimum_password_message(nil) #=> ""
-  # @param [Integer, nil] minimum_password_length パスワードの最小文字数
+  # @param minimum_password_length [Integer, nil] パスワードの最小文字数
   # @return [String] （n文字以上）という文字列または空文字
   def minimum_password_message(minimum_password_length)
     if minimum_password_length

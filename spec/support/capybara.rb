@@ -32,7 +32,7 @@ end
 # @example index.htmlの場合
 #   wait_for_page(sakes_path)
 #
-# @param [String] page_path ページのパス
+# @param page_path [String] ページのパス
 def wait_for_page(page_path)
   find(:test_id, page_path, visible: false)
 end
