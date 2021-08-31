@@ -29,6 +29,12 @@ ja:
       tasteinfo: :sakes.show.tasteinfo
       badge:
         presence: 必須
+      new:
+        submit: 登録
+      create:
+        submit: :sakes.form.new.submit
+      edit:
+        submit: 更新
     float-button:
       edit: :sakes.index.edit
       new: 新規

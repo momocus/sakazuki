@@ -2,7 +2,9 @@
   <%= javascript_pack_tag("common", "sakes_form", "data-turbolinks-track": "reload") %>
 <% end %>
 
-<%= form_with(model: sake, local: true) do |form| %>
+<%= render("float-button") %>
+
+<%= form_with(model: sake, local: true, id: "sake-form") do |form| %>
 
   <%# error message %>
   <% if sake.errors.any? %>
@@ -360,12 +362,6 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="sakes-form-row mt-2 justify-content-center">
-    <div class="col-auto">
-      <%= form.submit(class: "btn btn-primary mx-3", "data-testid": "form-submit") %>
     </div>
   </div>
 
