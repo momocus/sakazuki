@@ -29,7 +29,6 @@ ja:
       tasteinfo: :sakes.show.tasteinfo
       badge:
         presence: 必須
-        obligation: 表示義務
     float-button:
       edit: :sakes.index.edit
       new: 新規
