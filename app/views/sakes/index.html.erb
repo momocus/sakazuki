@@ -2,10 +2,10 @@
   <%= javascript_pack_tag("common", "sakes_index", "data-turbolinks-track": "reload") %>
 <% end %>
 
+<%= render("float-button") %>
+
 <% include_empty = params.dig(:q, :bottle_level_not_eq) == bottom_bottle.to_s %>
 <h2><%= "#{t('.title')} - #{to_shakkan(Sake.alcohol_stock(include_empty: include_empty))}" %></h2>
-
-<%= render("float-button") %>
 
 <%= search_form_for(@searched, { class: "row my-2 align-items-center" }) do |f| %>
   <div class="col input-group">

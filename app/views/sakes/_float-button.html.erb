@@ -1,16 +1,27 @@
 <div class="fixed-bottom mb-4 click-transparent">
   <div class="px-xxl-5 px-3 text-end">
-    <% if params["action"] == "show" %>
+    <% if controller.action_name == "show" %>
       <%= link_to(tag.i(class: "bi-pencil-square me-2", style: "font-size: 1.05em;") + t(".edit"),
                   edit_sake_path(@sake),
-                  { class: "btn btn-secondary rounded-pill mx-1 click-nontransparent",
+                  { class: "btn btn-secondary rounded-pill border border-primary mx-1 click-nontransparent",
                     style: "font-size: 1.1em;",
                     "data-testid": "edit-#{@sake.id}", }) %>
     <% end %>
-    <%= link_to(tag.i(class: "bi-plus-circle me-2", style: "font-size: 1.05em;") + t(".new"),
-                new_sake_path,
-                { class: "btn btn-primary rounded-pill mx-1 click-nontransparent",
-                  style: "font-size: 1.1em;",
-                  "data-testid": "new-sake", }) %>
+    <% if ["show", "index"].include?(controller.action_name) %>
+      <%= link_to(tag.i(class: "bi-plus-circle me-2", style: "font-size: 1.05em;") + t(".new"),
+                  new_sake_path,
+                  { class: "btn btn-primary rounded-pill mx-1 click-nontransparent",
+                    style: "font-size: 1.1em;",
+                    "data-testid": "new-sake", }) %>
+    <% end %>
+    <% if ["new", "create", "edit"].include?(controller.action_name) %>
+      <%= button_tag(type: "submit",
+                     form: "sake-form",
+                     class: "btn btn-primary rounded-pill mx-1 click-nontransparent",
+                     style: "font-size: 1.1em;",
+                     "data-testid": "form-submit") do %>
+        <%= tag.i(class: "bi-check-circle me-2") + t("submit", scope: "sakes.form.#{controller.action_name}") %>
+      <% end %>
+    <% end %>
   </div>
 </div>

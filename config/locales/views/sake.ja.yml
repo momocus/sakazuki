@@ -25,10 +25,16 @@ ja:
       reset: リセット
       select_delete_photo: 削除する画像を選択してください
       labelinfo: :sakes.show.labelinfo
+      labelinfo_option: オプショナル
       tasteinfo: :sakes.show.tasteinfo
       badge:
         presence: 必須
-        obligation: 表示義務
+      new:
+        submit: 登録
+      create:
+        submit: :sakes.form.new.submit
+      edit:
+        submit: 更新
     float-button:
       edit: :sakes.index.edit
       new: 新規

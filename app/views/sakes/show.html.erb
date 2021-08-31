@@ -5,9 +5,9 @@
   <%= javascript_pack_tag("common", "sakes_show", "data-turbolinks-track": "reload") %>
 <% end %>
 
-<h2 data-testid="<%= sake_path(@sake) %>"><%= t(".title") %></h2>
-
 <%= render("float-button") %>
+
+<h2 data-testid="<%= sake_path(@sake) %>"><%= t(".title") %></h2>
 
 <%# ツイートボタン %>
 <%= tweet_button(t("helper.tweet.text", sake: @sake)) %>
