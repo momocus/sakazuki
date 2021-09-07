@@ -7,14 +7,14 @@
 
 <%= render("float-button") %>
 
-<h2 data-testid="<%= sake_path(@sake) %>"><%= t(".title") %></h2>
+<h1 data-testid="<%= sake_path(@sake) %>"><%= t(".title") %></h1>
 
 <%# ツイートボタン %>
 <%= tweet_button(t("helper.tweet.text", sake: @sake)) %>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <%# 表示義務ありのラベル情報 %>
-<h3 class="my-2"><%= t(".labelinfo") %></h3>
+<h2 class="my-2"><%= t(".labelinfo") %></h2>
 
 <div class="row">
   <div class="sakes-show-label">
@@ -195,7 +195,7 @@
 </div>
 
 <%# 開けてから %>
-<h3 class="my-2"><%= t(".tasteinfo") %></h3>
+<h2 class="my-2"><%= t(".tasteinfo") %></h2>
 
 <div class="row">
   <div class="sakes-show-label">
