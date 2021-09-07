@@ -1,6 +1,10 @@
 @import "bootstrap_custom";
 @import "~bootstrap/scss/bootstrap";
 
+h1 {
+  @extend .my-2;
+}
+
 .click-transparent {
   pointer-events: none;
 }
