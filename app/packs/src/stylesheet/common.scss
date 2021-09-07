@@ -137,6 +137,9 @@ div.sakes-form-label + div input:checked[type="checkbox"] + label::after {
 
 footer {
   @extend .bg-light;
+  @extend .p-3;
+  @extend .pb-lg-3;
+  @extend .pb-5;
 
   font-size: 0.9em;
   color: #777;
