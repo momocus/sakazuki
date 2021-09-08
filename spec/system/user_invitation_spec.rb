@@ -2,39 +2,45 @@ require "rails_helper"
 
 RSpec.describe "User invitation", type: :system do
   let!(:admin) { FactoryBot.create(:user, admin: true) }
-  let!(:bartender) { FactoryBot.create(:user, admin: false) }
+  let!(:user) { FactoryBot.create(:user, admin: false) }
 
   before do
     sign_out(admin)
-    sign_out(bartender)
+    sign_out(user)
   end
 
-  context "when someone accesses to invitation url" do
-    describe "admin" do
-      before do
+  describe "accesses to user invitation page" do
+    context "when sign in as admin" do
+      it "allows to access user invitation page" do
         sign_in(admin)
         visit new_user_invitation_path
-      end
-      it "can visit user invitation page" do
         expect(page).to have_current_path new_user_invitation_path
       end
     end
-    describe "bartender" do
-      before do
-        sign_in(bartender)
-        visit new_user_invitation_path
-      end
 
-      it "is redirected to index page" do
+    context "when sign in as user" do
+      it "redirects to index page" do
+        sign_in(user)
+        visit new_user_invitation_path
         expect(page).to have_current_path root_path
       end
-    end
-    describe "not signed in user" do
-      before do
+
+      it "has error message" do
+        sign_in(user)
         visit new_user_invitation_path
+        expect(page).to have_css(".alert-danger")
       end
-      it "is redirected to sign in page" do
+    end
+
+    context "when not sign in" do
+      it "redirects to sign in page" do
+        visit new_user_invitation_path
         expect(page).to have_current_path new_user_session_path
+      end
+
+      it "has error message" do
+        visit new_user_invitation_path
+        expect(page).to have_css(".alert-danger")
       end
     end
   end
