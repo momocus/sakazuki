@@ -131,6 +131,9 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (1.10.0)
       devise (>= 4.8.0)
+    devise_invitable (2.0.5)
+      actionmailer (>= 5.0)
+      devise (>= 4.6)
     diff-lcs (1.4.4)
     docile (1.4.0)
     domain_name (0.5.20190701)
@@ -433,6 +436,7 @@ DEPENDENCIES
   cloudinary
   devise
   devise-i18n
+  devise_invitable
   dotenv-rails
   elasticsearch-model!
   elasticsearch-rails

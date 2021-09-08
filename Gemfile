@@ -29,6 +29,7 @@ gem "rails-i18n"
 # For authentication
 gem "bcrypt"
 gem "devise"
+gem "devise_invitable"
 gem "devise-i18n"
 
 # Create seed data files from the existing data in database
