@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: "users/registrations",
+    invitations: "users/invitations",
   }
   root "sakes#index"
   resources :sakes do

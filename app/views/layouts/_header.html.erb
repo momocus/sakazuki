@@ -19,6 +19,11 @@
             <li class="nav-item">
               <%= link_to(current_user.email, edit_user_registration_path, class: "nav-link") %>
             </li>
+            <% if current_user.admin %>
+              <li class="nav-item">
+                <%= link_to("Invitation", new_user_invitation_path, class: "nav-link", "data-testid": "invitation-link") %>
+              </li>
+            <% end %>
             <li class="nav-item">
               <%= link_to("Sign out", destroy_user_session_path, method: :delete, class: "nav-link") %>
             </li>
