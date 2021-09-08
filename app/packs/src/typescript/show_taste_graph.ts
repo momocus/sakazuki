@@ -20,7 +20,7 @@ const hasCanvasID = (elem: HTMLCanvasElement): boolean => {
 
 // Main
 {
-  document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("turbolinks:load", function () {
     const canvases = Array.from(document.getElementsByTagName("canvas"))
     const graphs = canvases.filter(hasCanvasID)
     graphs.forEach((canvas) => {
