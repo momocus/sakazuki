@@ -40,18 +40,17 @@ cp dotenv.example .env
 
 ```shell
 # .env
-POSTGRES_USERNAME=your_postgresql_name
-POSTGRES_PASSWORD=your_postgresql_password
+POSTGRES_USERNAME=[YOUR POSTGRESQL NAME]
+POSTGRES_PASSWORD=[YOUR POSTGRESQL PASSWORD]
 ```
 
 - 管理者ユーザの設定（オプション）
-  - 管理者ユーザのメールアドレスとパスワードを設定する
 
 ```ruby
 # db/seed.rb
 User.create!(
-  email: "<your emacs address>",      # この2行を
-  password: "your account password>", # 編集する
+  email: "[YOUR EMAIL ADDRESS]",
+  password: "[YOUR ACCOUNT PASSWORD]",
   admin: true,
   confirmed_at: Time.current,
 )
@@ -99,12 +98,12 @@ mail:
     smtp: "smtp.gmail.com"
     domain: "gmail.com"
     port: 587
-    user_name: "your_mail_address@gmail.com"
-    password: "your_gmail_password"
+    user_name: "[YOUR MAIL ADDRESS]@gmail.com"
+    password: "[YOUR MAIL PASSWORD]"
 cloudinary:
-    cloud_name: your_cloud_name
-    api_key: your_api_key
-    api_secret: your_api_secret
+    cloud_name: [YOUR CLOUD NAME]
+    api_key: [YOUR API KEY]
+    api_secret: [YOUR API SECRET]
     enhance_image_tag: true
     static_file_support: false
 ```
