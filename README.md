@@ -31,8 +31,7 @@
 - 依存関係のインストール
   - `bundle install`
   - `yarn install`
-- PostgreSQLのユーザの設定
-  - PostgreSQLへの接続に使われる
+- PostgreSQLの設定
 
 ```console
 cp dotenv.example .env
@@ -60,40 +59,33 @@ User.create!(
   - `bundle exec rails db:seed`
 - サーバの起動
   - `bundle exec rails server`
-- SAKAZUKIへのログイン
-  - <http://localhost:3000/>へアクセスする
-  - メールアドレス: `example@example.com`
-  - パスワード: `rootroot`
-  - または前項で書き換えた内容でログイン
-- localユーザの設定
-  - まだ
+- SAKAZUKIへのアクセス
+  - <http://localhost:3000/>にアクセス
+  - デフォルトか前項内容でログイン
+    - デフォルトメールアドレス: `example@example.com`
+    - デフォルトパスワード: `rootroot`
 
 ### How to recieve EMail from SAKAZUKI in development environment
 
-SAKAZUKIにてユーザのパスワードリセットはメールで通知される。
-Development環境では、letter_openerを使ってメールを確認する。
+Development環境において、SAKAZUKIからのメール通知はletter_openerで確認する。
 
 - <http://localhost:3000/letter_opener>にアクセス
 
 ## How to deploy to Heroku
 
-SAKAZUKIはHerokuで動かせる。
-SAKAZUKIの画像はCloudinaryにアップロードされるため、Herokuで使うにはメールとCloudinaryの設定が必要。
-2つの設定はRailsのcredentialsを使って管理する。
-
-- メールとCloudinaryの設定
+SAKAZUKIのProduction環境はHerokuを対象にしている。
+このときSAKAZUKIは画像をCloudinaryにアップロードする。
+SAKAZUKIをHerokuで動かすには、メールとCloudinaryの設定がいる。
+これらの設定はRailsのcredentialsを使って設定する。
 
 ```console
-# デフォルトの設定の削除
-$ rm config/credentials/production.yml.enc
-$ rm config/credentials/production.key
-# config/credentials/production.yml.encを編集する
-$ EDITOR="好きなエディタ" bundle exec rails credentials:edit --environment production
-# config/credentials/production.yml.encとconfig/credentials/production.keyが生成される
+$ rm config/credentials/production.yml.enc config/credentials/production.key  # デフォルトの設定の削除
+$ bundle exec rails credentials:edit --environment production
+...編集画面が開く
 ```
 
 ```yaml
-# config/credentials/production.yml.enc
+# config/credentials/production.yml.encの設定例
 mail:
     smtp: "smtp.gmail.com"
     domain: "gmail.com"
@@ -109,14 +101,14 @@ cloudinary:
 ```
 
 - CredentialsのKeyをHerokuに登録
+  - heroku-cliが必要
 
 ```console
-# Herokuに登録、heroku-cliをインストールしておく
 $ heroku config:set RAILS_MASTER_KEY=$(cat config/credentials/production.key)
+...
 ```
 
 - HerokuにSAKAZUKIをデプロイする
-  - まだ
 
 ## How to develop with Docker
 
