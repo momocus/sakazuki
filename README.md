@@ -131,6 +131,7 @@ $ docker-compose build
 
 - PostgreSQLコンテナ、ElasticSearchコンテナの初期設定
 
+<!-- markdownlint-disable MD013 -->
 ```console
 $ docker-compose run --rm web bundle exec rails db:create
 ...
@@ -150,11 +151,11 @@ Creating sakazuki_es_run ... done
 -> Downloading analysis-kuromoji from elastic
 [=================================================] 100%??
 -> Installed analysis-kuromoji
-$ docker-compose run --rm web bundle exec rake environment \
-  elasticsearch:import:model CLASS='Sake' FORCE=y
+$ docker-compose run --rm web bundle exec rake environment elasticsearch:import:model CLASS='Sake' FORCE=y
 Creating sakazuki_web_run ... done
 [IMPORT] Done
 ```
+<!-- markdownlint-enable MD013 -->
 
 - Dockerイメージの起動
 
