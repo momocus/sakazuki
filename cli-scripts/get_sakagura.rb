@@ -1,14 +1,10 @@
 #!/usr/bin/env ruby
 
-require "open-uri"
-require "nokogiri"
-require "json"
-
 # SakeTimesの酒蔵一覧を使ってNDJSONを作るスクリプト
 #
 # NDJSONには1行に1データが入っており改行で区切られている。
 # 内容は
-#  {"id": Integer(uniq), "name": String(酒蔵名）, "region": String(都道府県名)}
+#  {name: String(酒蔵名）, region: String(都道府県名)}
 # となっている。
 #
 # このデータを利用するには以下のように、1行ずつJSON.parseをすればよい。
@@ -26,57 +22,87 @@ require "json"
 #      +-- /aomori   青森県の酒蔵一覧
 #      ...
 
-# SakeTimesの酒蔵一覧ページから、URLと都道府県名のhashを作る
+require "open-uri"
+require "nokogiri"
+require "json"
+
+# SakeTimesの酒蔵一覧ページから、都道府県名とURLの組を作る
 #
-# hash内容は以下のようなstring keyからstringへのhashである。
-#   { "https://jp.sake-times.com/sakagura/./hokkaido" => "北海道", ... }
-# このhashを使うことで、サブページから酒蔵一覧を取得することができる。
-def request_todofuken
+# @example 実行例
+#   request_regions #=> [["北海道", "https://jp.sake-times.com/sakagura/./hokkaido"], ...]
+#
+# @return [Array<Array<String>>] 県名とURLの組の配列
+def request_regions
   base_url = "https://jp.sake-times.com/sakagura/"
   html = URI.parse(base_url).open
   doc = Nokogiri::HTML(html).css("ul.sakayagura-list li a")
-  regions = {}
-  doc.each do |a|
+  doc.map { |a|
     url = a.attributes["href"].value
-    # # URL末尾の"hokkaido"だけにする
-    # region_url = url.gsub(%r{#{base_url}./}, "")
-
     # "北海道（13）"のようになっているので、括弧と数字を削る
-    ja = a.content.gsub(/\uff08.*\uff09/, "")
-
-    regions[url] = ja
-  end
-  regions
+    region = a.content.gsub(/\uff08.*\uff09/, "")
+    [region, url]
+  }
 end
 
 # 酒蔵の社名の変更を適用する
+#
+# @param name [String] 酒蔵名
+# @return [String] 社名変更があった場合は、それを適用した酒蔵名
 def fix_sakagura_name(name)
   name.gsub(/阿部勘酒造店/, "阿部勘酒造株式会社")
 end
 
-# SakeTimesの酒蔵一覧を取得し、ファイルにNDJSON形式で保存する
-# rubocop:disable Metrics/MethodLength
-def write_ndjson(regions)
+# SakeTimesの都道府県の酒蔵一覧ページから、都道府県名と酒蔵の名前の組を作る
+#
+# @example 実行例
+#   request_names(["北海道","https://jp.sake-times.com/sakagura/./hokkaido"])
+#     #=> [["北海道", "碓氷勝三郎商店"],
+#          ["北海道", "男山株式会社"], ...]
+#
+# @param regions [Array<Array<String>>] 県名とURLの組の配列
+# @return [Array<Array<String>>] 県名と蔵名の組の配列
+def request_names(regions)
+  regions.map { |region, url|
+    html = URI.parse(url).open
+    doc = Nokogiri::HTML(html).css("table span.main a")
+    names = doc.map { |table|
+      fix_sakagura_name(table.content)
+    }
+    [region].product(names)
+  }.flatten(lv = 1)
+end
+
+# 県名と蔵名一覧をNDJSON形式にする
+#
+# @example 実行例
+#   to_ndjson([["北海道", "碓氷勝三郎商店"]]) #=> [{name:"碓氷勝三郎商店", region:"北海道"}]
+#
+# @param names [Array<Array<String>>] 県名と蔵名の組の配列
+# @return [Array<Hash<Symbol => String>] 蔵名、県名を持つjsonの配列
+def to_ndjson(names)
+  names.map { |region, name|
+    { name: name, region: region }
+  }
+end
+
+# ファイルにNDJSON形式で保存する
+#
+# @param names [Array<Hash<Symbol => String>] 県名と蔵名を持つjsonの配列
+def write_ndjson(ndjson)
   filename = "sakagura-list.ndjson"
   File.open(filename, "wb") do |f|
-    index = 0
-    regions.keys.map do |url|
-      html = URI.parse(url).open
-      doc = Nokogiri::HTML(html).css("table span.main a")
-      doc.each do |table|
-        name = fix_sakagura_name(table.content)
-        JSON.dump({ id: index, name: name, region: regions[url] }, f)
-        f.write("\n")
-        index += 1
-      end
+    ndjson.each do |line_json|
+      JSON.dump(line_json, f)
+      f.write("\n")
     end
   end
 end
-# rubocop:enable Metrics/MethodLength
 
 def main
-  regions = request_todofuken
-  write_ndjson(regions)
+  regions = request_regions
+  names = request_names(regions)
+  ndjson = to_ndjson(names)
+  write_ndjson(ndjson)
 end
 
 main
