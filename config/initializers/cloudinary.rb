@@ -1,4 +1,6 @@
 Cloudinary.config do |config|
+  config.secure = true
+
   if Rails.env.production?
     config.cloud_name = Rails.application.credentials.cloudinary[:cloud_name]
     config.api_key = Rails.application.credentials.cloudinary[:api_key]
