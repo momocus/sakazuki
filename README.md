@@ -15,6 +15,10 @@
 - 在庫量と総飲酒量の表示
 - 複数人での在庫の共有
 
+## Watch a demo
+
+- [SAKAZUKI](https://sakazuki.herokuapp.com/)
+
 ## Requirements
 
 - Ruby = 3.0.2
