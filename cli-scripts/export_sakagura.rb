@@ -4,14 +4,23 @@
 
 require "json"
 
+# ファイルに開きタグを書き込む
+#
+# @param file [File] 書き込み先のファイルオブジェクト
 def write_header(file)
   file.write("<datalist id=\"sakagura\">\n")
 end
 
+# ファイルに閉じタグを書き込む
+#
+# @param file [File] 書き込み先のファイルオブジェクト
 def write_footer(file)
   file.write("</datalist>\n")
 end
 
+# ファイルにdatalistを書き込む
+#
+# @param output_file [File] 書き込み先のファイルオブジェクト
 def write_body(output_file)
   input_file = "sakagura-list.ndjson"
   File.foreach(input_file, chomp: true) do |line|
