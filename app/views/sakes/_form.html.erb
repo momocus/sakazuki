@@ -187,16 +187,18 @@
           <div class="sakes-form-row">
             <%= form.label(:genryomai, { class: "sakes-form-label" }) %>
             <div class="col">
-              <%= form.text_field(:genryomai, { class: "form-control" }) %>
+              <%= form.text_field(:genryomai, class: "form-control", list: "sakamai-list") %>
             </div>
           </div>
 
           <div class="sakes-form-row">
             <%= form.label(:kakemai, { class: "sakes-form-label" }) %>
             <div class="col">
-              <%= form.text_field(:kakemai, { class: "form-control" }) %>
+              <%= form.text_field(:kakemai, class: "form-control", list: "sakamai-list") %>
             </div>
           </div>
+
+          <%= render("sakamai-datalist") %>
 
           <div class="sakes-form-row">
             <%= form.label(:kobo, { class: "sakes-form-label" }) %>
