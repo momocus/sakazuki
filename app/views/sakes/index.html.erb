@@ -33,8 +33,8 @@
     </div>
   </div>
 
-  <div class="col-md mt-md-0 col-12 mt-2">
-    <div class="btn-group float-md-end" role="group" aria-label="Sort">
+  <div class="col-lg mt-lg-0 col-12 mt-2">
+    <div class="btn-group float-lg-end" role="group" aria-label="Sort">
       <%= sort_link(@searched,
                     :tokutei_meisho,
                     t("activerecord.attributes.sake.tokutei_meisho")) %>
@@ -44,6 +44,14 @@
       <%= sort_link(@searched,
                     :bottle_level,
                     t("activerecord.attributes.sake.bottle_level")) %>
+      <%= sort_link(@searched,
+                    :taste_value,
+                    t("activerecord.attributes.sake.taste_impression"),
+                    default_order: :desc) %>
+      <%= sort_link(@searched,
+                    :aroma_value,
+                    t("activerecord.attributes.sake.aroma_impression"),
+                    default_order: :desc) %>
     </div>
   </div>
 <% end %>
