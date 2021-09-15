@@ -5,6 +5,20 @@
 
 自宅の酒を管理するアプリケーション
 
+![Screenshot](./screenshot.png)
+
+## What is SAKAZUKI?
+
+- 日本酒の在庫を登録・開封・空で管理
+- スペックや味わいを定量値・定性値で保存
+- 在庫や過去に飲んだ日本酒を全文検索
+- 在庫量と総飲酒量の表示
+- 複数人での在庫の共有
+
+## Watch a demo
+
+- [SAKAZUKI](https://sakazuki.herokuapp.com/)
+
 ## Requirements
 
 - Ruby = 3.0.2
@@ -22,8 +36,7 @@
 - 依存関係のインストール
   - `bundle install`
   - `yarn install`
-- PostgreSQLのユーザの設定
-  - PostgreSQLへの接続に使われる
+- PostgreSQLの設定
 
 ```console
 cp dotenv.example .env
@@ -31,18 +44,17 @@ cp dotenv.example .env
 
 ```shell
 # .env
-POSTGRES_USERNAME=your_postgresql_name
-POSTGRES_PASSWORD=your_postgresql_password
+POSTGRES_USERNAME=[YOUR POSTGRESQL NAME]
+POSTGRES_PASSWORD=[YOUR POSTGRESQL PASSWORD]
 ```
 
 - 管理者ユーザの設定（オプション）
-  - 管理者ユーザのメールアドレスとパスワードを設定する
 
 ```ruby
 # db/seed.rb
 User.create!(
-  email: "<your emacs address>",      # この2行を
-  password: "your account password>", # 編集する
+  email: "[YOUR EMAIL ADDRESS]",
+  password: "[YOUR ACCOUNT PASSWORD]",
   admin: true,
   confirmed_at: Time.current,
 )
@@ -52,63 +64,56 @@ User.create!(
   - `bundle exec rails db:seed`
 - サーバの起動
   - `bundle exec rails server`
-- SAKAZUKIへのログイン
-  - <http://localhost:3000/>へアクセスする
-  - メールアドレス: `example@example.com`
-  - パスワード: `rootroot`
-  - または前項で書き換えた内容でログイン
-- localユーザの設定
-  - まだ
+- SAKAZUKIへのアクセス
+  - <http://localhost:3000/>にアクセス
+  - デフォルトか前項内容でログイン
+    - デフォルトメールアドレス: `example@example.com`
+    - デフォルトパスワード: `rootroot`
 
 ### How to recieve EMail from SAKAZUKI in development environment
 
-SAKAZUKIにてユーザのパスワードリセットはメールで通知される。
-Development環境では、letter_openerを使ってメールを確認する。
+Development環境において、SAKAZUKIからのメール通知はletter_openerで確認する。
 
 - <http://localhost:3000/letter_opener>にアクセス
 
 ## How to deploy to Heroku
 
-SAKAZUKIはHerokuで動かせる。
-SAKAZUKIの画像はCloudinaryにアップロードされるため、Herokuで使うにはメールとCloudinaryの設定が必要。
-2つの設定はRailsのcredentialsを使って管理する。
-
-- メールとCloudinaryの設定
+SAKAZUKIのProduction環境はHerokuを対象にしている。
+このときSAKAZUKIは画像をCloudinaryにアップロードする。
+SAKAZUKIをHerokuで動かすには、メールとCloudinaryの設定がいる。
+これらの設定はRailsのcredentialsを使って設定する。
 
 ```console
-# デフォルトの設定の削除
-$ rm config/credentials/production.yml.enc
-$ rm config/credentials/production.key
-# config/credentials/production.yml.encを編集する
-$ EDITOR="好きなエディタ" bundle exec rails credentials:edit --environment production
-# config/credentials/production.yml.encとconfig/credentials/production.keyが生成される
+$ rm config/credentials/production.yml.enc config/credentials/production.key  # デフォルトの設定の削除
+$ bundle exec rails credentials:edit --environment production
+...編集画面が開く
 ```
 
 ```yaml
-# config/credentials/production.yml.enc
+# config/credentials/production.yml.encの設定例
 mail:
     smtp: "smtp.gmail.com"
     domain: "gmail.com"
     port: 587
-    user_name: "your_mail_address@gmail.com"
-    password: "your_gmail_password"
+    user_name: "[YOUR MAIL ADDRESS]@gmail.com"
+    password: "[YOUR MAIL PASSWORD]"
 cloudinary:
-    cloud_name: your_cloud_name
-    api_key: your_api_key
-    api_secret: your_api_secret
+    cloud_name: [YOUR CLOUD NAME]
+    api_key: [YOUR API KEY]
+    api_secret: [YOUR API SECRET]
     enhance_image_tag: true
     static_file_support: false
 ```
 
 - CredentialsのKeyをHerokuに登録
+  - heroku-cliが必要
 
 ```console
-# Herokuに登録、heroku-cliをインストールしておく
 $ heroku config:set RAILS_MASTER_KEY=$(cat config/credentials/production.key)
+...
 ```
 
 - HerokuにSAKAZUKIをデプロイする
-  - まだ
 
 ## How to develop with Docker
 
@@ -123,6 +128,7 @@ $ docker-compose build
 
 - PostgreSQLコンテナ、ElasticSearchコンテナの初期設定
 
+<!-- markdownlint-disable MD013 -->
 ```console
 $ docker-compose run --rm web bundle exec rails db:create
 ...
@@ -142,11 +148,11 @@ Creating sakazuki_es_run ... done
 -> Downloading analysis-kuromoji from elastic
 [=================================================] 100%??
 -> Installed analysis-kuromoji
-$ docker-compose run --rm web bundle exec rake environment \
-  elasticsearch:import:model CLASS='Sake' FORCE=y
+$ docker-compose run --rm web bundle exec rake environment elasticsearch:import:model CLASS='Sake' FORCE=y
 Creating sakazuki_web_run ... done
 [IMPORT] Done
 ```
+<!-- markdownlint-enable MD013 -->
 
 - Dockerイメージの起動
 
