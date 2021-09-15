@@ -38,6 +38,8 @@ def request_rices
   url = "https://www.maff.go.jp/j/kokuji_tuti/kokuji/k0001439.html"
   html = URI.parse(url).open
   doc = Nokogiri::HTML(html).css("div#main_content table")
+  # HACK: 農林水産省ページのテーブルに名前がないので、16番目指定で醸造用玄米のテーブルを取得する
+  #       またテーブルヘッダがtrタグ指定なので、[1..]でヘッダを削る
   trs = doc[15].css("tr")[1..]
   rices = trs.map { |tr|
     td = tr.css("td")[1]        # HACK: [0]の都道府県名を削る
