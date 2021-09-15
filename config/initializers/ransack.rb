@@ -7,4 +7,10 @@ Ransack.configure do |c|
   # TODO: Ransackのバージョンが上がったら:nulls_always_last（常に最後）を採用する
   c.postgres_fields_sort_option = :nulls_first
   # c.postgres_fields_sort_option = :nulls_always_last
+
+  # ソート時のアイコン設定
+  c.custom_arrows = {
+    up_arrow: '<i class="bi-sort-down"></i>',
+    down_arrow: '<i class="bi-sort-down-alt"></i>',
+  }
 end
