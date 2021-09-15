@@ -187,16 +187,18 @@
           <div class="sakes-form-row">
             <%= form.label(:genryomai, { class: "sakes-form-label" }) %>
             <div class="col">
-              <%= form.text_field(:genryomai, { class: "form-control" }) %>
+              <%= form.text_field(:genryomai, class: "form-control", list: "sakamai-list") %>
             </div>
           </div>
 
           <div class="sakes-form-row">
             <%= form.label(:kakemai, { class: "sakes-form-label" }) %>
             <div class="col">
-              <%= form.text_field(:kakemai, { class: "form-control" }) %>
+              <%= form.text_field(:kakemai, class: "form-control", list: "sakamai-list") %>
             </div>
           </div>
+
+          <%= render("sakamai-datalist") %>
 
           <div class="sakes-form-row">
             <%= form.label(:kobo, { class: "sakes-form-label" }) %>
@@ -220,14 +222,33 @@
           <div class="sakes-form-row">
             <%= form.label(:roka, { class: "sakes-form-label" }) %>
             <div class="col">
-              <%= form.text_field(:roka, { class: "form-control" }) %>
+              <%= form.text_field(:roka, { class: "form-control", list: "roka-list" }) %>
+              <datalist id="roka-list">
+                <option value="無濾過"></option>
+                <option value="素濾過"></option>
+              </datalist>
             </div>
           </div>
 
           <div class="sakes-form-row">
             <%= form.label(:shibori, { class: "sakes-form-label" }) %>
             <div class="col">
-              <%= form.text_field(:shibori, { class: "form-control" }) %>
+              <%= form.text_field(:shibori, { class: "form-control", list: "shibori-list" }) %>
+              <datalist id="shibori-list">
+                <option value="ヤブタ式"></option>
+                <option value="槽絞り"></option>
+                <option value="袋吊り"></option>
+                <option value="雫取り"></option>
+                <option value="斗瓶取り"></option>
+                <option value="斗瓶囲い"></option>
+                <option value="荒走り"></option>
+                <option value="あらばしり"></option>
+                <option value="中取り"></option>
+                <option value="中垂れ"></option>
+                <option value="中汲み"></option>
+                <option value="責め"></option>
+                <option value="遠心分離"></option>
+              </datalist>
             </div>
           </div>
 
@@ -258,7 +279,14 @@
           <div class="sakes-form-row">
             <%= form.label(:season, { class: "sakes-form-label" }) %>
             <div class="col">
-              <%= form.text_field(:season, { class: "form-control" }) %>
+              <%= form.text_field(:season, { class: "form-control", list: "season-list" }) %>
+              <datalist id="season-list">
+                <option value="新酒"></option>
+                <option value="夏酒"></option>
+                <option value="ひやおろし"></option>
+                <option value="秋あがり"></option>
+                <option value="古酒"></option>
+              </datalist>
             </div>
           </div>
 
