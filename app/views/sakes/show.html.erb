@@ -7,8 +7,7 @@
 
 <%= render("float-button") %>
 
-<div data-testid="<%= sake_path(@sake) %>" style="visibility:hidden"></div>
-<h1 data-testid="sake-name"><%= @sake.name %></h1>
+<h1 data-testid="<%= sake_path(@sake) %>"><%= @sake.name %></h1>
 
 <%# ツイートボタン %>
 <%= tweet_button(t("helper.tweet.text", sake: @sake)) %>
