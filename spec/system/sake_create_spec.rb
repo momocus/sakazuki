@@ -18,7 +18,7 @@ RSpec.describe "AfterUpdateAction", type: :system do
     end
 
     it "has specified sake name" do
-      expect(find(:test_id, "sake-name")).to have_text(sake_name)
+      expect(find("h1")).to have_text(sake_name)
     end
 
     it "redirect to created sake page" do

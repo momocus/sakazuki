@@ -7,7 +7,7 @@
 
 <%= render("float-button") %>
 
-<h1 data-testid="<%= sake_path(@sake) %>"><%= t(".title") %></h1>
+<h1 data-testid="<%= sake_path(@sake) %>"><%= @sake.name %></h1>
 
 <%# ツイートボタン %>
 <%= tweet_button(t("helper.tweet.text", sake: @sake)) %>
@@ -17,13 +17,6 @@
 <h2 class="my-2"><%= t(".labelinfo") %></h2>
 
 <div class="row">
-  <div class="sakes-show-label">
-    <b><%= Sake.human_attribute_name(:name) %></b>
-  </div>
-  <div class="sakes-show-body" data-testid="sake-name">
-    <%= @sake.name %>
-  </div>
-
   <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:kura) %></b>
   </div>
