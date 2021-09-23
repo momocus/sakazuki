@@ -1,10 +1,15 @@
 import { Chart } from "chart.js"
 
-interface ClickableChart extends Chart {
-  chart: {
-    scales: {
-      "x-axis-1": { getValueForPixel: (x: number) => number | undefined }
-      "y-axis-1": { getValueForPixel: (y: number) => number | undefined }
+// @types/chart.jsに型宣言がないメタメソッドを使うためのインタフェース
+interface MetaChart extends Chart {
+  scales: {
+    "x-axis-1": {
+      getValueForPixel: (x: number) => number | undefined
+      getPixelForValue: (x: number) => number
+    }
+    "y-axis-1": {
+      getValueForPixel: (y: number) => number | undefined
+      getPixelForValue: (y: number) => number
     }
   }
 }
@@ -70,10 +75,9 @@ export class TasteGraph implements InteractiveGraph {
   }
 
   private getClickedData(event: MouseEvent): GraphP {
-    // @types/chart.jsに型宣言がないので型を潰して独自宣言で上書きする
-    const g = this.graph as ClickableChart
-    let x = g.chart.scales["x-axis-1"].getValueForPixel(event.offsetX)
-    let y = g.chart.scales["y-axis-1"].getValueForPixel(event.offsetY)
+    const g = this.graph as MetaChart
+    let x = g.scales["x-axis-1"].getValueForPixel(event.offsetX)
+    let y = g.scales["y-axis-1"].getValueForPixel(event.offsetY)
     // undefinedチェック
     if (x != null && y != null) {
       x = Math.round(x)
@@ -152,10 +156,46 @@ export class TasteGraph implements InteractiveGraph {
         ],
       },
     }
+    // 各4象限を別々に色付けする
+    // https://github.com/chartjs/Chart.js/issues/3535
+    const backgroundColorPlugin = {
+      beforeDraw: function (chart: MetaChart, _: any) {
+        const ctx = chart.ctx
+
+        const left = chart.chartArea.left
+        const right = chart.chartArea.right
+        const top = chart.chartArea.top
+        const bottom = chart.chartArea.bottom
+        const midX = chart.scales["x-axis-1"].getPixelForValue(0)
+        const midY = chart.scales["y-axis-1"].getPixelForValue(0)
+
+        // primary color: #19448e = 25,68,142
+        const color1 = "rgba(25, 68, 142, 0.18)"
+        const color2 = "rgba(25, 68, 142, 0.09)"
+        const color3 = "rgba(25, 68, 142, 0.02)"
+        const color4 = color2
+
+        if (ctx != null) {
+          // Top right, quadrant 1
+          ctx.fillStyle = color1
+          ctx.fillRect(midX, top, right - midX, midY - top)
+          // Top left, quadrant 2
+          ctx.fillStyle = color2
+          ctx.fillRect(left, top, midX - left, midY - top)
+          // Bottom left, quadrant 3
+          ctx.fillStyle = color3
+          ctx.fillRect(left, midY, midX - left, bottom - midY)
+          // Bottom right, quadrant 4
+          ctx.fillStyle = color4
+          ctx.fillRect(midX, midY, right - midX, bottom - midY)
+        }
+      },
+    }
     const chartConfig: Chart.ChartConfiguration = {
       type: "scatter",
       data: dataset,
       options: options,
+      plugins: [backgroundColorPlugin],
     }
     return chartConfig
   }
