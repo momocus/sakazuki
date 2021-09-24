@@ -117,15 +117,21 @@ export class TasteGraph implements InteractiveGraph {
       ...config,
     }
     const margin = 0.2
-    const ticks: Chart.TickOptions = {
+    const baseTicks: Chart.TickOptions = {
       display: false,
+    }
+    const ticks: Chart.TickOptions = {
+      ...baseTicks,
       max: middle + margin,
       min: -middle - margin,
       maxTicksLimit: 2,
     }
-    const gridLines: Chart.GridLineOptions = {
-      drawBorder: true,
+    const baseGridLines: Chart.GridLineOptions = {
       drawTicks: false,
+      drawOnChartArea: false,
+    }
+    const gridLines: Chart.GridLineOptions = {
+      ...baseGridLines,
       drawOnChartArea: true,
       zeroLineWidth: defaultedConfig.zeroLineWidth,
     }
@@ -133,14 +139,25 @@ export class TasteGraph implements InteractiveGraph {
       onClick: this.clickable ? this.onClickUpdate : (_event) => {},
       legend: { display: false },
       elements: { point: { radius: defaultedConfig.pointRadius } },
+      // HACK: ダミーの軸を使って高低両方にラベルをつける
       scales: {
         xAxes: [
           {
+            position: "bottom",
             ticks: ticks,
             gridLines: gridLines,
             scaleLabel: {
               display: true,
-              labelString: "香",
+              labelString: "香りが低い",
+            },
+          },
+          {
+            position: "top",
+            ticks: baseTicks,
+            gridLines: baseGridLines,
+            scaleLabel: {
+              display: true,
+              labelString: "香りが高い",
             },
           },
         ],
@@ -150,7 +167,16 @@ export class TasteGraph implements InteractiveGraph {
             gridLines: gridLines,
             scaleLabel: {
               display: true,
-              labelString: "味",
+              labelString: "味が淡い",
+            },
+          },
+          {
+            position: "right",
+            ticks: baseTicks,
+            gridLines: baseGridLines,
+            scaleLabel: {
+              display: true,
+              labelString: "味が濃い",
             },
           },
         ],
