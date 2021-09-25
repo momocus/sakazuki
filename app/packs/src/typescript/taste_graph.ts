@@ -96,8 +96,9 @@ export class TasteGraph implements InteractiveGraph {
     const points = data != null ? [data] : []
     const datasets: Chart.ChartDataSets = {
       data: points,
-      pointBackgroundColor: "rgba(190, 20, 20, 0.7)",
-      pointBorderColor: "rgba(190, 20, 20, 0.9)",
+      // accent color: #b7282e = 183,40,46
+      pointBackgroundColor: "rgba(183, 40, 46, 0.9)",
+      pointBorderColor: "rgba(183, 40, 46, 1.0)",
     }
     const cd: Chart.ChartData = {
       datasets: [datasets],
