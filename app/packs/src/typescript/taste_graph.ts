@@ -118,55 +118,53 @@ export class TasteGraph implements InteractiveGraph {
       ...config,
     }
     const margin = 0.2
-    const baseTicks: Chart.TickOptions = {
-      display: false,
-    }
     const ticks: Chart.TickOptions = {
-      ...baseTicks,
+      display: false,
       max: middle + margin,
       min: -middle - margin,
       maxTicksLimit: 2,
     }
-    const baseGridLines: Chart.GridLineOptions = {
+    const dummyGridLines: Chart.GridLineOptions = {
       drawTicks: false,
       drawOnChartArea: false,
     }
     const gridLines: Chart.GridLineOptions = {
-      ...baseGridLines,
+      drawTicks: false,
       drawOnChartArea: true,
       zeroLineWidth: defaultedConfig.zeroLineWidth,
     }
-    const xAxe: Chart.ChartXAxe = {
-      position: "bottom",
+    const baseAxe: Chart.ChartXAxe = {
       ticks: ticks,
       gridLines: gridLines,
+    }
+    const xAxe: Chart.ChartXAxe = {
+      ...baseAxe,
+      position: "bottom",
       scaleLabel: {
         display: true,
         labelString: "香りが低い",
       },
     }
     const dummyXAxe: Chart.ChartXAxe = {
+      ...baseAxe,
       position: "top",
-      ticks: baseTicks,
-      gridLines: baseGridLines,
       scaleLabel: {
         display: true,
         labelString: "香りが高い",
       },
     }
     const yAxe: Chart.ChartYAxe = {
+      ...baseAxe,
       position: "left",
-      ticks: ticks,
-      gridLines: gridLines,
       scaleLabel: {
         display: true,
         labelString: "味が淡い",
       },
     }
     const dummyYAxe: Chart.ChartYAxe = {
+      ...baseAxe,
+      gridLines: dummyGridLines, // HACK: X軸（y=0）の二重描きを防ぐ
       position: "right",
-      ticks: baseTicks,
-      gridLines: baseGridLines,
       scaleLabel: {
         display: true,
         labelString: "味が濃い",
