@@ -136,53 +136,48 @@ export class TasteGraph implements InteractiveGraph {
       drawOnChartArea: true,
       zeroLineWidth: defaultedConfig.zeroLineWidth,
     }
+    const xAxe: Chart.ChartXAxe = {
+      position: "bottom",
+      ticks: ticks,
+      gridLines: gridLines,
+      scaleLabel: {
+        display: true,
+        labelString: "香りが低い",
+      },
+    }
+    const dummyXAxe: Chart.ChartXAxe = {
+      position: "top",
+      ticks: baseTicks,
+      gridLines: baseGridLines,
+      scaleLabel: {
+        display: true,
+        labelString: "香りが高い",
+      },
+    }
+    const yAxe: Chart.ChartYAxe = {
+      position: "left",
+      ticks: ticks,
+      gridLines: gridLines,
+      scaleLabel: {
+        display: true,
+        labelString: "味が淡い",
+      },
+    }
+    const dummyYAxe: Chart.ChartYAxe = {
+      position: "right",
+      ticks: baseTicks,
+      gridLines: baseGridLines,
+      scaleLabel: {
+        display: true,
+        labelString: "味が濃い",
+      },
+    }
     const options: Chart.ChartOptions = {
       onClick: this.clickable ? this.onClickUpdate : (_event) => {},
       legend: { display: false },
       elements: { point: { radius: defaultedConfig.pointRadius } },
       // HACK: ダミーの軸を使って高低両方にラベルをつける
-      scales: {
-        xAxes: [
-          {
-            position: "bottom",
-            ticks: ticks,
-            gridLines: gridLines,
-            scaleLabel: {
-              display: true,
-              labelString: "香りが低い",
-            },
-          },
-          {
-            position: "top",
-            ticks: baseTicks,
-            gridLines: baseGridLines,
-            scaleLabel: {
-              display: true,
-              labelString: "香りが高い",
-            },
-          },
-        ],
-        yAxes: [
-          {
-            position: "left",
-            ticks: ticks,
-            gridLines: gridLines,
-            scaleLabel: {
-              display: true,
-              labelString: "味が淡い",
-            },
-          },
-          {
-            position: "right",
-            ticks: baseTicks,
-            gridLines: baseGridLines,
-            scaleLabel: {
-              display: true,
-              labelString: "味が濃い",
-            },
-          },
-        ],
-      },
+      scales: { xAxes: [xAxe, dummyXAxe], yAxes: [yAxe, dummyYAxe] },
     }
     // 各4象限を別々に色付けする
     // https://github.com/chartjs/Chart.js/issues/3535
