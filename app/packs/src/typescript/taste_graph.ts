@@ -164,6 +164,7 @@ export class TasteGraph implements InteractiveGraph {
         ],
         yAxes: [
           {
+            position: "left",
             ticks: ticks,
             gridLines: gridLines,
             scaleLabel: {
