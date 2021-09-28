@@ -1,10 +1,15 @@
 import { Chart } from "chart.js"
 
-interface ClickableChart extends Chart {
-  chart: {
-    scales: {
-      "x-axis-1": { getValueForPixel: (x: number) => number | undefined }
-      "y-axis-1": { getValueForPixel: (y: number) => number | undefined }
+// @types/chart.jsに型宣言がないメタメソッドを使うためのインタフェース
+interface MetaChart extends Chart {
+  scales: {
+    "x-axis-1": {
+      getValueForPixel: (x: number) => number | undefined
+      getPixelForValue: (x: number) => number
+    }
+    "y-axis-1": {
+      getValueForPixel: (y: number) => number | undefined
+      getPixelForValue: (y: number) => number
     }
   }
 }
@@ -70,10 +75,9 @@ export class TasteGraph implements InteractiveGraph {
   }
 
   private getClickedData(event: MouseEvent): GraphP {
-    // @types/chart.jsに型宣言がないので型を潰して独自宣言で上書きする
-    const g = this.graph as ClickableChart
-    let x = g.chart.scales["x-axis-1"].getValueForPixel(event.offsetX)
-    let y = g.chart.scales["y-axis-1"].getValueForPixel(event.offsetY)
+    const g = this.graph as MetaChart
+    let x = g.scales["x-axis-1"].getValueForPixel(event.offsetX)
+    let y = g.scales["y-axis-1"].getValueForPixel(event.offsetY)
     // undefinedチェック
     if (x != null && y != null) {
       x = Math.round(x)
@@ -92,8 +96,9 @@ export class TasteGraph implements InteractiveGraph {
     const points = data != null ? [data] : []
     const datasets: Chart.ChartDataSets = {
       data: points,
-      pointBackgroundColor: "rgba(190, 20, 20, 0.7)",
-      pointBorderColor: "rgba(190, 20, 20, 0.9)",
+      // accent color: #b7282e = 183,40,46
+      pointBackgroundColor: "rgba(183, 40, 46, 0.9)",
+      pointBorderColor: "rgba(183, 40, 46, 1.0)",
     }
     const cd: Chart.ChartData = {
       datasets: [datasets],
@@ -119,43 +124,99 @@ export class TasteGraph implements InteractiveGraph {
       min: -middle - margin,
       maxTicksLimit: 2,
     }
+    const dummyGridLines: Chart.GridLineOptions = {
+      drawTicks: false,
+      drawOnChartArea: false,
+    }
     const gridLines: Chart.GridLineOptions = {
-      drawBorder: true,
       drawTicks: false,
       drawOnChartArea: true,
       zeroLineWidth: defaultedConfig.zeroLineWidth,
+    }
+    const baseAxe: Chart.ChartXAxe = {
+      ticks: ticks,
+      gridLines: gridLines,
+    }
+    const xAxe: Chart.ChartXAxe = {
+      ...baseAxe,
+      position: "bottom",
+      scaleLabel: {
+        display: true,
+        labelString: "香りが低い",
+      },
+    }
+    const dummyXAxe: Chart.ChartXAxe = {
+      ...baseAxe,
+      position: "top",
+      scaleLabel: {
+        display: true,
+        labelString: "香りが高い",
+      },
+    }
+    const yAxe: Chart.ChartYAxe = {
+      ...baseAxe,
+      position: "left",
+      scaleLabel: {
+        display: true,
+        labelString: "味が淡い",
+      },
+    }
+    const dummyYAxe: Chart.ChartYAxe = {
+      ...baseAxe,
+      gridLines: dummyGridLines, // HACK: X軸（y=0）の二重描きを防ぐ
+      position: "right",
+      scaleLabel: {
+        display: true,
+        labelString: "味が濃い",
+      },
     }
     const options: Chart.ChartOptions = {
       onClick: this.clickable ? this.onClickUpdate : (_event) => {},
       legend: { display: false },
       elements: { point: { radius: defaultedConfig.pointRadius } },
-      scales: {
-        xAxes: [
-          {
-            ticks: ticks,
-            gridLines: gridLines,
-            scaleLabel: {
-              display: true,
-              labelString: "香",
-            },
-          },
-        ],
-        yAxes: [
-          {
-            ticks: ticks,
-            gridLines: gridLines,
-            scaleLabel: {
-              display: true,
-              labelString: "味",
-            },
-          },
-        ],
+      // HACK: ダミーの軸を使って高低両方にラベルをつける
+      scales: { xAxes: [xAxe, dummyXAxe], yAxes: [yAxe, dummyYAxe] },
+    }
+    // 各4象限を別々に色付けする
+    // https://github.com/chartjs/Chart.js/issues/3535
+    const backgroundColorPlugin = {
+      beforeDraw: function (chart: MetaChart, _: any) {
+        const ctx = chart.ctx
+
+        const left = chart.chartArea.left
+        const right = chart.chartArea.right
+        const top = chart.chartArea.top
+        const bottom = chart.chartArea.bottom
+        const midX = chart.scales["x-axis-1"].getPixelForValue(0)
+        const midY = chart.scales["y-axis-1"].getPixelForValue(0)
+
+        // primary color: #19448e = 25,68,142
+        const color1 = "rgba(25, 68, 142, 0.18)"
+        const color2 = "rgba(25, 68, 142, 0.09)"
+        const color3 = "rgba(25, 68, 142, 0.02)"
+        const color4 = color2
+
+        if (ctx != null) {
+          // Top right, quadrant 1
+          ctx.fillStyle = color1
+          ctx.fillRect(midX, top, right - midX, midY - top)
+          // Top left, quadrant 2
+          ctx.fillStyle = color2
+          ctx.fillRect(left, top, midX - left, midY - top)
+          // Bottom left, quadrant 3
+          ctx.fillStyle = color3
+          ctx.fillRect(left, midY, midX - left, bottom - midY)
+          // Bottom right, quadrant 4
+          ctx.fillStyle = color4
+          ctx.fillRect(midX, midY, right - midX, bottom - midY)
+        }
       },
     }
     const chartConfig: Chart.ChartConfiguration = {
       type: "scatter",
       data: dataset,
       options: options,
+      plugins: [backgroundColorPlugin],
     }
     return chartConfig
   }
