@@ -31,7 +31,6 @@ class SakesController < ApplicationController
   # GET /sakes/1
   # GET /sakes/1.json
   def show
-    set_twitter_meta_tags
   end
 
   # GET /sakes/new
@@ -132,11 +131,6 @@ class SakesController < ApplicationController
   # paramsの件名つき蔵名から県名を取り除く
   def strip_todofuken_from_params!
     params["sake"]["kura"] = strip_todofuken(params["sake"]["kura"]) if params.dig(:sake, :kura)
-  end
-
-  def set_twitter_meta_tags
-    set_meta_tags(og: { title: "SAKAZUKI - #{@sake.name}" })
-    set_meta_tags(og: { image: @sake.photos.first.image.thumb.url }) if @sake.photos.any?
   end
 
   # Use callbacks to share common setup or constraints between actions.
