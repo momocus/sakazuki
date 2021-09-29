@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="<%= I18n.locale %>">
   <head>
-    <title>SAKAZUKI</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= twitter_meta_tags %>
+    <%= display_meta_tags(site: "SAKAZUKI",
+                          title: title,
+                          separator: "-",
+                          reverse: true,
+                          twitter: { card: "summary" },
+                          og: { title: title }, ) %>
 
     <% if content_for?(:pack_style) %>
       <%= yield(:pack_style) %>
