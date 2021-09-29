@@ -13,3 +13,7 @@ POSTGRES_PASSWORD=
 
 # Hostname of Elasticsearch. default is 'http://localhost:9200'.
 ELASTICSEARCH_HOSTS=http://localhost:9200
+
+# Configurations of Open Graph
+
+FB_APP_ID=

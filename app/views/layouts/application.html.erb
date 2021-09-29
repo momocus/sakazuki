@@ -8,8 +8,16 @@
                           title: "",
                           separator: "-",
                           reverse: true,
+                          description: t(".description"),
+                          og: {
+                            title: :title,
+                            url: request.original_url,
+                            type: "website",
+                            image: asset_pack_path("media/images/SAKAZUKI_choko.svg"),
+                            description: :description,
+                          },
                           twitter: { card: "summary" },
-                          og: { title: :title }) %>
+                          fb: { app_id: ENV["FB_APP_ID"] }) %>
 
     <% if content_for?(:pack_style) %>
       <%= yield(:pack_style) %>
