@@ -44,6 +44,8 @@
       <% end %>
     </div>
   </div>
+  <%# tweet用のサムネイルをセット %>
+  <% set_meta_tags(og: { image: @sake.photos.first.image.thumb.url }) if @sake.photos.any? %>
 
   <div class="sakes-show-label">
     <b><%= Sake.human_attribute_name(:alcohol) %></b>
