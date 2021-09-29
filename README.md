@@ -37,7 +37,9 @@
 - 依存関係のインストール
   - `bundle install`
   - `yarn install`
-- PostgreSQLの設定
+- .envファイルの作成
+  - PostgreSQLの設定
+  - Facebook App IDの設定（Facebookシェアボタンを使う場合）
 
 ```console
 cp dotenv.example .env
@@ -47,6 +49,8 @@ cp dotenv.example .env
 # .env
 POSTGRES_USERNAME=[YOUR POSTGRESQL NAME]
 POSTGRES_PASSWORD=[YOUR POSTGRESQL PASSWORD]
+
+FB_APP_ID=[YOUR FACEBOOK APP ID]
 ```
 
 - 管理者ユーザの設定（オプション）
