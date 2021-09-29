@@ -1,1 +1,10 @@
-@import "~simplelightbox/src/simple-lightbox.scss"
+@import "~simplelightbox/src/simple-lightbox.scss";
+
+.fb_iframe_widget {
+  vertical-align: top;
+  height: 20px;
+
+  span {
+    vertical-align: top !important;
+  }
+}
