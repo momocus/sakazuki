@@ -9,7 +9,7 @@ module ApplicationHelper
                         title: :title,
                         url: request.original_url,
                         type: "website",
-                        image: asset_pack_path("media/images/SAKAZUKI_choko.svg"),
+                        image: asset_pack_path("media/images/choko.svg"),
                         description: :description,
                       },
                       twitter: { card: "summary" },
