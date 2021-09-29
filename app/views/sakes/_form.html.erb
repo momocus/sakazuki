@@ -187,14 +187,14 @@
           <div class="sakes-form-row">
             <%= form.label(:genryomai, { class: "sakes-form-label" }) %>
             <div class="col">
-              <%= form.text_field(:genryomai, class: "form-control", list: "sakamai-list") %>
+              <%= form.text_field(:genryomai, class: "form-control", autocomplete: "on", list: "sakamai-list") %>
             </div>
           </div>
 
           <div class="sakes-form-row">
             <%= form.label(:kakemai, { class: "sakes-form-label" }) %>
             <div class="col">
-              <%= form.text_field(:kakemai, class: "form-control", list: "sakamai-list") %>
+              <%= form.text_field(:kakemai, class: "form-control", autocomplete: "on", list: "sakamai-list") %>
             </div>
           </div>
 
@@ -222,7 +222,7 @@
           <div class="sakes-form-row">
             <%= form.label(:roka, { class: "sakes-form-label" }) %>
             <div class="col">
-              <%= form.text_field(:roka, { class: "form-control", list: "roka-list" }) %>
+              <%= form.text_field(:roka, { class: "form-control", autocomplete: "on", list: "roka-list" }) %>
               <datalist id="roka-list">
                 <option value="無濾過"></option>
                 <option value="素濾過"></option>
@@ -233,7 +233,7 @@
           <div class="sakes-form-row">
             <%= form.label(:shibori, { class: "sakes-form-label" }) %>
             <div class="col">
-              <%= form.text_field(:shibori, { class: "form-control", list: "shibori-list" }) %>
+              <%= form.text_field(:shibori, { class: "form-control", autocomplete: "on", list: "shibori-list" }) %>
               <datalist id="shibori-list">
                 <option value="ヤブタ式"></option>
                 <option value="槽絞り"></option>
@@ -279,7 +279,7 @@
           <div class="sakes-form-row">
             <%= form.label(:season, { class: "sakes-form-label" }) %>
             <div class="col">
-              <%= form.text_field(:season, { class: "form-control", list: "season-list" }) %>
+              <%= form.text_field(:season, { class: "form-control", autocomplete: "on", list: "season-list" }) %>
               <datalist id="season-list">
                 <option value="新酒"></option>
                 <option value="夏酒"></option>
