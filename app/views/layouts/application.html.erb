@@ -5,11 +5,11 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= display_meta_tags(site: "SAKAZUKI",
-                          title: title,
+                          title: "",
                           separator: "-",
                           reverse: true,
                           twitter: { card: "summary" },
-                          og: { title: title }) %>
+                          og: { title: :title }) %>
 
     <% if content_for?(:pack_style) %>
       <%= yield(:pack_style) %>
