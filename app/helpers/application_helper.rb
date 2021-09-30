@@ -1,5 +1,19 @@
 module ApplicationHelper
   def seo_meta_tags
+    set_meta_tags(icon: [
+                    {
+                      rel: "apple-touch-icon-precomposed",
+                      sizes: "180x180",
+                      href: asset_pack_path("media/images/apple-touch-icon.png"),
+                      type: "image/png",
+                    },
+                    {
+                      rel: "icon",
+                      sizes: "32x32",
+                      href: asset_pack_path("media/images/favicon-32x32.png"),
+                      type: "image/png",
+                    },
+                  ])
     display_meta_tags(site: "SAKAZUKI",
                       title: "",
                       separator: "-",
