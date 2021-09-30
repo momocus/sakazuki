@@ -1721,26 +1721,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rails/actioncable@npm:^6.1.1":
-  version: 6.1.3
-  resolution: "@rails/actioncable@npm:6.1.3"
-  checksum: 519463b2bcc8862ae74723397d7b6e43b95e53edf57614fc18d2d579f48b425d0545e243f770cb92533f9d9ca476fa4b45043ead0e611fa680769720c026edbc
+"@rails/actioncable@npm:^6.1.4":
+  version: 6.1.4
+  resolution: "@rails/actioncable@npm:6.1.4"
+  checksum: 2039c4ae831225ad2d370b7bed6d590be6b46366911dd40f5cea409114471e70b4d2610379aed1443bc3b327ee3c746b5e5c43f730968e78c7d19335bfe932de
   languageName: node
   linkType: hard
 
-"@rails/activestorage@npm:^6.1.1":
-  version: 6.1.3
-  resolution: "@rails/activestorage@npm:6.1.3"
+"@rails/activestorage@npm:^6.1.4":
+  version: 6.1.4
+  resolution: "@rails/activestorage@npm:6.1.4"
   dependencies:
     spark-md5: ^3.0.0
-  checksum: 2e578cc6f232159b1cb8d8012666eb4795a51486eea8ea876f2a5e483911da9ca0996fed762e92c01f1bdeb2a767f9c2ae87f2cfd7518c189eab5574e299b97d
+  checksum: 15e0ccc9bc8b302019daef02f189f861dbe0845cf53e295a45e0c78cacc9c3b8d3c2049d3622ab5cb14d1535e7dfd85d5451caaa7d1e3a0ceb536ba227d32468
   languageName: node
   linkType: hard
 
-"@rails/ujs@npm:^6.1.1":
-  version: 6.1.3
-  resolution: "@rails/ujs@npm:6.1.3"
-  checksum: 62be570822307c411ffcfbec5c103048d4d60624cdab42b9f60fc5e79626d5975e220fda09ef52f584ee7ca1024ca22757602d1ee25658ec46dba0ea96b67f47
+"@rails/ujs@npm:^6.1.4":
+  version: 6.1.4
+  resolution: "@rails/ujs@npm:6.1.4"
+  checksum: 5cc92030ff456615bb34ef7d8e594d33aa9d0f981115f8f335aaa47f926ec0d133f36ac30c43940169dace1fb591e47dcb6efd4396ae6a4f8caa63f215e998a4
   languageName: node
   linkType: hard
 
@@ -10192,9 +10192,9 @@ fsevents@~2.3.1:
   resolution: "sakazuki@workspace:."
   dependencies:
     "@babel/preset-typescript": ^7.14.5
-    "@rails/actioncable": ^6.1.1
-    "@rails/activestorage": ^6.1.1
-    "@rails/ujs": ^6.1.1
+    "@rails/actioncable": ^6.1.4
+    "@rails/activestorage": ^6.1.4
+    "@rails/ujs": ^6.1.4
     "@rails/webpacker": ^5.4.0
     "@types/chart.js": ^2.9.30
     "@typescript-eslint/eslint-plugin": ^4.14.2
