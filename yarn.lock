@@ -1970,12 +1970,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/chart.js@npm:^2.9.30":
-  version: 2.9.32
-  resolution: "@types/chart.js@npm:2.9.32"
+"@types/chart.js@npm:^2.9.34":
+  version: 2.9.34
+  resolution: "@types/chart.js@npm:2.9.34"
   dependencies:
     moment: ^2.10.2
-  checksum: a4a0a149cc475c69a54c08d181c087627dd3d6c56c8076cff5707e5aa0bbc9beb0d6fd1eb6ef0836bdbdb87df20c0cfc5840660569a62d155f192e35a91ac038
+  checksum: 400a38c59c8e4729bcf189e82dee14fa2e0fe8b9b7ea6c535c3356ee20ba6bc1a8b82da9e46eb92324677d4011dd33d8d60a217dc3fc99ee5dd5ef6332e1f81a
   languageName: node
   linkType: hard
 
@@ -10408,7 +10408,7 @@ fsevents@~2.3.1:
     "@rails/activestorage": ^6.1.4
     "@rails/ujs": ^6.1.4
     "@rails/webpacker": ^5.4.3
-    "@types/chart.js": ^2.9.30
+    "@types/chart.js": ^2.9.34
     "@typescript-eslint/eslint-plugin": ^4.14.2
     "@typescript-eslint/parser": ^4.14.2
     bootstrap: ^5.0.1
