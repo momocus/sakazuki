@@ -455,7 +455,7 @@ DEPENDENCIES
   pry-doc
   pry-rails
   puma (~> 5.3)
-  rails (~> 6.1.1)
+  rails (~> 6.1.4)
   rails-i18n
   ransack
   rspec-rails

@@ -1869,14 +1869,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rails/actioncable@npm:^6.1.1":
+"@rails/actioncable@npm:^6.1.4":
   version: 6.1.4
   resolution: "@rails/actioncable@npm:6.1.4"
   checksum: 2039c4ae831225ad2d370b7bed6d590be6b46366911dd40f5cea409114471e70b4d2610379aed1443bc3b327ee3c746b5e5c43f730968e78c7d19335bfe932de
   languageName: node
   linkType: hard
 
-"@rails/activestorage@npm:^6.1.1":
+"@rails/activestorage@npm:^6.1.4":
   version: 6.1.4
   resolution: "@rails/activestorage@npm:6.1.4"
   dependencies:
@@ -1885,7 +1885,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rails/ujs@npm:^6.1.1":
+"@rails/ujs@npm:^6.1.4":
   version: 6.1.4
   resolution: "@rails/ujs@npm:6.1.4"
   checksum: 5cc92030ff456615bb34ef7d8e594d33aa9d0f981115f8f335aaa47f926ec0d133f36ac30c43940169dace1fb591e47dcb6efd4396ae6a4f8caa63f215e998a4
@@ -10404,9 +10404,9 @@ fsevents@~2.3.1:
   resolution: "sakazuki@workspace:."
   dependencies:
     "@babel/preset-typescript": ^7.14.5
-    "@rails/actioncable": ^6.1.1
-    "@rails/activestorage": ^6.1.1
-    "@rails/ujs": ^6.1.1
+    "@rails/actioncable": ^6.1.4
+    "@rails/activestorage": ^6.1.4
+    "@rails/ujs": ^6.1.4
     "@rails/webpacker": ^5.4.3
     "@types/chart.js": ^2.9.30
     "@typescript-eslint/eslint-plugin": ^4.14.2
