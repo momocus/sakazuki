@@ -2,3 +2,7 @@ ja:
   layouts:
     application:
       description: 自宅の酒を管理するアプリケーション
+    header:
+      invitation: 招待メールを送信
+      sign_out: ログアウト
+      sign_in: ログイン
