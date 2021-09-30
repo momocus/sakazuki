@@ -74,7 +74,7 @@ class SakesController < ApplicationController
         store_photos
         format.html {
           redirect_after_update
-          flash[:success] = t("controllers.sake.success.update", name: alert_link_tag(@sake.name, sake_path(@sake)))
+          flash_after_update
         }
       else
         format.html { render(:edit) }
@@ -169,16 +169,45 @@ class SakesController < ApplicationController
   # HTTP_REFERERが設定されていない場合、詳細ページにリダイレクトする。
   # 上記のどちらにも当てはまらない場合、ユーザーが直前にいたページにリダイレクトする。
   def redirect_after_update
-    if update_from_edit?
+    if update_from?("edit")
       redirect_to(@sake)
     else
       redirect_back(fallback_location: @sake)
     end
   end
 
-  # @return [Boolean] 編集画面からUpdateが行われたらtrueを返す
-  def update_from_edit?
-    request.referer && request.referer.match?("\/sakes\/[0-9]+\/edit")
+  # update後のフラッシュメッセージ表示
+  # indexからbottle_levelを変更するとき、bottle_levelの値によってフラッシュメッセージを切り替える
+  def flash_after_update
+    if  update_from?("index") && params.dig(:sake, :bottle_level)
+      case params[:sake][:bottle_level]
+      when "opened"
+        flash[:success] = t("controllers.sake.success.open", name: alert_link_tag(@sake.name, sake_path(@sake)))
+      when "empty"
+        flash[:success] = t("controllers.sake.success.empty", name: alert_link_tag(@sake.name, sake_path(@sake)))
+      else
+        flash[:success] = t("controllers.sake.success.update", name: alert_link_tag(@sake.name, sake_path(@sake)))
+      end
+    else
+      flash[:success] = t("controllers.sake.success.update", name: alert_link_tag(@sake.name, sake_path(@sake)))
+    end
+  end
+
+  # request.refererを参照し、指定したviewからUpdateが行われた場合trueを返す
+  # @note viewの指定は"edit"または"index"のみ対応
+  # @params view [String] viewの名称
+  # @return [Boolean] 指定したviewからUpdateが行われたか
+  def update_from?(view)
+    return false unless request.referer
+
+    case URI::parse(request.referer).path
+    when /\/sakes\/[0-9]+\/edit/
+      view.eql?("edit")
+    when /^\/sakes\/$|^\/$/
+      view.eql?("index")
+    else
+      false
+    end
   end
 
   # flashメッセージ内に表示するリンクを生成する
