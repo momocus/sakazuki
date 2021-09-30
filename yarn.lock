@@ -190,7 +190,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-create-class-features-plugin@npm:^7.14.5, @babel/helper-create-class-features-plugin@npm:^7.14.6":
+"@babel/helper-create-class-features-plugin@npm:^7.14.5":
   version: 7.14.6
   resolution: "@babel/helper-create-class-features-plugin@npm:7.14.6"
   dependencies:
@@ -1520,16 +1520,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-transform-typescript@npm:^7.14.5":
-  version: 7.14.6
-  resolution: "@babel/plugin-transform-typescript@npm:7.14.6"
+"@babel/plugin-transform-typescript@npm:^7.15.0":
+  version: 7.15.4
+  resolution: "@babel/plugin-transform-typescript@npm:7.15.4"
   dependencies:
-    "@babel/helper-create-class-features-plugin": ^7.14.6
+    "@babel/helper-create-class-features-plugin": ^7.15.4
     "@babel/helper-plugin-utils": ^7.14.5
     "@babel/plugin-syntax-typescript": ^7.14.5
   peerDependencies:
     "@babel/core": ^7.0.0-0
-  checksum: cb3117cfc9c8ebf9612b137eb660448e79a876a189fcad6b79641faa7200073bbfd08bf0e63c7ddb3a35b3d31457d6e90cf63565e64446a73866290dc97353fa
+  checksum: a6fb1f2f831024aff5110fa1be44e5fff96ce11a51178869f09d98675528c6878ff3a95caa42868cb55eae97d23c77e68913aa1737eb38befd2cb49301e2601d
   languageName: node
   linkType: hard
 
@@ -1654,16 +1654,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/preset-typescript@npm:^7.14.5":
-  version: 7.14.5
-  resolution: "@babel/preset-typescript@npm:7.14.5"
+"@babel/preset-typescript@npm:^7.15.0":
+  version: 7.15.0
+  resolution: "@babel/preset-typescript@npm:7.15.0"
   dependencies:
     "@babel/helper-plugin-utils": ^7.14.5
     "@babel/helper-validator-option": ^7.14.5
-    "@babel/plugin-transform-typescript": ^7.14.5
+    "@babel/plugin-transform-typescript": ^7.15.0
   peerDependencies:
     "@babel/core": ^7.0.0-0
-  checksum: c4f60abfa96c380e16f38b9206a1009a5cbc01866da83ca731fa360c0bf7dca11ca930179bba476ab77e270e2567f28439244d4f495dce9d39647a7273c04949
+  checksum: 2c480bb0ef76418357d92ccfae67df544a069ca8f59785e8bd0d1d3111bfc671f9f04672583506f1ee62afc3872bf21ed85d6d0c97ba1bc09a6efd1f7c20a10f
   languageName: node
   linkType: hard
 
@@ -10019,7 +10019,7 @@ fsevents@~2.3.1:
   version: 0.0.0-use.local
   resolution: "sakazuki@workspace:."
   dependencies:
-    "@babel/preset-typescript": ^7.14.5
+    "@babel/preset-typescript": ^7.15.0
     "@rails/actioncable": ^6.1.4
     "@rails/activestorage": ^6.1.4
     "@rails/ujs": ^6.1.4
