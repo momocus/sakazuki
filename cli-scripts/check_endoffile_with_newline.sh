@@ -11,7 +11,7 @@ files=$(git ls-files | \
             grep --invert-match '\.png$' | \
             grep --invert-match '\.ico$' | \
             grep --invert-match '\.yml\.enc$' | \
-            grep --invert-match '.yarn/releases/yarn-2.4.2.cjs')
+            grep --invert-match '.yarn/releases/yarn-3.0.2.cjs')
 
 error_files=""
 for file in ${files}; do

@@ -50,7 +50,7 @@ RUN gem update --system && \
 
 # yarn install
 COPY package.json yarn.lock .yarnrc.yml ./
-COPY .yarn/releases/yarn-2.4.2.cjs ./.yarn/releases/yarn-2.4.2.cjs
+COPY .yarn/releases/yarn-3.0.2.cjs ./.yarn/releases/
 RUN yarn install && yarn cache clean
 
 # Add a script to be executed every time the container starts.

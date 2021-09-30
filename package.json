@@ -37,5 +37,5 @@
     "lint-md": "markdownlint README.md",
     "lint-style": "stylelint '**/*.scss' '**/*.css' --ignore-path .gitignore"
   },
-  "packageManager": "yarn@2.4.2"
+  "packageManager": "yarn@3.0.2"
 }
