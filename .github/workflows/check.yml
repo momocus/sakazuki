@@ -12,18 +12,20 @@ jobs:
       run: ./cli-scripts/check_endoffile_with_newline.sh
 
     # lint by node modules
-    - name: Cache node modules
+    - uses: actions/checkout@v2
+    - name: Get Yarn chache directory path
+      id: yarn-cache-dir-path
+      run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+    - name: Restore Yarn cache
       uses: actions/cache@v2
+      id: yarn-cache
       env:
-        cache-name: node_modules
         cache-env: dev
       with:
-        path: '**/node_modules'
-        key: ${{ runner.os }}-${{ env.cache-name }}-${{ env.cache-env }}-${{ hashFiles('**/yarn.lock') }}
+        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+        key: ${{ runner.os }}-yarn-${{ env.cache-env }}-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
-          ${{ runner.os }}-${{ env.cache-name }}-${{ env.cache-env }}-
-          # packageが少ないproduction環境のキャッシュを使い回せる
-          ${{ runner.os }}-${{ env.cache-name }}-
+          ${{ runner.os }}-yarn-
     - name: Install Dependencies
       run: yarn install
     - name: Run ESLint
@@ -34,23 +36,12 @@ jobs:
       run: yarn lint-style
 
     # lint by rubocop
-    - name: Set up Ruby 3
+    - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.0
-    - name: Cache gems
-      uses: actions/cache@v2
-      env:
-        cache-name: gems
-        cache-env: dev
-      with:
-        path: vendor/bundle
-        key: ${{ runner.os }}-${{ env.cache-name }}-${{ env.cache-env }}-${{ hashFiles('**/Gemfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-${{ env.cache-name }}-${{ env.cache-env }}-
+        bundler-cache: ture
     - name: Install bundle dependencies
       run: |
-        bundle config path vendor/bundle
         bundle install
     - name: Run Rubocop
       run: bundle exec rubocop

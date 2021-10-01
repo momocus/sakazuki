@@ -22,35 +22,27 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Cache node modules
+      - name: Get Yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+      - name: Restore Yarn cache
         uses: actions/cache@v2
+        id: yarn-cache
         env:
-          cache-name: node_modules
           cache-env: prod
         with:
-          path: "**/node_modules"
-          key: ${{ runner.os }}-${{ env.cache-name }}-${{ env.cache-env }}-${{ hashFiles('**/package.json') }}
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ env.cache-env }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-${{ env.cache-name }}-${{ env.cache-env }}-
+            ${{ runner.os }}-yarn-
       - name: Install Dependencies
         run: yarn install
-      - name: Set up Ruby 3
+      - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.0
-      - name: Cache gems
-        uses: actions/cache@v2
-        env:
-          cache-name: gems
-          cache-env: test
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-${{ env.cache-name }}-${{ env.cache-env }}-${{ hashFiles('**/Gemfile') }}
-          restore-keys: |
-            ${{ runner.os }}-${{ env.cache-name }}-${{ env.cache-env }}-
+          bundler-cache: ture
       - name: Install bundle dependencies
         run: |
-          bundle config path vendor/bundle
           bundle config set --local without development
           bundle config set --local with test
           bundle install
