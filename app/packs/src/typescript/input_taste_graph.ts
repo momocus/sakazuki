@@ -24,7 +24,8 @@ function syncAndGetDomValue(): GraphP {
   if (tasteInput.value && aromaInput.value) {
     const taste = parseInt(tasteInput.value)
     const aroma = parseInt(aromaInput.value)
-    if (taste != NaN && aroma != NaN) return { x: taste, y: aroma }
+    if (Number.isInteger(taste) && Number.isInteger(aroma))
+      return { x: taste, y: aroma }
   }
   return null // データがない場合
 }

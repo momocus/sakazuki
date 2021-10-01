@@ -1,6 +1,7 @@
-// @ts-ignore
-// TODO: @types/simplelightboxパッケージができたらインストールしてignoreコメントを削除する
-//       .d.tsの独自実装もできるが、simplelightboxを利用する実装が小さいため今回はしない。
+/*
+  @types/simplelightboxが存在しない。
+  コンストラクタしか使わないため、.d.tsの独自実装もしない。
+*/
 import SimpleLightbox from "simplelightbox"
 
 // Main
@@ -13,6 +14,5 @@ import SimpleLightbox from "simplelightbox"
       history: false,
       close: false,
     })
-    /* eslint-enable @typescript-eslint/no-unsafe-call */
   })
 }
