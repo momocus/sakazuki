@@ -6,7 +6,7 @@
                 class: "badge rounded-pill bg-primary ms-2",
                 "data-testid": "open-button-#{sake.id}", }) %>
 <% end %>
-<% if sake.sealed? || (sake.opened? && sake.unimpressed?) %>
+<% if sake.unimpressed? %>
   <% p = sake.sealed? ? { sake: { bottle_level: "opened" } } : {} %>
   <% testid = sake.sealed? ? "open-and-impress-button-#{sake.id}" : "impress-button-#{sake.id}" %>
   <%= link_to(tag.i(class: "bi-cup-fill me-1", style: "font-size: 1em;") + t(".impress"),
