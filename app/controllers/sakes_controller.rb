@@ -74,7 +74,7 @@ class SakesController < ApplicationController
         store_photos
         format.html {
           redirect_after_update
-          flash[:success] = t("controllers.sake.success.update", name: alert_link_tag(@sake.name, sake_path(@sake)))
+          flash_after_update
         }
       else
         format.html { render(:edit) }
@@ -179,6 +179,20 @@ class SakesController < ApplicationController
   # @return [Boolean] 編集画面からUpdateが行われたらtrueを返す
   def update_from_edit?
     request.referer && request.referer.match?("\/sakes\/[0-9]+\/edit")
+  end
+
+  # update後のフラッシュメッセージ表示
+  #
+  # 開封するボタン・空にするボタンからupdateした場合は、専用のフラッシュメッセージを表示する
+  def flash_after_update
+    case params.dig(:button)
+    when "open"
+      flash[:success] = t("controllers.sake.success.open", name: alert_link_tag(@sake.name, sake_path(@sake)))
+    when "empty"
+      flash[:success] = t("controllers.sake.success.empty", name: alert_link_tag(@sake.name, sake_path(@sake)))
+    else
+      flash[:success] = t("controllers.sake.success.update", name: alert_link_tag(@sake.name, sake_path(@sake)))
+    end
   end
 
   # flashメッセージ内に表示するリンクを生成する
