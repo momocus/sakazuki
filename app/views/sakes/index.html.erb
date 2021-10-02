@@ -87,18 +87,18 @@
             </div>
           </div>
         </td>
-        <td class="col-lg-3 col-6">
+        <td class="col-lg-4 col-8 p-0">
           <canvas id="sake-<%= sake.id %>"
                   data-taste-value="<%= sake.taste_value %>"
                   data-aroma-value="<%= sake.aroma_value %>">
           </canvas>
         </td>
-        <td class="col-lg-3 col-6" style="text-align: center">
-          <%# HACK: セルの縦横比が約2:1、サムネイル画像の縦横比が1:1である。 %>
-          <%#       そこで、セルの50%幅を指定することでセルが縦長になるのを防ぐ %>
+        <td class="col-lg-2 col-4 p-0" style="text-align: center">
+          <%# HACK: サムネイル画像の縦横比は1:1である。 %>
+          <%#       col-lg-2とcol-4のセルに、w-100で100%幅の画像がピッタリとなる。 %>
           <% if sake.photos.any? %>
             <%= cl_image_tag(sake.photos.first.image.thumb.url,
-                             { class: "img-fulid", style: "width: 50%" }) %>
+                             { class: "img-fulid w-100" }) %>
           <% end %>
         </td>
       </tr>
