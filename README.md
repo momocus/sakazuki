@@ -162,9 +162,6 @@ Creating sakazuki_es_run ... done
 -> Downloading analysis-kuromoji from elastic
 [=================================================] 100%??
 -> Installed analysis-kuromoji
-$ docker-compose run --rm web bundle exec rake environment elasticsearch:import:model CLASS='Sake' FORCE=y
-Creating sakazuki_web_run ... done
-[IMPORT] Done
 ```
 <!-- markdownlint-enable MD013 -->
 
