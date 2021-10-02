@@ -136,11 +136,20 @@ $ docker-compose build
 <!-- markdownlint-disable MD013 -->
 ```console
 $ docker-compose run --rm web bundle exec rails db:create
-...
+Creating volume "sakazuki_db_storage" with local driver
+Creating volume "sakazuki_es_data" with local driver
+Creating volume "sakazuki_es_plugins" with local driver
+Creating sakazuki_db_1 ... done
+Creating sakazuki_es_1 ... done
+Creating sakazuki_web_run ... done
+Created database 'sakazuki_development'
+Created database 'sakazuki_test'
 $ docker-compose run --rm web bundle exec rails db:migrate
+Creating sakazuki_web_run ... done
 ...
+Model files unchanged.
 $ docker-compose run --rm web bundle exec rails db:seed
-...
+Creating sakazuki_web_run ... done
 $ docker-compose run --rm es elasticsearch-plugin install analysis-icu
 Creating sakazuki_es_run ... done
 -> Installing analysis-icu
@@ -153,9 +162,6 @@ Creating sakazuki_es_run ... done
 -> Downloading analysis-kuromoji from elastic
 [=================================================] 100%??
 -> Installed analysis-kuromoji
-$ docker-compose run --rm web bundle exec rake environment elasticsearch:import:model CLASS='Sake' FORCE=y
-Creating sakazuki_web_run ... done
-[IMPORT] Done
 ```
 <!-- markdownlint-enable MD013 -->
 

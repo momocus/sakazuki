@@ -25,6 +25,10 @@ services:
       - ./config.ru:/sakazuki/config.ru:cached
       - ./babel.config.js:/sakazuki/babel.config.js:cached
       - ./postcss.config.js:/sakazuki/postcss.config.js:cached
+      - ./Rakefile:/sakazuki/Rakefile:cached
+      - ./lib:/sakazuki/lib:cached
+      - ./db:/sakazuki/db:cached
+      - ./spec:/sakazuki/spec:cached
     environment:
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: password
