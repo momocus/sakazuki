@@ -350,9 +350,9 @@
               </div>
             </div>
             <div class="col-lg-3"></div>
-              <canvas class="mt-3" id="taste_graph"></canvas>
             <%# MEMO: px-0だとchart.jsのグラフが描画されない %>
             <div class="col-lg-9 col px-1">
+              <canvas class="mt-1" id="taste_graph"></canvas>
               <%= form.number_field(:taste_value,
                                     hidden: true,
                                     data: { taste_value: @sake.taste_value }) %>
