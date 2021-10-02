@@ -2,13 +2,6 @@ ja:
   controllers:
     user:
       permission_denied: 権限がありません。
-    sake:
-      success:
-        create: "%{name} を登録しました。"
-        update: "%{name} を更新しました。"
-        destroy: "%{name} を削除しました。"
-        open: "%{name} を開封しました。"
-        empty: "%{name} を空にしました。"
   credit: |-
     SAKAZUKI上の情報や感想は
     <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">

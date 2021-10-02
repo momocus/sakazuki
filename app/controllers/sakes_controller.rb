@@ -57,7 +57,7 @@ class SakesController < ApplicationController
         store_photos
         format.html {
           redirect_to(@sake)
-          flash[:success] = t("controllers.sake.success.create", name: alert_link_tag(@sake.name, sake_path(@sake)))
+          flash[:success] = t(".success", name: alert_link_tag(@sake.name, sake_path(@sake)))
         }
       else
         format.html { render(:new) }
@@ -90,7 +90,7 @@ class SakesController < ApplicationController
     respond_to do |format|
       format.html {
         redirect_to(sakes_url)
-        flash[:success] = t("controllers.sake.success.destroy", name: deleted_name)
+        flash[:success] = t(".success", name: deleted_name)
       }
     end
   end
@@ -187,11 +187,11 @@ class SakesController < ApplicationController
   def flash_after_update
     case params.dig(:button)
     when "open"
-      flash[:success] = t("controllers.sake.success.open", name: alert_link_tag(@sake.name, sake_path(@sake)))
+      flash[:success] = t(".success_open", name: alert_link_tag(@sake.name, sake_path(@sake)))
     when "empty"
-      flash[:success] = t("controllers.sake.success.empty", name: alert_link_tag(@sake.name, sake_path(@sake)))
+      flash[:success] = t(".success_empty", name: alert_link_tag(@sake.name, sake_path(@sake)))
     else
-      flash[:success] = t("controllers.sake.success.update", name: alert_link_tag(@sake.name, sake_path(@sake)))
+      flash[:success] = t(".success", name: alert_link_tag(@sake.name, sake_path(@sake)))
     end
   end
 
