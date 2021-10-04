@@ -57,7 +57,7 @@ class SakesController < ApplicationController
         store_photos
         format.html {
           redirect_to(@sake)
-          flash[:success] = t("controllers.sake.success.create", name: alert_link_tag(@sake.name, sake_path(@sake)))
+          flash[:success] = t(".success", name: alert_link_tag(@sake.name, sake_path(@sake)))
         }
       else
         format.html { render(:new) }
@@ -74,7 +74,7 @@ class SakesController < ApplicationController
         store_photos
         format.html {
           redirect_after_update
-          flash[:success] = t("controllers.sake.success.update", name: alert_link_tag(@sake.name, sake_path(@sake)))
+          flash_after_update
         }
       else
         format.html { render(:edit) }
@@ -90,7 +90,7 @@ class SakesController < ApplicationController
     respond_to do |format|
       format.html {
         redirect_to(sakes_url)
-        flash[:success] = t("controllers.sake.success.destroy", name: deleted_name)
+        flash[:success] = t(".success", name: deleted_name)
       }
     end
   end
@@ -179,6 +179,21 @@ class SakesController < ApplicationController
   # @return [Boolean] 編集画面からUpdateが行われたらtrueを返す
   def update_from_edit?
     request.referer && request.referer.match?("\/sakes\/[0-9]+\/edit")
+  end
+
+  # update後のフラッシュメッセージ表示
+  #
+  # 開封するボタン・空にするボタンからupdateした場合は、専用のフラッシュメッセージを表示する
+  def flash_after_update
+    case params.dig(:flash_message_type)
+    when "open"
+      message_key = ".success_open"
+    when "empty"
+      message_key = ".success_empty"
+    else
+      message_key = ".success"
+    end
+    flash[:success] = t(message_key, name: alert_link_tag(@sake.name, sake_path(@sake)))
   end
 
   # flashメッセージ内に表示するリンクを生成する

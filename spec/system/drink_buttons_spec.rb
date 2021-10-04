@@ -197,7 +197,8 @@ RSpec.describe "DrinkButtons", type: :system do
       end
 
       it "has success flash message" do
-        expect(page).to have_css(".alert-success")
+        text = I18n.t("sakes.update.success_open", name: sealed_sake.name)
+        expect(find(:test_id, "flash-message")).to have_text(text)
       end
 
       it "has flash message containing link to updated sake" do
@@ -224,7 +225,8 @@ RSpec.describe "DrinkButtons", type: :system do
       end
 
       it "has success flash message" do
-        expect(page).to have_css(".alert-success")
+        text = I18n.t("sakes.update.success_empty", name: impressed_sake.name)
+        expect(find(:test_id, "flash-message")).to have_text(text)
       end
 
       it "has flash message containing link to updated sake" do

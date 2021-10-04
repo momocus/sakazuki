@@ -14,7 +14,8 @@ RSpec.describe "AfterUpdateAction", type: :system do
     end
 
     it "has success flash message" do
-      expect(page).to have_css(".alert-success")
+      text = I18n.t("sakes.create.success", name: sake_name)
+      expect(find(:test_id, "flash-message")).to have_text(text)
     end
 
     it "has specified sake name" do
