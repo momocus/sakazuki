@@ -1,0 +1,5 @@
+ja:
+  users:
+    invitations:
+      new:
+        permission_denied: 権限がありません。
