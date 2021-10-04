@@ -171,7 +171,11 @@ export class TasteGraph implements InteractiveGraph {
       },
     }
     const options: Chart.ChartOptions = {
-      onClick: this.clickable ? this.onClickUpdate : (_event) => {},
+      onClick: this.clickable
+        ? this.onClickUpdate
+        : (_event) => {
+            // do nothing
+          },
       legend: { display: false },
       elements: { point: { radius: defaultedConfig.pointRadius } },
       // HACK: ダミーの軸を使って高低両方にラベルをつける
@@ -180,7 +184,7 @@ export class TasteGraph implements InteractiveGraph {
     // 各4象限を別々に色付けする
     // https://github.com/chartjs/Chart.js/issues/3535
     const backgroundColorPlugin = {
-      beforeDraw: function (chart: MetaChart, _: any) {
+      beforeDraw: function (chart: MetaChart, _: Chart.Easing) {
         const ctx = chart.ctx
 
         const left = chart.chartArea.left
@@ -226,7 +230,9 @@ export class TasteGraph implements InteractiveGraph {
     private data: GraphP,
     config: { pointRadius?: number; zeroLineWidth?: number },
     private clickable: boolean = false,
-    private callbackUpdate: (data: GraphP) => void = (_data) => {}
+    private callbackUpdate: (data: GraphP) => void = (_data) => {
+      // do nothing
+    }
   ) {
     const p = this.makeChartData(toGraphPoint(data))
     const chartConfig = this.makeChartConfiguration(p, config)
