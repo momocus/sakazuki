@@ -1,7 +1,11 @@
 class ElasticsearchController < ApplicationController
   def index
-    @sakes = Sake.simple_search(params.dig(:elasticsearch, :word))
-                 .page(params[:page])
-                 .results
+    if Sake.any?
+      @sakes = Sake.simple_search(params.dig(:elasticsearch, :word))
+        .page(params[:page])
+        .results
+    else
+      @sakes = Sake.all.page(params[:page])
+    end
   end
 end
