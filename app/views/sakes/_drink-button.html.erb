@@ -1,6 +1,6 @@
 <% if sake.sealed? %>
   <%= link_to(tag.i(class: "bi-droplet-half me-1", style: "font-size: 0.95em;") + t(".open"),
-              sake_path(sake, params: { sake: { bottle_level: "opened" }, button: "open" }),
+              sake_path(sake, params: { sake: { bottle_level: "opened" }, flash_message_type: "open" }),
               { method: :patch,
                 data: { confirm: t(".confirm_open") },
                 class: "badge rounded-pill bg-primary ms-2",
@@ -16,7 +16,7 @@
 <% end %>
 <% if sake.opened? %>
   <%= link_to(tag.i(class: "bi-droplet me-1", style: "font-size: 0.95em;") + t(".empty"),
-              sake_path(sake, params: { sake: { bottle_level: "empty" }, button: "empty" }),
+              sake_path(sake, params: { sake: { bottle_level: "empty" }, flash_message_type: "empty" }),
               { method: :patch,
                 data: { confirm: t(".confirm_empty") },
                 class: "badge rounded-pill bg-light border border-dark text-dark ms-2",

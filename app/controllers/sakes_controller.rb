@@ -185,14 +185,15 @@ class SakesController < ApplicationController
   #
   # 開封するボタン・空にするボタンからupdateした場合は、専用のフラッシュメッセージを表示する
   def flash_after_update
-    case params.dig(:button)
+    case params.dig(:flash_message_type)
     when "open"
-      flash[:success] = t(".success_open", name: alert_link_tag(@sake.name, sake_path(@sake)))
+      message_key = ".success_open"
     when "empty"
-      flash[:success] = t(".success_empty", name: alert_link_tag(@sake.name, sake_path(@sake)))
+      message_key = ".success_empty"
     else
-      flash[:success] = t(".success", name: alert_link_tag(@sake.name, sake_path(@sake)))
+      message_key = ".success"
     end
+    flash[:success] = t(message_key, name: alert_link_tag(@sake.name, sake_path(@sake)))
   end
 
   # flashメッセージ内に表示するリンクを生成する
