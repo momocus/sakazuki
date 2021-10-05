@@ -40,7 +40,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          bundler-cache: ture
+          bundler-cache: true
       - name: Install bundle dependencies
         run: |
           bundle config set --local without development
