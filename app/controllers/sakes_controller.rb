@@ -2,6 +2,8 @@
 class SakesController < ApplicationController
   before_action :set_sake, only: %i[show edit update destroy]
   before_action :strip_todofuken_from_params!, only: %i[update]
+  after_action :update_datetime, only: %i[update]
+  after_action :create_datetime, only: %i[create]
   before_action :signed_in_user, only: %i[new create edit update destroy]
 
   include SakesHelper
@@ -141,6 +143,23 @@ class SakesController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_sake
     @sake = Sake.find(params[:id])
+  end
+
+  # 酒瓶状態の変更に応じて、酒が持つ日時データを更新する
+  def update_datetime
+    return unless @sake.saved_change_to_attribute?(:bottle_level)
+
+    case @sake.saved_change_to_attribute(:bottle_level)
+    in [old, new]
+      @sake.update(opened_at: @sake.updated_at.to_datetime) if old == "sealed"
+      @sake.update(emptied_at: @sake.updated_at.to_datetime) if new == "empty"
+    end
+  end
+
+  # 作成された酒の瓶状態に応じて、酒が持つ日時データを更新する
+  def create_datetime
+    @sake.update(opened_at: @sake.updated_at) unless @sake.bottle_level == "sealed"
+    @sake.update(emptied_at: @sake.updated_at) if @sake.bottle_level == "empty"
   end
 
   # Only allow a list of trusted parameters through.
