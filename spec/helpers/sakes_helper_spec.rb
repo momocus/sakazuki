@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe SakesHelper, type: :helper do
+RSpec.describe SakesHelper do
   include described_class
 
   describe "empty_to_default" do

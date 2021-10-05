@@ -1,6 +1,7 @@
 require "rails_helper"
 
-RSpec.describe "EditInIndexPage", type: :system do
+# Capybaraを使うためにsystem specを指定する
+RSpec.describe "sakes/index", type: :system do
   let(:user) { FactoryBot.create(:user) }
   let!(:sake) { FactoryBot.create(:sake) }
 

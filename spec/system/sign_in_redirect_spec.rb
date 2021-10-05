@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Sign-in redirect", type: :system do
+RSpec.describe "Sign-in Redirect" do
   let(:sakes) { FactoryBot.create_list(:sake, 3) }
   let(:id) { sakes[0].id }
   let(:user) { FactoryBot.create(:user) }

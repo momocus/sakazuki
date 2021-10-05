@@ -10,7 +10,7 @@
 #
 require "rails_helper"
 
-RSpec.describe Photo, type: :model do
+RSpec.describe Photo do
   describe "chackbox_name" do
     subject { photo.chackbox_name }
 

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Sakes", type: :request do
+RSpec.describe "Sakes" do
   let!(:sakes) { FactoryBot.create_list(:sake, 3) }
   let(:id) { sakes[0].id }
 

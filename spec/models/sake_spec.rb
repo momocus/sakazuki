@@ -39,7 +39,7 @@
 #
 require "rails_helper"
 
-RSpec.describe Sake, type: :model do
+RSpec.describe Sake do
   describe "validates" do
     subject { sake.save }
 
