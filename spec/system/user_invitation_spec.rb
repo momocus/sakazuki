@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "User invitation", type: :system do
+RSpec.describe "User Invitation", type: :system do
   let!(:admin) { FactoryBot.create(:user, admin: true) }
   let!(:user) { FactoryBot.create(:user, admin: false) }
 

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "EditInIndexPage", type: :system do
+RSpec.describe "sakes/index", type: :view do
   let(:user) { FactoryBot.create(:user) }
   let!(:sake) { FactoryBot.create(:sake) }
 

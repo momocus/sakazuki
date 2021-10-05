@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "AfterUpdateAction", type: :system do
+RSpec.describe "Edit Sake", type: :system do
   let!(:opened_sake) { FactoryBot.create(:sake, bottle_level: "opened") }
   let(:sake_id) { opened_sake.id }
   let(:sake_name) { opened_sake.name }
