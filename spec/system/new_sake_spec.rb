@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "New Sake", type: :system do
+RSpec.describe "New Sake" do
   let(:user) { FactoryBot.create(:user) }
   let(:sake_name) { "とても美味しいお酒" }
 

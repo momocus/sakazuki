@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "sakes/index", type: :view do
+RSpec.describe "sakes/index" do
   let(:user) { FactoryBot.create(:user) }
   let!(:sake) { FactoryBot.create(:sake) }
 
