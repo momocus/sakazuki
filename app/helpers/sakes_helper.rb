@@ -29,10 +29,10 @@ module SakesHelper
   # @param include_blank [Boolean] trueなら選択肢に空が含まれる
   # @return [String] 年のHTMLセレクタ
   def year_select_with_japanese_era(id, name, begin_year, selected_year: begin_year, include_blank: false)
-    options = year_range(begin_year).map do |year|
+    options = year_range(begin_year).map { |year|
       [with_japanese_era(Date.new(year)), year]
-    end
-    if include_blank then options = options + [[t("sakes.new.unknown"), nil]] end
+    }
+    options += [[t("sakes.new.unknown"), nil]] if include_blank
     select_tag(id, options_for_select(options, selected: selected_year), { class: "form-select", name: name })
   end
 
@@ -67,7 +67,9 @@ module SakesHelper
     if amount < 180
       "0合"
     else
-      (amount / 180).to_s.reverse.each_char.zip(UNITS).filter { |value, _| value != "0" }.reverse.join
+      # rubocop:disable Style/HashExcept
+      (amount / 180).to_s.reverse.each_char.zip(UNITS).filter { |value, _unit| value != "0" }.reverse.join
+      # rubocop:enable Style/HashExcept
     end
   end
 
@@ -83,7 +85,7 @@ module SakesHelper
   # @param date [Date] 日付
   # @return [String] "2021 / 令和3年"のような文字列
   def with_japanese_era(date)
-    "#{date.year} / #{date.to_era("%O%-E年")}"
+    "#{date.year} / #{date.to_era('%O%-E年')}"
   end
 
   # 酒情報に入力可能な年範囲を作成する

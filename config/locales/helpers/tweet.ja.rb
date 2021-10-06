@@ -4,7 +4,7 @@ module TweetHelperJa
   # @param period [String] 句点、デフォルトは。
   # @return [String] 句点を追加したテキスト
   def add_period(text, period = I18n.t("helper.tweet.punctuation"))
-    if text.empty? || text.end_with?(period) then text else "#{text}#{period}" end
+    text.empty? || text.end_with?(period) ? text : "#{text}#{period}"
   end
 
   # 蔵名中の法人を表す文字列を略語に変換する
@@ -51,7 +51,7 @@ end
       tweet: {
         punctuation: "。",
         honorific_title: "さんの",
-        text: lambda { |key, options|
+        text: lambda { |_key, options|
           sake = options[:sake]
           TweetHelperJa.make_text(sake.name, sake.kura, sake.color, sake.aroma_impression, sake.taste_impression)
         },

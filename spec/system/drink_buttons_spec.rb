@@ -118,7 +118,7 @@ RSpec.describe "Drink Buttons" do
 
       it "does not change bottle state after sign in" do
         signin_process_on_signin_page(user)
-        expect { sealed_sake.reload }.to_not change(sealed_sake, :bottle_level)
+        expect { sealed_sake.reload }.not_to change(sealed_sake, :bottle_level)
       end
     end
 
@@ -137,7 +137,7 @@ RSpec.describe "Drink Buttons" do
 
       it "does not change bottle state after sign in" do
         signin_process_on_signin_page(user)
-        expect { impressed_sake.reload }.to_not change(sealed_sake, :bottle_level)
+        expect { impressed_sake.reload }.not_to change(sealed_sake, :bottle_level)
       end
     end
   end

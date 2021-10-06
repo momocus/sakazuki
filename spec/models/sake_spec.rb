@@ -40,6 +40,10 @@
 require "rails_helper"
 
 RSpec.describe Sake do
+  let!(:impressed_sake) { FactoryBot.create(:sake, bottle_level: "opened", aroma_value: 1, taste_value: 2, size: 1800) }
+  let!(:opened_sake) { FactoryBot.create(:sake, bottle_level: "opened", size: 1800) }
+  let!(:sealed_sake) { FactoryBot.create(:sake, bottle_level: "sealed", size: 720) }
+
   describe "validates" do
     subject { sake.save }
 
@@ -56,14 +60,11 @@ RSpec.describe Sake do
     end
   end
 
-  let!(:sealed_sake) { FactoryBot.create(:sake, bottle_level: "sealed", size: 720) }
-  let!(:opened_sake) { FactoryBot.create(:sake, bottle_level: "opened", size: 1800) }
-  let!(:impressed_sake) { FactoryBot.create(:sake, bottle_level: "opened", aroma_value: 1, taste_value: 2, size: 1800) }
-
   describe "check sealed" do
     it "returns true" do
       expect(sealed_sake.sealed?).to be_truthy
     end
+
     it "returns false" do
       expect(opened_sake.sealed?).to be_falsy
     end
@@ -73,6 +74,7 @@ RSpec.describe Sake do
     it "returns true" do
       expect(opened_sake.opened?).to be_truthy
     end
+
     it "returns false" do
       expect(sealed_sake.opened?).to be_falsy
     end
@@ -82,6 +84,7 @@ RSpec.describe Sake do
     it "returns true" do
       expect(opened_sake.unimpressed?).to be_truthy
     end
+
     it "returns false" do
       expect(impressed_sake.unimpressed?).to be_falsy
     end

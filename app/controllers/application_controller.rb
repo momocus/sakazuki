@@ -13,9 +13,7 @@ class ApplicationController < ActionController::Base
   # サインイン時にユーザーが元いたパスへ戻れるようにするため、
   # deviseのstore_location_forを使ってユーザーが居たパスを保存する
   def store_location
-    if storable_location?
-      store_location_for(:user, request.fullpath)
-    end
+    store_location_for(:user, request.fullpath) if storable_location?
   end
 
   private

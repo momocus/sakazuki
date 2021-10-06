@@ -4,7 +4,7 @@ Capybara.default_driver = :rack_test
 Capybara.javascript_driver = :selenium_headless
 
 RSpec.configure do |config|
-  config.before(:each, type: :system) do |example|
+  config.before(:each, type: :system) do |_example|
     # 基本はCapybara.default_driver
     # context, describe, itメソッドの引数にjs: true を設定したら、Capybara.javascript_driverを使う
     driven_by(Capybara.current_driver)

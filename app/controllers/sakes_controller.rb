@@ -30,8 +30,7 @@ class SakesController < ApplicationController
 
   # GET /sakes/1
   # GET /sakes/1.json
-  def show
-  end
+  def show; end
 
   # GET /sakes/new
   def new
@@ -185,14 +184,14 @@ class SakesController < ApplicationController
   #
   # 開封するボタン・空にするボタンからupdateした場合は、専用のフラッシュメッセージを表示する
   def flash_after_update
-    case params.dig(:flash_message_type)
-    when "open"
-      message_key = ".success_open"
-    when "empty"
-      message_key = ".success_empty"
-    else
-      message_key = ".success"
-    end
+    message_key = case params.dig(:flash_message_type)
+                  when "open"
+                    ".success_open"
+                  when "empty"
+                    ".success_empty"
+                  else
+                    ".success"
+                  end
     flash[:success] = t(message_key, name: alert_link_tag(@sake.name, sake_path(@sake)))
   end
 

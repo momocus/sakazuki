@@ -116,10 +116,10 @@ RSpec.describe "Sakes" do
       end
 
       it "updates sake state with patched params" do
-        expect do
+        expect {
           patch sake_path(id, params: { sake: { bottle_level: updated } })
           sakes[0].reload
-        end.to change(sakes[0], :bottle_level).from(orig).to(updated)
+        }.to change(sakes[0], :bottle_level).from(orig).to(updated)
       end
     end
 
