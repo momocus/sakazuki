@@ -34,7 +34,7 @@ Style/Documentation:
   Enabled: false
 
 # メソッド呼び出しのカッコの省略を禁止
-# specとfactoryは英文っぽく書きたいので許可
+# ただし、specとfactoryはDSLを使って良い
 Style/MethodCallWithArgsParentheses:
   Enabled: true
   Exclude:
