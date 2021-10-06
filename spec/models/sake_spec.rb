@@ -62,41 +62,41 @@ RSpec.describe Sake do
 
   describe "check sealed" do
     it "returns true" do
-      expect(sealed_sake.sealed?).to be_truthy
+      expect(sealed_sake).to be_sealed
     end
 
     it "returns false" do
-      expect(opened_sake.sealed?).to be_falsy
+      expect(opened_sake).not_to be_sealed
     end
   end
 
   describe "check opened" do
     it "returns true" do
-      expect(opened_sake.opened?).to be_truthy
+      expect(opened_sake).to be_opened
     end
 
     it "returns false" do
-      expect(sealed_sake.opened?).to be_falsy
+      expect(sealed_sake).not_to be_opened
     end
   end
 
   describe "check unimpressed" do
     it "returns true" do
-      expect(opened_sake.unimpressed?).to be_truthy
+      expect(opened_sake).to be_unimpressed
     end
 
     it "returns false" do
-      expect(impressed_sake.unimpressed?).to be_falsy
+      expect(impressed_sake).not_to be_unimpressed
     end
   end
 
   describe "alcohol stock" do
     it "returns 2520" do
-      expect(Sake.alcohol_stock).to eq(2520)
+      expect(described_class.alcohol_stock).to eq(2520)
     end
 
     it "returns 4320 including empty bottle" do
-      expect(Sake.alcohol_stock(include_empty: true)).to eq(4320)
+      expect(described_class.alcohol_stock(include_empty: true)).to eq(4320)
     end
   end
 end

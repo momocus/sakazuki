@@ -23,9 +23,7 @@ RSpec.describe "Sign-in Redirect with Drink Buttons" do
   describe "open button of sealed sake" do
     it "redirects index page after sign in", js: true do
       id = sealed_sake.id
-      accept_confirm do
-        click_link("open-button-#{id}")
-      end
+      accept_confirm do click_link("open-button-#{id}") end
       wait_for_page new_user_session_path
       signin_process_on_signin_page(user)
       expect(page).to have_current_path(sakes_path)
@@ -35,9 +33,7 @@ RSpec.describe "Sign-in Redirect with Drink Buttons" do
   describe "empty button" do
     it "redirects index page after sign in", js: true do
       id = impressed_sake.id
-      accept_confirm do
-        click_link("empty-button-#{id}")
-      end
+      accept_confirm do click_link("empty-button-#{id}") end
       wait_for_page new_user_session_path
       signin_process_on_signin_page(user)
       expect(page).to have_current_path(sakes_path)

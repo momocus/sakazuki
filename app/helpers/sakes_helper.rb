@@ -45,7 +45,7 @@ module SakesHelper
   end
 
   # @type [Array<String>]
-  UNITS = %w[合 升 斗 石]
+  UNITS = %w[合 升 斗 石].freeze
 
   # 酒の量[ml]を尺貫法の体積にした文字列で返す
   #

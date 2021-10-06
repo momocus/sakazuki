@@ -55,7 +55,7 @@ end
 # SakeTimesの都道府県の酒蔵一覧ページから、都道府県名と酒蔵の名前の組を作る
 #
 # @example 実行例
-#   request_names(["北海道","https://jp.sake-times.com/sakagura/./hokkaido"])
+#   request_names([["北海道","https://jp.sake-times.com/sakagura/./hokkaido"]])
 #     #=> [["北海道", "碓氷勝三郎商店"],
 #          ["北海道", "男山株式会社"], ...]
 #
@@ -69,7 +69,7 @@ def request_names(regions)
       fix_sakagura_name(table.content)
     }
     [region].product(names)
-  }.flatten(lv = 1)
+  }.flatten(1)
 end
 
 # 県名と蔵名一覧をNDJSON形式にする
