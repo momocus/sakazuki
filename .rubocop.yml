@@ -6,7 +6,6 @@ require:
   - rubocop-rspec
 
 AllCops:
-  TargetRubyVersion: 3.0.1
   Exclude:
     - "bin/*"
     - "db/schema.rb"
