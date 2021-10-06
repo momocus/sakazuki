@@ -6,6 +6,7 @@ require:
   - rubocop-rspec
 
 AllCops:
+  DisabledByDefault: false      # Cookpad Styleguideの上書き
   Exclude:
     - "bin/*"
     - "db/schema.rb"
