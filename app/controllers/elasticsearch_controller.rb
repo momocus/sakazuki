@@ -5,7 +5,7 @@ class ElasticsearchController < ApplicationController
         .page(params[:page])
         .results
     else
-      @sakes = Sake.all.page(params[:page])
+      @sakes = Sake.all.page
     end
   end
 end
