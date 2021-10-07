@@ -33,10 +33,19 @@ RSpec.describe SakesHelper do
   end
 
   describe "year_range" do
-    it "must generate a range starting from 30 years ago to the given year" do
+    it "generates a range ending with 2021" do
       expect(year_range(2021).last).to eq(2021)
+    end
+
+    it "generates a range starting with 1991, (2021 - 30)" do
       expect(year_range(2021).first).to eq(1991)
+    end
+
+    it "generates a range ending with 2030" do
       expect(year_range(2030).last).to eq(2030)
+    end
+
+    it "generates a range starting with 2000, (2030 - 30)" do
       expect(year_range(2030).first).to eq(2000)
     end
   end
@@ -97,7 +106,7 @@ RSpec.describe SakesHelper do
     end
 
     it "returns zero Go with argument less than 180" do
-      expect(to_shakkan(100)).to eq ("0合")
+      expect(to_shakkan(100)).to eq("0合")
     end
   end
 end

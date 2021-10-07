@@ -128,19 +128,19 @@ class Sake < ApplicationRecord
   # 酒が未開封か
   # @return [Boolean] 酒が未開封ならture、さもなくばfalse
   def sealed?
-    self.bottle_level == "sealed"
+    bottle_level == "sealed"
   end
 
   # 酒が開封されてまだ残っているか
   # @return [Boolean] 酒が開封済みで中身が残っていたらture、未開封や空ならfalse
   def opened?
-    self.bottle_level == "opened"
+    bottle_level == "opened"
   end
 
   # 酒が未評価か
   # @return [Boolean] 酒の味・香りが評価されていないとtrue、評価済みならfalse
   def unimpressed?
-    self.taste_value.nil? && self.aroma_value.nil?
+    taste_value.nil? && aroma_value.nil?
   end
 
   # 残っている酒の総量をmlで返す
@@ -152,7 +152,7 @@ class Sake < ApplicationRecord
     if include_empty
       all.sum(:size)
     else
-      where(bottle_level: "sealed").sum(:size) + where(bottle_level: "opened").sum(:size) / 2
+      where(bottle_level: "sealed").sum(:size) + (where(bottle_level: "opened").sum(:size) / 2)
     end
   end
 end

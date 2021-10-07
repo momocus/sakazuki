@@ -6,7 +6,7 @@ require:
   - rubocop-rspec
 
 AllCops:
-  TargetRubyVersion: 3.0.1
+  DisabledByDefault: false      # Cookpad Styleguideの上書き
   Exclude:
     - "bin/*"
     - "db/schema.rb"
@@ -18,44 +18,53 @@ AllCops:
     - ".git/**/*"
   NewCops: enable               # 新規追加のPendingCopsを有効化
 
-# 日本語コメントを許可
-Style/AsciiComments:
-  Enabled: false
+# コメントをスペースで揃えるのを許す
+Layout/ExtraSpacing:
+  AllowBeforeTrailingComments: true
 
-# 文字列はダブルクオート
-Style/StringLiterals:
-  EnforcedStyle: double_quotes
-
-# 先頭行のfrozen stringマジックコメントはなしでもよい
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
-# ドキュメント無しを許可
-Style/Documentation:
-  Enabled: false
-
-# メソッド呼び出しのカッコの省略を禁止
-# specとfactoryは英文っぽく書きたいので許可
-Style/MethodCallWithArgsParentheses:
-  Enabled: true
+# テストファイルは長さ制限をなくす
+Metrics/ClassLength:
   Exclude:
     - "spec/**/*_spec.rb"
-    - "spec/factories/*.rb"
+
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*_spec.rb"
 
 # メソッド名のエイリアスをつけるときは"alias"を使い、"alias_method"は使わない
 # aliasの方が自由度は低いが安全であるため
 Style/Alias:
   EnforcedStyle: prefer_alias
 
-# テストファイルは長さ制限をなくす
-Metrics/ClassLength:
-  Exclude:
-    - "**/*_test.rb"
+# 日本語コメントを許可
+Style/AsciiComments:
+  Enabled: false
 
-Metrics/BlockLength:
+# Cookpad Styleguideに従い、eachなどの手続き型スタイルではdo/endを、mapなどの関数型スタイルでは{}を使う
+# 1ライナーで{}の使用を許可する
+Style/BlockDelimiters:
+  EnforcedStyle: semantic
+  AllowBracesOnProceduralOneLiners: true
+
+# ドキュメント無しを許可
+Style/Documentation:
+  Enabled: false
+
+# 先頭行のfrozen stringマジックコメントはなしでもよい
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# メソッド呼び出しのカッコの省略を禁止
+# ただし、specとfactoryはDSLを使って良い
+Style/MethodCallWithArgsParentheses:
+  Enabled: true
   Exclude:
-    - "**/*_test.rb"
-    - "spec/**/*"
+    - "spec/**/*_spec.rb"
+    - "spec/factories/*.rb"
+
+# 文字列はダブルクオート
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
 
 # rubocop-rspec
 

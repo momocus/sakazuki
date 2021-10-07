@@ -1,4 +1,5 @@
 module ApplicationHelper
+  # rubocop:disable Metrics/MethodLength
   def seo_meta_tags
     set_meta_tags(icon: [
                     {
@@ -29,4 +30,6 @@ module ApplicationHelper
                       twitter: { card: "summary" },
                       fb: { app_id: ENV["FB_APP_ID"] })
   end
+
+  # rubocop:enable Metrics/MethodLength
 end

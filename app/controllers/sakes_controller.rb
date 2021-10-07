@@ -30,8 +30,7 @@ class SakesController < ApplicationController
 
   # GET /sakes/1
   # GET /sakes/1.json
-  def show
-  end
+  def show; end
 
   # GET /sakes/new
   def new
@@ -48,6 +47,8 @@ class SakesController < ApplicationController
 
   # POST /sakes
   # POST /sakes.json
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/MethodLength
   def create
     @sake = Sake.new(sake_params)
     @sake.kura = strip_todofuken(@sake.kura)
@@ -64,9 +65,12 @@ class SakesController < ApplicationController
       end
     end
   end
+  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/AbcSize
 
   # PATCH/PUT /sakes/1
   # PATCH/PUT /sakes/1.json
+  # rubocop:disable Metrics/MethodLength
   def update
     respond_to do |format|
       if @sake.update(sake_params)
@@ -81,6 +85,7 @@ class SakesController < ApplicationController
       end
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   # DELETE /sakes/1
   # DELETE /sakes/1.json
@@ -178,21 +183,21 @@ class SakesController < ApplicationController
 
   # @return [Boolean] 編集画面からUpdateが行われたらtrueを返す
   def update_from_edit?
-    request.referer && request.referer.match?("\/sakes\/[0-9]+\/edit")
+    request.referer&.match?(%r{/sakes/[0-9]+/edit})
   end
 
   # update後のフラッシュメッセージ表示
   #
   # 開封するボタン・空にするボタンからupdateした場合は、専用のフラッシュメッセージを表示する
   def flash_after_update
-    case params.dig(:flash_message_type)
-    when "open"
-      message_key = ".success_open"
-    when "empty"
-      message_key = ".success_empty"
-    else
-      message_key = ".success"
-    end
+    message_key = case params[:flash_message_type]
+                  when "open"
+                    ".success_open"
+                  when "empty"
+                    ".success_empty"
+                  else
+                    ".success"
+                  end
     flash[:success] = t(message_key, name: alert_link_tag(@sake.name, sake_path(@sake)))
   end
 

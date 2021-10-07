@@ -24,7 +24,7 @@ RSpec.describe "New Sake" do
 
     it "redirect to created sake page" do
       # 酒のIDが不明なため、showページのパスであることを確認する
-      expect(page).to have_current_path /\/sakes\/[0-9]+/
+      expect(page).to have_current_path %r{/sakes/[0-9]+}
     end
 
     it "has flash message containing link to created sake" do

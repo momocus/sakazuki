@@ -94,9 +94,9 @@
             <%= form.label(:tokutei_meisho, { class: "sakes-form-label" }) %>
             <div class="sakes-form-short-form">
               <%= form.select(:tokutei_meisho,
-                              Sake.tokutei_meishos_i18n.keys.map do |k|
+                              Sake.tokutei_meishos_i18n.keys.map { |k|
                                 [I18n.t("enums.sake.tokutei_meisho.#{k}"), k]
-                              end,
+                              },
                               {},
                               { class: "form-select" }) %>
             </div>
@@ -160,9 +160,9 @@
             <%= form.label(:bottle_level, { class: "sakes-form-label" }) %>
             <div class="sakes-form-short-form">
               <%= form.select(:bottle_level,
-                              Sake.bottle_levels_i18n.keys.map do |k|
+                              Sake.bottle_levels_i18n.keys.map { |k|
                                 [I18n.t("enums.sake.bottle_level.#{k}"), k]
-                              end,
+                              },
                               {},
                               { class: "form-select" }) %>
             </div>
@@ -211,9 +211,9 @@
             <%= form.label(:moto, { class: "sakes-form-label" }) %>
             <div class="sakes-form-short-form">
               <%= form.select(:moto,
-                              Sake.motos_i18n.keys.map do |k|
+                              Sake.motos_i18n.keys.map { |k|
                                 [I18n.t("enums.sake.moto.#{k}"), k]
-                              end,
+                              },
                               {},
                               { class: "form-select" }) %>
             </div>
@@ -256,9 +256,9 @@
             <%= form.label(:hiire, { class: "sakes-form-label" }) %>
             <div class="sakes-form-short-form">
               <%= form.select(:hiire,
-                              Sake.hiires_i18n.keys.map do |k|
+                              Sake.hiires_i18n.keys.map { |k|
                                 [I18n.t("enums.sake.hiire.#{k}"), k]
-                              end,
+                              },
                               {},
                               { class: "form-select", title: "test" }) %>
             </div>
@@ -268,9 +268,9 @@
             <%= form.label(:warimizu, { class: "sakes-form-label" }) %>
             <div class="sakes-form-short-form">
               <%= form.select(:warimizu,
-                              Sake.warimizus_i18n.keys.map do |k|
+                              Sake.warimizus_i18n.keys.map { |k|
                                 [I18n.t("enums.sake.warimizu.#{k}"), k]
-                              end,
+                              },
                               {},
                               { class: "form-select" }) %>
             </div>
