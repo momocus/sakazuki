@@ -6,6 +6,31 @@
       <div class="col-sm">
         <%= user.email %>
       </div>
+      <div class="col-sm">
+        <% admin_button_options = { params: { user: { id: user.id, admin: true } },
+                                    method: :patch,
+                                    data: { confirm: t(".confirm"),
+                                            testid: "admin-button-#{user.id}" } } %>
+        <%= form_with(model: user, class: "row my-2 align-items-center") do |f| %>
+          <div class="col-auto">
+            <div class="form-check form-switch">
+              <%= f.check_box(:admin,
+                              { class: "form-check-input",
+                                id: "admin-button",
+                                onChange: "this.form.submit()", },) %>
+              <%= f.label("admin",{ class: "form-check-label",for: "admin-button", }) %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-sm">
+        <%= user.bartender %>
+      </div>
+
     </div>
   <% end %>
 </div>
+
+
+
+

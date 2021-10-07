@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  get "/users" => "users#index", as: "users"
-  devise_for :users, controllers: {
-    registrations: "users/registrations",
-    invitations: "users/invitations",
-  }
+  resources :users, only: [:index, :update, :destory]
+  devise_for :users, path: "accounts", controllers: {
+                       registrations: "users/registrations",
+                       invitations: "users/invitations",
+                     }
   root "sakes#index"
   resources :sakes do
     get :elasticsearch, on: :collection

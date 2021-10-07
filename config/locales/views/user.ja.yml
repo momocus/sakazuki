@@ -2,3 +2,5 @@ ja:
   users:
     index:
       title: ユーザー一覧
+      admin: 管理者
+      confirm: 本当に？
