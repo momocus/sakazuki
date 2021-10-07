@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "/users" => "users#index", as: "users"
   devise_for :users, controllers: {
     registrations: "users/registrations",
     invitations: "users/invitations",

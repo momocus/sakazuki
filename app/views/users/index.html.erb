@@ -1,0 +1,11 @@
+<h1><%= title(t(".title")) %></h1>
+
+<div class="container users">
+  <% @users.each do |user| %>
+    <div class="row">
+      <div class="col-sm">
+        <%= user.email %>
+      </div>
+    </div>
+  <% end %>
+</div>
