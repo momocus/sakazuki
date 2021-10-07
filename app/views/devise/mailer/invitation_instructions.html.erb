@@ -9,4 +9,4 @@
 due_date: l(@resource.invitation_due_at, format: :'devise.mailer.invitation_instructions.accept_until_format')) %></p>
 <% end %>
 
-<p><%= sanitize(t("devise.mailer.invitation_instructions.ignore")) %></p>
+<p><%= sanitize(t("devise.mailer.invitation_instructions.ignore"), tags: %w[br]) %></p>
