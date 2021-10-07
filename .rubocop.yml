@@ -25,12 +25,11 @@ Layout/ExtraSpacing:
 # テストファイルは長さ制限をなくす
 Metrics/ClassLength:
   Exclude:
-    - "**/*_test.rb"
+    - "spec/**/*_spec.rb"
 
 Metrics/BlockLength:
   Exclude:
-    - "**/*_test.rb"
-    - "spec/**/*"
+    - "spec/**/*_spec.rb"
 
 # メソッド名のエイリアスをつけるときは"alias"を使い、"alias_method"は使わない
 # aliasの方が自由度は低いが安全であるため
