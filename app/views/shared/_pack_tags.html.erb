@@ -1,0 +1,6 @@
+<% content_for(:pack_style) do %>
+  <%= stylesheet_pack_tag("common", resource, "data-turbolinks-track": "reload") %>
+<% end %>
+<% content_for(:pack_js) do %>
+  <%= javascript_pack_tag("common", resource, "data-turbolinks-track": "reload") %>
+<% end %>

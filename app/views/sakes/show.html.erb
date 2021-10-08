@@ -1,10 +1,4 @@
-<% content_for(:pack_style) do %>
-  <%= stylesheet_pack_tag("common", "sakes_show", "data-turbolinks-track": "reload") %>
-<% end %>
-<% content_for(:pack_js) do %>
-  <%= javascript_pack_tag("common", "sakes_show", "data-turbolinks-track": "reload") %>
-<% end %>
-
+<%= render("shared/pack_tags", resource: "sakes_show") %>
 <%= render("float-button") %>
 
 <h1 data-testid="<%= sake_path(@sake) %>"><%= title(@sake.name) %></h1>
