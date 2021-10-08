@@ -1,13 +1,14 @@
 require "rails_helper"
 
 RSpec.describe "Edit Sake" do
-  let!(:sake) { FactoryBot.create(:sake) }
+  let!(:sake) { FactoryBot.create(:sake, name: "生道井") }
   let(:user) { FactoryBot.create(:user) }
 
-  describe "update from edit page" do
+  describe "updating name" do
     before do
       sign_in(user)
-      visit edit_sake_path(sake_id)
+      visit edit_sake_path(sake.id)
+      fill_in("textfield-name", with: "ほしいずみ")
       click_button("form-submit")
     end
 
@@ -16,11 +17,13 @@ RSpec.describe "Edit Sake" do
     end
 
     it "has success flash message" do
+      sake.reload
       text = I18n.t("sakes.update.success", name: sake.name)
       expect(find(:test_id, "flash-message")).to have_text(text)
     end
 
     it "has link to the updated sake" do
+      sake.reload
       expect(find(:test_id, "flash-message")).to have_link(sake.name, href: sake_path(sake.id))
     end
   end
