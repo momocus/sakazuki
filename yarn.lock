@@ -1897,26 +1897,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rails/actioncable@npm:^6.1.4":
-  version: 6.1.4
-  resolution: "@rails/actioncable@npm:6.1.4"
-  checksum: 2039c4ae831225ad2d370b7bed6d590be6b46366911dd40f5cea409114471e70b4d2610379aed1443bc3b327ee3c746b5e5c43f730968e78c7d19335bfe932de
+"@rails/actioncable@npm:6.1.4-1":
+  version: 6.1.4-1
+  resolution: "@rails/actioncable@npm:6.1.4-1"
+  checksum: f30426e0518236bf2ae873b066942b9b04adc74679c4540f41a1af686084d85ad85ed84e8d9158021d27b26a70b555f883897590f7a0766e0d5967f55c75c3a4
   languageName: node
   linkType: hard
 
-"@rails/activestorage@npm:^6.1.4":
-  version: 6.1.4
-  resolution: "@rails/activestorage@npm:6.1.4"
+"@rails/activestorage@npm:6.1.4-1":
+  version: 6.1.4-1
+  resolution: "@rails/activestorage@npm:6.1.4-1"
   dependencies:
     spark-md5: ^3.0.0
-  checksum: 15e0ccc9bc8b302019daef02f189f861dbe0845cf53e295a45e0c78cacc9c3b8d3c2049d3622ab5cb14d1535e7dfd85d5451caaa7d1e3a0ceb536ba227d32468
+  checksum: 1beec9437bb7713bc792edfd06a6cf4fc449b194b12c9e4254f6ccb39e3ca28e3e8a429d2de79bd0f8cc13ad38554e368ec3507e28d58f937862cd2e234bb157
   languageName: node
   linkType: hard
 
-"@rails/ujs@npm:^6.1.4":
-  version: 6.1.4
-  resolution: "@rails/ujs@npm:6.1.4"
-  checksum: 5cc92030ff456615bb34ef7d8e594d33aa9d0f981115f8f335aaa47f926ec0d133f36ac30c43940169dace1fb591e47dcb6efd4396ae6a4f8caa63f215e998a4
+"@rails/ujs@npm:6.1.4-1":
+  version: 6.1.4-1
+  resolution: "@rails/ujs@npm:6.1.4-1"
+  checksum: 35966ef9342c8f38fa8ecd047711a7242be9c143a281fb6199e5aa923e3a87c88e512637074791bcc589091c8deff9c4c2267c45b66768fac4d8a624b0f87756
   languageName: node
   linkType: hard
 
@@ -10002,9 +10002,9 @@ fsevents@~2.3.1:
   resolution: "sakazuki@workspace:."
   dependencies:
     "@babel/preset-typescript": ^7.15.0
-    "@rails/actioncable": ^6.1.4
-    "@rails/activestorage": ^6.1.4
-    "@rails/ujs": ^6.1.4
+    "@rails/actioncable": 6.1.4-1
+    "@rails/activestorage": 6.1.4-1
+    "@rails/ujs": 6.1.4-1
     "@rails/webpacker": ^5.4.0
     "@types/chart.js": ^2.9.34
     "@typescript-eslint/eslint-plugin": ^4.32.0
