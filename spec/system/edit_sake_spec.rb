@@ -1,9 +1,9 @@
 require "rails_helper"
 
 RSpec.describe "Edit Sake" do
-  let!(:opened_sake) { FactoryBot.create(:sake, bottle_level: "opened") }
-  let(:sake_id) { opened_sake.id }
-  let(:sake_name) { opened_sake.name }
+  let!(:sake) { FactoryBot.create(:sake) }
+  let(:sake_id) { sake.id }
+  let(:sake_name) { sake.name }
   let(:user) { FactoryBot.create(:user) }
 
   describe "update from edit page" do
