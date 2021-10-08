@@ -10034,7 +10034,7 @@ fsevents@~2.3.1:
     stylelint: ">=13.13.1"
     stylelint-config-standard: ">=22.0.0"
     stylelint-scss: ">=3.21.0"
-    turbolinks: ">=5.2.0 <6"
+    turbolinks: 5.2.0
     typescript: ">=4.3 <4.4"
     webpack: ">=4.46.0 <5"
     webpack-cli: ">=3.3.12 <4"
@@ -11327,7 +11327,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"turbolinks@npm:>=5.2.0 <6":
+"turbolinks@npm:5.2.0":
   version: 5.2.0
   resolution: "turbolinks@npm:5.2.0"
   checksum: d003a6fa2c0dc1b6e95edc3dc7dba292d1021e664be2b0b9e2d76117eaf8d874b7741635c3b4c57702781166d0bfffd60e69e27c02d51bf1cdc5a5e6c2021092
