@@ -1,3 +1,4 @@
+<%= render("shared/pack_tags", resource: "devise/common") %>
 <h1><%= title(t("devise.invitations.edit.header")) %></h1>
 <%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put }) do |f| %>
   <%= render("devise/shared/error_messages", resource: resource) %>

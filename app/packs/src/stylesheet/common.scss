@@ -22,24 +22,6 @@ h1 {
   }
 }
 
-// devise
-.devise-row {
-  @extend .row;
-  @extend .mb-lg-2;
-}
-
-.devise-submit-row {
-  @extend .devise-row;
-  @extend .mt-2;
-  @extend .justify-content-center;
-}
-
-.devise-label {
-  @extend .col-lg-3;
-  @extend .col-12;
-  @extend .col-form-label;
-}
-
 //------ header ------
 
 .sakazuki-header-logo {
