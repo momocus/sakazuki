@@ -2,8 +2,6 @@ require "rails_helper"
 
 RSpec.describe "Edit Sake" do
   let!(:sake) { FactoryBot.create(:sake) }
-  let(:sake_id) { sake.id }
-  let(:sake_name) { sake.name }
   let(:user) { FactoryBot.create(:user) }
 
   describe "update from edit page" do
@@ -14,16 +12,16 @@ RSpec.describe "Edit Sake" do
     end
 
     it "redirect to sake page" do
-      expect(page).to have_current_path sake_path(sake_id)
+      expect(page).to have_current_path sake_path(sake.id)
     end
 
     it "has success flash message" do
-      text = I18n.t("sakes.update.success", name: sake_name)
+      text = I18n.t("sakes.update.success", name: sake.name)
       expect(find(:test_id, "flash-message")).to have_text(text)
     end
 
     it "has link to the updated sake" do
-      expect(find(:test_id, "flash-message")).to have_link(sake_name, href: sake_path(sake_id))
+      expect(find(:test_id, "flash-message")).to have_link(sake.name, href: sake_path(sake.id))
     end
   end
 end
