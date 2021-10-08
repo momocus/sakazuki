@@ -53,13 +53,6 @@ h1 {
   @extend .btn-primary;
 }
 
-// ウィンドウサイズがlg以上のとき表示されるページネーションボタン
-.page-item-lg {
-  @extend .page-item;
-  @extend .d-none;
-  @extend .d-md-block;
-}
-
 .drink-button {
   @extend .badge;
   @extend .rounded-pill;
