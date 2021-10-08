@@ -12,7 +12,7 @@ RSpec.describe "Sign-in Redirect" do
   context "when not signed user tries to edit sake" do
     before do
       visit sake_path(id)
-      find(:test_id, "edit-#{id}").click
+      click_link("edit-#{id}")
     end
 
     it "redirects to sign in page" do
@@ -28,7 +28,7 @@ RSpec.describe "Sign-in Redirect" do
   context "when not signed user tries to create sake" do
     before do
       visit sakes_path
-      find(:test_id, "new-sake").click
+      click_link("new-sake")
     end
 
     it "redirects to sign in page" do

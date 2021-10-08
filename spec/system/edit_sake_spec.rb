@@ -10,7 +10,7 @@ RSpec.describe "Edit Sake" do
     before do
       sign_in(user)
       visit edit_sake_path(sake_id)
-      find(:test_id, "form-submit").click
+      click_button("form-submit")
     end
 
     it "redirect to sake page" do
