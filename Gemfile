@@ -4,17 +4,18 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.0.2"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "~> 6.1.4"
+gem "rails", "= 6.1.4.1"
 # Use Puma as the app server
-gem "puma", "~> 5.3"
+gem "puma"
 # Use SCSS for stylesheets
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem "webpacker", "~> 5.4"
+# Do not update, see https://github.com/momocus/sakazuki/milestone/1
+gem "webpacker", "= 5.4.0"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem "jbuilder", "~> 2.7"
+gem "jbuilder"
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", ">= 1.4.2", require: false
+gem "bootsnap", require: false
 
 # Use pg as the database for Active Record
 gem "pg"
@@ -53,9 +54,11 @@ gem "kaminari-i18n"
 gem "era_ja"
 
 # ElasticSearch
+# Do not update, because released gems have not adapted to Ruby 3 yet.
 gem "bonsai-elasticsearch-rails"
+gem "elasticsearch", ">= 7.13", "< 7.14"
 gem "elasticsearch-model", github: "indirect/elasticsearch-rails"
-gem "elasticsearch-rails"
+gem "elasticsearch-rails", ">= 7.1", "< 7.2"
 
 group :development, :test do
   gem "annotate"
@@ -82,11 +85,11 @@ group :development do
   gem "erb_lint", require: false
   # Access an interactive console on exception pages or by calling 'console'
   # anywhere in the code.
-  gem "web-console", ">= 3.3.0"
+  gem "web-console"
   # Spring speeds up development by keeping your application running in the
   # background. Read more: https://github.com/rails/spring
   gem "spring"
-  gem "spring-watcher-listen", "~> 2.0.0"
+  gem "spring-watcher-listen"
   # For robe completion
   gem "yard"
 end
