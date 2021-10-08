@@ -1,7 +1,4 @@
-<% content_for(:pack_js) do %>
-  <%= javascript_pack_tag("common", "sakes/form", "data-turbolinks-track": "reload") %>
-<% end %>
-
+<%= render("shared/pack_tags", resource: "sakes/form") %>
 <%= render("float-button") %>
 
 <%= form_with(model: sake, local: true, id: "sake-form") do |form| %>

@@ -1,7 +1,4 @@
-<% content_for(:pack_js) do %>
-  <%= javascript_pack_tag("common", "sakes/index", "data-turbolinks-track": "reload") %>
-<% end %>
-
+<%= render("shared/pack_tags", resource: "sakes/index") %>
 <%= render("float-button") %>
 
 <% include_empty = params.dig(:q, :bottle_level_not_eq) == bottom_bottle.to_s %>
