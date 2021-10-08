@@ -26,5 +26,9 @@ RSpec.describe "Edit Sake" do
       sake.reload
       expect(find(:test_id, "flash-message")).to have_link(sake.name, href: sake_path(sake.id))
     end
+
+    it "updates also updated_at" do
+      expect { sake.reload }.to change(sake, :updated_at)
+    end
   end
 end
