@@ -60,6 +60,17 @@ h1 {
   @extend .d-md-block;
 }
 
+.drink-button {
+  @extend .badge;
+  @extend .rounded-pill;
+  @extend .ms-2;
+  @extend .text-decoration-none;
+
+  i {
+    @extend .me-1;
+  }
+}
+
 //------ _form (new and edit) ------
 
 .sakes-form-row {
