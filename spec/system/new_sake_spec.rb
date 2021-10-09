@@ -8,8 +8,8 @@ RSpec.describe "New Sake" do
     before do
       sign_in(user)
       visit new_sake_path
-      find(:test_id, "name-textfield").set(sake_name)
-      find(:test_id, "form-submit").click
+      fill_in("textfield-name", with: sake_name)
+      click_button("form-submit")
       wait_for_alert # 新しく作られる酒のIDが不明なため、アラートを待つ
     end
 

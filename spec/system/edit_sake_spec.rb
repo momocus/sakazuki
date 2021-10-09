@@ -1,29 +1,30 @@
 require "rails_helper"
 
 RSpec.describe "Edit Sake" do
-  let!(:opened_sake) { FactoryBot.create(:sake, bottle_level: "opened") }
-  let(:sake_id) { opened_sake.id }
-  let(:sake_name) { opened_sake.name }
+  let(:sake) { FactoryBot.create(:sake, name: "生道井") }
   let(:user) { FactoryBot.create(:user) }
 
-  describe "update from edit page" do
+  describe "updating name" do
     before do
       sign_in(user)
-      visit edit_sake_path(sake_id)
-      find(:test_id, "form-submit").click
+      visit edit_sake_path(sake.id)
+      fill_in("textfield-name", with: "ほしいずみ")
+      click_button("form-submit")
     end
 
     it "redirect to sake page" do
-      expect(page).to have_current_path sake_path(sake_id)
+      expect(page).to have_current_path sake_path(sake.id)
     end
 
     it "has success flash message" do
-      text = I18n.t("sakes.update.success", name: sake_name)
+      sake.reload
+      text = I18n.t("sakes.update.success", name: sake.name)
       expect(find(:test_id, "flash-message")).to have_text(text)
     end
 
     it "has link to the updated sake" do
-      expect(find(:test_id, "flash-message")).to have_link(sake_name, href: sake_path(sake_id))
+      sake.reload
+      expect(find(:test_id, "flash-message")).to have_link(sake.name, href: sake_path(sake.id))
     end
   end
 end
