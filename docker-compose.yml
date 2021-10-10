@@ -6,6 +6,8 @@ volumes:
     driver: local
   es_plugins:
     driver: local
+  packs:
+    driver: local
 services:
   db:
     image: postgres:13
@@ -16,7 +18,7 @@ services:
     ports:
       - "5432:5432"
     hostname: db
-  web:
+  web: &web
     image: sakazuki
     volumes:
       - ./app:/sakazuki/app:cached
@@ -29,11 +31,13 @@ services:
       - ./lib:/sakazuki/lib:cached
       - ./db:/sakazuki/db:cached
       - ./spec:/sakazuki/spec:cached
+      - packs:/sakazuki/public/packs:cached
     environment:
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_HOSTNAME: db
       ELASTICSEARCH_HOSTS: http://es:9200
+      WEBPACKER_DEV_SERVER_HOST: webpacker
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     ports:
@@ -57,3 +61,10 @@ services:
       - es_plugins:/usr/share/elasticsearch/plugins
     ports:
       - "9200:9200"
+  webpacker:
+    <<: *web
+    command: bash -c "bin/webpack-dev-server"
+    environment:
+      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
+    ports:
+      - 3035:3035
