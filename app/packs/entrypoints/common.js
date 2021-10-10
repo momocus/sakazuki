@@ -23,7 +23,6 @@ import "../src/javascript/bootstrap_plugins.js"
 
 // style
 import "bootstrap-icons/font/bootstrap-icons"
-import "../src/stylesheet/common.scss"
 
 // image
 import "images/choko.svg"
