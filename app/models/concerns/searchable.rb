@@ -4,7 +4,9 @@ module Searchable
   # rubocop:disable Metrics/BlockLength
   included do
     include Elasticsearch::Model
-    include Elasticsearch::Model::Callbacks
+
+    after_save    { Indexer.perform_async(:index,  id) }
+    after_destroy { Indexer.perform_async(:delete, id) }
 
     index_name [Rails.application.engine_name, Rails.env].join("_")
     sake_settings = YAML.load_file(Rails.root.join("config/elasticsearch.yml"))

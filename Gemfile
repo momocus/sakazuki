@@ -59,6 +59,8 @@ gem "bonsai-elasticsearch-rails"
 gem "elasticsearch", ">= 7.13", "< 7.14"
 gem "elasticsearch-model", github: "indirect/elasticsearch-rails"
 gem "elasticsearch-rails", ">= 7.1", "< 7.2"
+gem "sidekiq"
+gem "redis-namespace"
 
 group :development, :test do
   gem "annotate"
