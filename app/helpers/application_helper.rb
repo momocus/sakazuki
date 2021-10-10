@@ -32,4 +32,22 @@ module ApplicationHelper
   end
 
   # rubocop:enable Metrics/MethodLength
+
+  # 読み込むJavascriptの指定
+  #
+  # @param packs [Array<String>] 読み込む.jsファイル名の配列
+  def pack_js(packs)
+    content_for(:pack_js) do
+      javascript_pack_tag(*packs, "data-turbolinks-track": "reload")
+    end
+  end
+
+  # 読み込むStylesheetの指定
+  #
+  # @param packs [Array<String>] 読み込む.scssファイル名の配列
+  def pack_style(packs)
+    content_for(:pack_style) do
+      stylesheet_pack_tag(*packs, media: "all", "data-turbolinks-track": "reload")
+    end
+  end
 end

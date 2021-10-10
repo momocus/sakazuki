@@ -1,4 +1,5 @@
-<%= render("shared/pack_tags", resource: "sakes/form") %>
+<% pack_js(["common", "sakes/form"]) %>
+<% pack_style(["common", "sakes/form"]) %>
 <%= render("float-button") %>
 
 <%= form_with(model: sake, local: true, id: "sake-form") do |form| %>

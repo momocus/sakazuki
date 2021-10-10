@@ -1,4 +1,5 @@
-<%= render("shared/pack_tags", resource: "sakes/show") %>
+<% pack_js(["common", "sakes/show"]) %>
+<% pack_style(["common", "sakes/show"]) %>
 <%= render("float-button") %>
 
 <h1 data-testid="<%= sake_path(@sake) %>"><%= title(@sake.name) %></h1>
