@@ -5,17 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= seo_meta_tags %>
-
-    <% if content_for?(:pack_style) %>
-      <%= yield(:pack_style) %>
-    <% else %>
-      <%= stylesheet_pack_tag("common", media: "all", "data-turbolinks-track": "reload") %>
-    <% end %>
-    <% if content_for?(:pack_js) %>
-      <%= yield(:pack_js) %>
-    <% else %>
-      <%= javascript_pack_tag("common", "data-turbolinks-track": "reload") %>
-    <% end %>
+    <%= render("layouts/load_packs") %>
   </head>
 
   <body>
