@@ -1,4 +1,4 @@
-<% pack_style(%w[common devise]) %>
+<% select_pack_style(%w[common devise]) %>
 <h1><%= title(t(".change_your_password")) %></h1>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
