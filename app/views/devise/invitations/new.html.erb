@@ -1,4 +1,4 @@
-<% pack_style(["common", "devise/common"]) %>
+<% pack_style(%w[common devise]) %>
 <h1><%= title(t("devise.invitations.new.header")) %></h1>
 
 <%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :post }) do |f| %>
