@@ -31,7 +31,7 @@ services:
       - ./lib:/sakazuki/lib:cached
       - ./db:/sakazuki/db:cached
       - ./spec:/sakazuki/spec:cached
-      - packs:/sakazuki/public/packs:cached
+      - packs:/sakazuki/public/packs:consistent
     environment:
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: password
@@ -45,6 +45,13 @@ services:
     depends_on:
       - db
       - es
+  webpacker:
+    <<: *web
+    command: bash -c "bin/webpack-dev-server"
+    environment:
+      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
+    ports:
+      - 3035:3035
   es:
     image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2
     environment:
@@ -61,10 +68,3 @@ services:
       - es_plugins:/usr/share/elasticsearch/plugins
     ports:
       - "9200:9200"
-  webpacker:
-    <<: *web
-    command: bash -c "bin/webpack-dev-server"
-    environment:
-      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
-    ports:
-      - 3035:3035
