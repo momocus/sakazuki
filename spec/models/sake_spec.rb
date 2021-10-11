@@ -40,9 +40,10 @@
 require "rails_helper"
 
 RSpec.describe Sake do
-  let!(:impressed_sake) { FactoryBot.create(:sake, bottle_level: "opened", aroma_value: 1, taste_value: 2, size: 1800) }
-  let!(:opened_sake) { FactoryBot.create(:sake, bottle_level: "opened", size: 1800) }
   let!(:sealed_sake) { FactoryBot.create(:sake, bottle_level: "sealed", size: 720) }
+  let!(:opened_sake) { FactoryBot.create(:sake, bottle_level: "opened", size: 1800) }
+  let!(:impressed_sake) { FactoryBot.create(:sake, bottle_level: "opened", aroma_value: 1, taste_value: 2, size: 1800) }
+  let!(:empty_sake) { FactoryBot.create(:sake, bottle_level: "empty", size: 300) }
 
   describe "validates" do
     subject { sake.save }
@@ -60,43 +61,57 @@ RSpec.describe Sake do
     end
   end
 
-  describe "check sealed" do
-    it "returns true" do
-      expect(sealed_sake).to be_sealed
+  describe "sake.sealed?" do
+    it "returns true by sealed sake" do
+      expect(sealed_sake.sealed?).to eq(true)
     end
 
-    it "returns false" do
-      expect(opened_sake).not_to be_sealed
-    end
-  end
-
-  describe "check opened" do
-    it "returns true" do
-      expect(opened_sake).to be_opened
+    it "returns false by opened sake" do
+      expect(opened_sake.sealed?).to eq(false)
     end
 
-    it "returns false" do
-      expect(sealed_sake).not_to be_opened
+    it "returns false by empty sake" do
+      expect(empty_sake.sealed?).to eq(false)
     end
   end
 
-  describe "check unimpressed" do
-    it "returns true" do
-      expect(opened_sake).to be_unimpressed
+  describe "sake.opened?" do
+    it "returns false by sealed sake" do
+      expect(sealed_sake.opened?).to eq(false)
     end
 
-    it "returns false" do
-      expect(impressed_sake).not_to be_unimpressed
+    it "returns true by opened sake" do
+      expect(opened_sake.opened?).to eq(true)
+    end
+
+    it "returns false by empty sake" do
+      expect(empty_sake.opened?).to eq(false)
     end
   end
 
-  describe "alcohol stock" do
-    it "returns 2520" do
-      expect(described_class.alcohol_stock).to eq(2520)
+  describe "sake.unimpressed?" do
+    it "returns true without taste and aroma value" do
+      expect(opened_sake.unimpressed?).to eq(true)
     end
 
-    it "returns 4320 including empty bottle" do
-      expect(described_class.alcohol_stock(include_empty: true)).to eq(4320)
+    it "returns false with taste and aroma value" do
+      expect(impressed_sake.unimpressed?).to eq(false)
+    end
+  end
+
+  describe "Sake.alcohol_stock" do
+    context "without argument" do
+      it "returns 2520" do
+        # 720 + 1800/2 + 1800/2
+        expect(described_class.alcohol_stock).to eq(2520)
+      end
+    end
+
+    context "with include_empty: true" do
+      it "returns 4320 including empty bottle" do
+        # 720 + 1800 + 1800 + 300
+        expect(described_class.alcohol_stock(include_empty: true)).to eq(4620)
+      end
     end
   end
 end
