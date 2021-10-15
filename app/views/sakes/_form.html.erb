@@ -1,7 +1,5 @@
-<% content_for(:pack_js) do %>
-  <%= javascript_pack_tag("common", "sakes_form", "data-turbolinks-track": "reload") %>
-<% end %>
-
+<% select_pack_js(["common", "sakes/form"]) %>
+<% select_pack_style(["common", "sakes/form"]) %>
 <%= render("float-button") %>
 
 <%= form_with(model: sake, local: true, id: "sake-form") do |form| %>

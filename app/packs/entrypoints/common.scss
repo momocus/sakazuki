@@ -1,0 +1,44 @@
+@import "../src/stylesheet/bootstrap_custom";
+@import "~bootstrap/scss/bootstrap";
+
+h1 {
+  @extend .my-2;
+}
+
+.click-transparent {
+  pointer-events: none;
+}
+
+.click-nontransparent {
+  pointer-events: all;
+}
+
+// Ruby on Railsが生成するエラー用スタイルなので、アンダーバーのままにする
+.field_with_errors {
+  display: contents;
+
+  input {
+    @extend .is-invalid;
+  }
+}
+
+//------ header ------
+
+.sakazuki-header-logo {
+  @extend .me-3;
+
+  width: 2rem;
+  height: 2rem;
+}
+
+//------ footer ------
+
+footer {
+  @extend .bg-light;
+  @extend .p-3;
+  @extend .pb-lg-3;
+  @extend .pb-5;
+
+  font-size: 0.9em;
+  color: #777;
+}

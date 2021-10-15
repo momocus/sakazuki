@@ -1,0 +1,24 @@
+@import "../../src/stylesheet/bootstrap_custom";
+@import "~bootstrap/scss/bootstrap";
+
+.sakes-index-name-link {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+// Ransackが生成するスタイル
+.btn-group .sort_link {
+  @extend .btn;
+  @extend .btn-primary;
+}
+
+.drink-button {
+  @extend .badge;
+  @extend .rounded-pill;
+  @extend .ms-2;
+  @extend .text-decoration-none;
+
+  i {
+    @extend .me-1;
+  }
+}

@@ -1,0 +1,22 @@
+@import "../../src/stylesheet/bootstrap_custom";
+@import "~bootstrap/scss/bootstrap";
+@import "~simplelightbox/src/simple-lightbox.scss";
+
+.fb_iframe_widget {
+  vertical-align: top;
+  height: 20px;
+
+  span {
+    vertical-align: top !important;
+  }
+}
+
+.sakes-show-label {
+  @extend .col-lg-3;
+  @extend .col-12;
+}
+
+.sakes-show-body {
+  @extend .col-lg-9;
+  @extend .col-12;
+}
