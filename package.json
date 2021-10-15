@@ -11,6 +11,7 @@
     "bootstrap": ">=5.1.1 <6",
     "bootstrap-icons": ">=1.5.0",
     "chart.js": ">=2.9.4 <3",
+    "resolve-url-loader": "^4.0.0",
     "simplelightbox": ">=2.9.0 <3",
     "turbolinks": "5.2.0",
     "typescript": ">=4.3 <4.4",
