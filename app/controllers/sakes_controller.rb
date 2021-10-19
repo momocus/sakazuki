@@ -190,6 +190,8 @@ class SakesController < ApplicationController
   #
   # 開封するボタン・空にするボタンからupdateした場合は、専用のフラッシュメッセージを表示する
   def flash_after_update
+    return unless @sake.saved_changes?
+
     message_key = case params[:flash_message_type]
                   when "open"
                     ".success_open"
