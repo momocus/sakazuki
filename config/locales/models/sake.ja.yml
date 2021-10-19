@@ -38,4 +38,6 @@ ja:
         size: 内容量(ml)
         memo: 備考
         created_at: 登録日
-        update_at: 更新日
+        updated_at: 更新日
+        opened_at: 開封日
+        emptied_at: 空日

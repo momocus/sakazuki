@@ -196,6 +196,27 @@
   <div class="sakes-show-body">
     <%= @sake.bottle_level_i18n %>
   </div>
+
+  <div class="sakes-show-label">
+    <b><%= Sake.human_attribute_name(:created_at) %></b>
+  </div>
+  <div class="sakes-show-body" data-testid="created-at">
+    <%= l(@sake.created_at.to_date) %>
+  </div>
+
+  <div class="sakes-show-label">
+    <b><%= Sake.human_attribute_name(:opened_at) %></b>
+  </div>
+  <div class="sakes-show-body" data-testid="opened-at">
+    <%= @sake.bottle_level == "sealed" ? "-" : l(@sake.opened_at.to_date) %>
+  </div>
+
+  <div class="sakes-show-label">
+    <b><%= Sake.human_attribute_name(:emptied_at) %></b>
+  </div>
+  <div class="sakes-show-body" data-testid="emptied-at">
+    <%= @sake.bottle_level == "empty" ? l(@sake.emptied_at.to_date) : "-" %>
+  </div>
 </div>
 
 <%# 開けてから %>
@@ -252,6 +273,13 @@
   </div>
   <div class="sakes-show-body">
     <%= empty_to_default(@sake.note, "-") %>
+  </div>
+
+  <div class="sakes-show-label">
+    <b><%= Sake.human_attribute_name(:updated_at) %></b>
+  </div>
+  <div class="sakes-show-body" data-testid="updated-at">
+    <%= l(@sake.updated_at.to_date) %>
   </div>
 </div>
 
