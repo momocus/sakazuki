@@ -121,6 +121,8 @@ class Sake < ApplicationRecord
   validates :hiire, presence: true
   validates :price, numericality: { allow_nil: true }
   validates :size, numericality: true
+  validates :opened_at, presence: true
+  validates :emptied_at, presence: true
 
   # rubocop:disable Layout/LineLength
   ransack_alias :all_text, :aroma_impression_or_awa_or_color_or_genryomai_or_kakemai_or_kobo_or_kura_or_name_or_nigori_or_note_or_roka_or_season_or_shibori_or_taste_impression_or_todofuken
