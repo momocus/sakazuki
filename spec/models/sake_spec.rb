@@ -61,6 +61,18 @@ RSpec.describe Sake do
 
       it { is_expected.to be_falsy }
     end
+
+    context "if opened_at is nil" do
+      let(:sake) { FactoryBot.build(:sake, opened_at: nil) }
+
+      it { is_expected.to be_falsy }
+    end
+
+    context "if emptied_at is nil" do
+      let(:sake) { FactoryBot.build(:sake, emptied_at: nil) }
+
+      it { is_expected.to be_falsy }
+    end
   end
 
   describe "sake.sealed?" do
