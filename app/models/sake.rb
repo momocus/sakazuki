@@ -86,12 +86,14 @@ class Sake < ApplicationRecord
   validates :taste_value,
             numericality: {
               allow_nil: true,
+              only_integer: true,
               greater_than_or_equal_to: 0,
               less_than_or_equal_to: 6,
             }
   validates :aroma_value,
             numericality: {
               allow_nil: true,
+              only_integer: true,
               greater_than_or_equal_to: 0,
               less_than_or_equal_to: 6,
             }
@@ -117,7 +119,7 @@ class Sake < ApplicationRecord
   validates :note, exclusion: { in: [nil] }
   validates :bottle_level, presence: true
   validates :hiire, presence: true
-  validates :price, numericality: { allow_nil: true }
+  validates :price, numericality: { allow_nil: true, only_integer: true }
   validates :size, numericality: true
 
   # rubocop:disable Layout/LineLength
