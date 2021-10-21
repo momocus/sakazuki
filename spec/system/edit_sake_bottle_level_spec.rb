@@ -18,7 +18,7 @@ RSpec.describe "Edit Sake's Bottle Level" do
         click_button("form-submit")
       end
 
-      it "update bottle level to open" do
+      it "updates bottle level to open" do
         expect { sealed_sake.reload }.to change(sealed_sake, :bottle_level).from("sealed").to("opened")
       end
 
@@ -38,7 +38,7 @@ RSpec.describe "Edit Sake's Bottle Level" do
         expect { sealed_sake.reload }.to change(sealed_sake, :updated_at)
       end
 
-      it "hase close date time between updated_at and updated_at" do
+      it "has close date time between updated_at and updated_at" do
         sealed_sake.reload
         delta = 1.second        # 差分が1秒以内
         expect(sealed_sake.opened_at).to be_within(delta).of(sealed_sake.updated_at)
@@ -52,7 +52,7 @@ RSpec.describe "Edit Sake's Bottle Level" do
         click_button("form-submit")
       end
 
-      it "update bottle level to empty" do
+      it "updates bottle level to empty" do
         expect { sealed_sake.reload }.to change(sealed_sake, :bottle_level).from("sealed").to("empty")
       end
 
@@ -72,13 +72,13 @@ RSpec.describe "Edit Sake's Bottle Level" do
         expect { sealed_sake.reload }.not_to change(sealed_sake, :created_at)
       end
 
-      it "hase close date time between opened_at and updated_at" do
+      it "has close date time between opened_at and updated_at" do
         sealed_sake.reload
         delta = 1.second        # 差分が1秒以内
         expect(sealed_sake.opened_at).to be_within(delta).of(sealed_sake.updated_at)
       end
 
-      it "hase close date time between emptied_at and updated_at" do
+      it "has close date time between emptied_at and updated_at" do
         sealed_sake.reload
         delta = 1.second        # 差分が1秒以内
         expect(sealed_sake.emptied_at).to be_within(delta).of(sealed_sake.updated_at)
@@ -92,7 +92,7 @@ RSpec.describe "Edit Sake's Bottle Level" do
         click_button("form-submit")
       end
 
-      it "update bottle level to empty" do
+      it "updates bottle level to empty" do
         expect { opened_sake.reload }.to change(opened_sake, :bottle_level).from("opened").to("empty")
       end
 
@@ -112,7 +112,7 @@ RSpec.describe "Edit Sake's Bottle Level" do
         expect { opened_sake.reload }.to change(opened_sake, :updated_at)
       end
 
-      it "hase same date time between updated_at and emptied_at" do
+      it "has same date time between updated_at and emptied_at" do
         opened_sake.reload
         delta = 1.second        # 差分が1秒以内
         expect(opened_sake.emptied_at).to be_within(delta).of(opened_sake.updated_at)
@@ -120,7 +120,7 @@ RSpec.describe "Edit Sake's Bottle Level" do
     end
   end
 
-  context "when anusual updating" do
+  context "when unusual updating" do
     describe "updating sake from empty to sealed" do
       before do
         visit edit_sake_path(empty_sake.id)
@@ -128,7 +128,7 @@ RSpec.describe "Edit Sake's Bottle Level" do
         click_button("form-submit")
       end
 
-      it "update bottle level to sealed" do
+      it "updates bottle level to sealed" do
         expect { empty_sake.reload }.to change(empty_sake, :bottle_level).from("empty").to("sealed")
       end
 
@@ -156,7 +156,7 @@ RSpec.describe "Edit Sake's Bottle Level" do
         click_button("form-submit")
       end
 
-      it "update bottle level to opened" do
+      it "updates bottle level to opened" do
         expect { empty_sake.reload }.to change(empty_sake, :bottle_level).from("empty").to("opened")
       end
 
@@ -184,7 +184,7 @@ RSpec.describe "Edit Sake's Bottle Level" do
         click_button("form-submit")
       end
 
-      it "update bottle level to sealed" do
+      it "updates bottle level to sealed" do
         expect { opened_sake.reload }.to change(opened_sake, :bottle_level).from("opened").to("sealed")
       end
 
