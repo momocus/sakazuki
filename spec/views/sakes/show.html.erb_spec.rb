@@ -2,12 +2,7 @@ require "rails_helper"
 
 # Capybaraを使うためにsystem specを指定する
 RSpec.describe "sakes/show", type: :system do
-  let!(:sake) {
-    FactoryBot.create(:sake,
-                      bottle_level: :sealed,
-                      opened_at: DateTime.now,
-                      emptied_at: DateTime.now)
-  }
+  let!(:sake) { FactoryBot.create(:sake, bottle_level: :sealed) }
 
   some_date = %r{[0-9]+/[0-9]+/[0-9]+}
 

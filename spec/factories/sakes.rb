@@ -57,5 +57,7 @@ FactoryBot.define do
     taste_impression { "" }
     awa { "" }
     note { "" }
+    opened_at { Time.current }
+    emptied_at { Time.current }
   end
 end

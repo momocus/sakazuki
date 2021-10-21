@@ -3,8 +3,8 @@ require "rails_helper"
 RSpec.describe "Edit Sake's Bottle Level" do
   let(:user) { FactoryBot.create(:user) }
   let(:sealed_sake) { FactoryBot.create(:sake, bottle_level: :sealed) }
-  let(:opened_sake) { FactoryBot.create(:sake, bottle_level: :opened, opened_at: DateTime.now) }
-  let(:empty_sake) { FactoryBot.create(:sake, bottle_level: :empty, opened_at: DateTime.now, emptied_at: DateTime.now) }
+  let(:opened_sake) { FactoryBot.create(:sake, bottle_level: :opened) }
+  let(:empty_sake) { FactoryBot.create(:sake, bottle_level: :empty) }
 
   before do
     sign_in(user)
