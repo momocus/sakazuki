@@ -35,6 +35,8 @@ ja:
         submit: :sakes.form.new.submit
       edit:
         submit: 更新
+      update:
+        submit: :sakes.form.edit.submit
     float-button:
       edit: :sakes.index.edit
       new: 新規
