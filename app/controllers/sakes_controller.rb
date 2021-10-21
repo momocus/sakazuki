@@ -149,8 +149,8 @@ class SakesController < ApplicationController
   def update_datetime
     case @sake.saved_change_to_attribute(:bottle_level)
     in [old, new]
-      @sake.update(opened_at: @sake.updated_at.to_datetime) if old == "sealed"
-      @sake.update(emptied_at: @sake.updated_at.to_datetime) if new == "empty"
+      @sake.update(opened_at: @sake.updated_at) if old == "sealed"
+      @sake.update(emptied_at: @sake.updated_at) if new == "empty"
     in nil
       nil
     end
