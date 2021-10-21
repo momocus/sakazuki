@@ -36,8 +36,8 @@ RSpec.describe "New Sake's Date and Time" do
     end
 
     it "creates sake having close date between created_at and updated_at" do
-      created_at = DateTime.parse(find(:test_id, "created-at").text)
-      updated_at = DateTime.parse(find(:test_id, "updated-at").text)
+      created_at = Time.zone.parse(find(:test_id, "created-at").text)
+      updated_at = Time.zone.parse(find(:test_id, "updated-at").text)
       delta = 1.second
       expect(updated_at).to be_within(delta).of(created_at)
     end
@@ -68,15 +68,15 @@ RSpec.describe "New Sake's Date and Time" do
     end
 
     it "creates sake having close date between created_at and opened_at" do
-      created_at = DateTime.parse(find(:test_id, "created-at").text)
-      updated_at = DateTime.parse(find(:test_id, "opened-at").text)
+      created_at = Time.zone.parse(find(:test_id, "created-at").text)
+      updated_at = Time.zone.parse(find(:test_id, "opened-at").text)
       delta = 1.second
       expect(updated_at).to be_within(delta).of(created_at)
     end
 
     it "creates sake having close date between created_at and updated_at" do
-      created_at = DateTime.parse(find(:test_id, "created-at").text)
-      updated_at = DateTime.parse(find(:test_id, "updated-at").text)
+      created_at = Time.zone.parse(find(:test_id, "created-at").text)
+      updated_at = Time.zone.parse(find(:test_id, "updated-at").text)
       delta = 1.second
       expect(updated_at).to be_within(delta).of(created_at)
     end
@@ -107,22 +107,22 @@ RSpec.describe "New Sake's Date and Time" do
     end
 
     it "creates sake having close date between created_at and opened_at" do
-      created_at = DateTime.parse(find(:test_id, "created-at").text)
-      updated_at = DateTime.parse(find(:test_id, "opened-at").text)
+      created_at = Time.zone.parse(find(:test_id, "created-at").text)
+      updated_at = Time.zone.parse(find(:test_id, "opened-at").text)
       delta = 1.second
       expect(updated_at).to be_within(delta).of(created_at)
     end
 
     it "creates sake having close date between created_at and emptied_at" do
-      created_at = DateTime.parse(find(:test_id, "created-at").text)
-      updated_at = DateTime.parse(find(:test_id, "emptied-at").text)
+      created_at = Time.zone.parse(find(:test_id, "created-at").text)
+      updated_at = Time.zone.parse(find(:test_id, "emptied-at").text)
       delta = 1.second
       expect(updated_at).to be_within(delta).of(created_at)
     end
 
     it "creates sake having close date between created_at and updated_at" do
-      created_at = DateTime.parse(find(:test_id, "created-at").text)
-      updated_at = DateTime.parse(find(:test_id, "updated-at").text)
+      created_at = Time.zone.parse(find(:test_id, "created-at").text)
+      updated_at = Time.zone.parse(find(:test_id, "updated-at").text)
       delta = 1.second
       expect(updated_at).to be_within(delta).of(created_at)
     end
