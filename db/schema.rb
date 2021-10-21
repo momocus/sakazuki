@@ -59,8 +59,8 @@ ActiveRecord::Schema.define(version: 2021_10_04_074321) do
     t.integer "size"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.datetime "opened_at", precision: 6
-    t.datetime "emptied_at", precision: 6
+    t.datetime "opened_at", precision: 6, default: -> { "now()" }, null: false
+    t.datetime "emptied_at", precision: 6, default: -> { "now()" }, null: false
   end
 
   create_table "users", force: :cascade do |t|

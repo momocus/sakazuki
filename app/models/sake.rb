@@ -12,7 +12,7 @@
 #  bottle_level     :integer          default("sealed")
 #  brew_year        :date
 #  color            :string
-#  emptied_at       :datetime
+#  emptied_at       :datetime         not null
 #  genryomai        :string
 #  hiire            :integer          default("unknown")
 #  kakemai          :string
@@ -23,7 +23,7 @@
 #  nigori           :string
 #  nihonshudo       :float
 #  note             :text
-#  opened_at        :datetime
+#  opened_at        :datetime         not null
 #  price            :integer
 #  roka             :string
 #  sando            :float
