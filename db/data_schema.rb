@@ -1,1 +1,0 @@
-DataMigrate::Data.define()
