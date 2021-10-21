@@ -147,12 +147,12 @@ class SakesController < ApplicationController
 
   # 酒瓶状態の変更に応じて、酒が持つ日時データを更新する
   def update_datetime
-    return unless @sake.saved_change_to_attribute?(:bottle_level)
-
     case @sake.saved_change_to_attribute(:bottle_level)
     in [old, new]
       @sake.update(opened_at: @sake.updated_at.to_datetime) if old == "sealed"
       @sake.update(emptied_at: @sake.updated_at.to_datetime) if new == "empty"
+    in nil
+      nil
     end
   end
 
