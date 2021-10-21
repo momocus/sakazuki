@@ -60,9 +60,6 @@ gem "elasticsearch", ">= 7.13", "< 7.14"
 gem "elasticsearch-model", github: "indirect/elasticsearch-rails"
 gem "elasticsearch-rails", ">= 7.1", "< 7.2"
 
-# Data Migration
-gem "data_migrate"
-
 group :development, :test do
   gem "annotate"
   # Call 'byebug' anywhere in the code to stop execution and get a debugger
