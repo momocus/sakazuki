@@ -158,8 +158,8 @@ class SakesController < ApplicationController
 
   # 作成された酒の瓶状態に応じて、酒が持つ日時データを更新する
   def create_datetime
-    @sake.update(opened_at: @sake.updated_at) unless @sake.bottle_level == "sealed"
-    @sake.update(emptied_at: @sake.updated_at) if @sake.bottle_level == "empty"
+    @sake.update(opened_at: @sake.created_at) unless @sake.bottle_level == "sealed"
+    @sake.update(emptied_at: @sake.created_at) if @sake.bottle_level == "empty"
   end
 
   # Only allow a list of trusted parameters through.
