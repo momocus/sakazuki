@@ -1,5 +1,6 @@
 <% select_pack_js(["common", "sakes/show"]) %>
 <% select_pack_style(["common", "sakes/show"]) %>
+
 <%= render("float-button") %>
 
 <h1 data-testid="<%= sake_path(@sake) %>"><%= title(@sake.name) %></h1>

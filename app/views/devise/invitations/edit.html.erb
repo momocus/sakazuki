@@ -1,5 +1,7 @@
 <% select_pack_style(%w[common devise]) %>
+
 <h1><%= title(t("devise.invitations.edit.header")) %></h1>
+
 <%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put }) do |f| %>
   <%= render("devise/shared/error_messages", resource: resource) %>
   <%= f.hidden_field(:invitation_token, readonly: true) %>
