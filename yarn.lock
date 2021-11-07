@@ -3021,12 +3021,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bootstrap@npm:>=5.1.1 <6":
-  version: 5.1.2
-  resolution: "bootstrap@npm:5.1.2"
+"bootstrap@npm:>=5.1.3 <6":
+  version: 5.1.3
+  resolution: "bootstrap@npm:5.1.3"
   peerDependencies:
     "@popperjs/core": ^2.10.2
-  checksum: 9aaf7ffa6d7a5c92323eacfd7ea726133a202eaf8a339de8f84ed279f57718710cdf5765ad95e302ffd39e9f8344c8ed8adb375599fa3ef3749990fa4f3f8ee7
+  checksum: 7d5d67897ccbcef1e282b75561b0d5e6bdc7ab1008e3680bff5979905949cd4414d08eb526c2b1437c2087f6b80f3543b029d1c5c55658029b648ef265aa1b32
   languageName: node
   linkType: hard
 
@@ -10061,7 +10061,7 @@ fsevents@~2.3.1:
     "@types/chart.js": ">=2.9.34 <3"
     "@typescript-eslint/eslint-plugin": ">=4.32.0"
     "@typescript-eslint/parser": ">=4.32.0"
-    bootstrap: ">=5.1.1 <6"
+    bootstrap: ">=5.1.3 <6"
     bootstrap-icons: ">=1.5.0"
     chart.js: ">=2.9.4 <3"
     eslint: ">=7.32.0"
