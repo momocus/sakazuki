@@ -36,7 +36,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
       - name: Install Dependencies
-        run: yarn install
+        run: |
+          yarn workspaces focus --production
+          yarn install
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
