@@ -7,14 +7,14 @@
                     style: "font-size: 1.1em;",
                     "data-testid": "edit-#{@sake.id}", }) %>
     <% end %>
-    <% if ["show", "index"].include?(controller.action_name) %>
+    <% if %w[show index].include?(controller.action_name) %>
       <%= link_to(tag.i(class: "bi-plus-circle me-2", style: "font-size: 1.05em;") + t(".new"),
                   new_sake_path,
                   { class: "btn btn-primary rounded-pill mx-1 click-nontransparent",
                     style: "font-size: 1.1em;",
                     "data-testid": "new-sake", }) %>
     <% end %>
-    <% if ["new", "create", "edit", "update"].include?(controller.action_name) %>
+    <% if %w[new create edit update].include?(controller.action_name) %>
       <%= button_tag(type: "submit",
                      form: "sake-form",
                      class: "btn btn-primary rounded-pill mx-1 click-nontransparent",
