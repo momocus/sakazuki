@@ -23,13 +23,13 @@ message "##### Run EOF Check"
 # node packages
 
 message "##### Run ESLint"
-yarn lint:eslint
+yarn run lint:eslint
 
 message "##### Run markdownlint"
-yarn lint:markdownlint
+yarn run lint:markdownlint
 
 message "##### Run stylelint"
-yarn lint:stylelint
+yarn run lint:stylelint
 
 # gems
 

@@ -29,11 +29,11 @@ jobs:
     - name: Install Dependencies
       run: yarn install
     - name: Run ESLint
-      run: yarn lint:eslint
+      run: yarn run lint:eslint
     - name: Run Markdownlint
-      run: yarn lint:markdownlint
+      run: yarn run lint:markdownlint
     - name: Run Stylelint
-      run: yarn lint:stylelint
+      run: yarn run lint:stylelint
 
     # lint by rubocop
     - name: Set up Ruby
