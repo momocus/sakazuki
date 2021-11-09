@@ -33,8 +33,10 @@ module.exports = {
         "prettier",
       ],
       rules: {
-        "@typescript-eslint/no-unused-vars": "off",
-        "@typescript-eslint/no-unused-vars-experimental": "warn",
+        "@typescript-eslint/no-unused-vars": [
+          "warn",
+          { argsIgnorePattern: "^_" },
+        ],
       },
     },
   ],
