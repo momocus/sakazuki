@@ -56,5 +56,5 @@ yarn-debug.log*
 /.yardoc/
 /doc/
 
-# Ignore uploaded images and files compiled by webpacker
-/public
+# Ignore uploaded images in development environment
+/public/uploads/
