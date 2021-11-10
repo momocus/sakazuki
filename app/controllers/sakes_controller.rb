@@ -149,17 +149,19 @@ class SakesController < ApplicationController
   def update_datetime
     case @sake.saved_change_to_attribute(:bottle_level)
     in [old, new]
-      @sake.update(opened_at: @sake.updated_at) if old == "sealed"
-      @sake.update(emptied_at: @sake.updated_at) if new == "empty"
+      @sake.assign_attributes(opened_at: @sake.updated_at) if old == "sealed"
+      @sake.assign_attributes(emptied_at: @sake.updated_at) if new == "empty"
     in nil
       nil
     end
+    @sake.save
   end
 
   # 作成された酒の瓶状態に応じて、酒が持つ日時データを更新する
   def create_datetime
-    @sake.update(opened_at: @sake.created_at) unless @sake.bottle_level == "sealed"
-    @sake.update(emptied_at: @sake.created_at) if @sake.bottle_level == "empty"
+    @sake.assign_attributes(opened_at: @sake.created_at) unless @sake.bottle_level == "sealed"
+    @sake.assign_attributes(emptied_at: @sake.created_at) if @sake.bottle_level == "empty"
+    @sake.save
   end
 
   # Only allow a list of trusted parameters through.
