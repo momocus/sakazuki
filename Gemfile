@@ -10,7 +10,7 @@ gem "puma"
 # Use SCSS for stylesheets
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 # Do not update, see https://github.com/momocus/sakazuki/milestone/1
-gem "webpacker", "= 5.4.0"
+gem "webpacker", "= 5.4.3"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "jbuilder"
 
