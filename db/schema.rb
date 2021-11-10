@@ -15,9 +15,6 @@ ActiveRecord::Schema.define(version: 2021_10_04_074321) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "data_migrations", primary_key: "version", id: :string, force: :cascade do |t|
-  end
-
   create_table "photos", force: :cascade do |t|
     t.string "image"
     t.integer "sake_id"
