@@ -37,5 +37,7 @@ ja:
         price_unit: 円
         size: 内容量(ml)
         memo: 備考
-        created_at: 登録日
-        update_at: 更新日
+        created_at: 登録した日
+        updated_at: 更新日
+        opened_at: 開けた日
+        emptied_at: 飲みきった日

@@ -12,6 +12,7 @@
 #  bottle_level     :integer          default("sealed")
 #  brew_year        :date
 #  color            :string
+#  emptied_at       :datetime         default(Fri, 01 Jan 2021 00:00:00.000000000 JST +09:00), not null
 #  genryomai        :string
 #  hiire            :integer          default("unknown")
 #  kakemai          :string
@@ -22,6 +23,7 @@
 #  nigori           :string
 #  nihonshudo       :float
 #  note             :text
+#  opened_at        :datetime         default(Fri, 01 Jan 2021 00:00:00.000000000 JST +09:00), not null
 #  price            :integer
 #  roka             :string
 #  sando            :float
@@ -56,6 +58,18 @@ RSpec.describe Sake do
 
     context "if kura is nil" do
       let(:sake) { FactoryBot.build(:sake, kura: nil) }
+
+      it { is_expected.to be_falsy }
+    end
+
+    context "if opened_at is nil" do
+      let(:sake) { FactoryBot.build(:sake, opened_at: nil) }
+
+      it { is_expected.to be_falsy }
+    end
+
+    context "if emptied_at is nil" do
+      let(:sake) { FactoryBot.build(:sake, emptied_at: nil) }
 
       it { is_expected.to be_falsy }
     end

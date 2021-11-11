@@ -12,6 +12,7 @@
 #  bottle_level     :integer          default("sealed")
 #  brew_year        :date
 #  color            :string
+#  emptied_at       :datetime         default(Fri, 01 Jan 2021 00:00:00.000000000 JST +09:00), not null
 #  genryomai        :string
 #  hiire            :integer          default("unknown")
 #  kakemai          :string
@@ -22,6 +23,7 @@
 #  nigori           :string
 #  nihonshudo       :float
 #  note             :text
+#  opened_at        :datetime         default(Fri, 01 Jan 2021 00:00:00.000000000 JST +09:00), not null
 #  price            :integer
 #  roka             :string
 #  sando            :float
@@ -121,6 +123,8 @@ class Sake < ApplicationRecord
   validates :hiire, presence: true
   validates :price, numericality: { allow_nil: true, only_integer: true }
   validates :size, numericality: true
+  validates :opened_at, presence: true
+  validates :emptied_at, presence: true
 
   # rubocop:disable Layout/LineLength
   ransack_alias :all_text, :aroma_impression_or_awa_or_color_or_genryomai_or_kakemai_or_kobo_or_kura_or_name_or_nigori_or_note_or_roka_or_season_or_shibori_or_taste_impression_or_todofuken
