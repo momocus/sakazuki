@@ -25,6 +25,9 @@ message "##### Run EOF Check"
 message "##### Run ESLint"
 yarn run lint:eslint
 
+message "##### Run Pritter check"
+yarn run lint:prettier
+
 message "##### Run markdownlint"
 yarn run lint:markdownlint
 
