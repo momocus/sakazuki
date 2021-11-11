@@ -31,6 +31,8 @@ jobs:
         run: yarn install
       - name: Run ESLint
         run: yarn run lint:eslint
+      - name: Run Prettier check
+        run: yarn run lint:prettier
       - name: Run Markdownlint
         run: yarn run lint:markdownlint
       - name: Run Stylelint
