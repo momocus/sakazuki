@@ -1,7 +1,7 @@
 ja:
   sakes:
     create:
-      success:  "%{name} を登録しました。"
+      success: "%{name} を登録しました。"
     update:
       success: "%{name} を更新しました。"
       success_open: "%{name} を開封しました。"

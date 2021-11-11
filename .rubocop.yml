@@ -6,7 +6,7 @@ require:
   - rubocop-rspec
 
 AllCops:
-  DisabledByDefault: false      # Cookpad Styleguideの上書き
+  DisabledByDefault: false # Cookpad Styleguideの上書き
   Exclude:
     - "bin/*"
     - "db/schema.rb"
@@ -16,7 +16,7 @@ AllCops:
     - "tmp/**/*"
     - "vendor/**/*"
     - ".git/**/*"
-  NewCops: enable               # 新規追加のPendingCopsを有効化
+  NewCops: enable # 新規追加のPendingCopsを有効化
 
 # コメントをスペースで揃えるのを許す
 Layout/ExtraSpacing:
