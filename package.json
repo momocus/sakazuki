@@ -33,9 +33,9 @@
   },
   "scripts": {
     "yard": "yard doc --tag type:\"TYPE\" {lib,app,spec,ext}/**/*.rb",
-    "lint-ts": "eslint --ext .js,.jsx,.ts,.tsx ./app/packs/",
-    "lint-md": "markdownlint README.md",
-    "lint-style": "stylelint '**/*.scss' '**/*.css' --ignore-path .gitignore"
+    "lint:eslint": "eslint --ext .js,.jsx,.ts,.tsx ./app/packs/",
+    "lint:markdownlint": "markdownlint README.md",
+    "lint:stylelint": "stylelint '**/*.scss' '**/*.css' --ignore-path .gitignore"
   },
   "packageManager": "yarn@2.4.2"
 }

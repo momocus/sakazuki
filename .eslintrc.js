@@ -4,22 +4,40 @@ module.exports = {
     es2020: true,
     node: true,
   },
-  parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: "2020",
     sourceType: "module",
-    tsconfigRootDir: ".",
-    project: ["./tsconfig.json"],
   },
-  plugins: ["@typescript-eslint"],
-  extends: [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "prettier",
-  ],
+  ignorePatterns: ["/coverage/", "/public/packs*"],
+  plugins: [],
+  extends: ["eslint:recommended", "prettier"],
   rules: {
-    "@typescript-eslint/no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars-experimental": "warn",
+    indent: ["error", 2],
+    "linebreak-style": ["error", "unix"],
+    quotes: ["error", "double"],
+    semi: ["error", "never"],
   },
+  overrides: [
+    {
+      files: ["*.ts", "*.tsx"],
+      parser: "@typescript-eslint/parser",
+      parserOptions: {
+        tsconfigRootDir: ".",
+        project: ["./tsconfig.json"],
+      },
+      plugins: ["@typescript-eslint"],
+      extends: [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "prettier",
+      ],
+      rules: {
+        "@typescript-eslint/no-unused-vars": [
+          "warn",
+          { argsIgnorePattern: "^_" },
+        ],
+      },
+    },
+  ],
 }
