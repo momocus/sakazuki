@@ -25,7 +25,7 @@ RUN apt-get update -qq && \
     \
     apt-get update -qq && \
     DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
-    nodejs=12.* postgresql-client-13=13.* libpq-dev=13.* yarn=1.22.* && \
+    nodejs=12.* postgresql-client-13=13.* libpq-dev=14.* yarn=1.22.* && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     truncate -s 0 /var/log/**/*log
@@ -50,7 +50,8 @@ RUN gem update --system && \
 
 # yarn install
 COPY package.json yarn.lock .yarnrc.yml ./
-COPY .yarn/releases/yarn-2.4.2.cjs ./.yarn/releases/yarn-2.4.2.cjs
+COPY .yarn/releases/ ./.yarn/releases/
+COPY .yarn/plugins/ ./.yarn/plugins/
 RUN yarn install && yarn cache clean
 
 # Add a script to be executed every time the container starts.
