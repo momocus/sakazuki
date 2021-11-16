@@ -34,9 +34,11 @@ jobs:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ env.cache-env }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
+            ${{ runner.os }}-yarn-${{ env.cache-env }}-
       - name: Install Dependencies
-        run: yarn install
+        run: |
+          yarn workspaces focus --production
+          yarn install
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
