@@ -37,13 +37,12 @@ jobs:
 
       - name: Add refactor commit to PR
         run: |
-          # who commits
-          git config --global user.name "github-action[bot]"
-          git config --global user.email "58130806+actions-bot@users.noreply.github.com"
           # autofix
           yarn run lint:eslint:fix
           yarn run lint:prettier:fix
           bundle exec rubocop --auto-correct
-          # commit and push
+          # commit
+          git config --global user.name "github-action[bot]"
+          git config --global user.email "58130806+actions-bot@users.noreply.github.com"
           git commit --all --message="Refactor: autofix"
           git push
