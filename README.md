@@ -40,6 +40,7 @@
 - .env ファイルの作成
   - PostgreSQL の設定
   - Facebook App ID の設定（Facebook シェアボタンを使う場合）
+  - Google AdSense のクライアント ID の設定（Google AdSense を使う場合）
 
 ```console
 cp dotenv.example .env
