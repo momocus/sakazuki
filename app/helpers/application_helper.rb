@@ -15,20 +15,21 @@ module ApplicationHelper
                       type: "image/png",
                     },
                   ])
-    display_meta_tags(site: "SAKAZUKI",
-                      title: "",
-                      separator: "-",
-                      reverse: true,
-                      description: t(".description"),
-                      og: {
-                        title: :title,
-                        url: request.original_url,
-                        type: "website",
-                        image: asset_pack_path("media/images/choko.svg"),
-                        description: :description,
-                      },
-                      twitter: { card: "summary" },
-                      fb: { app_id: ENV["FB_APP_ID"] })
+    set_meta_tags(site: "SAKAZUKI",
+                  title: "",
+                  separator: "-",
+                  reverse: true,
+                  description: t(".description"),
+                  og: {
+                    title: :title,
+                    url: request.original_url,
+                    type: "website",
+                    image: asset_pack_path("media/images/choko.svg"),
+                    description: :description,
+                  },
+                  twitter: { card: "summary" })
+    set_meta_tags(fb: { app_id: ENV["FB_APP_ID"] }) if ENV["FB_APP_ID"]
+    display_meta_tags
   end
 
   # rubocop:enable Metrics/MethodLength

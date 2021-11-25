@@ -17,6 +17,8 @@ module SnsHelper
   # @return [String] 複数のHTMLタグ
   # rubocop:disable Metrics/MethodLength
   def share_facebook_button
+    return unless ENV["FB_APP_ID"]
+
     # share button
     tags = tag.div(class: "fb-share-button",
                    data: {
