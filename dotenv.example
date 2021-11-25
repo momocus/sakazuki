@@ -3,7 +3,7 @@
 # Configurations of PostgreSQL.
 
 # Hostname of PostgreSQL. default is 'localhost'.
-POSTGRES_HOSTNAME=localhost
+# POSTGRES_HOSTNAME=localhost
 
 # User name and password to access PostgreSQL.
 POSTGRES_USERNAME=
@@ -12,8 +12,9 @@ POSTGRES_PASSWORD=
 # Configurations of Elasticsearch.
 
 # Hostname of Elasticsearch. default is 'http://localhost:9200'.
-ELASTICSEARCH_HOSTS=http://localhost:9200
+# ELASTICSEARCH_HOSTS=http://localhost:9200
 
 # Configurations of Open Graph
 
-FB_APP_ID=
+# Facebook App ID
+# FB_APP_ID=
