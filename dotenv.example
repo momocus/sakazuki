@@ -18,3 +18,8 @@ POSTGRES_PASSWORD=
 
 # Facebook App ID
 # FB_APP_ID=
+
+# Configurations of Google AdSense
+
+# Google AdSense client ID
+# GOOGLE_ADSENSE_CLIENT=ca-pub-00000
