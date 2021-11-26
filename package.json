@@ -34,6 +34,8 @@
   "scripts": {
     "yard": "yard doc --tag type:\"TYPE\" {lib,app,spec,ext}/**/*.rb",
     "lint:eslint": "eslint --ext .js,.jsx,.ts,.tsx ./app/packs/",
+    "lint:prettier": "prettier --check .",
+    "lint:prettier:fix": "prettier --write .",
     "lint:markdownlint": "markdownlint README.md",
     "lint:stylelint": "stylelint '**/*.scss' '**/*.css' --ignore-path .gitignore"
   },

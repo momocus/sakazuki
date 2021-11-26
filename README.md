@@ -37,9 +37,9 @@
 - 依存関係のインストール
   - `bundle install`
   - `yarn install`
-- .envファイルの作成
-  - PostgreSQLの設定
-  - Facebook App IDの設定（Facebookシェアボタンを使う場合）
+- .env ファイルの作成
+  - PostgreSQL の設定
+  - Facebook App ID の設定（Facebook シェアボタンを使う場合）
 
 ```console
 cp dotenv.example .env
@@ -65,14 +65,14 @@ User.create!(
 )
 ```
 
-- DBの作成
+- DB の作成
   - `bundle exec rails db:create`
   - `bundle exec rails db:migrate`
 - 管理者ユーザの作成
   - `bundle exec rails db:seed`
 - サーバの起動
   - `bundle exec rails server`
-- SAKAZUKIへのアクセス
+- SAKAZUKI へのアクセス
   - <http://localhost:3000/>にアクセス
   - デフォルトか前項内容でログイン
     - デフォルトメールアドレス: `example@example.com`
@@ -80,16 +80,16 @@ User.create!(
 
 ### How to recieve EMail from SAKAZUKI in development environment
 
-Development環境において、SAKAZUKIからのメール通知はletter_openerで確認する。
+Development 環境において、SAKAZUKI からのメール通知は letter_opener で確認する。
 
 - <http://localhost:3000/letter_opener>にアクセス
 
 ## How to deploy to Heroku
 
-SAKAZUKIのProduction環境はHerokuを対象にしている。
-このときSAKAZUKIは画像をCloudinaryにアップロードする。
-SAKAZUKIをHerokuで動かすには、メールとCloudinaryの設定がいる。
-これらの設定はRailsのcredentialsを使って設定する。
+SAKAZUKI の Production 環境は Heroku を対象にしている。
+このとき SAKAZUKI は画像を Cloudinary にアップロードする。
+SAKAZUKI を Heroku で動かすには、メールと Cloudinary の設定がいる。
+これらの設定は Rails の credentials を使って設定する。
 
 ```console
 $ rm config/credentials/production.yml.enc config/credentials/production.key  # デフォルトの設定の削除
@@ -100,43 +100,44 @@ $ bundle exec rails credentials:edit --environment production
 ```yaml
 # config/credentials/production.yml.encの設定例
 mail:
-    smtp: "smtp.gmail.com"
-    domain: "gmail.com"
-    port: 587
-    user_name: "[YOUR MAIL ADDRESS]@gmail.com"
-    password: "[YOUR MAIL PASSWORD]"
+  smtp: "smtp.gmail.com"
+  domain: "gmail.com"
+  port: 587
+  user_name: "[YOUR MAIL ADDRESS]@gmail.com"
+  password: "[YOUR MAIL PASSWORD]"
 cloudinary:
-    cloud_name: [YOUR CLOUD NAME]
-    api_key: [YOUR API KEY]
-    api_secret: [YOUR API SECRET]
-    enhance_image_tag: true
-    static_file_support: false
+  cloud_name: [YOUR CLOUD NAME]
+  api_key: [YOUR API KEY]
+  api_secret: [YOUR API SECRET]
+  enhance_image_tag: true
+  static_file_support: false
 ```
 
-- CredentialsのKeyをHerokuに登録
-  - heroku-cliが必要
+- Credentials の Key を Heroku に登録
+  - heroku-cli が必要
 
 ```console
 $ heroku config:set RAILS_MASTER_KEY=$(cat config/credentials/production.key)
 ...
 ```
 
-- HerokuにSAKAZUKIをデプロイする
+- Heroku に SAKAZUKI をデプロイする
 
 ## How to develop with Docker
 
-レポジトリをDocker Bindするため、レポジトリをWSLファイルシステムに置くと動きません。
+レポジトリを Docker Bind するため、レポジトリを WSL ファイルシステムに置くと動きません。
 
-- Dockerイメージのビルド
+- Docker イメージのビルド
 
 ```console
 $ docker-compose build
 ...
 ```
 
-- PostgreSQLコンテナ、ElasticSearchコンテナの初期設定
+- PostgreSQL コンテナ、ElasticSearch コンテナの初期設定
 
 <!-- markdownlint-disable MD013 -->
+
 ```console
 $ docker-compose run --rm web bundle exec rails db:create
 Creating volume "sakazuki_db_storage" with local driver
@@ -166,20 +167,21 @@ Creating sakazuki_es_run ... done
 [=================================================] 100%??
 -> Installed analysis-kuromoji
 ```
+
 <!-- markdownlint-enable MD013 -->
 
-- Dockerイメージの起動
+- Docker イメージの起動
 
 ```console
 $ docker-compose up
 ...
 ```
 
-- Gem/Node Packageの更新があった場合は、`docker-compose build`でイメージを更新する
+- Gem/Node Package の更新があった場合は、`docker-compose build`でイメージを更新する
 
 ## How to Contribute
 
-- GitHubのIssue/Pull Requestにて受けつけています
+- GitHub の Issue/Pull Request にて受けつけています
   - 現状では少数開発なので、受け入れるレベルは明確化されていません
-- Pull RequestはGitHub Actionsを通してください
+- Pull Request は GitHub Actions を通してください
   - 手動でチェックを走らせる場合は`cli-scripts/run-all-checks.sh`で実行できます
