@@ -1,4 +1,9 @@
 /.yarn/
 /coverage/
-/public/
+/doc/
+/node_modules/
+/public/packs/
+/public/packs-test/
+/public/assets/
 /tmp/
+/vendor/

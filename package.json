@@ -38,7 +38,9 @@
     "lint:prettier": "prettier --check .",
     "lint:prettier:fix": "prettier --write .",
     "lint:markdownlint": "markdownlint README.md",
-    "lint:stylelint": "stylelint '**/*.scss' '**/*.css' --ignore-path .gitignore"
+    "lint:markdownlint:fix": "yarn run lint:markdownlint --fix",
+    "lint:stylelint": "stylelint '**/*.scss' '**/*.css' --ignore-path .gitignore",
+    "lint:stylelint:fix": "yarn run stylelint --fix"
   },
   "packageManager": "yarn@3.1.0"
 }
