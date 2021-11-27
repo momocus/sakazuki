@@ -33,7 +33,8 @@
   },
   "scripts": {
     "yard": "yard doc --tag type:\"TYPE\" {lib,app,spec,ext}/**/*.rb",
-    "lint:eslint": "eslint --ext .js,.jsx,.ts,.tsx ./app/packs/",
+    "lint:eslint": "eslint --ignore-path .prettierignore --ext .js,.ts .",
+    "lint:eslint:fix": "yarn run lint:eslint --fix",
     "lint:prettier": "prettier --check .",
     "lint:prettier:fix": "prettier --write .",
     "lint:markdownlint": "markdownlint README.md",
