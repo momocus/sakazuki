@@ -39,8 +39,11 @@ jobs:
         run: |
           # autofix
           yarn run lint:eslint:fix
+          yarn run lint:markdownlint:fix
+          yarn run lint:stylelint:fix
           yarn run lint:prettier:fix
           bundle exec rubocop --auto-correct
+          bundle exec erblint --lint-all --autocorrect
           # commit
           git config --global user.name "github-action[bot]"
           git config --global user.email "58130806+actions-bot@users.noreply.github.com"
