@@ -2,7 +2,9 @@
 <% select_pack_style(%w[common sakes/show]) %>
 
 <%# ページのサムネイルをセット %>
-<% set_meta_tags(og: { image: @sake.photos.first.image.thumb.url }) if @sake.photos.any? %>
+<% set_meta_tags(
+  og: {image: { _: @sake.photos.first.image.thumb.url, width: 600, height: 600 }}
+  ) if @sake.photos.any? %>
 
 <%= render("float-button") %>
 
