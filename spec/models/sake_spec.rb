@@ -42,10 +42,12 @@
 require "rails_helper"
 
 RSpec.describe Sake do
-  let!(:sealed_sake) { FactoryBot.create(:sake, bottle_level: "sealed", size: 720) }
-  let!(:opened_sake) { FactoryBot.create(:sake, bottle_level: "opened", size: 1800) }
-  let!(:impressed_sake) { FactoryBot.create(:sake, bottle_level: "opened", aroma_value: 1, taste_value: 2, size: 1800) }
-  let!(:empty_sake) { FactoryBot.create(:sake, bottle_level: "empty", size: 300) }
+  let!(:sealed_sake) { FactoryBot.create(:sake, bottle_level: "sealed", size: 720, alcohol: 15) }
+  let!(:opened_sake) { FactoryBot.create(:sake, bottle_level: "opened", size: 1800, alcohol: 16) }
+  let!(:impressed_sake) {
+    FactoryBot.create(:sake, bottle_level: "opened", aroma_value: 1, taste_value: 2, size: 1800, alcohol: 17)
+  }
+  let!(:empty_sake) { FactoryBot.create(:sake, bottle_level: "empty", size: 300, alcohol: 18) }
 
   describe "validates" do
     subject { sake.save }
@@ -125,6 +127,22 @@ RSpec.describe Sake do
       it "returns 4320 including empty bottle" do
         # 720 + 1800 + 1800 + 300
         expect(described_class.alcohol_stock(include_empty: true)).to eq(4620)
+      end
+    end
+  end
+
+  describe "Sake.pure_ethanol" do
+    context "without argument" do
+      it "returns 405.0" do
+        # 720*15/100 + 1800*16/100 /2 + 1800*17/100 /2
+        expect(described_class.pure_ethanol).to be_within(0.01).of(405)
+      end
+    end
+
+    context "with include_empty: true" do
+      it "returns 756.0" do
+        # 720*15/100 + 1800*16/100 + 1800*17/100 + 300*18/100
+        expect(described_class.pure_ethanol(include_empty: true)).to be_within(0.01).of(756)
       end
     end
   end
