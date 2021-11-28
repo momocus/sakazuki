@@ -4,7 +4,13 @@
 <%= render("float-button") %>
 
 <% include_empty = params.dig(:q, :bottle_level_not_eq) == bottom_bottle.to_s %>
-<h1><%= title("#{t('.title')} - #{to_shakkan(Sake.alcohol_stock(include_empty: include_empty))}") %></h1>
+<h1>
+  <%= title("#{t('.title')} - "\
+            "#{to_shakkan(Sake.alcohol_stock(include_empty: include_empty))} - "\
+            "#{Sake.pure_ethanol(include_empty: include_empty).round} ml") %>
+</h1>
+
+<% raise %>
 
 <%= search_form_for(@searched, { class: "row my-2 align-items-center" }) do |f| %>
   <div class="col input-group">
