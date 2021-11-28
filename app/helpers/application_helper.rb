@@ -50,4 +50,19 @@ module ApplicationHelper
       stylesheet_pack_tag(*packs, media: "all", "data-turbolinks-track": "reload")
     end
   end
+
+  # Google AdSenseのscriptタグを書き出す
+  #
+  # Production環境の場合のみscriptタグを書き出す。
+  # 引数のクライアントIDの方が.envファイルのクライアントIDよりも優先される。
+  #
+  # @param client [String] "ca-pub-12345"のようなGoogle AdSenseのクライアントID
+  # @return [String] Google AdSense用のscriptタグ
+  def adsense_tags(client = nil)
+    return unless Rails.env.production?
+
+    client ||= ENV["GOOGLE_ADSENSE_CLIENT"]
+    src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=#{client}"
+    client ? tag.script(async: "async", src: src, crossorigin: "anonymous") : ""
+  end
 end
