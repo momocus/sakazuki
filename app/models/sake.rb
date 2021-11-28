@@ -162,4 +162,19 @@ class Sake < ApplicationRecord
       where(bottle_level: "sealed").sum(:size) + (where(bottle_level: "opened").sum(:size) / 2)
     end
   end
+
+  # 在庫の酒に対するアルコール換算の総量をmlで返す
+  #
+  # 開封済みのお酒は瓶の半量が残っているとして概算する。
+  #
+  # @param include_empty [Boolean] trueなら空瓶も含めた総量を計算する
+  # @return [Float] 在庫酒のアルコール換算の総量[ml]
+  def self.pure_ethanol(include_empty: false)
+    to_pure_ethanol = "size * alcohol / 100"
+    if include_empty
+      all.sum(to_pure_ethanol)
+    else
+      where(bottle_level: "sealed").sum(to_pure_ethanol) + (where(bottle_level: "opened").sum(to_pure_ethanol) / 2)
+    end
+  end
 end
