@@ -1,39 +1,47 @@
 module ApplicationHelper
+  # サイトデフォルト設定のメタタグのハッシュを取得する
+  #
+  # @return [Hash] meta_tagsで利用できるハッシュ
   # rubocop:disable Metrics/MethodLength
-  def seo_meta_tags
-    set_meta_tags(icon: [
-                    {
-                      rel: "apple-touch-icon-precomposed",
-                      sizes: "180x180",
-                      href: asset_pack_path("media/images/apple-touch-icon.png"),
-                      type: "image/png",
-                    },
-                    {
-                      rel: "icon",
-                      sizes: "32x32",
-                      href: asset_pack_path("media/images/favicon-32x32.png"),
-                      type: "image/png",
-                    },
-                  ],
-                  site: "SAKAZUKI",
-                  title: "",
-                  separator: "-",
-                  reverse: true,
-                  description: t(".description"),
-                  og: {
-                    title: :title,
-                    url: request.original_url,
-                    type: "website",
-                    image: {
-                      _: asset_pack_path("media/images/choko.png"),
-                      width: 600,
-                      height: 600,
-                    },
-                    description: :description,
-                  },
-                  twitter: { card: "summary" })
-    set_meta_tags(fb: { app_id: ENV["FB_APP_ID"] }) if ENV["FB_APP_ID"]
-    display_meta_tags
+  def default_meta_tags
+    {
+      icon: [
+        {
+          rel: "apple-touch-icon-precomposed",
+          sizes: "180x180",
+          href: asset_pack_path("media/images/apple-touch-icon.png"),
+          type: "image/png",
+        },
+        {
+          rel: "icon",
+          sizes: "32x32",
+          href: asset_pack_path("media/images/favicon-32x32.png"),
+          type: "image/png",
+        },
+      ],
+      site: "SAKAZUKI",
+      title: "",
+      separator: "-",
+      reverse: true,
+      description: t(".description"),
+      og: {
+        title: :title,
+        url: request.original_url,
+        type: "website",
+        image: {
+          _: asset_pack_path("media/images/choko.png"),
+          width: 600,
+          height: 600,
+        },
+        description: :description,
+      },
+      twitter: {
+        card: "summary",
+      },
+      fb: {
+        app_id: ENV["FB_APP_ID"].presence,
+      },
+    }
   end
 
   # rubocop:enable Metrics/MethodLength
