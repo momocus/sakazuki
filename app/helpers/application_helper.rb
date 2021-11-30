@@ -24,7 +24,11 @@ module ApplicationHelper
                     title: :title,
                     url: request.original_url,
                     type: "website",
-                    image: asset_pack_path("media/images/choko.svg"),
+                    image: {
+                      _: asset_pack_path("media/images/choko.png"),
+                      width: 600,
+                      height: 600,
+                    },
                     description: :description,
                   },
                   twitter: { card: "summary" })

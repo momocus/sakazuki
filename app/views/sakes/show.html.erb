@@ -1,6 +1,9 @@
 <% select_pack_js(%w[common sakes/show]) %>
 <% select_pack_style(%w[common sakes/show]) %>
 
+<%# ページのサムネイルをセット %>
+<% set_meta_tags(og: { image: { _: @sake.photos.first.image.thumb.url, width: 600, height: 600 } }) if @sake.photos.any? %>
+
 <%= render("float-button") %>
 
 <h1 data-testid="<%= sake_path(@sake) %>"><%= title(@sake.name) %></h1>
@@ -42,8 +45,6 @@
       <% end %>
     </div>
   </div>
-  <%# tweet用のサムネイルをセット %>
-  <% set_meta_tags(og: { image: @sake.photos.first.image.thumb.url }) if @sake.photos.any? %>
 
   <div class="show-label">
     <b><%= Sake.human_attribute_name(:alcohol) %></b>
