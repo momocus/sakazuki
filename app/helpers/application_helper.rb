@@ -29,7 +29,7 @@ module ApplicationHelper
         url: request.original_url,
         type: "website",
         image: {
-          _: asset_pack_path("media/images/choko.png"),
+          _: "#{request.base_url}#{asset_pack_path('media/images/choko.png')}",
           width: 600,
           height: 600,
         },
