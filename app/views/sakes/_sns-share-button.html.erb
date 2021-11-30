@@ -1,8 +1,17 @@
+<%# Tweet button  %>
+<a class="twitter-share-button"
+  href="https://twitter.com/intent/tweet"
+  data-text="<%= t("helper.tweet.text", sake: sake) %>"
+  data-hashtags="SAKAZUKI"
+  data-show-count="false">
+  Tweet
+</a>
+<script async="async" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 <%# Facebook share button %>
 <div class="fb-share-button"
   data-href="<%= request.original_url %>"
   data-layout="button_count">
-  share
 </div>
 
 <%# Load Facebook SDK for JavaScript %>
