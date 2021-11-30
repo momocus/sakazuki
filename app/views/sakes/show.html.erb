@@ -12,7 +12,7 @@
 <%= tweet_button(t("helper.tweet.text", sake: @sake)) %>
 
 <%# Facebookシェアボタン %>
-<%= share_facebook_button %>
+<%= render("facebook-share-button") %>
 
 <%# 表示義務ありのラベル情報 %>
 <h2 class="my-2"><%= t(".labelinfo") %></h2>

@@ -38,9 +38,6 @@ module ApplicationHelper
       twitter: {
         card: "summary",
       },
-      fb: {
-        app_id: ENV["FB_APP_ID"].presence,
-      },
     }
   end
 
