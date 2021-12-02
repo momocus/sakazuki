@@ -8,11 +8,8 @@
 
 <h1 data-testid="<%= sake_path(@sake) %>"><%= title(@sake.name) %></h1>
 
-<%# ツイートボタン %>
-<%= tweet_button(t("helper.tweet.text", sake: @sake)) %>
-
-<%# Facebookシェアボタン %>
-<%= share_facebook_button %>
+<%# SNSシェアボタン %>
+<%= render("sns-share-button", sake: @sake) %>
 
 <%# 表示義務ありのラベル情報 %>
 <h2 class="my-2"><%= t(".labelinfo") %></h2>

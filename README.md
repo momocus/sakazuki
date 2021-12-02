@@ -39,7 +39,6 @@
   - `yarn install`
 - .env ファイルの作成
   - PostgreSQL の設定
-  - Facebook App ID の設定（Facebook シェアボタンを使う場合）
   - Google AdSense のクライアント ID の設定（Google AdSense を使う場合）
 
 ```console
@@ -50,8 +49,6 @@ cp dotenv.example .env
 # .env
 POSTGRES_USERNAME=[YOUR POSTGRESQL NAME]
 POSTGRES_PASSWORD=[YOUR POSTGRESQL PASSWORD]
-
-FB_APP_ID=[YOUR FACEBOOK APP ID]
 ```
 
 - 管理者ユーザの設定（オプション）
