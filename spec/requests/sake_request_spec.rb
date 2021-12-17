@@ -91,10 +91,8 @@ RSpec.describe "Sakes" do
 
     describe "POST /sakes (create)" do
       # HACK: FactoryBotで作った適当なsakeを、JSON経由でhashにすることでparamsとして使う
+      #       idやcreated_atなどが含まれるが、permitされてないのでparamsで渡して問題ない
       sake_params = JSON.parse(FactoryBot.build(:sake).to_json)
-      sake_params.delete(:id)
-      sake_params.delete(:created_at)
-      sake_params.delete(:updated_at)
 
       it "returns 302 response" do
         post "/sakes", params: { sake: sake_params }
