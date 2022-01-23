@@ -25,7 +25,8 @@ class SakesController < ApplicationController
     query = params[:q].deep_dup
     to_multi_search!(query) if query[:all_text_cont]
     @searched = Sake.ransack(query)
-    @sakes = @searched.result(distinct: true).page(params[:page])
+    @sakes = @searched.result(distinct: true)
+    @sakes = @sakes.page(params[:page]) if include_empty?(params)
   end
 
   # rubocop:enable Metrics/AbcSize
@@ -100,6 +101,12 @@ class SakesController < ApplicationController
         flash[:success] = t(".success", name: deleted_name)
       }
     end
+  end
+
+  # Viewで使える用に宣言する
+  helper_method :include_empty?
+  def include_empty?(params)
+    params.dig(:q, :bottle_level_not_eq) == bottom_bottle.to_s
   end
 
   private
