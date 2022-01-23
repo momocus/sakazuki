@@ -25,7 +25,7 @@ class SakesController < ApplicationController
     query = params[:q].deep_dup
     to_multi_search!(query) if query[:all_text_cont]
     @searched = Sake.ransack(query)
-    @sakes = @searched.result(distinct: true)
+    @sakes = @searched.result.includes(:photos)
     @sakes = @sakes.page(params[:page]) if include_empty?(params)
   end
 
