@@ -149,7 +149,7 @@ class SakesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_sake
-    @sake = Sake.find(params[:id])
+    @sake = Sake.includes(:photos).find(params[:id])
   end
 
   # 酒瓶状態の変更に応じて、酒が持つ日時データを更新する
