@@ -52,6 +52,10 @@ def rename_sakagura(name)
   name.gsub(/阿部勘酒造店/, "阿部勘酒造株式会社") # 2017年に社名変更
 end
 
+def add_sakagura(names)
+  names.append(%w[三重県 井村屋株式会社]) # 2020年に株式会社福井酒造上を合併し、2021年に酒造り開始
+end
+
 # SakeTimesの都道府県の酒蔵一覧ページから、都道府県名と酒蔵の名前の組を作る
 #
 # @example 実行例
@@ -101,6 +105,7 @@ end
 def main
   regions = request_regions
   names = request_names(regions)
+  names = add_sakagura(names)
   ndjson = to_ndjson(names)
   write_ndjson(ndjson)
 end
