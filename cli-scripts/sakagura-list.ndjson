@@ -435,7 +435,7 @@
 {"name":"泉橋酒造株式会社","region":"神奈川県"}
 {"name":"井上酒造株式会社","region":"神奈川県"}
 {"name":"大矢孝酒造株式会社","region":"神奈川県"}
-{"name":"有限会社金井酒造店","region":"神奈川県"}
+{"name":"株式会社金井酒造店","region":"神奈川県"}
 {"name":"合資会社川西屋酒造店","region":"神奈川県"}
 {"name":"吉川醸造株式会社","region":"神奈川県"}
 {"name":"久保田酒造株式会社","region":"神奈川県"}
@@ -1054,8 +1054,8 @@
 {"name":"ヤヱガキ酒造株式会社","region":"兵庫県"}
 {"name":"安井酒造有限会社","region":"兵庫県"}
 {"name":"株式会社安福又四郎商店","region":"兵庫県"}
-{"name":"八鹿酒造株式会社","region":"兵庫県"}
 {"name":"山名酒造株式会社","region":"兵庫県"}
+{"name":"八鹿酒造有限会社","region":"兵庫県"}
 {"name":"稲田酒造合名会社","region":"奈良県"}
 {"name":"今西酒造株式会社","region":"奈良県"}
 {"name":"株式会社今西清兵衛商店","region":"奈良県"}
@@ -1091,7 +1091,7 @@
 {"name":"芳村酒造株式会社","region":"奈良県"}
 {"name":"尾崎酒造株式会社","region":"和歌山県"}
 {"name":"岸野酒造本家","region":"和歌山県"}
-{"name":"株式会社九重雑賀","region":"和歌山県"}
+{"name":"株式会社九重雜賀","region":"和歌山県"}
 {"name":"島本酒造場","region":"和歌山県"}
 {"name":"祝砲酒造株式会社","region":"和歌山県"}
 {"name":"株式会社世界一統","region":"和歌山県"}
@@ -1566,3 +1566,4 @@
 {"name":"YAEGAKI Corporation of USA","region":"北米"}
 {"name":"Rebel Sake","region":"北米"}
 {"name":"YK3 Sake Producer Inc.","region":"北米"}
+{"name":"井村屋株式会社","region":"三重県"}
