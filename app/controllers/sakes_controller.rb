@@ -25,7 +25,7 @@ class SakesController < ApplicationController
     query = params[:q].deep_dup
     to_multi_search!(query) if query[:all_text_cont]
     @searched = Sake.ransack(query)
-    @sakes = @searched.result(distinct: true)
+    @sakes = @searched.result.includes(:photos)
     @sakes = @sakes.page(params[:page]) if include_empty?(params)
   end
 
@@ -149,7 +149,7 @@ class SakesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_sake
-    @sake = Sake.find(params[:id])
+    @sake = Sake.includes(:photos).find(params[:id])
   end
 
   # 酒瓶状態の変更に応じて、酒が持つ日時データを更新する
