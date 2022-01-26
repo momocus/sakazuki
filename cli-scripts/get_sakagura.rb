@@ -47,9 +47,13 @@ end
 # 酒蔵の社名の変更を適用する
 #
 # @param name [String] 酒蔵名
-# @return [String] 社名変更があった場合は、それを適用した酒蔵名
-def fix_sakagura_name(name)
-  name.gsub(/阿部勘酒造店/, "阿部勘酒造株式会社")
+# @return [String] 社名変更を適用した酒蔵名
+def rename_sakagura(name)
+  name.gsub(/阿部勘酒造店/, "阿部勘酒造株式会社") # 2017年に社名変更
+end
+
+def add_sakagura(names)
+  names.append(%w[三重県 井村屋株式会社]) # 2020年に株式会社福井酒造上を合併し、2021年に酒造り開始
 end
 
 # SakeTimesの都道府県の酒蔵一覧ページから、都道府県名と酒蔵の名前の組を作る
@@ -66,7 +70,7 @@ def request_names(regions)
     html = URI.parse(url).open
     doc = Nokogiri::HTML(html).css("table span.main a")
     names = doc.map { |table|
-      fix_sakagura_name(table.content)
+      rename_sakagura(table.content)
     }
     [region].product(names)
   }.flatten(1)
@@ -101,6 +105,7 @@ end
 def main
   regions = request_regions
   names = request_names(regions)
+  names = add_sakagura(names)
   ndjson = to_ndjson(names)
   write_ndjson(ndjson)
 end
