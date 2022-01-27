@@ -330,6 +330,14 @@
         aria-labelledby="headingTasteInfo" data-bs-parent="#accordionTasteInfo">
         <div class="accordion-body">
           <div class="form-row">
+            <%= form.label(:rating, { class: "form-label" }) %>
+            <div class="col">
+              <div id="rater"></div>
+              <%= form.number_field(:rating, hidden: true, class: "form-control", max: 5, min: 0, step: 1) %>
+            </div>
+          </div>
+
+          <div class="form-row">
             <%= form.label(:color, { class: "form-label" }) %>
             <div class="col">
               <%= form.text_field(:color, { class: "form-control" }) %>
