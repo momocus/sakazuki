@@ -130,6 +130,12 @@ class Sake < ApplicationRecord
     bottle_level == "opened"
   end
 
+  # 酒が空か
+  # @return [Boolean] 酒が空ならture、未開封や開封済みならfalse
+  def empty?
+    bottle_level == "empty"
+  end
+
   # 酒が未評価か
   # @return [Boolean] 酒の味・香りが評価されていないとtrue、評価済みならfalse
   def unimpressed?

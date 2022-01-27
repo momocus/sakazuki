@@ -5,11 +5,21 @@ ja:
       all_bottles: 空瓶を表示
       edit: 編集
     show:
-      title: 詳細
       delete: 削除
       confirm_delete: 本当に削除しますか？
-      labelinfo: ラベル
-      tasteinfo: 味わい
+      tokutei_meisho_none: 特定名称なし
+      made: 製造
+      sealed: 購入
+      opened: 開封
+      empty: 空
+      detail: 詳細
+      ingredient: 材料
+      method: 造り
+      measurement: 計測
+      review: レビュー
+      unknown: :sakes.new.unknown
+      no_awa: 炭酸なし
+      no_price: 価格不明
     drink-button:
       open: 開封する
       impress: 評価する
