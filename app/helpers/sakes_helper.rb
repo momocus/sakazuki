@@ -73,6 +73,35 @@ module SakesHelper
     end
   end
 
+  def short_kura(kura)
+    kura = kura.gsub("株式会社", "")
+    kura = kura.gsub("有限会社", "")
+    kura = kura.gsub("合名会社", "")
+    kura = kura.gsub("合資会社", "")
+    kura.gsub("合同会社", "")
+  end
+
+  def short_todofuken(todofuken)
+    todofuken = todofuken.gsub("東京都", "東京")
+    todofuken = todofuken.gsub("府", "")
+    todofuken.gsub("県", "")
+  end
+
+  def latest_at(sake)
+    case sake.bottle_level
+    when "sealed"
+      sake.created_at
+    when "opened"
+      sake.opened_at
+    when "empty"
+      sake.emptied_at
+    end
+  end
+
+  def either_highlight_or_lowlight(value)
+    value.blank? || value == "unknown" ? "fw-light text-muted" : "fs-5"
+  end
+
   private
 
   # 過去何年を酒情報に入力可能にするかの値
