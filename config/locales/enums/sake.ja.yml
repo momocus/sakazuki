@@ -3,7 +3,7 @@ ja:
     sake:
       bottle_level:
         sealed: 未開封
-        opened: 開封済
+        opened: 開封
         empty: 空
       hiire:
         unknown: 不明
