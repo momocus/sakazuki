@@ -211,6 +211,13 @@
 
 <div class="row">
   <div class="show-label">
+    <b><%= Sake.human_attribute_name(:rating) %></b>
+  </div>
+  <div class="show-body" data-testid="rating">
+    <%= render("rating", sake: @sake) %>
+  </div>
+
+  <div class="show-label">
     <b><%= Sake.human_attribute_name(:color) %></b>
   </div>
   <div class="show-body">
