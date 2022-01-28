@@ -37,18 +37,21 @@
   @extend .col;
 }
 
-div.form-label + div input[type="checkbox"] {
+.select-delete-photos input[type="checkbox"] {
   display: none;
 }
 
-div.form-label + div input:checked[type="checkbox"] + label img {
-  border: 10px solid #f66;
+.select-delete-photos input[type="checkbox"]:checked + label img {
+  @extend .border-danger;
+  @extend .border-5;
 }
 
-div.form-label + div input:checked[type="checkbox"] + label::after {
-  content: "❌";
-  font-size: 40px;
+.select-delete-photos input[type="checkbox"]:checked + label::after {
+  @extend .text-danger;
+  @extend .fs-1;
+
+  content: "✖";
   display: block;
-  margin-top: -40px;
-  margin-left: -10px;
+  margin-top: -3ex;
+  margin-left: 1ex;
 }

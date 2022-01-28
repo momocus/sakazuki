@@ -62,13 +62,13 @@
             <div class="row">
               <div class="form-label"></div>
               <div class="col">
-                <div class="row">
+                <div class="row mb-2">
                   <span class="form-text col-12">
                     <%= t(".select_delete_photo") %>
                   </span>
                   <% @sake.photos.each do |photo| %>
                     <div class="col-lg-4 col-6">
-                      <div class="form-check form-check-inline">
+                      <div class="form-check form-check-inline select-delete-photos">
                         <%= check_box_tag(photo.chackbox_name,
                                           "delete",
                                           nil,
