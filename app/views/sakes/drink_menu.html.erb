@@ -1,0 +1,7 @@
+<h1>お品書き</h1>
+
+<% @sakes.each do |sake| %>
+  <div class="col-auto">
+    <%= link_to(sake.name.to_s, sake_path(sake.id)) %>
+  </div>
+<% end %>
