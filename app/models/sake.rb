@@ -161,4 +161,18 @@ class Sake < ApplicationRecord
       where(bottle_level: "sealed").sum(:size) + (where(bottle_level: "opened").sum(:size) / 2)
     end
   end
+
+  # @type [Date] 設定値以内の日付に購入した未開封の酒を、新着と判定する
+  SEALD_NEW_LIMIT = 28.days
+  # @type [Date] 設定値以内の日付に購入した開封済の酒を、新着と判定する
+  OPENED_NEW_LIMIT = 14.days
+  # 酒が新しいか
+  # @return [Boolean] 未開封または1週間以内に購入ならture、さもなくばfalse
+  def new_arrival?
+    created_at >= if sealed?
+                    Time.zone.today.ago(SEALD_NEW_LIMIT)
+                  else
+                    Time.zone.today.ago(OPENED_NEW_LIMIT)
+                  end
+  end
 end
