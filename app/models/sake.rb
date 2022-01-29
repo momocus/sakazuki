@@ -42,6 +42,7 @@
 
 require "elasticsearch/model"
 
+# rubocop:disable Metrics/ClassLength
 class Sake < ApplicationRecord
   has_many :photos, dependent: :destroy
   enum bottle_level: {
@@ -166,6 +167,7 @@ class Sake < ApplicationRecord
   SEALD_NEW_LIMIT = 28.days
   # @type [Date] 設定値以内の日付に購入した開封済の酒を、新着と判定する
   OPENED_NEW_LIMIT = 14.days
+
   # 酒が新しいか
   # @return [Boolean] 未開封または1週間以内に購入ならture、さもなくばfalse
   def new_arrival?
@@ -176,3 +178,4 @@ class Sake < ApplicationRecord
                   end
   end
 end
+# rubocop:enable Metrics/ClassLength
