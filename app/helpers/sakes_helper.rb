@@ -73,6 +73,21 @@ module SakesHelper
     end
   end
 
+  # @type [float] 利率
+  INTEREST_RATE = 3.0
+
+  # 酒の一合当たりの値段を計算して文字列で返す
+  # 値段が計算できない場合は"時価"を返す
+  #
+  # @param price [Integer] 酒の買値(円)
+  # @param size [Integer] 酒の量(ml)
+  # @return [String] 売値(円)または時価
+  def selling_price(price, size)
+    return t("sakes.drink_menu.market_price") if price.blank? || size.blank?
+
+    (price.to_f / size * 180 * INTEREST_RATE).ceil(-1).to_i.to_s + t("activerecord.attributes.sake.price_unit")
+  end
+
   private
 
   # 過去何年を酒情報に入力可能にするかの値
@@ -96,4 +111,5 @@ module SakesHelper
   end
 
   private_constant :UNITS
+  private_constant :INTEREST_RATE
 end

@@ -109,4 +109,29 @@ RSpec.describe SakesHelper do
       expect(to_shakkan(100)).to eq("0合")
     end
   end
+
+  describe "selling_price" do
+    before do
+      # 利率を1.5にしてテスト
+      stub_const("SakesHelper::INTEREST_RATE", 1.5)
+    end
+
+    context "if first argument is nil" do
+      it "returns market price" do
+        expect(selling_price(nil, 100)).to eq(t("sakes.drink_menu.market_price"))
+      end
+    end
+
+    context "if second argument is nil" do
+      it "returns market price" do
+        expect(selling_price(100, nil)).to eq(t("sakes.drink_menu.market_price"))
+      end
+    end
+
+    context "if both argument are set" do
+      it "returns price per 180[ml]" do
+        expect(selling_price(1234, 720)).to eq("470円")
+      end
+    end
+  end
 end
