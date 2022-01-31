@@ -23,7 +23,7 @@ export type GraphP = Chart.Point | null
  */
 const middle = 3
 
-export function toGraphPoint(documentData: GraphP): GraphP {
+export function fromDomPoint(documentData: GraphP): GraphP {
   return documentData != null
     ? { x: documentData.x - middle, y: documentData.y - middle }
     : null
@@ -44,6 +44,7 @@ interface InteractiveGraph {
 
 export class TasteGraph implements InteractiveGraph {
   public graph: Chart
+  private data: GraphP
 
   /*
    * HACk:
@@ -235,14 +236,15 @@ export class TasteGraph implements InteractiveGraph {
 
   constructor(
     canvas: HTMLCanvasElement,
-    private data: GraphP,
+    domData: GraphP,
     config: { pointRadius?: number; zeroLineWidth?: number },
     private clickable: boolean = false,
     private callbackUpdate: (data: GraphP) => void = (_data) => {
       // do nothing
     }
   ) {
-    const p = this.makeChartData(toGraphPoint(data))
+    this.data = fromDomPoint(domData)
+    const p = this.makeChartData(this.data)
     const chartConfig = this.makeChartConfiguration(p, config)
     this.graph = new Chart(canvas, chartConfig)
   }
