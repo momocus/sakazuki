@@ -43,7 +43,7 @@
               <%= @sake.brew_year.year %>
               ‒
             <% end %>
-            <%= @sake.bindume_date.strftime("%Y/%m") %>
+            <%= @sake.bindume_date.strftime("%Y/%m") if @sake.bindume_date.present? %>
             <%= t(".made") %>
           </div>
         </div>
