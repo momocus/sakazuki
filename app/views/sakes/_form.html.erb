@@ -357,9 +357,15 @@
               <canvas class="mt-1" id="taste_graph"></canvas>
               <%= form.number_field(:taste_value,
                                     hidden: true,
+                                    min: 0,
+                                    max: 6,
+                                    step: 1,
                                     data: { taste_value: @sake.taste_value }) %>
               <%= form.number_field(:aroma_value,
                                     hidden: true,
+                                    min: 0,
+                                    max: 6,
+                                    step: 1,
                                     data: { aroma_value: @sake.aroma_value }) %>
             </div>
           </div>
