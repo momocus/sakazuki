@@ -86,9 +86,17 @@ export class TasteGraph implements InteractiveGraph {
     } else return null
   }
 
+  private eqGraphP(p1: GraphP, p2: GraphP) {
+    if (p1 == null && p2 == null) return true
+    else if (p1 == null || p2 == null) return false
+    else if (p1.x == p2.x && p1.y == p2.y) return true
+    else return false
+  }
+
   // JSに渡すときにthis問題を防ぐため、アロー関数で書いておく
   private onClickUpdate = (event: MouseEvent): void => {
-    const data = this.getClickedData(event)
+    let data = this.getClickedData(event)
+    if (this.data != null && this.eqGraphP(data, this.data)) data = null
     this.update(data)
   }
 
