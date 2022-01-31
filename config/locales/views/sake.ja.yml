@@ -33,9 +33,9 @@ ja:
       title: 編集
     form:
       select_delete_photo: 削除する画像を選択してください
-      labelinfo: :sakes.show.labelinfo
+      labelinfo: ラベル
       labelinfo_option: オプショナル
-      tasteinfo: :sakes.show.tasteinfo
+      tasteinfo: 味わい
       badge:
         presence: 必須
       new:
