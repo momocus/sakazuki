@@ -42,5 +42,5 @@
     "lint:stylelint": "stylelint '**/*.scss' '**/*.css' --ignore-path .gitignore",
     "lint:stylelint:fix": "yarn run lint:stylelint --fix"
   },
-  "packageManager": "yarn@3.1.0"
+  "packageManager": "yarn@3.1.1"
 }
