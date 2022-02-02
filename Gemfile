@@ -68,6 +68,8 @@ group :development, :test do
   gem "dotenv-rails"
   gem "factory_bot_rails"
   gem "letter_opener_web"
+  # parallel test
+  gem "parallel_tests"
   # useful repl pry
   gem "pry"
   gem "pry-byebug"
