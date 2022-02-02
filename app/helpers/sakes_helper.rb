@@ -46,6 +46,7 @@ module SakesHelper
 
   # @type [Array<String>]
   UNITS = %w[合 升 斗 石].freeze
+  private_constant :UNITS
 
   # 酒の量[ml]を尺貫法の体積にした文字列で返す
   #
@@ -75,6 +76,7 @@ module SakesHelper
 
   # @type [float] 利率
   INTEREST_RATE = 3.0
+  private_constant :INTEREST_RATE
 
   # 酒の一合当たりの値段を計算して文字列で返す
   # 値段が計算できない場合は"時価"を返す
@@ -109,7 +111,4 @@ module SakesHelper
   def year_range(begin_year)
     (begin_year - start_year_limit)..begin_year
   end
-
-  private_constant :UNITS
-  private_constant :INTEREST_RATE
 end
