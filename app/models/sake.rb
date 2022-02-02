@@ -181,5 +181,20 @@ class Sake < ApplicationRecord
     new_limit = sealed? ? SEALD_NEW_LIMIT : OPENED_NEW_LIMIT
     created_at.to_date >= Time.zone.today.ago(new_limit)
   end
+
+  # @type [float] 利率
+  INTEREST_RATE = 3.0
+  private_constant :INTEREST_RATE
+
+  # 酒一合当たりの売値を計算する。
+  #
+  # 酒一本あたりの価格・内容量と、設定した利率をもとに計算。一の位は切り上げ。
+  # 売値が計算できない場合はnilを返す。
+  # @return [Integer,nil] 酒一合当たりの売値またはnil
+  def selling_price
+    return nil if price.nil? || size.nil? || size.zero?
+
+    (price.to_f / size * 180 * INTEREST_RATE).ceil(-1).to_i
+  end
 end
 # rubocop:enable Metrics/ClassLength

@@ -168,4 +168,35 @@ RSpec.describe Sake do
       end
     end
   end
+
+  describe "Sake.selling_price" do
+    before do
+      # 利率を1.5にしてテスト
+      stub_const("#{described_class}::INTEREST_RATE", 1.5)
+    end
+
+    context "if price is nil" do
+      let(:sake) { FactoryBot.build(:sake, price: nil, size: 100) }
+
+      it { expect(sake.selling_price).to eq(nil) }
+    end
+
+    context "if size is nil" do
+      let(:sake) { FactoryBot.build(:sake, price: 100, size: nil) }
+
+      it { expect(sake.selling_price).to eq(nil) }
+    end
+
+    context "if size is zero" do
+      let(:sake) { FactoryBot.build(:sake, price: 100, size: 0) }
+
+      it { expect(sake.selling_price).to eq(nil) }
+    end
+
+    context "if the sake is 1234 yen and 720ml" do
+      let(:sake) { FactoryBot.build(:sake, price: 1234, size: 720) }
+
+      it { expect(sake.selling_price).to eq(470) }
+    end
+  end
 end
