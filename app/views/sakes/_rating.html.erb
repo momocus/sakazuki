@@ -1,0 +1,10 @@
+<% if sake.rating == 0 %>
+  -
+<% else %>
+  <% sake.rating.times do %>
+    <i class="bi-star-fill text-primary"></i>
+  <% end %>
+  <% (5 - sake.rating).times do %>
+    <i class="bi-star text-primary"></i>
+  <% end %>
+<% end %>

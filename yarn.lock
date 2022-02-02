@@ -9728,6 +9728,13 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"rater-js@npm:>=1.0.1 <2":
+  version: 1.0.1
+  resolution: "rater-js@npm:1.0.1"
+  checksum: 70f00b3d80b8bd27530c69ea5b2b8280c64e5d7d9d58c970114c442df489e06bedca5e14d7605e26306b987b2632ae4374200b56d0e520b12940abac6d7f06e5
+  languageName: node
+  linkType: hard
+
 "raw-body@npm:2.4.0":
   version: 2.4.0
   resolution: "raw-body@npm:2.4.0"
@@ -10247,6 +10254,7 @@ fsevents@~2.3.1:
     eslint-config-prettier: ">=8.3.0"
     markdownlint-cli: ">=0.28.1"
     prettier: ">=2.4.1"
+    rater-js: ">=1.0.1 <2"
     resolve-url-loader: ^4.0.0
     simplelightbox: ">=2.9.0 <3"
     stylelint: ">=13.13.1"

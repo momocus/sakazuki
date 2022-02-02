@@ -25,6 +25,7 @@
 #  note             :text
 #  opened_at        :datetime         default(Fri, 01 Jan 2021 00:00:00.000000000 JST +09:00), not null
 #  price            :integer
+#  rating           :integer          default(0), not null
 #  roka             :string
 #  sando            :float
 #  season           :string
@@ -125,6 +126,7 @@ class Sake < ApplicationRecord
   validates :size, numericality: true
   validates :opened_at, presence: true
   validates :emptied_at, presence: true
+  validates :rating, numericality: { only_integer: true }, inclusion: [0, 1, 2, 3, 4, 5]
 
   # rubocop:disable Layout/LineLength
   ransack_alias :all_text, :aroma_impression_or_awa_or_color_or_genryomai_or_kakemai_or_kobo_or_kura_or_name_or_nigori_or_note_or_roka_or_season_or_shibori_or_taste_impression_or_todofuken
