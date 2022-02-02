@@ -77,8 +77,8 @@
               <%= sake.todofuken %>
             </div>
           </div>
-          <div class="row m-0 mt-2 border-bottom">
-            <div class="col-auto" data-testid="bottle-level-<%= sake.id %>">
+          <div class="row m-0 mt-2 border-bottom" data-testid="bottle-level-<%= sake.id %>">
+            <div class="col-auto">
               <%= sake.bottle_level_i18n %>
             </div>
             <%= render("drink-button", sake: sake) %>
