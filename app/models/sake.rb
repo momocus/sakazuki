@@ -171,14 +171,15 @@ class Sake < ApplicationRecord
   OPENED_NEW_LIMIT = 14.days
   private_constant :OPENED_NEW_LIMIT
 
-  # 酒が新しいか
-  # @return [Boolean] 未開封または1週間以内に購入ならture、さもなくばfalse
+  # 酒が新着ならture、さもなくばfalse
+  #
+  # 下記のいずれかに当てはまる場合は新着と判定する
+  # - 未開封かつSEALD_NEW_LIMITの期間以内に購入した
+  # - 開封済かつOPENED_NEW_LIMITの期間以内に購入した
+  # @return [Boolean]
   def new_arrival?
-    created_at >= if sealed?
-                    Time.zone.today.ago(SEALD_NEW_LIMIT)
-                  else
-                    Time.zone.today.ago(OPENED_NEW_LIMIT)
-                  end
+    new_limit = sealed? ? SEALD_NEW_LIMIT : OPENED_NEW_LIMIT
+    created_at >= Time.zone.today.ago(new_limit)
   end
 end
 # rubocop:enable Metrics/ClassLength
