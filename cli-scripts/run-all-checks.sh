@@ -37,7 +37,7 @@ yarn run lint:stylelint
 # gems
 
 message "##### Run Rubocop"
-bundle exec rubocop
+bundle exec rubocop --parallel
 
 message "##### Run ERBLint"
 bundle exec erblint --lint-all

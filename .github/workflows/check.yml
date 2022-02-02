@@ -47,7 +47,7 @@ jobs:
         run: |
           bundle install
       - name: Run Rubocop
-        run: bundle exec rubocop
+        run: bundle exec rubocop --parallel
       - name: Run ERB Lint
         run: bundle exec erblint --lint-all
 
