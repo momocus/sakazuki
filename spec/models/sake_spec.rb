@@ -136,32 +136,34 @@ RSpec.describe Sake do
 
       # 1週間以内に購入した開封済の酒を、新着と判定する
       stub_const("#{described_class}::OPENED_NEW_LIMIT", 7.days)
+
+      travel_to(Time.zone.local(2022, 1, 16, 20, 30))
     end
 
     context "when sake is seald and created within 2 weeks" do
       it "returns true" do
-        sealed_new_sake = FactoryBot.build(:sake, bottle_level: "sealed", created_at: Time.zone.today.ago(14.days))
+        sealed_new_sake = FactoryBot.build(:sake, bottle_level: "sealed", created_at: Time.zone.local(2022, 1, 2, 10, 30))
         expect(sealed_new_sake.new_arrival?).to eq(true)
       end
     end
 
     context "when sake is seald and created more than 2 weeks ago" do
       it "returns false" do
-        sealed_old_sake = FactoryBot.build(:sake, bottle_level: "sealed", created_at: Time.zone.today.ago(15.days))
+        sealed_old_sake = FactoryBot.build(:sake, bottle_level: "sealed", created_at: Time.zone.local(2022, 1, 1, 10, 30))
         expect(sealed_old_sake.new_arrival?).to eq(false)
       end
     end
 
     context "when sake is opened and created within 1 week" do
       it "returns true" do
-        opened_new_sake = FactoryBot.build(:sake, bottle_level: "opened", created_at: Time.zone.today.ago(7.days))
+        opened_new_sake = FactoryBot.build(:sake, bottle_level: "opened", created_at: Time.zone.local(2022, 1, 9, 10, 30))
         expect(opened_new_sake.new_arrival?).to eq(true)
       end
     end
 
     context "when sake is opened and created more than 1 weeks ago" do
       it "returns false" do
-        opened_old_sake = FactoryBot.build(:sake, bottle_level: "opened", created_at: Time.zone.today.ago(8.days))
+        opened_old_sake = FactoryBot.build(:sake, bottle_level: "opened", created_at: Time.zone.local(2022, 1, 8, 10, 30))
         expect(opened_old_sake.new_arrival?).to eq(false)
       end
     end
