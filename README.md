@@ -66,6 +66,7 @@ User.create!(
 - DB の作成
   - `bundle exec rails db:create`
   - `bundle exec rails db:migrate`
+  - `bundle exec rake parallel:setup`、並列テストを使う場合
 - 管理者ユーザの作成
   - `bundle exec rails db:seed`
 - サーバの起動
@@ -146,6 +147,8 @@ Creating sakazuki_es_1 ... done
 Creating sakazuki_web_run ... done
 Created database 'sakazuki_development'
 Created database 'sakazuki_test'
+$ docker-compose run --rm web bundle exec rake parallel:setup
+...
 $ docker-compose run --rm web bundle exec rails db:migrate
 Creating sakazuki_web_run ... done
 ...
