@@ -38,3 +38,30 @@ h1 {
   font-size: 0.9em;
   color: #777;
 }
+
+//------ float-button ------
+
+.float-button {
+  @extend .fixed-bottom;
+  @extend .click-transparent;
+  @extend .mb-lg-4;
+  @extend .mb-2;
+
+  a {
+    @extend .click-nontransparent;
+  }
+}
+
+.float-button-primary {
+  @extend .btn;
+  @extend .btn-primary;
+  @extend .rounded-pill;
+}
+
+.float-button-secondary {
+  @extend .btn;
+  @extend .btn-secondary;
+  @extend .border-primary;
+  @extend .border;
+  @extend .rounded-pill;
+}
