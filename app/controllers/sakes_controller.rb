@@ -136,10 +136,20 @@ class SakesController < ApplicationController
     end
   end
 
-  # _formでオートコンプリートされたフォーマットから県名を取り除き、DBへ保存するフォーマットにする
+  # オートコンプリートで入力された都道府県名つき蔵名を、DBへ保存する蔵名のみに変換する
+  #
+  # "蔵名（都道府県名）"のフォーマットを想定している。
+  # フォーマット外の文字列に対する動作保証はしていない。
+  #
+  # 都道府県名は現状5文字が最長だが、念の為10文字まで対応している。
+  # これは正規表現のPolynomial regular expressionによるパフォーマンス低下を防ぐためである。
+  #
+  # @example
   #   strip_todofuken("原田酒造合資会社（愛知県）")  #=> "原田酒造合資会社"
+  # @param kura [String] 蔵名と都道府県名を含んだ文字列
+  # @return [String] 蔵名のみの文字列
   def strip_todofuken(kura)
-    kura.nil? ? kura : kura.gsub(/（.*）/, "")
+    kura.nil? ? kura : kura.sub(/（.{0, 10}）$/, "")
   end
 
   # paramsの件名つき蔵名から県名を取り除く
