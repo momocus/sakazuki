@@ -60,7 +60,7 @@
       <tr class="row m-0">
         <td class="col-lg-6 col-12">
           <div class="row m-0 border-bottom">
-            <div class="col p-0">
+            <div class="col">
               <%= link_to(sake.name, sake_path(sake), { class: "name-link" }) %>
             </div>
             <div class="col-auto">
@@ -70,18 +70,18 @@
             </div>
           </div>
           <div class="row m-0 mt-2 border-bottom">
-            <div class="col p-0">
+            <div class="col">
               <%= sake.tokutei_meisho_i18n %>
             </div>
-            <div class="col p-0">
+            <div class="col">
               <%= sake.todofuken %>
             </div>
           </div>
-          <div class="row m-0 mt-2 border-bottom">
-            <div class="col p-0" data-testid="bottle-level-<%= sake.id %>">
+          <div class="row m-0 mt-2 border-bottom" data-testid="bottle-level-<%= sake.id %>">
+            <div class="col-auto">
               <%= sake.bottle_level_i18n %>
-              <%= render("drink-button", sake: sake) %>
             </div>
+            <%= render("drink-button", sake: sake) %>
           </div>
         </td>
         <td class="col-lg-4 col-8 px-0 py-1">

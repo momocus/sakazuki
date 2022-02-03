@@ -13,12 +13,18 @@
 }
 
 .drink-button {
-  @extend .badge;
-  @extend .rounded-pill;
-  @extend .ms-2;
-  @extend .text-decoration-none;
+  @extend .col-auto;
+  @extend .pe-0;
+  @extend .d-flex;
+  @extend .align-items-center;
 
-  i {
-    @extend .me-1;
+  a {
+    @extend .badge;
+    @extend .rounded-pill;
+    @extend .text-decoration-none;
+
+    i {
+      @extend .me-1;
+    }
   }
 }
