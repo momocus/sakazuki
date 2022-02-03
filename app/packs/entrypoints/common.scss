@@ -56,6 +56,7 @@ h1 {
   @extend .btn;
   @extend .btn-primary;
   @extend .rounded-pill;
+  @extend .shadow;
 }
 
 .float-button-secondary {
@@ -64,4 +65,5 @@ h1 {
   @extend .border-primary;
   @extend .border;
   @extend .rounded-pill;
+  @extend .shadow;
 }
