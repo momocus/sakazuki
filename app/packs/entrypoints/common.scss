@@ -2,10 +2,6 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~bootstrap-icons/font/bootstrap-icons";
 
-h1 {
-  @extend .my-2;
-}
-
 .click-transparent {
   pointer-events: none;
 }
