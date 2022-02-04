@@ -1,25 +1,27 @@
-<%# Tweet button  %>
-<a class="twitter-share-button"
-  href="https://twitter.com/intent/tweet"
-  data-text="<%= t("helper.tweet.text", sake: sake) %>"
-  data-hashtags="SAKAZUKI"
-  data-show-count="false">
-  Tweet
-</a>
-<script async="async" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-<%# Facebook share button %>
-<div class="fb-share-button"
-  data-href="<%= request.original_url %>"
-  data-layout="button">
+<div class="row fs-3">
+  <div class="col-auto">
+    <%# Tweet button  %>
+    <% encoded = URI.encode_www_form(hashtags: "SAKAZUKI",
+                                     original_referer: request.base_url,
+                                     ref_src: "twsrc^tfw|twterm^share",
+                                     text: t("helper.tweet.text", sake: sake),
+                                     url: request.original_url) %>
+    <a href="https://twitter.com/intent/tweet?<%= encoded %>"
+      data-lang="ja"
+      data-show-count="false"
+      target="_blank"
+      rel="nofollow"
+      class="text-decoration-none">
+      <i class="bi-twitter" style="color: #1da1f2;"></i>
+    </a>
+  </div>
+  <div class="col-auto ps-0">
+    <%# Facebook share button %>
+    <a href="http://www.facebook.com/share.php?<%= URI.encode_www_form(u: request.original_url) %>"
+      target="_blank"
+      rel="nofollow"
+      class="text-decoration-none">
+      <i class="bi-facebook" style="color: #1877f2;"></i>
+    </a>
+  </div>
 </div>
-
-<%# Load Facebook SDK for JavaScript %>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));</script>
