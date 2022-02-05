@@ -36,6 +36,7 @@ function loadKuraTodofuken() {
 
   if (kuraForm.value && todofukenForm.value)
     visibleForm.value = `${kuraForm.value}（${todofukenForm.value}）`
+  else if (kuraForm.value) visibleForm.value = kuraForm.value
 }
 
 // Main
