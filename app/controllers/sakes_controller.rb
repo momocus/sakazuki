@@ -42,7 +42,6 @@ class SakesController < ApplicationController
 
   # GET /sakes/1/edit
   def edit
-    @sake.kura = add_todofuken(@sake.kura, @sake.todofuken)
     # 開けたボタン経由での処理
     @sake.bottle_level = params["sake"]["bottle_level"] if params.dig(:sake, :bottle_level)
   end
@@ -120,19 +119,6 @@ class SakesController < ApplicationController
     words.split(/[ 　]/).map { |word| { all_text_cont: word } }
   end
 
-  # DBに保存された蔵名に括弧つきで県名をつけて、_formの描画でつかうフォーマットにする
-  #
-  # @example 蔵名がある場合
-  #   add_todofuken("原田酒造合資会社", "愛知県") #=> "原田酒造合資会社（愛知県）"
-  # @example 蔵名がない場合
-  #   add_todofuken("", "") #=> ""
-  def add_todofuken(kura, todofuken)
-    if kura == "" && todofuken == ""
-      ""
-    else
-      "#{kura}（#{todofuken}）"
-    end
-  end
   # Use callbacks to share common setup or constraints between actions.
   def set_sake
     @sake = Sake.includes(:photos).find(params[:id])

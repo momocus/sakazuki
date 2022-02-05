@@ -8,8 +8,8 @@ function stripKuraTodofuken(kuraTodofuken: string) {
 }
 
 function setElementValueById(id: string, value: string) {
-  const form = document.getElementById(id)
-  if (form) form.setAttribute("value", value)
+  const form = document.getElementById(id) as HTMLInputElement
+  form.value = value
 }
 
 function setSyncEvent() {
@@ -25,9 +25,23 @@ function setSyncEvent() {
   })
 }
 
+function loadKuraTodofuken() {
+  const kuraForm = document.getElementById("sake_kura") as HTMLInputElement
+  const todofukenForm = document.getElementById(
+    "sake_todofuken"
+  ) as HTMLInputElement
+  const visibleForm = document.getElementById(
+    "sake_kura_todofuken_autocompletion"
+  ) as HTMLInputElement
+
+  if (kuraForm.value && todofukenForm.value)
+    visibleForm.value = `${kuraForm.value}（${todofukenForm.value}）`
+}
+
 // Main
 {
   document.addEventListener("DOMContentLoaded", function () {
+    loadKuraTodofuken()
     setSyncEvent()
   })
 }
