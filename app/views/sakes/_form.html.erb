@@ -40,12 +40,13 @@
           <div class="form-row">
             <%= form.label(:kura, { class: "form-label" }) %>
             <div class="col">
-              <%= form.text_field(:kura, { class: "form-control", autocomplete: "on", list: "sakagura" }) %>
+              <input type="text" id="sake_kura_todofuken_autocompletion"
+                data-testid="sake_kura_todofuken_autocompletion"
+                class="form-control" autocomplete="on" list="sakagura">
               <%= render("sakagura-datalist") %>
             </div>
-            <div>
-              <%= form.text_field(:todofuken, { class: "form-control", hidden: true }) %>
-            </div>
+            <%= form.text_field(:kura, hidden: true, data: { testid: "sake_kura" }) %>
+            <%= form.text_field(:todofuken, hidden: true, data: { testid: "sake_todofuken" }) %>
           </div>
 
           <div class="form-row">
