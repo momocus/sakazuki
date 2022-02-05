@@ -48,7 +48,6 @@ class SakesController < ApplicationController
 
   # POST /sakes
   # POST /sakes.json
-  # rubocop:disable Metrics/AbcSize
   # rubocop:disable Metrics/MethodLength
   def create
     @sake = Sake.new(sake_params)
@@ -66,7 +65,6 @@ class SakesController < ApplicationController
     end
   end
   # rubocop:enable Metrics/MethodLength
-  # rubocop:enable Metrics/AbcSize
 
   # PATCH/PUT /sakes/1
   # PATCH/PUT /sakes/1.json
