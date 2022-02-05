@@ -12,7 +12,8 @@ RSpec.describe "KuraCompletion", type: :system do
       visit new_sake_path
     end
 
-    context "with valid text, same by completion" do
+    # 一文字以上の蔵名と県名に対して、「蔵名（県名）」のフォーマット
+    context "with valid format" do
       before do
         # "send_keys(:tab)" is to trigger change event.
         # https://github.com/teamcapybara/capybara/issues/2105
@@ -28,7 +29,7 @@ RSpec.describe "KuraCompletion", type: :system do
       end
     end
 
-    context "with invalid text" do
+    context "with invalid format" do
       before do
         fill_in("sake_kura_todofuken_autocompletion", with: "最強蔵（）").send_keys(:tab)
       end
@@ -42,7 +43,7 @@ RSpec.describe "KuraCompletion", type: :system do
       end
     end
 
-    context "when deleting text, after inputing valid text" do
+    context "when deleting text, after inputing valid format" do
       before do
         fill_in("sake_kura_todofuken_autocompletion", with: "原田酒造合資会社（愛知県）").send_keys(:tab)
         fill_in("sake_kura_todofuken_autocompletion", with: "").send_keys(:tab)
