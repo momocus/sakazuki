@@ -184,9 +184,9 @@ class Sake < ApplicationRecord
   # 売値が計算できない場合はnilを返す。
   # @return [Integer,nil] 酒一合当たりの売値またはnil
   def selling_price
-    return nil if price.nil? || size.nil? || size.zero?
+    return nil if price.nil? || price.zero? || size.nil? || size.zero?
 
-    (price.to_f / size * 180 * INTEREST_RATE).ceil(-1).to_i
+    (price.to_f / size * 180 * INTEREST_RATE).ceil(-1)
   end
 end
 # rubocop:enable Metrics/ClassLength
