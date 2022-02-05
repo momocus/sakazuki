@@ -87,7 +87,7 @@ module SakesHelper
   def price_tag(selling_price)
     return t("sakes.drink_menu.market_price") if selling_price.nil?
 
-    selling_price.to_s + t("activerecord.attributes.sake.price_unit")
+    "#{selling_price}#{t('activerecord.attributes.sake.price_unit')}"
   end
 
   private
