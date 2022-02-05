@@ -1,11 +1,14 @@
 require "rails_helper"
 
 RSpec.describe "KuraCompletion", type: :system do
-  describe "autocompletion of kura form", js: true do
-    let(:user) { FactoryBot.create(:user) }
+  let(:user) { FactoryBot.create(:user) }
 
+  before do
+    sign_in(user)
+  end
+
+  describe "autocompletion of kura form in new sake page", js: true do
     before do
-      sign_in(user)
       visit new_sake_path
     end
 
@@ -52,6 +55,15 @@ RSpec.describe "KuraCompletion", type: :system do
       it "inputs '' to hidden todofuken form" do
         expect(find(:test_id, "sake_todofuken", visible: false).value).to eq("")
       end
+    end
+  end
+
+  describe "restore kura form at existing sake edit page", js: true do
+    let!(:sake) { FactoryBot.create(:sake, kura: "原田酒造合資会社", todofuken: "愛知県") }
+
+    it "has formatted value in visible kura form" do
+      visit edit_sake_path(sake.id)
+      expect(find(:test_id, "sake_kura_todofuken_autocompletion").value).to eq("原田酒造合資会社（愛知県）")
     end
   end
 end
