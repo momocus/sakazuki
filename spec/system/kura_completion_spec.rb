@@ -59,12 +59,23 @@ RSpec.describe "KuraCompletion", type: :system do
     end
   end
 
-  describe "restore kura form at existing sake edit page", js: true do
-    let!(:sake) { FactoryBot.create(:sake, kura: "原田酒造合資会社", todofuken: "愛知県") }
+  describe "kura form at existing sake edit page", js: true do
+    context "with sake having valid kura and todofuken" do
+      let!(:sake) { FactoryBot.create(:sake, kura: "原田酒造合資会社", todofuken: "愛知県") }
 
-    it "has formatted value in visible kura form" do
-      visit edit_sake_path(sake.id)
-      expect(find(:test_id, "sake_kura_todofuken_autocompletion").value).to eq("原田酒造合資会社（愛知県）")
+      it "has formatted value in visible kura form" do
+        visit edit_sake_path(sake.id)
+        expect(find(:test_id, "sake_kura_todofuken_autocompletion").value).to eq("原田酒造合資会社（愛知県）")
+      end
+    end
+
+    context "with sake having only kura" do
+      let!(:sake) { FactoryBot.create(:sake, kura: "原田酒造合資会社") }
+
+      it "has same kura in visible kura form" do
+        visit edit_sake_path(sake.id)
+        expect(find(:test_id, "sake_kura_todofuken_autocompletion").value).to eq("原田酒造合資会社")
+      end
     end
   end
 end
