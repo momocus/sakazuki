@@ -31,11 +31,11 @@ RSpec.describe "KuraCompletion", type: :system do
 
     context "with invalid format" do
       before do
-        fill_in("sake_kura_todofuken_autocompletion", with: "最強蔵（）").send_keys(:tab)
+        fill_in("sake_kura_todofuken_autocompletion", with: "適当な蔵（）").send_keys(:tab)
       end
 
-      it "inputs '' to hidden kura form" do
-        expect(find(:test_id, "sake_kura", visible: false).value).to eq("")
+      it "inputs same text to hidden kura form" do
+        expect(find(:test_id, "sake_kura", visible: false).value).to eq("適当な蔵（）")
       end
 
       it "inputs '' to hidden todofuken form" do
@@ -43,7 +43,7 @@ RSpec.describe "KuraCompletion", type: :system do
       end
     end
 
-    context "when deleting text, after inputing valid format" do
+    context "when deleting text" do
       before do
         fill_in("sake_kura_todofuken_autocompletion", with: "原田酒造合資会社（愛知県）").send_keys(:tab)
         fill_in("sake_kura_todofuken_autocompletion", with: "").send_keys(:tab)
