@@ -1,10 +1,10 @@
-// "蔵名（都道府県名）"から"蔵名"と"都道府県名"を抽出する
 function stripKuraTodofuken(kuraTodofuken: string) {
-  const regexp = /^([^（]+)（([^）]+)）$/
-  const result = regexp.exec(kuraTodofuken)
+  // フォーマットは"蔵名（県名）"
+  const formatRegexp = /^([^（]+)（([^）]+)）$/
+  const result = formatRegexp.exec(kuraTodofuken)
 
   if (result && result[1] && result[2]) return [result[1], result[2]]
-  else return ["", ""]
+  else return [kuraTodofuken, ""]
 }
 
 function setElementValueById(id: string, value: string) {
