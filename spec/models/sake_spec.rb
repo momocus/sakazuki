@@ -172,25 +172,33 @@ RSpec.describe Sake do
     context "if price is nil" do
       let(:sake) { FactoryBot.build(:sake, price: nil, size: 100) }
 
-      it { expect(sake.selling_price).to eq(nil) }
+      it "returns nil" do
+        expect(sake.selling_price).to eq(nil)
+      end
     end
 
     context "if size is nil" do
       let(:sake) { FactoryBot.build(:sake, price: 100, size: nil) }
 
-      it { expect(sake.selling_price).to eq(nil) }
+      it "returns nil" do
+        expect(sake.selling_price).to eq(nil)
+      end
     end
 
     context "if size is zero" do
       let(:sake) { FactoryBot.build(:sake, price: 100, size: 0) }
 
-      it { expect(sake.selling_price).to eq(nil) }
+      it "returns nil" do
+        expect(sake.selling_price).to eq(nil)
+      end
     end
 
     context "if the sake is 1234 yen and 720ml" do
       let(:sake) { FactoryBot.build(:sake, price: 1234, size: 720) }
 
-      it { expect(sake.selling_price).to eq(470) }
+      it "returns 470" do
+        expect(sake.selling_price).to eq(470)
+      end
     end
   end
 end
