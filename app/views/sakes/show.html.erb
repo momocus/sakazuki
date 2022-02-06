@@ -251,6 +251,10 @@
   <h2 class="fs-3 mb-0"><%= t(".review") %></h2>
 
   <div class="col-12">
+    <%= render("rating", rating: @sake.rating) %>
+  </div>
+
+  <div class="col-12">
     <div class="row gx-3 gy-1">
       <div class="col-lg-6 col-12">
         <div class="row">
