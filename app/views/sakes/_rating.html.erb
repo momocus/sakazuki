@@ -1,10 +1,13 @@
-<% if sake.rating == 0 %>
-  -
-<% else %>
-  <% sake.rating.times do %>
-    <i class="bi-star-fill text-primary"></i>
+<% if rating == 0 %>
+  <% 5.times do %>
+    <%# 未評価 %>
+    <i class="bi-star text-light fs-3"></i>
   <% end %>
-  <% (5 - sake.rating).times do %>
-    <i class="bi-star text-primary"></i>
+<% else %>
+  <% rating.times do %>
+    <i class="bi-star-fill text-primary fs-3"></i>
+  <% end %>
+  <% (5 - rating).times do %>
+    <i class="bi-star-fill text-light fs-3"></i>
   <% end %>
 <% end %>
