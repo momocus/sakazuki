@@ -13,8 +13,7 @@ function updateDomValue(data: GraphP): void {
   aromaInput.setAttribute("value", y)
 }
 
-// DOMにデータがない場合はデータセットをする副作用がある
-function syncAndGetDomValue(): GraphP {
+function getDomValue(): DomValues {
   const tasteInput = document.getElementById(
     "sake_taste_value"
   ) as HTMLInputElement
@@ -32,7 +31,7 @@ function syncAndGetDomValue(): GraphP {
 
 {
   document.addEventListener("DOMContentLoaded", function () {
-    const domData = syncAndGetDomValue() // DOMから味・香りの値を取る、domDataは0~6の二次元データ
+    const domData = getDomValue() // DOMから味・香りの値(0~6)を取る
     const canvas = document.getElementById("taste_graph") as HTMLCanvasElement
     const _graph = new TasteGraph(canvas, domData, {}, true, updateDomValue)
   })
