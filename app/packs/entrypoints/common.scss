@@ -47,7 +47,8 @@ h1 {
   @extend .mb-lg-4;
   @extend .mb-2;
 
-  a {
+  a,
+  button {
     @extend .click-nontransparent;
   }
 }
