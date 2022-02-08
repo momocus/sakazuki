@@ -74,10 +74,6 @@ module SakesHelper
     end
   end
 
-  # @type [float] 利率
-  INTEREST_RATE = 3.0
-  private_constant :INTEREST_RATE
-
   # お品書きで酒の値札として表示する文字列を返す
   #
   # selling_price がnilの場合は"時価"を返す.
