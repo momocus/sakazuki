@@ -1,0 +1,93 @@
+<div class="row gy-3">
+  <div class="col-12">
+    <div class="row align-items-baseline">
+      <div class="col">
+        <h1 class="m-0"><%= title(@sake.name) %></h1>
+      </div>
+      <div class="col-auto order-lg-0 order-2 text-end">
+        <%= render("sns-share-button", sake: @sake) %>
+      </div>
+      <div class="w-100 order-lg-1 order-0"></div>
+      <% if @sake.kura.present? %>
+        <div class="col order-lg-2 order-1 fs-3">
+          <%= short_kura(@sake.kura) %> ‒ <%= short_todofuken(@sake.todofuken) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <div class="row align-items-baseline">
+      <div class="col-12 fs-3">
+        <% if @sake.tokutei_meisho == "none" %>
+          <%= t(".tokutei_meisho_none") %>
+        <% else %>
+          <%= @sake.tokutei_meisho_i18n %>
+        <% end %>
+      </div>
+      <% if @sake.season.present? %>
+        <div class="col-auto fs-3">
+          <%= @sake.season %>
+        </div>
+      <% end %>
+      <div class="col-auto <%= "ps-0" if @sake.brew_year.present? %>">
+        <% if @sake.brew_year.present? %>
+          <%= Sake.human_attribute_name(:brew_year) %>
+          <%= @sake.brew_year.year %>
+          ‒
+        <% end %>
+        <%= @sake.bindume_date.strftime("%Y/%m") if @sake.bindume_date.present? %>
+        <%= t(".made") %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <div class="row">
+      <div class="col-12 fs-5">
+        <%= "#{time_ago_in_words(latest_at(@sake), include_seconds: true)}前に#{t(".#{@sake.bottle_level}")}" %>
+      </div>
+      <div class="col-auto">
+        <%= l(@sake.created_at.to_date) %>
+      </div>
+      <div class="col ps-0">
+        <%= t(".sealed") %>
+      </div>
+      <% if not(@sake.sealed?) %>
+        <div class="w-100"></div>
+        <div class="col-auto">
+          <%= l(@sake.opened_at.to_date) %>
+        </div>
+        <div class="col-auto ps-0">
+          <%= t(".opened") %>
+        </div>
+      <% end %>
+      <% if @sake.empty? %>
+        <div class="w-100"></div>
+        <div class="col-auto">
+          <%= l(@sake.emptied_at.to_date) %>
+        </div>
+        <div class="col-auto ps-0">
+          <%= t(".empty") %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-12 fs-5">
+    <%= @sake.size %> ml
+    <%= "‒ #{@sake.price.to_s(:delimited)} #{t('activerecord.attributes.sake.price_unit')}" if @sake.price.present? %>
+  </div>
+
+  <% if @sake.photos.any? %>
+    <div class="col-12 py-1">
+      <div class="row g-2 photo-gallery">
+        <% @sake.photos.each_with_index do |photo, i| %>
+          <div class="col-lg-2 col-6">
+            <%= link_to(cl_image_tag(photo.image.thumb.url, class: "img-thumbnail"), photo.image.url) %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

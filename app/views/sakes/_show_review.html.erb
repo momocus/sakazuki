@@ -1,0 +1,102 @@
+<div class="row gy-3">
+  <div class="col-12">
+    <h2 class="fs-3 mb-0"><%= t(".review") %></h2>
+  </div>
+
+  <div class="col-12">
+    <%= render("rating", rating: @sake.rating) %>
+  </div>
+
+  <div class="col-12 mb-2">
+    <div class="row gx-3 gy-1">
+      <div class="col-lg-6 col-12">
+        <div class="row">
+          <div class="col-auto">
+            <%= Sake.human_attribute_name(:color) %>
+          </div>
+          <div class="col-12">
+            <div class="fs-5 border border-light border-1 rounded p-1">
+              <%= empty_to_default(@sake.color, "　") %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-12">
+        <div class="row">
+          <div class="col-auto">
+            <%= Sake.human_attribute_name(:nigori) %>
+          </div>
+          <div class="col-12">
+            <div class="fs-5 border border-light border-1 rounded p-1">
+              <%= empty_to_default(@sake.nigori, "　") %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 mb-lg-0 mb-1">
+    <div class="row gx-3 gy-1">
+      <div class="col-lg-6 order-lg-1 col-12 order-2">
+        <div class="row gy-1">
+          <div class="col-12">
+            <div class="row">
+              <div class="col-auto">
+                <%= Sake.human_attribute_name(:aroma_impression) %>
+              </div>
+              <div class="col-12">
+                <div class="fs-5 border border-light border-1 rounded p-2">
+                  <%= empty_to_default(@sake.aroma_impression, "　") %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="row">
+              <div class="col-auto">
+                <%= Sake.human_attribute_name(:taste_impression) %>
+              </div>
+              <div class="col-12">
+                <div class="fs-5 border border-light border-1 rounded p-2">
+                  <%= empty_to_default(@sake.taste_impression, "　") %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="row">
+              <div class="col-auto">
+                <%= Sake.human_attribute_name(:awa) %>
+              </div>
+              <div class="col-12">
+                <div class="fs-5 border border-light border-1 rounded p-2">
+                  <%= empty_to_default(@sake.awa, t(".no_awa")) %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 order-lg-2 col-12 order-1">
+        <canvas id="sake-<%= @sake.id %>"
+          data-taste-value="<%= @sake.taste_value %>"
+          data-aroma-value="<%= @sake.aroma_value %>">
+        </canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-6 col-12">
+    <div class="row">
+      <div class="col-auto">
+        <%= Sake.human_attribute_name(:note) %>
+      </div>
+      <div class="col-12">
+        <div class="fs-5 border border-light border-1 rounded p-2">
+          <%= empty_to_default(@sake.note, "　") %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
