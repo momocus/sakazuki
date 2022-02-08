@@ -1,8 +1,8 @@
-import { GraphP, TasteGraph } from "./taste_graph"
+import { DomValues, TasteGraph } from "./taste_graph"
 
-function updateDomValue(data: GraphP): void {
-  const x = data ? data.x.toString() : ""
-  const y = data ? data.y.toString() : ""
+function updateDomValue(data: DomValues): void {
+  const x = isNaN(data.taste) ? "" : data.taste.toString()
+  const y = isNaN(data.arroma) ? "" : data.arroma.toString()
   const tasteInput = document.getElementById(
     "sake_taste_value"
   ) as HTMLInputElement
@@ -20,19 +20,19 @@ function getDomValue(): DomValues {
   const aromaInput = document.getElementById(
     "sake_aroma_value"
   ) as HTMLInputElement
-  if (tasteInput.value && aromaInput.value) {
-    const taste = parseInt(tasteInput.value)
-    const aroma = parseInt(aromaInput.value)
-    if (Number.isInteger(taste) && Number.isInteger(aroma))
-      return { x: taste, y: aroma }
-  }
-  return null // データがない場合
+  if (tasteInput.value && aromaInput.value)
+    return {
+      taste: parseInt(tasteInput.value),
+      arroma: parseInt(aromaInput.value),
+    }
+  // データがない場合
+  return { taste: NaN, arroma: NaN }
 }
 
 {
   document.addEventListener("DOMContentLoaded", function () {
-    const domData = getDomValue() // DOMから味・香りの値(0~6)を取る
+    const { taste, arroma } = getDomValue() // DOMから味・香りの値(0~6)を取る
     const canvas = document.getElementById("taste_graph") as HTMLCanvasElement
-    const _graph = new TasteGraph(canvas, domData, {}, true, updateDomValue)
+    new TasteGraph(canvas, taste, arroma, {}, true, updateDomValue)
   })
 }

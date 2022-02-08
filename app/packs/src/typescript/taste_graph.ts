@@ -16,6 +16,8 @@ interface MetaChart extends Chart {
 
 export type GraphP = Chart.Point | null
 
+export type DomValues = { taste: number; arroma: number }
+
 /*
  * HACK:
  *   内部データが0〜6に対してグラフデータが-3〜3のため、
@@ -23,20 +25,20 @@ export type GraphP = Chart.Point | null
  */
 const middle = 3
 
-export function fromDomPoint(documentData: GraphP): GraphP {
-  return documentData != null
-    ? { x: documentData.x - middle, y: documentData.y - middle }
-    : null
+export function fromDom(taste: number, arroma: number): GraphP {
+  // taste/arromaはNaNの可能性がある
+  return isNaN(taste) || isNaN(arroma)
+    ? null
+    : { x: taste - middle, y: arroma - middle }
 }
 
-export function toDomPoint(graphData: GraphP): GraphP {
-  return graphData != null
-    ? { x: graphData.x + middle, y: graphData.y + middle }
-    : null
+export function toDom(p: GraphP): DomValues {
+  return p
+    ? { taste: p.x + middle, arroma: p.y + middle }
+    : { taste: NaN, arroma: NaN }
 }
 
-export const graphZeroP = { x: 0, y: 0 }
-export const domZeroP = toDomPoint(graphZeroP)
+export const graphPZero = { x: 0, y: 0 }
 
 interface InteractiveGraph {
   update(data: GraphP): void
@@ -71,7 +73,7 @@ export class TasteGraph implements InteractiveGraph {
     if (this.data != null) this.popData()
     if (newData != null) this.pushData(newData)
     this.graph.update()
-    this.callbackUpdate(toDomPoint(newData))
+    this.callbackUpdate(toDom(newData))
     this.data = newData
   }
 
@@ -236,14 +238,15 @@ export class TasteGraph implements InteractiveGraph {
 
   constructor(
     canvas: HTMLCanvasElement,
-    domData: GraphP,
+    taste: number, // NaNがありうる
+    arroma: number, // NaNがありうる
     config: { pointRadius?: number; zeroLineWidth?: number },
     private clickable: boolean = false,
-    private callbackUpdate: (data: GraphP) => void = (_data) => {
+    private callbackUpdate: (data: DomValues) => void = (_data) => {
       // do nothing
     }
   ) {
-    this.data = fromDomPoint(domData)
+    this.data = isNaN(taste) || isNaN(arroma) ? null : fromDom(taste, arroma)
     const p = this.makeChartData(this.data)
     const chartConfig = this.makeChartConfiguration(p, config)
     this.graph = new Chart(canvas, chartConfig)
