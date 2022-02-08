@@ -7,19 +7,22 @@ ja:
     show:
       delete: 削除
       confirm_delete: 本当に削除しますか？
+    show_abstract:
       tokutei_meisho_none: 特定名称なし
       made: 製造
       sealed: 購入
       opened: 開封
       empty: 空
+      no_price: 価格不明
+    show_detail:
       detail: 詳細
       ingredient: 材料
       method: 造り
       measurement: 計測
-      review: レビュー
       unknown: :sakes.new.unknown
+    show_review:
       no_awa: 炭酸なし
-      no_price: 価格不明
+      review: レビュー
     drink-button:
       open: 開封する
       impress: 評価する
