@@ -29,14 +29,16 @@
           <%= @sake.season %>
         </div>
       <% end %>
-      <div class="col-auto <%= "ps-0" if @sake.brew_year.present? %>">
+      <div class="col-auto <%= "ps-0" if @sake.season.present? %>">
         <% if @sake.brew_year.present? %>
           <%= Sake.human_attribute_name(:brew_year) %>
           <%= @sake.brew_year.year %>
-          ‒
         <% end %>
-        <%= @sake.bindume_date.strftime("%Y/%m") if @sake.bindume_date.present? %>
-        <%= t(".made") %>
+        <%= "‒" if @sake.brew_year.present? && @sake.bindume_date.present? %>
+        <% if @sake.bindume_date.present? %>
+          <%= @sake.bindume_date.strftime("%Y/%m") %>
+          <%= t(".made") %>
+        <% end %>
       </div>
     </div>
   </div>
