@@ -58,20 +58,20 @@
     </div>
     <div class="row mx-0 border-bottom border-primary border-1 align-items-baseline">
       <div class="col-4 ps-0">
-        <%= Sake.human_attribute_name(:roka) %>
-        <span class="fs-5">　</span>
-      </div>
-      <div class="col-8 text-center <%= either_highlight_or_lowlight(@sake.roka) %>">
-        <%= empty_to_default(@sake.roka, t(".unknown")) %>
-      </div>
-    </div>
-    <div class="row mx-0 border-bottom border-primary border-1 align-items-baseline">
-      <div class="col-4 ps-0">
         <%= Sake.human_attribute_name(:shibori) %>
         <span class="fs-5">　</span>
       </div>
       <div class="col-8 text-center <%= either_highlight_or_lowlight(@sake.shibori) %>">
         <%= empty_to_default(@sake.shibori, t(".unknown")) %>
+      </div>
+    </div>
+    <div class="row mx-0 border-bottom border-primary border-1 align-items-baseline">
+      <div class="col-4 ps-0">
+        <%= Sake.human_attribute_name(:roka) %>
+        <span class="fs-5">　</span>
+      </div>
+      <div class="col-8 text-center <%= either_highlight_or_lowlight(@sake.roka) %>">
+        <%= empty_to_default(@sake.roka, t(".unknown")) %>
       </div>
     </div>
     <div class="row mx-0 border-bottom border-primary border-1 align-items-baseline">
