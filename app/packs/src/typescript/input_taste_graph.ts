@@ -2,7 +2,7 @@ import { DomValues, TasteGraph } from "./taste_graph"
 
 function updateDomValue(data: DomValues): void {
   const x = isNaN(data.taste) ? "" : data.taste.toString()
-  const y = isNaN(data.arroma) ? "" : data.arroma.toString()
+  const y = isNaN(data.aroma) ? "" : data.aroma.toString()
   const tasteInput = document.getElementById(
     "sake_taste_value"
   ) as HTMLInputElement
@@ -23,16 +23,16 @@ function getDomValue(): DomValues {
   if (tasteInput.value && aromaInput.value)
     return {
       taste: parseInt(tasteInput.value),
-      arroma: parseInt(aromaInput.value),
+      aroma: parseInt(aromaInput.value),
     }
   // データがない場合
-  return { taste: NaN, arroma: NaN }
+  return { taste: NaN, aroma: NaN }
 }
 
 {
   document.addEventListener("DOMContentLoaded", function () {
-    const { taste, arroma } = getDomValue() // DOMから味・香りの値(0~6)を取る
+    const { taste, aroma } = getDomValue() // DOMから味・香りの値(0~6)を取る
     const canvas = document.getElementById("taste_graph") as HTMLCanvasElement
-    new TasteGraph(canvas, taste, arroma, {}, true, updateDomValue)
+    new TasteGraph(canvas, taste, aroma, {}, true, updateDomValue)
   })
 }

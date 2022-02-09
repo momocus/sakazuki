@@ -5,8 +5,8 @@ function getDomValues(canvas: HTMLCanvasElement): DomValues {
   const aromaS = canvas.dataset.aromaValue
   // データがないやparse失敗など、Domからデータが取れない場合はNaN,NaNを返す
   return tasteS && aromaS
-    ? { taste: parseInt(tasteS), arroma: parseInt(aromaS) }
-    : { taste: NaN, arroma: NaN }
+    ? { taste: parseInt(tasteS), aroma: parseInt(aromaS) }
+    : { taste: NaN, aroma: NaN }
 }
 
 const hasCanvasID = (elem: HTMLCanvasElement): boolean => {
@@ -21,8 +21,8 @@ const hasCanvasID = (elem: HTMLCanvasElement): boolean => {
     const graphs = canvases.filter(hasCanvasID)
     const config = { pointRadius: 6, zeroLineWidth: 3 }
     graphs.forEach((canvas) => {
-      const { taste, arroma } = getDomValues(canvas)
-      new TasteGraph(canvas, taste, arroma, config)
+      const { taste, aroma } = getDomValues(canvas)
+      new TasteGraph(canvas, taste, aroma, config)
     })
   })
 }

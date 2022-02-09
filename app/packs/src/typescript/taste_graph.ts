@@ -16,7 +16,7 @@ interface MetaChart extends Chart {
 
 export type GraphP = Chart.Point | null
 
-export type DomValues = { taste: number; arroma: number }
+export type DomValues = { taste: number; aroma: number }
 
 /*
  * HACK:
@@ -25,17 +25,17 @@ export type DomValues = { taste: number; arroma: number }
  */
 const middle = 3
 
-export function fromDom(taste: number, arroma: number): GraphP {
-  // taste/arromaはNaNの可能性がある
-  return isNaN(taste) || isNaN(arroma)
+export function fromDom(taste: number, aroma: number): GraphP {
+  // taste/aromaはNaNの可能性がある
+  return isNaN(taste) || isNaN(aroma)
     ? null
-    : { x: taste - middle, y: arroma - middle }
+    : { x: taste - middle, y: aroma - middle }
 }
 
 export function toDom(p: GraphP): DomValues {
   return p
-    ? { taste: p.x + middle, arroma: p.y + middle }
-    : { taste: NaN, arroma: NaN }
+    ? { taste: p.x + middle, aroma: p.y + middle }
+    : { taste: NaN, aroma: NaN }
 }
 
 export const graphPZero = { x: 0, y: 0 }
@@ -239,14 +239,14 @@ export class TasteGraph implements InteractiveGraph {
   constructor(
     canvas: HTMLCanvasElement,
     taste: number, // NaNがありうる
-    arroma: number, // NaNがありうる
+    aroma: number, // NaNがありうる
     config: { pointRadius?: number; zeroLineWidth?: number },
     private clickable: boolean = false,
     private callbackUpdate: (data: DomValues) => void = (_data) => {
       // do nothing
     }
   ) {
-    this.data = isNaN(taste) || isNaN(arroma) ? null : fromDom(taste, arroma)
+    this.data = isNaN(taste) || isNaN(aroma) ? null : fromDom(taste, aroma)
     const p = this.makeChartData(this.data)
     const chartConfig = this.makeChartConfiguration(p, config)
     this.graph = new Chart(canvas, chartConfig)
