@@ -1,18 +1,17 @@
 <div class="row gy-3">
   <div class="col-12">
     <div class="row align-items-baseline">
-      <div class="col">
+      <div class="col-lg col-12">
         <h1 class="m-0"><%= title(@sake.name) %></h1>
       </div>
-      <div class="col-auto order-lg-0 order-2 text-end">
+      <div class="col-auto order-lg-1 order-2 text-end">
         <%= render("sns-share-button", sake: @sake) %>
       </div>
-      <div class="w-100 order-lg-1 order-0"></div>
-      <% if @sake.kura.present? %>
-        <div class="col order-lg-2 order-1 fs-3">
+      <div class="col-lg-12 order-lg-2 col order-1 fs-3">
+        <% if @sake.kura.present? %>
           <%= short_kura(@sake.kura) %> ‒ <%= short_todofuken(@sake.todofuken) %>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 
