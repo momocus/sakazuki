@@ -48,7 +48,7 @@
       <div class="col-12 fs-5">
         <%= "#{time_ago_in_words(latest_at(@sake), include_seconds: true)}前に#{t(".#{@sake.bottle_level}")}" %>
       </div>
-      <div class="col-auto">
+      <div class="col-auto" data-testid="created-at">
         <%= l(@sake.created_at.to_date) %>
       </div>
       <div class="col-auto ps-0">
@@ -56,7 +56,7 @@
       </div>
       <% if not(@sake.sealed?) %>
         <div class="w-100"></div>
-        <div class="col-auto">
+        <div class="col-auto" data-testid="opened-at">
           <%= l(@sake.opened_at.to_date) %>
         </div>
         <div class="col-auto ps-0">
@@ -65,7 +65,7 @@
       <% end %>
       <% if @sake.empty? %>
         <div class="w-100"></div>
-        <div class="col-auto">
+        <div class="col-auto" data-testid="emptied-at">
           <%= l(@sake.emptied_at.to_date) %>
         </div>
         <div class="col-auto ps-0">
