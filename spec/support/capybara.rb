@@ -43,3 +43,13 @@ end
 def wait_for_alert
   find(:test_id, "flash-message")
 end
+
+# 酒のshowページのパスから、そのページで表示している酒オブジェクトを取得する
+#
+# @param url_path [String] "/sakes/1"のようなshowページのパス
+# @return [Sake] 酒オブジェクト
+def sake_from_show_path(url_path)
+  path_pattern = %r{^/sakes/(\d+)$}
+  result = path_pattern.match(url_path)
+  result && Sake.find(result[1])
+end
