@@ -1,8 +1,8 @@
-import { GraphP, TasteGraph } from "./taste_graph"
+import { DomValues, TasteGraph } from "./taste_graph"
 
-function updateDomValue(data: GraphP): void {
-  const x = data ? data.x.toString() : ""
-  const y = data ? data.y.toString() : ""
+function updateDomValue(data: DomValues): void {
+  const x = isNaN(data.taste) ? "" : data.taste.toString()
+  const y = isNaN(data.aroma) ? "" : data.aroma.toString()
   const tasteInput = document.getElementById(
     "sake_taste_value"
   ) as HTMLInputElement
@@ -13,37 +13,26 @@ function updateDomValue(data: GraphP): void {
   aromaInput.setAttribute("value", y)
 }
 
-// DOMにデータがない場合はデータセットをする副作用がある
-function syncAndGetDomValue(): GraphP {
+function getDomValue(): DomValues {
   const tasteInput = document.getElementById(
     "sake_taste_value"
   ) as HTMLInputElement
   const aromaInput = document.getElementById(
     "sake_aroma_value"
   ) as HTMLInputElement
-  if (tasteInput.value && aromaInput.value) {
-    const taste = parseInt(tasteInput.value)
-    const aroma = parseInt(aromaInput.value)
-    if (Number.isInteger(taste) && Number.isInteger(aroma))
-      return { x: taste, y: aroma }
-  }
-  return null // データがない場合
+  if (tasteInput.value && aromaInput.value)
+    return {
+      taste: parseInt(tasteInput.value),
+      aroma: parseInt(aromaInput.value),
+    }
+  // データがない場合
+  return { taste: NaN, aroma: NaN }
 }
 
 {
   document.addEventListener("DOMContentLoaded", function () {
-    // DOMから味・香りの値を取る
+    const { taste, aroma } = getDomValue() // DOMから味・香りの値(0~6)を取る
     const canvas = document.getElementById("taste_graph") as HTMLCanvasElement
-    const domData = syncAndGetDomValue() // dataは0~6の二次元データ
-
-    // グラフをセットする
-    const graph = new TasteGraph(canvas, domData, {}, true, updateDomValue)
-
-    // グラフのリセットボタンをセットする
-    const button = document.getElementById("graph-reset") as HTMLDivElement
-    button.onclick = () => {
-      graph.update(null)
-      updateDomValue(null)
-    }
+    new TasteGraph(canvas, taste, aroma, {}, true, updateDomValue)
   })
 }

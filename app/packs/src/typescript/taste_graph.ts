@@ -16,6 +16,8 @@ interface MetaChart extends Chart {
 
 export type GraphP = Chart.Point | null
 
+export type DomValues = { taste: number; aroma: number }
+
 /*
  * HACK:
  *   内部データが0〜6に対してグラフデータが-3〜3のため、
@@ -23,20 +25,20 @@ export type GraphP = Chart.Point | null
  */
 const middle = 3
 
-export function toGraphPoint(documentData: GraphP): GraphP {
-  return documentData != null
-    ? { x: documentData.x - middle, y: documentData.y - middle }
-    : null
+export function fromDom(taste: number, aroma: number): GraphP {
+  // taste/aromaはNaNの可能性がある
+  return isNaN(taste) || isNaN(aroma)
+    ? null
+    : { x: taste - middle, y: aroma - middle }
 }
 
-export function toDomPoint(graphData: GraphP): GraphP {
-  return graphData != null
-    ? { x: graphData.x + middle, y: graphData.y + middle }
-    : null
+export function toDom(p: GraphP): DomValues {
+  return p
+    ? { taste: p.x + middle, aroma: p.y + middle }
+    : { taste: NaN, aroma: NaN }
 }
 
-export const graphZeroP = { x: 0, y: 0 }
-export const domZeroP = toDomPoint(graphZeroP)
+export const graphPZero = { x: 0, y: 0 }
 
 interface InteractiveGraph {
   update(data: GraphP): void
@@ -44,6 +46,7 @@ interface InteractiveGraph {
 
 export class TasteGraph implements InteractiveGraph {
   public graph: Chart
+  private data: GraphP
 
   /*
    * HACk:
@@ -70,7 +73,7 @@ export class TasteGraph implements InteractiveGraph {
     if (this.data != null) this.popData()
     if (newData != null) this.pushData(newData)
     this.graph.update()
-    this.callbackUpdate(toDomPoint(newData))
+    this.callbackUpdate(toDom(newData))
     this.data = newData
   }
 
@@ -86,9 +89,17 @@ export class TasteGraph implements InteractiveGraph {
     } else return null
   }
 
+  private eqGraphP(p1: GraphP, p2: GraphP) {
+    if (p1 == null && p2 == null) return true
+    else if (p1 == null || p2 == null) return false
+    else if (p1.x == p2.x && p1.y == p2.y) return true
+    else return false
+  }
+
   // JSに渡すときにthis問題を防ぐため、アロー関数で書いておく
   private onClickUpdate = (event: MouseEvent): void => {
-    const data = this.getClickedData(event)
+    let data = this.getClickedData(event)
+    if (this.data != null && this.eqGraphP(data, this.data)) data = null
     this.update(data)
   }
 
@@ -227,14 +238,16 @@ export class TasteGraph implements InteractiveGraph {
 
   constructor(
     canvas: HTMLCanvasElement,
-    private data: GraphP,
+    taste: number, // NaNがありうる
+    aroma: number, // NaNがありうる
     config: { pointRadius?: number; zeroLineWidth?: number },
     private clickable: boolean = false,
-    private callbackUpdate: (data: GraphP) => void = (_data) => {
+    private callbackUpdate: (data: DomValues) => void = (_data) => {
       // do nothing
     }
   ) {
-    const p = this.makeChartData(toGraphPoint(data))
+    this.data = isNaN(taste) || isNaN(aroma) ? null : fromDom(taste, aroma)
+    const p = this.makeChartData(this.data)
     const chartConfig = this.makeChartConfiguration(p, config)
     this.graph = new Chart(canvas, chartConfig)
   }

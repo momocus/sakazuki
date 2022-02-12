@@ -358,12 +358,6 @@
           <div class="form-row mt-2">
             <%= form.label("#{t('activerecord.attributes.sake.taste_value')}, #{t('activerecord.attributes.sake.aroma_value')}",
                            { class: "col-lg-3 col-7 col-form-label" }) %>
-            <div class="col-lg-9 col-5">
-              <div class="btn btn-secondary rounded-pill border border-primary" id="graph-reset">
-                <%= t(".reset") %>
-              </div>
-            </div>
-            <div class="col-lg-3"></div>
             <%# MEMO: px-0だとchart.jsのグラフが描画されない %>
             <div class="col-lg-9 col px-1">
               <canvas class="mt-1" id="taste_graph"></canvas>
