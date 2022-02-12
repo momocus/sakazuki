@@ -83,8 +83,8 @@ class Sake < ApplicationRecord
   validates :name, presence: true
   validates :kura, exclusion: { in: [nil] }
   validates :todofuken, exclusion: { in: [nil] }
-  validates :taste_value, numericality: { only_integer: true }, inclusion: [0, 1, 2, 3, 4, 5, 6], allow_nil: true
-  validates :aroma_value, numericality: { only_integer: true }, inclusion: [0, 1, 2, 3, 4, 5, 6], allow_nil: true
+  validates :taste_value, numericality: { only_integer: true }, inclusion: 0..6, allow_nil: true
+  validates :aroma_value, numericality: { only_integer: true }, inclusion: 0..6, allow_nil: true
   validates :nihonshudo, numericality: { allow_nil: true }
   validates :sando, numericality: { allow_nil: true, greater_than_or_equal_to: 0.0 }
   validates :aroma_impression, exclusion: { in: [nil] }
@@ -111,7 +111,7 @@ class Sake < ApplicationRecord
   validates :size, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :opened_at, presence: true
   validates :emptied_at, presence: true
-  validates :rating, numericality: { only_integer: true }, inclusion: [0, 1, 2, 3, 4, 5]
+  validates :rating, numericality: { only_integer: true }, inclusion: 0..5
 
   # rubocop:disable Layout/LineLength
   ransack_alias :all_text, :aroma_impression_or_awa_or_color_or_genryomai_or_kakemai_or_kobo_or_kura_or_name_or_nigori_or_note_or_roka_or_season_or_shibori_or_taste_impression_or_todofuken
