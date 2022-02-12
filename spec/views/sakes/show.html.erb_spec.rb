@@ -5,15 +5,13 @@ RSpec.describe "sakes/show", type: :system do
   describe "datetimes" do
     let(:sake) { FactoryBot.create(:sake, bottle_level: :sealed) }
 
-    date_format = %r{\d{4}/\d{2}/\d{2}}
-
     context "with sealed sake" do
       before do
         visit sake_path(sake.id)
       end
 
       it "has created_at" do
-        expect(find(:test_id, "created-at")).to have_text(date_format)
+        expect(find(:test_id, "created-at")).to have_text(I18n.l(sake.created_at.to_date))
       end
 
       it "does not have opened_at" do
@@ -32,11 +30,11 @@ RSpec.describe "sakes/show", type: :system do
       end
 
       it "has created_at" do
-        expect(find(:test_id, "created-at")).to have_text(date_format)
+        expect(find(:test_id, "created-at")).to have_text(I18n.l(sake.created_at.to_date))
       end
 
       it "has opened_at" do
-        expect(find(:test_id, "opened-at")).to have_text(date_format)
+        expect(find(:test_id, "opened-at")).to have_text(I18n.l(sake.opened_at.to_date))
       end
 
       it "does not have emptied_at" do
@@ -51,15 +49,15 @@ RSpec.describe "sakes/show", type: :system do
       end
 
       it "has created_at" do
-        expect(find(:test_id, "created-at")).to have_text(date_format)
+        expect(find(:test_id, "created-at")).to have_text(I18n.l(sake.created_at.to_date))
       end
 
       it "has opened_at" do
-        expect(find(:test_id, "opened-at")).to have_text(date_format)
+        expect(find(:test_id, "opened-at")).to have_text(I18n.l(sake.opened_at.to_date))
       end
 
       it "has emptied_at" do
-        expect(find(:test_id, "emptied-at")).to have_text(date_format)
+        expect(find(:test_id, "emptied-at")).to have_text(I18n.l(sake.emptied_at.to_date))
       end
     end
   end
