@@ -46,11 +46,9 @@
   <div class="col-12">
     <div class="row">
       <div class="col-12 fs-5">
-        <%=
-          t(".time_ago",
-            count: time_ago_in_words(latest_at(@sake), include_seconds: true),
-            done: t(".#{@sake.bottle_level}"))
-        %>
+        <%= t(".time_ago",
+              count: time_ago_in_words(latest_at(@sake), include_seconds: true),
+              done: t(".#{@sake.bottle_level}")) %>
       </div>
       <div class="col-auto" data-testid="created-at">
         <%= l(@sake.created_at.to_date) %>
