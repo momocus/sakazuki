@@ -99,7 +99,7 @@ module SakesHelper
   end
 
   def either_highlight_or_lowlight(value)
-    value.blank? || value == "unknown" ? "fw-light text-muted" : "fs-5"
+    value.blank? || value == "unknown" ? "lowlight-value" : "highlight-value"
   end
 
   private

@@ -5,39 +5,39 @@
     <h3 class="mb-0">
       <%= t(".ingredient") %>
     </h3>
-    <div class="row mx-0 border-bottom border-primary border-1 align-items-baseline">
-      <div class="col-4 ps-0">
+    <div class="underline-column">
+      <div class="label">
         <%= Sake.human_attribute_name(:genryomai) %>
-        <span class="fs-5">　</span>
+        <span class="highlight-value">　</span>
       </div>
-      <div class="col-8 text-center <%= either_highlight_or_lowlight(@sake.genryomai) %>">
+      <div class="string-value <%= either_highlight_or_lowlight(@sake.genryomai) %>">
         <%= empty_to_default(@sake.genryomai, t(".unknown")) %>
       </div>
     </div>
-    <div class="row mx-0 border-bottom border-primary border-1 align-items-baseline">
-      <div class="col-4 ps-0">
+    <div class="underline-column">
+      <div class="label">
         <%= Sake.human_attribute_name(:kakemai) %>
-        <span class="fs-5">　</span>
+        <span class="highlight-value">　</span>
       </div>
-      <div class="col-8 text-center <%= either_highlight_or_lowlight(@sake.kakemai) %>">
+      <div class="string-value <%= either_highlight_or_lowlight(@sake.kakemai) %>">
         <%= empty_to_default(@sake.kakemai, t(".unknown")) %>
       </div>
     </div>
-    <div class="row mx-0 border-bottom border-primary border-1 align-items-baseline">
-      <div class="col-4 ps-0">
+    <div class="underline-column">
+      <div class="label">
         <%= Sake.human_attribute_name(:seimai_buai) %>
-        <span class="fs-5">　</span>
+        <span class="highlight-value">　</span>
       </div>
-      <div class="col-8 text-center <%= either_highlight_or_lowlight(@sake.seimai_buai) %>">
+      <div class="string-value <%= either_highlight_or_lowlight(@sake.seimai_buai) %>">
         <%= @sake.seimai_buai.present? ? "#{@sake.seimai_buai} %" : t(".unknown") %>
       </div>
     </div>
-    <div class="row mx-0 border-bottom border-primary border-1 align-items-baseline">
-      <div class="col-4 ps-0">
+    <div class="underline-column">
+      <div class="label">
         <%= Sake.human_attribute_name(:kobo) %>
-        <span class="fs-5">　</span>
+        <span class="highlight-value">　</span>
       </div>
-      <div class="col-8 text-center <%= either_highlight_or_lowlight(@sake.kobo) %>">
+      <div class="string-value <%= either_highlight_or_lowlight(@sake.kobo) %>">
         <%= empty_to_default(@sake.kobo, t(".unknown")) %>
       </div>
     </div>
@@ -47,48 +47,48 @@
     <h3 class="mb-0">
       <%= t(".method") %>
     </h3>
-    <div class="row mx-0 border-bottom border-primary border-1 align-items-baseline">
-      <div class="col-4 ps-0">
+    <div class="underline-column">
+      <div class="label">
         <%= Sake.human_attribute_name(:moto) %>
-        <span class="fs-5">　</span>
+        <span class="highlight-value">　</span>
       </div>
-      <div class="col-8 text-center <%= either_highlight_or_lowlight(@sake.moto) %>">
+      <div class="string-value <%= either_highlight_or_lowlight(@sake.moto) %>">
         <%= @sake.moto_i18n %>
       </div>
     </div>
-    <div class="row mx-0 border-bottom border-primary border-1 align-items-baseline">
-      <div class="col-4 ps-0">
+    <div class="underline-column">
+      <div class="label">
         <%= Sake.human_attribute_name(:shibori) %>
-        <span class="fs-5">　</span>
+        <span class="highlight-value">　</span>
       </div>
-      <div class="col-8 text-center <%= either_highlight_or_lowlight(@sake.shibori) %>">
+      <div class="string-value <%= either_highlight_or_lowlight(@sake.shibori) %>">
         <%= empty_to_default(@sake.shibori, t(".unknown")) %>
       </div>
     </div>
-    <div class="row mx-0 border-bottom border-primary border-1 align-items-baseline">
-      <div class="col-4 ps-0">
+    <div class="underline-column">
+      <div class="label">
         <%= Sake.human_attribute_name(:roka) %>
-        <span class="fs-5">　</span>
+        <span class="highlight-value">　</span>
       </div>
-      <div class="col-8 text-center <%= either_highlight_or_lowlight(@sake.roka) %>">
+      <div class="string-value <%= either_highlight_or_lowlight(@sake.roka) %>">
         <%= empty_to_default(@sake.roka, t(".unknown")) %>
       </div>
     </div>
-    <div class="row mx-0 border-bottom border-primary border-1 align-items-baseline">
-      <div class="col-4 ps-0">
+    <div class="underline-column">
+      <div class="label">
         <%= Sake.human_attribute_name(:hiire) %>
-        <span class="fs-5">　</span>
+        <span class="highlight-value">　</span>
       </div>
-      <div class="col-8 text-center <%= either_highlight_or_lowlight(@sake.hiire) %>">
+      <div class="string-value <%= either_highlight_or_lowlight(@sake.hiire) %>">
         <%= @sake.hiire_i18n %>
       </div>
     </div>
-    <div class="row mx-0 border-bottom border-primary border-1 align-items-baseline">
-      <div class="col-4 ps-0">
+    <div class="underline-column">
+      <div class="label">
         <%= Sake.human_attribute_name(:warimizu) %>
-        <span class="fs-5">　</span>
+        <span class="highlight-value">　</span>
       </div>
-      <div class="col-8 text-center <%= either_highlight_or_lowlight(@sake.warimizu) %>">
+      <div class="string-value <%= either_highlight_or_lowlight(@sake.warimizu) %>">
         <%= @sake.warimizu_i18n %>
       </div>
     </div>
@@ -98,43 +98,43 @@
     <h3 class="mb-0">
       <%= t(".measurement") %>
     </h3>
-    <div class="row mx-0 border-bottom border-primary border-1 align-items-baseline">
-      <div class="col-4 ps-0">
+    <div class="underline-column">
+      <div class="label">
         <%= Sake.human_attribute_name(:alcohol) %>
-        <span class="fs-5">　</span>
+        <span class="highlight-value">　</span>
       </div>
-      <div class="col-5 text-end <%= either_highlight_or_lowlight(@sake.alcohol) %>">
+      <div class="numeric-value <%= either_highlight_or_lowlight(@sake.alcohol) %>">
         <%= @sake.alcohol.present? ? @sake.alcohol.truncate : t(".unknown") %>
       </div>
-      <div class="col-3 px-0">
+      <div class="numeric-unit">
         <%= t("activerecord.attributes.sake.alcohol_unit") if @sake.alcohol.present? %>
       </div>
     </div>
-    <div class="row mx-0 border-bottom border-primary border-1 align-items-baseline">
-      <div class="col-4 ps-0">
+    <div class="underline-column">
+      <div class="label">
         <%= Sake.human_attribute_name(:nihonshudo) %>
-        <span class="fs-5">　</span>
+        <span class="highlight-value">　</span>
       </div>
-      <div class="col-5 text-end <%= either_highlight_or_lowlight(@sake.nihonshudo) %>">
+      <div class="numeric-value <%= either_highlight_or_lowlight(@sake.nihonshudo) %>">
         <%# 正の日本酒度には+記号を常につける %>
         <%= @sake.nihonshudo.present? ? format("%+.1f", @sake.nihonshudo) : t(".unknown") %>
       </div>
     </div>
-    <div class="row mx-0 border-bottom border-primary border-1 align-items-baseline">
-      <div class="col-4 ps-0">
+    <div class="underline-column">
+      <div class="label">
         <%= Sake.human_attribute_name(:sando) %>
-        <span class="fs-5">　</span>
+        <span class="highlight-value">　</span>
       </div>
-      <div class="col-5 text-end <%= either_highlight_or_lowlight(@sake.sando) %>">
+      <div class="numeric-value <%= either_highlight_or_lowlight(@sake.sando) %>">
         <%= empty_to_default(@sake.sando, t(".unknown")) %>
       </div>
     </div>
-    <div class="row mx-0 border-bottom border-primary border-1 align-items-baseline">
-      <div class="col-4 ps-0">
+    <div class="underline-column">
+      <div class="label">
         <%= Sake.human_attribute_name(:aminosando) %>
-        <span class="fs-5">　</span>
+        <span class="highlight-value">　</span>
       </div>
-      <div class="col-5 text-end <%= either_highlight_or_lowlight(@sake.aminosando) %>">
+      <div class="numeric-value <%= either_highlight_or_lowlight(@sake.aminosando) %>">
         <%= empty_to_default(@sake.aminosando, t(".unknown")) %>
       </div>
     </div>
