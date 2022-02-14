@@ -123,12 +123,6 @@ module SakesHelper
 
   private
 
-  # 過去何年を酒情報に入力可能にするかの値
-  # @return [Integer] 年数
-  def start_year_limit
-    30
-  end
-
   # 日付を和暦付き文字列に変換する
   # @param date [Date] 日付
   # @return [String] "2021 / 令和3年"のような文字列
@@ -136,11 +130,16 @@ module SakesHelper
     "#{date.year} / #{date.to_era('%O%-E年')}"
   end
 
+  # 過去何年を酒情報に入力可能にするかの値
+  # @type [Integer]
+  START_YEAR_LIMIT = 30
+  private_constant :START_YEAR_LIMIT
+
   # 酒情報に入力可能な年範囲を作成する
   # @param begin_year [Integer] 開始年
   # @return [Range<Integer>] 年範囲
   def year_range(begin_year)
-    (begin_year - start_year_limit)..begin_year
+    (begin_year - START_YEAR_LIMIT)..begin_year
   end
 
   private_constant :UNITS
