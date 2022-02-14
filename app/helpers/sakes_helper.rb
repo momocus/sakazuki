@@ -29,7 +29,7 @@ module SakesHelper
   # @param include_blank [Boolean] trueなら選択肢に空が含まれる
   # @param args [Object] select_tagにそのまま渡されるoptions
   # @return [String] 年のHTMLセレクタ
-  def year_select_with_japanese_era(id, name, begin_year, selected_year: begin_year, include_blank: false, **args)
+  def year_select_with_japanese_era(id:, name:, begin_year:, selected_year: begin_year, include_blank: false, **args)
     options = year_range(begin_year).map { |year|
       [with_japanese_era(Date.new(year)), year]
     }
