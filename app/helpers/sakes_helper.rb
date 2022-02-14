@@ -22,19 +22,17 @@ module SakesHelper
   end
 
   # 和暦付きの年のHTMLセレクタを生成する
-  # @param id [String] HTMLのid
-  # @param name [String] HTMLのname
   # @param latest_year [Integer] 選択肢の最新年
   # @param selected [Integer, nil] 初期選択年
   # @param include_blank [Boolean] trueなら選択肢に空が含まれる
-  # @param args [Object] select_tagにそのまま渡されるoptions
+  # @param args [Object] tag.selectにそのまま渡されるoptions
   # @return [String] 年のHTMLセレクタ
-  def year_select_with_japanese_era(id:, name:, latest_year:, selected: latest_year, include_blank: false, **args)
+  def year_select_with_japanese_era(latest_year:, selected: latest_year, include_blank: false, **args)
     years = year_range(latest_year)
     options = years.map { |year| [with_japanese_era(Date.new(year)), year] }
     options += [[t("sakes.new.unknown"), nil]] if include_blank
     options = options_for_select(options, selected: selected || "") # HACK: ""で空値の不明を選択する
-    select_tag(id, options, class: "form-select", name: name, **args)
+    tag.select(options, **args)
   end
 
   # どの瓶状態（bottle_level）にもマッチしない値

@@ -118,10 +118,11 @@
             <%#       Railsデフォルトでは年月が縦並びになってしまう。%>
             <%#       そのため、2つフォームを設置してTSで同期する。 %>
             <div class="two-column-form">
-              <%= year_select_with_japanese_era(id: "bindume_year",
-                                                name: "sake[bindume_date(1i)]",
-                                                latest_year: Date.current.year,
+              <%= year_select_with_japanese_era(latest_year: Date.current.year,
                                                 selected: @sake.bindume_date&.year || Date.current.year,
+                                                id: "bindume_year",
+                                                name: "sake[bindume_date(1i)]",
+                                                class: "form-select",
                                                 data: { testid: "select_bindume_year" }) %>
             </div>
             <div class="two-column-form">
@@ -136,11 +137,12 @@
             <%= form.label(:brew_year, { class: "form-label" }) %>
             <div class="two-column-form">
               <% current_by = to_by(Date.current).year %>
-              <%= year_select_with_japanese_era(id: "sake_brew_year_1i",
-                                                name: "sake[brew_year(1i)]",
-                                                latest_year: current_by,
+              <%= year_select_with_japanese_era(latest_year: current_by,
                                                 selected: @sake.brew_year&.year,
                                                 include_blank: true,
+                                                id: "sake_brew_year_1i",
+                                                name: "sake[brew_year(1i)]",
+                                                class: "form-select",
                                                 data: { testid: "select_by" }) %>
               <%# 使わない月日はBY始まりの7/1とする. See to_by %>
               <input type="hidden" id="sake_<%= :brew_year %>_2i" name="sake[<%= :brew_year %>(2i)]" value="7">
