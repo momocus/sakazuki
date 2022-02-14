@@ -118,7 +118,7 @@
             <%#       Railsデフォルトでは年月が縦並びになってしまう。%>
             <%#       そのため、2つフォームを設置してTSで同期する。 %>
             <div class="two-column-form">
-              <%= year_select_with_japanese_era(latest_year: Date.current.year,
+              <%= select_year_with_japanese_era(latest_year: Date.current.year,
                                                 selected: @sake.bindume_date&.year || Date.current.year,
                                                 id: "bindume_year",
                                                 name: "sake[bindume_date(1i)]",
@@ -137,7 +137,7 @@
             <%= form.label(:brew_year, { class: "form-label" }) %>
             <div class="two-column-form">
               <% current_by = to_by(Date.current).year %>
-              <%= year_select_with_japanese_era(latest_year: current_by,
+              <%= select_year_with_japanese_era(latest_year: current_by,
                                                 selected: @sake.brew_year&.year,
                                                 include_nil: t(".unknown"),
                                                 id: "sake_brew_year_1i",
