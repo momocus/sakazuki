@@ -66,4 +66,7 @@ RSpec.configure do |config|
   config.include(Devise::Test::IntegrationHelpers, type: :request)
   config.include(Devise::Test::IntegrationHelpers, type: :system)
   config.include(SignIn, type: :system)
+
+  # Contains helpers that help you test passage of time.
+  config.include(ActiveSupport::Testing::TimeHelpers)
 end

@@ -121,12 +121,14 @@
               <%= year_select_with_japanese_era(id = "bindume_year",
                                                 name = "sake[bindume_date(1i)]",
                                                 begin_year = Date.current.year,
-                                                selected_year: @sake.bindume_date&.year || Date.current.year) %>
+                                                selected_year: @sake.bindume_date&.year || Date.current.year,
+                                                data: { testid: "select_bindume_year" }) %>
             </div>
             <div class="two-column-form">
               <%= form.date_select(:bindume_date,
                                    { discard_day: true, discard_year: true },
-                                   { class: "form-select", id: "bindume_month" }) %>
+                                   class: "form-select",
+                                   data: { testid: "select_bindume_month" }) %>
             </div>
           </div>
 
@@ -138,7 +140,8 @@
                                                 name = "sake[brew_year(1i)]",
                                                 begin_year = current_by,
                                                 selected_year: @sake.brew_year&.year || current_by,
-                                                include_blank: true) %>
+                                                include_blank: true,
+                                                data: { testid: "select_by" }) %>
               <%# 使わない月日はBY始まりの7/1とする. See to_by %>
               <input type="hidden" id="sake_<%= :brew_year %>_2i" name="sake[<%= :brew_year %>(2i)]" value="7">
               <input type="hidden" id="sake_<%= :brew_year %>_3i" name="sake[<%= :brew_year %>(3i)]" value="1">

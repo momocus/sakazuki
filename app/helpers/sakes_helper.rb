@@ -27,13 +27,14 @@ module SakesHelper
   # @param begin_year [Integer] 開始年
   # @param selected_year [Integer] 初期選択年
   # @param include_blank [Boolean] trueなら選択肢に空が含まれる
+  # @param args [Object] select_tagにそのまま渡されるoptions
   # @return [String] 年のHTMLセレクタ
-  def year_select_with_japanese_era(id, name, begin_year, selected_year: begin_year, include_blank: false)
+  def year_select_with_japanese_era(id, name, begin_year, selected_year: begin_year, include_blank: false, **args)
     options = year_range(begin_year).map { |year|
       [with_japanese_era(Date.new(year)), year]
     }
     options += [[t("sakes.new.unknown"), nil]] if include_blank
-    select_tag(id, options_for_select(options, selected: selected_year), { class: "form-select", name: name })
+    select_tag(id, options_for_select(options, selected: selected_year), class: "form-select", name: name, **args)
   end
 
   # どの瓶状態（bottle_level）にもマッチしない値
