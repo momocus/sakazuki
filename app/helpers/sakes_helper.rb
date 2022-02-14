@@ -27,7 +27,7 @@ module SakesHelper
   # @param include_nil [String, nil] 選択肢nilを含めるかどうか、Stringならnil選択肢を含みStringを表示テキストとして使う
   # @param args [Object] tag.selectにそのまま渡されるoptions
   # @return [String] 年のHTMLセレクタ
-  def year_select_with_japanese_era(latest_year:, selected: latest_year, include_nil: nil, **args)
+  def select_year_with_japanese_era(latest_year:, selected: latest_year, include_nil: nil, **args)
     years = year_range(latest_year)
     options = years.map { |year| [with_japanese_era(Date.new(year)), year] }
     options += [[include_nil, nil]] if include_nil
