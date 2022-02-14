@@ -73,6 +73,10 @@ module SakesHelper
     end
   end
 
+  # 酒蔵の名前から会社の種類を削除し短くする
+  #
+  # @param kura [String] 蔵名
+  # @return [String] 会社の種類を削除した蔵名
   def short_kura(kura)
     kura = kura.gsub("株式会社", "")
     kura = kura.gsub("有限会社", "")
@@ -81,12 +85,22 @@ module SakesHelper
     kura.gsub("合同会社", "")
   end
 
+  # 都道府県名から都府県を削除し短くする
+  #
+  # @param todofuken [String] 都道府県名
+  # @return [String] 都府県が削除された都道府県名
   def short_todofuken(todofuken)
-    todofuken = todofuken.gsub("東京都", "東京")
+    todofuken = todofuken.gsub("東京都", "東京") # 京都対策
     todofuken = todofuken.gsub("府", "")
     todofuken.gsub("県", "")
   end
 
+  # 酒の瓶状態が最後に更新された日付を返す
+  #
+  # 酒がsealedなら購入した日付、openedなら開封した日付、emptyなら空にした日付を返す。
+  #
+  # @param sake [Sake] 酒オブジェクト
+  # @return [ActiveSupport::TimeWithZone] 最後に瓶状態が更新された日付
   def latest_at(sake)
     case sake.bottle_level
     when "sealed"
@@ -98,6 +112,10 @@ module SakesHelper
     end
   end
 
+  # 酒オブジェクトのカラム値に対して、Viewで適用するスタイル名を返す
+  #
+  # @param value [Object, nil] 酒オブジェクトのカラムの値
+  # @return [String] スタイル名
   def either_highlight_or_lowlight(value)
     value.blank? || value == "unknown" ? "lowlight-value" : "highlight-value"
   end
