@@ -120,8 +120,8 @@
             <div class="two-column-form">
               <%= year_select_with_japanese_era(id: "bindume_year",
                                                 name: "sake[bindume_date(1i)]",
-                                                begin_year: Date.current.year,
-                                                selected_year: @sake.bindume_date&.year || Date.current.year,
+                                                latest_year: Date.current.year,
+                                                selected: @sake.bindume_date&.year || Date.current.year,
                                                 data: { testid: "select_bindume_year" }) %>
             </div>
             <div class="two-column-form">
@@ -138,8 +138,8 @@
               <% current_by = to_by(Date.current).year %>
               <%= year_select_with_japanese_era(id: "sake_brew_year_1i",
                                                 name: "sake[brew_year(1i)]",
-                                                begin_year: current_by,
-                                                selected_year: @sake.brew_year&.year,
+                                                latest_year: current_by,
+                                                selected: @sake.brew_year&.year,
                                                 include_blank: true,
                                                 data: { testid: "select_by" }) %>
               <%# 使わない月日はBY始まりの7/1とする. See to_by %>
