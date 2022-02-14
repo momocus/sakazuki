@@ -10,6 +10,7 @@ ja:
     show_abstract:
       tokutei_meisho_none: 特定名称なし
       made: 製造
+      time_ago: "%{count}前に%{done}"
       sealed: 購入
       opened: 開封
       empty: 空

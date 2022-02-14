@@ -2,10 +2,8 @@ require "rails_helper"
 
 # Capybaraを使うためにsystem specを指定する
 RSpec.describe "sakes/show", type: :system do
-  describe "dates" do
+  describe "datetimes" do
     let(:sake) { FactoryBot.create(:sake, bottle_level: :sealed) }
-
-    some_date = %r{[0-9]+/[0-9]+/[0-9]+}
 
     context "with sealed sake" do
       before do
@@ -13,19 +11,15 @@ RSpec.describe "sakes/show", type: :system do
       end
 
       it "has created_at" do
-        expect(find(:test_id, "created-at")).to have_text(some_date)
+        expect(find(:test_id, "created-at")).to have_text(I18n.l(sake.created_at.to_date))
       end
 
       it "does not have opened_at" do
-        expect(find(:test_id, "opened-at")).not_to have_text(some_date)
+        expect { find(:test_id, "opened-at") }.to raise_error(Capybara::ElementNotFound)
       end
 
       it "does not have emptied_at" do
-        expect(find(:test_id, "emptied-at")).not_to have_text(some_date)
-      end
-
-      it "has updated_at" do
-        expect(find(:test_id, "updated-at")).to have_text(some_date)
+        expect { find(:test_id, "emptied-at") }.to raise_error(Capybara::ElementNotFound)
       end
     end
 
@@ -36,19 +30,15 @@ RSpec.describe "sakes/show", type: :system do
       end
 
       it "has created_at" do
-        expect(find(:test_id, "created-at")).to have_text(some_date)
+        expect(find(:test_id, "created-at")).to have_text(I18n.l(sake.created_at.to_date))
       end
 
       it "has opened_at" do
-        expect(find(:test_id, "opened-at")).to have_text(some_date)
+        expect(find(:test_id, "opened-at")).to have_text(I18n.l(sake.opened_at.to_date))
       end
 
       it "does not have emptied_at" do
-        expect(find(:test_id, "emptied-at")).not_to have_text(some_date)
-      end
-
-      it "has updated_at" do
-        expect(find(:test_id, "updated-at")).to have_text(some_date)
+        expect { find(:test_id, "emptied-at") }.to raise_error(Capybara::ElementNotFound)
       end
     end
 
@@ -59,19 +49,15 @@ RSpec.describe "sakes/show", type: :system do
       end
 
       it "has created_at" do
-        expect(find(:test_id, "created-at")).to have_text(some_date)
+        expect(find(:test_id, "created-at")).to have_text(I18n.l(sake.created_at.to_date))
       end
 
       it "has opened_at" do
-        expect(find(:test_id, "opened-at")).to have_text(some_date)
+        expect(find(:test_id, "opened-at")).to have_text(I18n.l(sake.opened_at.to_date))
       end
 
       it "has emptied_at" do
-        expect(find(:test_id, "emptied-at")).to have_text(some_date)
-      end
-
-      it "has updated_at" do
-        expect(find(:test_id, "updated-at")).to have_text(some_date)
+        expect(find(:test_id, "emptied-at")).to have_text(I18n.l(sake.emptied_at.to_date))
       end
     end
   end
@@ -85,8 +71,12 @@ RSpec.describe "sakes/show", type: :system do
         visit sake_path(no_rating_sake.id)
       end
 
-      it "has bar text" do
-        expect(find(:test_id, "rating")).to have_text("-")
+      it "has 5 white stars icons" do
+        expect(find(:test_id, "rating").all("i.bi-star.text-light").count).to eq(5)
+      end
+
+      it "has no colored star icon" do
+        expect(find(:test_id, "rating").all("i.bi-star-fill").count).to eq(0)
       end
     end
 
@@ -95,12 +85,12 @@ RSpec.describe "sakes/show", type: :system do
         visit sake_path(rating_sake.id)
       end
 
-      it "has 3 stars-fill icons" do
-        expect(page.all("i.bi-star-fill").count).to eq 3
+      it "has 3 colored stars icons" do
+        expect(find(:test_id, "rating").all("i.bi-star-fill.text-primary").count).to eq(3)
       end
 
-      it "has 2 stars icons, not filled" do
-        expect(page.all("i.bi-star").count).to eq 2
+      it "has 2 not colored stars icons" do
+        expect(find(:test_id, "rating").all("i.bi-star-fill.text-light").count).to eq(2)
       end
     end
   end
