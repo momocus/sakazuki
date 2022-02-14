@@ -30,11 +30,11 @@ module SakesHelper
   # @param args [Object] select_tagにそのまま渡されるoptions
   # @return [String] 年のHTMLセレクタ
   def year_select_with_japanese_era(id:, name:, latest_year:, selected: latest_year, include_blank: false, **args)
-    options = year_range(latest_year).map { |year|
-      [with_japanese_era(Date.new(year)), year]
-    }
+    years = year_range(latest_year)
+    options = years.map { |year| [with_japanese_era(Date.new(year)), year] }
     options += [[t("sakes.new.unknown"), nil]] if include_blank
-    select_tag(id, options_for_select(options, selected: selected || ""), class: "form-select", name: name, **args)
+    options = options_for_select(options, selected: selected || "") # HACK: ""で空値の不明を選択する
+    select_tag(id, options, class: "form-select", name: name, **args)
   end
 
   # どの瓶状態（bottle_level）にもマッチしない値
