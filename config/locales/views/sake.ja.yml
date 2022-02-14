@@ -32,10 +32,10 @@ ja:
       confirm_empty: 飲みきった？
     new:
       title: 新規登録
-      unknown: 不明
     edit:
       title: 編集
     form:
+      unknown: 不明
       select_delete_photo: 削除する画像を選択してください
       labelinfo: ラベル
       labelinfo_option: オプショナル

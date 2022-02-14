@@ -24,13 +24,13 @@ module SakesHelper
   # 和暦付きの年のHTMLセレクタを生成する
   # @param latest_year [Integer] 選択肢の最新年
   # @param selected [Integer, nil] 初期選択年
-  # @param include_blank [Boolean] trueなら選択肢に空が含まれる
+  # @param include_nil [String, nil] 選択肢nilを含めるかどうか、Stringならnil選択肢を含みStringを表示テキストとして使う
   # @param args [Object] tag.selectにそのまま渡されるoptions
   # @return [String] 年のHTMLセレクタ
-  def year_select_with_japanese_era(latest_year:, selected: latest_year, include_blank: false, **args)
+  def year_select_with_japanese_era(latest_year:, selected: latest_year, include_nil: nil, **args)
     years = year_range(latest_year)
     options = years.map { |year| [with_japanese_era(Date.new(year)), year] }
-    options += [[t("sakes.new.unknown"), nil]] if include_blank
+    options += [[include_nil, nil]] if include_nil
     options = options_for_select(options, selected: selected || "") # HACK: ""で空値の不明を選択する
     tag.select(options, **args)
   end

@@ -139,7 +139,7 @@
               <% current_by = to_by(Date.current).year %>
               <%= year_select_with_japanese_era(latest_year: current_by,
                                                 selected: @sake.brew_year&.year,
-                                                include_blank: true,
+                                                include_nil: t(".unknown"),
                                                 id: "sake_brew_year_1i",
                                                 name: "sake[brew_year(1i)]",
                                                 class: "form-select",

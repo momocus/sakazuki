@@ -90,7 +90,7 @@ RSpec.describe "Sake Form Date Select", type: :system do
 
     describe "selector of BY" do
       it "selects nil" do
-        expect(page).to have_select("select_by", selected: I18n.t("sakes.new.unknown"))
+        expect(page).to have_select("select_by", selected: I18n.t("sakes.form.unknown"))
       end
     end
   end
