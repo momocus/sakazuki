@@ -38,6 +38,7 @@ class SakesController < ApplicationController
   def new
     @sake = Sake.new
     @sake.size = 720
+    @sake.brew_year = to_by(Time.current)
   end
 
   # GET /sakes/1/edit
