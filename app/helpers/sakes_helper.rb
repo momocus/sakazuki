@@ -21,18 +21,27 @@ module SakesHelper
     Date.new(by_year, 7)
   end
 
-  # 和暦付きの年のHTMLセレクタを生成する
-  # @param latest_year [Integer] 選択肢の最新年
-  # @param selected [Integer, nil] 初期選択年
-  # @param include_nil [String, nil] 選択肢nilを含めるかどうか、Stringならnil選択肢を含みStringを表示テキストとして使う
-  # @param args [Object] tag.selectにそのまま渡されるoptions
-  # @return [String] 年のHTMLセレクタ
-  def select_year_with_japanese_era(latest_year:, selected: latest_year, include_nil: nil, **args)
-    years = year_range(latest_year)
-    opts = years.index_by { |year| with_japanese_era(Date.new(year)) }
-    opts[include_nil] = nil if include_nil
-    options = options_for_select(opts, selected: selected || "") # HACK: ""で空値の不明を選択する
-    tag.select(options, **args)
+  # 過去何年を酒情報に入力可能にするかの値
+  # @return [Integer] 年数
+  def start_year_limit
+    30
+  end
+
+  # 現在日時から入力可能なBY年のレンジを作成する
+  # @return [Range<Date>] BYレンジ
+  def by_range
+    this_by_year = to_by(Time.current).year
+    years = (this_by_year - start_year_limit)..this_by_year
+    years.map { |year| Date.new(year, 7, 1) }
+  end
+
+  # 日付を和暦付き文字列に変換する
+  #
+  # 7/1の月日を持つBYのDateオブジェクトを渡しても、正しく和暦をつけることができる。
+  # @param date [Date] 日付
+  # @return [String] "2021 / 令和3年"のような文字列
+  def with_japanese_era(date)
+    "#{date.year} / #{date.to_era('%O%-E年')}"
   end
 
   # どの瓶状態（bottle_level）にもマッチしない値
@@ -120,25 +129,6 @@ module SakesHelper
   end
 
   private
-
-  # 日付を和暦付き文字列に変換する
-  # @param date [Date] 日付
-  # @return [String] "2021 / 令和3年"のような文字列
-  def with_japanese_era(date)
-    "#{date.year} / #{date.to_era('%O%-E年')}"
-  end
-
-  # 過去何年を酒情報に入力可能にするかの値
-  # @type [Integer]
-  START_YEAR_LIMIT = 30
-  private_constant :START_YEAR_LIMIT
-
-  # 酒情報に入力可能な年範囲を作成する
-  # @param begin_year [Integer] 開始年
-  # @return [Range<Integer>] 年範囲
-  def year_range(begin_year)
-    (begin_year - START_YEAR_LIMIT)..begin_year
-  end
 
   private_constant :UNITS
 end

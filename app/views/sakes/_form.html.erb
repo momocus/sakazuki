@@ -118,12 +118,14 @@
             <%#       Railsデフォルトでは年月が縦並びになってしまう。%>
             <%#       そのため、2つフォームを設置してTSで同期する。 %>
             <div class="two-column-form">
-              <%= select_year_with_japanese_era(latest_year: Date.current.year,
-                                                selected: @sake.bindume_date&.year || Date.current.year,
-                                                id: "bindume_year",
-                                                name: "sake[bindume_date(1i)]",
-                                                class: "form-select",
-                                                data: { testid: "select_bindume_year" }) %>
+              <%= form.date_select("dummy_bindume",
+                                   { discard_month: true,
+                                     start_year: Time.current.year - start_year_limit,
+                                     end_year: Time.current.year,
+                                     year_format: ->(year) { with_japanese_era(Date.new(year, 1, 1)) }, },
+                                   id: "bindume_year",
+                                   class: "form-select",
+                                   data: { testid: "select_bindume_year" }) %>
             </div>
             <div class="two-column-form">
               <%= form.date_select(:bindume_date,
@@ -136,14 +138,20 @@
           <div class="form-row">
             <%= form.label(:brew_year, { class: "form-label" }) %>
             <div class="two-column-form">
-              <%= select_year_with_japanese_era(latest_year: to_by(Time.current).year,
-                                                selected: @sake.brew_year&.year,
-                                                include_nil: t(".unknown"),
-                                                id: "sake_brew_year_1i",
-                                                name: "sake[brew_year(1i)]",
-                                                class: "form-select",
-                                                data: { testid: "select_by" }) %>
-              <%# 使わない月日はBY始まりの7/1とする. See to_by %>
+              <%# HACK: 不明を最後に表示するため、form.date_selectを使わない %>
+              <%= form.select(:brew_year,
+                              nil,
+                              {},
+                              id: "sake_brew_year_1i",
+                              name: "sake[brew_year(1i)]",
+                              class: "form-select",
+                              data: { testid: "select_by" }) do %>
+                <% by_range.each do |by| %>
+                  <%= tag.option(with_japanese_era(by), value: by.year, selected: by.year == @sake.brew_year&.year) %>
+                <% end %>
+                <%= tag.option(t(".unknown"), value: "", selected: @sake.brew_year.nil?) %>
+              <% end %>
+              <%# 使わない月日はBY始まりの7/1とする. SEE: SakesHelper.to_by %>
               <input type="hidden" id="sake_<%= :brew_year %>_2i" name="sake[<%= :brew_year %>(2i)]" value="7">
               <input type="hidden" id="sake_<%= :brew_year %>_3i" name="sake[<%= :brew_year %>(3i)]" value="1">
             </div>
