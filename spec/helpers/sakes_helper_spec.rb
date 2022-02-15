@@ -78,6 +78,18 @@ RSpec.describe SakesHelper do
     end
   end
 
+  describe "select_year_with_japanese_era" do
+    # rubocop:disable Layout/LineLength
+    it "returns select tag" do
+      expect(select_year_with_japanese_era(latest_year: 2022)).to eq("<select><option value=\"1992\">1992 / 平成4年</option>\n<option value=\"1993\">1993 / 平成5年</option>\n<option value=\"1994\">1994 / 平成6年</option>\n<option value=\"1995\">1995 / 平成7年</option>\n<option value=\"1996\">1996 / 平成8年</option>\n<option value=\"1997\">1997 / 平成9年</option>\n<option value=\"1998\">1998 / 平成10年</option>\n<option value=\"1999\">1999 / 平成11年</option>\n<option value=\"2000\">2000 / 平成12年</option>\n<option value=\"2001\">2001 / 平成13年</option>\n<option value=\"2002\">2002 / 平成14年</option>\n<option value=\"2003\">2003 / 平成15年</option>\n<option value=\"2004\">2004 / 平成16年</option>\n<option value=\"2005\">2005 / 平成17年</option>\n<option value=\"2006\">2006 / 平成18年</option>\n<option value=\"2007\">2007 / 平成19年</option>\n<option value=\"2008\">2008 / 平成20年</option>\n<option value=\"2009\">2009 / 平成21年</option>\n<option value=\"2010\">2010 / 平成22年</option>\n<option value=\"2011\">2011 / 平成23年</option>\n<option value=\"2012\">2012 / 平成24年</option>\n<option value=\"2013\">2013 / 平成25年</option>\n<option value=\"2014\">2014 / 平成26年</option>\n<option value=\"2015\">2015 / 平成27年</option>\n<option value=\"2016\">2016 / 平成28年</option>\n<option value=\"2017\">2017 / 平成29年</option>\n<option value=\"2018\">2018 / 平成30年</option>\n<option value=\"2019\">2019 / 平成31年</option>\n<option value=\"2020\">2020 / 令和2年</option>\n<option value=\"2021\">2021 / 令和3年</option>\n<option selected=\"selected\" value=\"2022\">2022 / 令和4年</option></select>")
+    end
+
+    it "returns select tag with nil selection" do
+      expect(select_year_with_japanese_era(latest_year: 2022, selected: nil, include_nil: "不明")).to eq("<select><option value=\"1992\">1992 / 平成4年</option>\n<option value=\"1993\">1993 / 平成5年</option>\n<option value=\"1994\">1994 / 平成6年</option>\n<option value=\"1995\">1995 / 平成7年</option>\n<option value=\"1996\">1996 / 平成8年</option>\n<option value=\"1997\">1997 / 平成9年</option>\n<option value=\"1998\">1998 / 平成10年</option>\n<option value=\"1999\">1999 / 平成11年</option>\n<option value=\"2000\">2000 / 平成12年</option>\n<option value=\"2001\">2001 / 平成13年</option>\n<option value=\"2002\">2002 / 平成14年</option>\n<option value=\"2003\">2003 / 平成15年</option>\n<option value=\"2004\">2004 / 平成16年</option>\n<option value=\"2005\">2005 / 平成17年</option>\n<option value=\"2006\">2006 / 平成18年</option>\n<option value=\"2007\">2007 / 平成19年</option>\n<option value=\"2008\">2008 / 平成20年</option>\n<option value=\"2009\">2009 / 平成21年</option>\n<option value=\"2010\">2010 / 平成22年</option>\n<option value=\"2011\">2011 / 平成23年</option>\n<option value=\"2012\">2012 / 平成24年</option>\n<option value=\"2013\">2013 / 平成25年</option>\n<option value=\"2014\">2014 / 平成26年</option>\n<option value=\"2015\">2015 / 平成27年</option>\n<option value=\"2016\">2016 / 平成28年</option>\n<option value=\"2017\">2017 / 平成29年</option>\n<option value=\"2018\">2018 / 平成30年</option>\n<option value=\"2019\">2019 / 平成31年</option>\n<option value=\"2020\">2020 / 令和2年</option>\n<option value=\"2021\">2021 / 令和3年</option>\n<option value=\"2022\">2022 / 令和4年</option>\n<option selected=\"selected\" value=\"\">不明</option></select>")
+    end
+    # rubocop:enable Layout/LineLength
+  end
+
   describe "bottom_bottle" do
     it "must always return -1" do
       expect(bottom_bottle).to eq(-1)
