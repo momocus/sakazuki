@@ -31,8 +31,8 @@
       <% end %>
       <div class="col-auto <%= "ps-0" if @sake.season.present? %>">
         <% if @sake.brew_year.present? %>
-          <%= Sake.human_attribute_name(:brew_year) %>
           <%= @sake.brew_year.year %>
+          <%= Sake.human_attribute_name(:brew_year) %>
         <% end %>
         <%= "‒" if @sake.brew_year.present? && @sake.bindume_date.present? %>
         <% if @sake.bindume_date.present? %>
