@@ -29,9 +29,9 @@ module SakesHelper
   # @return [String] 年のHTMLセレクタ
   def select_year_with_japanese_era(latest_year:, selected: latest_year, include_nil: nil, **args)
     years = year_range(latest_year)
-    options = years.map { |year| [with_japanese_era(Date.new(year)), year] }
-    options += [[include_nil, nil]] if include_nil
-    options = options_for_select(options, selected: selected || "") # HACK: ""で空値の不明を選択する
+    opts = years.index_by { |year| with_japanese_era(Date.new(year)) }
+    opts[include_nil] = nil if include_nil
+    options = options_for_select(opts, selected: selected || "") # HACK: ""で空値の不明を選択する
     tag.select(options, **args)
   end
 
