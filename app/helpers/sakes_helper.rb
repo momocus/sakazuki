@@ -54,6 +54,7 @@ module SakesHelper
 
   # @type [Array<String>]
   UNITS = %w[合 升 斗 石].freeze
+  private_constant :UNITS
 
   # 酒の量[ml]を尺貫法の体積にした文字列で返す
   #
@@ -127,8 +128,4 @@ module SakesHelper
   def either_highlight_or_lowlight(value)
     value.blank? || value == "unknown" ? "lowlight-value" : "highlight-value"
   end
-
-  private
-
-  private_constant :UNITS
 end
