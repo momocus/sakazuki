@@ -80,16 +80,6 @@ RSpec.describe SakesHelper do
         expect(with_japanese_era(Date.new(2019, 4, 30))).to eq("2019 / 平成31年")
       end
     end
-
-    context "for brew year" do
-      it "returns formated year including 令和" do
-        expect(with_japanese_era(to_by(Date.new(2019, 7, 1)))).to eq("2019 / 令和1年")
-      end
-
-      it "returns formated year including 平成" do
-        expect(with_japanese_era(to_by(Date.new(2019, 6, 30)))).to eq("2018 / 平成30年")
-      end
-    end
   end
 
   describe "bottom_bottle" do
