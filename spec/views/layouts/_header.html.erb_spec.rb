@@ -2,7 +2,7 @@ require "rails_helper"
 
 # Capybaraを使うためにsystem specを指定する
 RSpec.describe "layouts/_header", type: :system do
-  describe "header link" do
+  describe "header links" do
     context "with signed in admin user" do
       let(:user) { FactoryBot.create(:user, admin: true) }
 
