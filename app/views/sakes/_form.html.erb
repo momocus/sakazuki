@@ -136,8 +136,7 @@
           <div class="form-row">
             <%= form.label(:brew_year, { class: "form-label" }) %>
             <div class="two-column-form">
-              <% current_by = to_by(Date.current).year %>
-              <%= select_year_with_japanese_era(latest_year: current_by,
+              <%= select_year_with_japanese_era(latest_year: to_by(Time.current).year,
                                                 selected: @sake.brew_year&.year,
                                                 include_nil: t(".unknown"),
                                                 id: "sake_brew_year_1i",
