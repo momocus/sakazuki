@@ -30,7 +30,7 @@ RSpec.describe "Sake Form Date Select", type: :system do
 
   context "when new sake before 7/1" do
     describe "selector of BY" do
-      it "selects this BY" do
+      it "selects this BY, not same with this year" do
         datetime = Time.zone.parse("2022-06-30 20:30:00")
         travel_to(datetime)
 
@@ -43,7 +43,7 @@ RSpec.describe "Sake Form Date Select", type: :system do
 
   context "when new sake after 7/1" do
     describe "selector of BY" do
-      it "selects this BY" do
+      it "selects this BY, same with this year" do
         datetime = Time.zone.parse("2022-07-1 10:30:00")
         travel_to(datetime)
 
