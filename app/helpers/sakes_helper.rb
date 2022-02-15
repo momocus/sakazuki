@@ -28,10 +28,10 @@ module SakesHelper
   end
 
   # 現在日時から入力可能なBY年のレンジを作成する
-  # @return [Range<Date>] BYレンジ
+  # @return [Range<Date>] 1年間隔で30年分のBYオブジェクトのレンジ
   def by_range
-    this_by_year = to_by(Time.current).year
-    years = (this_by_year - start_year_limit)..this_by_year
+    this_by = to_by(Time.current).year
+    years = (this_by - start_year_limit)..this_by
     years.map { |year| Date.new(year, 7, 1) }
   end
 
