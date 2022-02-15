@@ -32,24 +32,6 @@ RSpec.describe SakesHelper do
     end
   end
 
-  describe "year_range" do
-    it "generates a range ending with 2021" do
-      expect(year_range(2021).last).to eq(2021)
-    end
-
-    it "generates a range starting with 1991, (2021 - 30)" do
-      expect(year_range(2021).first).to eq(1991)
-    end
-
-    it "generates a range ending with 2030" do
-      expect(year_range(2030).last).to eq(2030)
-    end
-
-    it "generates a range starting with 2000, (2030 - 30)" do
-      expect(year_range(2030).first).to eq(2000)
-    end
-  end
-
   describe "to_by" do
     let(:date) { Date.current }
 
@@ -78,16 +60,36 @@ RSpec.describe SakesHelper do
     end
   end
 
-  describe "select_year_with_japanese_era" do
-    # rubocop:disable Layout/LineLength
-    it "returns select tag" do
-      expect(select_year_with_japanese_era(latest_year: 2022)).to eq("<select><option value=\"1992\">1992 / 平成4年</option>\n<option value=\"1993\">1993 / 平成5年</option>\n<option value=\"1994\">1994 / 平成6年</option>\n<option value=\"1995\">1995 / 平成7年</option>\n<option value=\"1996\">1996 / 平成8年</option>\n<option value=\"1997\">1997 / 平成9年</option>\n<option value=\"1998\">1998 / 平成10年</option>\n<option value=\"1999\">1999 / 平成11年</option>\n<option value=\"2000\">2000 / 平成12年</option>\n<option value=\"2001\">2001 / 平成13年</option>\n<option value=\"2002\">2002 / 平成14年</option>\n<option value=\"2003\">2003 / 平成15年</option>\n<option value=\"2004\">2004 / 平成16年</option>\n<option value=\"2005\">2005 / 平成17年</option>\n<option value=\"2006\">2006 / 平成18年</option>\n<option value=\"2007\">2007 / 平成19年</option>\n<option value=\"2008\">2008 / 平成20年</option>\n<option value=\"2009\">2009 / 平成21年</option>\n<option value=\"2010\">2010 / 平成22年</option>\n<option value=\"2011\">2011 / 平成23年</option>\n<option value=\"2012\">2012 / 平成24年</option>\n<option value=\"2013\">2013 / 平成25年</option>\n<option value=\"2014\">2014 / 平成26年</option>\n<option value=\"2015\">2015 / 平成27年</option>\n<option value=\"2016\">2016 / 平成28年</option>\n<option value=\"2017\">2017 / 平成29年</option>\n<option value=\"2018\">2018 / 平成30年</option>\n<option value=\"2019\">2019 / 平成31年</option>\n<option value=\"2020\">2020 / 令和2年</option>\n<option value=\"2021\">2021 / 令和3年</option>\n<option selected=\"selected\" value=\"2022\">2022 / 令和4年</option></select>")
+  describe "by_range" do
+    it "generates a range ending with current" do
+      expect(by_range.last).to eq(to_by(Time.current))
     end
 
-    it "returns select tag with nil selection" do
-      expect(select_year_with_japanese_era(latest_year: 2022, selected: nil, include_nil: "不明")).to eq("<select><option value=\"1992\">1992 / 平成4年</option>\n<option value=\"1993\">1993 / 平成5年</option>\n<option value=\"1994\">1994 / 平成6年</option>\n<option value=\"1995\">1995 / 平成7年</option>\n<option value=\"1996\">1996 / 平成8年</option>\n<option value=\"1997\">1997 / 平成9年</option>\n<option value=\"1998\">1998 / 平成10年</option>\n<option value=\"1999\">1999 / 平成11年</option>\n<option value=\"2000\">2000 / 平成12年</option>\n<option value=\"2001\">2001 / 平成13年</option>\n<option value=\"2002\">2002 / 平成14年</option>\n<option value=\"2003\">2003 / 平成15年</option>\n<option value=\"2004\">2004 / 平成16年</option>\n<option value=\"2005\">2005 / 平成17年</option>\n<option value=\"2006\">2006 / 平成18年</option>\n<option value=\"2007\">2007 / 平成19年</option>\n<option value=\"2008\">2008 / 平成20年</option>\n<option value=\"2009\">2009 / 平成21年</option>\n<option value=\"2010\">2010 / 平成22年</option>\n<option value=\"2011\">2011 / 平成23年</option>\n<option value=\"2012\">2012 / 平成24年</option>\n<option value=\"2013\">2013 / 平成25年</option>\n<option value=\"2014\">2014 / 平成26年</option>\n<option value=\"2015\">2015 / 平成27年</option>\n<option value=\"2016\">2016 / 平成28年</option>\n<option value=\"2017\">2017 / 平成29年</option>\n<option value=\"2018\">2018 / 平成30年</option>\n<option value=\"2019\">2019 / 平成31年</option>\n<option value=\"2020\">2020 / 令和2年</option>\n<option value=\"2021\">2021 / 令和3年</option>\n<option value=\"2022\">2022 / 令和4年</option>\n<option selected=\"selected\" value=\"\">不明</option></select>")
+    it "generates a range starting with 30 years ago" do
+      expect(by_range.first).to eq(to_by(Time.current) - 30.years)
     end
-    # rubocop:enable Layout/LineLength
+  end
+
+  describe "with_japanese_era" do
+    context "for normal year" do
+      it "returns formated year including 令和" do
+        expect(with_japanese_era(Date.new(2019, 5, 1))).to eq("2019 / 令和1年")
+      end
+
+      it "returns formated year including 平成" do
+        expect(with_japanese_era(Date.new(2019, 4, 30))).to eq("2019 / 平成31年")
+      end
+    end
+
+    context "for brew year" do
+      it "returns formated year including 令和" do
+        expect(with_japanese_era(to_by(Date.new(2019, 7, 1)))).to eq("2019 / 令和1年")
+      end
+
+      it "returns formated year including 平成" do
+        expect(with_japanese_era(to_by(Date.new(2019, 6, 30)))).to eq("2018 / 平成30年")
+      end
+    end
   end
 
   describe "bottom_bottle" do

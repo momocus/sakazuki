@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "Sake Form Date Select", type: :system do
-  # HACK: sakes_helperのprivate methodであるwith_japanese_eraを使う
+  # SakesHelper.with_japanese_eraを使う
   include SakesHelper
 
   let(:user) { FactoryBot.create(:user) }
