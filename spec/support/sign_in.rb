@@ -2,7 +2,7 @@ module SignIn
   # ヘッダーのSign inボタンをクリックし、サインインする
   # @param user [Object] ファクトリーボットで作ったuserオブジェクト
   def sign_in_via_header_button(user)
-    click_link("sign-in")
+    click_link(I18n.t("layouts.header.sign_in"))
     signin_process_on_signin_page(user)
   end
 
