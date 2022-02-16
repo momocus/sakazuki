@@ -20,7 +20,7 @@ ja:
       ingredient: 材料
       method: 造り
       measurement: 計測
-      unknown: :sakes.new.unknown
+      unknown: 不明
     show_review:
       no_awa: 炭酸なし
       review: レビュー
