@@ -52,4 +52,5 @@ ja:
         submit: :sakes.form.edit.submit
     float-button:
       edit: :sakes.index.edit
+      copy: 複製
       new: 新規
