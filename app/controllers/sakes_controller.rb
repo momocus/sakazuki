@@ -36,8 +36,12 @@ class SakesController < ApplicationController
 
   # GET /sakes/new
   def new
-    @sake = Sake.new
-    @sake.size = 720
+    if params.dig(:sake, :copied_from)
+      @sake = Sake.new(sake_params)
+      flash[:info] = t(".copy", name: alert_link_tag(@sake.name, sake_path(@sake.copied_from)))
+    else
+      @sake = Sake.new(size: 720)
+    end
     @sake.brew_year = to_by(Time.current)
   end
 
@@ -153,7 +157,7 @@ class SakesController < ApplicationController
                   :kobo, :alcohol, :aminosando, :season,
                   :warimizu, :moto, :seimai_buai, :roka,
                   :shibori, :note, :bottle_level, :hiire,
-                  :size, :price, :rating)
+                  :size, :price, :rating, :copied_from)
   end
 
   def store_photos

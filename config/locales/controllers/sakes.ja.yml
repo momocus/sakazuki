@@ -1,5 +1,7 @@
 ja:
   sakes:
+    new:
+      copy: "%{name}の内容を複製しました。"
     create:
       success: "%{name} を登録しました。"
     update:
