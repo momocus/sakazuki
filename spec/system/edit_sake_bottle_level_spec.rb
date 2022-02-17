@@ -14,7 +14,7 @@ RSpec.describe "Edit Sake's Bottle Level" do
     describe "updating sake from sealed to opened" do
       before do
         visit edit_sake_path(sealed_sake.id)
-        select(I18n.t("enums.sake.bottle_level.opened"), from: "select-bottle-level")
+        select(I18n.t("enums.sake.bottle_level.opened"), from: "sake_bottle_level")
         click_button("form-submit")
       end
 
@@ -48,7 +48,7 @@ RSpec.describe "Edit Sake's Bottle Level" do
     describe "updating sake from sealed to empty" do
       before do
         visit edit_sake_path(sealed_sake.id)
-        select(I18n.t("enums.sake.bottle_level.empty"), from: "select-bottle-level")
+        select(I18n.t("enums.sake.bottle_level.empty"), from: "sake_bottle_level")
         click_button("form-submit")
       end
 
@@ -88,7 +88,7 @@ RSpec.describe "Edit Sake's Bottle Level" do
     describe "updating sake from opened to empty" do
       before do
         visit edit_sake_path(opened_sake.id)
-        select(I18n.t("enums.sake.bottle_level.empty"), from: "select-bottle-level")
+        select(I18n.t("enums.sake.bottle_level.empty"), from: "sake_bottle_level")
         click_button("form-submit")
       end
 
@@ -124,7 +124,7 @@ RSpec.describe "Edit Sake's Bottle Level" do
     describe "updating sake from empty to sealed" do
       before do
         visit edit_sake_path(empty_sake.id)
-        select(I18n.t("enums.sake.bottle_level.sealed"), from: "select-bottle-level")
+        select(I18n.t("enums.sake.bottle_level.sealed"), from: "sake_bottle_level")
         click_button("form-submit")
       end
 
@@ -152,7 +152,7 @@ RSpec.describe "Edit Sake's Bottle Level" do
     describe "updating sake from empty to opened" do
       before do
         visit edit_sake_path(empty_sake.id)
-        select(I18n.t("enums.sake.bottle_level.opened"), from: "select-bottle-level")
+        select(I18n.t("enums.sake.bottle_level.opened"), from: "sake_bottle_level")
         click_button("form-submit")
       end
 
@@ -180,7 +180,7 @@ RSpec.describe "Edit Sake's Bottle Level" do
     describe "updating sake from opened to sealed" do
       before do
         visit edit_sake_path(opened_sake.id)
-        select(I18n.t("enums.sake.bottle_level.sealed"), from: "select-bottle-level")
+        select(I18n.t("enums.sake.bottle_level.sealed"), from: "sake_bottle_level")
         click_button("form-submit")
       end
 

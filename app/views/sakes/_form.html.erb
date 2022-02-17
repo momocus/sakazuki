@@ -33,7 +33,7 @@
               <%= form.text_field(:name,
                                   class: "form-control",
                                   autocomplete: "off",
-                                  "data-testid": "textfield-name") %>
+                                  "data-testid": "sake_name") %>
             </div>
           </div>
 
@@ -125,13 +125,13 @@
                                      year_format: ->(year) { with_japanese_era(Date.new(year, 1, 1)) }, },
                                    id: "bindume_year",
                                    class: "form-select",
-                                   data: { testid: "select_bindume_year" }) %>
+                                   data: { testid: "sake_bindume_year" }) %>
             </div>
             <div class="two-column-form">
               <%= form.date_select(:bindume_date,
                                    { discard_day: true, discard_year: true },
                                    class: "form-select",
-                                   data: { testid: "select_bindume_month" }) %>
+                                   data: { testid: "sake_bindume_month" }) %>
             </div>
           </div>
 
@@ -145,7 +145,7 @@
                               id: "sake_brew_year_1i",
                               name: "sake[brew_year(1i)]",
                               class: "form-select",
-                              data: { testid: "select_by" }) do %>
+                              data: { testid: "sake_brew_year" }) do %>
                 <% by_range.each do |by| %>
                   <%= tag.option(with_japanese_era(by), value: by.year, selected: by.year == @sake.brew_year&.year) %>
                 <% end %>
@@ -179,7 +179,7 @@
                                 [I18n.t("enums.sake.bottle_level.#{k}"), k]
                               },
                               {},
-                              { class: "form-select", "data-testid": "select-bottle-level" }) %>
+                              { class: "form-select", "data-testid": "sake_bottle_level" }) %>
             </div>
           </div>
         </div>

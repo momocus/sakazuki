@@ -8,7 +8,7 @@ RSpec.describe "New Sake" do
     before do
       sign_in(user)
       visit new_sake_path
-      fill_in("textfield-name", with: sake_name)
+      fill_in("sake_name", with: sake_name)
       click_button("form-submit")
     end
 

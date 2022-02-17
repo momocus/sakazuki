@@ -18,12 +18,12 @@ RSpec.describe "Sake Form Date Select", type: :system do
     describe "selector of bindume date" do
       it "selects this year" do
         year = with_japanese_era(Time.current)
-        expect(page).to have_select("select_bindume_year", selected: year)
+        expect(page).to have_select("sake_bindume_year", selected: year)
       end
 
       it "selects this month" do
         month = I18n.l(Time.current, format: "%b")
-        expect(page).to have_select("select_bindume_month", selected: month)
+        expect(page).to have_select("sake_bindume_month", selected: month)
       end
     end
   end
@@ -36,7 +36,7 @@ RSpec.describe "Sake Form Date Select", type: :system do
 
         visit new_sake_path
         by = with_japanese_era(to_by(Time.current))
-        expect(page).to have_select("select_by", selected: by)
+        expect(page).to have_select("sake_brew_year", selected: by)
       end
     end
   end
@@ -49,7 +49,7 @@ RSpec.describe "Sake Form Date Select", type: :system do
 
         visit new_sake_path
         by = with_japanese_era(to_by(Time.current))
-        expect(page).to have_select("select_by", selected: by)
+        expect(page).to have_select("sake_brew_year", selected: by)
       end
     end
   end
@@ -64,19 +64,19 @@ RSpec.describe "Sake Form Date Select", type: :system do
     describe "selector of bindume date" do
       it "selects the year of sake" do
         year = with_japanese_era(sake.bindume_date)
-        expect(page).to have_select("select_bindume_year", selected: year)
+        expect(page).to have_select("sake_bindume_year", selected: year)
       end
 
       it "selects the month of sake" do
         month = I18n.l(sake.bindume_date, format: "%b")
-        expect(page).to have_select("select_bindume_month", selected: month)
+        expect(page).to have_select("sake_bindume_month", selected: month)
       end
     end
 
     describe "selector of BY" do
       it "selects the BY of sake" do
         by = with_japanese_era(sake.brew_year)
-        expect(page).to have_select("select_by", selected: by)
+        expect(page).to have_select("sake_brew_year", selected: by)
       end
     end
   end
@@ -90,7 +90,7 @@ RSpec.describe "Sake Form Date Select", type: :system do
 
     describe "selector of BY" do
       it "selects nil" do
-        expect(page).to have_select("select_by", selected: I18n.t("sakes.form.unknown"))
+        expect(page).to have_select("sake_brew_year", selected: I18n.t("sakes.form.unknown"))
       end
     end
   end

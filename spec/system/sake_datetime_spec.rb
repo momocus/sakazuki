@@ -12,7 +12,7 @@ RSpec.describe "Sake DateTime" do
   describe "create a new sake" do
     before do
       visit new_sake_path
-      fill_in("textfield-name", with: "生道井")
+      fill_in("sake_name", with: "生道井")
     end
 
     context "for sealed sake" do
@@ -26,7 +26,7 @@ RSpec.describe "Sake DateTime" do
 
     context "for opened sake" do
       before do
-        select(I18n.t("enums.sake.bottle_level.opened"), from: "select-bottle-level")
+        select(I18n.t("enums.sake.bottle_level.opened"), from: "sake_bottle_level")
         click_button("form-submit")
       end
 
@@ -45,7 +45,7 @@ RSpec.describe "Sake DateTime" do
 
     context "for emptied sake" do
       before do
-        select(I18n.t("enums.sake.bottle_level.empty"), from: "select-bottle-level")
+        select(I18n.t("enums.sake.bottle_level.empty"), from: "sake_bottle_level")
         click_button("form-submit")
       end
 
@@ -75,7 +75,7 @@ RSpec.describe "Sake DateTime" do
 
     before do
       visit edit_sake_path(sake.id)
-      select(I18n.t("enums.sake.bottle_level.opened"), from: "select-bottle-level")
+      select(I18n.t("enums.sake.bottle_level.opened"), from: "sake_bottle_level")
       click_button("form-submit")
     end
 
