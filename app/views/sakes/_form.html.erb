@@ -12,6 +12,9 @@
     <% end %>
   <% end %>
 
+  <%# コピーされてたときのフォームスタイル %>
+  <% copied_style = params.dig(:sake, :copied_from) ? "copied-value" : "" %>
+
   <%# 表示義務ありのラベル情報 %>
   <div class="accordion my-2" id="accordionLabelInfo">
     <div class="accordion-item">
@@ -31,9 +34,8 @@
             </div>
             <div class="col">
               <%= form.text_field(:name,
-                                  class: "form-control",
-                                  autocomplete: "off",
-                                  "data-testid": "sake_name") %>
+                                  class: "form-control #{copied_style}",
+                                  autocomplete: "off", data: { testid: "sake_name" }) %>
             </div>
           </div>
 
@@ -42,7 +44,7 @@
             <div class="col">
               <input type="text" id="sake_kura_todofuken_autocompletion"
                 data-testid="sake_kura_todofuken_autocompletion"
-                class="form-control" autocomplete="on" list="sakagura">
+                class="form-control <%= copied_style %>" autocomplete="on" list="sakagura">
               <%= render("sakagura-datalist") %>
             </div>
             <%= form.text_field(:kura, hidden: true, data: { testid: "sake_kura" }) %>
@@ -89,7 +91,7 @@
             <%= form.label(:alcohol, { class: "form-label" }) %>
             <div class="short-form">
               <%= form.number_field(:alcohol,
-                                    { step: "any", class: "form-control" }) %>
+                                    step: "any", class: "form-control #{copied_style}", data: { testid: "sake_alcohol" }) %>
             </div>
           </div>
 
@@ -101,14 +103,15 @@
                                 [I18n.t("enums.sake.tokutei_meisho.#{k}"), k]
                               },
                               {},
-                              { class: "form-select" }) %>
+                              class: "form-select #{copied_style}", data: { testid: "sake_tokutei_meisho" }) %>
             </div>
           </div>
 
           <div class="form-row">
             <%= form.label(:seimai_buai, { class: "form-label" }) %>
             <div class="short-form">
-              <%= form.number_field(:seimai_buai, { class: "form-control" }) %>
+              <%= form.number_field(:seimai_buai,
+                                    class: "form-control #{copied_style}", data: { testid: "sake_seimai_buai" }) %>
             </div>
           </div>
 
@@ -160,14 +163,14 @@
           <div class="form-row">
             <%= form.label(:size, { class: "form-label" }) %>
             <div class="short-form">
-              <%= form.number_field(:size, { class: "form-control" }) %>
+              <%= form.number_field(:size, class: "form-control #{copied_style}", data: { testid: "sake_size" }) %>
             </div>
           </div>
 
           <div class="form-row">
             <%= form.label(:price, { class: "form-label" }) %>
             <div class="short-form">
-              <%= form.number_field(:price, { class: "form-control" }) %>
+              <%= form.number_field(:price, class: "form-control #{copied_style}", data: { testid: "sake_price" }) %>
             </div>
           </div>
 
@@ -202,14 +205,18 @@
           <div class="form-row">
             <%= form.label(:genryomai, { class: "form-label" }) %>
             <div class="col">
-              <%= form.text_field(:genryomai, class: "form-control", autocomplete: "on", list: "sakamai-list") %>
+              <%= form.text_field(:genryomai,
+                                  class: "form-control #{copied_style}", autocomplete: "on", list: "sakamai-list",
+                                  data: { testid: "sake_genryomai" }) %>
             </div>
           </div>
 
           <div class="form-row">
             <%= form.label(:kakemai, { class: "form-label" }) %>
             <div class="col">
-              <%= form.text_field(:kakemai, class: "form-control", autocomplete: "on", list: "sakamai-list") %>
+              <%= form.text_field(:kakemai,
+                                  class: "form-control #{copied_style}", autocomplete: "on", list: "sakamai-list",
+                                  data: { testid: "sake_kakemai" }) %>
             </div>
           </div>
 
@@ -218,7 +225,7 @@
           <div class="form-row">
             <%= form.label(:kobo, { class: "form-label" }) %>
             <div class="col">
-              <%= form.text_field(:kobo, { class: "form-control" }) %>
+              <%= form.text_field(:kobo, class: "form-control #{copied_style}", data: { testid: "sake_kobo" }) %>
             </div>
           </div>
 
@@ -230,14 +237,16 @@
                                 [I18n.t("enums.sake.moto.#{k}"), k]
                               },
                               {},
-                              { class: "form-select" }) %>
+                              class: "form-select #{copied_style}", data: { testid: "sake_moto" }) %>
             </div>
           </div>
 
           <div class="form-row">
             <%= form.label(:roka, { class: "form-label" }) %>
             <div class="col">
-              <%= form.text_field(:roka, { class: "form-control", autocomplete: "on", list: "roka-list" }) %>
+              <%= form.text_field(:roka,
+                                  class: "form-control #{copied_style}", autocomplete: "on", list: "roka-list",
+                                  data: { testid: "sake_roka" }) %>
               <datalist id="roka-list">
                 <option value="無濾過"></option>
                 <option value="素濾過"></option>
@@ -248,7 +257,9 @@
           <div class="form-row">
             <%= form.label(:shibori, { class: "form-label" }) %>
             <div class="col">
-              <%= form.text_field(:shibori, { class: "form-control", autocomplete: "on", list: "shibori-list" }) %>
+              <%= form.text_field(:shibori,
+                                  class: "form-control #{copied_style}", autocomplete: "on", list: "shibori-list",
+                                  data: { testid: "sake_shibori" }) %>
               <datalist id="shibori-list">
                 <option value="ヤブタ式"></option>
                 <option value="槽絞り"></option>
@@ -275,7 +286,7 @@
                                 [I18n.t("enums.sake.hiire.#{k}"), k]
                               },
                               {},
-                              { class: "form-select", title: "test" }) %>
+                              class: "form-select #{copied_style}", title: "test", data: { testid: "sake_hiire" }) %>
             </div>
           </div>
 
@@ -287,14 +298,16 @@
                                 [I18n.t("enums.sake.warimizu.#{k}"), k]
                               },
                               {},
-                              { class: "form-select" }) %>
+                              class: "form-select #{copied_style}", data: { testid: "sake_warimizu" }) %>
             </div>
           </div>
 
           <div class="form-row">
             <%= form.label(:season, { class: "form-label" }) %>
             <div class="col">
-              <%= form.text_field(:season, { class: "form-control", autocomplete: "on", list: "season-list" }) %>
+              <%= form.text_field(:season,
+                                  class: "form-control #{copied_style}", autocomplete: "on", list: "season-list",
+                                  data: { testid: "sake_season" }) %>
               <datalist id="season-list">
                 <option value="新酒"></option>
                 <option value="立春朝搾り"></option>
@@ -311,21 +324,24 @@
           <div class="form-row">
             <%= form.label(:nihonshudo, { class: "form-label" }) %>
             <div class="short-form">
-              <%= form.number_field(:nihonshudo, { step: "any", class: "form-control" }) %>
+              <%= form.number_field(:nihonshudo,
+                                    step: "any", class: "form-control #{copied_style}", data: { testid: "sake_nihonshudo" }) %>
             </div>
           </div>
 
           <div class="form-row">
             <%= form.label(:sando, { class: "form-label" }) %>
             <div class="short-form">
-              <%= form.number_field(:sando, { step: "any", class: "form-control" }) %>
+              <%= form.number_field(:sando,
+                                    step: "any", class: "form-control #{copied_style}", data: { testid: "sake_sando" }) %>
             </div>
           </div>
 
           <div class="form-row">
             <%= form.label(:aminosando, { class: "form-label" }) %>
             <div class="short-form">
-              <%= form.number_field(:aminosando, { step: "any", class: "form-control" }) %>
+              <%= form.number_field(:aminosando,
+                                    step: "any", class: "form-control #{copied_style}", data: { testid: "sake_aminosando" }) %>
             </div>
           </div>
         </div>
@@ -349,21 +365,23 @@
             <%= form.label(:rating, { class: "form-label" }) %>
             <div class="col">
               <div id="rater"></div>
-              <%= form.number_field(:rating, hidden: true, class: "form-control", max: 5, min: 0, step: 1) %>
+              <%= form.number_field(:rating,
+                                    hidden: true, max: 5, min: 0, step: 1,
+                                    class: "form-control", data: { testid: "sake_rating" }) %>
             </div>
           </div>
 
           <div class="form-row">
             <%= form.label(:color, { class: "form-label" }) %>
             <div class="col">
-              <%= form.text_field(:color, { class: "form-control" }) %>
+              <%= form.text_field(:color, class: "form-control", data: { testid: "sake_color" }) %>
             </div>
           </div>
 
           <div class="form-row">
             <%= form.label(:nigori, { class: "form-label" }) %>
             <div class="col">
-              <%= form.text_field(:nigori, { class: "form-control" }) %>
+              <%= form.text_field(:nigori, class: "form-control", data: { testid: "sake_nigori" }) %>
             </div>
           </div>
 
@@ -378,41 +396,42 @@
                                     min: 0,
                                     max: 6,
                                     step: 1,
-                                    data: { taste_value: @sake.taste_value }) %>
+                                    data: { taste_value: @sake.taste_value, testid: "sake_taste_value" }) %>
               <%= form.number_field(:aroma_value,
                                     hidden: true,
                                     min: 0,
                                     max: 6,
                                     step: 1,
-                                    data: { aroma_value: @sake.aroma_value }) %>
+
+                                    data: { aroma_value: @sake.aroma_value, testid: "sake_aroma_value" }) %>
             </div>
           </div>
 
           <div class="form-row">
             <%= form.label(:aroma_impression, { class: "form-label" }) %>
             <div class="col">
-              <%= form.text_area(:aroma_impression, { class: "form-control" }) %>
+              <%= form.text_area(:aroma_impression, class: "form-control", data: { testid: "sake_aroma_impression" }) %>
             </div>
           </div>
 
           <div class="form-row">
             <%= form.label(:taste_impression, { class: "form-label" }) %>
             <div class="col">
-              <%= form.text_area(:taste_impression, { class: "form-control" }) %>
+              <%= form.text_area(:taste_impression, class: "form-control", data: { testid: "sake_taste_impression" }) %>
             </div>
           </div>
 
           <div class="form-row">
             <%= form.label(:awa, { class: "form-label" }) %>
             <div class="col">
-              <%= form.text_field(:awa, { class: "form-control" }) %>
+              <%= form.text_field(:awa, class: "form-control", data: { testid: "sake_awa" }) %>
             </div>
           </div>
 
           <div class="form-row">
             <%= form.label(:note, { class: "form-label" }) %>
             <div class="col">
-              <%= form.text_area(:note, { class: "form-control" }) %>
+              <%= form.text_area(:note, class: "form-control", data: { testid: "sake_note" }) %>
             </div>
           </div>
         </div>

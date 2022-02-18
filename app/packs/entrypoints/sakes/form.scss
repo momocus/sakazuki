@@ -55,3 +55,7 @@
   margin-top: -3ex;
   margin-left: 1ex;
 }
+
+.copied-value {
+  @extend .border-info;
+}
