@@ -7,7 +7,7 @@ function stripKuraTodofuken(kuraTodofuken: string) {
   else return [kuraTodofuken, ""]
 }
 
-function setElementValueById(id: string, value: string) {
+function setInputValueById(id: string, value: string) {
   const form = document.getElementById(id) as HTMLInputElement
   form.value = value
 }
@@ -20,8 +20,8 @@ function setSyncEvent() {
   form.addEventListener("change", (_event) => {
     const autocompeted = form.value
     const [kura, todofuken] = stripKuraTodofuken(autocompeted)
-    setElementValueById("sake_kura", kura)
-    setElementValueById("sake_todofuken", todofuken)
+    setInputValueById("sake_kura", kura)
+    setInputValueById("sake_todofuken", todofuken)
   })
 }
 
@@ -30,13 +30,11 @@ function loadKuraTodofuken() {
   const todofukenForm = document.getElementById(
     "sake_todofuken"
   ) as HTMLInputElement
-  const visibleForm = document.getElementById(
-    "sake_kura_todofuken_autocompletion"
-  ) as HTMLInputElement
+  const visibleId = "sake_kura_todofuken_autocompletion"
 
   if (kuraForm.value && todofukenForm.value)
-    visibleForm.value = `${kuraForm.value}（${todofukenForm.value}）`
-  else if (kuraForm.value) visibleForm.value = kuraForm.value
+    setInputValueById(visibleId, `${kuraForm.value}（${todofukenForm.value}）`)
+  else if (kuraForm.value) setInputValueById(visibleId, kuraForm.value)
 }
 
 // Main
