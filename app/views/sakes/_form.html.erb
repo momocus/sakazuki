@@ -12,8 +12,9 @@
     <% end %>
   <% end %>
 
-  <%# コピーされてたときのフォームスタイル %>
+  <%# コピー機能 %>
   <% copied_style = params.dig(:sake, :copied_from) ? "copied-value" : "" %>
+  <%= form.number_field(:copied_from, hidden: true, data: { testid: "sake_copied_from" }) %>
 
   <%# 表示義務ありのラベル情報 %>
   <div class="accordion my-2" id="accordionLabelInfo">
