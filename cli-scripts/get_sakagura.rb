@@ -49,7 +49,7 @@ end
 # @param name [String] 酒蔵名
 # @return [String] 社名変更を適用した酒蔵名
 def rename_sakagura(name)
-  name.gsub(/阿部勘酒造店/, "阿部勘酒造株式会社") # 2017年に社名変更
+  name.sub(/\(休業中\)/, "")
 end
 
 def add_sakagura(names)
