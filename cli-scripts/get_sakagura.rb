@@ -53,7 +53,10 @@ def rename_sakagura(name)
 end
 
 def add_sakagura(names)
-  names.append(%w[三重県 井村屋株式会社]) # 2020年に株式会社福井酒造上を合併し、2021年に酒造り開始
+  # 2020年に株式会社福井酒造場を合併し、2021年に酒造り開始
+  names.append(%w[三重県 井村屋株式会社])
+  # 2021年に愛知県の森山酒造が移転合併した
+  names.append(%w[神奈川 株式会社RiceWine])
 end
 
 # SakeTimesの都道府県の酒蔵一覧ページから、都道府県名と酒蔵の名前の組を作る
