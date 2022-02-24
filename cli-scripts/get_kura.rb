@@ -91,6 +91,30 @@ def add_meigara(kura, region, meigaras)
   end
 end
 
+# 銘柄に空白が含まれうるか
+#
+# @param region [String] 地域
+# @return [Boolean] 銘柄に空白が含まれうるならtrue
+def meigara_include_space?(region)
+  %w[アフリカ オセアニア ヨーロッパ 中南米 北米].include?(region)
+end
+
+# SAKETIMESに載っている銘柄を複数に分解する
+#
+# SAKETIMESに載っている銘柄は以下の状態が含まれる。
+# - 代表銘柄が載っておらず空文字
+# - 代表銘柄が2つ以上あり、空白で区切られている
+# - 代表銘柄自体に空白が含まれる
+# そのため空白で区切っていい場合とだめな場合がある。
+# 現状は海外地域でのみ銘柄に空白が含まれるため、これでHACKしている。
+#
+# @param meigaras [String] SAKETIMESに載っている代表銘柄
+# @param region [String] 地域
+# @return [Array<String>] 複数の代表銘柄に分解した代表銘柄
+def split_meigara(meigaras, region)
+  meigara_include_space?(region) && meigaras != "" ? [meigaras] : meigaras.split
+end
+
 # SAKETIMESの地域ページのテーブルカラムから、蔵データを作成する
 #
 # 帰ってくる代表銘柄は複数がありうるため、配列となっている。
@@ -101,7 +125,8 @@ end
 def tr_to_data(table_row, region)
   kura = table_row.css("span.main a")[0].content
   kura = rename_kura(kura)
-  meigaras = table_row.css("dd")[0].content.split
+  meigaras = table_row.css("dd")[0].content
+  meigaras = split_meigara(meigaras, region)
   meigaras = add_meigara(kura, region, meigaras)
   { kura: kura, region: region, meigaras: meigaras }
 end
