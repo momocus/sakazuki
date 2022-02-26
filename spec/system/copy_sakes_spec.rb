@@ -45,12 +45,6 @@ RSpec.describe "CopySakes", type: :system do
       end
     end
 
-    describe "copied_from" do
-      it "is set copied sake id" do
-        expect(find(:test_id, "sake_copied_from", visible: false).value).to eq(sake.id.to_s)
-      end
-    end
-
     describe "flash message" do
       it "has copy message" do
         text = I18n.t("sakes.new.copy", name: sake.name)
@@ -63,7 +57,7 @@ RSpec.describe "CopySakes", type: :system do
     end
   end
 
-  context "for copy value" do
+  context "for abstraction and detail values" do
     before do
       click_link "copy_sake"
     end
@@ -76,10 +70,6 @@ RSpec.describe "CopySakes", type: :system do
         it "has copied value" do
           expect(find(:test_id, "sake_#{key}").value).to eq(sake.method(key).call.to_s)
         end
-
-        it "has copied style" do
-          expect(find(:test_id, "sake_#{key}")[:class]).to include("copied-value")
-        end
       end
     end
 
@@ -90,10 +80,6 @@ RSpec.describe "CopySakes", type: :system do
         it "has copied value" do
           expect(page).to have_select(test_id: "sake_#{key}", selected: sake.method("#{key}_i18n").call)
         end
-
-        it "has copied style" do
-          expect(find(:test_id, "sake_#{key}")[:class]).to include("copied-value")
-        end
       end
     end
 
@@ -103,14 +89,31 @@ RSpec.describe "CopySakes", type: :system do
       it "has copied kura and todofuken", js: true do
         expect(find(:test_id, id).value).to have_text("#{sake.kura}（#{sake.todofuken}）")
       end
+    end
 
-      it "has copied style" do
-        expect(find(:test_id, id)[:class]).to include("copied-value")
+    describe "bindume_date year" do
+      it "has copied bindume year" do
+        year = with_japanese_era(sake.bindume_date)
+        expect(page).to have_select(test_id: "sake_bindume_year", selected: year)
+      end
+    end
+
+    describe "bindume_date month" do
+      it "has copied bindume month" do
+        month = I18n.l(sake.bindume_date, format: "%b")
+        expect(page).to have_select(test_id: "sake_bindume_month", selected: month)
+      end
+    end
+
+    describe "brew_year" do
+      it "has copied brew_year" do
+        by = with_japanese_era(sake.brew_year)
+        expect(page).to have_select(test_id: "sake_brew_year", selected: by)
       end
     end
   end
 
-  context "for not copy value" do
+  context "for review values" do
     before do
       click_link "copy_sake"
     end
@@ -122,10 +125,6 @@ RSpec.describe "CopySakes", type: :system do
         it "does not have value" do
           # nil or ""
           expect(find(:test_id, "sake_#{key}").value.to_s).to eq("")
-        end
-
-        it "does not have copied style" do
-          expect(find(:test_id, "sake_#{key}")[:class]).not_to include("copied-value")
         end
       end
     end
@@ -150,46 +149,9 @@ RSpec.describe "CopySakes", type: :system do
     end
 
     # special case
-    describe "bindume_date year" do
-      it "does not have copied value, but this year" do
-        year = with_japanese_era(Time.current)
-        expect(page).to have_select(test_id: "sake_bindume_year", selected: year)
-      end
-
-      it "does not have copied style" do
-        expect(find(:test_id, "sake_bindume_year")[:class]).not_to include("copied-value")
-      end
-    end
-
-    describe "bindume_date month" do
-      it "does not have copied value, but this month" do
-        month = I18n.l(Time.current, format: "%b")
-        expect(page).to have_select(test_id: "sake_bindume_year", selected: month)
-      end
-
-      it "does not have copied style" do
-        expect(find(:test_id, "sake_bindume_month")[:class]).not_to include("copied-value")
-      end
-    end
-
-    describe "brew_year" do
-      it "does not have copied value, but this BY" do
-        by = with_japanese_era(to_by(Time.current))
-        expect(page).to have_select(test_id: "sake_brew_year", selected: by)
-      end
-
-      it "does not have copied style" do
-        expect(find(:test_id, "sake_brew_year")[:class]).not_to include("copied-value")
-      end
-    end
-
     describe "bottle_level" do
       it "is sealed" do
         expect(find(:test_id, "sake_bottle_level")).to have_text(Sake.bottle_levels_i18n[:sealed])
-      end
-
-      it "does not have copied style" do
-        expect(find(:test_id, "sake_bottle_level")[:class]).not_to include("copied-value")
       end
     end
 
