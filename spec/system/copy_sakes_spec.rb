@@ -57,7 +57,7 @@ RSpec.describe "CopySakes", type: :system do
     end
   end
 
-  context "for abstraction and detail values" do
+  describe "copied values" do
     before do
       click_link "copy_sake"
     end
@@ -113,7 +113,7 @@ RSpec.describe "CopySakes", type: :system do
     end
   end
 
-  context "for review values" do
+  describe "not copied values" do
     before do
       click_link "copy_sake"
     end
