@@ -36,13 +36,13 @@ class SakesController < ApplicationController
 
   # GET /sakes/new
   def new
-    if params.dig(:sake, :copied_from)
-      @sake = Sake.new(sake_params)
-      flash[:info] = t(".copy", name: alert_link_tag(@sake.name, sake_path(@sake.copied_from)))
-    else
-      @sake = Sake.new(size: 720)
+    copied_from = params.dig(:sake, :copied_from)
+    if copied_from
+      name = params.dig(:sake, :name)
+      flash[:info] = t(".copy", name: alert_link_tag(name, sake_path(copied_from))) if copied_from
     end
-    @sake.brew_year = to_by(Time.current)
+    @sake = copied_from ? Sake.new(sake_params) : Sake.new
+    @sake = default_value(@sake)
   end
 
   # GET /sakes/1/edit
@@ -122,6 +122,12 @@ class SakesController < ApplicationController
     words.split(/[ 　]/).map { |word| { all_text_cont: word } }
   end
 
+  def default_value(sake)
+    sake.size = 720 unless sake.size
+    sake.brew_year = to_by(Time.current) unless sake.brew_year
+    sake
+  end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_sake
     @sake = Sake.includes(:photos).find(params[:id])
@@ -157,7 +163,7 @@ class SakesController < ApplicationController
                   :kobo, :alcohol, :aminosando, :season,
                   :warimizu, :moto, :seimai_buai, :roka,
                   :shibori, :note, :bottle_level, :hiire,
-                  :size, :price, :rating, :copied_from)
+                  :size, :price, :rating)
   end
 
   def store_photos
