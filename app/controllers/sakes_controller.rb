@@ -40,7 +40,7 @@ class SakesController < ApplicationController
     if copied_id
       copied = Sake.find(copied_id)
       flash[:info] = t(".copy", name: alert_link_tag(copied.name, sake_path(copied_id)))
-      attr = copied.attributes.select { |key, _v| copy_key?(key) }
+      attr = copy_attributes(copied)
       @sake = Sake.new(attr)
     else
       @sake = Sake.new(size: 720, brew_year: to_by(Time.current))
@@ -134,10 +134,13 @@ class SakesController < ApplicationController
        size todofuken tokutei_meisho warimizu].include?(key)
   end
 
-  def default_value(sake)
-    sake.size = 720 unless sake.size
-    sake.brew_year = to_by(Time.current) unless sake.brew_year
-    sake
+  # コピーする酒情報を持ったハッシュを作成する
+  #
+  # @param sake [Sake] コピーする対象の酒オブジェクト
+  # @return [Hash<Symbol => String, Integer, Date> コピーする酒情報のハッシュ
+  def copy_attributes(sake)
+    all = sake.attributes
+    all.select { |key, _v| copy_key?(key) }
   end
 
   # Use callbacks to share common setup or constraints between actions.
