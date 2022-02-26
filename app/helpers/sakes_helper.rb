@@ -139,8 +139,8 @@ module SakesHelper
   private
 
   def copy_key?(key)
-    %w[alcohol aminosando genryomai hiire kakemai kobo kura moto name nihonshudo
-       price roka sando season seimai_buai shibori size todofuken tokutei_meisho
-       warimizu].include?(key)
+    %w[alcohol aminosando bindume_date brew_year genryomai hiire kakemai kobo
+       kura moto name nihonshudo price roka sando season seimai_buai shibori
+       size todofuken tokutei_meisho warimizu].include?(key)
   end
 end
