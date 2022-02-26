@@ -32,16 +32,17 @@ RSpec.describe "CopySakes", type: :system do
       visit sake_path(sake.id)
       expect(find(:test_id, "copy_sake")).to have_text(I18n.t("sakes.float-button.copy"))
     end
-
-    it "links to new sake page" do
-      click_link "copy_sake"
-      expect(page).to have_current_path(new_sake_path, ignore_query: true)
-    end
   end
 
   context "after click copy link" do
     before do
       click_link "copy_sake"
+    end
+
+    describe "linked page" do
+      it "links to new sake page" do
+        expect(page).to have_current_path(new_sake_path, ignore_query: true)
+      end
     end
 
     describe "copied_from" do
