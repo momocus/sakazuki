@@ -36,13 +36,15 @@ class SakesController < ApplicationController
 
   # GET /sakes/new
   def new
-    copied_from = params.dig(:sake, :copied_from)
-    if copied_from
-      name = params.dig(:sake, :name)
-      flash[:info] = t(".copy", name: alert_link_tag(name, sake_path(copied_from))) if copied_from
+    copied_id = params[:copied_from]
+    if copied_id
+      copied = Sake.find(copied_id)
+      flash[:info] = t(".copy", name: alert_link_tag(copied.name, sake_path(copied_id)))
+      attr = copied.attributes.select { |key, _v| copy_key?(key) }
+      @sake = Sake.new(attr)
+    else
+      @sake = Sake.new(size: 720, brew_year: to_by(Time.current))
     end
-    @sake = copied_from ? Sake.new(sake_params) : Sake.new
-    @sake = default_value(@sake)
   end
 
   # GET /sakes/1/edit
@@ -120,6 +122,16 @@ class SakesController < ApplicationController
     # 全角空白または半角空白で区切ることを許可
     # { :name_cont => "" }があり得るがransackがSQL変換で削除するのでOK
     words.split(/[ 　]/).map { |word| { all_text_cont: word } }
+  end
+
+  # コピー機能の対象キーかどうか
+  #
+  # @param key [Symbol] 酒カラム
+  # @return [Boolean] コピー対象のキーならtrue
+  def copy_key?(key)
+    %w[alcohol aminosando bindume_date brew_year genryomai hiire kakemai kobo
+       kura moto name nihonshudo price roka sando season seimai_buai shibori
+       size todofuken tokutei_meisho warimizu].include?(key)
   end
 
   def default_value(sake)

@@ -128,19 +128,4 @@ module SakesHelper
   def either_highlight_or_lowlight(value)
     value.blank? || value == "unknown" ? "lowlight-value" : "highlight-value"
   end
-
-  def copy_sake_params(sake)
-    params = sake.attributes
-    params = params.select { |key, _value| copy_key?(key) }
-    params["copied_from"] = sake.id
-    { sake: params }
-  end
-
-  private
-
-  def copy_key?(key)
-    %w[alcohol aminosando bindume_date brew_year genryomai hiire kakemai kobo
-       kura moto name nihonshudo price roka sando season seimai_buai shibori
-       size todofuken tokutei_meisho warimizu].include?(key)
-  end
 end
