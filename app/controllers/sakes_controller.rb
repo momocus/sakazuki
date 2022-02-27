@@ -36,9 +36,15 @@ class SakesController < ApplicationController
 
   # GET /sakes/new
   def new
-    @sake = Sake.new
-    @sake.size = 720
-    @sake.brew_year = to_by(Time.current)
+    copied_id = params[:copied_from]
+    if copied_id
+      copied = Sake.find(copied_id)
+      flash[:info] = t(".copy", name: alert_link_tag(copied.name, sake_path(copied_id)))
+      attr = copy_attributes(copied)
+      @sake = Sake.new(attr)
+    else
+      @sake = Sake.new(size: 720, brew_year: to_by(Time.current))
+    end
   end
 
   # GET /sakes/1/edit
@@ -116,6 +122,25 @@ class SakesController < ApplicationController
     # 全角空白または半角空白で区切ることを許可
     # { :name_cont => "" }があり得るがransackがSQL変換で削除するのでOK
     words.split(/[ 　]/).map { |word| { all_text_cont: word } }
+  end
+
+  # コピー機能の対象キーかどうか
+  #
+  # @param key [Symbol] 酒カラム
+  # @return [Boolean] コピー対象のキーならtrue
+  def copy_key?(key)
+    %w[alcohol aminosando bindume_date brew_year genryomai hiire kakemai kobo
+       kura moto name nihonshudo price roka sando season seimai_buai shibori
+       size todofuken tokutei_meisho warimizu].include?(key)
+  end
+
+  # コピーする酒情報を持ったハッシュを作成する
+  #
+  # @param sake [Sake] コピーする対象の酒オブジェクト
+  # @return [Hash<Symbol => String, Integer, Date>] コピーする酒情報のハッシュ
+  def copy_attributes(sake)
+    all = sake.attributes
+    all.select { |key, _v| copy_key?(key) }
   end
 
   # Use callbacks to share common setup or constraints between actions.
