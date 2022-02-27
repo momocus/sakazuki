@@ -137,7 +137,7 @@ class SakesController < ApplicationController
   # コピーする酒情報を持ったハッシュを作成する
   #
   # @param sake [Sake] コピーする対象の酒オブジェクト
-  # @return [Hash<Symbol => String, Integer, Date> コピーする酒情報のハッシュ
+  # @return [Hash<Symbol => String, Integer, Date>] コピーする酒情報のハッシュ
   def copy_attributes(sake)
     all = sake.attributes
     all.select { |key, _v| copy_key?(key) }
