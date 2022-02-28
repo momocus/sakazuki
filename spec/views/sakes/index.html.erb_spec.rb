@@ -2,8 +2,8 @@ require "rails_helper"
 
 # Capybaraを使うためにsystem specを指定する
 RSpec.describe "sakes/index", type: :system do
-  let(:user) { FactoryBot.create(:user) }
-  let!(:sake) { FactoryBot.create(:sake) }
+  let(:user) { create(:user) }
+  let!(:sake) { create(:sake) }
 
   describe "index page" do
     before do

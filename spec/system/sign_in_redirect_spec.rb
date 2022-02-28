@@ -1,9 +1,9 @@
 require "rails_helper"
 
 RSpec.describe "Sign-in Redirect" do
-  let(:sakes) { FactoryBot.create_list(:sake, 3) }
+  let(:sakes) { create_list(:sake, 3) }
   let(:id) { sakes[0].id }
-  let(:user) { FactoryBot.create(:user) }
+  let(:user) { create(:user) }
 
   before do
     sign_out(user)

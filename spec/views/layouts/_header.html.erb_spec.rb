@@ -4,7 +4,7 @@ require "rails_helper"
 RSpec.describe "layouts/_header", type: :system do
   describe "header links" do
     context "with signed in admin user" do
-      let(:user) { FactoryBot.create(:user, admin: true) }
+      let(:user) { create(:user, admin: true) }
 
       before do
         sign_in(user)
@@ -33,7 +33,7 @@ RSpec.describe "layouts/_header", type: :system do
     end
 
     context "with signed in non admin user" do
-      let(:user) { FactoryBot.create(:user, admin: false) }
+      let(:user) { create(:user, admin: false) }
 
       before do
         sign_in(user)

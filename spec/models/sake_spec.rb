@@ -43,34 +43,34 @@
 require "rails_helper"
 
 RSpec.describe Sake do
-  let!(:sealed_sake) { FactoryBot.create(:sake, bottle_level: "sealed", size: 720) }
-  let!(:opened_sake) { FactoryBot.create(:sake, bottle_level: "opened", size: 1800) }
-  let!(:impressed_sake) { FactoryBot.create(:sake, bottle_level: "opened", aroma_value: 1, taste_value: 2, size: 1800) }
-  let!(:empty_sake) { FactoryBot.create(:sake, bottle_level: "empty", size: 300) }
+  let!(:sealed_sake) { create(:sake, bottle_level: "sealed", size: 720) }
+  let!(:opened_sake) { create(:sake, bottle_level: "opened", size: 1800) }
+  let!(:impressed_sake) { create(:sake, bottle_level: "opened", aroma_value: 1, taste_value: 2, size: 1800) }
+  let!(:empty_sake) { create(:sake, bottle_level: "empty", size: 300) }
 
   describe "validates" do
     subject { sake.save }
 
     context "if name is missing" do
-      let(:sake) { FactoryBot.build(:sake, name: "") }
+      let(:sake) { build(:sake, name: "") }
 
       it { is_expected.to be_falsy }
     end
 
     context "if kura is nil" do
-      let(:sake) { FactoryBot.build(:sake, kura: nil) }
+      let(:sake) { build(:sake, kura: nil) }
 
       it { is_expected.to be_falsy }
     end
 
     context "if opened_at is nil" do
-      let(:sake) { FactoryBot.build(:sake, opened_at: nil) }
+      let(:sake) { build(:sake, opened_at: nil) }
 
       it { is_expected.to be_falsy }
     end
 
     context "if emptied_at is nil" do
-      let(:sake) { FactoryBot.build(:sake, emptied_at: nil) }
+      let(:sake) { build(:sake, emptied_at: nil) }
 
       it { is_expected.to be_falsy }
     end

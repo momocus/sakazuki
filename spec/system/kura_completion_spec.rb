@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "KuraCompletion", type: :system do
-  let(:user) { FactoryBot.create(:user) }
+  let(:user) { create(:user) }
 
   before do
     sign_in(user)
@@ -61,7 +61,7 @@ RSpec.describe "KuraCompletion", type: :system do
 
   describe "kura form at existing sake edit page", js: true do
     context "with sake having valid kura and todofuken" do
-      let!(:sake) { FactoryBot.create(:sake, kura: "原田酒造合資会社", todofuken: "愛知県") }
+      let!(:sake) { create(:sake, kura: "原田酒造合資会社", todofuken: "愛知県") }
 
       it "has formatted value in visible kura form" do
         visit edit_sake_path(sake.id)
@@ -70,7 +70,7 @@ RSpec.describe "KuraCompletion", type: :system do
     end
 
     context "with sake having only kura" do
-      let!(:sake) { FactoryBot.create(:sake, kura: "原田酒造合資会社") }
+      let!(:sake) { create(:sake, kura: "原田酒造合資会社") }
 
       it "has same kura in visible kura form" do
         visit edit_sake_path(sake.id)
