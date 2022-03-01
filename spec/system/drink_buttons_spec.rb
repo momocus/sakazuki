@@ -162,7 +162,7 @@ RSpec.describe "Drink Buttons" do
       it "moves to edit page and has 'opened' state" do
         id = "sake_bottle_level"
         text = I18n.t("enums.sake.bottle_level.opened")
-        expect(page).to have_select(id: id, selected: text)
+        expect(page).to have_select(id, selected: text)
       end
     end
 
@@ -180,7 +180,7 @@ RSpec.describe "Drink Buttons" do
       it "moves to edit page and keep 'opened' state" do
         id = "sake_bottle_level"
         text = I18n.t("enums.sake.bottle_level.opened")
-        expect(page).to have_select(id: id, selected: text)
+        expect(page).to have_select(id, selected: text)
       end
     end
 
