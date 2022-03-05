@@ -12,8 +12,7 @@
 
   <% @sakes.each do |sake| %>
     <div class="col-auto" style="max-width: 60%;">
-      <%= link_to(sake.name.to_s, sake_path(sake.id),
-                  { class: "text-decoration-none text-dark name-link" }) %>
+      <%= link_to(sake.name, sake_path(sake.id), class: "text-decoration-none text-dark name-link") %>
     </div>
 
     <% if sake.new_arrival? %>
