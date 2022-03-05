@@ -1,37 +1,33 @@
 <% select_pack_js(%w[common sakes/drink_menu]) %>
 <% select_pack_style(%w[common sakes/drink_menu]) %>
 
-<h1 class="drink-menu-font display-3">
+<h1 class="drink-menu-font display-4 mb-4">
   <%= title(t(".title")) %>
 </h1>
 
-<div class="row drink-menu-font fs-4">
-  <div class="col-12 text-end">
-    <%= t(".price_per_go") %>
-  </div>
-
+<div class="row drink-menu-font gy-5">
   <% @sakes.each do |sake| %>
-    <div class="col-auto" style="max-width: 60%;">
-      <%= link_to(sake.name, sake_path(sake.id), class: "text-decoration-none text-dark name-link") %>
-    </div>
+    <div class="col-12 fs-4">
+      <div class="row pe-2">
+        <div class="col-12">
+          <%= link_to(sake.name, sake_path(sake.id), class: "text-decoration-none text-dark sake-name-wrap") %>
+        </div>
 
-    <% if sake.new_arrival? %>
-      <div class="col-1">
-        <span class="badge rounded-pill fs-6 accent-badge">
-          <%= t(".new_arrival") %>
-        </span>
+        <div class="col-6"></div>
+
+        <div class="col-3 border-bottom border-dark">
+          <span class="new-arrivial-text">
+            <%= t(".new_arrival") if sake.new_arrival? %>
+          </span>
+        </div>
+
+        <div class="col-3 align-self-end text-end text-nowrap border-bottom border-dark">
+          <%= price_tag(sake.selling_price) %>
+        </div>
       </div>
-    <% end %>
-
-    <div class="col d-none d-lg-block">
-      <hr class="border border-dark border-1">
     </div>
-
-    <div class="col col-lg-1 text-end text-nowrap">
-      <%= price_tag(sake.selling_price) %>
-    </div>
-
-    <%# 強制改行 %>
-    <div class="w-100 mb-4"></div>
   <% end %>
 </div>
+<p class="drink-menu-font text-end fs-6 mt-5">
+  <%= t(".price_per_go") %>
+</p>

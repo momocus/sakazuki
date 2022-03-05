@@ -8,12 +8,11 @@ $accent: #b7282e;
   font-family: "Yuji Syuku", serif;
 }
 
-.accent-badge {
-  background-color: $accent;
-  font-weight: normal;
+.new-arrivial-text {
+  color: $accent;
 }
 
-.name-link {
+.sake-name-wrap {
   overflow-wrap: break-word;
   word-break: keep-all;
 }
