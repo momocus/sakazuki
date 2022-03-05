@@ -172,7 +172,7 @@ class Sake < ApplicationRecord
   # @return [Boolean]
   def new_arrival?
     new_limit = sealed? ? SEALD_NEW_LIMIT : OPENED_NEW_LIMIT
-    created_at >= Time.zone.today.ago(new_limit)
+    created_at.to_date >= Time.zone.today.ago(new_limit)
   end
 end
 # rubocop:enable Metrics/ClassLength
