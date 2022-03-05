@@ -56,9 +56,9 @@ gem "era_ja"
 # ElasticSearch
 # Do not update, because released gems have not adapted to Ruby 3 yet.
 gem "bonsai-elasticsearch-rails"
-gem "elasticsearch", ">= 7.13", "< 7.14"
-gem "elasticsearch-model", github: "indirect/elasticsearch-rails"
-gem "elasticsearch-rails", ">= 7.1", "< 7.2"
+gem "elasticsearch", ">=7.2"
+gem "elasticsearch-model", ">=7.2"
+gem "elasticsearch-rails", ">=7.2"
 
 group :development, :test do
   gem "annotate"
