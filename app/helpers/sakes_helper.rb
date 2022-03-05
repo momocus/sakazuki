@@ -98,16 +98,16 @@ module SakesHelper
   INTEREST_RATE = 3.0
   private_constant :INTEREST_RATE
 
-  # 酒の一合当たりの値段を計算して文字列で返す
-  # 値段が計算できない場合は"時価"を返す
+  # お品書きで酒の値札として表示する文字列を返す
   #
-  # @param price [Integer] 酒の買値(円)
-  # @param size [Integer] 酒の量(ml)
-  # @return [String] 売値(円)または時価
-  def selling_price(price, size)
-    return t("sakes.drink_menu.market_price") if price.blank? || size.blank?
+  # selling_price がnilの場合は"時価"を返す.
+  # そうでなければ、selling_priceに単位をつけて"xxx円"を返す。
+  # @param selling_price [Integer, nil] 売値またはnil
+  # @return [String] 酒の値札として表示する文字列
+  def price_tag(selling_price)
+    return t("sakes.drink_menu.market_price") if selling_price.nil?
 
-    (price.to_f / size * 180 * INTEREST_RATE).ceil(-1).to_i.to_s + t("activerecord.attributes.sake.price_unit")
+    selling_price.to_s + t("activerecord.attributes.sake.price_unit")
   end
 
   # 都道府県名から都府県を削除し短くする
