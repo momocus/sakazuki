@@ -167,19 +167,19 @@ class Sake < ApplicationRecord
     Time.zone.now.beginning_of_day - created_at.beginning_of_day <= new_limit
   end
 
-  # @type [float] 利率
-  INTEREST_RATE = 3.0
-  private_constant :INTEREST_RATE
+  # @type [float] 酒の売値を決めるために、仕入れ値にかける係数
+  SELLING_RATE = 3.0
+  private_constant :SELLING_RATE
 
   # 酒一合当たりの売値を計算する。
   #
-  # 酒一本あたりの価格・内容量と、設定した利率をもとに計算。一の位は切り上げ。
+  # 酒一本あたりの価格・内容量と、設定した係数をもとに計算。十の位以下切り上げ。
   # 売値が計算できない場合はnilを返す。
   # @return [Integer,nil] 酒一合当たりの売値またはnil
   def selling_price
     return nil if price.nil? || price.zero? || size.nil? || size.zero?
 
-    (price.to_f / size * 180 * INTEREST_RATE).ceil(-1)
+    (price.to_f / size * 180 * SELLING_RATE).ceil(-2)
   end
 end
 # rubocop:enable Metrics/ClassLength
