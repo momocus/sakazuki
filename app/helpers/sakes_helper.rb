@@ -107,7 +107,7 @@ module SakesHelper
   def price_tag(selling_price)
     return t("sakes.drink_menu.market_price") if selling_price.nil?
 
-    selling_price.to_s + t("activerecord.attributes.sake.price_unit")
+    "#{selling_price}#{t('activerecord.attributes.sake.price_unit')}"
   end
 
   # 都道府県名から都府県を削除し短くする

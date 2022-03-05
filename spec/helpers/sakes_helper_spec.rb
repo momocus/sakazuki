@@ -123,7 +123,7 @@ RSpec.describe SakesHelper do
 
     context "if the argument is integer" do
       it "returns price tag with unit" do
-        expect(price_tag(1234)).to eq("1234円")
+        expect(price_tag(1234)).to eq("1234#{t('activerecord.attributes.sake.price_unit')}")
       end
     end
   end
