@@ -156,23 +156,15 @@ class Sake < ApplicationRecord
     end
   end
 
-  # @type [Date] 設定値以内の日付に購入した未開封の酒を、新着と判定する
-  SEALD_NEW_LIMIT = 28.days
-  private_constant :SEALD_NEW_LIMIT
-
-  # @type [Date] 設定値以内の日付に購入した開封済の酒を、新着と判定する
-  OPENED_NEW_LIMIT = 14.days
-  private_constant :OPENED_NEW_LIMIT
-
   # 酒が新着ならture、さもなくばfalse
   #
   # 下記のいずれかに当てはまる場合は新着と判定する
-  # - 未開封かつSEALD_NEW_LIMITの期間以内に購入した
-  # - 開封済かつOPENED_NEW_LIMITの期間以内に購入した
+  # - 未開封かつ4週間以内に購入した
+  # - 開封済かつ2週間以内に購入した
   # @return [Boolean]
   def new_arrival?
-    new_limit = sealed? ? SEALD_NEW_LIMIT : OPENED_NEW_LIMIT
-    created_at.to_date >= Time.zone.today.ago(new_limit)
+    new_limit = sealed? ? 4.weeks : 2.weeks
+    Time.zone.now.beginning_of_day - created_at.beginning_of_day <= new_limit
   end
 
   # @type [float] 利率
