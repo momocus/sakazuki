@@ -8,11 +8,11 @@ $accent: #b7282e;
   font-family: "Yuji Syuku", serif;
 }
 
-.new-arrivial-text {
+.accent-text {
   color: $accent;
 }
 
-.sake-name-wrap {
-  overflow-wrap: break-word;
-  word-break: keep-all;
+.price_tag_border {
+  @extend .border-bottom;
+  @extend .border-dark;
 }
