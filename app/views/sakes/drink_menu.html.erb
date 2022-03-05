@@ -1,7 +1,38 @@
-<h1>お品書き</h1>
+<% select_pack_js(%w[common sakes/drink_menu]) %>
+<% select_pack_style(%w[common sakes/drink_menu]) %>
 
-<% @sakes.each do |sake| %>
-  <div class="col-auto">
-    <%= link_to(sake.name.to_s, sake_path(sake.id)) %>
+<h1 class="drink-menu-font display-3">
+  <%= title(t(".title")) %>
+</h1>
+
+<div class="row drink-menu-font fs-4">
+  <div class="col-12 text-end">
+    <%= t(".price_per_go") %>
   </div>
-<% end %>
+
+  <% @sakes.each do |sake| %>
+    <div class="col-auto" style="max-width: 60%;">
+      <%= link_to(sake.name.to_s, sake_path(sake.id),
+                  { class: "text-decoration-none text-dark name-link" }) %>
+    </div>
+
+    <% if sake.new_arrival? %>
+      <div class="col-1">
+        <span class="badge rounded-pill fs-6 accent-badge">
+          <%= t(".new_arrival") %>
+        </span>
+      </div>
+    <% end %>
+
+    <div class="col d-none d-lg-block">
+      <hr class="border border-dark border-1">
+    </div>
+
+    <div class="col col-lg-1 text-end text-nowrap">
+      <%= selling_price(sake.price, sake.size) %>
+    </div>
+
+    <%# 強制改行 %>
+    <div class="w-100 mb-4"></div>
+  <% end %>
+</div>
