@@ -117,7 +117,7 @@ RSpec.describe SakesHelper do
   describe "price_tag" do
     context "if the argument is nil" do
       it "returns text meaning market price" do
-        expect(price_tag(nil)).to eq(t("sakes.drink_menu.market_price"))
+        expect(price_tag(nil)).to eq(t("sakes.menu.market_price"))
       end
     end
 
