@@ -85,13 +85,13 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem "erb_lint", require: false
+  gem "listen"
   # Access an interactive console on exception pages or by calling 'console'
   # anywhere in the code.
   gem "web-console"
   # Spring speeds up development by keeping your application running in the
   # background. Read more: https://github.com/rails/spring
   gem "spring"
-  gem "spring-watcher-listen"
   # For robe completion
   gem "yard"
 end
