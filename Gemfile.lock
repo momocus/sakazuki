@@ -447,9 +447,9 @@ DEPENDENCIES
   devise-i18n
   devise_invitable
   dotenv-rails
-  elasticsearch (>= 7.2)
-  elasticsearch-model (>= 7.2)
-  elasticsearch-rails (>= 7.2)
+  elasticsearch (>= 7.13, < 7.14)
+  elasticsearch-model (>= 7.2.1)
+  elasticsearch-rails (>= 7.2.1)
   enum_help
   era_ja
   erb_lint
