@@ -1,9 +1,9 @@
 require "rails_helper"
 
 RSpec.describe "Sign-in Redirect with Drink Buttons" do
-  let!(:sealed_sake) { FactoryBot.create(:sake, bottle_level: "sealed") }
-  let!(:impressed_sake) { FactoryBot.create(:sake, bottle_level: "opened", taste_value: 1, aroma_value: 2) }
-  let(:user) { FactoryBot.create(:user) }
+  let!(:sealed_sake) { create(:sake, bottle_level: "sealed") }
+  let!(:impressed_sake) { create(:sake, bottle_level: "opened", taste_value: 1, aroma_value: 2) }
+  let(:user) { create(:user) }
 
   before do
     sign_out(user)

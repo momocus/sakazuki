@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "New Sake" do
-  let(:user) { FactoryBot.create(:user) }
+  let(:user) { create(:user) }
   let(:sake_name) { "とても美味しいお酒" }
 
   describe "create sake" do

@@ -2027,26 +2027,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rails/actioncable@npm:6.1.4-1":
-  version: 6.1.4-1
-  resolution: "@rails/actioncable@npm:6.1.4-1"
-  checksum: 1f981047c81b615c53b12f7c04dce1f55a77c082931c2cbda3c1f0c29f016587cc69abfa116d797fda52113de0be2575e4625279e20ad434c1c3c409e8e38e5e
+"@rails/actioncable@npm:6.1.4-6":
+  version: 6.1.4-6
+  resolution: "@rails/actioncable@npm:6.1.4-6"
+  checksum: b115c5d31a43d885eab303b33a9acfa759dbd384c7432a7414df640b4654a07eeb0f0ed048379b49f5dc076dbf604ba6118c561660a3f9f2658c095bd2a360d8
   languageName: node
   linkType: hard
 
-"@rails/activestorage@npm:6.1.4-1":
-  version: 6.1.4-1
-  resolution: "@rails/activestorage@npm:6.1.4-1"
+"@rails/activestorage@npm:6.1.4-6":
+  version: 6.1.4-6
+  resolution: "@rails/activestorage@npm:6.1.4-6"
   dependencies:
     spark-md5: ^3.0.0
-  checksum: 2e2c5631cd658441c7c3d5ed3fec692462e63980a62d9d2947b43725a11cc77f8e73888c9391a3205175fa1d59a450c7f2c9021857940e3ab2230e46c41f2136
+  checksum: 9ab236d5a47a13b481767edfb349c52960077630c96352f0bb3602b7a6cc30049842571178d930add4d947568e049095bcfab28e8e21ebd139172a83dccfb52f
   languageName: node
   linkType: hard
 
-"@rails/ujs@npm:6.1.4-1":
-  version: 6.1.4-1
-  resolution: "@rails/ujs@npm:6.1.4-1"
-  checksum: 1d6d4613d4b0e3070011359d88a8d0524d90a75af0def772fd164ee52ffd8446ba4a2545130e83e3bc2296e94b8eb7ec51b02fb69a9de65904d08ef29ef93fd3
+"@rails/ujs@npm:6.1.4-6":
+  version: 6.1.4-6
+  resolution: "@rails/ujs@npm:6.1.4-6"
+  checksum: 9bd8f58bcfcc24bf529d0d3c0f9a03c785c1017c7476e444f046aff4166870246c21f4698ce166b80fdd4607e5d4757a90caa5337211d4bf9b1c390b980e830d
   languageName: node
   linkType: hard
 
@@ -10240,9 +10240,9 @@ fsevents@~2.3.1:
   resolution: "sakazuki@workspace:."
   dependencies:
     "@babel/preset-typescript": ">=7.15.0 <8"
-    "@rails/actioncable": 6.1.4-1
-    "@rails/activestorage": 6.1.4-1
-    "@rails/ujs": 6.1.4-1
+    "@rails/actioncable": 6.1.4-6
+    "@rails/activestorage": 6.1.4-6
+    "@rails/ujs": 6.1.4-6
     "@rails/webpacker": 5.4.3
     "@types/chart.js": ">=2.9.34 <3"
     "@typescript-eslint/eslint-plugin": ">=4.32.0"

@@ -1,10 +1,10 @@
 require "rails_helper"
 
 RSpec.describe "Edit Sake's Bottle Level" do
-  let(:user) { FactoryBot.create(:user) }
-  let(:sealed_sake) { FactoryBot.create(:sake, bottle_level: :sealed) }
-  let(:opened_sake) { FactoryBot.create(:sake, bottle_level: :opened) }
-  let(:empty_sake) { FactoryBot.create(:sake, bottle_level: :empty) }
+  let(:user) { create(:user) }
+  let(:sealed_sake) { create(:sake, bottle_level: :sealed) }
+  let(:opened_sake) { create(:sake, bottle_level: :opened) }
+  let(:empty_sake) { create(:sake, bottle_level: :empty) }
 
   before do
     sign_in(user)
