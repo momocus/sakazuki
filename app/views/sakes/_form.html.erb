@@ -52,9 +52,10 @@
             <%= form.label(:photos, { class: "form-label" }) %>
             <div class="col">
               <%= form.file_field(:photos,
-                                  { multiple: true,
-                                    class: "form-control col-12",
-                                    accept: "image/*;capture=camera", }) %>
+                                  multiple: true,
+                                  include_hidden: false,
+                                  class: "form-control col-12",
+                                  accept: "image/*;capture=camera") %>
             </div>
           </div>
 
