@@ -3,8 +3,3 @@
 <% else %>
   <%= stylesheet_pack_tag("common", media: "all") %>
 <% end %>
-<% if content_for?(:pack_js) %>
-  <%= yield(:pack_js) %>
-<% else %>
-  <%= javascript_pack_tag("common") %>
-<% end %>

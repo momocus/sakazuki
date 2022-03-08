@@ -45,10 +45,10 @@ module ApplicationHelper
 
   # 読み込むJavascriptの指定
   #
-  # @param packs [Array<String>] 読み込む.jsファイル名の配列
-  def select_pack_js(packs)
-    content_for(:pack_js) do
-      javascript_pack_tag(*packs)
+  # @param name [String] 読み込む.jsファイル名の配列
+  def select_js(*name)
+    content_for(:js) do
+      javascript_include_tag(*name, "data-turbo-track": "reload", defer: true)
     end
   end
 
