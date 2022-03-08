@@ -12,6 +12,9 @@ gem "pg"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma"
 
+# Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
+gem "jsbundling-rails"
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
