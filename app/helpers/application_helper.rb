@@ -29,7 +29,7 @@ module ApplicationHelper
         url: request.original_url,
         type: "website",
         image: {
-          _: "#{request.base_url}#{asset_pack_path('media/images/choko.png')}",
+          _: "#{request.base_url}#{asset_pack_path("media/images/choko.png")}",
           width: 600,
           height: 600,
         },
@@ -48,7 +48,7 @@ module ApplicationHelper
   # @param packs [Array<String>] 読み込む.jsファイル名の配列
   def select_pack_js(packs)
     content_for(:pack_js) do
-      javascript_pack_tag(*packs, "data-turbolinks-track": "reload")
+      javascript_pack_tag(*packs)
     end
   end
 
@@ -57,7 +57,7 @@ module ApplicationHelper
   # @param packs [Array<String>] 読み込む.scssファイル名の配列
   def select_pack_style(packs)
     content_for(:pack_style) do
-      stylesheet_pack_tag(*packs, media: "all", "data-turbolinks-track": "reload")
+      stylesheet_pack_tag(*packs, media: "all")
     end
   end
 

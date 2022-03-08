@@ -10250,7 +10250,6 @@ fsevents@~2.3.1:
     stylelint: ">=13.13.1"
     stylelint-config-standard: ">=22.0.0"
     stylelint-scss: ">=3.21.0"
-    turbolinks: 5.2.0
     typescript: ">=4.3 <4.4"
     webpack: ">=4.46.0 <5"
     webpack-cli: ">=3.3.12 <4"
@@ -11533,13 +11532,6 @@ fsevents@~2.3.1:
   version: 0.0.0
   resolution: "tty-browserify@npm:0.0.0"
   checksum: a06f746acc419cb2527ba19b6f3bd97b4a208c03823bfb37b2982629d2effe30ebd17eaed0d7e2fc741f3c4f2a0c43455bd5fb4194354b378e78cfb7ca687f59
-  languageName: node
-  linkType: hard
-
-"turbolinks@npm:5.2.0":
-  version: 5.2.0
-  resolution: "turbolinks@npm:5.2.0"
-  checksum: df393c321ed19d9761e632ff357d3cb032a9ca32c07f1ef8202e5f5bb9d17fcc93cdec0d9dfcf0fbca56c373a9dffa2c151639383e663a72897ae434a877819b
   languageName: node
   linkType: hard
 

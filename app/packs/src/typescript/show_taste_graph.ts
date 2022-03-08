@@ -16,7 +16,7 @@ const hasCanvasID = (elem: HTMLCanvasElement): boolean => {
 
 // Main
 {
-  document.addEventListener("turbolinks:load", function () {
+  document.addEventListener("DOMContentLoaded", function () {
     const canvases = Array.from(document.getElementsByTagName("canvas"))
     const graphs = canvases.filter(hasCanvasID)
     const config = { pointRadius: 6, zeroLineWidth: 3 }
