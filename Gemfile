@@ -71,11 +71,6 @@ group :development, :test do
   gem "letter_opener_web"
   # parallel test
   gem "parallel_tests"
-  # useful repl pry
-  gem "pry"
-  gem "pry-byebug"
-  gem "pry-doc"
-  gem "pry-rails"
   gem "rspec-rails"
   gem "rubocop", require: false
   gem "rubocop-rails", require: false
