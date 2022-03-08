@@ -1,7 +1,7 @@
 /*
   @types/simplelightboxが存在しない。
   コンストラクタしか使わないため、.d.tsの独自実装もしない。
-*/
+ */
 import SimpleLightbox from "simplelightbox"
 
 // Main

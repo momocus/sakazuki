@@ -1,14 +1,13 @@
 module.exports = {
   env: {
     browser: true,
-    es2020: true,
+    es2021: true,
     node: true,
   },
   parserOptions: {
-    ecmaVersion: "2020",
     sourceType: "module",
   },
-  ignorePatterns: ["/coverage/", "/public/packs*"],
+  ignorePatterns: ["/coverage/", "/app/assets/builds"],
   plugins: [],
   extends: ["eslint:recommended", "prettier"],
   rules: {
