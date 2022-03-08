@@ -5,16 +5,11 @@
     "@babel/preset-typescript": ">=7.15.0 <8",
     "@rails/actioncable": "7.0.2-2",
     "@rails/ujs": "7.0.2-2",
-    "@rails/webpacker": "5.4.3",
     "bootstrap": ">=5.1.3 <6",
     "bootstrap-icons": ">=1.5.0",
     "chart.js": ">=2.9.4 <3",
     "rater-js": ">=1.0.1 <2",
-    "resolve-url-loader": "^4.0.0",
-    "simplelightbox": ">=2.9.0 <3",
-    "typescript": ">=4.3 <4.4",
-    "webpack": ">=4.46.0 <5",
-    "webpack-cli": ">=3.3.12 <4"
+    "simplelightbox": ">=2.9.0 <3"
   },
   "version": "0.1.0",
   "devDependencies": {
@@ -27,8 +22,7 @@
     "prettier": ">=2.4.1",
     "stylelint": ">=13.13.1",
     "stylelint-config-standard": ">=22.0.0",
-    "stylelint-scss": ">=3.21.0",
-    "webpack-dev-server": ">=3.11.2 <4"
+    "stylelint-scss": ">=3.21.0"
   },
   "scripts": {
     "yard": "yard doc --tag type:\"TYPE\" {lib,app,spec,ext}/**/*.rb",
