@@ -62,9 +62,10 @@ gem "elasticsearch-rails", ">=7.2.1"
 
 group :development, :test do
   gem "annotate"
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger
-  # console
-  gem "byebug", platforms: %i[mri mingw x64_mingw]
+
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem "debug", platforms: %i[mri mingw x64_mingw]
+
   gem "dotenv-rails"
   gem "factory_bot_rails"
   gem "letter_opener_web"
