@@ -7,6 +7,7 @@
     <%= display_meta_tags(default_meta_tags) %>
     <%= adsense_tags %>
     <%= render("layouts/webpack_meta_tags") %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
   <body>
