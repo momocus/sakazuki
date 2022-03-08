@@ -332,13 +332,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rails/actioncable@npm:7.0.2-2":
-  version: 7.0.2-2
-  resolution: "@rails/actioncable@npm:7.0.2-2"
-  checksum: edb55bed985014fe15330b97571920c1840b3423f86c28255f79b913f5daf0f2c275020fa2346ebaa4d6b886d71f7cc9d5fe31439d1993e0e6438420658b8bc5
-  languageName: node
-  linkType: hard
-
 "@rails/ujs@npm:7.0.2-2":
   version: 7.0.2-2
   resolution: "@rails/ujs@npm:7.0.2-2"
@@ -2957,7 +2950,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "sakazuki@workspace:."
   dependencies:
-    "@rails/actioncable": 7.0.2-2
     "@rails/ujs": 7.0.2-2
     "@types/chart.js": ">=2.9.34 <3"
     "@typescript-eslint/eslint-plugin": ">=4.32.0"
