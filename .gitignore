@@ -57,8 +57,3 @@ yarn-debug.log*
 # Ignore precompiled javascript and css
 /app/assets/builds/*
 !/app/assets/builds/.keep
-
-# Old
-/public/packs/
-/public/packs-test/
-/public/assets/
