@@ -9,13 +9,13 @@ module ApplicationHelper
         {
           rel: "apple-touch-icon-precomposed",
           sizes: "180x180",
-          href: asset_pack_path("media/images/apple-touch-icon.png"),
+          href: asset_path("apple-touch-icon.png"),
           type: "image/png",
         },
         {
           rel: "icon",
           sizes: "32x32",
-          href: asset_pack_path("media/images/favicon-32x32.png"),
+          href: asset_path("favicon-32x32.png"),
           type: "image/png",
         },
       ],
@@ -29,7 +29,7 @@ module ApplicationHelper
         url: request.original_url,
         type: "website",
         image: {
-          _: "#{request.base_url}#{asset_pack_path("media/images/choko.png")}",
+          _: image_url("choko.png"),
           width: 600,
           height: 600,
         },
