@@ -1,0 +1,22 @@
+<% select_pack_js(%w[common sakes/menu]) %>
+<% select_pack_style(%w[common sakes/menu]) %>
+<div class="row menu-font gy-5 me-1">
+  <div class="col-12">
+    <h1 class="display-5">
+      <%= title(t(".title")) %>
+    </h1>
+  </div>
+  <div class="col-12">
+    <div class="row row-cols-1 row-cols-md-2 g-5">
+      <% @sakes.each_slice(2) do |sake1, sake2| %>
+        <%= render("menu_one_drink", sake: sake1) %>
+        <%= render("menu_one_drink", sake: sake2) if sake2.present? %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-12">
+    <p class="text-end fs-4">
+      <%= t(".price_is_per_go") %>
+    </p>
+  </div>
+</div>

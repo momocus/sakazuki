@@ -101,7 +101,7 @@ module SakesHelper
   # @param selling_price [Integer, nil] 売値またはnil
   # @return [String] 酒の値札として表示する文字列
   def price_tag(selling_price)
-    return t("sakes.drink_menu.market_price") if selling_price.nil?
+    return t("sakes.menu.market_price") if selling_price.nil?
 
     "#{selling_price}#{t('activerecord.attributes.sake.price_unit')}"
   end

@@ -4,16 +4,15 @@
 
 $accent: #b7282e;
 
-.drink-menu-font {
+.menu-font {
   font-family: "Yuji Syuku", serif;
 }
 
-.accent-badge {
-  background-color: $accent;
-  font-weight: normal;
+.accent-text {
+  color: $accent;
 }
 
-.name-link {
-  overflow-wrap: break-word;
-  word-break: keep-all;
+.price_tag_border {
+  @extend .border-bottom;
+  @extend .border-dark;
 }

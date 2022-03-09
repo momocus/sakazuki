@@ -112,7 +112,7 @@ class SakesController < ApplicationController
   end
 
   # GET /sakes
-  def drink_menu
+  def menu
     @sakes = Sake.ransack(bottle_level_not_eq: Sake.bottle_levels["empty"],
                           s: "id desc").result(distinct: true)
   end
