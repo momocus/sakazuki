@@ -40,13 +40,13 @@ RUN mkdir tmp/ log/
 COPY Gemfile Gemfile.lock ./
 RUN gem update --system && \
     gem install bundler:2.3.8 && \
+    gem install foreman:0.87.2 && \
     bundle install && \
     rm -rf /usr/local/bundle/cache/*gem \
     /root/.bundle/cache/* /usr/local/lib/ruby/gems/*/cache/* && \
     find /usr/local/bundle/gems -name 'Makefile' -print0 | \
     xargs -0 dirname | \
     xargs -n1 -P4 -I{} make -C {} clean
-RUN gem install foreman
 
 # yarn install
 COPY package.json yarn.lock .yarnrc.yml ./
