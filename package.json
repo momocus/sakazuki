@@ -36,7 +36,7 @@
     "lint:stylelint": "stylelint '**/*.scss' '**/*.css' --ignore-path .gitignore",
     "lint:stylelint:fix": "yarn run lint:stylelint --fix",
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
-    "build:css": "sass ./app/assets/stylesheets/application.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules"
+    "build:css": "sass ./app/assets/stylesheets/:./app/assets/builds/ --no-source-map --load-path=node_modules"
   },
   "packageManager": "yarn@3.1.1"
 }
