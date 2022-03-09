@@ -157,7 +157,7 @@ RSpec.describe "CopySakes", type: :system do
 
     describe "photo" do
       it "does not have any photos" do
-        expect(page.has_no_css?(".img-thumbnail")).to eq(true)
+        expect(page.has_no_css?(".img-thumbnail")).to be(true)
       end
     end
   end

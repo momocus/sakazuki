@@ -9,6 +9,7 @@
 files=$(git ls-files | \
             grep --invert-match '\.keep$' | \
             grep --invert-match '\.png$' | \
+            grep --invert-match '\.jpg$' | \
             grep --invert-match '\.ico$' | \
             grep --invert-match '\.yml\.enc$')
 

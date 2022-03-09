@@ -78,39 +78,39 @@ RSpec.describe Sake do
 
   describe "sake.sealed?" do
     it "returns true by sealed sake" do
-      expect(sealed_sake.sealed?).to eq(true)
+      expect(sealed_sake.sealed?).to be(true)
     end
 
     it "returns false by opened sake" do
-      expect(opened_sake.sealed?).to eq(false)
+      expect(opened_sake.sealed?).to be(false)
     end
 
     it "returns false by empty sake" do
-      expect(empty_sake.sealed?).to eq(false)
+      expect(empty_sake.sealed?).to be(false)
     end
   end
 
   describe "sake.opened?" do
     it "returns false by sealed sake" do
-      expect(sealed_sake.opened?).to eq(false)
+      expect(sealed_sake.opened?).to be(false)
     end
 
     it "returns true by opened sake" do
-      expect(opened_sake.opened?).to eq(true)
+      expect(opened_sake.opened?).to be(true)
     end
 
     it "returns false by empty sake" do
-      expect(empty_sake.opened?).to eq(false)
+      expect(empty_sake.opened?).to be(false)
     end
   end
 
   describe "sake.unimpressed?" do
     it "returns true without taste and aroma value" do
-      expect(opened_sake.unimpressed?).to eq(true)
+      expect(opened_sake.unimpressed?).to be(true)
     end
 
     it "returns false with taste and aroma value" do
-      expect(impressed_sake.unimpressed?).to eq(false)
+      expect(impressed_sake.unimpressed?).to be(false)
     end
   end
 

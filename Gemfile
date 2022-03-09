@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.0.3"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "= 6.1.4.6"
+gem "rails", "= 7.0.2.2"
 # Use Puma as the app server
 gem "puma"
 # Use SCSS for stylesheets
@@ -85,13 +85,13 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem "erb_lint", require: false
+  gem "listen"
   # Access an interactive console on exception pages or by calling 'console'
   # anywhere in the code.
   gem "web-console"
   # Spring speeds up development by keeping your application running in the
   # background. Read more: https://github.com/rails/spring
   gem "spring"
-  gem "spring-watcher-listen"
   # For robe completion
   gem "yard"
 end
