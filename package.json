@@ -8,6 +8,7 @@
     "chart.js": ">=2.9.4 <3",
     "esbuild": "^0.14.25",
     "rater-js": ">=1.0.1 <2",
+    "sass": ">=1.49.9 <2",
     "simplelightbox": ">=2.9.0 <3"
   },
   "version": "0.1.0",
@@ -34,7 +35,8 @@
     "lint:markdownlint:fix": "yarn run lint:markdownlint --fix",
     "lint:stylelint": "stylelint '**/*.scss' '**/*.css' --ignore-path .gitignore",
     "lint:stylelint:fix": "yarn run lint:stylelint --fix",
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds"
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
+    "build:css": "sass ./app/assets/stylesheets/application.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules"
   },
   "packageManager": "yarn@3.1.1"
 }
