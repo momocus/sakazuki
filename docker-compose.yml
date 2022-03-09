@@ -6,7 +6,7 @@ volumes:
     driver: local
   es_plugins:
     driver: local
-  packs:
+  builds:
     driver: local
 services:
   db:
@@ -25,19 +25,16 @@ services:
       - ./config:/sakazuki/config:cached
       - ./bin:/sakazuki/bin:cached
       - ./config.ru:/sakazuki/config.ru:cached
-      - ./babel.config.js:/sakazuki/babel.config.js:cached
-      - ./postcss.config.js:/sakazuki/postcss.config.js:cached
       - ./Rakefile:/sakazuki/Rakefile:cached
       - ./lib:/sakazuki/lib:cached
       - ./db:/sakazuki/db:cached
       - ./spec:/sakazuki/spec:cached
-      - packs:/sakazuki/public/packs:consistent
+      - builds:/sakazuki/app/assets/builds:consistent
     environment:
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_HOSTNAME: db
       ELASTICSEARCH_HOSTS: http://es:9200
-      WEBPACKER_DEV_SERVER_HOST: webpacker
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     ports:
@@ -45,13 +42,17 @@ services:
     depends_on:
       - db
       - es
-  webpacker:
+  js:
     <<: *web
-    command: bash -c "bin/webpack-dev-server"
-    environment:
-      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
+    tty: true
     ports:
-      - 3035:3035
+      - 3000
+    command: "yarn build --watch"
+  css:
+    <<: *web
+    ports:
+      - 3000
+    command: "yarn build:css --watch"
   es:
     image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2
     environment:
