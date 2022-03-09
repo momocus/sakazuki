@@ -1,5 +1,5 @@
 <% select_js("sakes_show") %>
-<% select_pack_style(%w[common sakes/show]) %>
+<% select_css("sakes_show") %>
 
 <%# ページのサムネイルをセット %>
 <% set_meta_tags(og: { image: { _: @sake.photos.first.image.thumb.url, width: 600, height: 600 } }) if @sake.photos.any? %>

@@ -55,9 +55,9 @@ module ApplicationHelper
   # 読み込むStylesheetの指定
   #
   # @param packs [Array<String>] 読み込む.scssファイル名の配列
-  def select_pack_style(packs)
-    content_for(:pack_style) do
-      stylesheet_pack_tag(*packs, media: "all")
+  def select_css(*name)
+    content_for(:css) do
+      stylesheet_link_tag(*name)
     end
   end
 
