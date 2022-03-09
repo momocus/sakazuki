@@ -3,5 +3,6 @@
 /doc/
 /node_modules/
 /app/assets/builds/
+/public/assets/
 /tmp/
 /vendor/
