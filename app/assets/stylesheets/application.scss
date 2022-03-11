@@ -1,6 +1,7 @@
-@import "../src/stylesheet/bootstrap_custom";
-@import "~bootstrap/scss/bootstrap";
-@import "~bootstrap-icons/font/bootstrap-icons";
+// Entry point for your Sass build
+@import "./bootstrap/custom";
+@import "bootstrap/scss/bootstrap";
+@import "bootstrap-icons/font/bootstrap-icons";
 
 h1 {
   @extend .mt-2;

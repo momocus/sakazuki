@@ -1,20 +1,7 @@
 {
   "compilerOptions": {
-    "declaration": false,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "lib": ["es2020", "dom"],
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "baseUrl": ".",
-    "paths": {
-      "*": ["node_modules/*", "app/packs/*"]
-    },
-    "sourceMap": true,
+    "module": "esnext",
     "strict": true,
-    "target": "es5",
-    "noEmit": true
-  },
-  "exclude": ["**/*.spec.ts", "node_modules", "vendor", "public"],
-  "compileOnSave": false
+    "target": "esnext"
+  }
 }

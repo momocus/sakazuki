@@ -1,3 +1,6 @@
+/*
+  @types/rater-jsが存在しない。
+ */
 import rater from "rater-js"
 
 function getSakeRatingFromDOM(): number {
@@ -16,6 +19,9 @@ function setSakeRatingToDOM(rating: number) {
 
 {
   document.addEventListener("DOMContentLoaded", function () {
+    /* eslint-disable @typescript-eslint/no-unsafe-call */
+    /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+    /* eslint-disable @typescript-eslint/no-unsafe-member-access */
     const sakeRater = rater({
       element: document.getElementById("rater") as HTMLElement,
       starSize: 32,

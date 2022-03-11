@@ -39,7 +39,8 @@ RUN mkdir tmp/ log/
 # bundle install
 COPY Gemfile Gemfile.lock ./
 RUN gem update --system && \
-    gem install bundler:2.2.7 && \
+    gem install bundler:2.3.8 && \
+    gem install foreman:0.87.2 && \
     bundle install && \
     rm -rf /usr/local/bundle/cache/*gem \
     /root/.bundle/cache/* /usr/local/lib/ruby/gems/*/cache/* && \
