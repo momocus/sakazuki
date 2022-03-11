@@ -1,20 +1,32 @@
 # Update configurations in this file, and rename to '.env'.
 
-# Configurations of PostgreSQL.
+### PostgreSQL.
 
-# Hostname of PostgreSQL. default is 'localhost'.
+# Hostname. default is 'localhost'.
+#
 # POSTGRES_HOSTNAME=localhost
 
 # User name and password to access PostgreSQL.
+#
 POSTGRES_USERNAME=
 POSTGRES_PASSWORD=
 
-# Configurations of Elasticsearch.
+### Elasticsearch.
 
-# Hostname of Elasticsearch. default is 'http://localhost:9200'.
-# ELASTICSEARCH_HOSTS=http://localhost:9200
+# Hostname. default is 'http://localhost:9200'.
+#
+# ELASTICSEARCH_HOST=localhost
+# ELASTICSEARCH_PORT=9200
 
-# Configurations of Google AdSense
+# Cluster.
+#
+# discovery.type=single-node
+# cluster.name=es-docker-cluster
+# bootstrap.memory_lock=true
+# "ES_JAVA_OPTS=-Xms512m -Xmx512m"
 
-# Google AdSense client ID
+### Google AdSense
+
+# Client ID
+#
 # GOOGLE_ADSENSE_CLIENT=ca-pub-00000
