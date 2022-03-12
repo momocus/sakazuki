@@ -55,12 +55,15 @@ def request_regions
   doc.map { |a| a_to_region(a) }
 end
 
-# 酒蔵の社名の変更を適用する
+# 酒蔵の社名の変更など修正を適用する
+#
+# 休業中や末尾全角スペースの削除をする。
 #
 # @param name [String] 酒蔵名
-# @return [String] 社名変更を適用した酒蔵名
+# @return [String] 修正した酒蔵名
 def rename_kura(name)
-  name.sub(/\(休業中\)/, "")
+  name = name.sub(/\(休業中\)/, "")
+  name.sub(/　+$/, "")
 end
 
 # SAKETIMESに載っていない酒蔵データを追加する
