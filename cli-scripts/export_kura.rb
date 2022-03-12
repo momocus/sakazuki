@@ -39,6 +39,9 @@ def main
     write_body(out)
     write_footer(out)
   end
+
+  puts("Done!")
+  puts("Output to '#{output_file}'")
 end
 
 main

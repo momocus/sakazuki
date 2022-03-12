@@ -236,9 +236,9 @@ end
 
 # ファイルにNDJSON形式で保存する
 #
+# @param filename [String] 出力ファイル名
 # @param names [Array<Hash<Symbol => String>] 県名と蔵名を持つjsonの配列
-def write_ndjson(ndjson)
-  filename = "kura-list.ndjson"
+def write_ndjson(filename, ndjson)
   File.open(filename, "wb") do |f|
     ndjson.each do |line_json|
       JSON.dump(line_json, f)
@@ -251,7 +251,12 @@ def main
   regions = request_regions
   datas = request_all_kuras(regions)
   datas = add_data!(datas)
-  write_ndjson(datas)
+
+  filename = "kura-list.ndjson"
+  write_ndjson(filename, datas)
+
+  puts("Done!")
+  puts("Output to '#{filename}'")
 end
 
 main

@@ -75,9 +75,9 @@ end
 
 # ファイルにNDJSON形式で保存する
 #
+# @param filename [String] 出力ファイル名#
 # @param names [Array<Hash<Symbol => String>] 酒米名を持つjsonの配列
-def write_ndjson(ndjson)
-  filename = "sakamai-list.ndjson"
+def write_ndjson(filename, ndjson)
   File.open(filename, "wb") do |f|
     ndjson.each do |line_json|
       JSON.dump(line_json, f)
@@ -90,7 +90,12 @@ def main
   table = request_rices_table
   rices = to_rices(table)
   ndjson = to_ndjson(rices)
-  write_ndjson(ndjson)
+
+  filename = "sakamai-list.ndjson"
+  write_ndjson(filename, ndjson)
+
+  puts("Done!")
+  puts("Output to '#{filename}'")
 end
 
 main
