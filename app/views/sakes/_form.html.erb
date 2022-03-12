@@ -1,9 +1,9 @@
-<% select_pack_js(%w[common sakes/form]) %>
-<% select_pack_style(%w[common sakes/form]) %>
+<% select_js("sakes_form") %>
+<% select_css("sakes_form") %>
 
 <%= render("float-button") %>
 
-<%= form_with(model: sake, local: true, id: "sake-form") do |form| %>
+<%= form_with(model: sake, id: "sake-form") do |form| %>
 
   <%# error message %>
   <% if sake.errors.any? %>
@@ -44,17 +44,19 @@
                 class="form-control" autocomplete="on" list="sakagura">
               <%= render("sakagura-datalist") %>
             </div>
-            <%= form.text_field(:kura, hidden: true, data: { testid: "sake_kura" }) %>
-            <%= form.text_field(:todofuken, hidden: true, data: { testid: "sake_todofuken" }) %>
+            <%= form.text_field(:kura, id: "sake_kura", hidden: true, data: { testid: "sake_kura" }) %>
+            <%= form.text_field(:todofuken, id: "sake_todofuken", hidden: true, data: { testid: "sake_todofuken" }) %>
           </div>
 
           <div class="form-row">
             <%= form.label(:photos, { class: "form-label" }) %>
             <div class="col">
               <%= form.file_field(:photos,
-                                  { multiple: true,
-                                    class: "form-control col-12",
-                                    accept: "image/*;capture=camera", }) %>
+                                  multiple: true,
+                                  include_hidden: false,
+                                  class: "form-control col-12",
+                                  accept: "image/*;capture=camera",
+                                  data: { testid: "sake_photos" }) %>
             </div>
           </div>
 
@@ -130,6 +132,7 @@
             <div class="two-column-form">
               <%= form.date_select(:bindume_date,
                                    { discard_day: true, discard_year: true },
+                                   id: "sake_bindume_date",
                                    class: "form-select",
                                    data: { testid: "sake_bindume_month" }) %>
             </div>
@@ -363,6 +366,7 @@
             <div class="col">
               <div id="rater"></div>
               <%= form.number_field(:rating,
+                                    id: "sake_rating",
                                     hidden: true, max: 5, min: 0, step: 1,
                                     class: "form-control", data: { testid: "sake_rating" }) %>
             </div>
@@ -389,12 +393,14 @@
             <div class="col-lg-9 col-12 px-1">
               <canvas id="taste_graph"></canvas>
               <%= form.number_field(:taste_value,
+                                    id: "sake_taste_value",
                                     hidden: true,
                                     min: 0,
                                     max: 6,
                                     step: 1,
                                     data: { taste_value: @sake.taste_value, testid: "sake_taste_value" }) %>
               <%= form.number_field(:aroma_value,
+                                    id: "sake_aroma_value",
                                     hidden: true,
                                     min: 0,
                                     max: 6,

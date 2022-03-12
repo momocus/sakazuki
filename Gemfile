@@ -3,25 +3,50 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.0.3"
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "= 6.1.4.1"
-# Use Puma as the app server
+# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
+gem "rails", "= 7.0.2.2"
+
+# The modern asset pipeline for Rails [https://github.com/rails/propshaft]
+gem "propshaft"
+
+# Use PostgeSQL as the database for Active Record
+gem "pg"
+
+# Use the Puma web server [https://github.com/puma/puma]
 gem "puma"
-# Use SCSS for stylesheets
-# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-# Do not update, see https://github.com/momocus/sakazuki/milestone/1
-gem "webpacker", "= 5.4.3"
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+
+# Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
+gem "jsbundling-rails"
+
+# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
+# gem "turbo-rails"
+
+# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
+# gem "stimulus-rails"
+
+# Bundle and process CSS [https://github.com/rails/cssbundling-rails]
+gem "cssbundling-rails"
+
+# Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
+
+# Use Redis adapter to run Action Cable in production
+# gem "redis", "~> 4.0"
+
+# Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
+# gem "kredis"
+
+# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
+# gem "bcrypt", "~> 3.1.7"
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
-# Use pg as the database for Active Record
-gem "pg"
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
+# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
+# gem "image_processing", "~> 1.2"
 
 # For Japanese
 gem "enum_help"
@@ -56,51 +81,72 @@ gem "era_ja"
 # ElasticSearch
 # Do not update, because released gems have not adapted to Ruby 3 yet.
 gem "bonsai-elasticsearch-rails"
-gem "elasticsearch", ">= 7.13", "< 7.14"
-gem "elasticsearch-model", github: "indirect/elasticsearch-rails"
-gem "elasticsearch-rails", ">= 7.1", "< 7.2"
+gem "elasticsearch", ">=7.13", "< 7.14"
+gem "elasticsearch-model", ">=7.2.1"
+gem "elasticsearch-rails", ">=7.2.1"
 
 group :development, :test do
+  # Auto annotation to schema
   gem "annotate"
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger
-  # console
-  gem "byebug", platforms: %i[mri mingw x64_mingw]
+
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem "debug", platforms: %i[mri mingw x64_mingw]
+
+  # Use .env file
   gem "dotenv-rails"
+
+  # FactoryBot for RSpec
   gem "factory_bot_rails"
+
+  # Mailer
   gem "letter_opener_web"
+
   # parallel test
   gem "parallel_tests"
-  # useful repl pry
-  gem "pry"
-  gem "pry-byebug"
-  gem "pry-doc"
-  gem "pry-rails"
+
+  # RSpec
   gem "rspec-rails"
+
+  # Rubocop
   gem "rubocop", require: false
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
 end
 
 group :development do
+  # Useful debugger in browser
   gem "better_errors"
   gem "binding_of_caller"
+
+  # Lint ERB files
   gem "erb_lint", require: false
-  # Access an interactive console on exception pages or by calling 'console'
-  # anywhere in the code.
+
+  # Listen to file modifications
+  gem "listen"
+
+  # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-  # Spring speeds up development by keeping your application running in the
-  # background. Read more: https://github.com/rails/spring
+
+  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
+  # gem "rack-mini-profiler"
+
+  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   gem "spring"
-  gem "spring-watcher-listen"
+
   # For robe completion
   gem "yard"
 end
 
 group :test do
-  # Adds support for Capybara system testing and selenium driver
+  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
+
+  # Selenium
   gem "selenium-webdriver"
+
+  # Simple coverage
   gem "simplecov"
-  # Easy installation and use of web drivers to run system tests with browsers
+
+  # Webdriver
   gem "webdrivers"
 end

@@ -79,7 +79,7 @@
 
   <div class="col-12 fs-5">
     <%= @sake.size %> ml
-    <%= "‒ #{@sake.price.to_s(:delimited)} #{t('activerecord.attributes.sake.price_unit')}" if @sake.price.present? %>
+    <%= "‒ #{@sake.price.to_fs(:delimited)} #{t('activerecord.attributes.sake.price_unit')}" if @sake.price.present? %>
   </div>
 
   <% if @sake.photos.any? %>

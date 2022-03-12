@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "Sakes" do
-  let!(:sakes) { FactoryBot.create_list(:sake, 3) }
+  let!(:sakes) { create_list(:sake, 3) }
   let(:id) { sakes[0].id }
 
   context "without login" do
@@ -78,7 +78,7 @@ RSpec.describe "Sakes" do
 
   context "with logined user" do
     before do
-      user = FactoryBot.create(:user)
+      user = create(:user)
       sign_in(user)
     end
 
@@ -90,16 +90,16 @@ RSpec.describe "Sakes" do
     end
 
     describe "POST /sakes (create)" do
-      # HACK: FactoryBotで作った適当なsakeを、JSON経由でhashにすることでparamsとして使う
-      #       idやcreated_atなどが含まれるが、permitされてないのでparamsで渡して問題ない
-      sake_params = JSON.parse(FactoryBot.build(:sake).to_json)
-
       it "returns 302 response" do
+        # HACK: FactoryBotで作った適当なsakeをparamsにして使う
+        #       idやcreated_atなどが含まれるが、permitされてないのでparamsで渡して問題ない
+        sake_params = build(:sake).attributes
         post "/sakes", params: { sake: sake_params }
         expect(response).to have_http_status "302" # redirect to "sakes/[new_id]"
       end
 
       it "increase 1 sake" do
+        sake_params = build(:sake).attributes
         expect { post "/sakes", params: { sake: sake_params } }.to change(Sake, :count).by 1
       end
     end

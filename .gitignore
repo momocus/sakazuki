@@ -31,11 +31,6 @@ pickle-email-*.html
 # Ignore node_modules
 /node_modules/
 
-# Ignore precompiled javascript packs
-/public/packs/
-/public/packs-test/
-/public/assets/
-
 # Ignore yarn files
 /yarn-error.log
 yarn-debug.log*
@@ -58,3 +53,8 @@ yarn-debug.log*
 
 # Ignore uploaded images in development environment
 /public/uploads/
+
+# Ignore precompiled javascript and css
+/app/assets/builds/*
+!/app/assets/builds/.keep
+/public/assets/

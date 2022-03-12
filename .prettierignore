@@ -2,8 +2,7 @@
 /coverage/
 /doc/
 /node_modules/
-/public/packs/
-/public/packs-test/
+/app/assets/builds/
 /public/assets/
 /tmp/
 /vendor/

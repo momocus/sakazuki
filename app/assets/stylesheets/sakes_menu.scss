@@ -1,0 +1,18 @@
+@import "./bootstrap/custom";
+@import "bootstrap/scss/bootstrap";
+@import url("https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap");
+
+$accent: #b7282e;
+
+.menu-font {
+  font-family: "Yuji Syuku", serif;
+}
+
+.accent-text {
+  color: $accent;
+}
+
+.price_tag_border {
+  @extend .border-bottom;
+  @extend .border-dark;
+}

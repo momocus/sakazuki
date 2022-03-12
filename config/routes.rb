@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {
-    registrations: "users/registrations",
-    invitations: "users/invitations",
-  }
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  devise_for :users,
+             controllers: {
+               registrations: "users/registrations",
+               invitations: "users/invitations",
+             }
   root "sakes#index"
   resources :sakes do
     get :elasticsearch, on: :collection

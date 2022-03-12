@@ -43,34 +43,34 @@
 require "rails_helper"
 
 RSpec.describe Sake do
-  let!(:sealed_sake) { FactoryBot.create(:sake, bottle_level: "sealed", size: 720) }
-  let!(:opened_sake) { FactoryBot.create(:sake, bottle_level: "opened", size: 1800) }
-  let!(:impressed_sake) { FactoryBot.create(:sake, bottle_level: "opened", aroma_value: 1, taste_value: 2, size: 1800) }
-  let!(:empty_sake) { FactoryBot.create(:sake, bottle_level: "empty", size: 300) }
+  let!(:sealed_sake) { create(:sake, bottle_level: "sealed", size: 720) }
+  let!(:opened_sake) { create(:sake, bottle_level: "opened", size: 1800) }
+  let!(:impressed_sake) { create(:sake, bottle_level: "opened", aroma_value: 1, taste_value: 2, size: 1800) }
+  let!(:empty_sake) { create(:sake, bottle_level: "empty", size: 300) }
 
   describe "validates" do
     subject { sake.save }
 
     context "if name is missing" do
-      let(:sake) { FactoryBot.build(:sake, name: "") }
+      let(:sake) { build(:sake, name: "") }
 
       it { is_expected.to be_falsy }
     end
 
     context "if kura is nil" do
-      let(:sake) { FactoryBot.build(:sake, kura: nil) }
+      let(:sake) { build(:sake, kura: nil) }
 
       it { is_expected.to be_falsy }
     end
 
     context "if opened_at is nil" do
-      let(:sake) { FactoryBot.build(:sake, opened_at: nil) }
+      let(:sake) { build(:sake, opened_at: nil) }
 
       it { is_expected.to be_falsy }
     end
 
     context "if emptied_at is nil" do
-      let(:sake) { FactoryBot.build(:sake, emptied_at: nil) }
+      let(:sake) { build(:sake, emptied_at: nil) }
 
       it { is_expected.to be_falsy }
     end
@@ -78,39 +78,39 @@ RSpec.describe Sake do
 
   describe "sake.sealed?" do
     it "returns true by sealed sake" do
-      expect(sealed_sake.sealed?).to eq(true)
+      expect(sealed_sake.sealed?).to be(true)
     end
 
     it "returns false by opened sake" do
-      expect(opened_sake.sealed?).to eq(false)
+      expect(opened_sake.sealed?).to be(false)
     end
 
     it "returns false by empty sake" do
-      expect(empty_sake.sealed?).to eq(false)
+      expect(empty_sake.sealed?).to be(false)
     end
   end
 
   describe "sake.opened?" do
     it "returns false by sealed sake" do
-      expect(sealed_sake.opened?).to eq(false)
+      expect(sealed_sake.opened?).to be(false)
     end
 
     it "returns true by opened sake" do
-      expect(opened_sake.opened?).to eq(true)
+      expect(opened_sake.opened?).to be(true)
     end
 
     it "returns false by empty sake" do
-      expect(empty_sake.opened?).to eq(false)
+      expect(empty_sake.opened?).to be(false)
     end
   end
 
   describe "sake.unimpressed?" do
     it "returns true without taste and aroma value" do
-      expect(opened_sake.unimpressed?).to eq(true)
+      expect(opened_sake.unimpressed?).to be(true)
     end
 
     it "returns false with taste and aroma value" do
-      expect(impressed_sake.unimpressed?).to eq(false)
+      expect(impressed_sake.unimpressed?).to be(false)
     end
   end
 
@@ -137,68 +137,68 @@ RSpec.describe Sake do
 
     context "when sake is seald and created within 4 weeks" do
       it "returns true" do
-        sealed_new_sake = FactoryBot.build(:sake, bottle_level: "sealed", created_at: Time.zone.parse("2022-01-02 10:30:00"))
-        expect(sealed_new_sake.new_arrival?).to eq(true)
+        sealed_new_sake = build(:sake, bottle_level: "sealed", created_at: Time.zone.parse("2022-01-02 10:30:00"))
+        expect(sealed_new_sake.new_arrival?).to be(true)
       end
     end
 
     context "when sake is seald and created more than 4 weeks ago" do
       it "returns false" do
-        sealed_old_sake = FactoryBot.build(:sake, bottle_level: "sealed", created_at: Time.zone.parse("2022-01-01 10:30:00"))
-        expect(sealed_old_sake.new_arrival?).to eq(false)
+        sealed_old_sake = build(:sake, bottle_level: "sealed", created_at: Time.zone.parse("2022-01-01 10:30:00"))
+        expect(sealed_old_sake.new_arrival?).to be(false)
       end
     end
 
     context "when sake is opened and created within 2 week" do
       it "returns true" do
-        opened_new_sake = FactoryBot.build(:sake, bottle_level: "opened", created_at: Time.zone.parse("2022-01-16 10:30:00"))
-        expect(opened_new_sake.new_arrival?).to eq(true)
+        opened_new_sake = build(:sake, bottle_level: "opened", created_at: Time.zone.parse("2022-01-16 10:30:00"))
+        expect(opened_new_sake.new_arrival?).to be(true)
       end
     end
 
     context "when sake is opened and created more than 2 weeks ago" do
       it "returns false" do
-        opened_old_sake = FactoryBot.build(:sake, bottle_level: "opened", created_at: Time.zone.parse("2022-01-15 10:30:00"))
-        expect(opened_old_sake.new_arrival?).to eq(false)
+        opened_old_sake = build(:sake, bottle_level: "opened", created_at: Time.zone.parse("2022-01-15 10:30:00"))
+        expect(opened_old_sake.new_arrival?).to be(false)
       end
     end
   end
 
   describe "Sake.selling_price" do
     context "if price is nil" do
-      let(:sake) { FactoryBot.build(:sake, price: nil, size: 100) }
+      let(:sake) { build(:sake, price: nil, size: 100) }
 
       it "returns nil" do
-        expect(sake.selling_price).to eq(nil)
+        expect(sake.selling_price).to be_nil
       end
     end
 
     context "if price is zero" do
-      let(:sake) { FactoryBot.build(:sake, price: nil, size: 0) }
+      let(:sake) { build(:sake, price: nil, size: 0) }
 
       it "returns nil" do
-        expect(sake.selling_price).to eq(nil)
+        expect(sake.selling_price).to be_nil
       end
     end
 
     context "if size is nil" do
-      let(:sake) { FactoryBot.build(:sake, price: 100, size: nil) }
+      let(:sake) { build(:sake, price: 100, size: nil) }
 
       it "returns nil" do
-        expect(sake.selling_price).to eq(nil)
+        expect(sake.selling_price).to be_nil
       end
     end
 
     context "if size is zero" do
-      let(:sake) { FactoryBot.build(:sake, price: 100, size: 0) }
+      let(:sake) { build(:sake, price: 100, size: 0) }
 
       it "returns nil" do
-        expect(sake.selling_price).to eq(nil)
+        expect(sake.selling_price).to be_nil
       end
     end
 
     context "if price is 1,234 yen per 720 ml and selling rate is 3" do
-      let(:sake) { FactoryBot.build(:sake, price: 1234, size: 720) }
+      let(:sake) { build(:sake, price: 1234, size: 720) }
 
       it "returns 1000" do
         stub_const("#{described_class}::SELLING_RATE", 3)
@@ -207,7 +207,7 @@ RSpec.describe Sake do
     end
 
     context "if price is 1,234 yen per 720 ml and selling rate is 1.5" do
-      let(:sake) { FactoryBot.build(:sake, price: 1234, size: 720) }
+      let(:sake) { build(:sake, price: 1234, size: 720) }
 
       it "returns 500" do
         stub_const("#{described_class}::SELLING_RATE", 1.5)
