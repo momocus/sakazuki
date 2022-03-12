@@ -14,7 +14,7 @@ RSpec.describe Photo do
   describe "chackbox_name" do
     subject { photo.chackbox_name }
 
-    let(:photo) { FactoryBot.create(:photo) }
+    let(:photo) { create(:photo) }
 
     it { is_expected.to eq "photo_delete_1" }
   end

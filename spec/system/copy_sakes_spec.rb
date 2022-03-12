@@ -5,22 +5,22 @@ RSpec.describe "CopySakes", type: :system do
   include SakesHelper
 
   let!(:sake) {
-    FactoryBot.create(:sake,
-                      kura: "原田酒造合資会社", todofuken: "愛知県",
-                      size: 1800, genryomai: "山田錦", kakemai: "五百万石",
-                      kobo: "協会8号", season: "新酒", roka: "無濾過",
-                      shibori: "雫取り", color: "黄色", nigori: "おりがらみ",
-                      aroma_impression: "華やかな吟醸香",
-                      taste_impression: "フレッシュな味",
-                      awa: "微炭酸", note: "今年は米が硬かった",
-                      bindume_date: Date.new(2022, 2, 1),
-                      brew_year: Date.new(2021, 7, 1),
-                      taste_value: 5, aroma_value: 5, nihonshudo: 1.0,
-                      sando: 1.3, aminosando: 0.8, tokutei_meisho: :junmai_ginjo,
-                      alcohol: 18, warimizu: :genshu, moto: :sokujo, bottle_level: :empty,
-                      hiire: :namanama, price: 2310, rating: 5)
+    create(:sake,
+           kura: "原田酒造合資会社", todofuken: "愛知県",
+           size: 1800, genryomai: "山田錦", kakemai: "五百万石",
+           kobo: "協会8号", season: "新酒", roka: "無濾過",
+           shibori: "雫取り", color: "黄色", nigori: "おりがらみ",
+           aroma_impression: "華やかな吟醸香",
+           taste_impression: "フレッシュな味",
+           awa: "微炭酸", note: "今年は米が硬かった",
+           bindume_date: Date.new(2022, 2, 1),
+           brew_year: Date.new(2021, 7, 1),
+           taste_value: 5, aroma_value: 5, nihonshudo: 1.0,
+           sando: 1.3, aminosando: 0.8, tokutei_meisho: :junmai_ginjo,
+           alcohol: 18, warimizu: :genshu, moto: :sokujo, bottle_level: :empty,
+           hiire: :namanama, price: 2310, rating: 5)
   }
-  let(:user) { FactoryBot.create(:user) }
+  let(:user) { create(:user) }
 
   before do
     sign_in(user)
@@ -157,7 +157,7 @@ RSpec.describe "CopySakes", type: :system do
 
     describe "photo" do
       it "does not have any photos" do
-        expect(page.has_no_css?(".img-thumbnail")).to eq(true)
+        expect(page.has_no_css?(".img-thumbnail")).to be(true)
       end
     end
   end

@@ -1,8 +1,8 @@
 require "rails_helper"
 
 RSpec.describe "User Invitation" do
-  let(:admin) { FactoryBot.create(:user, admin: true) }
-  let(:user) { FactoryBot.create(:user, admin: false) }
+  let(:admin) { create(:user, admin: true) }
+  let(:user) { create(:user, admin: false) }
 
   before do
     sign_out(admin)

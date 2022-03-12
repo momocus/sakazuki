@@ -1,0 +1,57 @@
+@import "./bootstrap/custom";
+@import "bootstrap/scss/bootstrap";
+
+.form-row {
+  @extend .row;
+  @extend .mb-lg-2;
+}
+
+.form-label {
+  @extend .col-lg-3;
+  @extend .col-12;
+  @extend .col-form-label;
+}
+
+// バッジ付きラベル
+.badged-form-label {
+  @extend .col-lg-2;
+  @extend .col-8;
+  @extend .col-form-label;
+}
+
+.form-badge {
+  @extend .col-lg-1;
+  @extend .col-4;
+  @extend .col-form-label;
+}
+
+// 常に二段組となる入力フォーム
+.two-column-form {
+  @extend .col-lg-4;
+  @extend .col-6;
+}
+
+// ウィンドウサイズがlg以上のときに二段組入力フォームと同じサイズになる入力フォーム
+.short-form {
+  @extend .col-lg-4;
+  @extend .col;
+}
+
+.select-delete-photos input[type="checkbox"] {
+  display: none;
+}
+
+.select-delete-photos input[type="checkbox"]:checked + label img {
+  @extend .border-danger;
+  @extend .border-5;
+}
+
+.select-delete-photos input[type="checkbox"]:checked + label::after {
+  @extend .text-danger;
+  @extend .fs-1;
+
+  content: "✖";
+  display: block;
+  margin-top: -3ex;
+  margin-left: 1ex;
+}

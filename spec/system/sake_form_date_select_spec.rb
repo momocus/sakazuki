@@ -4,7 +4,7 @@ RSpec.describe "Sake Form Date Select", type: :system do
   # SakesHelper.with_japanese_eraを使う
   include SakesHelper
 
-  let(:user) { FactoryBot.create(:user) }
+  let(:user) { create(:user) }
 
   before do
     sign_in(user)
@@ -55,7 +55,7 @@ RSpec.describe "Sake Form Date Select", type: :system do
   end
 
   context "when edit sake having bindume date and BY" do
-    let(:sake) { FactoryBot.create(:sake, bindume_date: Date.new(2022, 2, 1), brew_year: Date.new(2021, 7, 1)) }
+    let(:sake) { create(:sake, bindume_date: Date.new(2022, 2, 1), brew_year: Date.new(2021, 7, 1)) }
 
     before do
       visit edit_sake_path(sake.id)
@@ -82,7 +82,7 @@ RSpec.describe "Sake Form Date Select", type: :system do
   end
 
   context "when edit sake not having BY" do
-    let(:sake) { FactoryBot.create(:sake, brew_year: nil) }
+    let(:sake) { create(:sake, brew_year: nil) }
 
     before do
       visit edit_sake_path(sake.id)

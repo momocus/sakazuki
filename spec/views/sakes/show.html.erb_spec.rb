@@ -3,7 +3,7 @@ require "rails_helper"
 # Capybaraを使うためにsystem specを指定する
 RSpec.describe "sakes/show", type: :system do
   describe "datetimes" do
-    let(:sake) { FactoryBot.create(:sake, bottle_level: :sealed) }
+    let(:sake) { create(:sake, bottle_level: :sealed) }
 
     context "with sealed sake" do
       before do
@@ -63,8 +63,8 @@ RSpec.describe "sakes/show", type: :system do
   end
 
   describe "rating" do
-    let(:no_rating_sake) { FactoryBot.create(:sake) }
-    let(:rating_sake) { FactoryBot.create(:sake, rating: 3) }
+    let(:no_rating_sake) { create(:sake) }
+    let(:rating_sake) { create(:sake, rating: 3) }
 
     context "with no rating sake" do
       before do

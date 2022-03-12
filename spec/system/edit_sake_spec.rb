@@ -1,8 +1,8 @@
 require "rails_helper"
 
 RSpec.describe "Edit Sake" do
-  let(:sake) { FactoryBot.create(:sake, name: "生道井") }
-  let(:user) { FactoryBot.create(:user) }
+  let(:sake) { create(:sake, name: "生道井") }
+  let(:user) { create(:user) }
 
   describe "updating name" do
     before do

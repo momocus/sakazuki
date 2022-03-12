@@ -1,0 +1,10 @@
+web: bin/rails server -p 3000 -b 0.0.0.0
+js: yarn build --watch
+css: yarn build:css --watch
+
+# Reccomend development runner with Docker
+# You need PostgreSQL and ElasticSearch configurations.
+# See also dotenv.example file.
+#
+# db: docker run --rm --name db --network sakazuki_net --env-file .env --publish 5432:5432 --mount type=volume,src=sakazuki_db,dst=/var/lib/postgresql/data postgres:13-alpine
+# es: docker run --rm --name es --network sakazuki_net --env-file .env --publish 9200:9200 --mount type=volume,src=es_data,dst=/usr/share/elasticsearch/data --mount type=volume,src=es_plugins,dst=/usr/share/elasticsearch/plugins docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2
