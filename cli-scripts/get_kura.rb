@@ -82,14 +82,72 @@ end
 # @param region [String] 地域
 # @param meigaras [Array<String>] SAKETIMESに載っている銘柄
 # @return [Array<String>] 追加済み銘柄
+# rubocop:disable Metrics/MethodLength
+# rubocop:disable Metrics/AbcSize
 def add_meigara(kura, region, meigaras)
   case [kura, region]
+  in ["勝山酒造株式会社", "宮城県"]
+    meigaras + ["戦勝政宗"]
+  in ["大和蔵酒造株式会社", "宮城県"]
+    meigaras + ["大和蔵"]
+  in ["有限会社佐々木酒造店", "宮城県"]
+    meigaras + ["浪の音"]
+  in ["阿部勘酒造株式会社", "宮城県"]
+    meigaras + %w[於茂多加 四季の松島 塩竈門前]
+  in ["株式会社一ノ蔵", "宮城県"]
+    meigaras + %w[大和伝 すず音 ひめぜん 金龍]
+  in ["株式会社新澤醸造店", "宮城県"]
+    meigaras + ["愛宕の松"]
+  in ["株式会社田中酒造店", "宮城県"]
+    meigaras + ["田林"]
+  in ["株式会社山和酒造店", "宮城県"]
+    meigaras + ["わしが國"]
+  in ["合名会社川敬商店", "宮城県"]
+    meigaras + ["橘屋"]
+  in ["合名会社寒梅酒造", "宮城県"]
+    meigaras + ["鶯咲"]
+  in ["株式会社中勇酒造店", "宮城県"]
+    meigaras + ["花ノ文"]
+  in ["千田酒造株式会社", "宮城県"]
+    meigaras + ["奥鶴"]
+  in ["萩野酒造株式会社", "宮城県"]
+    meigaras + ["日輪田"]
+  in ["株式会社角星", "宮城県"]
+    meigaras + %w[金紋両國 船尾灯]
+  in ["株式会社男山本店", "宮城県"]
+    meigaras + %w[気仙沼男山 美禄]
+  in ["墨廼江酒造株式会社", "宮城県"]
+    meigaras + %w[谷風 弁慶岬]
+  in ["蔵王酒造株式会社", "宮城県"]
+    meigaras + ["ZAO"]
+  in ["森民酒造本家", "宮城県"]
+    meigaras + ["森民"]
+  in ["麓井酒造株式会社", "山形県"]
+    meigaras + ["フモトヰ"]
+  in ["天領酒造株式会社", "岐阜県"]
+    meigaras + ["日野屋"]
+  in ["株式会社平田酒造場", "岐阜県"]
+    meigaras + %w[やまのひかり 山の光]
+  in ["山﨑合資会社", "愛知県"]
+    meigaras + ["尊王"]
   in ["丸一酒造株式会社", "愛知県"]
     meigaras + ["ほしいずみ"]
+  in ["水谷酒造株式株式会社", "愛知県"]
+    meigaras + %w[奏 めぐる]
+  in ["渡辺酒造株式会社", "愛知県"]
+    meigaras + ["平勇"]
+  in ["中埜酒造株式会社", "愛知県"]
+    meigaras + ["半田郷"]
+  in ["盛田金しゃちl酒造株式会社", "愛知県"]
+    meigaras + ["初夢桜"]
+  in ["原田酒造合資会社", "愛知県"]
+    meigaras + %w[卯の花 於大の舞 衣が浦若水]
   else
     meigaras
   end
 end
+# rubocop:enable Metrics/MethodLength
+# rubocop:enable Metrics/AbcSize
 
 # 銘柄に空白が含まれうるか
 #
