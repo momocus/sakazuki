@@ -294,6 +294,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hotwired/turbo-rails@npm:^7.1.1":
+  version: 7.1.1
+  resolution: "@hotwired/turbo-rails@npm:7.1.1"
+  dependencies:
+    "@hotwired/turbo": ^7.1.0
+    "@rails/actioncable": ^7.0
+  checksum: 606c0595659a4027e8f555acf5391031a5a6ebfe2ee57710d3b4de76bca3b75c3b79c2558d76cedc02ef8f90c04906aa505f365b675c305ca69e7ca8c7f1d22a
+  languageName: node
+  linkType: hard
+
+"@hotwired/turbo@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@hotwired/turbo@npm:7.1.0"
+  checksum: 4f71ebf2ff6a396d4031d048fa4d4dba6039aed9ad68436e6df4527e975acd8427c7d2f9b3e7f61f3e9c1af987193adf4e2b640c4033d4afd3e1f914ed05ba9f
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.5.0":
   version: 0.5.0
   resolution: "@humanwhocodes/config-array@npm:0.5.0"
@@ -356,6 +373,13 @@ __metadata:
     mkdirp: ^1.0.4
     rimraf: ^3.0.2
   checksum: c96381d4a37448ea280951e46233f7e541058cf57a57d4094dd4bdcaae43fa5872b5f2eb6bfb004591a68e29c5877abe3cdc210cb3588cbf20ab2877f31a7de7
+  languageName: node
+  linkType: hard
+
+"@rails/actioncable@npm:^7.0":
+  version: 7.0.2
+  resolution: "@rails/actioncable@npm:7.0.2"
+  checksum: 0064aa1b43c4099c62b0ec57534f756b22283a751571449e9b2285cef6593cefdd8f3edd692dc7840047ceba8f39e269f5a3e4a083f761ff87f686a6c366c7e8
   languageName: node
   linkType: hard
 
@@ -3560,6 +3584,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "sakazuki@workspace:."
   dependencies:
+    "@hotwired/turbo-rails": ^7.1.1
     "@rails/ujs": 7.0.2-2
     "@types/chart.js": ">=2.9.34 <3"
     "@typescript-eslint/eslint-plugin": ">=4.32.0"
