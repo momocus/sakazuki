@@ -101,4 +101,12 @@
   </tbody>
 </table>
 
-<%= paginate(@sakes) if include_empty?(params) %>
+<% if include_empty?(params) %>
+  <div class="d-none d-sm-block">
+    <%= paginate(@sakes) %>
+  </div>
+  <div class="d-sm-none d-block">
+    <%# 小さい画面 %>
+    <%= paginate(@sakes, window: 1) %>
+  </div>
+<% end %>
