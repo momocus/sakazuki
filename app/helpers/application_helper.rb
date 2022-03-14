@@ -57,7 +57,7 @@ module ApplicationHelper
   # @param name [String] 読み込む.scssファイル名、複数記述できる
   def select_css(*name)
     content_for(:css) do
-      stylesheet_link_tag(*name)
+      stylesheet_link_tag(*name, "data-turbo-track": "reload")
     end
   end
 
