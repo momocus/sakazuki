@@ -1,9 +1,11 @@
 <% if page.current? %>
   <li class="page-item active">
-    <%= tag.a(page, data: { remote: remote }, class: "page-link", rel: page.rel) %>
+    <span class="page-link">
+      <%= page %>
+    </span>
   </li>
 <% else %>
   <li class="page-item">
-    <%= link_to(page, url, { remote: remote, rel: page.rel, class: "page-link" }) %>
+    <%= link_to(page, url,  class: "page-link", rel: page.rel, remote: remote) %>
   </li>
 <% end %>
