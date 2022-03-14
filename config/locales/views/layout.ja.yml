@@ -6,6 +6,7 @@ ja:
       invitation: 招待メールを送信
       sign_out: ログアウト
       sign_in: ログイン
+      sake_menu: :sakes.menu.title
     footer:
       credit: |-
         SAKAZUKI上の情報や感想は
