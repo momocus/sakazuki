@@ -1,21 +1,6 @@
 <%= paginator.render do %>
-  <%#= 通常サイズ %>
-  <nav class="d-none d-sm-block">
+  <nav>
     <ul class="pagination" style="justify-content: center">
-      <%= prev_page_tag %>
-      <% each_page do |page| %>
-        <% if page.left_outer? || page.right_outer? || page.inside_window? %>
-          <%= page_tag(page) %>
-        <% elsif !page.was_truncated? %>
-          <%= gap_tag %>
-        <% end %>
-      <% end %>
-      <%= next_page_tag %>
-    </ul>
-  </nav>
-  <%#= ミニサイズ %>
-  <nav class="d-sm-none d-block">
-    <ul class="pagination pagination-sm" style="justify-content: center">
       <%= prev_page_tag %>
       <% each_page do |page| %>
         <% if page.left_outer? || page.right_outer? || page.inside_window? %>
