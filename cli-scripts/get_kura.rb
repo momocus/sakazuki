@@ -69,11 +69,13 @@ end
 #
 # @param kuras [Array<Hash<Symbol => String>>] 酒蔵のデータ
 # @return [Array<Hash<Symbol => String>>] 追加済みの酒蔵のデータ
-def add_kuras!(kuras)
-  # 2020年に株式会社福井酒造場を合併し、2021年に酒造り開始
-  kuras.append({ name: "井村屋株式会社", region: "三重県", meigaras: %w[福和蔵] })
-  # 2021年に愛知県の森山酒造が移転合併した
-  kuras.append({ name: "株式会社RiceWine", region: "神奈川", meigaras: %w[蜂龍盃] })
+def add_kuras(kuras)
+  kuras + [
+    # 2020年に株式会社福井酒造場を合併し、2021年に酒造り開始
+    { name: "井村屋株式会社", region: "三重県", meigaras: %w[福和蔵] },
+    # 2021年に愛知県の森山酒造が移転合併した
+    { name: "株式会社RiceWine", region: "神奈川", meigaras: %w[蜂龍盃] },
+  ]
 end
 
 # SAKETIMESに載っていない代表銘柄を追加する
@@ -267,7 +269,7 @@ end
 def main
   regions = request_regions
   kuras = request_all_kuras(regions)
-  kuras = add_kuras!(kuras)
+  kuras = add_kuras(kuras)
 
   filename = "kura-list.ndjson"
   write_ndjson(filename, kuras)
