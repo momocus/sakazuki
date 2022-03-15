@@ -207,9 +207,8 @@ def request_kuras(url, region)
   return [] if trs.empty?                    # 地域に蔵がなければ終了
 
   trs = trs[1..]                # ヘッダを捨てる
-  trs.reduce([]) { |accum, tr|
-    datas = tr_to_data(tr, region)
-    accum.append(datas)
+  trs.map { |tr|
+    tr_to_data(tr, region)
   }
 end
 
