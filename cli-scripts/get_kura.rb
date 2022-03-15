@@ -62,8 +62,7 @@ end
 # @param name [String] 酒蔵名
 # @return [String] 修正した酒蔵名
 def rename_kura(name)
-  name = name.sub(/\(休業中\)/, "")
-  name.sub(/　+$/, "")
+  name.sub(/\(休業中\)/, "").sub(/　+$/, "")
 end
 
 # SAKETIMESに載っていない酒蔵データを追加する
