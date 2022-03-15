@@ -175,6 +175,26 @@ def split_meigara(meigaras, region)
   meigara_include_space?(region) && meigaras != "" ? [meigaras] : meigaras.split
 end
 
+# SAKETIMESの地域ページのテーブルカラムから、蔵名を作成する
+#
+# @param table_row [Nokogiri::XML::NodeSet] SAKETIMESのテーブルカラムのオブジェクト
+# @return [String] 蔵名
+def tr_to_kura(table_row)
+  kura = table_row.css("span.main a")[0].content
+  rename_kura(kura)
+end
+
+# SAKETIMESの地域ページのテーブルカラムから、代表銘柄を作成する
+#
+# @param table_row [Nokogiri::XML::NodeSet] SAKETIMESのテーブルカラムのオブジェクト
+# @param region [String] 地域
+# @return [Array<String>>] 代表銘柄
+def tr_to_meigaras(table_row, region)
+  meigaras_str = table_row.css("dd")[0].content
+  meigaras = split_meigara(meigaras_str, region)
+  add_meigara(kura, region, meigaras)
+end
+
 # SAKETIMESの地域ページのテーブルカラムから、蔵データを作成する
 #
 # 帰ってくる代表銘柄は複数がありうるため、配列となっている。
@@ -183,11 +203,8 @@ end
 # @param region [String] 地域
 # @return [Hash<Symbol => String, Array<String>>] 蔵名、地域、代表銘柄を持つハッシュ
 def tr_to_data(table_row, region)
-  kura = table_row.css("span.main a")[0].content
-  kura = rename_kura(kura)
-  meigaras = table_row.css("dd")[0].content
-  meigaras = split_meigara(meigaras, region)
-  meigaras = add_meigara(kura, region, meigaras)
+  kura = tr_to_kura(table_row)
+  meigaras = tr_to_meigaras(table_row, region)
   { kura: kura, region: region, meigaras: meigaras }
 end
 
