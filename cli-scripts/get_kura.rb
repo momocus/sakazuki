@@ -192,7 +192,8 @@ end
 def tr_to_meigaras(table_row, region)
   meigaras_str = table_row.css("dd")[0].content
   meigaras = split_meigara(meigaras_str, region)
-  add_meigara(kura, region, meigaras)
+  meigaras = add_meigara(kura, region, meigaras)
+  meigaras.uniq
 end
 
 # SAKETIMESの地域ページのテーブルカラムから、蔵データを作成する
