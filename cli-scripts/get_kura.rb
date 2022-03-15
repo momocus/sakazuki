@@ -140,7 +140,7 @@ def add_meigara(kura, region, meigaras)
     meigaras + ["平勇"]
   in ["中埜酒造株式会社", "愛知県"]
     meigaras + ["半田郷"]
-  in ["盛田金しゃちl酒造株式会社", "愛知県"]
+  in ["盛田金しゃち酒造株式会社", "愛知県"]
     meigaras + ["初夢桜"]
   in ["原田酒造合資会社", "愛知県"]
     meigaras + %w[卯の花 於大の舞 衣が浦若水]
