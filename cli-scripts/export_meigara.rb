@@ -13,7 +13,7 @@ def read_kura
   jsons = []
   file.each_line do |line|
     json = JSON.parse(line)
-    json = { kura: json["kura"], region: json["region"], meigaras: json["meigaras"] }
+    json = { name: json["name"], region: json["region"], meigaras: json["meigaras"] }
     jsons.append(json)
   end
   jsons
@@ -30,9 +30,9 @@ end
 def flatten_by_meigara(jsons)
   jsons.map { |json|
     case json
-    in { kura: kura, region: region, meigaras: meigaras }
+    in { name: name, region: region, meigaras: meigaras }
       meigaras.map { |meigara|
-        { kura: kura, region: region, meigara: meigara }
+        { name: name, region: region, meigara: meigara }
       }
     end
   }.flatten(1)
@@ -73,10 +73,10 @@ end
 # @return [Array<Hash<Symbol => String>>] 一部銘柄が復元された配列
 def add_exceptional_duplication(jsons)
   jsons + [
-    { kura: "大関株式会社", region: "兵庫県", meigara: "大関" },
-    { kura: "太田酒造株式会社", region: "滋賀県", meigara: "道灌" },
-    { kura: "長龍酒造株式会社", region: "奈良県", meigara: "長龍" },
-    { kura: "酔鯨酒造株式会社", region: "高知県", meigara: "酔鯨" },
+    { name: "大関株式会社", region: "兵庫県", meigara: "大関" },
+    { name: "太田酒造株式会社", region: "滋賀県", meigara: "道灌" },
+    { name: "長龍酒造株式会社", region: "奈良県", meigara: "長龍" },
+    { name: "酔鯨酒造株式会社", region: "高知県", meigara: "酔鯨" },
   ]
 end
 
@@ -90,7 +90,7 @@ def to_dict(jsons)
   dict = {}
   jsons.each do |json|
     key = json[:meigara]
-    value = "#{json[:kura]}（#{json[:region]}）"
+    value = "#{json[:name]}（#{json[:region]}）"
     dict[key] = value
   end
   dict

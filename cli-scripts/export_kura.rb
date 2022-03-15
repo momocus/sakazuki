@@ -25,7 +25,7 @@ def write_body(output_file)
   input_file = "kura-list.ndjson"
   File.foreach(input_file, chomp: true) do |line|
     json = JSON.parse(line)
-    name = json["kura"]
+    name = json["name"]
     todofuken = json["region"]
     option_tag = "  <option value=\"#{name}（#{todofuken}）\"></option>\n"
     output_file.write(option_tag)

@@ -61,33 +61,33 @@ end
 #
 # @param name [String] 酒蔵名
 # @return [String] 修正した酒蔵名
-def rename_kura(name)
+def rename(name)
   name.sub(/\(休業中\)/, "").sub(/　+$/, "")
 end
 
 # SAKETIMESに載っていない酒蔵データを追加する
 #
-# @param datas [Array<Hash<Symbol => String>>] 酒蔵のデータ
+# @param kuras [Array<Hash<Symbol => String>>] 酒蔵のデータ
 # @return [Array<Hash<Symbol => String>>] 追加済みの酒蔵のデータ
-def add_data!(datas)
+def add_kuras!(kuras)
   # 2020年に株式会社福井酒造場を合併し、2021年に酒造り開始
-  datas.append({ kura: "井村屋株式会社", region: "三重県", meigaras: %w[福和蔵] })
+  kuras.append({ name: "井村屋株式会社", region: "三重県", meigaras: %w[福和蔵] })
   # 2021年に愛知県の森山酒造が移転合併した
-  datas.append({ kura: "株式会社RiceWine", region: "神奈川", meigaras: %w[蜂龍盃] })
+  kuras.append({ name: "株式会社RiceWine", region: "神奈川", meigaras: %w[蜂龍盃] })
 end
 
 # SAKETIMESに載っていない代表銘柄を追加する
 #
 # 蔵名は重複があるため、地域も込みで判定を行う。
 #
-# @param kura [String] 蔵名
+# @param name [String] 蔵名
 # @param region [String] 地域
 # @param meigaras [Array<String>] SAKETIMESに載っている銘柄
 # @return [Array<String>] 追加済み銘柄
 # rubocop:disable Metrics/MethodLength
 # rubocop:disable Metrics/AbcSize
-def add_meigara(kura, region, meigaras)
-  case [kura, region]
+def add_meigara(name, region, meigaras)
+  case [name, region]
   in ["勝山酒造株式会社", "宮城県"]
     meigaras + ["戦勝政宗"]
   in ["大和蔵酒造株式会社", "宮城県"]
@@ -179,9 +179,9 @@ end
 #
 # @param table_row [Nokogiri::XML::NodeSet] SAKETIMESのテーブルカラムのオブジェクト
 # @return [String] 蔵名
-def tr_to_kura(table_row)
-  kura = table_row.css("span.main a")[0].content
-  rename_kura(kura)
+def tr_to_name(table_row)
+  name = table_row.css("span.main a")[0].content
+  rename(name)
 end
 
 # SAKETIMESの地域ページのテーブルカラムから、代表銘柄を作成する
@@ -189,10 +189,10 @@ end
 # @param table_row [Nokogiri::XML::NodeSet] SAKETIMESのテーブルカラムのオブジェクト
 # @param region [String] 地域
 # @return [Array<String>>] 代表銘柄
-def tr_to_meigaras(table_row, region)
+def tr_to_meigaras(table_row, name, region)
   meigaras_str = table_row.css("dd")[0].content
   meigaras = split_meigara(meigaras_str, region)
-  meigaras = add_meigara(kura, region, meigaras)
+  meigaras = add_meigara(name, region, meigaras)
   meigaras.uniq
 end
 
@@ -203,17 +203,17 @@ end
 # @param table_row [Nokogiri::XML::NodeSet] SAKETIMESのテーブルカラムのオブジェクト
 # @param region [String] 地域
 # @return [Hash<Symbol => String, Array<String>>] 蔵名、地域、代表銘柄を持つハッシュ
-def tr_to_data(table_row, region)
-  kura = tr_to_kura(table_row)
-  meigaras = tr_to_meigaras(table_row, region)
-  { kura: kura, region: region, meigaras: meigaras }
+def tr_to_kura(table_row, region)
+  name = tr_to_name(table_row)
+  meigaras = tr_to_meigaras(table_row, name, region)
+  { name: name, region: region, meigaras: meigaras }
 end
 
 # SAKETIMESの1つの地域から、蔵データを取得する
 #
 # @example 実行例
 #   request_kuras([["北海道","https://jp.sake-times.com/sakagura/./hokkaido"]])
-#     #=> [{ kura: "碓氷勝三郎商店", region: "北海道", meigaras: ["北の勝"]},
+#     #=> [{ name: "碓氷勝三郎商店", region: "北海道", meigaras: ["北の勝"]},
 #         ...]
 #
 # @param url [String] SAKETIMESの地域の酒蔵ページのURL
@@ -225,9 +225,7 @@ def request_kuras(url, region)
   return [] if trs.empty?                    # 地域に蔵がなければ終了
 
   trs = trs[1..]                # ヘッダを捨てる
-  trs.map { |tr|
-    tr_to_data(tr, region)
-  }
+  trs.map { |tr| tr_to_kura(tr, region) }
 end
 
 # SAKETIMESに掲載されているすべての蔵データを取得する
@@ -236,9 +234,9 @@ end
 #   request_all_kuras([{region: "北海道",
 #                       url: "https://jp.sake-times.com/sakagura/./hokkaido"},
 #                       ...])
-#     #=> [{ kura: "碓氷勝三郎商店", region: "北海道", meigaras: ["北の勝"]},
+#     #=> [{ name: "碓氷勝三郎商店", region: "北海道", meigaras: ["北の勝"]},
 #          ...,
-#          { kura: "YK3 Sake Producer Inc.", region: "北米", meigaras: ["悠(Yu)"]}]
+#          { name: "YK3 Sake Producer Inc.", region: "北米", meigaras: ["悠(Yu)"]}]
 #
 # @param region_urls [Array<Hash<Symbol => String>>] 県名とURLのハッシュの配列
 # @return [Array<Hash<Symbol => String>>] 蔵名、地域、代表銘柄持ったハッシュの配列
@@ -268,11 +266,11 @@ end
 
 def main
   regions = request_regions
-  datas = request_all_kuras(regions)
-  datas = add_data!(datas)
+  kuras = request_all_kuras(regions)
+  kuras = add_kuras!(kuras)
 
   filename = "kura-list.ndjson"
-  write_ndjson(filename, datas)
+  write_ndjson(filename, kuras)
 
   puts("Done!")
   puts("Output to '#{filename}'")
