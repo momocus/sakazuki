@@ -65,7 +65,7 @@ end
 # @example 実行例
 #   to_ndjson(["いにしえの舞", "おくほまれ"]) #=> [{name:"いにしえの舞"}, {name:"おくほまれ"}]
 #
-# @param names [Array<String>] 酒米のリスト
+# @param rices [Array<String>] 酒米のリスト
 # @return [Array<Hash<Symbol => String>] nameキーに酒米の名前を持つjsonの配列
 def to_ndjson(rices)
   rices.map { |name|
@@ -76,11 +76,11 @@ end
 # ファイルにNDJSON形式で保存する
 #
 # @param filename [String] 出力ファイル名#
-# @param names [Array<Hash<Symbol => String>] 酒米名を持つjsonの配列
-def write_ndjson(filename, ndjson)
+# @param jsons [Array<Hash<Symbol => String>] 酒米名を持つjsonの配列
+def write_ndjson(filename, jsons)
   File.open(filename, "wb") do |f|
-    ndjson.each do |line_json|
-      JSON.dump(line_json, f)
+    jsons.each do |json|
+      JSON.dump(json, f)
       f.write("\n")
     end
   end
