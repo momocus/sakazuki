@@ -69,7 +69,7 @@ end
 # @return [Array<Hash<Symbol => String>] nameキーに酒米の名前を持つjsonの配列
 def to_ndjson(rices)
   rices.map { |name|
-    { name: name }
+    { name: }
   }
 end
 

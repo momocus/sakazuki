@@ -71,7 +71,7 @@ RSpec.describe "Sake DateTime" do
 
   describe "open the sealed sake" do
     created_at = Time.current.ago(7.days)
-    let(:sake) { create(:sake, bottle_level: "sealed", created_at: created_at) }
+    let(:sake) { create(:sake, bottle_level: "sealed", created_at:) }
 
     before do
       visit edit_sake_path(sake.id)
@@ -94,7 +94,7 @@ RSpec.describe "Sake DateTime" do
   describe "empty the sake" do
     context "for sealed sake" do
       created_at = Time.current.ago(7.days)
-      let(:sake) { create(:sake, bottle_level: "sealed", created_at: created_at) }
+      let(:sake) { create(:sake, bottle_level: "sealed", created_at:) }
 
       it "does not change created_at" do
         new_created_at = sake.created_at
@@ -117,7 +117,7 @@ RSpec.describe "Sake DateTime" do
     context "for opened sake" do
       created_at = Time.current.ago(7.days)
       opened_at = Time.current.ago(4.days)
-      let(:sake) { create(:sake, bottle_level: "sealed", created_at: created_at, opened_at: opened_at) }
+      let(:sake) { create(:sake, bottle_level: "sealed", created_at:, opened_at:) }
 
       it "does not change created_at" do
         new_created_at = sake.created_at

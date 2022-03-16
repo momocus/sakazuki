@@ -34,7 +34,7 @@ def a_to_region(a_tag)
   url = a_tag.attributes["href"].value
   # "北海道（13）"のようになっているので、括弧と数字を削る
   region = a_tag.content.sub(/\uff08.*\uff09/, "")
-  { region: region, url: url }
+  { region:, url: }
 end
 
 # SakeTimesの酒蔵一覧ページから、地域とURLのハッシュを作る
@@ -209,7 +209,7 @@ def tr_to_kura(table_row, region)
   name = tr_to_name(table_row)
   meigaras = tr_to_meigaras(table_row, region)
   meigaras = add_meigara(name, region, meigaras)
-  { name: name, region: region, meigaras: meigaras }
+  { name:, region:, meigaras: }
 end
 
 # SAKETIMESの1つの地域から、蔵データを取得する

@@ -4,7 +4,7 @@
     <% encoded = URI.encode_www_form(hashtags: "SAKAZUKI",
                                      original_referer: request.base_url,
                                      ref_src: "twsrc^tfw|twterm^share",
-                                     text: t("helper.tweet.text", sake: sake),
+                                     text: t("helper.tweet.text", sake:),
                                      url: request.original_url) %>
     <a href="https://twitter.com/intent/tweet?<%= encoded %>"
       data-lang="ja"
