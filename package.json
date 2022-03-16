@@ -28,9 +28,9 @@
   },
   "scripts": {
     "yard": "yard doc --tag type:\"TYPE\" {lib,app,spec,ext}/**/*.rb",
-    "lint:eslint": "eslint --ignore-path .prettierignore --ext .js,.ts .",
+    "lint:eslint": "eslint --ignore-path .gitignore --ext .js,.ts .",
     "lint:eslint:fix": "yarn run lint:eslint --fix",
-    "lint:prettier": "prettier --check .",
+    "lint:prettier": "prettier --ignore-path .gitignore --check .",
     "lint:prettier:fix": "prettier --write .",
     "lint:markdownlint": "markdownlint README.md",
     "lint:markdownlint:fix": "yarn run lint:markdownlint --fix",
