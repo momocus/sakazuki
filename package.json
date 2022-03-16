@@ -34,7 +34,7 @@
     "lint:prettier:fix": "prettier --write .",
     "lint:markdownlint": "markdownlint README.md",
     "lint:markdownlint:fix": "yarn run lint:markdownlint --fix",
-    "lint:stylelint": "stylelint '**/*.scss' '**/*.css' --ignore-path .gitignore",
+    "lint:stylelint": "stylelint 'app/assets/stylesheets/**/*.{scss,css}' --ignore-path .gitignore",
     "lint:stylelint:fix": "yarn run lint:stylelint --fix",
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --define:global=window --outdir=app/assets/builds",
     "build:css": "sass ./app/assets/stylesheets/:./app/assets/builds/ --no-source-map --load-path=node_modules"
