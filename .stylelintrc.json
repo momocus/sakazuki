@@ -4,5 +4,8 @@
     "stylelint-config-prettier",
     "stylelint-config-standard-scss",
     "stylelint-config-prettier-scss"
-  ]
+  ],
+  "rules": {
+    "scss/at-extend-no-missing-placeholder": null
+  }
 }
