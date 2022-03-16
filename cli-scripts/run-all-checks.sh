@@ -1,6 +1,5 @@
 #!/bin/bash
 
-set -e # exit by error
 cd $(cd $(dirname $0); pwd)/../ # cd to project root
 
 NORMAL=$(tput sgr0)
