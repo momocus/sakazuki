@@ -1125,6 +1125,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-tsc@npm:>=2.0.0 <3":
+  version: 2.0.0
+  resolution: "eslint-plugin-tsc@npm:2.0.0"
+  dependencies:
+    typescript-service: ^2.0.3
+  checksum: a6483fec0152c9c10542c0e51e36177623c233dc9715228f1f7063d181129084830b4b49f16f922759acb9e711d167e05ed7bc49d88afd21bcb6a24ec82d6369
+  languageName: node
+  linkType: hard
+
 "eslint-scope@npm:^5.1.1":
   version: 5.1.1
   resolution: "eslint-scope@npm:5.1.1"
@@ -2828,6 +2837,7 @@ __metadata:
     esbuild: ">=0.14.27 <1"
     eslint: ">=8.11.0 <9"
     eslint-config-prettier: ">=8.5.0 <9"
+    eslint-plugin-tsc: ">=2.0.0 <3"
     markdownlint-cli: ">=0.31.1 <1"
     prettier: ">=2.6.0 <3"
     rater-js: ">=1.0.1 <2"
@@ -3311,7 +3321,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^1.8.1":
+"tslib@npm:^1.8.1, tslib@npm:^1.9.3":
   version: 1.14.1
   resolution: "tslib@npm:1.14.1"
   checksum: dbe628ef87f66691d5d2959b3e41b9ca0045c3ee3c7c7b906cc1e328b39f199bb1ad9e671c39025bd56122ac57dfbf7385a94843b1cc07c60a4db74795829acd
@@ -3363,6 +3373,15 @@ __metadata:
   version: 0.8.1
   resolution: "type-fest@npm:0.8.1"
   checksum: d61c4b2eba24009033ae4500d7d818a94fd6d1b481a8111612ee141400d5f1db46f199c014766b9fa9b31a6a7374d96fc748c6d688a78a3ce5a33123839becb7
+  languageName: node
+  linkType: hard
+
+"typescript-service@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "typescript-service@npm:2.0.3"
+  dependencies:
+    tslib: ^1.9.3
+  checksum: 58f9ad5be4aa2a1419129bc829e5547858e87ba1aabb5f9c5504fea9ed17f8601706c795a782ffc99fb97fa82238e761a6a3adedb56786be90e937ebfe050e7b
   languageName: node
   linkType: hard
 
