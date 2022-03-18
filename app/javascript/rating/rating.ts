@@ -1,6 +1,3 @@
-/*
-  @types/rater-jsが存在しない。
- */
 import rater from "rater-js"
 
 function getSakeRatingFromDOM(): number {
