@@ -344,6 +344,7 @@ GEM
     rb-fsevent (0.11.1)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redis (4.6.0)
     regexp_parser (2.2.1)
     reline (0.3.1)
       io-console (~> 0.5)
@@ -414,6 +415,9 @@ GEM
     strscan (3.0.1)
     thor (1.2.1)
     timeout (0.2.0)
+    turbo-rails (1.0.1)
+      actionpack (>= 6.0.0)
+      railties (>= 6.0.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     unf (0.1.4)
@@ -481,6 +485,7 @@ DEPENDENCIES
   rails (= 7.0.2.2)
   rails-i18n
   ransack
+  redis
   rspec-rails
   rubocop
   rubocop-rails
@@ -489,6 +494,7 @@ DEPENDENCIES
   selenium-webdriver
   simplecov
   spring
+  turbo-rails
   tzinfo-data
   web-console
   webdrivers
