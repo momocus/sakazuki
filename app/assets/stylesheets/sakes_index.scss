@@ -7,10 +7,12 @@
 }
 
 // Ransackが生成するスタイル
+// stylelint-disable selector-class-pattern
 .btn-group .sort_link {
   @extend .btn;
   @extend .btn-primary;
 }
+// stylelint-enable selector-class-pattern
 
 .drink-button {
   @extend .col-auto;
