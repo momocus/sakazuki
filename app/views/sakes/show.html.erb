@@ -3,7 +3,7 @@
 
 <%# ページのサムネイルをセット %>
 <% if @sake.photos.any? %>
-  <% set_meta_tags(og: { image: { _: @sake.photos.first.image.large_twitter_card.url, width: 600, height: 600 } }) %>
+  <% set_meta_tags(og: { image: { _: @sake.photos.first.image.large_twitter_card.url, width: 600, height: 300 } }) %>
 <% end %>
 
 <%= render("float-button") %>
