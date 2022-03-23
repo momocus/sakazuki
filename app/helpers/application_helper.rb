@@ -73,6 +73,6 @@ module ApplicationHelper
 
     client ||= ENV["GOOGLE_ADSENSE_CLIENT"]
     src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=#{client}"
-    client ? tag.script(async: "async", src: src, crossorigin: "anonymous") : ""
+    client ? tag.script(async: "async", src:, crossorigin: "anonymous") : ""
   end
 end

@@ -32,7 +32,7 @@ def flatten_by_meigara(jsons)
     case json
     in { name: name, region: region, meigaras: meigaras }
       meigaras.map { |meigara|
-        { name: name, region: region, meigara: meigara }
+        { name:, region:, meigara: }
       }
     end
   }.flatten(1)
