@@ -6,9 +6,9 @@
     <%= csp_meta_tag %>
     <%= display_meta_tags(default_meta_tags) %>
     <%= adsense_tags %>
-    <%= stylesheet_link_tag("application", media: "all", "data-turbo-track": "reload") %>
+    <%= stylesheet_link_tag("application", media: "all") %>
     <%= yield(:css) if content_for?(:css) %>
-    <%= javascript_include_tag("application", "data-turbo-track": "reload", defer: true) %>
+    <%= javascript_include_tag("application", defer: true) %>
     <%= yield(:js) if content_for?(:js) %>
   </head>
 
