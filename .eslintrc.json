@@ -7,19 +7,13 @@
     "sourceType": "module"
   },
   "ignorePatterns": ["/coverage/", "/app/assets/builds"],
-  "plugins": ["tsc"],
+  "plugins": [],
   "extends": ["eslint:recommended", "prettier"],
   "rules": {
     "indent": ["error", 2],
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "double", { "avoidEscape": true }],
-    "semi": ["error", "never"],
-    "tsc/config": [
-      "error",
-      {
-        "configFile": "./tsconfig.json"
-      }
-    ]
+    "semi": ["error", "never"]
   },
   "overrides": [
     {
