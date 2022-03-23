@@ -1,11 +1,29 @@
 require "capybara/rspec"
 
+Capybara.default_driver = :rack_test
+if ENV["SELENIUM_DRIVER_URL"].present?
+  Capybara.register_driver(:remote_chrome) do |app|
+    Capybara::Selenium::Driver.new(
+      app,
+      browser: :remote,
+      url: ENV["SELENIUM_DRIVER_URL"],
+      desired_capabilities: :chrome,
+    )
+  end
+  Capybara.javascript_driver = :remote_chrome
+  Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
+  Capybara.server_port = 4444
+  Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
+else
+  Capybara.javascript_driver = :selenium_headless
+end
+
 RSpec.configure do |config|
   config.before(:each, type: :system) do |example|
-    driven_by(:rack_test)
+    driven_by(Capybara.default_driver)
   end
   config.before(:each, type: :system, js: true) do |example|
-    driven_by(:selenium_headless)
+    driven_by(Capybara.javascript_driver)
   end
 end
 
