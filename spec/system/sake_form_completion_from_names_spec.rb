@@ -10,11 +10,22 @@ RSpec.describe "SakeFormCompletionFromNames", type: :system do
 
   describe "kura_todofuken", js: true do
     context "with empty kura_todofuken" do
+      before do
+        fill_in("sake_name", with: "生道井 本醸造 無ろ過生原酒 袋吊り").send_keys(:tab)
+      end
+
       it "is completed" do
         # "send_keys(:tab)" is to trigger change event.
         # https://github.com/teamcapybara/capybara/issues/2105
-        fill_in("sake_name", with: "生道井 本醸造 無ろ過生原酒 袋吊り").send_keys(:tab)
         expect(find(:test_id, "sake_kura_todofuken_autocompletion").value).to eq("原田酒造合資会社（愛知県）")
+      end
+
+      it "inputs '原田酒造合資会社' to hidden kura form" do
+        expect(find(:test_id, "sake_kura", visible: false).value).to eq("原田酒造合資会社")
+      end
+
+      it "inputs '愛知県' to hidden todofuken form" do
+        expect(find(:test_id, "sake_todofuken", visible: false).value).to eq("愛知県")
       end
     end
 
