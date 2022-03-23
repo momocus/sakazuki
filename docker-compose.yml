@@ -72,6 +72,6 @@ services:
     ports:
       - "9200:9200"
   chrome:
-    image: selenium/standalone-chrome:latest
+    image: selenium/standalone-chrome:4.1.2-20220217
     ports:
       - 4444:4444
