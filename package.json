@@ -32,7 +32,7 @@
     "lint:eslint": "eslint --ignore-path .gitignore --ext .js,.ts .",
     "lint:eslint:fix": "yarn run lint:eslint --fix",
     "lint:prettier": "prettier --ignore-path .gitignore --check .",
-    "lint:prettier:fix": "prettier --write .",
+    "lint:prettier:fix": "prettier --ignore-path .gitignore --write .",
     "lint:markdownlint": "markdownlint README.md",
     "lint:markdownlint:fix": "yarn run lint:markdownlint --fix",
     "lint:stylelint": "stylelint 'app/assets/stylesheets/**/*.{scss,css}' --ignore-path .gitignore",
