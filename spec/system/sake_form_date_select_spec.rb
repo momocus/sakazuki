@@ -15,7 +15,7 @@ RSpec.describe "Sake Form Date Select", type: :system do
       visit new_sake_path
     end
 
-    describe "selector of bindume date" do
+    describe "selector of bindume date", js: true do
       it "selects this year" do
         year = with_japanese_era(Time.current)
         expect(page).to have_select("sake_bindume_year", selected: year)
@@ -61,7 +61,7 @@ RSpec.describe "Sake Form Date Select", type: :system do
       visit edit_sake_path(sake.id)
     end
 
-    describe "selector of bindume date" do
+    describe "selector of bindume date", js: true do
       it "selects the year of sake" do
         year = with_japanese_era(sake.bindume_date)
         expect(page).to have_select("sake_bindume_year", selected: year)
