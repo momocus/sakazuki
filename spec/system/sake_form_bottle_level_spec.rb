@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Edit Sake's Bottle Level" do
+RSpec.describe "Sake Form Bottle Level" do
   let(:user) { create(:user) }
   let(:sealed_sake) { create(:sake, bottle_level: :sealed) }
   let(:opened_sake) { create(:sake, bottle_level: :opened) }
