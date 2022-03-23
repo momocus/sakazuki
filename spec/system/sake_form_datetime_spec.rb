@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "SakeFormDateTime" do
+RSpec.describe "Sake Form Date Time" do
   let(:user) { create(:user) }
 
   before do
