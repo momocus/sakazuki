@@ -31,6 +31,9 @@ function checkMeigara(words: Array<string>, meigaras: MeigarasHash): string {
         const words = name.split(RegExp(/\s/))
         const completion = checkMeigara(words, meigaras.dict)
         kuraForm.value = completion
+        // changeイベントを発火する
+        const event = new Event("change")
+        kuraForm.dispatchEvent(event)
       }
     })
   })
