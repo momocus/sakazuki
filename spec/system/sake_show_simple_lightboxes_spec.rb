@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "SakeShowSimpleLightboxes", type: :system do
+RSpec.describe "Sake Show Simple Lightboxes", type: :system do
   let(:sake) { sake_with_photos(photo_count: 1) }
 
   before do

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "CopySakes", type: :system do
+RSpec.describe "Copy Sakes", type: :system do
   # SakesHelper.with_japanese_eraを使う
   include SakesHelper
 

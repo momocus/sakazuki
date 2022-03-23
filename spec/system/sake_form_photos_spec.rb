@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "SakeFormPhotos", type: :system do
+RSpec.describe "Sake Form Photos", type: :system do
   let(:user) { create(:user) }
 
   before do
