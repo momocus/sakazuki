@@ -1,1 +1,1 @@
---type-tag type:Type {app,cli-scripts}/**/*.rb - README.md LICENSE
+--type-tag type:Type {app,cli-scripts,spec}/**/*.rb - README.md LICENSE

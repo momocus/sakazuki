@@ -28,7 +28,6 @@
     "typescript": ">=4.6.2 <5"
   },
   "scripts": {
-    "yard": "yard doc --tag type:\"TYPE\" {lib,app,spec,ext}/**/*.rb",
     "lint:eslint": "eslint --ignore-path .gitignore --ext .js,.ts .",
     "lint:eslint:fix": "yarn run lint:eslint --fix",
     "lint:prettier": "prettier --ignore-path .gitignore --check .",
