@@ -35,6 +35,7 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_HOSTNAME: db
       ELASTICSEARCH_HOSTS: http://es:9200
+      SELENIUM_DRIVER_URL: http://chrome:4444/wd/hub
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     ports:
@@ -42,6 +43,7 @@ services:
     depends_on:
       - db
       - es
+      - chrome
   js:
     <<: *web
     tty: true
@@ -69,3 +71,7 @@ services:
       - es_plugins:/usr/share/elasticsearch/plugins
     ports:
       - "9200:9200"
+  chrome:
+    image: selenium/standalone-chrome:latest
+    ports:
+      - 4444:4444
