@@ -48,7 +48,7 @@ module ApplicationHelper
   # @param name [String] 読み込む.jsファイル名、複数記述できる
   def select_js(*name)
     content_for(:js) do
-      javascript_include_tag(*name, "data-turbo-track": "reload", defer: true)
+      javascript_include_tag(*name, defer: true)
     end
   end
 
