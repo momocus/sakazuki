@@ -7,14 +7,6 @@ h1 {
   @extend .mt-2;
 }
 
-.click-transparent {
-  pointer-events: none;
-}
-
-.click-nontransparent {
-  pointer-events: all;
-}
-
 // Ruby on Railsが生成するエラー用スタイルなので、アンダーバーのままにする
 // stylelint-disable selector-class-pattern
 .field_with_errors {
@@ -46,13 +38,15 @@ h1 {
 
 .float-button {
   @extend .fixed-bottom;
-  @extend .click-transparent;
   @extend .mb-lg-4;
   @extend .mb-2;
 
+  // click transparent
+  pointer-events: none;
+
   a,
   button {
-    @extend .click-nontransparent;
+    pointer-events: all;
   }
 }
 
