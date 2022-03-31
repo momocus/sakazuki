@@ -79,10 +79,12 @@
         </div>
       </div>
       <div class="col-lg-6 order-lg-2 col-12 order-1">
-        <canvas id="sake-<%= @sake.id %>"
-          data-taste-value="<%= @sake.taste_value %>"
-          data-aroma-value="<%= @sake.aroma_value %>">
-        </canvas>
+        <div class="ratio ratio-4x3">
+          <canvas id="sake-<%= @sake.id %>"
+            data-taste-value="<%= @sake.taste_value %>"
+            data-aroma-value="<%= @sake.aroma_value %>">
+          </canvas>
+        </div>
       </div>
     </div>
   </div>

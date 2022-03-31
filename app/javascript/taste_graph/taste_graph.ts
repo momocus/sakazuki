@@ -191,6 +191,8 @@ export class TasteGraph implements InteractiveGraph {
       elements: { point: { radius: defaultedConfig.pointRadius } },
       // HACK: ダミーの軸を使って高低両方にラベルをつける
       scales: { xAxes: [xAxe, dummyXAxe], yAxes: [yAxe, dummyYAxe] },
+      responsive: true,
+      maintainAspectRatio: false,
     }
     // 各4象限を別々に色付けする
     // https://github.com/chartjs/Chart.js/issues/3535
