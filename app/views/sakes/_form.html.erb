@@ -389,12 +389,14 @@
             </div>
           </div>
 
-          <div class="form-row ">
+          <div class="form-row">
             <%= form.label("#{t('activerecord.attributes.sake.taste_value')}, #{t('activerecord.attributes.sake.aroma_value')}",
                            { class: "col-lg-3 col-7 col-form-label" }) %>
             <%# MEMO: px-0だとchart.jsのグラフが描画されない %>
             <div class="col-lg-9 col-12 px-1">
-              <canvas id="taste_graph"></canvas>
+              <div class="ratio ratio-4x3">
+                <canvas id="taste_graph"></canvas>
+              </div>
               <%= form.number_field(:taste_value,
                                     id: "sake_taste_value",
                                     hidden: true,

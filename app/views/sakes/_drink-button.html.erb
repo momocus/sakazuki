@@ -1,30 +1,23 @@
 <% if sake.sealed? %>
-  <div class="drink-button">
-    <%= link_to(tag.i(class: "bi-droplet-half", style: "font-size: 0.95em;") + t(".open"),
+  <li>
+    <%= link_to(tag.i(class: "bi-droplet-half", style: "font-size: 0.95em") + t(".open"),
                 sake_path(sake, params: { sake: { bottle_level: "opened" }, flash_message_type: "open" }),
-                { method: :patch,
-                  data: { confirm: t(".confirm_open") },
-                  class: "bg-primary",
-                  "data-testid": "open_button_#{sake.id}", }) %>
-  </div>
+                data: { method: :patch, confirm: t(".confirm_open"), testid: "open_button_#{sake.id}" }) %>
+  </li>
 <% end %>
 <% if sake.unimpressed? %>
   <% p = sake.sealed? ? { sake: { bottle_level: "opened" } } : {} %>
   <% testid = sake.sealed? ? "open_and_impress_button_#{sake.id}" : "impress_button_#{sake.id}" %>
-  <div class="drink-button">
+  <li>
     <%= link_to(tag.i(class: "bi-cup-fill", style: "font-size: 1em;") + t(".impress"),
                 edit_sake_path(sake, params: p),
-                { class: "bg-secondary border border-primary text-dark",
-                  "data-testid": testid, }) %>
-  </div>
+                data: { testid: }) %>
+  </li>
 <% end %>
 <% if sake.opened? %>
-  <div class="drink-button">
+  <li>
     <%= link_to(tag.i(class: "bi-droplet", style: "font-size: 0.95em;") + t(".empty"),
                 sake_path(sake, params: { sake: { bottle_level: "empty" }, flash_message_type: "empty" }),
-                { method: :patch,
-                  data: { confirm: t(".confirm_empty") },
-                  class: "bg-light border border-dark text-dark",
-                  "data-testid": "empty_button_#{sake.id}", }) %>
-  </div>
+                data: { method: :patch, confirm: t(".confirm_empty"), testid: "empty_button_#{sake.id}" }) %>
+  </li>
 <% end %>
