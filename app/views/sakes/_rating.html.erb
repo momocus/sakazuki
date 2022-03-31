@@ -1,13 +1,13 @@
 <% if rating == 0 %>
   <% 5.times do %>
     <%# 未評価 %>
-    <i class="bi-star text-light fs-3"></i>
+    <i class="bi-star text-light"></i>
   <% end %>
 <% else %>
   <% rating.times do %>
-    <i class="bi-star-fill text-primary fs-3"></i>
+    <i class="bi-star-fill text-primary"></i>
   <% end %>
   <% (5 - rating).times do %>
-    <i class="bi-star-fill text-light fs-3"></i>
+    <i class="bi-star-fill text-light"></i>
   <% end %>
 <% end %>
