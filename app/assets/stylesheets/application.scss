@@ -7,14 +7,6 @@ h1 {
   @extend .mt-2;
 }
 
-.click-transparent {
-  pointer-events: none;
-}
-
-.click-nontransparent {
-  pointer-events: all;
-}
-
 // ------ header ------
 
 .sakazuki-header-logo {
@@ -35,13 +27,15 @@ h1 {
 
 .float-button {
   @extend .fixed-bottom;
-  @extend .click-transparent;
   @extend .mb-lg-4;
   @extend .mb-2;
 
+  // click transparent
+  pointer-events: none;
+
   a,
   button {
-    @extend .click-nontransparent;
+    pointer-events: all;
   }
 }
 
