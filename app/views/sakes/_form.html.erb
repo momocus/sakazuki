@@ -118,23 +118,26 @@
             <%= form.label(:bindume_date, { class: "form-label" }) %>
             <%# HACK: 年と月の入力フォームを分けて横並びに配置する。 %>
             <%#       Railsデフォルトでは年月が縦並びになってしまう。%>
-            <%#       そのため、2つフォームを設置してTSで同期する。 %>
+            <%#       そのため、2つのダミーを設置してTSで同期する。  %>
             <div class="two-column-form">
-              <%= form.date_select("dummy_bindume",
+              <%= form.date_select("dummy_bindume_year",
                                    { discard_month: true,
                                      start_year: Time.current.year - start_year_limit,
                                      end_year: Time.current.year,
                                      year_format: ->(year) { with_japanese_era(Date.new(year, 1, 1)) }, },
-                                   id: "bindume_year",
+                                   id: "sake_bindume_year",
                                    class: "form-select",
                                    data: { testid: "sake_bindume_year" }) %>
             </div>
             <div class="two-column-form">
-              <%= form.date_select(:bindume_date,
+              <%= form.date_select("dummy_bindume_month",
                                    { discard_day: true, discard_year: true },
-                                   id: "sake_bindume_date",
+                                   id: "sake_bindume_month",
                                    class: "form-select",
                                    data: { testid: "sake_bindume_month" }) %>
+            </div>
+            <div>
+              <%= form.date_select(:bindume_date, use_hidden: true) %>
             </div>
           </div>
 
