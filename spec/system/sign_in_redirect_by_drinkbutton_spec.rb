@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Sign-in Redirect with Drink Buttons" do
+RSpec.describe "Sign-in Redirect by Drink Buttons" do
   let!(:sealed_sake) { create(:sake, bottle_level: "sealed") }
   let!(:impressed_sake) { create(:sake, bottle_level: "opened", taste_value: 1, aroma_value: 2) }
   let(:user) { create(:user) }

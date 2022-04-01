@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
     "module": "esnext",
     "strict": true,
-    "target": "esnext"
+    "target": "esnext",
+    "skipLibCheck": true
   }
 }

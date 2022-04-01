@@ -44,3 +44,5 @@ function loadKuraTodofuken() {
     setSyncEvent()
   })
 }
+
+export {}

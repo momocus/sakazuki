@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "KuraCompletion", type: :system do
+RSpec.describe "Sake Form Kura Completion", type: :system do
   let(:user) { create(:user) }
 
   before do
