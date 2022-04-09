@@ -67,7 +67,7 @@ class SakesController < ApplicationController
           flash[:success] = t(".success", name: alert_link_tag(@sake.name, sake_path(@sake)))
         }
       else
-        format.html { render(:new) }
+        format.html { render(:new, status: :unprocessable_entity) }
       end
     end
   end
@@ -86,7 +86,7 @@ class SakesController < ApplicationController
           flash_after_update
         }
       else
-        format.html { render(:edit) }
+        format.html { render(:edit, status: :unprocessable_entity) }
       end
     end
   end
