@@ -32,7 +32,9 @@
             <div class="col">
               <%= form.text_field(:name,
                                   class: "form-control",
-                                  autocomplete: "off", data: { testid: "sake_name" }) %>
+                                  autocomplete: "off",
+                                  required: true,
+                                  data: { testid: "sake_name" }) %>
             </div>
           </div>
 
@@ -166,7 +168,7 @@
           <div class="form-row">
             <%= form.label(:size, { class: "form-label" }) %>
             <div class="short-form">
-              <%= form.number_field(:size, class: "form-control", data: { testid: "sake_size" }) %>
+              <%= form.number_field(:size, required: true, class: "form-control", data: { testid: "sake_size" }) %>
             </div>
           </div>
 
