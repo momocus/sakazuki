@@ -6,11 +6,7 @@
 <%= form_with(model: sake, id: "sake-form") do |form| %>
 
   <%# error message %>
-  <% if sake.errors.any? %>
-    <% sake.errors.full_messages.each do |message| %>
-      <% flash.now[:danger] = message %>
-    <% end %>
-  <% end %>
+  <% flash.now[:danger] = t(".input_error") if sake.errors.any? %>
 
   <%# 表示義務ありのラベル情報 %>
   <div class="accordion my-2" id="accordionLabelInfo">
@@ -92,7 +88,15 @@
             <%= form.label(:alcohol, { class: "form-label" }) %>
             <div class="short-form">
               <%= form.number_field(:alcohol,
-                                    step: "any", class: "form-control", data: { testid: "sake_alcohol" }) %>
+                                    step: "any",
+                                    class: "form-control",
+                                    aria: { describedby: "sakeAlcoholValidationFeedback" },
+                                    data: { testid: "sake_alcohol" }) %>
+              <% sake.errors.full_messages_for(:alcohol).each do |message| %>
+                <div id="sakeAlcoholValidationFeedback" class="invalid-feedback">
+                  <%= message %>
+                </div>
+              <% end %>
             </div>
           </div>
 
@@ -112,7 +116,14 @@
             <%= form.label(:seimai_buai, { class: "form-label" }) %>
             <div class="short-form">
               <%= form.number_field(:seimai_buai,
-                                    class: "form-control", data: { testid: "sake_seimai_buai" }) %>
+                                    class: "form-control",
+                                    aria: { describedby: "sakeSeimaiBuaiValidationFeedback" },
+                                    data: { testid: "sake_seimai_buai" }) %>
+              <% sake.errors.full_messages_for(:seimai_buai).each do |message| %>
+                <div id="sakeSeimaiBuaiValidationFeedback" class="invalid-feedback">
+                  <%= message %>
+                </div>
+              <% end %>
             </div>
           </div>
 
@@ -168,14 +179,31 @@
           <div class="form-row">
             <%= form.label(:size, { class: "form-label" }) %>
             <div class="short-form">
-              <%= form.number_field(:size, required: true, class: "form-control", data: { testid: "sake_size" }) %>
+              <%= form.number_field(:size,
+                                    required: true,
+                                    class: "form-control",
+                                    aria: { describedby: "sakeSizeValidationFeedback" },
+                                    data: { testid: "sake_size" }) %>
+              <% sake.errors.full_messages_for(:size).each do |message| %>
+                <div id="sakeSizeValidationFeedback" class="invalid-feedback">
+                  <%= message %>
+                </div>
+              <% end %>
             </div>
           </div>
 
           <div class="form-row">
             <%= form.label(:price, { class: "form-label" }) %>
             <div class="short-form">
-              <%= form.number_field(:price, class: "form-control", data: { testid: "sake_price" }) %>
+              <%= form.number_field(:price,
+                                    class: "form-control",
+                                    aria: { describedby: "sakePriceValidationFeedback" },
+                                    data: { testid: "sake_price" }) %>
+              <% sake.errors.full_messages_for(:price).each do |message| %>
+                <div id="sakePriceValidationFeedback" class="invalid-feedback">
+                  <%= message %>
+                </div>
+              <% end %>
             </div>
           </div>
 
@@ -338,7 +366,15 @@
             <%= form.label(:sando, { class: "form-label" }) %>
             <div class="short-form">
               <%= form.number_field(:sando,
-                                    step: "any", class: "form-control", data: { testid: "sake_sando" }) %>
+                                    step: "any",
+                                    class: "form-control",
+                                    aria: { describedby: "sakeSandoValidationFeedback" },
+                                    data: { testid: "sake_sando" }) %>
+              <% sake.errors.full_messages_for(:sando).each do |message| %>
+                <div id="sakeSandoValidationFeedback" class="invalid-feedback">
+                  <%= message %>
+                </div>
+              <% end %>
             </div>
           </div>
 
@@ -346,7 +382,15 @@
             <%= form.label(:aminosando, { class: "form-label" }) %>
             <div class="short-form">
               <%= form.number_field(:aminosando,
-                                    step: "any", class: "form-control", data: { testid: "sake_aminosando" }) %>
+                                    step: "any",
+                                    class: "form-control",
+                                    aria: { describedby: "sakeAminosandoValidationFeedback" },
+                                    data: { testid: "sake_aminosando" }) %>
+              <% sake.errors.full_messages_for(:aminosando).each do |message| %>
+                <div id="sakeAminosandoValidationFeedback" class="invalid-feedback">
+                  <%= message %>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>
