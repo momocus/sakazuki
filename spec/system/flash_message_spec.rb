@@ -48,7 +48,7 @@ RSpec.describe "Flash Message" do
       it "has flash message" do
         visit new_sake_path
         fill_in("sake_name", with: "生道井")
-        click_button("form-submit")
+        click_button("form_submit")
         expect(page).to have_selector(:test_id, "flash-message")
       end
     end
@@ -57,7 +57,7 @@ RSpec.describe "Flash Message" do
       it "has flash message" do
         visit edit_sake_path(sake.id)
         fill_in("sake_name", with: "ほしいずみ")
-        click_button("form-submit")
+        click_button("form_submit")
         expect(page).to have_selector(:test_id, "flash-message")
       end
     end
