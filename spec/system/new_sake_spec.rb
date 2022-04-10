@@ -14,7 +14,7 @@ RSpec.describe "New Sake" do
 
     it "has success flash message" do
       text = I18n.t("sakes.create.success", name: sake_name)
-      expect(find(:test_id, "flash-message")).to have_text(text)
+      expect(find(:test_id, "flash_message")).to have_text(text)
     end
 
     it "has specified sake name" do
@@ -28,7 +28,7 @@ RSpec.describe "New Sake" do
 
     it "has flash message containing link to created sake" do
       # 酒のIDが不明なため、フラッシュメッセージのリンク先が現在のパスと同じことを確認する
-      expect(find(:test_id, "flash-message")).to have_link(sake_name, href: current_path)
+      expect(find(:test_id, "flash_message")).to have_link(sake_name, href: current_path)
     end
   end
 end

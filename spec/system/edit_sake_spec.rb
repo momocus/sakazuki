@@ -19,12 +19,12 @@ RSpec.describe "Edit Sake" do
     it "has success flash message" do
       sake.reload
       text = I18n.t("sakes.update.success", name: sake.name)
-      expect(find(:test_id, "flash-message")).to have_text(text)
+      expect(find(:test_id, "flash_message")).to have_text(text)
     end
 
     it "has link to the updated sake" do
       sake.reload
-      expect(find(:test_id, "flash-message")).to have_link(sake.name, href: sake_path(sake.id))
+      expect(find(:test_id, "flash_message")).to have_link(sake.name, href: sake_path(sake.id))
     end
 
     it "updates also updated_at" do

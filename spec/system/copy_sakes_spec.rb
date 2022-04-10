@@ -48,11 +48,11 @@ RSpec.describe "Copy Sakes", type: :system do
     describe "flash message" do
       it "has copy message" do
         text = I18n.t("sakes.new.copy", name: sake.name)
-        expect(find(:test_id, "flash-message")).to have_text(text)
+        expect(find(:test_id, "flash_message")).to have_text(text)
       end
 
       it "has link to copied sake on name" do
-        expect(find(:test_id, "flash-message")).to have_link(sake.name, href: sake_path(sake.id))
+        expect(find(:test_id, "flash_message")).to have_link(sake.name, href: sake_path(sake.id))
       end
     end
   end
