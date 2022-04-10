@@ -93,7 +93,7 @@
                                     aria: { describedby: "sakeAlcoholValidationFeedback" },
                                     data: { testid: "sake_alcohol" }) %>
               <% sake.errors.full_messages_for(:alcohol).each do |message| %>
-                <div id="sakeAlcoholValidationFeedback" class="invalid-feedback">
+                <div id="sakeAlcoholValidationFeedback" class="invalid-feedback" data-testid="sake_alcohol_feedback">
                   <%= message %>
                 </div>
               <% end %>
@@ -120,7 +120,7 @@
                                     aria: { describedby: "sakeSeimaiBuaiValidationFeedback" },
                                     data: { testid: "sake_seimai_buai" }) %>
               <% sake.errors.full_messages_for(:seimai_buai).each do |message| %>
-                <div id="sakeSeimaiBuaiValidationFeedback" class="invalid-feedback">
+                <div id="sakeSeimaiBuaiValidationFeedback" class="invalid-feedback" data-testid="sake_seimai_buai_feedback">
                   <%= message %>
                 </div>
               <% end %>
@@ -185,7 +185,7 @@
                                     aria: { describedby: "sakeSizeValidationFeedback" },
                                     data: { testid: "sake_size" }) %>
               <% sake.errors.full_messages_for(:size).each do |message| %>
-                <div id="sakeSizeValidationFeedback" class="invalid-feedback">
+                <div id="sakeSizeValidationFeedback" class="invalid-feedback" data-testid="sake_size_feedback">
                   <%= message %>
                 </div>
               <% end %>
@@ -200,7 +200,7 @@
                                     aria: { describedby: "sakePriceValidationFeedback" },
                                     data: { testid: "sake_price" }) %>
               <% sake.errors.full_messages_for(:price).each do |message| %>
-                <div id="sakePriceValidationFeedback" class="invalid-feedback">
+                <div id="sakePriceValidationFeedback" class="invalid-feedback" data-testid="sake_price_feedback">
                   <%= message %>
                 </div>
               <% end %>
@@ -371,7 +371,7 @@
                                     aria: { describedby: "sakeSandoValidationFeedback" },
                                     data: { testid: "sake_sando" }) %>
               <% sake.errors.full_messages_for(:sando).each do |message| %>
-                <div id="sakeSandoValidationFeedback" class="invalid-feedback">
+                <div id="sakeSandoValidationFeedback" class="invalid-feedback" data-testid="sake_sando_feedback">
                   <%= message %>
                 </div>
               <% end %>
@@ -387,7 +387,7 @@
                                     aria: { describedby: "sakeAminosandoValidationFeedback" },
                                     data: { testid: "sake_aminosando" }) %>
               <% sake.errors.full_messages_for(:aminosando).each do |message| %>
-                <div id="sakeAminosandoValidationFeedback" class="invalid-feedback">
+                <div id="sakeAminosandoValidationFeedback" class="invalid-feedback" data-testid="sake_aminosando_feedback">
                   <%= message %>
                 </div>
               <% end %>
