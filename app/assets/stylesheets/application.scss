@@ -15,17 +15,6 @@ h1 {
   pointer-events: all;
 }
 
-// Ruby on Railsが生成するエラー用スタイルなので、アンダーバーのままにする
-// stylelint-disable selector-class-pattern
-.field_with_errors {
-  display: contents;
-
-  input {
-    @extend .is-invalid;
-  }
-}
-// stylelint-enable selector-class-pattern
-
 // ------ header ------
 
 .sakazuki-header-logo {
