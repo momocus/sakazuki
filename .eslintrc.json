@@ -13,7 +13,11 @@
     "indent": ["error", 2],
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "double", { "avoidEscape": true }],
-    "semi": ["error", "never"]
+    "semi": ["error", "never"],
+    "no-unused-vars": [
+      "error",
+      { "varsIgnorePattern": "^_", "argsIgnorePattern": "^_" }
+    ]
   },
   "overrides": [
     {
@@ -32,7 +36,7 @@
       ],
       "rules": {
         "@typescript-eslint/no-unused-vars": [
-          "warn",
+          "error",
           {
             "varsIgnorePattern": "^_",
             "argsIgnorePattern": "^_"
