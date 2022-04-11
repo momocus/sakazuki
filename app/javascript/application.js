@@ -3,4 +3,12 @@
 const Rails = require("@rails/ujs")
 Rails.start()
 
-import "./bootstrap_plugins/bootstrap_plugins.js"
+import { Alert, Collapse } from "bootstrap"
+const alertElementList = document.querySelectorAll(".alert")
+alertElementList.forEach((element) => {
+  new Alert(element)
+})
+const collapseElementList = document.querySelectorAll(".collapse")
+collapseElementList.forEach((element) => {
+  new Collapse(element)
+})
