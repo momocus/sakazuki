@@ -97,7 +97,7 @@ RSpec.describe "Drink Buttons" do
 
     describe "clicking impress button of opened bottle" do
       it "redirects to user login page" do
-        id = "impress-button-#{opened_sake.id}"
+        id = "impress_button_#{opened_sake.id}"
         click_link id
         expect(page).to have_current_path new_user_session_path
       end
@@ -105,7 +105,7 @@ RSpec.describe "Drink Buttons" do
 
     describe "clicking open button of sealed bottle", js: true do
       before do
-        id = "open-button-#{sealed_sake.id}"
+        id = "open_button_#{sealed_sake.id}"
         accept_confirm do
           click_link id
         end
@@ -124,7 +124,7 @@ RSpec.describe "Drink Buttons" do
 
     describe "clicking empty button of impressed bottle", js: true do
       before do
-        id = "empty-button-#{impressed_sake.id}"
+        id = "empty_button_#{impressed_sake.id}"
         accept_confirm do
           click_link id
         end
@@ -149,7 +149,7 @@ RSpec.describe "Drink Buttons" do
 
     describe "clicking impress button of sealed bottle" do
       before do
-        id = "open-and-impress-button-#{sealed_sake.id}"
+        id = "open_and_impress_button_#{sealed_sake.id}"
         click_link id
       end
 
@@ -168,7 +168,7 @@ RSpec.describe "Drink Buttons" do
 
     describe "clicking impress button of opened bottle" do
       before do
-        id = "impress-button-#{opened_sake.id}"
+        id = "impress_button_#{opened_sake.id}"
         click_link id
       end
 
@@ -187,7 +187,7 @@ RSpec.describe "Drink Buttons" do
     describe "clicking open button of sealed bottle", js: true do
       before do
         accept_confirm do
-          click_link "open-button-#{sealed_sake.id}"
+          click_link "open_button_#{sealed_sake.id}"
         end
         wait_for_alert
       end
@@ -215,7 +215,7 @@ RSpec.describe "Drink Buttons" do
     describe "clicking empty button of impressed bottle", js: true do
       before do
         accept_confirm do
-          click_link "empty-button-#{impressed_sake.id}"
+          click_link "empty_button_#{impressed_sake.id}"
         end
         wait_for_alert
       end
