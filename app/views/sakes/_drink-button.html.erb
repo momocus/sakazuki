@@ -5,12 +5,12 @@
                 { method: :patch,
                   data: { confirm: t(".confirm_open") },
                   class: "bg-primary",
-                  "data-testid": "open-button-#{sake.id}", }) %>
+                  "data-testid": "open_button_#{sake.id}", }) %>
   </div>
 <% end %>
 <% if sake.unimpressed? %>
   <% p = sake.sealed? ? { sake: { bottle_level: "opened" } } : {} %>
-  <% testid = sake.sealed? ? "open-and-impress-button-#{sake.id}" : "impress-button-#{sake.id}" %>
+  <% testid = sake.sealed? ? "open_and_impress_button_#{sake.id}" : "impress_button_#{sake.id}" %>
   <div class="drink-button">
     <%= link_to(tag.i(class: "bi-cup-fill", style: "font-size: 1em;") + t(".impress"),
                 edit_sake_path(sake, params: p),
@@ -25,6 +25,6 @@
                 { method: :patch,
                   data: { confirm: t(".confirm_empty") },
                   class: "bg-light border border-dark text-dark",
-                  "data-testid": "empty-button-#{sake.id}", }) %>
+                  "data-testid": "empty_button_#{sake.id}", }) %>
   </div>
 <% end %>
