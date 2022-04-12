@@ -31,12 +31,18 @@ RSpec.describe "Sake Form Validation" do
     end
   end
 
-  # describe "name" do
-  #   context "with empty string" do
-  #     it "" do
-  #     end
-  #   end
-  # end
+  describe "name", js: true do
+    context "with empty string" do
+      before do
+        fill_in("sake_name", with: "")
+        click_button("form_submit")
+      end
+
+      it "do not move page" do
+        expect(page).to have_current_path(new_sake_path)
+      end
+    end
+  end
 
   describe "alcohol" do
     context "with minus value" do
