@@ -45,7 +45,7 @@ RSpec.describe "Sake Form Validation" do
   end
 
   describe "alcohol" do
-    context "with minus value" do
+    context "with negative value" do
       before do
         fill_in("sake_alcohol", with: "-1")
         click_button("form_submit")
@@ -77,7 +77,7 @@ RSpec.describe "Sake Form Validation" do
   end
 
   describe "seimai_buai" do
-    context "with minus value" do
+    context "with negative value" do
       before do
         fill_in("sake_seimai_buai", with: "-1")
         click_button("form_submit")
@@ -109,7 +109,7 @@ RSpec.describe "Sake Form Validation" do
   end
 
   describe "size" do
-    context "with minus value" do
+    context "with negative value" do
       before do
         fill_in("sake_size", with: "-1")
         click_button("form_submit")
@@ -126,7 +126,7 @@ RSpec.describe "Sake Form Validation" do
   end
 
   describe "price" do
-    context "with minus value" do
+    context "with negative value" do
       before do
         fill_in("sake_price", with: "-1")
         click_button("form_submit")
@@ -143,7 +143,7 @@ RSpec.describe "Sake Form Validation" do
   end
 
   describe "sando" do
-    context "with minus value" do
+    context "with negative value" do
       before do
         fill_in("sake_sando", with: "-1.0")
         click_button("form_submit")
@@ -160,7 +160,7 @@ RSpec.describe "Sake Form Validation" do
   end
 
   describe "aminosando" do
-    context "with minus value" do
+    context "with negative value" do
       before do
         fill_in("sake_aminosando", with: "-1.0")
         click_button("form_submit")
