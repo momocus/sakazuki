@@ -55,7 +55,7 @@ RSpec.describe "Sake Form Validation" do
         expect(find(:test_id, "sake_alcohol").first(:xpath, "..")).to have_css(".is-invalid")
       end
 
-      it "is with error message" do
+      it "has error message" do
         expect(page).to have_selector(:test_id, "sake_alcohol_feedback")
       end
     end
@@ -70,7 +70,7 @@ RSpec.describe "Sake Form Validation" do
         expect(find(:test_id, "sake_alcohol").first(:xpath, "..")).to have_css(".is-invalid")
       end
 
-      it "is with error message" do
+      it "has error message" do
         expect(page).to have_selector(:test_id, "sake_alcohol_feedback")
       end
     end
@@ -87,7 +87,7 @@ RSpec.describe "Sake Form Validation" do
         expect(find(:test_id, "sake_seimai_buai").first(:xpath, "..")).to have_css(".is-invalid")
       end
 
-      it "is with error message" do
+      it "has error message" do
         expect(page).to have_selector(:test_id, "sake_seimai_buai_feedback")
       end
     end
@@ -102,7 +102,7 @@ RSpec.describe "Sake Form Validation" do
         expect(find(:test_id, "sake_seimai_buai").first(:xpath, "..")).to have_css(".is-invalid")
       end
 
-      it "is with error message" do
+      it "has error message" do
         expect(page).to have_selector(:test_id, "sake_seimai_buai_feedback")
       end
     end
@@ -119,7 +119,7 @@ RSpec.describe "Sake Form Validation" do
         expect(find(:test_id, "sake_size").first(:xpath, "..")).to have_css(".is-invalid")
       end
 
-      it "is with error message" do
+      it "has error message" do
         expect(page).to have_selector(:test_id, "sake_size_feedback")
       end
     end
@@ -136,7 +136,7 @@ RSpec.describe "Sake Form Validation" do
         expect(find(:test_id, "sake_price").first(:xpath, "..")).to have_css(".is-invalid")
       end
 
-      it "is with error message" do
+      it "has error message" do
         expect(page).to have_selector(:test_id, "sake_price_feedback")
       end
     end
@@ -153,7 +153,7 @@ RSpec.describe "Sake Form Validation" do
         expect(find(:test_id, "sake_sando").first(:xpath, "..")).to have_css(".is-invalid")
       end
 
-      it "is with error message" do
+      it "has error message" do
         expect(page).to have_selector(:test_id, "sake_sando_feedback")
       end
     end
@@ -170,7 +170,7 @@ RSpec.describe "Sake Form Validation" do
         expect(find(:test_id, "sake_aminosando").first(:xpath, "..")).to have_css(".is-invalid")
       end
 
-      it "is with error message" do
+      it "has error message" do
         expect(page).to have_selector(:test_id, "sake_aminosando_feedback")
       end
     end
