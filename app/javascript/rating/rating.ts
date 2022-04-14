@@ -15,21 +15,19 @@ function setSakeRatingToDOM(rating: number) {
 }
 
 {
-  document.addEventListener("DOMContentLoaded", function () {
-    const sakeRater = rater({
-      element: document.getElementById("rater") as HTMLElement,
-      starSize: 32,
-      rateCallback: function rateCallback(rating, done) {
-        // reset 0, when pushing same star
-        if (rating == sakeRater.getRating()) rating = 0
+  const sakeRater = rater({
+    element: document.getElementById("rater") as HTMLElement,
+    starSize: 32,
+    rateCallback: function rateCallback(rating, done) {
+      // reset 0, when pushing same star
+      if (rating == sakeRater.getRating()) rating = 0
 
-        sakeRater.setRating(rating)
-        setSakeRatingToDOM(rating)
+      sakeRater.setRating(rating)
+      setSakeRatingToDOM(rating)
 
-        if (done != null) done()
-      },
-    })
-    const rating = getSakeRatingFromDOM()
-    sakeRater.setRating(rating)
+      if (done != null) done()
+    },
   })
+  const rating = getSakeRatingFromDOM()
+  sakeRater.setRating(rating)
 }
