@@ -18,51 +18,51 @@ RSpec.describe "Drink Buttons" do
 
     describe "sealed bottle" do
       it "has open button with i18n text" do
-        id = "bottle-level-#{sealed_sake.id}"
+        id = "sake_buttons_#{sealed_sake.id}"
         expect(find(:test_id, id)).to have_text(open_text)
       end
 
       it "has impress button with i18n text" do
-        id = "bottle-level-#{sealed_sake.id}"
+        id = "sake_buttons_#{sealed_sake.id}"
         expect(find(:test_id, id)).to have_text(impress_text)
       end
 
       it "does not have empty button with i18n text" do
-        id = "bottle-level-#{sealed_sake.id}"
+        id = "sake_buttons_#{sealed_sake.id}"
         expect(find(:test_id, id)).to have_no_text(empty_text)
       end
     end
 
     describe "opened and unimpressed bottle" do
       it "does not have open button with i18n text" do
-        id = "bottle-level-#{opened_sake.id}"
+        id = "sake_buttons_#{opened_sake.id}"
         expect(find(:test_id, id)).to have_no_text(open_text)
       end
 
       it "has impress button with i18n text" do
-        id = "bottle-level-#{opened_sake.id}"
+        id = "sake_buttons_#{opened_sake.id}"
         expect(find(:test_id, id)).to have_text(impress_text)
       end
 
       it "has empty button with i18n text" do
-        id = "bottle-level-#{opened_sake.id}"
+        id = "sake_buttons_#{opened_sake.id}"
         expect(find(:test_id, id)).to have_text(empty_text)
       end
     end
 
     describe "opened and impressed bottle" do
       it "does not have open button with i18n text" do
-        id = "bottle-level-#{impressed_sake.id}"
+        id = "sake_buttons_#{impressed_sake.id}"
         expect(find(:test_id, id)).to have_no_text(open_text)
       end
 
       it "does not have impress button with i18n text" do
-        id = "bottle-level-#{impressed_sake.id}"
+        id = "sake_buttons_#{impressed_sake.id}"
         expect(find(:test_id, id)).to have_no_text(impress_text)
       end
 
       it "has empty button with i18n text" do
-        id = "bottle-level-#{impressed_sake.id}"
+        id = "sake_buttons_#{impressed_sake.id}"
         expect(find(:test_id, id)).to have_text(empty_text)
       end
     end
@@ -74,17 +74,17 @@ RSpec.describe "Drink Buttons" do
       end
 
       it "does not have open button with i18n text" do
-        id = "bottle-level-#{empty_sake.id}"
+        id = "sake_buttons_#{empty_sake.id}"
         expect(find(:test_id, id)).to have_no_text(open_text)
       end
 
       it "does not have impress button with i18n text" do
-        id = "bottle-level-#{empty_sake.id}"
+        id = "sake_buttons_#{empty_sake.id}"
         expect(find(:test_id, id)).to have_no_text(impress_text)
       end
 
       it "does not have empty button with i18n text" do
-        id = "bottle-level-#{empty_sake.id}"
+        id = "sake_buttons_#{empty_sake.id}"
         expect(find(:test_id, id)).to have_no_text(empty_text)
       end
     end
@@ -97,23 +97,23 @@ RSpec.describe "Drink Buttons" do
 
     describe "clicking impress button of opened bottle" do
       it "redirects to user login page" do
-        id = "impress_button_#{opened_sake.id}"
-        click_link id
-        expect(page).to have_current_path new_user_session_path
+        click_button "dropdown_toggle_#{opened_sake.id}"
+        click_link "impress_button_#{opened_sake.id}"
+        expect(page).to have_current_path(new_user_session_path)
       end
     end
 
     describe "clicking open button of sealed bottle", js: true do
       before do
-        id = "open_button_#{sealed_sake.id}"
+        click_button "dropdown_toggle_#{sealed_sake.id}"
         accept_confirm do
-          click_link id
+          click_link "open_button_#{sealed_sake.id}"
         end
         wait_for_page new_user_session_path
       end
 
       it "redirects to user login page" do
-        expect(page).to have_current_path new_user_session_path
+        expect(page).to have_current_path(new_user_session_path)
       end
 
       it "does not change bottle state after sign in" do
@@ -124,15 +124,15 @@ RSpec.describe "Drink Buttons" do
 
     describe "clicking empty button of impressed bottle", js: true do
       before do
-        id = "empty_button_#{impressed_sake.id}"
+        click_button "dropdown_toggle_#{impressed_sake.id}"
         accept_confirm do
-          click_link id
+          click_link "empty_button_#{impressed_sake.id}"
         end
         wait_for_page new_user_session_path
       end
 
       it "redirects to user login page" do
-        expect(page).to have_current_path new_user_session_path
+        expect(page).to have_current_path(new_user_session_path)
       end
 
       it "does not change bottle state after sign in" do
@@ -149,8 +149,8 @@ RSpec.describe "Drink Buttons" do
 
     describe "clicking impress button of sealed bottle" do
       before do
-        id = "open_and_impress_button_#{sealed_sake.id}"
-        click_link id
+        click_button "dropdown_toggle_#{sealed_sake.id}"
+        click_link "open_and_impress_button_#{sealed_sake.id}"
       end
 
       it "redirects to sake edit page" do
@@ -168,13 +168,13 @@ RSpec.describe "Drink Buttons" do
 
     describe "clicking impress button of opened bottle" do
       before do
-        id = "impress_button_#{opened_sake.id}"
-        click_link id
+        click_button "dropdown_toggle_#{opened_sake.id}"
+        click_link "impress_button_#{opened_sake.id}"
       end
 
       it "redirects to sake edit page" do
         path = edit_sake_path(opened_sake)
-        expect(page).to have_current_path path
+        expect(page).to have_current_path(path)
       end
 
       it "moves to edit page and keep 'opened' state" do
@@ -186,6 +186,7 @@ RSpec.describe "Drink Buttons" do
 
     describe "clicking open button of sealed bottle", js: true do
       before do
+        click_button "dropdown_toggle_#{sealed_sake.id}"
         accept_confirm do
           click_link "open_button_#{sealed_sake.id}"
         end
@@ -214,6 +215,7 @@ RSpec.describe "Drink Buttons" do
 
     describe "clicking empty button of impressed bottle", js: true do
       before do
+        click_button "dropdown_toggle_#{impressed_sake.id}"
         accept_confirm do
           click_link "empty_button_#{impressed_sake.id}"
         end
