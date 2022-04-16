@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Sake Form Date Time" do
+RSpec.describe "Bottle Level Datetimes" do
   let(:user) { create(:user) }
 
   before do
