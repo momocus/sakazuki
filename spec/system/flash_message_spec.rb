@@ -9,14 +9,14 @@ RSpec.describe "Flash Message" do
     describe "asscess new sake page" do
       it "has flash message" do
         visit new_sake_path
-        expect(page).to have_selector(:test_id, "flash-message")
+        expect(page).to have_selector(:test_id, "flash_message")
       end
     end
 
     describe "asscess edit sake page" do
       it "has flash message" do
         visit edit_sake_path(sake.id)
-        expect(page).to have_selector(:test_id, "flash-message")
+        expect(page).to have_selector(:test_id, "flash_message")
       end
     end
 
@@ -24,7 +24,7 @@ RSpec.describe "Flash Message" do
     describe "asscess invitation page" do
       it "has flash message" do
         visit new_user_invitation_path
-        expect(page).to have_selector(:test_id, "flash-message")
+        expect(page).to have_selector(:test_id, "flash_message")
       end
     end
 
@@ -33,7 +33,7 @@ RSpec.describe "Flash Message" do
       it "has flash message" do
         visit sakes_path
         sign_in_via_header_button(user)
-        expect(page).to have_selector(:test_id, "flash-message")
+        expect(page).to have_selector(:test_id, "flash_message")
       end
     end
   end
@@ -48,8 +48,8 @@ RSpec.describe "Flash Message" do
       it "has flash message" do
         visit new_sake_path
         fill_in("sake_name", with: "生道井")
-        click_button("form-submit")
-        expect(page).to have_selector(:test_id, "flash-message")
+        click_button("form_submit")
+        expect(page).to have_selector(:test_id, "flash_message")
       end
     end
 
@@ -57,8 +57,8 @@ RSpec.describe "Flash Message" do
       it "has flash message" do
         visit edit_sake_path(sake.id)
         fill_in("sake_name", with: "ほしいずみ")
-        click_button("form-submit")
-        expect(page).to have_selector(:test_id, "flash-message")
+        click_button("form_submit")
+        expect(page).to have_selector(:test_id, "flash_message")
       end
     end
 
@@ -66,7 +66,7 @@ RSpec.describe "Flash Message" do
       it "has flash message" do
         visit sake_path(sake.id)
         accept_confirm do click_link("delete_sake") end
-        expect(page).to have_selector(:test_id, "flash-message")
+        expect(page).to have_selector(:test_id, "flash_message")
       end
     end
 
@@ -74,7 +74,7 @@ RSpec.describe "Flash Message" do
       it "has flash message" do
         visit sake_path(sake.id)
         click_link("copy_sake")
-        expect(page).to have_selector(:test_id, "flash-message")
+        expect(page).to have_selector(:test_id, "flash_message")
       end
     end
 
@@ -83,7 +83,7 @@ RSpec.describe "Flash Message" do
       it "has flash message" do
         visit sakes_path
         click_link("sign_out")
-        expect(page).to have_selector(:test_id, "flash-message")
+        expect(page).to have_selector(:test_id, "flash_message")
       end
     end
   end

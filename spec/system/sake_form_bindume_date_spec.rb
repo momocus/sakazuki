@@ -17,7 +17,7 @@ RSpec.describe "Sake Form Bindume Date", type: :system do
       before do
         year = with_japanese_era(Time.current)
         select(year, from: "sake_bindume_year")
-        click_button("form-submit")
+        click_button("form_submit")
       end
 
       it "makes a sake whoes bindume year is current year" do
@@ -32,7 +32,7 @@ RSpec.describe "Sake Form Bindume Date", type: :system do
       before do
         year = with_japanese_era(ago)
         select(year, from: "sake_bindume_year")
-        click_button("form-submit")
+        click_button("form_submit")
       end
 
       it "makes a sake whoes bindume year is 10 years ago" do
@@ -47,7 +47,7 @@ RSpec.describe "Sake Form Bindume Date", type: :system do
       before do
         month = I18n.l(Time.zone.parse("2022-01-01 10:30:00"), format: "%b")
         select(month, from: "sake_bindume_month")
-        click_button("form-submit")
+        click_button("form_submit")
       end
 
       it "makes a sake whoes bindume month is January" do
@@ -60,7 +60,7 @@ RSpec.describe "Sake Form Bindume Date", type: :system do
       before do
         month = I18n.l(Time.zone.parse("2022-12-01 10:30:00"), format: "%b")
         select(month, from: "sake_bindume_month")
-        click_button("form-submit")
+        click_button("form_submit")
       end
 
       it "makes a sake whoes bindume month is December" do

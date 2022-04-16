@@ -17,7 +17,7 @@ RSpec.describe "Sake Form Date Time" do
 
     context "for sealed sake" do
       it "creates the sake whoes created_at is close to now" do
-        click_button("form-submit")
+        click_button("form_submit")
         created_at = sake_from_show_path(page.current_path).created_at
         now = Time.current
         expect(created_at).to be_within(delta).of(now)
@@ -27,7 +27,7 @@ RSpec.describe "Sake Form Date Time" do
     context "for opened sake" do
       before do
         select(I18n.t("enums.sake.bottle_level.opened"), from: "sake_bottle_level")
-        click_button("form-submit")
+        click_button("form_submit")
       end
 
       it "creates the sake whoes created_at is close to now" do
@@ -46,7 +46,7 @@ RSpec.describe "Sake Form Date Time" do
     context "for emptied sake" do
       before do
         select(I18n.t("enums.sake.bottle_level.empty"), from: "sake_bottle_level")
-        click_button("form-submit")
+        click_button("form_submit")
       end
 
       it "creates the sake whoes created_at is close to now" do
@@ -76,7 +76,7 @@ RSpec.describe "Sake Form Date Time" do
     before do
       visit edit_sake_path(sake.id)
       select(I18n.t("enums.sake.bottle_level.opened"), from: "sake_bottle_level")
-      click_button("form-submit")
+      click_button("form_submit")
     end
 
     it "does not change created_at" do
