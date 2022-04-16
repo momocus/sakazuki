@@ -42,9 +42,12 @@ ja:
     form:
       unknown: 不明
       select_delete_photo: 削除する画像を選択してください
-      labelinfo: ラベル
-      labelinfo_option: オプショナル
-      tasteinfo: 味わい
+      abstract: 概要
+      detail: :sakes.show_detail.detail
+      review: :sakes.show_review.review
+      ingredient: :sakes.show_detail.ingredient
+      method: :sakes.show_detail.method
+      measurement: :sakes.show_detail.measurent
       badge:
         presence: 必須
       new:
