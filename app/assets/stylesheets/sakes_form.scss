@@ -25,12 +25,6 @@
   @extend .col-form-label;
 }
 
-// 常に二段組となる入力フォーム
-.two-column-form {
-  @extend .col-lg-4;
-  @extend .col-6;
-}
-
 // ウィンドウサイズがlg以上のときに二段組入力フォームと同じサイズになる入力フォーム
 .short-form {
   @extend .col-lg-4;
@@ -54,4 +48,9 @@
   display: block;
   margin-top: -3ex;
   margin-left: 1ex;
+}
+
+.horizontal-date {
+  display: inline-block;
+  width: auto;
 }
