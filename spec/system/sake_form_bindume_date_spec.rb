@@ -16,7 +16,7 @@ RSpec.describe "Sake Form Bindume Date", type: :system do
     context "when select current year" do
       before do
         year = with_japanese_era(Time.current)
-        select(year, from: "sake_bindume_year")
+        select(year, from: "sake_bindume_date_1i")
         click_button("form_submit")
       end
 
@@ -31,7 +31,7 @@ RSpec.describe "Sake Form Bindume Date", type: :system do
 
       before do
         year = with_japanese_era(ago)
-        select(year, from: "sake_bindume_year")
+        select(year, from: "sake_bindume_date_1i")
         click_button("form_submit")
       end
 
@@ -46,7 +46,7 @@ RSpec.describe "Sake Form Bindume Date", type: :system do
     context "when select January" do
       before do
         month = I18n.l(Time.zone.parse("2022-01-01 10:30:00"), format: "%b")
-        select(month, from: "sake_bindume_month")
+        select(month, from: "sake_bindume_date_2i")
         click_button("form_submit")
       end
 
@@ -59,7 +59,7 @@ RSpec.describe "Sake Form Bindume Date", type: :system do
     context "when select December" do
       before do
         month = I18n.l(Time.zone.parse("2022-12-01 10:30:00"), format: "%b")
-        select(month, from: "sake_bindume_month")
+        select(month, from: "sake_bindume_date_2i")
         click_button("form_submit")
       end
 
