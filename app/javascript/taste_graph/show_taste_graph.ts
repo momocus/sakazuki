@@ -16,13 +16,11 @@ const hasCanvasID = (elem: HTMLCanvasElement): boolean => {
 
 // Main
 {
-  document.addEventListener("DOMContentLoaded", function () {
-    const canvases = Array.from(document.getElementsByTagName("canvas"))
-    const graphs = canvases.filter(hasCanvasID)
-    const config = { pointRadius: 6, zeroLineWidth: 3 }
-    graphs.forEach((canvas) => {
-      const { taste, aroma } = getDomValues(canvas)
-      new TasteGraph(canvas, taste, aroma, config)
-    })
+  const canvases = Array.from(document.getElementsByTagName("canvas"))
+  const graphs = canvases.filter(hasCanvasID)
+  const config = { pointRadius: 6, zeroLineWidth: 3 }
+  graphs.forEach((canvas) => {
+    const { taste, aroma } = getDomValues(canvas)
+    new TasteGraph(canvas, taste, aroma, config)
   })
 }

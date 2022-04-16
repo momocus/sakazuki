@@ -28,10 +28,8 @@ function loadBindumeDate() {
 
 // Main
 {
-  document.addEventListener("DOMContentLoaded", function () {
-    loadBindumeDate()
-    setSyncEvent()
-  })
+  loadBindumeDate()
+  setSyncEvent()
 }
 
 export {}
