@@ -131,10 +131,12 @@
             <%= form.label(:bindume_date, { class: "form-label" }) %>
             <div class="col">
               <%= form.date_select(:bindume_date,
-                                   { start_year: Time.current.year - start_year_limit,
+                                   {
+                                     start_year: Time.current.year - start_year_limit,
                                      end_year: Time.current.year,
                                      year_format: ->(year) { with_japanese_era(Date.new(year, 1, 1)) },
-                                     discard_day: true },
+                                     discard_day: true,
+                                   },
                                    class: "form-select horizontal-date",
                                    data: { testid: "sake_bindume" }) %>
             </div>
