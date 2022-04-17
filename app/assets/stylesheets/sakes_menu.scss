@@ -12,7 +12,7 @@ $accent: #b7282e;
   color: $accent;
 }
 
-.price_tag_border {
+.price-tag-border {
   @extend .border-bottom;
   @extend .border-dark;
 }

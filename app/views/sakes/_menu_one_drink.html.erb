@@ -5,14 +5,14 @@
     </div>
     <div class="col-12 align-self-end">
       <div class="row justify-content-end fs-4">
-        <div class="col-3 price_tag_border">
+        <div class="col-3 price-tag-border">
           <% if sake.new_arrival? %>
             <span class="accent-text">
               <%= t(".new_arrival") %>
             </span>
           <% end %>
         </div>
-        <div class="col-4 text-end price_tag_border">
+        <div class="col-4 text-end price-tag-border">
           <%= price_tag(sake.selling_price) %>
         </div>
       </div>
