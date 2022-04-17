@@ -5,11 +5,11 @@ RSpec.describe "layouts/_header", type: :system do
   # 常に表示するリンクのテストをshared_examplesで共通化
   RSpec.shared_examples "links allways exist" do
     it "has sake menu link" do
-      expect(find(:test_id, "sake-menu")).to have_link(I18n.t("layouts.header.sake_menu"), href: menu_sakes_path)
+      expect(find(:test_id, "navigation_list")).to have_link(I18n.t("layouts.header.sake_menu"), href: menu_sakes_path)
     end
 
     it "has elasticsearch link" do
-      expect(find(:test_id, "elasticsearch")).to have_link("Elasticsearch", href: elasticsearch_path)
+      expect(find(:test_id, "navigation_list")).to have_link("Elasticsearch", href: elasticsearch_path)
     end
   end
 
@@ -28,13 +28,6 @@ RSpec.describe "layouts/_header", type: :system do
         expect { find(:test_id, "sign_in") }.to raise_error(Capybara::ElementNotFound)
       end
 
-<<<<<<< HEAD
-=======
-      it "has elasticsearch link" do
-        expect(find(:test_id, "navigation_list")).to have_link("Elasticsearch", href: elasticsearch_path)
-      end
-
->>>>>>> 132e68627234739fac34d2fb1a67d1419d8f2c18
       it "has user edit link" do
         expect(find(:test_id, "navigation_list")).to have_link(user.email, href: edit_user_registration_path)
       end
@@ -64,13 +57,6 @@ RSpec.describe "layouts/_header", type: :system do
         expect { find(:test_id, "sign_in") }.to raise_error(Capybara::ElementNotFound)
       end
 
-<<<<<<< HEAD
-=======
-      it "has elasticsearch link" do
-        expect(find(:test_id, "navigation_list")).to have_link("Elasticsearch", href: elasticsearch_path)
-      end
-
->>>>>>> 132e68627234739fac34d2fb1a67d1419d8f2c18
       it "has user edit link" do
         expect(find(:test_id, "navigation_list")).to have_link(user.email, href: edit_user_registration_path)
       end
@@ -97,13 +83,6 @@ RSpec.describe "layouts/_header", type: :system do
                                                                href: new_user_session_path)
       end
 
-<<<<<<< HEAD
-=======
-      it "has elasticsearch link" do
-        expect(find(:test_id, "navigation_list")).to have_link("Elasticsearch", href: elasticsearch_path)
-      end
-
->>>>>>> 132e68627234739fac34d2fb1a67d1419d8f2c18
       it "does not have user edit link" do
         expect { find(:test_id, "edit_user") }.to raise_error(Capybara::ElementNotFound)
       end

@@ -10,19 +10,12 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-<<<<<<< HEAD
-        <ul class="navbar-nav">
-          <li class="nav-item" data-testid="sake-menu">
-            <%= link_to(t(".sake_menu"), menu_sakes_path, class: "nav-link") %>
-          </li>
-          <li class="nav-item">
-          <li class="nav-item" data-testid="elasticsearch">
-            <%= link_to("Elasticsearch", elasticsearch_path, class: "nav-link") %>
-=======
         <ul class="navbar-nav" data-testid="navigation_list">
           <li class="nav-item">
+            <%= link_to(t(".sake_menu"), menu_sakes_path, class: "nav-link", data: { testid: "sake-menu" }) %>
+          </li>
+          <li class="nav-item">
             <%= link_to("Elasticsearch", elasticsearch_path, class: "nav-link", data: { testid: "elasticsearch" }) %>
->>>>>>> 132e68627234739fac34d2fb1a67d1419d8f2c18
           </li>
           <span class="border-bottom border-secondary"></span>
           <% if user_signed_in? %>
