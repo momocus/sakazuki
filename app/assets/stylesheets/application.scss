@@ -15,16 +15,7 @@ h1 {
   pointer-events: all;
 }
 
-// Ruby on Railsが生成するエラー用スタイルなので、アンダーバーのままにする
-.field_with_errors {
-  display: contents;
-
-  input {
-    @extend .is-invalid;
-  }
-}
-
-//------ header ------
+// ------ header ------
 
 .sakazuki-header-logo {
   @extend .me-3;
@@ -33,14 +24,14 @@ h1 {
   height: 2rem;
 }
 
-//------ footer ------
+// ------ footer ------
 
 .footer-text {
   font-size: 0.9em;
   color: #777;
 }
 
-//------ float-button ------
+// ------ float-button ------
 
 .float-button {
   @extend .fixed-bottom;

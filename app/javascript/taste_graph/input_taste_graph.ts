@@ -30,9 +30,7 @@ function getDomValue(): DomValues {
 }
 
 {
-  document.addEventListener("DOMContentLoaded", function () {
-    const { taste, aroma } = getDomValue() // DOMから味・香りの値(0~6)を取る
-    const canvas = document.getElementById("taste_graph") as HTMLCanvasElement
-    new TasteGraph(canvas, taste, aroma, {}, true, updateDomValue)
-  })
+  const { taste, aroma } = getDomValue() // DOMから味・香りの値(0~6)を取る
+  const canvas = document.getElementById("taste_graph") as HTMLCanvasElement
+  new TasteGraph(canvas, taste, aroma, {}, true, updateDomValue)
 }

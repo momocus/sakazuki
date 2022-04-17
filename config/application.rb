@@ -31,6 +31,17 @@ module Sakazuki
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
+    # Rails error forms using Bootstrap is-invalid style
+    config.action_view.field_error_proc = lambda { |html_tag, _instance|
+      doc = Nokogiri::HTML::DocumentFragment.parse(html_tag)
+      element = doc.children[0]
+      form_fields = %w[textarea input select]
+      return html_tag unless form_fields.include?(element.name)
+
+      element[:class] = "#{element[:class]} is-invalid"
+      ActiveSupport::SafeBuffer.new(doc.to_html)
+    }
+
     # For Japanese
     config.i18n.load_path +=
       Dir[Rails.root.join("config/locales/**/*.ja.{rb,yml}")]

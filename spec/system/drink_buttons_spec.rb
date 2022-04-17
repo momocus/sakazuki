@@ -198,11 +198,11 @@ RSpec.describe "Drink Buttons" do
 
       it "has success flash message" do
         text = I18n.t("sakes.update.success_open", name: sealed_sake.name)
-        expect(find(:test_id, "flash-message")).to have_text(text)
+        expect(find(:test_id, "flash_message")).to have_text(text)
       end
 
       it "has flash message containing link to updated sake" do
-        expect(find(:test_id, "flash-message")).to have_link(sealed_sake.name, href: sake_path(sealed_sake.id))
+        expect(find(:test_id, "flash_message")).to have_link(sealed_sake.name, href: sake_path(sealed_sake.id))
       end
 
       it "updates sake to opened" do
@@ -226,11 +226,11 @@ RSpec.describe "Drink Buttons" do
 
       it "has success flash message" do
         text = I18n.t("sakes.update.success_empty", name: impressed_sake.name)
-        expect(find(:test_id, "flash-message")).to have_text(text)
+        expect(find(:test_id, "flash_message")).to have_text(text)
       end
 
       it "has flash message containing link to updated sake" do
-        expect(find(:test_id, "flash-message")).to have_link(impressed_sake.name, href: sake_path(impressed_sake.id))
+        expect(find(:test_id, "flash_message")).to have_link(impressed_sake.name, href: sake_path(impressed_sake.id))
       end
 
       it "updates sake to empty" do

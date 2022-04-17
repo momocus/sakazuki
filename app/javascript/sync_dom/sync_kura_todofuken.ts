@@ -39,8 +39,8 @@ function loadKuraTodofuken() {
 
 // Main
 {
-  document.addEventListener("DOMContentLoaded", function () {
-    loadKuraTodofuken()
-    setSyncEvent()
-  })
+  loadKuraTodofuken()
+  setSyncEvent()
 }
+
+export {}

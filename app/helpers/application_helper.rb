@@ -36,7 +36,7 @@ module ApplicationHelper
         description: :description,
       },
       twitter: {
-        card: "summary",
+        card: "summary_large_image",
       },
     }
   end
@@ -45,16 +45,16 @@ module ApplicationHelper
 
   # 読み込むJavascriptの指定
   #
-  # @param name [String] 読み込む.jsファイル名の配列
+  # @param name [String] 読み込む.jsファイル名、複数記述できる
   def select_js(*name)
     content_for(:js) do
-      javascript_include_tag(*name, "data-turbo-track": "reload", defer: true)
+      javascript_include_tag(*name, defer: true)
     end
   end
 
   # 読み込むStylesheetの指定
   #
-  # @param packs [Array<String>] 読み込む.scssファイル名の配列
+  # @param name [String] 読み込む.scssファイル名、複数記述できる
   def select_css(*name)
     content_for(:css) do
       stylesheet_link_tag(*name)
@@ -73,6 +73,6 @@ module ApplicationHelper
 
     client ||= ENV["GOOGLE_ADSENSE_CLIENT"]
     src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=#{client}"
-    client ? tag.script(async: "async", src: src, crossorigin: "anonymous") : ""
+    client ? tag.script(async: "async", src:, crossorigin: "anonymous") : ""
   end
 end

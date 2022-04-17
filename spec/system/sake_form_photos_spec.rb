@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "SakeFormPhotos", type: :system do
+RSpec.describe "Sake Form Photos", type: :system do
   let(:user) { create(:user) }
 
   before do
@@ -14,7 +14,7 @@ RSpec.describe "SakeFormPhotos", type: :system do
       before do
         photo1 = Rails.root.join("spec/system/files/sake_photo1.jpg")
         attach_file("sake_photos", photo1)
-        click_button("form-submit")
+        click_button("form_submit")
       end
 
       it "makes a sake having one photo" do
@@ -28,7 +28,7 @@ RSpec.describe "SakeFormPhotos", type: :system do
         photo1 = Rails.root.join("spec/system/files/sake_photo1.jpg")
         photo2 = Rails.root.join("spec/system/files/sake_photo2.jpg")
         attach_file("sake_photos", [photo1, photo2])
-        click_button("form-submit")
+        click_button("form_submit")
       end
 
       it "makes a sake having two photos" do
@@ -39,7 +39,7 @@ RSpec.describe "SakeFormPhotos", type: :system do
 
     context "without photos" do
       before do
-        click_button("form-submit")
+        click_button("form_submit")
       end
 
       it "makes a sake not having any photos" do

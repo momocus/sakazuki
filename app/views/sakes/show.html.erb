@@ -2,7 +2,9 @@
 <% select_css("sakes_show") %>
 
 <%# ページのサムネイルをセット %>
-<% set_meta_tags(og: { image: { _: @sake.photos.first.image.thumb.url, width: 600, height: 600 } }) if @sake.photos.any? %>
+<% if @sake.photos.any? %>
+  <% set_meta_tags(og: { image: { _: @sake.photos.first.image.large_twitter_card.url, width: 600, height: 300 } }) %>
+<% end %>
 
 <%= render("float-button") %>
 
@@ -25,8 +27,8 @@
         <%= link_to(t(".delete"),
                     @sake,
                     method: :delete,
-                    data: { confirm: t(".confirm_delete") },
-                    class: "btn btn-danger") %>
+                    class: "btn btn-danger",
+                    data: { confirm: t(".confirm_delete"), testid: "delete_sake" }) %>
       </div>
     </div>
   </div>

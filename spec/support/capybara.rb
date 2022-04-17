@@ -41,7 +41,7 @@ end
 #
 # ユーザーが現在いるページにリダイレクトされたとき、何らかのアラートが表示されるまで待つ。
 def wait_for_alert
-  find(:test_id, "flash-message")
+  find(:test_id, "flash_message")
 end
 
 # 酒のshowページのパスから、そのページで表示している酒オブジェクトを取得する

@@ -10,6 +10,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+<<<<<<< HEAD
         <ul class="navbar-nav">
           <li class="nav-item" data-testid="sake-menu">
             <%= link_to(t(".sake_menu"), menu_sakes_path, class: "nav-link") %>
@@ -17,23 +18,32 @@
           <li class="nav-item">
           <li class="nav-item" data-testid="elasticsearch">
             <%= link_to("Elasticsearch", elasticsearch_path, class: "nav-link") %>
+=======
+        <ul class="navbar-nav" data-testid="navigation_list">
+          <li class="nav-item">
+            <%= link_to("Elasticsearch", elasticsearch_path, class: "nav-link", data: { testid: "elasticsearch" }) %>
+>>>>>>> 132e68627234739fac34d2fb1a67d1419d8f2c18
           </li>
           <span class="border-bottom border-secondary"></span>
           <% if user_signed_in? %>
             <li class="nav-item" data-testid="user-edit">
-              <%= link_to(current_user.email, edit_user_registration_path, class: "nav-link") %>
+              <%= link_to(current_user.email, edit_user_registration_path, class: "nav-link", data: { testid: "edit_user" }) %>
             </li>
             <% if current_user.admin %>
-              <li class="nav-item" data-testid="invitation">
-                <%= link_to(t(".invitation"), new_user_invitation_path, class: "nav-link") %>
+              <li class="nav-item">
+                <%= link_to(t(".invitation"), new_user_invitation_path, class: "nav-link", data: { testid: "invitation" }) %>
               </li>
             <% end %>
-            <li class="nav-item" data-testid="sign-out">
-              <%= link_to(t(".sign_out"), destroy_user_session_path, method: :delete, class: "nav-link") %>
+            <li class="nav-item">
+              <%= link_to(t(".sign_out"),
+                          destroy_user_session_path,
+                          method: :delete,
+                          class: "nav-link",
+                          data: { testid: "sign_out" }) %>
             </li>
           <% else %>
-            <li class="nav-item" data-testid="sign-in">
-              <%= link_to(t(".sign_in"), new_user_session_path, class: "nav-link") %>
+            <li class="nav-item">
+              <%= link_to(t(".sign_in"), new_user_session_path, class: "nav-link", data: { testid: "sign_in" }) %>
             </li>
           <% end %>
         </ul>

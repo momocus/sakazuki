@@ -1,6 +1,5 @@
 #!/bin/bash
 
-set -e # exit by error
 cd $(cd $(dirname $0); pwd)/../ # cd to project root
 
 NORMAL=$(tput sgr0)
@@ -24,6 +23,9 @@ message "##### Run EOF Check"
 
 message "##### Run ESLint"
 yarn run lint:eslint
+
+message "##### Run tsc"
+yarn run lint:tsc
 
 message "##### Run Pritter check"
 yarn run lint:prettier

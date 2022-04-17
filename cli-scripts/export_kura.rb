@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-# sakagura-list.ndjsonを使って、sakagura-datalist.html.erbを生成するスクリプト
+# kura-list.ndjsonを使って、_kura-datalist.html.erbを生成するスクリプト
 
 require "json"
 
@@ -8,7 +8,7 @@ require "json"
 #
 # @param file [File] 書き込み先のファイルオブジェクト
 def write_header(file)
-  file.write("<datalist id=\"sakagura\">\n")
+  file.write("<datalist id=\"kura-list\">\n")
 end
 
 # ファイルに閉じタグを書き込む
@@ -22,7 +22,7 @@ end
 #
 # @param output_file [File] 書き込み先のファイルオブジェクト
 def write_body(output_file)
-  input_file = "sakagura-list.ndjson"
+  input_file = "kura-list.ndjson"
   File.foreach(input_file, chomp: true) do |line|
     json = JSON.parse(line)
     name = json["name"]
@@ -33,12 +33,15 @@ def write_body(output_file)
 end
 
 def main
-  output_file = "../app/views/sakes/_sakagura-datalist.html.erb"
+  output_file = "../app/views/sakes/_kura-datalist.html.erb"
   File.open(output_file, "wb") do |out|
     write_header(out)
     write_body(out)
     write_footer(out)
   end
+
+  puts("Done!")
+  puts("Output to '#{output_file}'")
 end
 
 main

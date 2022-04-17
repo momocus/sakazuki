@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "CopySakes", type: :system do
+RSpec.describe "Copy Sakes", type: :system do
   # SakesHelper.with_japanese_eraを使う
   include SakesHelper
 
@@ -13,8 +13,8 @@ RSpec.describe "CopySakes", type: :system do
            aroma_impression: "華やかな吟醸香",
            taste_impression: "フレッシュな味",
            awa: "微炭酸", note: "今年は米が硬かった",
-           bindume_date: Date.new(2022, 2, 1),
-           brew_year: Date.new(2021, 7, 1),
+           bindume_date: Date.new(2002, 2, 1),
+           brew_year: Date.new(2001, 7, 1),
            taste_value: 5, aroma_value: 5, nihonshudo: 1.0,
            sando: 1.3, aminosando: 0.8, tokutei_meisho: :junmai_ginjo,
            alcohol: 18, warimizu: :genshu, moto: :sokujo, bottle_level: :empty,
@@ -48,11 +48,11 @@ RSpec.describe "CopySakes", type: :system do
     describe "flash message" do
       it "has copy message" do
         text = I18n.t("sakes.new.copy", name: sake.name)
-        expect(find(:test_id, "flash-message")).to have_text(text)
+        expect(find(:test_id, "flash_message")).to have_text(text)
       end
 
       it "has link to copied sake on name" do
-        expect(find(:test_id, "flash-message")).to have_link(sake.name, href: sake_path(sake.id))
+        expect(find(:test_id, "flash_message")).to have_link(sake.name, href: sake_path(sake.id))
       end
     end
   end
@@ -85,21 +85,21 @@ RSpec.describe "CopySakes", type: :system do
 
     # special case
     describe "kura and todofuken" do
-      id = "sake_kura_todofuken_autocompletion"
       it "has copied kura and todofuken", js: true do
+        id = "sake_kura_todofuken_autocompletion"
         expect(find(:test_id, id).value).to have_text("#{sake.kura}（#{sake.todofuken}）")
       end
     end
 
     describe "bindume_date year" do
-      it "has copied bindume year" do
+      it "has copied bindume year", js: true do
         year = with_japanese_era(sake.bindume_date)
         expect(page).to have_select(test_id: "sake_bindume_year", selected: year)
       end
     end
 
     describe "bindume_date month" do
-      it "has copied bindume month" do
+      it "has copied bindume month", js: true do
         month = I18n.l(sake.bindume_date, format: "%b")
         expect(page).to have_select(test_id: "sake_bindume_month", selected: month)
       end
