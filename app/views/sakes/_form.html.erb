@@ -129,41 +129,28 @@
 
           <div class="form-row">
             <%= form.label(:bindume_date, { class: "form-label" }) %>
-            <%# HACK: 年と月の入力フォームを分けて横並びに配置する。 %>
-            <%#       Railsデフォルトでは年月が縦並びになってしまう。%>
-            <%#       そのため、2つのダミーを設置してTSで同期する。  %>
-            <div class="two-column-form">
-              <%= form.date_select("dummy_bindume_year",
-                                   { discard_month: true,
+            <div class="col">
+              <%= form.date_select(:bindume_date,
+                                   {
                                      start_year: Time.current.year - start_year_limit,
                                      end_year: Time.current.year,
-                                     year_format: ->(year) { with_japanese_era(Date.new(year, 1, 1)) }, },
-                                   id: "sake_bindume_year",
-                                   class: "form-select",
-                                   data: { testid: "sake_bindume_year" }) %>
-            </div>
-            <div class="two-column-form">
-              <%= form.date_select("dummy_bindume_month",
-                                   { discard_day: true, discard_year: true },
-                                   id: "sake_bindume_month",
-                                   class: "form-select",
-                                   data: { testid: "sake_bindume_month" }) %>
-            </div>
-            <div>
-              <%= form.date_select(:bindume_date, use_hidden: true) %>
+                                     year_format: ->(year) { with_japanese_era(Date.new(year, 1, 1)) },
+                                     discard_day: true,
+                                   },
+                                   class: "form-select horizontal-date") %>
             </div>
           </div>
 
           <div class="form-row">
             <%= form.label(:brew_year, { class: "form-label" }) %>
-            <div class="two-column-form">
+            <div class="col">
               <%# HACK: 不明を最後に表示するため、form.date_selectを使わない %>
               <%= form.select(:brew_year,
                               nil,
                               {},
                               id: "sake_brew_year_1i",
                               name: "sake[brew_year(1i)]",
-                              class: "form-select",
+                              class: "form-select horizontal-date",
                               data: { testid: "sake_brew_year" }) do %>
                 <% by_range.each do |by| %>
                   <%= tag.option(with_japanese_era(by), value: by.year, selected: by.year == @sake.brew_year&.year) %>
