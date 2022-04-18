@@ -37,7 +37,7 @@ RSpec.describe "Sake Form Brew Year", type: :system do
       end
     end
 
-    context "when creating new sake with current BY" do
+    context "when creating sake whoes BY is this year" do
       before do
         visit new_sake_path
         fill_in("sake_name", with: "生道井")
@@ -46,13 +46,13 @@ RSpec.describe "Sake Form Brew Year", type: :system do
         click_button("form_submit")
       end
 
-      it "has current BY" do
+      it "has this BY" do
         sake = sake_from_show_path(page.current_path)
         expect(sake.brew_year).to eq(to_by(Time.current))
       end
     end
 
-    context "when creating new sake with past BY" do
+    context "when creating sake whoes BY is past year" do
       ago = Time.current.ago(10.years)
 
       before do

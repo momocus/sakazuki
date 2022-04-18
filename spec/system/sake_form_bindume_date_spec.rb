@@ -22,7 +22,7 @@ RSpec.describe "Sake Form Bindume Date", type: :system do
       end
     end
 
-    context "when creating new sake with current time" do
+    context "when creating sake whoes bindume_date is this year" do
       before do
         visit new_sake_path
         fill_in("sake_name", with: "生道井")
@@ -31,13 +31,13 @@ RSpec.describe "Sake Form Bindume Date", type: :system do
         click_button("form_submit")
       end
 
-      it "has current year" do
+      it "has this year" do
         sake = sake_from_show_path(page.current_path)
         expect(sake.bindume_date.year).to eq(Time.current.year)
       end
     end
 
-    context "when creating new sake with past time" do
+    context "when creating sake whoes bindume_date is past year" do
       ago = Time.current.ago(10.years)
 
       before do
@@ -80,7 +80,7 @@ RSpec.describe "Sake Form Bindume Date", type: :system do
       end
     end
 
-    context "when creating new sake with January" do
+    context "when creating sake whoes bindume_date is January" do
       before do
         visit new_sake_path
         fill_in("sake_name", with: "生道井")
@@ -95,7 +95,7 @@ RSpec.describe "Sake Form Bindume Date", type: :system do
       end
     end
 
-    context "when creating new sake with December" do
+    context "when creating sake whoes bindume_date is December" do
       before do
         visit new_sake_path
         fill_in("sake_name", with: "生道井")
