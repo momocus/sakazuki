@@ -13,7 +13,7 @@ RSpec.describe "Sign-in Redirect by Drink Buttons" do
   describe "impress button" do
     it "redirects edit page after sign in" do
       id = sealed_sake.id
-      click_link("open-and-impress-button-#{id}")
+      click_link("open_and_impress_button_#{id}")
       signin_process_on_signin_page(user)
       # クエリ "?sake[bottle_level]=opened" 部を無視する
       expect(page).to have_current_path(edit_sake_path(id), ignore_query: true)
@@ -23,7 +23,7 @@ RSpec.describe "Sign-in Redirect by Drink Buttons" do
   describe "open button of sealed sake" do
     it "redirects index page after sign in", js: true do
       id = sealed_sake.id
-      accept_confirm do click_link("open-button-#{id}") end
+      accept_confirm do click_link("open_button_#{id}") end
       wait_for_page new_user_session_path
       signin_process_on_signin_page(user)
       expect(page).to have_current_path(sakes_path)
@@ -33,7 +33,7 @@ RSpec.describe "Sign-in Redirect by Drink Buttons" do
   describe "empty button" do
     it "redirects index page after sign in", js: true do
       id = impressed_sake.id
-      accept_confirm do click_link("empty-button-#{id}") end
+      accept_confirm do click_link("empty_button_#{id}") end
       wait_for_page new_user_session_path
       signin_process_on_signin_page(user)
       expect(page).to have_current_path(sakes_path)
