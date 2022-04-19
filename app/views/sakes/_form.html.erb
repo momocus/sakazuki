@@ -103,9 +103,9 @@
                                       class: "form-select w-50",
                                       data: { testid: "sake_brew_year" }) do %>
                         <% by_range.each do |by| %>
-                          <%= tag.option(with_japanese_era(by), value: by.year, selected: by.year == @sake.brew_year&.year) %>
+                          <%= tag.option(with_japanese_era(by), value: by.year, selected: by.year == sake.brew_year&.year) %>
                         <% end %>
-                        <%= tag.option(t(".unknown"), value: "", selected: @sake.brew_year.nil?) %>
+                        <%= tag.option(t(".unknown"), value: "", selected: sake.brew_year.nil?) %>
                       <% end %>
                       <%# 使わない月日はBY始まりの7/1とする. SEE: SakesHelper.to_by %>
                       <input type="hidden" id="sake_<%= :brew_year %>_2i" name="sake[<%= :brew_year %>(2i)]" value="7">
@@ -181,13 +181,13 @@
                                       accept: "image/*;capture=camera",
                                       data: { testid: "sake_photos" }) %>
                 </div>
-                <% if @sake.photos.any? %>
+                <% if sake.photos.any? %>
                   <div class="col-12">
                     <div class="row g-2">
                       <div class="col-12 form-text">
                         <%= t(".select_delete_photo") %>
                       </div>
-                      <% @sake.photos.each do |photo| %>
+                      <% sake.photos.each do |photo| %>
                         <div class="col-6">
                           <div class="form-check form-check-inline select-delete-photos">
                             <%= check_box_tag(photo.chackbox_name,
@@ -454,14 +454,14 @@
                                         min: 0,
                                         max: 6,
                                         step: 1,
-                                        data: { taste_value: @sake.taste_value, testid: "sake_taste_value" }) %>
+                                        data: { taste_value: sake.taste_value, testid: "sake_taste_value" }) %>
                   <%= form.number_field(:aroma_value,
                                         id: "sake_aroma_value",
                                         hidden: true,
                                         min: 0,
                                         max: 6,
                                         step: 1,
-                                        data: { aroma_value: @sake.aroma_value, testid: "sake_aroma_value" }) %>
+                                        data: { aroma_value: sake.aroma_value, testid: "sake_aroma_value" }) %>
                 </div>
               </div>
             </fieldset>
