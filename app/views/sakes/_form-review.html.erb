@@ -1,0 +1,94 @@
+<div class="accordion my-2" id="accordionReview">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingReview">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapseReview" aria-expanded="false" aria-controls="collapseReview">
+        <%= t(".review") %>
+      </button>
+    </h2>
+    <div id="collapseReview" class="accordion-collapse collapse"
+      aria-labelledby="headingReview" data-bs-parent="#accordionReview">
+      <div class="accordion-body">
+        <div class="row g-4">
+          <fieldset class="col-12">
+            <%= form.label(:rating, class: "form-label") %>
+            <div class="w-100"></div>
+            <div id="rater"></div>
+            <%= form.number_field(:rating,
+                                  id: "sake_rating",
+                                  hidden: true,
+                                  class: "form-control",
+                                  min: 0,
+                                  max: 5,
+                                  step: 1,
+                                  data: { testid: "sake_rating" }) %>
+          </fieldset>
+          <fieldset class="col-12">
+            <div class="row g-2 gx-3">
+              <div class="col-12 col-lg-6">
+                <%= form.label(:color, class: "form-label") %>
+                <%= form.text_field(:color, class: "form-control", data: { testid: "sake_color" }) %>
+              </div>
+              <div class="col-12 col-lg-6">
+                <%= form.label(:nigori, class: "form-label") %>
+                <%= form.text_field(:nigori, class: "form-control", data: { testid: "sake_nigori" }) %>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="col-12">
+            <div class="row gx-3">
+              <div class="col-12 order-2 col-lg-6 order-lg-1">
+                <div class="row g-2">
+                  <div class="col-12">
+                    <%= form.label(:aroma_impression, class: "form-label") %>
+                    <%= form.text_area(:aroma_impression,
+                                       class: "form-control",
+                                       data: { testid: "sake_aroma_impression" }) %>
+                  </div>
+                  <div class="col-12">
+                    <%= form.label(:taste_impression, class: "form-label") %>
+                    <%= form.text_area(:taste_impression,
+                                       class: "form-control",
+                                       data: { testid: "sake_taste_impression" }) %>
+                  </div>
+                  <div class="col-12">
+                    <%= form.label(:awa, class: "form-label") %>
+                    <%= form.text_field(:awa, class: "form-control", data: { testid: "sake_awa" }) %>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 order-1 col-lg-6 order-lg-2 pt-2">
+                <div class="ratio ratio-4x3">
+                  <canvas id="taste_graph"></canvas>
+                </div>
+                <%= form.number_field(:taste_value,
+                                      id: "sake_taste_value",
+                                      hidden: true,
+                                      min: 0,
+                                      max: 6,
+                                      step: 1,
+                                      data: { taste_value: sake.taste_value, testid: "sake_taste_value" }) %>
+                <%= form.number_field(:aroma_value,
+                                      id: "sake_aroma_value",
+                                      hidden: true,
+                                      min: 0,
+                                      max: 6,
+                                      step: 1,
+                                      data: { aroma_value: sake.aroma_value, testid: "sake_aroma_value" }) %>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="col-12">
+            <div class="row gx-3">
+              <div class="col-12 col-lg-6">
+                <%= form.label(:note, class: "form-label") %>
+                <%= form.text_area(:note, class: "form-control", data: { testid: "sake_note" }) %>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

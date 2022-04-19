@@ -40,16 +40,6 @@ ja:
     edit:
       title: 編集
     form:
-      unknown: 不明
-      select_delete_photo: 削除する画像を選択してください
-      abstract: 概要
-      detail: :sakes.show_detail.detail
-      review: :sakes.show_review.review
-      ingredient: :sakes.show_detail.ingredient
-      method: :sakes.show_detail.method
-      measurement: :sakes.show_detail.measurent
-      badge:
-        presence: 必須
       new:
         submit: 登録
       create:
@@ -59,6 +49,19 @@ ja:
       update:
         submit: :sakes.form.edit.submit
       input_error: 入力内容に問題があります
+    form-abstract:
+      unknown: 不明
+      select_delete_photo: 削除する画像を選択してください
+      abstract: 概要
+      badge:
+        presence: 必須
+    form-detail:
+      detail: :sakes.show_detail.detail
+      ingredient: :sakes.show_detail.ingredient
+      method: :sakes.show_detail.method
+      measurement: :sakes.show_detail.measurent
+    form-review:
+      review: :sakes.show_review.review
     float-button:
       edit: :sakes.index.edit
       copy: 複製
