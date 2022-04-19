@@ -172,14 +172,14 @@
                                     data: { testid: "sake_photos" }) %>
               </div>
               <% if sake.photos.any? %>
+                <div class="col-12 form-text">
+                  <%= t(".select_delete_photo") %>
+                </div>
                 <div class="col-12">
-                  <div class="row g-2">
-                    <div class="col-12 form-text">
-                      <%= t(".select_delete_photo") %>
-                    </div>
+                  <div class="row g-3">
                     <% sake.photos.each do |photo| %>
-                      <div class="col-6">
-                        <div class="form-check form-check-inline select-delete-photos">
+                      <div class="col-6 col-lg-2">
+                        <div class="form-check form-check-inline m-0 p-0 select-delete-photos">
                           <%= check_box_tag(photo.chackbox_name,
                                             "delete",
                                             nil,
