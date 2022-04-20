@@ -129,7 +129,7 @@
                 </canvas>
               </div>
             </div>
-            <div class="col-5 mt-3">
+            <div class="col-5 mt-3 align-self-center">
               <% if sake.photos.any? %>
                 <%= cl_image_tag(sake.photos.first.image.thumb.url, { class: "img-fulid img-thumbnail" }) %>
               <% end %>
