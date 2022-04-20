@@ -66,7 +66,7 @@
             <div class="col-12">
               <div class="row align-items-start">
                 <div class="col fs-5">
-                  <%= link_to(sake.name, sake_path(sake)) %>
+                  <%= link_to(sake.name, sake_path(sake), class: "name-link") %>
                 </div>
                 <div class="col-auto pe-0">
                   <div class="dropdown" data-testid="sake_buttons_<%= sake.id %>">
@@ -74,7 +74,7 @@
                     <button class="btn dropdown-toggle py-0" type="button"
                       id="<%= id %>" data-bs-toggle="dropdown" aria-expanded="false"
                       data-testid="dropdown_toggle_<%= sake.id %>">
-                      <i class="bi-three-dots-vertical fs-5"></i>
+                      <i class="bi-three-dots-vertical fs-5 text-primary"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end fs-6" aria-labelledby="<%= id %>">
                       <li>

@@ -9,6 +9,12 @@
 }
 // stylelint-enable selector-class-pattern
 
+.name-link {
+  @extend .text-primary;
+
+  text-decoration-line: none;
+}
+
 .dropdown-menu {
   a {
     @extend .dropdown-item;
