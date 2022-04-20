@@ -84,7 +84,7 @@
                       <li>
                         <hr class="dropdown-divider">
                       </li>
-                      <%= render("drink-button", sake:) %>
+                      <%= render(partial: "drink-button", locals: { sake: }) %>
                     </ul>
                   </div>
                 </div>
@@ -117,7 +117,7 @@
                         done: t(".#{sake.bottle_level}")) %>
                 </div>
                 <div class="col-12">
-                  <%= render("rating", rating: sake.rating, size_class: "") %>
+                  <%= render(partial: "rating", locals: { rating: sake.rating }) %>
                 </div>
               </div>
             </div>
