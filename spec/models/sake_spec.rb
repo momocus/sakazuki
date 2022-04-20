@@ -136,30 +136,34 @@ RSpec.describe Sake do
     end
 
     context "when sake is seald and created within 4 weeks" do
+      let(:sake) { create(:sake, bottle_level: "sealed", created_at: Time.zone.parse("2022-01-02 10:30:00")) }
+
       it "returns true" do
-        sealed_new_sake = build(:sake, bottle_level: "sealed", created_at: Time.zone.parse("2022-01-02 10:30:00"))
-        expect(sealed_new_sake.new_arrival?).to be(true)
+        expect(sake.new_arrival?).to be(true)
       end
     end
 
     context "when sake is seald and created more than 4 weeks ago" do
+      let(:sake) { create(:sake, bottle_level: "sealed", created_at: Time.zone.parse("2022-01-01 10:30:00")) }
+
       it "returns false" do
-        sealed_old_sake = build(:sake, bottle_level: "sealed", created_at: Time.zone.parse("2022-01-01 10:30:00"))
-        expect(sealed_old_sake.new_arrival?).to be(false)
+        expect(sake.new_arrival?).to be(false)
       end
     end
 
     context "when sake is opened and created within 2 week" do
+      let(:sake) { create(:sake, bottle_level: "opened", created_at: Time.zone.parse("2022-01-16 10:30:00")) }
+
       it "returns true" do
-        opened_new_sake = build(:sake, bottle_level: "opened", created_at: Time.zone.parse("2022-01-16 10:30:00"))
-        expect(opened_new_sake.new_arrival?).to be(true)
+        expect(sake.new_arrival?).to be(true)
       end
     end
 
     context "when sake is opened and created more than 2 weeks ago" do
+      let(:sake) { create(:sake, bottle_level: "opened", created_at: Time.zone.parse("2022-01-15 10:30:00")) }
+
       it "returns false" do
-        opened_old_sake = build(:sake, bottle_level: "opened", created_at: Time.zone.parse("2022-01-15 10:30:00"))
-        expect(opened_old_sake.new_arrival?).to be(false)
+        expect(sake.new_arrival?).to be(false)
       end
     end
   end
@@ -200,8 +204,11 @@ RSpec.describe Sake do
     context "if price is 1,234 yen per 720 ml and selling rate is 3" do
       let(:sake) { build(:sake, price: 1234, size: 720) }
 
-      it "returns 1000" do
+      before do
         stub_const("#{described_class}::SELLING_RATE", 3)
+      end
+
+      it "returns 1000" do
         expect(sake.selling_price).to eq(1000)
       end
     end
@@ -209,8 +216,11 @@ RSpec.describe Sake do
     context "if price is 1,234 yen per 720 ml and selling rate is 1.5" do
       let(:sake) { build(:sake, price: 1234, size: 720) }
 
-      it "returns 500" do
+      before do
         stub_const("#{described_class}::SELLING_RATE", 1.5)
+      end
+
+      it "returns 500" do
         expect(sake.selling_price).to eq(500)
       end
     end
