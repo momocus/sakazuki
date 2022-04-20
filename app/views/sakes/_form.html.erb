@@ -1,14 +1,14 @@
 <% select_js("sakes_form") %>
 <% select_css("sakes_form") %>
 
-<%= render("float-button", sake:) %>
+<%= render(partial: "float-button", locals: { sake: }) %>
 
 <%= form_with(model: sake, id: "sake-form") do |form| %>
   <%# error message %>
   <% flash.now[:danger] = t(".input_error") if sake.errors.any? %>
   <div class="accordion my-2">
-    <%= render("form-abstract", sake:, form:) %>
-    <%= render("form-detail", sake:, form:) %>
-    <%= render("form-review", sake:, form:) %>
+    <%= render(partial: "form-abstract", locals: { sake:, form: }) %>
+    <%= render(partial: "form-detail", locals: { sake:, form: }) %>
+    <%= render(partial: "form-review", locals: { sake:, form: }) %>
   </div>
 <% end %>

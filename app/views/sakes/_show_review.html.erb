@@ -4,7 +4,7 @@
   </div>
 
   <div class="col-12 fs-3" data-testid="rating">
-    <%= render("rating", rating: sake.rating) %>
+    <%= render(partial: "rating", locals: { rating: sake.rating }) %>
   </div>
 
   <div class="col-12 mb-2">

@@ -5,7 +5,7 @@
         <h1 class="mb-0"><%= title(sake.name) %></h1>
       </div>
       <div class="col-auto order-lg-1 order-2 text-end">
-        <%= render("sns-share-button", sake:) %>
+        <%= render(partial: "sns-share-button", locals: { sake: }) %>
       </div>
       <div class="col-lg-12 order-lg-2 col order-1 fs-3">
         <% if sake.kura.present? %>

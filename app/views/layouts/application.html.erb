@@ -13,12 +13,12 @@
   </head>
 
   <body>
-    <%= render("layouts/header") %>
+    <%= render(partial: "layouts/header") %>
     <div class="container-xxl">
-      <%= render("layouts/flashes") %>
+      <%= render(partial: "layouts/flashes") %>
       <%= yield %>
     </div>
-    <%= render("layouts/footer") %>
+    <%= render(partial: "layouts/footer") %>
     <% if Rails.env.development? %>
       <div class="py-5 bg-light">
         <%= debug(params) %>
