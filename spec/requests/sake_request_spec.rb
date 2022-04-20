@@ -74,6 +74,13 @@ RSpec.describe "Sakes" do
         expect(response).to redirect_to new_user_session_path
       end
     end
+
+    describe "GET /sakes/menu request (menu)" do
+      it "returns 200 response" do
+        get menu_sakes_path
+        expect(response).to have_http_status "200"
+      end
+    end
   end
 
   context "with logined user" do

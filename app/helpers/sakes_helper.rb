@@ -94,6 +94,18 @@ module SakesHelper
     kura.gsub("合同会社", "")
   end
 
+  # お品書きで酒の値札として表示する文字列を返す
+  #
+  # selling_price がnilの場合は"時価"を返す.
+  # そうでなければ、selling_priceに単位をつけて"xxx円"を返す。
+  # @param selling_price [Integer, nil] 売値またはnil
+  # @return [String] 酒の値札として表示する文字列
+  def price_tag(selling_price)
+    return t("sakes.menu.market_price") if selling_price.nil?
+
+    "#{selling_price}#{t('activerecord.attributes.sake.price_unit')}"
+  end
+
   # 都道府県名から都府県を削除し短くする
   #
   # @param todofuken [String] 都道府県名

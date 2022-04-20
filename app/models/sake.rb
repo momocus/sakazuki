@@ -154,4 +154,30 @@ class Sake < ApplicationRecord
       where(bottle_level: "sealed").sum(:size) + (where(bottle_level: "opened").sum(:size) / 2)
     end
   end
+
+  # 酒が新着ならture、さもなくばfalse
+  #
+  # 下記のいずれかに当てはまる場合は新着と判定する
+  # - 未開封かつ4週間以内に購入した
+  # - 開封済かつ2週間以内に購入した
+  # @return [Boolean]
+  def new_arrival?
+    new_limit = sealed? ? 4.weeks : 2.weeks
+    Time.zone.now.beginning_of_day - created_at.beginning_of_day <= new_limit
+  end
+
+  # @type [float] 酒の売値を決めるために、仕入れ値にかける係数
+  SELLING_RATE = 3.0
+  private_constant :SELLING_RATE
+
+  # 酒一合当たりの売値を計算する。
+  #
+  # 酒一本あたりの価格・内容量と、設定した係数をもとに計算。十の位以下切り上げ。
+  # 売値が計算できない場合はnilを返す。
+  # @return [Integer,nil] 酒一合当たりの売値またはnil
+  def selling_price
+    return nil if price.nil? || price.zero? || size.nil? || size.zero?
+
+    (price.to_f / size * 180 * SELLING_RATE).ceil(-2)
+  end
 end

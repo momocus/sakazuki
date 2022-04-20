@@ -1,0 +1,21 @@
+<div class="col d-flex">
+  <div class="row flex-grow-1">
+    <div class="col-12 fs-2 align-self-start">
+      <%= link_to(sake.name, sake_path(sake.id), class: "text-decoration-none text-dark") %>
+    </div>
+    <div class="col-12 align-self-end">
+      <div class="row justify-content-end fs-4">
+        <div class="col-3 price-tag-border">
+          <% if sake.new_arrival? %>
+            <span class="accent-text">
+              <%= t(".new_arrival") %>
+            </span>
+          <% end %>
+        </div>
+        <div class="col-4 text-end price-tag-border">
+          <%= price_tag(sake.selling_price) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

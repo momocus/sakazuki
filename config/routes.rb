@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   root "sakes#index"
   resources :sakes do
     get :elasticsearch, on: :collection
+    get :menu, on: :collection
   end
   get "/elasticsearch" => "elasticsearch#index", as: "elasticsearch"
 

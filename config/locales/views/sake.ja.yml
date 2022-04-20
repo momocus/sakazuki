@@ -55,3 +55,9 @@ ja:
       edit: :sakes.index.edit
       copy: 複製
       new: 新規
+    menu:
+      title: お品書き
+      market_price: 時価
+      price_is_per_go: 一合当たりのお値段となり〼
+    menu_one_drink:
+      new_arrival: 新着
