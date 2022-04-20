@@ -1,6 +1,6 @@
 <% if sake.sealed? %>
   <li>
-    <%= link_to(tag.i(class: "bi-droplet-half", style: "font-size: 0.95em") + t(".open"),
+    <%= link_to(tag.i(class: "bi-droplet-half", style: "font-size: 0.95em;") + t(".open"),
                 sake_path(sake, params: { sake: { bottle_level: "opened" }, flash_message_type: "open" }),
                 data: { method: :patch, confirm: t(".confirm_open"), testid: "open_button_#{sake.id}" }) %>
   </li>
