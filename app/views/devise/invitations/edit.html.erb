@@ -1,30 +1,42 @@
-<% select_css("devise") %>
+<h1 class="visually-hidden">
+  <%= title(t("devise.invitations.edit.header")) %>
+</h1>
 
-<h1><%= title(t("devise.invitations.edit.header")) %></h1>
-
-<%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render("devise/shared/error_messages", resource:) %>
-  <%= f.hidden_field(:invitation_token, readonly: true) %>
-
-  <% if f.object.class.require_password_on_accepting %>
-    <div class="devise-row">
-      <%= f.label(:password, { class: "devise-label" }) %>
+<%= render(layout: "devise/shared/devise_layout") do %>
+  <%= form_for(resource,
+               as: resource_name,
+               url: invitation_path(resource_name),
+               html: { method: :put }) do |f| %>
+    <%= f.hidden_field(:invitation_token, readonly: true) %>
+    <div class="row row-cols-1 g-3">
+      <% if f.object.class.require_password_on_accepting %>
+        <div class="col">
+          <%= f.label(:password, class: "form-label") %>
+          <%= f.password_field(:password, class: "form-control") %>
+          <% resource.errors.full_messages_for(:password).each do |message| %>
+            <div id="invitationsPasswordValidationFeedback" class="invalid-feedback">
+              <%= message %>
+            </div>
+          <% end %>
+        </div>
+        <div class="col">
+          <%= f.label(:password_confirmation, class: "form-label") %>
+          <%= f.password_field(:password_confirmation, class: "form-control") %>
+          <% resource.errors.full_messages_for(:password_confirmation).each do |message| %>
+            <div id="invitationsPasswordConfirmationValidationFeedback" class="invalid-feedback">
+              <%= message %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
       <div class="col">
-        <%= f.password_field(:password, class: "form-control") %>
+        <div class="row justify-content-center">
+          <div class="col-auto">
+            <%= f.submit(t("devise.invitations.edit.submit_button"),
+                         class: "btn btn-primary") %>
+          </div>
+        </div>
       </div>
     </div>
-
-    <div class="devise-row">
-      <%= f.label(:password_confirmation, { class: "devise-label" }) %>
-      <div class="col">
-        <%= f.password_field(:password_confirmation, class: "form-control") %>
-       </div>
-    </div>
- <% end %>
-
-  <div class="submit-row">
-    <div class="col-auto">
-      <%= f.submit(t("devise.invitations.edit.submit_button"), { class: "btn btn-primary" }) %>
-    </div>
-  </div>
+  <% end %>
 <% end %>
