@@ -10,7 +10,7 @@
 // stylelint-enable selector-class-pattern
 
 .name-link {
-  @extend .text-primary;
+  @extend .link-primary;
 
   text-decoration-line: none;
 }
