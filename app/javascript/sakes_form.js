@@ -1,4 +1,4 @@
-import "./autocompletion/complete_meigara.ts"
-import "./sync_dom/sync_kura_todofuken.ts"
-import "./taste_graph/input_taste_graph.ts"
-import "./rating/rating.ts"
+import "./autocompletion/complete_meigara"
+import "./sync_dom/sync_kura_todofuken"
+import "./taste_graph/input_taste_graph"
+import "./rating/rating"
