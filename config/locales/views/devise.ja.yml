@@ -1,0 +1,10 @@
+ja:
+  devise:
+    registrations:
+      edit:
+        currently_waiting_confirmation_for_email: "変更途中です。%{email}に届いたメールを確認してください"
+        password: 新規パスワード
+        password_confirmation: 新規パスワード（確認）
+        cancel_my_account_confirmation: |
+          アカウントを削除するともとに戻せません。
+          登録された酒は削除されません。

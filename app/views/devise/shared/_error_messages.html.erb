@@ -1,5 +1,0 @@
-<% if resource.errors.any? %>
-  <% resource.errors.full_messages.each do |message| %>
-    <% flash.now[:danger] = message %>
-  <% end %>
-<% end %>
