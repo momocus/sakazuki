@@ -28,3 +28,9 @@ collapseElementList.forEach((element) => {
   /* eslint-disable-next-line no-undef */
   new Collapse(element)
 })
+
+const dropdownElementList = document.querySelectorAll(".dropdown-toggle")
+dropdownElementList.forEach((element) => {
+  /* eslint-disable-next-line no-undef */
+  new Dropdown(element)
+})

@@ -57,52 +57,94 @@
   </div>
 <% end %>
 
-<table class="table table-bordered" caption="Sake List">
-  <tbody>
-    <% @sakes.each do |sake| %>
-      <tr class="row m-0">
-        <td class="col-lg-6 col-12">
-          <div class="row m-0 border-bottom">
-            <div class="col">
-              <%= link_to(sake.name, sake_path(sake), { class: "name-link" }) %>
-            </div>
-            <div class="col-auto">
-              <%= link_to(tag.i(class: "bi-pencil-square me-2", style: "font-size: 1.05em;") + t(".edit"),
-                          edit_sake_path(sake),
-                          "data-testid": "sakes-index-edit-link") %>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2">
+  <% @sakes.each do |sake| %>
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body py-2">
+          <div class="row g-2">
+            <div class="col-12">
+              <div class="row align-items-start">
+                <div class="col fs-5">
+                  <%= link_to(sake.name, sake_path(sake), class: "name-link") %>
+                </div>
+                <div class="col-auto pe-0">
+                  <div class="dropdown" data-testid="sake_buttons_<%= sake.id %>">
+                    <% id = "dropdownMenuSake#{sake.id}" %>
+                    <button class="btn dropdown-toggle py-0" type="button"
+                      id="<%= id %>" data-bs-toggle="dropdown" aria-expanded="false"
+                      data-testid="dropdown_toggle_<%= sake.id %>">
+                      <i class="bi-three-dots-vertical fs-5 text-primary"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end fs-6" aria-labelledby="<%= id %>">
+                      <li>
+                        <%= link_to(tag.i(class: "bi-pencil-square") + t(".edit"),
+                                    edit_sake_path(sake)) %>
+                      </li>
+                      <li>
+                        <hr class="dropdown-divider">
+                      </li>
+                      <%= render(partial: "drink-button", locals: { sake: }) %>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <% if sake.kura.present? %>
+                    <%= short_kura(sake.kura) %> ‒ <%= short_todofuken(sake.todofuken) %>
+                  <% end %>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="row m-0 mt-2 border-bottom">
-            <div class="col">
-              <%= sake.tokutei_meisho_i18n %>
+        </div>
+        <%# HACK: 名前の長さによって揃わない要素を、footerを使って揃える %>
+        <div class="card-footer">
+          <div class="row">
+            <div class="col-7">
+              <div class="row">
+                <div class="col-12">
+                  <% if sake.tokutei_meisho == "none" %>
+                    <%= t(".tokutei_meisho_none") %>
+                  <% else %>
+                    <%= sake.tokutei_meisho_i18n %>
+                  <% end %>
+                </div>
+                <div class="col-12">
+                  <%= sake.season %>
+                </div>
+              </div>
             </div>
-            <div class="col">
-              <%= sake.todofuken %>
+            <div class="col-5">
+              <div class="row">
+                <div class="col-12">
+                  <%= t(".time_ago",
+                        count: time_ago_in_words(latest_at(sake), include_seconds: true),
+                        done: t(".#{sake.bottle_level}")) %>
+                </div>
+                <div class="col-12">
+                  <%= render(partial: "rating", locals: { rating: sake.rating }) %>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="row m-0 mt-2 border-bottom" data-testid="bottle-level-<%= sake.id %>">
-            <div class="col-auto">
-              <%= sake.bottle_level_i18n %>
-            </div>
-            <%= render("drink-button", sake:) %>
-          </div>
-        </td>
-        <td class="col-lg-4 col-8 px-0 py-1">
-          <canvas id="sake-<%= sake.id %>"
+            <div class="col-7 mt-3">
+              <div class="ratio ratio-4x3">
+                <canvas id="sake-<%= sake.id %>"
                   data-taste-value="<%= sake.taste_value %>"
                   data-aroma-value="<%= sake.aroma_value %>">
-          </canvas>
-        </td>
-        <td class="col-lg-2 col-4 p-0" style="text-align: center">
-          <% if sake.photos.any? %>
-            <%= cl_image_tag(sake.photos.first.image.thumb.url,
-                             { class: "img-fulid img-thumbnail" }) %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+                </canvas>
+              </div>
+            </div>
+            <div class="col-5 mt-3 align-self-center">
+              <% if sake.photos.any? %>
+                <%= cl_image_tag(sake.photos.first.image.thumb.url, { class: "img-fulid img-thumbnail" }) %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 <% if include_empty?(params) %>
   <div class="d-none d-sm-block">

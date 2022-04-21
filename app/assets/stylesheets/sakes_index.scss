@@ -1,11 +1,6 @@
 @import "./bootstrap/custom";
 @import "bootstrap/scss/bootstrap";
 
-.name-link {
-  font-size: 1.1em;
-  font-weight: 600;
-}
-
 // Ransackが生成するスタイル
 // stylelint-disable selector-class-pattern
 .btn-group .sort_link {
@@ -14,19 +9,28 @@
 }
 // stylelint-enable selector-class-pattern
 
-.drink-button {
-  @extend .col-auto;
-  @extend .pe-0;
-  @extend .d-flex;
-  @extend .align-items-center;
+.name-link {
+  @extend .text-primary;
 
+  text-decoration-line: none;
+}
+
+.dropdown-menu {
   a {
-    @extend .badge;
-    @extend .rounded-pill;
-    @extend .text-decoration-none;
+    @extend .dropdown-item;
 
     i {
-      @extend .me-1;
+      @extend .me-2;
     }
   }
+}
+
+// drink-buttonのトグルボタンの三角を消す
+.dropdown-toggle::after {
+  display: none;
+}
+
+.card-footer {
+  background-color: $gray-100;
+  border-top: none;
 }
