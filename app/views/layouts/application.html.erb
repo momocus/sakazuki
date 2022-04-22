@@ -17,11 +17,12 @@
     <div class="container-xxl">
       <%= render("layouts/flashes") %>
       <%= yield %>
-      <% if Rails.env.development? %>
-        <%= tag.hr %>
-        <%= debug(params) %>
-      <% end %>
     </div>
     <%= render("layouts/footer") %>
+    <% if Rails.env.development? %>
+      <div class="py-5 bg-light">
+        <%= debug(params) %>
+      </div>
+    <% end %>
   </body>
 </html>
