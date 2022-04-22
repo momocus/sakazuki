@@ -1,0 +1,84 @@
+<div class="col">
+  <div class="card h-100">
+    <div class="card-body py-2">
+      <div class="row g-2">
+        <div class="col-12">
+          <div class="row align-items-start">
+            <div class="col fs-5">
+              <%= link_to(sake.name, sake_path(sake), class: "name-link") %>
+            </div>
+            <div class="col-auto pe-0">
+              <div class="dropdown" data-testid="sake_buttons_<%= sake.id %>">
+                <% id = "dropdownMenuSake#{sake.id}" %>
+                <button class="btn dropdown-toggle py-0" type="button"
+                  id="<%= id %>" data-bs-toggle="dropdown" aria-expanded="false"
+                  data-testid="dropdown_toggle_<%= sake.id %>">
+                  <i class="bi-three-dots-vertical fs-5 text-primary"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end fs-6" aria-labelledby="<%= id %>">
+                  <li>
+                    <%= link_to(tag.i(class: "bi-pencil-square") + t(".edit"),
+                                edit_sake_path(sake)) %>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <%= render(partial: "drink-button", locals: { sake: }) %>
+                </ul>
+              </div>
+            </div>
+            <div class="col-12">
+              <% if sake.kura.present? %>
+                <%= short_kura(sake.kura) %> ‒ <%= short_todofuken(sake.todofuken) %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%# HACK: 名前の長さによって揃わない要素を、footerを使って揃える %>
+    <div class="card-footer">
+      <div class="row">
+        <div class="col-7">
+          <div class="row">
+            <div class="col-12">
+              <% if sake.tokutei_meisho == "none" %>
+                <%= t(".tokutei_meisho_none") %>
+              <% else %>
+                <%= sake.tokutei_meisho_i18n %>
+              <% end %>
+            </div>
+            <div class="col-12">
+              <%= sake.season %>
+            </div>
+          </div>
+        </div>
+        <div class="col-5">
+          <div class="row">
+            <div class="col-12">
+              <%= t(".time_ago",
+                    count: time_ago_in_words(latest_at(sake), include_seconds: true),
+                    done: t(".#{sake.bottle_level}")) %>
+            </div>
+            <div class="col-12">
+              <%= render(partial: "rating", locals: { rating: sake.rating }) %>
+            </div>
+          </div>
+        </div>
+        <div class="col-7 mt-3">
+          <div class="ratio ratio-4x3">
+            <canvas id="sake-<%= sake.id %>"
+              data-taste-value="<%= sake.taste_value %>"
+              data-aroma-value="<%= sake.aroma_value %>">
+            </canvas>
+          </div>
+        </div>
+        <div class="col-5 mt-3 align-self-center">
+          <% if sake.photos.any? %>
+            <%= cl_image_tag(sake.photos.first.image.thumb.url, { class: "img-fulid img-thumbnail" }) %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
