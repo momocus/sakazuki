@@ -59,7 +59,7 @@ ja:
       detail: :sakes.show_detail.detail
       ingredient: :sakes.show_detail.ingredient
       method: :sakes.show_detail.method
-      measurement: :sakes.show_detail.measurent
+      measurement: :sakes.show_detail.measurement
     form-review:
       review: :sakes.show_review.review
     float-button:
