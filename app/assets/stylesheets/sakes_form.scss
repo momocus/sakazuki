@@ -1,6 +1,8 @@
 @import "./bootstrap/custom";
 @import "bootstrap/scss/bootstrap";
 
+// Railsがdatte_selectで生成する日付セレクトのスタイル
+
 .year {
   @extend .w-50;
   @extend .me-1;
