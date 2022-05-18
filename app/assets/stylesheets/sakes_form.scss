@@ -1,34 +1,16 @@
 @import "./bootstrap/custom";
 @import "bootstrap/scss/bootstrap";
 
-.form-row {
-  @extend .row;
-  @extend .mb-lg-2;
+// Railsがdatte_selectで生成する日付セレクトのスタイル
+
+.year {
+  @extend .w-50;
+  @extend .me-1;
+  @extend .me-lg-2;
 }
 
-.form-label {
-  @extend .col-lg-3;
-  @extend .col-12;
-  @extend .col-form-label;
-}
-
-// バッジ付きラベル
-.badged-form-label {
-  @extend .col-lg-2;
-  @extend .col-8;
-  @extend .col-form-label;
-}
-
-.form-badge {
-  @extend .col-lg-1;
-  @extend .col-4;
-  @extend .col-form-label;
-}
-
-// ウィンドウサイズがlg以上のときに二段組入力フォームと同じサイズになる入力フォーム
-.short-form {
-  @extend .col-lg-4;
-  @extend .col;
+.month {
+  @extend .w-25;
 }
 
 .select-delete-photos input[type="checkbox"] {
@@ -48,9 +30,4 @@
   display: block;
   margin-top: -3ex;
   margin-left: 1ex;
-}
-
-.horizontal-date {
-  display: inline-block;
-  width: auto;
 }

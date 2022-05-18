@@ -38,8 +38,12 @@ RSpec.describe "Sake Form Validation" do
         click_button("form_submit")
       end
 
-      it "do not move page" do
+      it "does not move page" do
         expect(page).to have_current_path(new_sake_path)
+      end
+
+      it "does not have flash message" do
+        expect(page).to have_no_selector(:test_id, "flash_message")
       end
     end
   end
