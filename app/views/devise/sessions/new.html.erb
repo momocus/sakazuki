@@ -3,38 +3,43 @@
 </h1>
 
 <%= render(layout: "devise/shared/devise_layout") do %>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="row row-cols-1 g-3">
-      <div class="col">
-        <%= f.label(:email, class: "visually-hidden") %>
-        <%= f.email_field(:email,
-                          class: "form-control",
-                          autofocus: true,
-                          autocomplete: "email",
-                          placeholder: "mail@example.com") %>
-      </div>
-      <div class="col">
-        <%= f.label(:password, class: "visually-hidden") %>
-        <%= f.password_field(:password,
-                             class: "form-control",
-                             autocomplete: "current-password",
-                             placeholder: "password") %>
-      </div>
-      <% if devise_mapping.rememberable? %>
-        <div class="col mx-2 mt-2">
-          <div class="form-check">
-            <%= f.check_box(:remember_me, class: "form-check-input") %>
-            <%= f.label(:remember_me, class: "form-check-label") %>
+  <div class="col">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="row row-cols-1 g-3">
+        <div class="col">
+          <%= f.label(:email, class: "visually-hidden") %>
+          <%= f.email_field(:email,
+                            class: "form-control",
+                            autofocus: true,
+                            autocomplete: "email",
+                            placeholder: "mail@example.com") %>
+        </div>
+        <div class="col">
+          <%= f.label(:password, class: "visually-hidden") %>
+          <%= f.password_field(:password,
+                               class: "form-control",
+                               autocomplete: "current-password",
+                               placeholder: "password") %>
+        </div>
+        <% if devise_mapping.rememberable? %>
+          <div class="col mx-2 mt-2">
+            <div class="form-check">
+              <%= f.check_box(:remember_me, class: "form-check-input") %>
+              <%= f.label(:remember_me, class: "form-check-label") %>
+            </div>
+          </div>
+        <% end %>
+        <div class="col mt-2">
+          <div class="row justify-content-center">
+            <div class="col-auto">
+              <%= f.submit(t("devise.sessions.new.sign_in"), class: "btn btn-primary") %>
+            </div>
           </div>
         </div>
-      <% end %>
-      <div class="col mt-2">
-        <div class="row justify-content-center">
-          <div class="col-auto">
-            <%= f.submit(t("devise.sessions.new.sign_in"), class: "btn btn-primary") %>
-          </div>
-        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+  <div class="col">
+    <%= render(partial: "devise/shared/links") %>
+  </div>
 <% end %>
