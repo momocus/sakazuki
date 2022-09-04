@@ -1,66 +1,104 @@
-<% select_css("devise") %>
+<h1 class="visually-hidden">
+  <%= title(t(".title", resource: resource.model_name.human)) %>
+</h1>
 
-<h1><%= title(t(".title", resource: resource.model_name.human)) %></h1>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render("devise/shared/error_messages", resource:) %>
-
-  <div class="devise-row">
-    <%= f.label(:email, class: "devise-label") %>
-    <div class="col">
-      <%= f.email_field(:email,
-                        autofocus: true, autocomplete: "email", placeholder: "mail@example.com", class: "form-control") %>
+<div class="row justify-content-center">
+  <div class="col" style="max-width: 28em;">
+    <div class="row row-cols-1 g-5 mt-0 mb-5">
+      <div class="col">
+        <h2>
+          アカウント情報
+        </h2>
+        <%= form_for(resource,
+                     as: resource_name,
+                     url: registration_path(resource_name),
+                     html: { method: :put }) do |f| %>
+          <div class="row row-cols-1 g-3">
+            <div class="col">
+              <%= f.label(:email, class: "form-label") %>
+              <%= f.email_field(:email,
+                                class: "form-control",
+                                autofocus: true,
+                                autocomplete: "email",
+                                placeholder: "mail@example.com") %>
+              <% resource.errors.full_messages_for(:email).each do |message| %>
+                <div id="deviseEmailValidationFeedback" class="invalid-feedback">
+                  <%= message %>
+                </div>
+              <% end %>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <div id="deviseCurrentWaiting_confirmationFeedback" class="">
+                  <%= t(".currently_waiting_confirmation_for_email", email: resource.unconfirmed_email) %>
+                </div>
+              <% end %>
+            </div>
+            <div class="col">
+              <%= f.label(:password, t(".password"), class: "form-label") %>
+              <% message = t(".leave_blank_if_you_don_t_want_to_change_it") %>
+              <% if @minimum_password_length %>
+                <% message = "#{message}, #{minimum_password_message(@minimum_password_length)}" %>
+              <% end %>
+              <%= f.password_field(:password,
+                                   class: "form-control",
+                                   autocomplete: "new-password",
+                                   placeholder: message) %>
+              <% resource.errors.full_messages_for(:password).each do |message| %>
+                <div id="devisePasswordValidationFeedback" class="invalid-feedback">
+                  <%= message %>
+                </div>
+              <% end %>
+            </div>
+            <div class="col">
+              <%= f.label(:password_confirmation,
+                          t(".password_confirmation"),
+                          class: "form-label") %>
+              <%= f.password_field(:password_confirmation,
+                                   class: "form-control",
+                                   autocomplete: "new-password") %>
+              <% resource.errors.full_messages_for(:password_confirmation).each do |message| %>
+                <div id="devisePasswordConfirmationValidationFeedback" class="invalid-feedback">
+                  <%= message %>
+                </div>
+              <% end %>
+            </div>
+            <div class="col">
+              <%= f.label(:current_password, class: "form-label") %>
+              <% currentpass = t(".we_need_your_current_password_to_confirm_your_changes") %>
+              <%= f.password_field(:current_password,
+                                   class: "form-control",
+                                   autocomplete: "current-password",
+                                   placeholder: currentpass) %>
+              <% resource.errors.full_messages_for(:current_password).each do |message| %>
+                <div id="deviseCurrentPasswordValidationFeedback" class="invalid-feedback">
+                  <%= message %>
+                </div>
+              <% end %>
+            </div>
+            <div class="col">
+              <div class="row justify-content-center">
+                <div class="col-auto">
+                  <%= f.submit(t(".update"), class: "btn btn-primary mx-3") %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="col">
+        <h2 class="text-danger">
+          <%= t(".cancel_my_account") %>
+        </h2>
+        <%= simple_format(t(".cancel_my_account_confirmation")) %>
+        <div class="row justify-content-center">
+          <div class="col-auto">
+            <%= button_to(t(".cancel_my_account"),
+                          registration_path(resource_name),
+                          data: { confirm: t(".are_you_sure") },
+                          method: :delete,
+                          class: "btn btn-danger mx-3") %>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div class="col">
-      <%= t(".currently_waiting_confirmation_for_email", email: resource.unconfirmed_email) %>
-    </div>
-  <% end %>
-
-  <div class="devise-row">
-    <%= f.label(:password, class: "devise-label") %>
-    <div class="col">
-      <% message = t(".leave_blank_if_you_don_t_want_to_change_it") %>
-      <% if @minimum_password_length %>
-        <% message = "#{message}, #{minimum_password_message(@minimum_password_length)}" %>
-      <% end %>
-      <%= f.password_field(:password, autocomplete: "new-password", placeholder: message, class: "form-control") %>
-    </div>
-  </div>
-
-  <div class="devise-row">
-    <%= f.label(:password_confirmation, class: "devise-label") %>
-    <div class="col">
-      <%= f.password_field(:password_confirmation, autocomplete: "new-password", class: "form-control") %>
-    </div>
-  </div>
-
-  <div class="devise-row">
-    <%= f.label(:current_password, class: "devise-label") %>
-    <div class="col">
-      <% currentpass = t(".we_need_your_current_password_to_confirm_your_changes") %>
-      <%= f.password_field(:current_password,
-                           autocomplete: "current-password", placeholder: currentpass, class: "form-control") %>
-    </div>
-  </div>
-
-  <div class="submit-row">
-    <div class="col-auto">
-      <%= f.submit(t(".update"), class: "btn btn-primary mx-3") %>
-    </div>
-  </div>
-<% end %>
-
-<h2><%= t(".unhappy") %></h2>
-
-<div class="submit-row">
-  <div class="col-auto">
-    <%= button_to(t(".cancel_my_account"),
-                  registration_path(resource_name),
-                  data: { confirm: t(".are_you_sure") },
-                  method: :delete,
-                  class: "btn btn-danger mx-3") %>
   </div>
 </div>

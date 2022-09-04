@@ -11,6 +11,7 @@ files=$(git ls-files | \
             grep --invert-match '\.png$' | \
             grep --invert-match '\.jpg$' | \
             grep --invert-match '\.ico$' | \
+            grep --invert-match '\.svg$' | \
             grep --invert-match '\.yml\.enc$')
 
 error_files=""
