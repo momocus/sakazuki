@@ -12,7 +12,7 @@ RSpec.describe "sakes/index", type: :system do
     context "for a sake" do
       it "has edit link" do
         buttons = "sake_buttons_#{sake.id}"
-        text = I18n.t("sakes.index.edit")
+        text = I18n.t("sakes.sake.edit")
         path = edit_sake_path(sake.id)
         expect(find(:test_id, buttons)).to have_link(text, href: path)
       end
