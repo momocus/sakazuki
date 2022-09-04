@@ -18,7 +18,9 @@ h1 {
 
 // ------ footer ------
 
-.footer-text {
+.footer {
+  @extend .mt-4;
+
   font-size: 0.9em;
   color: #777;
 }
