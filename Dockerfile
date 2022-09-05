@@ -8,10 +8,6 @@ RUN <<EOF
   apt-get update -qq
   DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
     curl=7.64.* build-essential=12.6 gnupg2=2.2.*
-  apt-get clean
-  rm -rf /var/cache/apt/archives/*
-  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-  truncate -s 0 /var/log/**/*log
 
   curl -sSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
   echo "deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main" \
@@ -29,7 +25,7 @@ RUN <<EOF
     imagemagick=8:6.9.*
 
   apt-get clean
-  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+  rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/* /tmp/* /var/tmp/*
   truncate -s 0 /var/log/**/*log
 EOF
 
