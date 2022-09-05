@@ -1,33 +1,35 @@
+# syntax=docker/dockerfile:1.3-labs
 FROM ruby:3.1.2-slim-buster
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Install build tools, posgresql-client, yarn and node
-RUN apt-get update -qq && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
-    curl=7.64.* build-essential=12.6 gnupg2=2.2.* imagemagick=8:6.9.* && \
-    apt-get clean && \
-    rm -rf /var/cache/apt/archives/* && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-    truncate -s 0 /var/log/**/*log && \
-    \
-    curl -sSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | \
-    apt-key add - \
-    && echo "deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main" \
+RUN <<EOF
+  apt-get update -qq
+  DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
+    curl=7.64.* build-essential=12.6 gnupg2=2.2.* imagemagick=8:6.9.*
+  apt-get clean
+  rm -rf /var/cache/apt/archives/*
+  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+  truncate -s 0 /var/log/**/*log
+
+  curl -sSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+  echo "deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main" \
     > /etc/apt/sources.list.d/pgdg.list && \
-    \
-    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | \
-    tee /etc/apt/sources.list.d/yarn.list && \
-    \
-    curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
-    \
-    apt-get update -qq && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
-    nodejs=12.* postgresql-client-13=13.* libpq-dev=15.* yarn=1.22.* && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-    truncate -s 0 /var/log/**/*log
+
+  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+  echo "deb https://dl.yarnpkg.com/debian/ stable main" | \
+    tee /etc/apt/sources.list.d/yarn.list
+
+  curl -sL https://deb.nodesource.com/setup_12.x | bash -
+
+  apt-get update -qq
+  DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
+    nodejs=12.* postgresql-client-13=13.* libpq-dev=15.* yarn=1.22.*
+  apt-get clean
+  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+  truncate -s 0 /var/log/**/*log
+EOF
 
 ENV LANG=C.UTF-8 \
     BUNDLE_JOBS=4 \
@@ -38,15 +40,17 @@ RUN mkdir tmp/ log/
 
 # bundle install
 COPY Gemfile Gemfile.lock ./
-RUN gem update --system && \
-    gem install bundler:2.3.8 && \
-    gem install foreman:0.87.2 && \
-    bundle install && \
-    rm -rf /usr/local/bundle/cache/*gem \
-    /root/.bundle/cache/* /usr/local/lib/ruby/gems/*/cache/* && \
-    find /usr/local/bundle/gems -name 'Makefile' -print0 | \
+RUN <<EOF
+  gem update --system
+  gem install bundler:2.3.8
+  gem install foreman:0.87.2
+  bundle install
+  rm -rf /usr/local/bundle/cache/*gem \
+    /root/.bundle/cache/* /usr/local/lib/ruby/gems/*/cache/*
+  find /usr/local/bundle/gems -name 'Makefile' -print0 | \
     xargs -0 dirname | \
     xargs -n1 -P4 -I{} make -C {} clean
+EOF
 
 # yarn install
 COPY package.json yarn.lock .yarnrc.yml ./
