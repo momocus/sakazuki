@@ -7,7 +7,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN <<EOF
   apt-get update -qq
   DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
-    curl=7.64.* build-essential=12.6 gnupg2=2.2.* imagemagick=8:6.9.*
+    curl=7.64.* build-essential=12.6 gnupg2=2.2.*
   apt-get clean
   rm -rf /var/cache/apt/archives/*
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -25,7 +25,9 @@ RUN <<EOF
 
   apt-get update -qq
   DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
-    nodejs=12.* postgresql-client-13=13.* libpq-dev=15.* yarn=1.22.*
+    nodejs=12.* postgresql-client-13=13.* libpq-dev=15.* yarn=1.22.* \
+    imagemagick=8:6.9.*
+
   apt-get clean
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
   truncate -s 0 /var/log/**/*log
