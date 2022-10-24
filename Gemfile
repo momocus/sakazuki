@@ -78,13 +78,6 @@ gem "kaminari-i18n"
 # Japanese Era
 gem "era_ja"
 
-# ElasticSearch
-# Do not update, because released gems have not adapted to Ruby 3 yet.
-gem "bonsai-elasticsearch-rails"
-gem "elasticsearch", ">=7.13", "< 7.14"
-gem "elasticsearch-model", ">=7.2.1"
-gem "elasticsearch-rails", ">=7.2.1"
-
 group :development, :test do
   # Auto annotation to schema
   gem "annotate"

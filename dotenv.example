@@ -11,20 +11,6 @@
 POSTGRES_USERNAME=
 POSTGRES_PASSWORD=
 
-### Elasticsearch.
-
-# Hostname. default is 'http://localhost:9200'.
-#
-# ELASTICSEARCH_HOST=localhost
-# ELASTICSEARCH_PORT=9200
-
-# Cluster.
-#
-# discovery.type=single-node
-# cluster.name=es-docker-cluster
-# bootstrap.memory_lock=true
-# "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-
 ### Google AdSense
 
 # Client ID
