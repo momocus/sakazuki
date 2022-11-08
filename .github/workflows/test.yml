@@ -60,11 +60,6 @@ jobs:
           sudo sysctl --write vm.swappiness=1
           sudo sysctl --write fs.file-max=262144
           sudo sysctl --write vm.max_map_count=262144
-      - name: Run Elasticsearch with Plugins
-        uses: miyataka/elasticsearch-github-actions@1
-        with:
-          stack-version: "7.11.2"
-          plugins: "analysis-kuromoji analysis-icu"
       - name: Run tests
         env:
           RAILS_ENV: test

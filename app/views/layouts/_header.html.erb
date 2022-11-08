@@ -14,9 +14,6 @@
           <li class="nav-item">
             <%= link_to(t(".sake_menu"), menu_sakes_path, class: "nav-link", data: { testid: "sake-menu" }) %>
           </li>
-          <li class="nav-item">
-            <%= link_to("Elasticsearch", elasticsearch_path, class: "nav-link", data: { testid: "elasticsearch" }) %>
-          </li>
           <span class="border-bottom border-secondary"></span>
           <% if user_signed_in? %>
             <li class="nav-item" data-testid="user-edit">

@@ -27,9 +27,6 @@
 - Yarn🐈 >= 1.22.4
 - Node.js >= 12.20.1
 - PostgreSQL >= 12.0
-- ElasticSearch >= 7.10.2
-  - Japanese (kuromoji) Analysis Plugin
-  - ICU Analysis Plugin
 - ImageMagick >= 6.9
 
 ## How to use
@@ -133,17 +130,14 @@ $ docker-compose build
 ...
 ```
 
-- PostgreSQL コンテナ、ElasticSearch コンテナの初期設定
+- PostgreSQL コンテナの初期設定
 
 <!-- markdownlint-disable MD013 -->
 
 ```console
 $ docker-compose run --rm web bundle exec rails db:create
 Creating volume "sakazuki_db_storage" with local driver
-Creating volume "sakazuki_es_data" with local driver
-Creating volume "sakazuki_es_plugins" with local driver
 Creating sakazuki_db_1 ... done
-Creating sakazuki_es_1 ... done
 Creating sakazuki_web_run ... done
 Created database 'sakazuki_development'
 Created database 'sakazuki_test'
@@ -155,18 +149,6 @@ Creating sakazuki_web_run ... done
 Model files unchanged.
 $ docker-compose run --rm web bundle exec rails db:seed
 Creating sakazuki_web_run ... done
-$ docker-compose run --rm es elasticsearch-plugin install analysis-icu
-Creating sakazuki_es_run ... done
--> Installing analysis-icu
--> Downloading analysis-icu from elastic
-[=================================================] 100%??
--> Installed analysis-icu
-$ docker-compose run --rm es elasticsearch-plugin install analysis-kuromoji
-Creating sakazuki_es_run ... done
--> Installing analysis-kuromoji
--> Downloading analysis-kuromoji from elastic
-[=================================================] 100%??
--> Installed analysis-kuromoji
 ```
 
 <!-- markdownlint-enable MD013 -->

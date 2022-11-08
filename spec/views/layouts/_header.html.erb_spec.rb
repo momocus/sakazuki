@@ -7,10 +7,6 @@ RSpec.describe "layouts/_header", type: :system do
     it "has sake menu link" do
       expect(find(:test_id, "navigation_list")).to have_link(I18n.t("layouts.header.sake_menu"), href: menu_sakes_path)
     end
-
-    it "has elasticsearch link" do
-      expect(find(:test_id, "navigation_list")).to have_link("Elasticsearch", href: elasticsearch_path)
-    end
   end
 
   describe "header links" do
