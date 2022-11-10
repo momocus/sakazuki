@@ -30,7 +30,7 @@
                                   list: "sakamai-list",
                                   data: { testid: "sake_kakemai" }) %>
             </div>
-            <%= render("sakamai-datalist") %>
+            <%= render(partial: "sakamai-datalist") %>
             <div class="col-12">
               <%= form.label(:kobo, class: "form-label") %>
               <%= form.text_field(:kobo, class: "form-control", data: { testid: "sake_kobo" }) %>

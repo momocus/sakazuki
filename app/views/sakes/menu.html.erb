@@ -8,8 +8,8 @@
   <div class="col-12">
     <div class="row row-cols-1 row-cols-md-2 g-5">
       <% @sakes.each_slice(2) do |sake1, sake2| %>
-        <%= render("menu_one_drink", sake: sake1) %>
-        <%= render("menu_one_drink", sake: sake2) if sake2.present? %>
+        <%= render(partial: "menu_one_drink", locals: { sake: sake1 }) %>
+        <%= render(partial: "menu_one_drink", locals: { sake: sake2 }) if sake2.present? %>
       <% end %>
     </div>
   </div>

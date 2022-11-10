@@ -2,14 +2,14 @@
   <div class="col-12">
     <div class="row align-items-baseline">
       <div class="col-lg col-12">
-        <h1 class="mb-0"><%= title(@sake.name) %></h1>
+        <h1 class="mb-0"><%= title(sake.name) %></h1>
       </div>
       <div class="col-auto order-lg-1 order-2 text-end">
-        <%= render("sns-share-button", sake: @sake) %>
+        <%= render(partial: "sns-share-button", locals: { sake: }) %>
       </div>
       <div class="col-lg-12 order-lg-2 col order-1 fs-3">
-        <% if @sake.kura.present? %>
-          <%= short_kura(@sake.kura) %> ‒ <%= short_todofuken(@sake.todofuken) %>
+        <% if sake.kura.present? %>
+          <%= short_kura(sake.kura) %> ‒ <%= short_todofuken(sake.todofuken) %>
         <% end %>
       </div>
     </div>
@@ -18,25 +18,25 @@
   <div class="col-12">
     <div class="row align-items-baseline">
       <div class="col-12 fs-3">
-        <% if @sake.tokutei_meisho == "none" %>
+        <% if sake.tokutei_meisho == "none" %>
           <%= t(".tokutei_meisho_none") %>
         <% else %>
-          <%= @sake.tokutei_meisho_i18n %>
+          <%= sake.tokutei_meisho_i18n %>
         <% end %>
       </div>
-      <% if @sake.season.present? %>
+      <% if sake.season.present? %>
         <div class="col-auto fs-3">
-          <%= @sake.season %>
+          <%= sake.season %>
         </div>
       <% end %>
-      <div class="col-auto <%= "ps-0" if @sake.season.present? %>">
-        <% if @sake.brew_year.present? %>
-          <%= @sake.brew_year.year %>
+      <div class="col-auto <%= "ps-0" if sake.season.present? %>">
+        <% if sake.brew_year.present? %>
+          <%= sake.brew_year.year %>
           <%= Sake.human_attribute_name(:brew_year) %>
         <% end %>
-        <%= "‒" if @sake.brew_year.present? && @sake.bindume_date.present? %>
-        <% if @sake.bindume_date.present? %>
-          <%= @sake.bindume_date.strftime("%Y/%m") %>
+        <%= "‒" if sake.brew_year.present? && sake.bindume_date.present? %>
+        <% if sake.bindume_date.present? %>
+          <%= sake.bindume_date.strftime("%Y/%m") %>
           <%= t(".made") %>
         <% end %>
       </div>
@@ -47,28 +47,28 @@
     <div class="row">
       <div class="col-12 fs-5">
         <%= t(".time_ago",
-              count: time_ago_in_words(latest_at(@sake), include_seconds: true),
-              done: t(".#{@sake.bottle_level}")) %>
+              count: time_ago_in_words(latest_at(sake), include_seconds: true),
+              done: t(".#{sake.bottle_level}")) %>
       </div>
       <div class="col-auto" data-testid="created-at">
-        <%= l(@sake.created_at.to_date) %>
+        <%= l(sake.created_at.to_date) %>
       </div>
       <div class="col-auto ps-0">
         <%= t(".sealed") %>
       </div>
-      <% if not(@sake.sealed?) %>
+      <% if not(sake.sealed?) %>
         <div class="w-100"></div>
         <div class="col-auto" data-testid="opened-at">
-          <%= l(@sake.opened_at.to_date) %>
+          <%= l(sake.opened_at.to_date) %>
         </div>
         <div class="col-auto ps-0">
           <%= t(".opened") %>
         </div>
       <% end %>
-      <% if @sake.empty? %>
+      <% if sake.empty? %>
         <div class="w-100"></div>
         <div class="col-auto" data-testid="emptied-at">
-          <%= l(@sake.emptied_at.to_date) %>
+          <%= l(sake.emptied_at.to_date) %>
         </div>
         <div class="col-auto ps-0">
           <%= t(".empty") %>
@@ -78,14 +78,14 @@
   </div>
 
   <div class="col-12 fs-5">
-    <%= @sake.size %> ml
-    <%= "‒ #{@sake.price.to_fs(:delimited)} #{t('activerecord.attributes.sake.price_unit')}" if @sake.price.present? %>
+    <%= sake.size %> ml
+    <%= "‒ #{sake.price.to_fs(:delimited)} #{t('activerecord.attributes.sake.price_unit')}" if sake.price.present? %>
   </div>
 
-  <% if @sake.photos.any? %>
+  <% if sake.photos.any? %>
     <div class="col-12 py-1">
       <div class="row g-2 photo-gallery">
-        <% @sake.photos.each do |photo| %>
+        <% sake.photos.each do |photo| %>
           <div class="col-lg-2 col-6" data-testid="sake_photo">
             <%= link_to(cl_image_tag(photo.image.thumb.url, class: "img-thumbnail"), photo.image.url) %>
           </div>

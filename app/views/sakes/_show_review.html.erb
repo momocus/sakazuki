@@ -4,7 +4,7 @@
   </div>
 
   <div class="col-12 fs-3" data-testid="rating">
-    <%= render("rating", rating: @sake.rating) %>
+    <%= render(partial: "rating", locals: { rating: sake.rating }) %>
   </div>
 
   <div class="col-12 mb-2">
@@ -16,7 +16,7 @@
           </div>
           <div class="text">
             <div>
-              <%= empty_to_default(@sake.color, "　") %>
+              <%= empty_to_default(sake.color, "　") %>
             </div>
           </div>
         </div>
@@ -28,7 +28,7 @@
           </div>
           <div class="text">
             <div>
-              <%= empty_to_default(@sake.nigori, "　") %>
+              <%= empty_to_default(sake.nigori, "　") %>
             </div>
           </div>
         </div>
@@ -47,7 +47,7 @@
               </div>
               <div class="text">
                 <div>
-                  <%= empty_to_default(@sake.aroma_impression, "　") %>
+                  <%= empty_to_default(sake.aroma_impression, "　") %>
                 </div>
               </div>
             </div>
@@ -59,7 +59,7 @@
               </div>
               <div class="text">
                 <div>
-                  <%= empty_to_default(@sake.taste_impression, "　") %>
+                  <%= empty_to_default(sake.taste_impression, "　") %>
                 </div>
               </div>
             </div>
@@ -71,7 +71,7 @@
               </div>
               <div class="text">
                 <div>
-                  <%= empty_to_default(@sake.awa, t(".no_awa")) %>
+                  <%= empty_to_default(sake.awa, t(".no_awa")) %>
                 </div>
               </div>
             </div>
@@ -80,9 +80,9 @@
       </div>
       <div class="col-lg-6 order-lg-2 col-12 order-1">
         <div class="ratio ratio-4x3">
-          <canvas id="sake-<%= @sake.id %>"
-            data-taste-value="<%= @sake.taste_value %>"
-            data-aroma-value="<%= @sake.aroma_value %>">
+          <canvas id="sake-<%= sake.id %>"
+            data-taste-value="<%= sake.taste_value %>"
+            data-aroma-value="<%= sake.aroma_value %>">
           </canvas>
         </div>
       </div>
@@ -96,7 +96,7 @@
       </div>
       <div class="text">
         <div>
-          <%= empty_to_default(@sake.note, "　") %>
+          <%= empty_to_default(sake.note, "　") %>
         </div>
       </div>
     </div>
