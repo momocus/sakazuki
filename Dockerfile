@@ -24,7 +24,7 @@ RUN apt-get update -qq && \
     \
     apt-get update -qq && \
     DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
-    nodejs=12.* postgresql-client-13=13.* libpq-dev=14.* yarn=1.22.* && \
+    nodejs=12.* postgresql-client-13=13.* libpq-dev=15.* yarn=1.22.* && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     truncate -s 0 /var/log/**/*log
