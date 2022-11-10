@@ -66,3 +66,5 @@ jobs:
           POSTGRES_USERNAME: postgres
           POSTGRES_PASSWORD: password
         run: bundle exec rspec
+      - name: Upload code coverage
+        uses: codecov/codecov-action@v3
