@@ -139,6 +139,7 @@ group :test do
 
   # Simple coverage
   gem "simplecov"
+  gem "simplecov-cobertura" # For CodeCov integration
 
   # Webdriver
   gem "webdrivers"
