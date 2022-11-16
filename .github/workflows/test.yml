@@ -13,11 +13,11 @@ jobs:
         uses: fkirc/skip-duplicate-actions@v5
         with:
           cancel_others: "true"
-          do_not_skip: "['pull_request', 'workflow_dispatch', 'schedule']"
+          do_not_skip: '["pull_request", "workflow_dispatch", "schedule"]'
 
   test:
     needs: check_skip
-    if: needs.check_skip.outputs.should_skip != "true"
+    if: needs.check_skip.outputs.should_skip != 'true'
 
     runs-on: ubuntu-latest
 
