@@ -18,7 +18,7 @@ class SakesController < ApplicationController
     params[:q].merge!({ bottle_level_not_eq: Sake.bottle_levels["empty"] }) unless params.dig(:q, :bottle_level_not_eq)
 
     # default, sort by id
-    params[:q].merge!({ s: "id desc" }) unless params.dig(:q, :s)
+    params[:q].merge!({ s: "id desc" })
 
     # search
     query = params[:q].deep_dup
