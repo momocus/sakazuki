@@ -11,21 +11,23 @@ class SakesController < ApplicationController
   # GET /sakes.json
   # rubocop:disable Metrics/AbcSize
   def index
-    # avoid nil
-    params[:q] = {} unless params[:q]
+    query = params[:q] ? params[:q].deep_dup : {} # avoid nil
 
     # default, not empty bottle
-    params[:q].merge!({ bottle_level_not_eq: Sake.bottle_levels["empty"] }) unless params.dig(:q, :bottle_level_not_eq)
+    query.merge!({ bottle_level_not_eq: Sake.bottle_levels["empty"] }) unless include_empty?(query)
 
     # default, sort by id
-    params[:q].merge!({ s: "id desc" })
+    query.merge!({ s: "id desc" })
 
-    # search
-    query = params[:q].deep_dup
+    # multiple words search
     to_multi_search!(query) if query[:all_text_cont]
+
+    # Ransack search
     @searched = Sake.ransack(query)
     @sakes = @searched.result.includes(:photos)
-    @sakes = @sakes.page(params[:page]) if include_empty?(params)
+
+    # Kaminari pager
+    @sakes = @sakes.page(params[:page]) if include_empty?(query)
   end
 
   # rubocop:enable Metrics/AbcSize
@@ -107,8 +109,12 @@ class SakesController < ApplicationController
 
   # Viewで使える用に宣言する
   helper_method :include_empty?
-  def include_empty?(params)
-    params.dig(:q, :bottle_level_not_eq) == bottom_bottle.to_s
+  # 空き瓶を表示するかどうかを調べる
+  #
+  # @param query [Hash<Symbol => String] params[:q]に格納されたRansackのクエリ
+  # @return [Boolean] 空き瓶も込みで表示するならtrueを返す
+  def include_empty?(query)
+    !query.nil? and query[:bottle_level_not_eq] == bottom_bottle.to_s
   end
 
   # GET /sakes

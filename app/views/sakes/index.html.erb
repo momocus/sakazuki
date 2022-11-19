@@ -45,7 +45,7 @@
       <%= render(partial: "sake", collection: @sakes) %>
     </div>
   </div>
-  <% if include_empty?(params) %>
+  <% if include_empty?(params[:q]) %>
     <div class="col d-none d-sm-block">
       <%= paginate(@sakes) %>
     </div>
