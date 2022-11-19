@@ -59,5 +59,5 @@ if [ -n "${HADOLINT}" ]; then
         eval "${HADOLINT} ${file}"
     done
 else
-    warning "[SKIP] hadolint is not installed."
+    warning "[SKIP] Hadolint, hadolint or Docker is required."
 fi

@@ -69,7 +69,7 @@ jobs:
         run: bundle exec erblint --lint-all
 
       # lint by hadolint
-      - name: Hadolint
-        uses: brpaz/hadolint-action@master
+      - name: Run Hadolint
+        uses: hadolint/hadolint-action@master
         with:
           dockerfile: Dockerfile
