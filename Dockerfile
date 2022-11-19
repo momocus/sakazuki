@@ -11,7 +11,7 @@ RUN <<EOF
 
   curl -sSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
   echo "deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main" \
-    > /etc/apt/sources.list.d/pgdg.list && \
+    > /etc/apt/sources.list.d/pgdg.list
 
   curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | \
