@@ -1,4 +1,13 @@
 # syntax=docker/dockerfile:1.3-labs
+FROM node:16 as build-node-modules
+
+WORKDIR /app
+COPY package.json yarn.lock .yarnrc.yml ./
+COPY .yarn/releases/ ./.yarn/releases/
+COPY .yarn/plugins/ ./.yarn/plugins/
+RUN yarn install
+
+
 FROM ruby:3.1.2-slim-buster
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -42,6 +51,8 @@ RUN <<EOF
     xargs -0 dirname | \
     xargs -n1 -P4 -I{} make -C {} clean
 EOF
+
+COPY --from=build-node-modules /app/node_modules node_modules/
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
