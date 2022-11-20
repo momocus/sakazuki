@@ -74,9 +74,13 @@
           </div>
         </div>
         <div class="col-5 mt-3 align-self-center">
-          <% if sake.photos.any? %>
-            <%= cl_image_tag(sake.photos.first.image.thumb.url, { class: "img-fulid img-thumbnail" }) %>
-          <% end %>
+          <% thumb_url =
+               if sake.photos.any?
+                 sake.photos.first.image.thumb.url
+               else
+                 image_url("sake-no-photo.png")
+               end %>
+          <%= cl_image_tag(thumb_url, { class: "img-fulid img-thumbnail" }) %>
         </div>
       </div>
     </div>
