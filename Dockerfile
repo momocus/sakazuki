@@ -3,7 +3,7 @@ FROM ruby:3.1.2-slim-buster
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-# Install build tools, posgresql-client, yarn and node
+# Install build tools and posgresql-client
 RUN <<EOF
   apt-get update -qq
   DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
@@ -13,16 +13,9 @@ RUN <<EOF
   echo "deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main" \
     > /etc/apt/sources.list.d/pgdg.list
 
-  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-  echo "deb https://dl.yarnpkg.com/debian/ stable main" | \
-    tee /etc/apt/sources.list.d/yarn.list
-
-  curl -sL https://deb.nodesource.com/setup_16.x | bash -
-
   apt-get update -qq
   DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
-    nodejs=16.* postgresql-client-13=13.* libpq-dev=15.* yarn=1.22.* \
-    imagemagick=8:6.9.*
+    postgresql-client-13=13.* libpq-dev=15.* imagemagick=8:6.9.*
 
   apt-get clean
   rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -49,12 +42,6 @@ RUN <<EOF
     xargs -0 dirname | \
     xargs -n1 -P4 -I{} make -C {} clean
 EOF
-
-# yarn install
-COPY package.json yarn.lock .yarnrc.yml ./
-COPY .yarn/releases/ ./.yarn/releases/
-COPY .yarn/plugins/ ./.yarn/plugins/
-RUN yarn install && yarn cache clean
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
