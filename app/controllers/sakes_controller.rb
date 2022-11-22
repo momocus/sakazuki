@@ -20,9 +20,9 @@ class SakesController < ApplicationController
     to_multi_search!(query) if query[:all_text_cont]
 
     # Ransack search and sort
-    @searched = Sake.ransack(query)
-    @searched.sorts = ["bottle_level", "id desc"]
-    @sakes = @searched.result.includes(:photos)
+    @search = Sake.ransack(query)
+    @search.sorts = ["bottle_level", "id desc"]
+    @sakes = @search.result.includes(:photos)
 
     # Kaminari pager
     @sakes = @sakes.page(params[:page]) if include_empty?(query)
