@@ -1,16 +1,57 @@
 .git
 tmp
 !tmp/pids
-log
-public/assets
-public/packs
-.bundle
+*.rbc
+capybara-*.html
+.rspec
+/db/*.sqlite3
+/db/*.sqlite3-journal
+/db/*.sqlite3-[0-9]*
+/public/system
+/coverage/
+/spec/tmp
+*.orig
+rerun.txt
+pickle-email-*.html
+.rubocop-https---*
 
-db/*.sqlite3
-db/*.sqlite3-*
+# Ignore all logfiles and tempfiles.
+/log/*
+!/log/.keep
+/tmp/*
+!/tmp/.keep
 
-storage
-config/master.key
-config/credentials/*.key
+# Credentials key
+/config/credentials/production.key
 
-node_modules
+# Local dotenv file
+/.env
+
+# Environment normalization
+/.bundle
+/vendor/bundle
+
+# Ignore node_modules
+/node_modules/
+
+# Ignore yarn files
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+/.yarn/cache
+
+# Ignore uploaded files in development
+/storage/*
+!/storage/.keep
+
+# YARD files
+/.yardoc/
+/doc/
+
+# Ignore uploaded images in development environment
+/public/uploads/
+
+# Ignore precompiled javascript and css
+/app/assets/builds/*
+!/app/assets/builds/.keep
+/public/assets/
