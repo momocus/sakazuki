@@ -1,0 +1,30 @@
+*
+
+!app
+app/assets/builds/*
+!config
+!bin
+!config.ru
+!Rakefile
+!lib
+!db
+!public/*.html
+!public/robots.txt
+
+# required to yarn install
+!package.json
+!yarn.lock
+!.yarnrc.yml
+!.yarn/releases
+!.yarn/plugins
+
+# required to bundle install
+!Gemfile
+!Gemfile.lock
+
+# used only in development
+!entrypoint.sh
+
+# used only in production
+!fly.Dockerfile
+!fly.toml

@@ -17,11 +17,11 @@ RUN <<EOF
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | \
     tee /etc/apt/sources.list.d/yarn.list
 
-  curl -sL https://deb.nodesource.com/setup_16.x | bash -
+  curl -sL https://deb.nodesource.com/setup_18.x | bash -
 
   apt-get update -qq
   DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
-    nodejs=16.* postgresql-client-13=13.* libpq-dev=15.* yarn=1.22.* \
+    nodejs=18.* postgresql-client-13=13.* libpq-dev=15.* yarn=1.22.* \
     imagemagick=8:6.9.*
 
   apt-get clean
