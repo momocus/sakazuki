@@ -23,6 +23,7 @@ FROM quay.io/evl.ms/fullstaq-ruby:${RUBY_VERSION}-${VARIANT} as base
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
+# hadolint ignore=DL3048
 LABEL fly_launch_runtime="rails"
 
 ARG NODE_VERSION=18.*
@@ -60,6 +61,7 @@ FROM base as build_deps
 ARG BUILD_PACKAGES="build-essential=12.9 libpq-dev=13.*"
 ENV BUILD_PACKAGES ${BUILD_PACKAGES}
 
+# hadolint ignore=DL3008
 RUN --mount=type=cache,id=dev-apt-cache,sharing=locked,target=/var/cache/apt \
     --mount=type=cache,id=dev-apt-lib,sharing=locked,target=/var/lib/apt \
     apt-get update -qq && \
@@ -95,6 +97,7 @@ FROM base
 ARG DEPLOY_PACKAGES="postgresql-client-13=13.*"
 ENV DEPLOY_PACKAGES=${DEPLOY_PACKAGES}
 
+# hadolint ignore=DL3008
 RUN --mount=type=cache,id=prod-apt-cache,sharing=locked,target=/var/cache/apt \
     --mount=type=cache,id=prod-apt-lib,sharing=locked,target=/var/lib/apt \
     apt-get update -qq && \
@@ -135,4 +138,5 @@ RUN ${BUILD_COMMAND}
 ENV PORT 8080
 ARG SERVER_COMMAND="bin/rails fly:server"
 ENV SERVER_COMMAND ${SERVER_COMMAND}
+# hadolint ignore=DL3025
 CMD ${SERVER_COMMAND}
