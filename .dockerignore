@@ -1,57 +1,30 @@
-.git
-tmp
-!tmp/pids
-*.rbc
-capybara-*.html
-.rspec
-/db/*.sqlite3
-/db/*.sqlite3-journal
-/db/*.sqlite3-[0-9]*
-/public/system
-/coverage/
-/spec/tmp
-*.orig
-rerun.txt
-pickle-email-*.html
-.rubocop-https---*
+*
 
-# Ignore all logfiles and tempfiles.
-/log/*
-!/log/.keep
-/tmp/*
-!/tmp/.keep
+!app
+app/assets/builds/*
+!config
+!bin
+!config.ru
+!Rakefile
+!lib
+!db
+!public/*.html
+!public/robots.txt
 
-# Credentials key
-/config/credentials/production.key
+# required to yarn install
+!package.json
+!yarn.lock
+!.yarnrc.yml
+!.yarn/releases
+!.yarn/plugins
 
-# Local dotenv file
-/.env
+# required to bundle install
+!Gemfile
+!Gemfile.lock
 
-# Environment normalization
-/.bundle
-/vendor/bundle
+# used only in development
+!entrypoint.sh
 
-# Ignore node_modules
-/node_modules/
-
-# Ignore yarn files
-/yarn-error.log
-yarn-debug.log*
-.yarn-integrity
-/.yarn/cache
-
-# Ignore uploaded files in development
-/storage/*
-!/storage/.keep
-
-# YARD files
-/.yardoc/
-/doc/
-
-# Ignore uploaded images in development environment
-/public/uploads/
-
-# Ignore precompiled javascript and css
-/app/assets/builds/*
-!/app/assets/builds/.keep
-/public/assets/
+# used only in production
+!fly.Dockerfile
+!fly.toml
