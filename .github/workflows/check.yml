@@ -69,7 +69,13 @@ jobs:
         run: bundle exec erblint --lint-all
 
       # lint by hadolint
-      - name: Run Hadolint
+      - name: Run Hadolint for dev.Dockerfile
         uses: hadolint/hadolint-action@master
         with:
-          dockerfile: Dockerfile
+          dockerfile: dev.Dockerfile
+
+      # lint by hadolint
+      - name: Run Hadolint for fly.Dockerfile
+        uses: hadolint/hadolint-action@master
+        with:
+          dockerfile: fly.Dockerfile
