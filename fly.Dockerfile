@@ -79,8 +79,9 @@ RUN bundle install &&  rm -rf vendor/bundle/ruby/*/cache
 
 FROM build_deps as node_modules
 
-COPY package*json ./
-COPY yarn.* ./
+COPY package.json yarn.lock .yarnrc.yml ./
+COPY .yarn/releases/ ./.yarn/releases/
+COPY .yarn/plugins/ ./.yarn/plugins/
 RUN yarn install
 
 #######################################################################
