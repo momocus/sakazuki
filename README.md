@@ -80,44 +80,9 @@ Development 環境において、SAKAZUKI からのメール通知は letter_ope
 
 - <http://localhost:3000/letter_opener>にアクセス
 
-## How to deploy to Heroku
+## How to deploy
 
-SAKAZUKI の Production 環境は Heroku を対象にしている。
-このとき SAKAZUKI は画像を Cloudinary にアップロードする。
-SAKAZUKI を Heroku で動かすには、メールと Cloudinary の設定がいる。
-これらの設定は Rails の credentials を使って設定する。
-
-```console
-$ rm config/credentials/production.yml.enc config/credentials/production.key  # デフォルトの設定の削除
-$ bundle exec rails credentials:edit --environment production
-...編集画面が開く
-```
-
-```yaml
-# config/credentials/production.yml.encの設定例
-mail:
-  smtp: "smtp.gmail.com"
-  domain: "gmail.com"
-  port: 587
-  user_name: "[YOUR MAIL ADDRESS]@gmail.com"
-  password: "[YOUR MAIL PASSWORD]"
-cloudinary:
-  cloud_name: [YOUR CLOUD NAME]
-  api_key: [YOUR API KEY]
-  api_secret: [YOUR API SECRET]
-  enhance_image_tag: true
-  static_file_support: false
-```
-
-- Credentials の Key を Heroku に登録
-  - heroku-cli が必要
-
-```console
-$ heroku config:set RAILS_MASTER_KEY=$(cat config/credentials/production.key)
-...
-```
-
-- Heroku に SAKAZUKI をデプロイする
+See the [deployment](https://github.com/momocus/sakazuki/wiki/Deployment).
 
 ## How to develop with Docker
 
