@@ -36,27 +36,7 @@
                         for: "all_bottle_level") %>
           </div>
         </div>
-        <div class="col-lg mt-lg-0 col-12 mt-3 px-0">
-          <div class="btn-group float-lg-end" role="group" aria-label="Sort">
-            <%= sort_link(@searched,
-                          :tokutei_meisho,
-                          t("activerecord.attributes.sake.tokutei_meisho")) %>
-            <%= sort_link(@searched,
-                          :todofuken,
-                          t("activerecord.attributes.sake.todofuken")) %>
-            <%= sort_link(@searched,
-                          :bottle_level,
-                          t("activerecord.attributes.sake.bottle_level")) %>
-            <%= sort_link(@searched,
-                          :taste_value,
-                          t("activerecord.attributes.sake.taste_impression"),
-                          default_order: :desc) %>
-            <%= sort_link(@searched,
-                          :aroma_value,
-                          t("activerecord.attributes.sake.aroma_impression"),
-                          default_order: :desc) %>
-          </div>
-        </div>
+        <div class="col-lg-4 d-none d-lg-block"></div>
       </div>
     <% end %>
   </div>
@@ -65,7 +45,7 @@
       <%= render(partial: "sake", collection: @sakes) %>
     </div>
   </div>
-  <% if include_empty?(params) %>
+  <% if include_empty?(params[:q]) %>
     <div class="col d-none d-sm-block">
       <%= paginate(@sakes) %>
     </div>
