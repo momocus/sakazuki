@@ -24,7 +24,7 @@ RSpec.describe "Sake Index Order" do
       end
     end
 
-    context "if included empty bottle", js: true do
+    context "if the 'show empty bottles' checkbox is checked", js: true do
       before do
         check("check_empty_bottle") # show empty bottles
       end
