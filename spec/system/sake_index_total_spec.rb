@@ -3,9 +3,11 @@ require "rails_helper"
 RSpec.describe "Sake Index Total Spec", type: :system do
   include SakesHelper
 
-  let!(:sealed) { create(:sake, bottle_level: "sealed", size: 720) }
-  let!(:opened) { create(:sake, bottle_level: "opened", size: 1800) }
-  let!(:empty) { create(:sake, bottle_level: "empty", size: 300) }
+  before do
+    create(:sake, bottle_level: "sealed", size: 720)
+    create(:sake, bottle_level: "opened", size: 1800)
+    create(:sake, bottle_level: "empty", size: 300)
+  end
 
   describe "total amount of sake" do
     before do
