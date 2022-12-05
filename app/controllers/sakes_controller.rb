@@ -16,15 +16,13 @@ class SakesController < ApplicationController
     # default, not empty bottle
     query.merge!({ bottle_level_not_eq: Sake.bottle_levels["empty"] }) unless include_empty?(query)
 
-    # default, sort by id
-    query.merge!({ s: "id desc" })
-
     # multiple words search
     to_multi_search!(query) if query[:all_text_cont]
 
-    # Ransack search
-    @searched = Sake.ransack(query)
-    @sakes = @searched.result.includes(:photos)
+    # Ransack search and sort
+    @search = Sake.ransack(query)
+    @search.sorts = ["bottle_level", "id desc"]
+    @sakes = @search.result.includes(:photos)
 
     # Kaminari pager
     @sakes = @sakes.page(params[:page]) if include_empty?(query)
