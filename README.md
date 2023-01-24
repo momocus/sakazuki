@@ -18,7 +18,7 @@
 
 ## Watch a demo
 
-- [SAKAZUKI](https://sakazuki.herokuapp.com/)
+- [SAKAZUKI](https://sakazuki.fly.dev/)
 
 ## Requirements
 
