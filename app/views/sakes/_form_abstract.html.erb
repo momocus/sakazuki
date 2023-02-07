@@ -24,7 +24,7 @@
               <input type="text" id="sake_kura_todofuken_autocompletion"
                 class="form-control" autocomplete="on" list="kura-list"
                 data-testid="sake_kura_todofuken_autocompletion">
-              <%= render(partial: "kura-datalist") %>
+              <%= render(partial: "kura_datalist") %>
               <%= form.text_field(:kura, id: "sake_kura", hidden: true, data: { testid: "sake_kura" }) %>
               <%= form.text_field(:todofuken, id: "sake_todofuken", hidden: true, data: { testid: "sake_todofuken" }) %>
             </div>
