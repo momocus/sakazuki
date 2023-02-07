@@ -434,7 +434,7 @@
 {"name":"泉橋酒造株式会社","region":"神奈川県","meigaras":["いづみ橋"]}
 {"name":"井上酒造株式会社","region":"神奈川県","meigaras":["箱根山"]}
 {"name":"大矢孝酒造株式会社","region":"神奈川県","meigaras":["昇龍蓬莱"]}
-{"name":"株式会社金井酒造店","region":"神奈川県","meigaras":["笹の露"]}
+{"name":"株式会社金井酒造店","region":"神奈川県","meigaras":["白笹鼓","Mozart"]}
 {"name":"合資会社川西屋酒造店","region":"神奈川県","meigaras":["丹沢山"]}
 {"name":"吉川醸造株式会社","region":"神奈川県","meigaras":["菊勇"]}
 {"name":"久保田酒造株式会社","region":"神奈川県","meigaras":["相模灘"]}
@@ -1052,7 +1052,7 @@
 {"name":"安井酒造有限会社","region":"兵庫県","meigaras":["武庫泉"]}
 {"name":"株式会社安福又四郎商店","region":"兵庫県","meigaras":["大黒正宗"]}
 {"name":"山名酒造株式会社","region":"兵庫県","meigaras":["奥丹波"]}
-{"name":"八鹿酒造有限会社","region":"兵庫県","meigaras":["吉野、夫婦杉"]}
+{"name":"八鹿酒造有限会社","region":"兵庫県","meigaras":["吉野","夫婦杉"]}
 {"name":"稲田酒造合名会社","region":"奈良県","meigaras":["稲天"]}
 {"name":"今西酒造株式会社","region":"奈良県","meigaras":["三諸杉"]}
 {"name":"株式会社今西清兵衛商店","region":"奈良県","meigaras":["春鹿"]}
@@ -1230,7 +1230,7 @@
 {"name":"有限会社白天龍酒造場","region":"広島県","meigaras":["白天龍"]}
 {"name":"白牡丹酒造株式会社","region":"広島県","meigaras":["白牡丹"]}
 {"name":"白蘭酒造株式会社","region":"広島県","meigaras":["白蘭"]}
-{"name":"馬上 日出男","region":"広島県","meigaras":["大号令"]}
+{"name":"馬上酒造場","region":"広島県","meigaras":["大号令"]}
 {"name":"花酔酒造株式会社","region":"広島県","meigaras":["花酔"]}
 {"name":"林酒造株式会社","region":"広島県","meigaras":["三谷春"]}
 {"name":"株式会社原本店","region":"広島県","meigaras":["蓬莱鶴"]}
@@ -1279,7 +1279,7 @@
 {"name":"株式会社はつもみぢ","region":"山口県","meigaras":["原田"]}
 {"name":"有限会社堀江酒場","region":"山口県","meigaras":["金雀"]}
 {"name":"三井酒造場","region":"山口県","meigaras":["涛乃花"]}
-{"name":"村重酒造株式会社","region":"山口県","meigaras":["金冠黒松"]}
+{"name":"村重酒造株式会社","region":"山口県","meigaras":["金冠黒松","村重","eight knot"]}
 {"name":"明寿酒造株式会社","region":"山口県","meigaras":["明寿"]}
 {"name":"八百新酒造株式会社","region":"山口県","meigaras":["雁木"]}
 {"name":"八千代酒造合名会社","region":"山口県","meigaras":["八千代"]}
