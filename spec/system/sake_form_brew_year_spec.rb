@@ -90,7 +90,7 @@ RSpec.describe "Sake Form Brew Year", type: :system do
       end
 
       it "selects nil" do
-        text = I18n.t("sakes.form-abstract.unknown")
+        text = I18n.t("sakes.form_abstract.unknown")
         expect(page).to have_select("sake_brew_year", selected: text)
       end
     end
