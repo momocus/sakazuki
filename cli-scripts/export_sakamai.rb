@@ -30,7 +30,7 @@ def write_body(output_file)
 end
 
 def main
-  output_file = "../app/views/sakes/_sakamai-datalist.html.erb"
+  output_file = "../app/views/sakes/_sakamai_datalist.html.erb"
   File.open(output_file, "wb") do |out|
     write_header(out)
     write_body(out)
