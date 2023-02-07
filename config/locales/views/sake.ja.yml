@@ -56,7 +56,7 @@ ja:
       abstract: 概要
       badge:
         presence: 必須
-    form-detail:
+    form_detail:
       detail: :sakes.show_detail.detail
       ingredient: :sakes.show_detail.ingredient
       method: :sakes.show_detail.method
