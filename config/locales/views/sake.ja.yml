@@ -63,7 +63,7 @@ ja:
       measurement: :sakes.show_detail.measurement
     form_review:
       review: :sakes.show_review.review
-    float-button:
+    float_button:
       edit: :sakes.sake.edit
       copy: 複製
       new: 新規

@@ -30,7 +30,7 @@ RSpec.describe "Copy Sakes", type: :system do
   describe "copy link" do
     it "has the copy text and link in show page" do
       visit sake_path(sake.id)
-      expect(find(:test_id, "copy_sake")).to have_text(I18n.t("sakes.float-button.copy"))
+      expect(find(:test_id, "copy_sake")).to have_text(I18n.t("sakes.float_button.copy"))
     end
   end
 
