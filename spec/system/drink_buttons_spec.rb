@@ -12,9 +12,9 @@ RSpec.describe "Drink Buttons" do
   end
 
   describe "drink button text in index page" do
-    open_text = I18n.t("sakes.drink-button.open")
-    impress_text = I18n.t("sakes.drink-button.impress")
-    empty_text = I18n.t("sakes.drink-button.empty")
+    open_text = I18n.t("sakes.drink_button.open")
+    impress_text = I18n.t("sakes.drink_button.impress")
+    empty_text = I18n.t("sakes.drink_button.empty")
 
     describe "sealed bottle" do
       it "has open button with i18n text" do

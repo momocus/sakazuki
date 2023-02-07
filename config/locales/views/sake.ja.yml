@@ -30,7 +30,7 @@ ja:
     show_review:
       no_awa: 炭酸なし
       review: レビュー
-    drink-button:
+    drink_button:
       open: 開封する
       impress: 評価する
       confirm_open: 栓を開けます？
