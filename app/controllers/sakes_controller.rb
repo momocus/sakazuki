@@ -225,15 +225,11 @@ class SakesController < ApplicationController
   def flash_after_update
     return unless @sake.saved_changes?
 
-    message_key = case params[:flash_message_type]
-                  when "open"
-                    ".success_open"
-                  when "empty"
-                    ".success_empty"
-                  else
-                    ".success"
-                  end
-    flash[:success] = t(message_key, name: alert_link_tag(@sake.name, sake_path(@sake)))
+    key = params[:flash_message_type] || "success"
+    key = ".#{key}"
+    name = alert_link_tag(@sake.name, sake_path(@sake))
+    link = alert_link_tag(t(".review"), edit_sake_path(@sake))
+    flash[:success] = t(key, name:, link:)
   end
 
   # flashメッセージ内に表示するリンクを生成する

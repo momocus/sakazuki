@@ -128,7 +128,7 @@ RSpec.describe "Drink Buttons" do
       end
 
       it "has success flash message" do
-        text = I18n.t("sakes.update.success_open", name: sealed_sake.name)
+        text = I18n.t("sakes.update.open", name: sealed_sake.name, link: I18n.t("sakes.update.review"))
         expect(find(:test_id, "flash_message")).to have_text(text)
       end
 
@@ -162,7 +162,7 @@ RSpec.describe "Drink Buttons" do
       end
 
       it "has success flash message" do
-        text = I18n.t("sakes.update.success_empty", name: opened_sake.name)
+        text = I18n.t("sakes.update.empty", name: opened_sake.name)
         expect(find(:test_id, "flash_message")).to have_text(text)
       end
 
