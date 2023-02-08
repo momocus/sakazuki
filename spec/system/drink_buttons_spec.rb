@@ -132,6 +132,11 @@ RSpec.describe "Drink Buttons" do
         expect(find(:test_id, "flash_message")).to have_text(text)
       end
 
+      it "has flash message with link to review opened sake" do
+        link = edit_sake_path(sealed_sake.id)
+        expect(find(:test_id, "flash_message")).to have_link(link)
+      end
+
       it "has flash message containing link to updated sake" do
         expect(find(:test_id, "flash_message")).to have_link(sealed_sake.name, href: sake_path(sealed_sake.id))
       end
