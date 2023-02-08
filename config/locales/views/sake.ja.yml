@@ -32,7 +32,6 @@ ja:
       review: レビュー
     drink_button:
       open: 開封する
-      impress: 評価する
       confirm_open: "%{name} の栓を開ける？"
       empty: 空にする
       confirm_empty: "%{name} を飲みきった？"
