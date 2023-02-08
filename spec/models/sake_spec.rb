@@ -45,7 +45,6 @@ require "rails_helper"
 RSpec.describe Sake do
   let!(:sealed_sake) { create(:sake, bottle_level: "sealed", size: 720) }
   let!(:opened_sake) { create(:sake, bottle_level: "opened", size: 1800) }
-  let!(:impressed_sake) { create(:sake, bottle_level: "opened", aroma_value: 1, taste_value: 2, size: 1800) }
   let!(:empty_sake) { create(:sake, bottle_level: "empty", size: 300) }
 
   describe "validates" do
@@ -104,28 +103,18 @@ RSpec.describe Sake do
     end
   end
 
-  describe "sake.unimpressed?" do
-    it "returns true without taste and aroma value" do
-      expect(opened_sake.unimpressed?).to be(true)
-    end
-
-    it "returns false with taste and aroma value" do
-      expect(impressed_sake.unimpressed?).to be(false)
-    end
-  end
-
   describe "Sake.alcohol_stock" do
     context "without argument" do
       it "returns 2520" do
-        # 720 + 1800/2 + 1800/2
-        expect(described_class.alcohol_stock).to eq(2520)
+        # 720 + 1800/2
+        expect(described_class.alcohol_stock).to eq(1620)
       end
     end
 
     context "with include_empty: true" do
       it "returns 4320 including empty bottle" do
-        # 720 + 1800 + 1800 + 300
-        expect(described_class.alcohol_stock(include_empty: true)).to eq(4620)
+        # 720 + 1800 + 300
+        expect(described_class.alcohol_stock(include_empty: true)).to eq(2820)
       end
     end
   end

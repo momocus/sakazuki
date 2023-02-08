@@ -133,12 +133,6 @@ class Sake < ApplicationRecord
     bottle_level == "empty"
   end
 
-  # 酒が未評価か
-  # @return [Boolean] 酒の味・香りが評価されていないとtrue、評価済みならfalse
-  def unimpressed?
-    taste_value.nil? && aroma_value.nil?
-  end
-
   # 残っている酒の総量をmlで返す
   #
   # 開封済みのお酒は瓶の半量が残っているとして概算する。
