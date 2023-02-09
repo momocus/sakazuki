@@ -132,11 +132,6 @@ RSpec.describe "Drink Buttons" do
         expect(find(:test_id, "flash_message")).to have_text(text)
       end
 
-      it "has flash message with link to review opened sake" do
-        link = edit_sake_path(sealed_sake.id)
-        expect(find(:test_id, "flash_message")).to have_link(link)
-      end
-
       it "has flash message containing link to updated sake" do
         expect(find(:test_id, "flash_message")).to have_link(sealed_sake.name, href: sake_path(sealed_sake.id))
       end
@@ -145,6 +140,19 @@ RSpec.describe "Drink Buttons" do
         expect {
           sealed_sake.reload
         }.to change(sealed_sake, :bottle_level).from("sealed").to("opened")
+      end
+
+      it "has flash message with link to review opened sake" do
+        text = I18n.t("sakes.update.review")
+        # HACK: クエリ部（?review=true）を無視するために正規表現でhref内容をマッチさせる
+        link = /#{edit_sake_path(sealed_sake.id)}.*#headingReview/
+        expect(find(:test_id, "flash_message")).to have_link(text, href: link)
+      end
+
+      it "opens review accordion after clicking review link", js: true do
+        click_on I18n.t("sakes.update.review")
+        text = I18n.t("activerecord.attributes.sake.color") # レビューの中にある酒の項目の1つ
+        expect(page).to have_text(text)
       end
     end
 
