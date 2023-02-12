@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-# kura-list.ndjsonを使って、_kura-datalist.html.erbを生成するスクリプト
+# kura-list.ndjsonを使って、_kura_datalist.html.erbを生成するスクリプト
 
 require "json"
 
@@ -33,7 +33,7 @@ def write_body(output_file)
 end
 
 def main
-  output_file = "../app/views/sakes/_kura-datalist.html.erb"
+  output_file = "../app/views/sakes/_kura_datalist.html.erb"
   File.open(output_file, "wb") do |out|
     write_header(out)
     write_body(out)
