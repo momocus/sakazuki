@@ -6,7 +6,10 @@
 <div class="row row-cols-1 g-3">
   <div class="col">
     <h1 class="mb-0" data-testid="total_sake">
-      <%= title("#{t('.title')} - #{to_shakkan(Sake.alcohol_stock(include_empty: include_empty?(params[:q])))}") %>
+      <% search = "#{params.dig(:q, :all_text_cont)} - " || "" %>
+      <% stock = to_shakkan(Sake.alcohol_stock(include_empty: include_empty?(params[:q]))) %>
+      <%# ヘッダタイトルとページタイトル %>
+      <%= title("#{search}#{t('.title')}", "#{t('.title')} - #{stock}") %>
     </h1>
   </div>
   <div class="col">
