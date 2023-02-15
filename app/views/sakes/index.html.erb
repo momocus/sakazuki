@@ -16,7 +16,8 @@
           <%= f.label(:all_text_cont, "search word", class: "form-label visually-hidden") %>
           <%= f.search_field(:all_text_cont,
                              class: "form-control",
-                             value: params.dig(:q, :all_text_cont)) %>
+                             value: params.dig(:q, :all_text_cont),
+                             data: { testid: "text_search" }) %>
           <%= tag.button(tag.i(class: "bi-search"),
                          type: "submit",
                          class: "btn btn-primary",
