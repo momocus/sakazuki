@@ -10,8 +10,8 @@ RUN <<EOF
   DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
     curl=7.74.* build-essential=12.9 gnupg2=2.2.*
 
-  curl -sSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
-  echo "deb http://apt.postgresql.org/pub/repos/apt bullseye-pgdg main" \
+  curl -sSL https://www.postgresql.org/media/keys/ACCC4CF8.asc -o /usr/share/keyrings/pgdg.asc
+  echo "deb [signed-by=/usr/share/keyrings/pgdg.asc] http://apt.postgresql.org/pub/repos/apt bullseye-pgdg main" \
     > /etc/apt/sources.list.d/pgdg.list
 
   curl -sSL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor \
