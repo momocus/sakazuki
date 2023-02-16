@@ -14,9 +14,10 @@ RUN <<EOF
   echo "deb http://apt.postgresql.org/pub/repos/apt bullseye-pgdg main" \
     > /etc/apt/sources.list.d/pgdg.list
 
-  curl -sSL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-  echo "deb https://dl.yarnpkg.com/debian/ stable main" | \
-    tee /etc/apt/sources.list.d/yarn.list
+  curl -sSL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor \
+    > /usr/share/keyrings/yarnkey.gpg
+  echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" \
+    > /etc/apt/sources.list.d/yarn.list
 
   curl -sSL https://deb.nodesource.com/setup_18.x | bash -
 
