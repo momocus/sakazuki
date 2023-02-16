@@ -100,9 +100,9 @@
                   <input type="hidden" id="sake_<%= :brew_year %>_3i" name="sake[<%= :brew_year %>(3i)]" value="1">
                 </div>
                 <div class="col-12">
-                  <%= form.label(:bindume_date, class: "form-label") %>
+                  <%= form.label(:bindume_on, class: "form-label") %>
                   <div class="w-100"></div>
-                  <%= form.date_select(:bindume_date,
+                  <%= form.date_select(:bindume_on,
                                        {
                                          start_year: Time.current.year - start_year_limit,
                                          end_year: Time.current.year,

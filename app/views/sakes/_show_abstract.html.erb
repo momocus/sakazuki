@@ -34,9 +34,9 @@
           <%= sake.brew_year.year %>
           <%= Sake.human_attribute_name(:brew_year) %>
         <% end %>
-        <%= "‒" if sake.brew_year.present? && sake.bindume_date.present? %>
-        <% if sake.bindume_date.present? %>
-          <%= sake.bindume_date.strftime("%Y/%m") %>
+        <%= "‒" if sake.brew_year.present? && sake.bindume_on.present? %>
+        <% if sake.bindume_on.present? %>
+          <%= sake.bindume_on.strftime("%Y/%m") %>
           <%= t(".made") %>
         <% end %>
       </div>
