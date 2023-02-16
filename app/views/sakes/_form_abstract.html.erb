@@ -81,23 +81,23 @@
             <div class="col-12 col-lg-6">
               <div class="row g-2">
                 <div class="col-12">
-                  <%= form.label(:brew_year, class: "form-label") %>
+                  <%= form.label(:brewery_year, class: "form-label") %>
                   <%# HACK: 不明を最後に表示するため、form.date_selectを使わない %>
-                  <%= form.select(:brew_year,
+                  <%= form.select(:brewery_year,
                                   nil,
                                   {},
-                                  id: "sake_brew_year_1i",
-                                  name: "sake[brew_year(1i)]",
+                                  id: "sake_brewery_year_1i",
+                                  name: "sake[brewery_year(1i)]",
                                   class: "form-select w-50",
-                                  data: { testid: "sake_brew_year" }) do %>
+                                  data: { testid: "sake_brewery_year" }) do %>
                     <% by_range.each do |by| %>
-                      <%= tag.option(with_japanese_era(by), value: by.year, selected: by.year == sake.brew_year&.year) %>
+                      <%= tag.option(with_japanese_era(by), value: by.year, selected: by.year == sake.brewery_year&.year) %>
                     <% end %>
-                    <%= tag.option(t(".unknown"), value: "", selected: sake.brew_year.nil?) %>
+                    <%= tag.option(t(".unknown"), value: "", selected: sake.brewery_year.nil?) %>
                   <% end %>
                   <%# 使わない月日はBY始まりの7/1とする. SEE: SakesHelper.to_by %>
-                  <input type="hidden" id="sake_<%= :brew_year %>_2i" name="sake[<%= :brew_year %>(2i)]" value="7">
-                  <input type="hidden" id="sake_<%= :brew_year %>_3i" name="sake[<%= :brew_year %>(3i)]" value="1">
+                  <input type="hidden" id="sake_<%= :brewery_year %>_2i" name="sake[<%= :brewery_year %>(2i)]" value="7">
+                  <input type="hidden" id="sake_<%= :brewery_year %>_3i" name="sake[<%= :brewery_year %>(3i)]" value="1">
                 </div>
                 <div class="col-12">
                   <%= form.label(:bindume_on, class: "form-label") %>

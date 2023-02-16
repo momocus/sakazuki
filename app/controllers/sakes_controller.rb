@@ -43,7 +43,7 @@ class SakesController < ApplicationController
       attr = copy_attributes(copied)
       @sake = Sake.new(attr)
     else
-      @sake = Sake.new(size: 720, brew_year: to_by(Time.current))
+      @sake = Sake.new(size: 720, brewery_year: to_by(Time.current))
     end
   end
 
@@ -138,7 +138,7 @@ class SakesController < ApplicationController
   # @param key [Symbol] 酒カラム
   # @return [Boolean] コピー対象のキーならtrue
   def copy_key?(key)
-    %w[alcohol aminosando bindume_on brew_year genryomai hiire kakemai kobo
+    %w[alcohol aminosando bindume_on brewery_year genryomai hiire kakemai kobo
        kura moto name nihonshudo price roka sando season seimai_buai shibori
        size todofuken tokutei_meisho warimizu].include?(key)
   end
@@ -179,7 +179,7 @@ class SakesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def sake_params
     params.require(:sake)
-          .permit(:name, :kura, :bindume_on, :brew_year,
+          .permit(:name, :kura, :bindume_on, :brewery_year,
                   :todofuken, :taste_value, :aroma_value,
                   :nihonshudo, :sando, :aroma_impression,
                   :color, :taste_impression, :nigori, :awa,
