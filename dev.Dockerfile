@@ -6,6 +6,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # Install build tools, posgresql-client, yarn and node
 RUN <<EOF
   apt-get update -qq
+  apt-get upgrade -y
   DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
     curl=7.74.* build-essential=12.9 gnupg2=2.2.*
 
