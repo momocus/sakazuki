@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.3-labs
-FROM ruby:3.1.2-slim-buster
+FROM ruby:3.1.2-slim-bullseye
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
@@ -7,10 +7,10 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN <<EOF
   apt-get update -qq
   DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
-    curl=7.64.* build-essential=12.6 gnupg2=2.2.*
+    curl=7.74.* build-essential=12.9 gnupg2=2.2.*
 
   curl -sSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
-  echo "deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main" \
+  echo "deb http://apt.postgresql.org/pub/repos/apt bullseye-pgdg main" \
     > /etc/apt/sources.list.d/pgdg.list
 
   curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
