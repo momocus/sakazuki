@@ -43,7 +43,7 @@ class SakesController < ApplicationController
       attr = copy_attributes(copied)
       @sake = Sake.new(attr)
     else
-      @sake = Sake.new(size: 720, brewery_year: to_by(Time.current))
+      @sake = Sake.new(size: 720, brewery_year: to_by(Time.current), bindume_on: to_day_one(Time.current))
     end
   end
 

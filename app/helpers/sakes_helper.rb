@@ -35,13 +35,55 @@ module SakesHelper
     years.map { |year| Date.new(year, 7, 1) }
   end
 
-  # 日付を和暦付き文字列に変換する
+  # 日付を和暦付き年の文字列に変換する
   #
   # 7/1の月日を持つBYのDateオブジェクトを渡しても、正しく和暦をつけることができる。
   # @param date [Date] 日付
-  # @return [String] "2021 / 令和3年"のような文字列
+  # @return [String] "2021 / 令和3年"のような年の文字列
   def with_japanese_era(date)
     "#{date.year} / #{date.to_era('%O%K-E年')}"
+  end
+
+  # Dateオブジェクトの日付を1にする
+  #
+  # @param date [Date] 対象の日付
+  # @return [Date] 日付を1日にしたDate
+  def to_day_one(date)
+    Date.new(date.year, date.month)
+  end
+
+  # 指定された期間で年月のレンジを作成する
+  #
+  # 作成されるレンジのステップは1ヶ月となる。
+  #
+  # @example 4500 mlは2升5合
+  #   month_range(Date.parse("2022-12-06", Date.parse("2023-01-06") #=> [2022-12-01, 2023-01-01]のようなレンジ
+  #
+  # MEMO:
+  # Dateクラスのレンジオブジェクトを作るため、効率が悪い。
+  # 具体的な使用例でいうと、30年×365日分のオブジェクトが一時的に作られる。
+  # 現状はコードの綺麗さを重視し、動作の重さが気になったら更新する。
+  #
+  # @param first [Date] 最初の年月
+  # @param last [Date] 最後の年月
+  # @return [Range<Date>] 年月のレンジオブジェクト
+  def month_range
+    first = Time.current.ago(start_year_limit.years)
+    last = Time.current
+    (first.to_date..last.to_date).map { |d| to_day_one(d) }.uniq
+  end
+
+  # 製造年月の候補を作成する
+  #
+  # 現在の日付から30年分を生成する
+  #
+  # @return [Array<String, String>] 製造年月セレクタで使う、表示用文字列と日付データ
+  def bindume_collection
+    month_range.map { |d|
+      year = with_japanese_era(d)
+      month = I18n.l(d, format: "%B")
+      ["#{year} #{month}", d.to_s]
+    }
   end
 
   # どの瓶状態（bottle_level）にもマッチしない値
