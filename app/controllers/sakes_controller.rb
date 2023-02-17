@@ -36,15 +36,13 @@ class SakesController < ApplicationController
 
   # GET /sakes/new
   def new
-    copied_id = params[:copied_from]
-    if copied_id
-      copied = Sake.find(copied_id)
-      flash[:info] = t(".copy", name: alert_link_tag(copied.name, sake_path(copied_id)))
-      attr = copy_attributes(copied)
-      @sake = Sake.new(attr)
-    else
-      @sake = Sake.new(size: 720, brewery_year: to_by(Time.current), bindume_on: to_day_one(Time.current))
-    end
+    copy = params[:copied_from].present?
+    copied = Sake.find(params[:copied_from]) if copy
+
+    attr = copy ? copy_attributes(copied) : default_attributes
+    @sake = Sake.new(attr)
+
+    flash[:info] = t(".copy", name: alert_link_tag(copied.name, sake_path(copied))) if copy
   end
 
   # GET /sakes/1/edit
@@ -152,6 +150,17 @@ class SakesController < ApplicationController
   def copy_attributes(sake)
     all = sake.attributes
     all.select { |key, _v| copy_key?(key) }
+  end
+
+  # 新規酒のデフォルト情報をもったハッシュを作成する
+  #
+  # @return [Hash<Symbol => Integer, Date>] デフォルト酒情報のハッシュ
+  def default_attributes
+    {
+      size: 720,
+      brewery_year: to_by(Time.current),
+      bindume_on: to_day_one(Time.current),
+    }
   end
 
   # Use callbacks to share common setup or constraints between actions.
