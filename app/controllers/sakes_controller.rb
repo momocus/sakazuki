@@ -27,7 +27,6 @@ class SakesController < ApplicationController
     # Kaminari pager
     @sakes = @sakes.page(params[:page]) if include_empty?(query)
   end
-
   # rubocop:enable Metrics/AbcSize
 
   # GET /sakes/1
@@ -266,5 +265,4 @@ class SakesController < ApplicationController
     view_context.link_to(text, path, { class: "alert-link" })
   end
 end
-
 # rubocop:enable Metrics/ClassLength
