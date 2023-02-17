@@ -33,9 +33,9 @@ ja:
     drink_button:
       open: 開封する
       impress: 評価する
-      confirm_open: 栓を開けます？
+      confirm_open: "%{name} の栓を開ける？"
       empty: 空にする
-      confirm_empty: 飲みきった？
+      confirm_empty: "%{name} を飲みきった？"
     new:
       title: 新規登録
     edit:
