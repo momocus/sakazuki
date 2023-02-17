@@ -26,6 +26,10 @@ class ImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
+  def filename
+    "#{super.chomp(File.extname(super))}.webp" if original_filename.present?
+  end
+
   def extension_allowlist
     %w[jpg jpeg gif png webp]
   end
