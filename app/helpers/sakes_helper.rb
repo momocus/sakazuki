@@ -32,7 +32,7 @@ module SakesHelper
   def by_range
     this_by = to_by(Time.current).year
     years = (this_by - start_year_limit)..this_by
-    years.map { |year| Date.new(year, 7, 1) }
+    years.map { |year| Date.new(year, 7) } # 7/1
   end
 
   # 日付を和暦付き年の文字列に変換する
@@ -42,6 +42,11 @@ module SakesHelper
   # @return [String] "2021 / 令和3年"のような年の文字列
   def with_japanese_era(date)
     "#{date.year} / #{date.to_era('%O%K-E年')}"
+  end
+
+  def by_collection
+    collection = by_range.map { |d| [with_japanese_era(d), d.to_s] }
+    collection.push([I18n.t("sakes.form_abstract.unknown"), ""])
   end
 
   # Dateオブジェクトの日付を1にする

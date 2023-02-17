@@ -79,22 +79,11 @@
             </div>
             <div class="col-12 col-lg-3">
               <%= form.label(:brewery_year, class: "form-label") %>
-              <%# HACK: 不明を最後に表示するため、form.date_selectを使わない %>
               <%= form.select(:brewery_year,
-                              nil,
+                              by_collection,
                               {},
-                              id: "sake_brewery_year_1i",
-                              name: "sake[brewery_year(1i)]",
                               class: "form-select",
-                              data: { testid: "sake_brewery_year" }) do %>
-                <% by_range.each do |by| %>
-                  <%= tag.option(with_japanese_era(by), value: by.year, selected: by.year == sake.brewery_year&.year) %>
-                <% end %>
-                <%= tag.option(t(".unknown"), value: "", selected: sake.brewery_year.nil?) %>
-              <% end %>
-              <%# 使わない月日はBY始まりの7/1とする. SEE: SakesHelper.to_by %>
-              <input type="hidden" id="sake_<%= :brewery_year %>_2i" name="sake[<%= :brewery_year %>(2i)]" value="7">
-              <input type="hidden" id="sake_<%= :brewery_year %>_3i" name="sake[<%= :brewery_year %>(3i)]" value="1">
+                              data: { testid: "sake_brewery_year" }) %>
             </div>
             <div class="col-12 col-lg-3">
               <%= form.label(:bindume_on, class: "form-label") %>
