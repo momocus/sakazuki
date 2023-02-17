@@ -7,6 +7,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   process(ocr: "adv_ocr:ja") if Rails.env.production?
+  process(convert: "webp")
 
   version :thumb do
     # HACK: 1:1でスマホで２つ並んでも潰れないサイズ
@@ -26,6 +27,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def extension_allowlist
-    %w[jpg jpeg gif png]
+    %w[jpg jpeg gif png webp]
   end
 end
