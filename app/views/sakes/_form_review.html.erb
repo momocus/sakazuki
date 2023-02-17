@@ -10,19 +10,6 @@
     <div class="accordion-body">
       <div class="row g-4">
         <fieldset class="col-12">
-          <%= form.label(:rating, class: "form-label") %>
-          <div class="w-100"></div>
-          <div id="rater"></div>
-          <%= form.number_field(:rating,
-                                id: "sake_rating",
-                                hidden: true,
-                                class: "form-control",
-                                min: 0,
-                                max: 5,
-                                step: 1,
-                                data: { testid: "sake_rating" }) %>
-        </fieldset>
-        <fieldset class="col-12">
           <div class="row g-2 gx-3">
             <div class="col-12 col-lg-6">
               <%= form.label(:color, class: "form-label") %>
@@ -77,6 +64,19 @@
                                     data: { aroma_value: sake.aroma_value, testid: "sake_aroma_value" }) %>
             </div>
           </div>
+        </fieldset>
+        <fieldset class="col-12">
+          <%= form.label(:rating, class: "form-label") %>
+          <div class="w-100"></div>
+          <div id="rater"></div>
+          <%= form.number_field(:rating,
+                                id: "sake_rating",
+                                hidden: true,
+                                class: "form-control",
+                                min: 0,
+                                max: 5,
+                                step: 1,
+                                data: { testid: "sake_rating" }) %>
         </fieldset>
         <fieldset class="col-12">
           <div class="row gx-3">
