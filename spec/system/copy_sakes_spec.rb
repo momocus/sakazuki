@@ -92,16 +92,9 @@ RSpec.describe "Copy Sakes" do
     end
 
     describe "bindume_on year" do
-      it "has copied bindume year", js: true do
-        year = with_japanese_era(sake.bindume_on)
-        expect(page).to have_select(test_id: "sake_bindume_year", selected: year)
-      end
-    end
-
-    describe "bindume_on month" do
-      it "has copied bindume month", js: true do
-        month = I18n.l(sake.bindume_on, format: "%b")
-        expect(page).to have_select(test_id: "sake_bindume_month", selected: month)
+      it "has copied bindume year" do
+        bindume = "#{with_japanese_era(sake.bindume_on)} #{I18n.l(sake.bindume_on, format: '%B')}"
+        expect(page).to have_select(test_id: "sake_bindume_on", selected: bindume)
       end
     end
 
