@@ -32,7 +32,7 @@ RSpec.describe "sakes/index", type: :system do
       end
     end
 
-    context "when searching" do
+    context "when searching with some word" do
       before do
         fill_in("text_search", with: "検索中の酒")
         click_button("submit_search")
@@ -41,6 +41,18 @@ RSpec.describe "sakes/index", type: :system do
       it "has title with searching words" do
         title = "検索中の酒 - #{I18n.t('sakes.index.title')} - SAKAZUKI"
         expect(page).to have_title(title)
+      end
+    end
+
+    context "when searching with empty word" do
+      before do
+        fill_in("text_search", with: "")
+        click_button("submit_search")
+      end
+
+      it "does not have title with searching words separator" do
+        title = "- #{I18n.t('sakes.index.title')} - SAKAZUKI"
+        expect(page).not_to have_title(title)
       end
     end
   end
