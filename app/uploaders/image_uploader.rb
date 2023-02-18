@@ -27,7 +27,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def filename
-    "#{super.chomp(File.extname(super))}.webp" if original_filename.present?
+    if Rails.env.production?
+      super
+    elsif original_filename.present?
+      "#{super.chomp(File.extname(super))}.webp"
+    end
   end
 
   def extension_allowlist
