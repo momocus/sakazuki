@@ -6,10 +6,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     storage :file
   end
 
-  if Rails.env.production?
-    process(ocr: "adv_ocr:ja")
-    process(convert: "webp")
-  end
+  process(resize_to_limit: [4032, 4032], convert: "webp", ocr: "adv_ocr:ja") if Rails.env.production?
 
   version :thumb do
     # HACK: 1:1でスマホで２つ並んでも潰れないサイズ
