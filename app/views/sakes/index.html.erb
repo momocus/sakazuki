@@ -6,7 +6,10 @@
 <div class="row row-cols-1 g-3">
   <div class="col">
     <h1 class="mb-0" data-testid="total_sake">
-      <%= title("#{t('.title')} - #{to_shakkan(Sake.alcohol_stock(include_empty: include_empty?(params[:q])))}") %>
+      <% with_search = title_with_search(params.dig(:q, :all_text_cont)) %>
+      <% with_stock = title_with_stock(include_empty?(params[:q])) %>
+      <%# ヘッダタイトルとページタイトル %>
+      <%= title(with_search, with_stock) %>
     </h1>
   </div>
   <div class="col">
@@ -16,7 +19,8 @@
           <%= f.label(:all_text_cont, "search word", class: "form-label visually-hidden") %>
           <%= f.search_field(:all_text_cont,
                              class: "form-control",
-                             value: params.dig(:q, :all_text_cont)) %>
+                             value: params.dig(:q, :all_text_cont),
+                             data: { testid: "text_search" }) %>
           <%= tag.button(tag.i(class: "bi-search"),
                          type: "submit",
                          class: "btn btn-primary",
