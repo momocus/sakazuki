@@ -6,16 +6,16 @@ class ImageUploader < CarrierWave::Uploader::Base
     storage :file
   end
 
-  process(resize_to_limit: [4032, 4032], convert: "webp", ocr: "adv_ocr:ja") if Rails.env.production?
+  process(resize_to_limit: [4032, 4032], convert: "avif", ocr: "adv_ocr:ja") if Rails.env.production?
 
   version :thumb do
     # HACK: 1:1でスマホで２つ並んでも潰れないサイズ
-    process(resize_to_fill: [600, 600]) if Rails.env.production?
+    process(convert: "webp", resize_to_fill: [600, 600]) if Rails.env.production?
   end
 
   version :large_twitter_card do
     if Rails.env.production?
-      cloudinary_transformation(crop: :thumb, width: 600, height: 300, sign_url: true,
+      cloudinary_transformation(format: "webp", crop: :thumb, width: 600, height: 300, sign_url: true,
                                 gravity: :ocr_text)
     end
   end
@@ -25,6 +25,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def extension_allowlist
-    %w[jpg jpeg gif png webp]
+    %w[jpg jpeg gif png webp avif]
   end
 end
