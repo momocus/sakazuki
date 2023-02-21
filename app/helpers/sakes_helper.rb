@@ -140,4 +140,22 @@ module SakesHelper
   def either_highlight_or_lowlight(value)
     value.blank? || value == "unknown" ? "lowlight-value" : "highlight-value"
   end
+
+  # ヘッダタイトル用に検索ワードつきのタイトルを生成する
+  #
+  # @param search [String, nil] 検索ワード
+  # @return [String] ヘッダタイトル
+  def title_with_search(search)
+    prefix = search.present? ? "#{search} - " : ""
+    "#{prefix}#{t('sakes.index.title')}"
+  end
+
+  # 酒index用に酒の総量つきのタイトルを生成する
+  #
+  # @param include_empty [Boolean] trueなら空き瓶込みでカウントする
+  # @return [String] 酒の総量つきタイトル
+  def title_with_stock(include_empty)
+    stock = to_shakkan(Sake.alcohol_stock(include_empty:))
+    "#{t('sakes.index.title')} - #{stock}"
+  end
 end

@@ -6,11 +6,10 @@
 <div class="row row-cols-1 g-3">
   <div class="col">
     <h1 class="mb-0" data-testid="total_sake">
-      <% search_text = params.dig(:q, :all_text_cont) %>
-      <% search = search_text.present? ? "#{search_text} - " : "" %>
-      <% stock = to_shakkan(Sake.alcohol_stock(include_empty: include_empty?(params[:q]))) %>
+      <% with_search = title_with_search(params.dig(:q, :all_text_cont)) %>
+      <% with_stock = title_with_stock(include_empty?(params[:q])) %>
       <%# ヘッダタイトルとページタイトル %>
-      <%= title("#{search}#{t('.title')}", "#{t('.title')} - #{stock}") %>
+      <%= title(with_search, with_stock) %>
     </h1>
   </div>
   <div class="col">
