@@ -105,14 +105,14 @@ RSpec.describe Sake do
 
   describe "Sake.alcohol_stock" do
     context "without argument" do
-      it "returns 2520" do
+      it "returns 1620" do
         # 720 + 1800/2
         expect(described_class.alcohol_stock).to eq(1620)
       end
     end
 
     context "with include_empty: true" do
-      it "returns 4320 including empty bottle" do
+      it "returns 2820 including empty bottle" do
         # 720 + 1800 + 300
         expect(described_class.alcohol_stock(include_empty: true)).to eq(2820)
       end
