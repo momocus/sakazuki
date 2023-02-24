@@ -79,34 +79,25 @@ gem "kaminari-i18n"
 gem "era_ja"
 
 group :development, :test do
-  # Auto annotation to schema
-  gem "annotate"
-
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri mingw x64_mingw]
 
   # Use .env file
   gem "dotenv-rails"
 
-  # FactoryBot for RSpec
-  gem "factory_bot_rails"
-
   # Mailer
   gem "letter_opener_web"
+end
 
-  # parallel test
-  gem "parallel_tests"
-
-  # RSpec
-  gem "rspec-rails"
+group :development do
+  # Auto annotation to schema
+  gem "annotate"
 
   # Rubocop
   gem "rubocop", require: false
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
-end
 
-group :development do
   # Useful debugger in browser
   gem "better_errors"
   gem "binding_of_caller"
@@ -126,11 +117,20 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   gem "spring"
 
-  # For robe completion
+  # Documentation
   gem "yard"
 end
 
 group :test do
+  # FactoryBot for RSpec
+  gem "factory_bot_rails"
+
+  # parallel test
+  gem "parallel_tests"
+
+  # RSpec
+  gem "rspec-rails"
+
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
 
