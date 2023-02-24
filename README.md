@@ -15,6 +15,7 @@
 - 在庫量と総飲酒量の表示
 - 複数人での在庫の共有
 - PC・スマホ対応のレスポンシブデザイン
+- 画像は AVIF 形式に圧縮して [Cloudinary](https://cloudinary.com/) にアップロード
 
 ## Watch a demo
 
