@@ -1,9 +1,9 @@
-module TweetHelperJa
+module ShareHelperJa
   # 文末に句点がない場合は追加する
   # @param text [String] 対象テキスト
   # @param period [String] 句点、デフォルトは。
   # @return [String] 句点を追加したテキスト
-  def add_period(text, period = I18n.t("helper.tweet.punctuation"))
+  def add_period(text, period = I18n.t("helper.share.punctuation"))
     text.empty? || text.end_with?(period) ? text : "#{text}#{period}"
   end
 
@@ -32,12 +32,12 @@ module TweetHelperJa
   def make_text(name, kura, color, aroma, taste)
     # 酒の名前のみがnon nil、他パラメータは空の場合を考慮する。
     kura = to_enclosed(kura)
-    kura = add_period(kura, I18n.t("helper.tweet.honorific_title"))
+    kura = add_period(kura, I18n.t("helper.share.honorific_title"))
     name = add_period(name)
     color = add_period(color)
     aroma = add_period(aroma)
     taste = add_period(taste)
-    "#{kura}#{name}#{color}#{aroma}#{taste}"
+    "#{kura}#{name}#{color}#{aroma}#{taste} \#SAKAZUKI"
   end
 
   module_function :to_enclosed
@@ -48,12 +48,12 @@ end
 {
   ja: {
     helper: {
-      tweet: {
+      share: {
         punctuation: "。",
         honorific_title: "さんの",
         text: lambda { |_key, options|
           sake = options[:sake]
-          TweetHelperJa.make_text(sake.name, sake.kura, sake.color, sake.aroma_impression, sake.taste_impression)
+          ShareHelperJa.make_text(sake.name, sake.kura, sake.color, sake.aroma_impression, sake.taste_impression)
         },
       },
     },
