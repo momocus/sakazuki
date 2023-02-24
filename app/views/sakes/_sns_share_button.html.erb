@@ -1,2 +1,7 @@
-<div class="row fs-3">
+<div class="row">
+  <div class="col-auto">
+    <button type="button" class="btn btn-link btn-lg pt-0" id="share_button"><i class="bi bi-share"></i></button>
+    <%# HACK: hideenのtextareaをshare.tsから参照する %>
+    <textarea class="d-none" id="share_text"><%= t("helper.share.text", sake:) %></textarea>
+  </div>
 </div>
