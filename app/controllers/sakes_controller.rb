@@ -229,7 +229,8 @@ class SakesController < ApplicationController
     key = ".#{key}"
     name = alert_link_tag(@sake.name, sake_path(@sake))
     href = edit_sake_path(@sake, review: true, anchor: "headingReview") # レビュー項目を開く
-    link = alert_link_tag(t(".review"), href)
+    review = view_context.tag.i(class: "bi-chat-square-heart me-1", style: "font-size: 0.98em;") + t(".review")
+    link = alert_link_tag(review, href)
     flash[:success] = t(key, name:, link:) # HACK: key: "open"のときのみlinkが使われ、他では無視される
   end
 
