@@ -228,10 +228,19 @@ class SakesController < ApplicationController
     key = params[:flash_message_type] || "success"
     key = ".#{key}"
     name = alert_link_tag(@sake.name, sake_path(@sake))
-    href = edit_sake_path(@sake, review: true, anchor: "headingReview") # レビュー項目を開く
-    review = view_context.tag.i(class: "bi-chat-square-heart me-1", style: "font-size: 0.98em;") + t(".review")
-    link = alert_link_tag(review, href)
+    link = flash_review_link(@sake)
     flash[:success] = t(key, name:, link:) # HACK: key: "open"のときのみlinkが使われ、他では無視される
+  end
+
+  # flash内のレビューするリンクを作成する
+  #
+  # @param sake [Sake] レビュー対象の酒オブジェクト
+  # @return [String] レビューリンク
+  def flash_review_link(sake)
+    # レビュー項目に注目し、アコーディオンを開く
+    href = edit_sake_path(sake, review: true, anchor: "headingReview")
+    review = view_context.tag.i(class: "bi-chat-square-heart me-1", style: "font-size: 0.98em;") + t(".review")
+    alert_link_tag(review, href)
   end
 
   # flashメッセージ内に表示するリンクを生成する
