@@ -10,7 +10,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   version :thumb do
     # HACK: 1:1でスマホで２つ並んでも潰れないサイズ
-    process(convert: "webp", resize_to_fill: [600, 600]) if Rails.env.production?
+    process(convert: "webp", resize_to_fill: [600, 600])
   end
 
   version :large_twitter_card do
