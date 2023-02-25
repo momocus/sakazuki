@@ -22,10 +22,9 @@ type CompletionDict = Array<CompletionCandidate>
  */
 function includesAny(target: string, keywords: Array<string>): boolean {
   return keywords
-    .map((word) => {
+    .some((word) => {
       return target.includes(word)
     })
-    .includes(true)
 }
 
 /**
