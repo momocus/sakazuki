@@ -21,10 +21,9 @@ type CompletionDict = Array<CompletionCandidate>
  * @returns 検索対象にいづれかのキーワードが1つでも含まれればtrue
  */
 function includesAny(target: string, keywords: Array<string>): boolean {
-  return keywords
-    .some((word) => {
-      return target.includes(word)
-    })
+  return keywords.some((word) => {
+    return target.includes(word)
+  })
 }
 
 /**
