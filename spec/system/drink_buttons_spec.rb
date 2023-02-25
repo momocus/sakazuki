@@ -13,7 +13,7 @@ RSpec.describe "Drink Buttons" do
   open_text = I18n.t("sakes.drink_button.open")
   empty_text = I18n.t("sakes.drink_button.empty")
 
-  describe "label text" do
+  describe "link text" do
     context "for sealed bottle" do
       it "has open button with i18n text" do
         id = "sake_buttons_#{sealed_sake.id}"
