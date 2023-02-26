@@ -6,10 +6,7 @@ ja:
     sake:
       edit: 編集
       tokutei_meisho_none: :sakes.show_abstract.tokutei_meisho_none
-      time_ago: :sakes.show_abstract.time_ago
-      sealed: :sakes.show_abstract.sealed
-      opened: :sakes.show_abstract.opened
-      empty: :sakes.show_abstract.empty
+      time_ago: "%{count}前"
     show:
       delete: 削除
       confirm_delete: 本当に削除しますか？
