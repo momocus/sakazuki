@@ -171,8 +171,8 @@ class SakesController < ApplicationController
 
   # 作成された酒の瓶状態に応じて、酒が持つ日時データを更新する
   def create_datetime
-    @sake.assign_attributes(opened_at: @sake.created_at) unless @sake.bottle_level == "sealed"
-    @sake.assign_attributes(emptied_at: @sake.created_at) if @sake.bottle_level == "empty"
+    @sake.assign_attributes(opened_at: @sake.created_at) unless @sake.sealed?
+    @sake.assign_attributes(emptied_at: @sake.created_at) if @sake.empty?
     @sake.save
   end
 
