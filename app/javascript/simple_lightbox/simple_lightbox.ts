@@ -7,5 +7,6 @@ import SimpleLightbox from "simplelightbox"
     animationSlide: false,
     history: false,
     close: false,
+    fileExt: false,
   })
 }
