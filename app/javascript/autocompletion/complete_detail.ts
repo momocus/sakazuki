@@ -12,13 +12,13 @@ type CompletionCandidate = {
 type CompletionDict = Array<CompletionCandidate>
 
 /**
- * 指定した複数文字列のいづれか1つでも含まれるかをチェックする
+ * 指定した複数文字列のいずれか1つでも含まれるかをチェックする
  *
  * String.includesの複数候補版。
  *
  * @param target 検索対象の文字列
  * @param keywords 検索する複数キーワード
- * @returns 検索対象にいづれかのキーワードが1つでも含まれればtrue
+ * @returns 検索対象にいずれかのキーワードが1つでも含まれればtrue
  */
 function includesAny(target: string, keywords: Array<string>): boolean {
   return keywords.some((word) => {
