@@ -6,7 +6,8 @@ ja:
       success: "%{name} を登録しました。"
     update:
       success: "%{name} を更新しました。"
-      success_open: "%{name} を開封しました。"
-      success_empty: "%{name} を空にしました。"
+      open: "%{name} を開封しました。 ― %{link}"
+      review: レビューする
+      empty: "%{name} を空にしました。"
     destroy:
       success: "%{name} を削除しました。"

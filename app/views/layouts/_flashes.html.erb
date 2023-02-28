@@ -3,7 +3,7 @@
   <% next if message_type == "timedout" %>
   <div class="alert alert-<%= bootstrap_alert(message_type) %> alert-dismissible fade show shadow-sm"
     data-testid="flash_message">
-    <%= sanitize(message, tags: %w[a]) %>
+    <%= sanitize(message, tags: %w[a i], attributes: %w[class href style]) %>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
 <% end %>

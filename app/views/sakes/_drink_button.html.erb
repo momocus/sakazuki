@@ -7,15 +7,6 @@
                         testid: "open_button_#{sake.id}", }) %>
   </li>
 <% end %>
-<% if sake.unimpressed? %>
-  <% p = sake.sealed? ? { sake: { bottle_level: "opened" } } : {} %>
-  <% testid = sake.sealed? ? "open_and_impress_button_#{sake.id}" : "impress_button_#{sake.id}" %>
-  <li>
-    <%= link_to(tag.i(class: "bi-cup-fill", style: "font-size: 1em;") + t(".impress"),
-                edit_sake_path(sake, params: p),
-                data: { testid: }) %>
-  </li>
-<% end %>
 <% if sake.opened? %>
   <li>
     <%= link_to(tag.i(class: "bi-droplet", style: "font-size: 0.95em;") + t(".empty"),
