@@ -1,3 +1,37 @@
+<% if sake.photos.any? %>
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div id="carouselExampleFade" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <% sake.photos.each_with_index do |photo, i| %>
+              <div class="carousel-item <%= "active" if i == 0 %>">
+                <img src="<%= image_url(photo.image) %>" class="d-block w-100" alt="">
+              </div>
+            <% end %>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% end %>
+
 <div class="row gy-3">
   <div class="col-12">
     <div class="row align-items-baseline">
