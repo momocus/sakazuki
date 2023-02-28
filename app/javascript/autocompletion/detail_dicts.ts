@@ -16,6 +16,7 @@ const tokutei_meisho = [
   { keywords: ["純米吟醸"], completion: "junmai_ginjo" },
   { keywords: ["大吟醸"], completion: "daiginjo" },
   { keywords: ["吟醸"], completion: "ginjo" },
+  { keywords: ["特別純米"], completion: "tokubetsu_junmai" },
   { keywords: ["純米"], completion: "junmai" },
 ]
 
