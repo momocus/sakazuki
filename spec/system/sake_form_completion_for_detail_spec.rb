@@ -44,6 +44,18 @@ RSpec.describe "Sake Form Completion for Detail", js: true do
       selected = I18n.t("enums.sake.tokutei_meisho.junmai_daiginjo")
       expect(page).to have_select("sake_tokutei_meisho", selected:)
     end
+
+    it "is completed 特別本醸造" do
+      fill_in("sake_name", with: "生道井 特別本醸造").send_keys(:tab)
+      selected = I18n.t("enums.sake.tokutei_meisho.tokubetsu_honjozo")
+      expect(page).to have_select("sake_tokutei_meisho", selected:)
+    end
+
+    it "is completed 特別純米" do
+      fill_in("sake_name", with: "生道井 特別純米").send_keys(:tab)
+      selected = I18n.t("enums.sake.tokutei_meisho.tokubetsu_junmai")
+      expect(page).to have_select("sake_tokutei_meisho", selected:)
+    end
   end
 
   describe "season" do
