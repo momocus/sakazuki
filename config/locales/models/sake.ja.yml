@@ -17,7 +17,7 @@ ja:
         aroma_impression: 香り
         color: 色
         taste_impression: 味
-        hiire: 火入れ状態
+        hiire: 火入れ
         nigori: にごり
         awa: 炭酸
         tokutei_meisho: 特定名称
@@ -32,7 +32,7 @@ ja:
         moto: 酛
         seimai_buai: 精米歩合
         roka: ろ過
-        shibori: 絞り
+        shibori: 搾り
         bottle_level: 開封状態
         price: 価格(円)
         price_unit: 円
