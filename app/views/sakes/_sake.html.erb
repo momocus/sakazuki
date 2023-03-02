@@ -68,7 +68,7 @@
             <% image = sake.photos.first.image %>
             <%= link_to(cl_image_tag(image.thumb.url, class: "img-thumbnail img-fluid"), image.url) %>
           <% else %>
-            <%= cl_image_tag(image_url("sake-no-photo.png"), class: "img-thumbnail img-fluid") %>
+            <%= cl_image_tag(image_url("sake-no-photo.avif"), class: "img-thumbnail img-fluid") %>
           <% end %>
         </div>
         <div class="col-6 mt-1 ps-2">
