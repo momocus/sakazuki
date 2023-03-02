@@ -9,9 +9,5 @@ const shareData: ShareData = {
 
 const shareButton = document.getElementById("share_button") as HTMLInputElement
 shareButton.addEventListener("click", () => {
-  navigator.share(shareData).catch((e: unknown) => {
-    if (e instanceof Error) {
-      console.error(e.message)
-    }
-  })
+  void navigator.share(shareData)
 })
