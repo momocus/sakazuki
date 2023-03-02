@@ -69,12 +69,6 @@ jobs:
           POSTGRES_USERNAME: postgres
           POSTGRES_PASSWORD: password
         run: bundle exec rails db:create
-      - name: Configure system parameter
-        run: |
-          sudo swapoff --all
-          sudo sysctl --write vm.swappiness=1
-          sudo sysctl --write fs.file-max=262144
-          sudo sysctl --write vm.max_map_count=262144
       - name: Run tests
         env:
           RAILS_ENV: test
