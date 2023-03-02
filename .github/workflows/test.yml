@@ -69,6 +69,10 @@ jobs:
           POSTGRES_USERNAME: postgres
           POSTGRES_PASSWORD: password
         run: bundle exec rails db:create
+      - name: Assets precompile
+        env:
+          RAILS_ENV: test
+        run: bundle exec rails assets:precompile
       - name: Run tests
         env:
           RAILS_ENV: test
