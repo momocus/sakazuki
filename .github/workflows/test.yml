@@ -19,9 +19,7 @@ jobs:
     needs: check_skip
     if: needs.check_skip.outputs.should_skip != 'true'
 
-    # TODO: Update to ubuntu-latest after install Firefox to Ubuntu 22.04 image
-    #       https://github.com/actions/runner-images/pull/6528
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     services:
       postgres:
