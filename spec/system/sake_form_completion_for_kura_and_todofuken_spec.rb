@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Sake Form Completion for Kura and Todofuken", type: :system do
+RSpec.describe "Sake Form Completion for Kura and Todofuken" do
   let(:user) { create(:user) }
 
   before do

@@ -100,7 +100,7 @@ class SakesController < ApplicationController
     respond_to do |format|
       format.html {
         redirect_to(sakes_url)
-        flash[:success] = t(".success", name: deleted_name)
+        flash.now[:success] = t(".success", name: deleted_name)
       }
     end
   end
@@ -229,7 +229,7 @@ class SakesController < ApplicationController
     key = ".#{key}"
     name = alert_link_tag(@sake.name, sake_path(@sake))
     link = flash_review_link(@sake)
-    flash[:success] = t(key, name:, link:) # HACK: key: "open"のときのみlinkが使われ、他では無視される
+    flash.now[:success] = t(key, name:, link:) # HACK: key: "open"のときのみlinkが使われ、他では無視される
   end
 
   # flash内のレビューするリンクを作成する
