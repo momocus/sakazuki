@@ -88,6 +88,8 @@ end
 # @return [Array<String>] 追加済み銘柄
 # rubocop:disable Metrics/MethodLength
 # rubocop:disable Metrics/AbcSize
+# rubocop:disable Metrics/CyclomaticComplexity
+# rubocop:disable Metrics/PerceivedComplexity
 def add_meigara(name, region, meigaras)
   meigaras =
     case [name, region]
@@ -154,6 +156,8 @@ def add_meigara(name, region, meigaras)
 end
 # rubocop:enable Metrics/MethodLength
 # rubocop:enable Metrics/AbcSize
+# rubocop:enable Metrics/CyclomaticComplexity
+# rubocop:enable Metrics/PerceivedComplexity
 
 # SAKETIMESの海外の地域かどうか
 #
