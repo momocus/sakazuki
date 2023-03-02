@@ -42,6 +42,7 @@ const moto = [
   { keywords: ["生酛", "生もと"], completion: "kimoto" },
   { keywords: ["山廃"], completion: "yamahai" },
   { keywords: ["速醸"], completion: "sokujo" },
+  { keywords: ["水酛"], completion: "mizumoto" },
 ]
 
 const shibori = [
