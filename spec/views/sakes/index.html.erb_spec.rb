@@ -2,7 +2,7 @@ require "rails_helper"
 
 # Capybaraを使うためにsystem specを指定する
 RSpec.describe "sakes/index", type: :system do
-  let!(:sake) { create(:sake, size: 720) }
+  let!(:sake) { sake_with_photos(sake_options: { size: 720 }) }
 
   before do
     visit sakes_path
@@ -14,6 +14,17 @@ RSpec.describe "sakes/index", type: :system do
       text = I18n.t("sakes.sake.edit")
       path = edit_sake_path(sake.id)
       expect(find(:test_id, buttons)).to have_link(text, href: path)
+    end
+
+    it "has image link" do
+      within(".card") do
+        expect(page).to have_link(nil, href: /(jpg|avif)$/)
+      end
+    end
+
+    it "has image link by SimpleLightbox", js: true do
+      find(".img-thumbnail").click
+      expect(page).to have_current_path(sakes_path)
     end
   end
 
