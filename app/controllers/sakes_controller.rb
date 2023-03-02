@@ -100,7 +100,9 @@ class SakesController < ApplicationController
     respond_to do |format|
       format.html {
         redirect_to(sakes_url)
-        flash.now[:success] = t(".success", name: deleted_name)
+        # rubocop:disable Rails/ActionControllerFlashBeforeRender
+        flash[:success] = t(".success", name: deleted_name)
+        # rubocop:enable Rails/ActionControllerFlashBeforeRender
       }
     end
   end
@@ -229,7 +231,9 @@ class SakesController < ApplicationController
     key = ".#{key}"
     name = alert_link_tag(@sake.name, sake_path(@sake))
     link = flash_review_link(@sake)
-    flash.now[:success] = t(key, name:, link:) # HACK: key: "open"のときのみlinkが使われ、他では無視される
+    # rubocop:disable Rails/ActionControllerFlashBeforeRender
+    flash[:success] = t(key, name:, link:) # HACK: key: "open"のときのみlinkが使われ、他では無視される
+    # rubocop:enable Rails/ActionControllerFlashBeforeRender
   end
 
   # flash内のレビューするリンクを作成する
