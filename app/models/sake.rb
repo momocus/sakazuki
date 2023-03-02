@@ -71,6 +71,7 @@ class Sake < ApplicationRecord
     kimoto: 1,
     yamahai: 2,
     sokujo: 3,
+    mizumoto: 4,
   }, _prefix: true
   enum warimizu: {
     unknown: 0,
