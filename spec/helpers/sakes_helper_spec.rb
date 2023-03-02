@@ -73,7 +73,7 @@ RSpec.describe SakesHelper do
   describe "with_japanese_era" do
     context "for normal year" do
       it "returns formated year including 令和" do
-        expect(with_japanese_era(Date.new(2019, 5, 1))).to eq("2019 / 令和1年")
+        expect(with_japanese_era(Date.new(2019, 5, 1))).to eq("2019 / 令和元年")
       end
 
       it "returns formated year including 平成" do
