@@ -22,14 +22,14 @@ RSpec.describe "Drink Buttons" do
 
       it "does not have empty button with i18n text" do
         id = "sake_buttons_#{sealed_sake.id}"
-        expect(find(:test_id, id)).to have_no_text(empty_text)
+        expect(find(:test_id, id)).not_to have_text(empty_text)
       end
     end
 
     context "for opened bottle" do
       it "does not have open button with i18n text" do
         id = "sake_buttons_#{opened_sake.id}"
-        expect(find(:test_id, id)).to have_no_text(open_text)
+        expect(find(:test_id, id)).not_to have_text(open_text)
       end
 
       it "has empty button with i18n text" do
@@ -45,12 +45,12 @@ RSpec.describe "Drink Buttons" do
 
       it "does not have open button with i18n text" do
         id = "sake_buttons_#{empty_sake.id}"
-        expect(find(:test_id, id)).to have_no_text(open_text)
+        expect(find(:test_id, id)).not_to have_text(open_text)
       end
 
       it "does not have empty button with i18n text" do
         id = "sake_buttons_#{empty_sake.id}"
-        expect(find(:test_id, id)).to have_no_text(empty_text)
+        expect(find(:test_id, id)).not_to have_text(empty_text)
       end
     end
   end

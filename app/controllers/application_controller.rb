@@ -26,6 +26,6 @@ class ApplicationController < ActionController::Base
   # 参考: https://github.com/heartcombo/devise/wiki/How-To:-Redirect-back-to-current-page-after-sign-in,-sign-out,-sign-up,-update
   # @return [Boolean] ユーザーが居たパスを保存していいときにtrueを返す。
   def storable_location?
-    request.get? && !request.xhr? && !request.path.match?("\/users\/.*")
+    request.get? && !request.xhr? && !request.path.match?("/users/.*")
   end
 end
