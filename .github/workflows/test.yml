@@ -50,6 +50,10 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ env.cache-env }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-${{ env.cache-env }}-
+      - if: ${{ steps.cache-yarn.outputs.cache-hit != 'true' }}
+        name: List the state of node modules
+        continue-on-error: true
+        run: yarn info
       - name: Install Dependencies
         run: yarn workspaces focus --all --production
       - name: Set up Ruby
