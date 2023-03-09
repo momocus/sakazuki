@@ -2920,6 +2920,7 @@ __metadata:
     stylelint: ">=15.2.0 <16"
     stylelint-config-standard: ">=30.0.1 <31"
     stylelint-config-standard-scss: ">=7.0.1 <8"
+    ts-deepmerge: ">=6.0.2 <7"
     typescript: ">=4.9.5 <5"
   languageName: unknown
   linkType: soft
@@ -3351,6 +3352,13 @@ __metadata:
   version: 3.0.1
   resolution: "trim-newlines@npm:3.0.1"
   checksum: b530f3fadf78e570cf3c761fb74fef655beff6b0f84b29209bac6c9622db75ad1417f4a7b5d54c96605dcd72734ad44526fef9f396807b90839449eb543c6206
+  languageName: node
+  linkType: hard
+
+"ts-deepmerge@npm:>=6.0.2 <7":
+  version: 6.0.2
+  resolution: "ts-deepmerge@npm:6.0.2"
+  checksum: 35ace3b4ad62d2f49cdfa63df7e6c517065e4395ce3e9a82083d03b28dca9aa2643eb85e9b494c0bd25339f09638dcb24802cde749b408840e1fe441e6f875f3
   languageName: node
   linkType: hard
 
