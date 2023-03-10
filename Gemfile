@@ -63,6 +63,7 @@ gem "seed_dump"
 
 # For image uploading
 gem "carrierwave"
+gem "carrierwave-i18n"
 gem "cloudinary"
 
 # For twitter card
