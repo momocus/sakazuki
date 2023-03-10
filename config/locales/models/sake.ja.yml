@@ -7,8 +7,8 @@ ja:
         name: 名前
         kura: 蔵
         photos: 画像
-        bindume_date: 製造年月日
-        brew_year: BY
+        bindume_on: 製造年月日
+        brewery_year: BY
         todofuken: 都道府県
         taste_value: 味の濃淡
         aroma_value: 香りの高低

@@ -13,8 +13,8 @@ RSpec.describe "Copy Sakes", type: :system do
            aroma_impression: "華やかな吟醸香",
            taste_impression: "フレッシュな味",
            awa: "微炭酸", note: "今年は米が硬かった",
-           bindume_date: Date.new(2002, 2, 1),
-           brew_year: Date.new(2001, 7, 1),
+           bindume_on: Date.new(2002, 2, 1),
+           brewery_year: Date.new(2001, 7, 1),
            taste_value: 5, aroma_value: 5, nihonshudo: 1.0,
            sando: 1.3, aminosando: 0.8, tokutei_meisho: :junmai_ginjo,
            alcohol: 18, warimizu: :genshu, moto: :sokujo, bottle_level: :empty,
@@ -91,24 +91,24 @@ RSpec.describe "Copy Sakes", type: :system do
       end
     end
 
-    describe "bindume_date year" do
+    describe "bindume_on year" do
       it "has copied bindume year", js: true do
-        year = with_japanese_era(sake.bindume_date)
+        year = with_japanese_era(sake.bindume_on)
         expect(page).to have_select(test_id: "sake_bindume_year", selected: year)
       end
     end
 
-    describe "bindume_date month" do
+    describe "bindume_on month" do
       it "has copied bindume month", js: true do
-        month = I18n.l(sake.bindume_date, format: "%b")
+        month = I18n.l(sake.bindume_on, format: "%b")
         expect(page).to have_select(test_id: "sake_bindume_month", selected: month)
       end
     end
 
-    describe "brew_year" do
-      it "has copied brew_year" do
-        by = with_japanese_era(sake.brew_year)
-        expect(page).to have_select(test_id: "sake_brew_year", selected: by)
+    describe "brewery_year" do
+      it "has copied brewery_year" do
+        by = with_japanese_era(sake.brewery_year)
+        expect(page).to have_select(test_id: "sake_brewery_year", selected: by)
       end
     end
   end

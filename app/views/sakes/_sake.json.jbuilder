@@ -1,6 +1,6 @@
 json.extract!(sake,
               :id, :alcohol, :aminosando, :aroma_impression, :aroma_value,
-              :awa, :bindume_date, :bottle_level, :brew_year, :color,
+              :awa, :bindume_on, :bottle_level, :brewery_year, :color,
               :genryomai, :hiire, :kakemai, :kobo, :kura, :moto, :name,
               :nigori, :nihonshudo, :note, :price, :roka, :sando, :season,
               :seimai_buai, :shibori, :size, :taste_impression, :taste_value,
