@@ -1,3 +1,7 @@
-<button type="button" class="btn btn-link-secondary fs-3 py-0" id="share_button"><i class="bi bi-share"></i></button>
+<a href="#" class="fs-3 link-dark" id="share_button">
+  <i class="bi bi-share"></i>
+</a>
 <%# HACK: hideenのtextareaをshare.tsから参照する %>
-<textarea class="d-none" id="share_text"><%= t("helper.share.text", sake:) %></textarea>
+<textarea class="d-none" id="share_text">
+  <%= t("helper.share.text", sake:) %>
+</textarea>
