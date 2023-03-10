@@ -71,7 +71,7 @@ module ApplicationHelper
   def adsense_tags(client = nil)
     return unless Rails.env.production?
 
-    client ||= ENV["GOOGLE_ADSENSE_CLIENT"]
+    client ||= ENV.fetch("GOOGLE_ADSENSE_CLIENT", nil)
     src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=#{client}"
     client ? tag.script(async: "async", src:, crossorigin: "anonymous") : ""
   end

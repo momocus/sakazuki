@@ -22,7 +22,7 @@ RSpec.describe "Sakes" do
       end
 
       it "returns all sakes json" do
-        json = JSON.parse(response.body)
+        json = response.parsed_body
         expect(json.present?).to be true
       end
     end
@@ -35,7 +35,7 @@ RSpec.describe "Sakes" do
 
       it "returns 1 sake json" do
         get sake_path(id, format: :json)
-        json = JSON.parse(response.body)
+        json = response.parsed_body
         expect(json.present?).to be true
       end
     end

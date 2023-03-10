@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Sake Index Total Spec", type: :system do
+RSpec.describe "Sake Index Total Spec" do
   include SakesHelper
 
   before do

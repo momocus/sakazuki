@@ -128,10 +128,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rails/ujs@npm:7.0.2-2":
-  version: 7.0.2-2
-  resolution: "@rails/ujs@npm:7.0.2-2"
-  checksum: 7f2888804d08852bc450028acb562e7e47f6855cf3f3ae546131a587cf08a223340fb1cbb25763963a3d5c261bb82bb9c9698c6f23d2e3ad44a44d7b10413a0e
+"@rails/ujs@npm:7.0.4-2":
+  version: 7.0.4-2
+  resolution: "@rails/ujs@npm:7.0.4-2"
+  checksum: 60bdd28c98e3b1bf52dce4bacfe0672b35224b72fcf5052ef3e357cd84e0a340f002b64c9bd4e7ad9085a40c76d84af7499af1761e1e8d27efbed73101726270
   languageName: node
   linkType: hard
 
@@ -2817,7 +2817,7 @@ __metadata:
   resolution: "sakazuki@workspace:."
   dependencies:
     "@popperjs/core": ">=2.11.5 <3"
-    "@rails/ujs": 7.0.2-2
+    "@rails/ujs": 7.0.4-2
     "@types/chart.js": ">=2.9.35 <3"
     "@typescript-eslint/eslint-plugin": ">=5.15.0 <6"
     "@typescript-eslint/parser": ">=5.15.0 <6"

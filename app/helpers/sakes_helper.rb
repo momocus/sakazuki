@@ -41,7 +41,7 @@ module SakesHelper
   # @param date [Date] 日付
   # @return [String] "2021 / 令和3年"のような文字列
   def with_japanese_era(date)
-    "#{date.year} / #{date.to_era('%O%-E年')}"
+    "#{date.year} / #{date.to_era('%O%K-E年')}"
   end
 
   # どの瓶状態（bottle_level）にもマッチしない値

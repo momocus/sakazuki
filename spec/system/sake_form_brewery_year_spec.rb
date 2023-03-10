@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Sake Form Brew Year", type: :system do
+RSpec.describe "Sake Form Brew Year" do
   # SakesHelper.with_japanese_eraを使う
   include SakesHelper
 

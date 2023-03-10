@@ -115,6 +115,17 @@ class Sake < ApplicationRecord
   ransack_alias :all_text, :aroma_impression_or_awa_or_color_or_genryomai_or_kakemai_or_kobo_or_kura_or_name_or_nigori_or_note_or_roka_or_season_or_shibori_or_taste_impression_or_todofuken
   # rubocop:enable Layout/LineLength
 
+  # Ransackでの検索許可リスト
+  def self.ransackable_attributes(_auth_object = nil)
+    # すべてを許可
+    authorizable_ransackable_attributes
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    # すべてを関連付け
+    authorizable_ransackable_associations
+  end
+
   # 酒が未開封か
   # @return [Boolean] 酒が未開封ならture、さもなくばfalse
   def sealed?
