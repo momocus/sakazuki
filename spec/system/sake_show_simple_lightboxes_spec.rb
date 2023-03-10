@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Sake Show Simple Lightboxes", js: true do
   let(:sake) { sake_with_photos(photo_count: 1) }
+
   before do
     visit sake_path(sake.id)
   end
