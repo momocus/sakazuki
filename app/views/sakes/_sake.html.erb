@@ -36,7 +36,7 @@
     <%# HACK: 名前の長さによって揃わない要素を、footerを使って揃える %>
     <div class="card-footer">
       <div class="row">
-        <div class="col-7">
+        <div class="col-6">
           <div class="row">
             <div class="col-12">
               <% if sake.tokutei_meisho == "none" %>
@@ -50,29 +50,30 @@
             </div>
           </div>
         </div>
-        <div class="col-5">
+        <div class="col-6">
           <div class="row">
             <div class="col-12">
-              <%= t(".time_ago",
-                    count: time_ago_in_words(latest_at(sake), include_seconds: true),
-                    done: t(".#{sake.bottle_level}")) %>
+              <%= sake.bottle_level_i18n %>
+              <span class="text-muted">
+                ‒ <%= t(".time_ago", count: time_ago_in_words(latest_at(sake))) %>
+              </span>
             </div>
             <div class="col-12">
               <%= render(partial: "rating", locals: { rating: sake.rating }) %>
             </div>
           </div>
         </div>
-        <div class="col-7 mt-3">
-          <div class="ratio ratio-4x3">
+        <div class="col-6 pe-4 align-self-center">
+          <% thumb_url = sake.photos.any? ? sake.photos.first.image.thumb.url : image_url("sake-no-photo.png") %>
+          <%= cl_image_tag(thumb_url, { class: "img-fulid img-thumbnail" }) %>
+        </div>
+        <div class="col-6 mt-1 ps-2">
+          <div class="ratio ratio-1x1">
             <canvas id="sake-<%= sake.id %>"
               data-taste-value="<%= sake.taste_value %>"
               data-aroma-value="<%= sake.aroma_value %>">
             </canvas>
           </div>
-        </div>
-        <div class="col-5 mt-3 align-self-center">
-          <% thumb_url = sake.photos.any? ? sake.photos.first.image.thumb.url : image_url("sake-no-photo.png") %>
-          <%= cl_image_tag(thumb_url, { class: "img-fulid img-thumbnail" }) %>
         </div>
       </div>
     </div>
