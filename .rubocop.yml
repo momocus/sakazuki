@@ -4,6 +4,7 @@ inherit_from:
 require:
   - rubocop-rails
   - rubocop-rspec
+  - rubocop-capybara
 
 AllCops:
   DisabledByDefault: false # Cookpad Styleguideの上書き
