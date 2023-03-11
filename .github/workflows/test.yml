@@ -53,21 +53,26 @@ jobs:
       - name: Install Dependencies
         run: yarn workspaces focus --all --production
       - name: Set up Ruby
+        env:
+          BUNDLE_WITHOUT: development
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
       - name: Setup Database
         env:
+          BUNDLE_WITHOUT: development
           RAILS_ENV: test
           POSTGRES_USERNAME: postgres
           POSTGRES_PASSWORD: password
         run: bundle exec rails db:create
       - name: Assets precompile
         env:
+          BUNDLE_WITHOUT: development
           RAILS_ENV: test
         run: bundle exec rails assets:precompile
       - name: Run tests
         env:
+          BUNDLE_WITHOUT: development
           POSTGRES_USERNAME: postgres
           POSTGRES_PASSWORD: password
         run: bundle exec rspec
