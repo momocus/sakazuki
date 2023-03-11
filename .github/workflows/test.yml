@@ -58,11 +58,6 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-      - name: Install bundle dependencies
-        run: |
-          bundle config set --local without development
-          bundle config set --local with test
-          bundle install
       - name: Setup Database
         env:
           RAILS_ENV: test
