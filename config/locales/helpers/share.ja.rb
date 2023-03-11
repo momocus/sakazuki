@@ -37,7 +37,7 @@ module ShareHelperJa
     color = add_period(color)
     aroma = add_period(aroma)
     taste = add_period(taste)
-    "#{kura}#{name}#{color}#{aroma}#{taste} \#SAKAZUKI"
+    "#{kura}#{name}#{color}#{aroma}#{taste} #SAKAZUKI"
   end
 
   module_function :to_enclosed

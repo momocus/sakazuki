@@ -23,7 +23,7 @@
 
 ## Requirements
 
-- Ruby = 3.1.2
+- Ruby = 3.2.1
 - Bundler
 - Yarn🐈 >= 1.22.4
 - Node.js >= 12.20.1
