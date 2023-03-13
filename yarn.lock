@@ -357,13 +357,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rails/ujs@npm:7.0.4-2":
-  version: 7.0.4-2
-  resolution: "@rails/ujs@npm:7.0.4-2"
-  checksum: 60bdd28c98e3b1bf52dce4bacfe0672b35224b72fcf5052ef3e357cd84e0a340f002b64c9bd4e7ad9085a40c76d84af7499af1761e1e8d27efbed73101726270
-  languageName: node
-  linkType: hard
-
 "@tootallnate/once@npm:2":
   version: 2.0.0
   resolution: "@tootallnate/once@npm:2.0.0"
@@ -2903,7 +2896,6 @@ __metadata:
   resolution: "sakazuki@workspace:."
   dependencies:
     "@popperjs/core": ">=2.11.6 <3"
-    "@rails/ujs": 7.0.4-2
     "@typescript-eslint/eslint-plugin": ">=5.54.1 <6"
     "@typescript-eslint/parser": ">=5.54.1 <6"
     bootstrap: ">=5.2.3 <6"
