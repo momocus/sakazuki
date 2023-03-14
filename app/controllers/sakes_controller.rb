@@ -63,8 +63,8 @@ class SakesController < ApplicationController
       if @sake.save
         store_photos
         format.html {
-          redirect_to(@sake)
-          flash[:success] = t(".success", name: alert_link_tag(@sake.name, sake_path(@sake)))
+          msg = t(".success", name: alert_link_tag(@sake.name, sake_path(@sake)))
+          redirect_to(@sake, flash: { success: msg })
         }
       else
         format.html { render(:new, status: :unprocessable_entity) }
@@ -99,10 +99,8 @@ class SakesController < ApplicationController
     @sake.destroy
     respond_to do |format|
       format.html {
-        redirect_to(sakes_url)
-        # rubocop:disable Rails/ActionControllerFlashBeforeRender
-        flash[:success] = t(".success", name: deleted_name)
-        # rubocop:enable Rails/ActionControllerFlashBeforeRender
+        redirect_to(sakes_url,
+                    flash: { success: t(".success", name: deleted_name) })
       }
     end
   end
