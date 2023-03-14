@@ -82,8 +82,8 @@ class SakesController < ApplicationController
         delete_photos
         store_photos
         format.html {
-          redirect_after_update
           flash_after_update
+          redirect_after_update
         }
       else
         format.html { render(:edit, status: :unprocessable_entity) }
