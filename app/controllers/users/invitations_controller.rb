@@ -19,8 +19,7 @@ module Users
     def accept_admin
       return if current_user.admin
 
-      flash[:danger] = t(".permission_denied")
-      redirect_to(root_url)
+      redirect_to(root_url, flash: { danger: t(".permission_denied") })
     end
   end
 end
