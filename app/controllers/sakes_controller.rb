@@ -57,7 +57,7 @@ class SakesController < ApplicationController
     if @sake.save
       store_photos
       msg = t(".success", name: alert_link_tag(@sake.name, sake_path(@sake)))
-      redirect_to(@sake, flash: { success: msg })
+      redirect_to(@sake, status: :see_other, flash: { success: msg })
     else
       render(:new, status: :unprocessable_entity)
     end
@@ -80,6 +80,7 @@ class SakesController < ApplicationController
     deleted_name = @sake.name
     @sake.destroy
     redirect_to(sakes_url,
+                status: :see_other,
                 flash: { success: t(".success", name: deleted_name) })
   end
 
@@ -197,7 +198,7 @@ class SakesController < ApplicationController
   # 上記のどちらにも当てはまらない場合、ユーザーが直前にいたページにリダイレクトする。
   def redirect_after_update
     if update_from_edit?
-      redirect_to(@sake)
+      redirect_to(@sake, status: :see_other)
     else
       redirect_back(fallback_location: @sake)
     end
