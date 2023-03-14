@@ -93,9 +93,11 @@
           <div class="col-auto">
             <%= button_to(t(".cancel_my_account"),
                           registration_path(resource_name),
-                          data: {
-                            trubo_method: :delete,
-                            turbo_confirm: t(".are_you_sure")
+                          method: :delete,
+                          form: {
+                            data: {
+                              turbo_confirm: t(".are_you_sure"),
+                            },
                           },
                           class: "btn btn-danger mx-3") %>
           </div>
