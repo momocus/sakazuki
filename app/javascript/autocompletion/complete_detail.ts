@@ -80,18 +80,22 @@ function complete(
   }
 }
 
-{
+addEventListener("turbo:load", (_event) => {
   // 酒の名前の入力先
-  const nameElem = document.getElementById("sake_name") as HTMLInputElement
+  const nameElem = document.getElementById(
+    "sake_name"
+  ) as HTMLInputElement | null
 
-  nameElem.addEventListener("change", (_event) => {
-    const name = nameElem.value
-    complete(name, dicts.tokutei_meisho, "sake_tokutei_meisho", "none")
-    complete(name, dicts.season, "sake_season", "")
-    complete(name, dicts.moto, "sake_moto", "unknown")
-    complete(name, dicts.shibori, "sake_shibori", "")
-    complete(name, dicts.roka, "sake_roka", "")
-    complete(name, dicts.hiire, "sake_hiire", "unknown")
-    complete(name, dicts.warimizu, "sake_warimizu", "unknown")
-  })
-}
+  if (nameElem != null) {
+    nameElem.addEventListener("change", (_event) => {
+      const name = nameElem.value
+      complete(name, dicts.tokutei_meisho, "sake_tokutei_meisho", "none")
+      complete(name, dicts.season, "sake_season", "")
+      complete(name, dicts.moto, "sake_moto", "unknown")
+      complete(name, dicts.shibori, "sake_shibori", "")
+      complete(name, dicts.roka, "sake_roka", "")
+      complete(name, dicts.hiire, "sake_hiire", "unknown")
+      complete(name, dicts.warimizu, "sake_warimizu", "unknown")
+    })
+  }
+})

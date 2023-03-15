@@ -17,22 +17,27 @@ function checkMeigara(words: Array<string>, meigaras: MeigarasHash): string {
   else return ""
 }
 
-{
-  const nameForm = document.getElementById("sake_name") as HTMLInputElement
-  const kuraForm = document.getElementById(
-    "sake_kura_todofuken_autocompletion"
-  ) as HTMLInputElement
+addEventListener("turbo:load", (_event) => {
+  const nameForm = document.getElementById(
+    "sake_name"
+  ) as HTMLInputElement | null
 
-  nameForm.addEventListener("change", (_event) => {
-    // まだ蔵が入力されてないときに補完を試みる
-    if (kuraForm.value == "") {
-      const name = nameForm.value
-      const words = name.split(RegExp(/\s/))
-      const completion = checkMeigara(words, meigaras.dict)
-      kuraForm.value = completion
-      // changeイベントを発火する
-      const event = new Event("change")
-      kuraForm.dispatchEvent(event)
-    }
-  })
-}
+  if (nameForm != null) {
+    const kuraForm = document.getElementById(
+      "sake_kura_todofuken_autocompletion"
+    ) as HTMLInputElement
+
+    nameForm.addEventListener("change", (_event) => {
+      // まだ蔵が入力されてないときに補完を試みる
+      if (kuraForm.value == "") {
+        const name = nameForm.value
+        const words = name.split(RegExp(/\s/))
+        const completion = checkMeigara(words, meigaras.dict)
+        kuraForm.value = completion
+        // changeイベントを発火する
+        const event = new Event("change")
+        kuraForm.dispatchEvent(event)
+      }
+    })
+  }
+})

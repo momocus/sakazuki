@@ -1,7 +1,6 @@
 import SimpleLightbox from "simplelightbox"
 
-// Main
-{
+addEventListener("turbo:load", (_event) => {
   new SimpleLightbox(".photo-gallery a", {
     fadeSpeed: 100,
     animationSlide: false,
@@ -9,4 +8,4 @@ import SimpleLightbox from "simplelightbox"
     close: false,
     fileExt: false,
   })
-}
+})
