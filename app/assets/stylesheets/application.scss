@@ -2,6 +2,8 @@
 @import "./bootstrap/custom";
 @import "bootstrap/scss/bootstrap";
 @import "bootstrap-icons/font/bootstrap-icons";
+@import "https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap";
+@import "simplelightbox/src/simple-lightbox";
 
 h1 {
   @extend .mt-2;
@@ -55,4 +57,132 @@ h1 {
   @extend .border;
   @extend .rounded-pill;
   @extend .shadow;
+}
+
+// ------ index ------
+
+.name-link {
+  @extend .link-primary;
+
+  text-decoration-line: none;
+}
+
+.dropdown-menu {
+  a {
+    @extend .dropdown-item;
+
+    i {
+      @extend .me-2;
+    }
+  }
+}
+
+// drink_buttonのトグルボタンの三角を消す
+.dropdown-toggle::after {
+  display: none;
+}
+
+.card-footer {
+  background-color: $gray-100;
+  border-top: none;
+}
+
+// ------ form ------
+
+.select-delete-photos input[type="checkbox"] {
+  display: none;
+}
+
+.select-delete-photos input[type="checkbox"]:checked + label img {
+  @extend .border-danger;
+  @extend .border-5;
+}
+
+.select-delete-photos input[type="checkbox"]:checked + label::after {
+  @extend .text-danger;
+  @extend .fs-1;
+
+  content: "✖";
+  display: block;
+  margin-top: -3ex;
+  margin-left: 1ex;
+}
+
+// ------ show ------
+
+.underline-column {
+  @extend .row;
+  @extend .mx-0;
+  @extend .border-primary;
+  @extend .border-1;
+  @extend .border-bottom;
+  @extend .align-items-baseline;
+
+  > .label {
+    @extend .col-4;
+    @extend .ps-0;
+  }
+
+  > .string-value {
+    @extend .col-8;
+    @extend .text-center;
+  }
+
+  > .numeric-value {
+    @extend .col-5;
+    @extend .text-end;
+  }
+
+  > .numeric-unit {
+    @extend .col-3;
+    @extend .ps-0;
+  }
+
+  .highlight-value {
+    @extend .fs-5;
+  }
+
+  .lowlight-value {
+    @extend .fs-6;
+    @extend .fw-light;
+    @extend .text-muted;
+  }
+}
+
+.textbox {
+  @extend .row;
+
+  > .label {
+    @extend .col-auto;
+  }
+
+  > .text {
+    @extend .col-12;
+
+    > div {
+      @extend .fs-5;
+      @extend .border-light;
+      @extend .border-1;
+      @extend .border;
+      @extend .rounded;
+      @extend .p-2;
+    }
+  }
+}
+
+// ------ menu ------
+
+$accent: #b7282e;
+
+.menu-font {
+  font-family: "Yuji Syuku", serif;
+}
+
+.accent-text {
+  color: $accent;
+}
+
+.price-tag-border {
+  @extend .border-bottom;
+  @extend .border-dark;
 }
