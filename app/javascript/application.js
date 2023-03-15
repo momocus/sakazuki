@@ -1,6 +1,17 @@
 // Entry point for the build script in your package.json
-/* eslint-env node */
 import "@hotwired/turbo-rails"
+import "bootstrap"
 
-// eslint-disable-next-line no-unused-vars
-import * as bootstrap from "bootstrap"
+// index/show
+import "./taste_graph/show_taste_graph"
+import "./simple_lightbox/simple_lightbox.ts"
+
+// show
+import "./share/share.ts"
+
+// form
+import "./autocompletion/complete_meigara"
+import "./autocompletion/complete_detail"
+import "./sync_dom/sync_kura_todofuken"
+import "./taste_graph/input_taste_graph"
+import "./rating/rating"
