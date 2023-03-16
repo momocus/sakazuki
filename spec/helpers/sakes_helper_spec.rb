@@ -79,6 +79,24 @@ RSpec.describe SakesHelper do
     end
   end
 
+  describe "bindume_collection" do
+    it "generates a range ending with current" do
+      date = Time.current.to_date.beginning_of_month
+      year = with_japanese_era(date)
+      month = I18n.l(date, format: "%B")
+      candidate = ["#{year} #{month}", date.to_s]
+      expect(bindume_collection.last).to eq(candidate)
+    end
+
+    it "generates a range starting with 30 years ago" do
+      date = 30.years.ago.to_date.to_date.beginning_of_month
+      year = with_japanese_era(date)
+      month = I18n.l(date, format: "%B")
+      candidate = ["#{year} #{month}", date.to_s]
+      expect(bindume_collection.first).to eq(candidate)
+    end
+  end
+
   describe "with_japanese_era" do
     context "for normal year" do
       it "returns formated year including 令和" do
