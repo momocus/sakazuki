@@ -44,6 +44,9 @@ module SakesHelper
     "#{date.year} / #{date.to_era('%O%K-E年')}"
   end
 
+  # BYの候補を作成する
+  #
+  # @return [Array<String, String>] BYセレクタで使う、表示用文字列と日付データ
   def by_collection
     collection = by_range.map { |d| [with_japanese_era(d), d.to_s] }
     collection.push([I18n.t("sakes.form_abstract.unknown"), ""])
