@@ -374,6 +374,8 @@ GEM
     smart_properties (1.17.0)
     spring (4.1.1)
     ssrf_filter (1.1.1)
+    stimulus-rails (1.2.1)
+      railties (>= 6.0.0)
     thor (1.2.1)
     timeout (0.3.2)
     turbo-rails (1.4.0)
@@ -453,6 +455,7 @@ DEPENDENCIES
   simplecov
   simplecov-cobertura
   spring
+  stimulus-rails
   turbo-rails
   tzinfo-data
   web-console
