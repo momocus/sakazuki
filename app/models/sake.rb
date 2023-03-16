@@ -41,6 +41,7 @@
 #  updated_at       :datetime         not null
 #
 
+# rubocop:disable Metrics/ClassLength
 class Sake < ApplicationRecord
   has_many :photos, dependent: :destroy
   enum bottle_level: {
@@ -71,6 +72,7 @@ class Sake < ApplicationRecord
     kimoto: 1,
     yamahai: 2,
     sokujo: 3,
+    mizumoto: 4,
   }, _prefix: true
   enum warimizu: {
     unknown: 0,
@@ -183,3 +185,4 @@ class Sake < ApplicationRecord
     (price.to_f / size * 180 * SELLING_RATE).ceil(-2)
   end
 end
+# rubocop:enable Metrics/ClassLength
