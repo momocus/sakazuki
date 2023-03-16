@@ -35,13 +35,15 @@ class SakesController < ApplicationController
 
   # GET /sakes/new
   def new
-    copy = params[:copied_from].present?
-    copied = Sake.find(params[:copied_from]) if copy
-
-    attr = copy ? copy_attributes(copied) : default_attributes
-    @sake = Sake.new(attr)
-
-    flash[:info] = t(".copy", name: alert_link_tag(copied.name, sake_path(copied))) if copy
+    copied_id = params[:copied_from]
+    if copied_id
+      copied = Sake.find(copied_id)
+      attr = copy_attributes(copied)
+      @sake = Sake.new(attr)
+      flash[:info] = t(".copy", name: alert_link_tag(copied.name, sake_path(copied)))
+    else
+      @sake = Sake.new(default_attributes)
+    end
   end
 
   # GET /sakes/1/edit
