@@ -63,9 +63,13 @@
             </div>
           </div>
         </div>
-        <div class="col-6 pe-4 align-self-center">
-          <% thumb_url = sake.photos.any? ? sake.photos.first.image.thumb.url : image_url("sake-no-photo.png") %>
-          <%= cl_image_tag(thumb_url, { class: "img-fulid img-thumbnail" }) %>
+        <div class="col-6 pe-4 align-self-center photo-gallery">
+          <% if sake.photos.any? %>
+            <% image = sake.photos.first.image %>
+            <%= link_to(cl_image_tag(image.thumb.url, class: "img-thumbnail img-fluid"), image.url) %>
+          <% else %>
+            <%= cl_image_tag(image_url("sake-no-photo.png"), class: "img-thumbnail img-fluid") %>
+          <% end %>
         </div>
         <div class="col-6 mt-1 ps-2">
           <div class="ratio ratio-1x1">
