@@ -70,7 +70,7 @@ module SakesHelper
   def month_range
     first = Time.current.ago(start_year_limit.years)
     last = Time.current
-    (first.to_date..last.to_date).map { |d| d.beginning_of_month }.uniq
+    (first.to_date..last.to_date).map(&:beginning_of_month).uniq
   end
 
   # 製造年月の候補を作成する
