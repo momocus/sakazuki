@@ -41,7 +41,7 @@
       </div>
     <% end %>
   </div>
-  <%= turbo_frame_tag("sakes", target: "_top") do %>
+  <%= turbo_frame_tag("sakes", target: "_top", data: { turbo_action: :advance }) do %>
     <div class="col">
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2">
         <%= render(partial: "sake", collection: @sakes) %>
