@@ -160,7 +160,7 @@ class SakesController < ApplicationController
     {
       size: 720,
       brewery_year: to_by(Time.current),
-      bindume_on: to_day_one(Time.current),
+      bindume_on: Time.current.to_date.beginning_of_month,
     }
   end
 

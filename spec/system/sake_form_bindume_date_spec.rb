@@ -32,7 +32,7 @@ RSpec.describe "Sake Form Bindume Date" do
 
     it "has this year and month" do
       sake = sake_from_show_path(page.current_path)
-      expect(sake.bindume_on).to eq(to_day_one(Time.current))
+      expect(sake.bindume_on).to eq(Time.current.to_date.beginning_of_month)
     end
   end
 

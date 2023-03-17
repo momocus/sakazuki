@@ -52,14 +52,6 @@ module SakesHelper
     collection.push([I18n.t("sakes.form_abstract.unknown"), ""])
   end
 
-  # Dateオブジェクトの日付を1にする
-  #
-  # @param date [Date] 対象の日付
-  # @return [Date] 日付を1日にしたDate
-  def to_day_one(date)
-    Date.new(date.year, date.month)
-  end
-
   # 指定された期間で年月のレンジを作成する
   #
   # 作成されるレンジのステップは1ヶ月となる。
@@ -78,7 +70,7 @@ module SakesHelper
   def month_range
     first = Time.current.ago(start_year_limit.years)
     last = Time.current
-    (first.to_date..last.to_date).map { |d| to_day_one(d) }.uniq
+    (first.to_date..last.to_date).map { |d| d.beginning_of_month }.uniq
   end
 
   # 製造年月の候補を作成する
