@@ -54,23 +54,29 @@
             </div>
 
             <div class="col-12 order-1 col-lg-6 order-lg-2 pt-2">
-              <div class="ratio ratio-4x3">
-                <canvas id="taste_graph"></canvas>
+              <div class="ratio ratio-4x3"
+                data-controller="input-taste-graph">
+                <canvas data-input-taste-graph-target="canvas"></canvas>
+                <%= form.number_field(:taste_value,
+                                      hidden: true,
+                                      min: 0,
+                                      max: 6,
+                                      step: 1,
+                                      data: {
+                                        "input-taste-graph-target": "taste",
+                                        testid: "sake_taste_value",
+                                      }) %>
+                <%= form.number_field(:aroma_value,
+                                      hidden: true,
+                                      min: 0,
+                                      max: 6,
+                                      step: 1,
+                                      data: {
+                                        "input-taste-graph-target": "aroma",
+                                        aroma_value: sake.aroma_value,
+                                        testid: "sake_aroma_value",
+                                      }) %>
               </div>
-              <%= form.number_field(:taste_value,
-                                    id: "sake_taste_value",
-                                    hidden: true,
-                                    min: 0,
-                                    max: 6,
-                                    step: 1,
-                                    data: { taste_value: sake.taste_value, testid: "sake_taste_value" }) %>
-              <%= form.number_field(:aroma_value,
-                                    id: "sake_aroma_value",
-                                    hidden: true,
-                                    min: 0,
-                                    max: 6,
-                                    step: 1,
-                                    data: { aroma_value: sake.aroma_value, testid: "sake_aroma_value" }) %>
             </div>
           </div>
         </fieldset>
