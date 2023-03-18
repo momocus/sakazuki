@@ -3,3 +3,6 @@
 // ./bin/rails generate stimulus controllerName
 
 import { application } from "./application"
+
+import ShowTasteGraphController from "./show_taste_graph_controller"
+application.register("show-taste-graph", ShowTasteGraphController)
