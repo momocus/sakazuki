@@ -11,5 +11,4 @@ import "./share/share.ts"
 // form
 import "./autocompletion/complete_meigara"
 import "./autocompletion/complete_detail"
-import "./sync_dom/sync_kura_todofuken"
 import "./controllers"

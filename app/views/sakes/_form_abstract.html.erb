@@ -19,14 +19,25 @@
                                   required: true,
                                   data: { testid: "sake_name" }) %>
             </div>
-            <div class="col-12 col-lg-6">
+            <div class="col-12 col-lg-6" data-controller="sync-kura-todofuken">
               <%= form.label(:kura, class: "form-label") %>
-              <input type="text" id="sake_kura_todofuken_autocompletion"
-                class="form-control" autocomplete="on" list="kura-list"
+              <input type="text" class="form-control" autocomplete="on" list="kura-list"
+                id="sake_kura_todofuken_autocompletion"
+                data-sync-kura-todofuken-target="mixed"
                 data-testid="sake_kura_todofuken_autocompletion">
               <%= render(partial: "kura_datalist") %>
-              <%= form.text_field(:kura, id: "sake_kura", hidden: true, data: { testid: "sake_kura" }) %>
-              <%= form.text_field(:todofuken, id: "sake_todofuken", hidden: true, data: { testid: "sake_todofuken" }) %>
+              <%= form.text_field(:kura,
+                                  hidden: true,
+                                  data: {
+                                    "sync-kura-todofuken-target": "kura",
+                                    testid: "sake_kura",
+                                  }) %>
+              <%= form.text_field(:todofuken,
+                                  hidden: true,
+                                  data: {
+                                    "sync-kura-todofuken-target": "todofuken",
+                                    testid: "sake_todofuken",
+                                  }) %>
             </div>
           </div>
         </fieldset>
