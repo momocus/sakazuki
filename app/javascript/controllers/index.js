@@ -12,3 +12,6 @@ application.register("rating", RatingController)
 
 import ShowTasteGraphController from "./show_taste_graph_controller"
 application.register("show-taste-graph", ShowTasteGraphController)
+
+import SyncKuraTodofukenController from "./sync_kura_todofuken_controller"
+application.register("sync-kura-todofuken", SyncKuraTodofukenController)
