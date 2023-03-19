@@ -1,11 +1,18 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="sync-kura-todofuken"
-export default class SyncKuraTodofukenController extends Controller<HTMLDivElement> {
+// Connects to data-controller="sake-kura"
+export default class SakeKuraController extends Controller<HTMLDivElement> {
   static targets = ["kura", "todofuken", "mixed"]
   declare readonly kuraTarget: HTMLInputElement
   declare readonly todofukenTarget: HTMLInputElement
   declare readonly mixedTarget: HTMLInputElement
+
+  private loadKuraTodofuken() {
+    this.mixedTarget.value =
+      this.kuraTarget.value && this.todofukenTarget.value
+        ? `${this.kuraTarget.value}（${this.todofukenTarget.value}）`
+        : this.kuraTarget.value
+  }
 
   private stripKuraTodofuken(kuraTodofuken: string) {
     // フォーマットは"蔵名（県名）"
@@ -14,13 +21,6 @@ export default class SyncKuraTodofukenController extends Controller<HTMLDivEleme
 
     if (result && result[1] && result[2]) return [result[1], result[2]]
     else return [kuraTodofuken, ""]
-  }
-
-  private loadKuraTodofuken() {
-    this.mixedTarget.value =
-      this.kuraTarget.value && this.todofukenTarget.value
-        ? `${this.kuraTarget.value}（${this.todofukenTarget.value}）`
-        : this.kuraTarget.value
   }
 
   private setSyncEvent() {
