@@ -16,7 +16,7 @@ module ApplicationHelper
           rel: "icon",
           sizes: "32x32",
           href: asset_path("favicon-32x32.avif"),
-          type: "image/png",
+          type: "image/avif",
         },
       ],
       site: "SAKAZUKI",
