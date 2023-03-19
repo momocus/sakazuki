@@ -10,7 +10,7 @@ module ApplicationHelper
           rel: "apple-touch-icon-precomposed",
           sizes: "180x180",
           href: asset_path("apple-touch-icon.avif"),
-          type: "image/png",
+          type: "image/avif",
         },
         {
           rel: "icon",
