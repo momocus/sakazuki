@@ -75,7 +75,9 @@ RUN --mount=type=cache,id=dev-apt-cache,sharing=locked,target=/var/cache/apt \
 FROM build_deps as gems
 
 COPY Gemfile Gemfile.lock ./
-RUN bundle install &&  rm -rf vendor/bundle/ruby/*/cache
+RUN bundle config set --local without 'development test' && \
+    bundle install && \
+    rm -rf vendor/bundle/ruby/*/cache
 
 #######################################################################
 
@@ -86,7 +88,7 @@ FROM build_deps as node_modules
 COPY package.json yarn.lock .yarnrc.yml ./
 COPY .yarn/releases/ ./.yarn/releases/
 COPY .yarn/plugins/ ./.yarn/plugins/
-RUN yarn install
+RUN yarn workspaces focus --all --production
 
 #######################################################################
 

@@ -51,31 +51,28 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-${{ env.cache-env }}-
       - name: Install Dependencies
-        run: |
-          yarn workspaces focus --production
-          yarn install
+        run: yarn workspaces focus --all --production
       - name: Set up Ruby
+        env:
+          BUNDLE_WITHOUT: development
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-      - name: Install bundle dependencies
-        run: |
-          bundle config set --local without development
-          bundle config set --local with test
-          bundle install
       - name: Setup Database
         env:
+          BUNDLE_WITHOUT: development
           RAILS_ENV: test
           POSTGRES_USERNAME: postgres
           POSTGRES_PASSWORD: password
         run: bundle exec rails db:create
       - name: Assets precompile
         env:
+          BUNDLE_WITHOUT: development
           RAILS_ENV: test
         run: bundle exec rails assets:precompile
       - name: Run tests
         env:
-          RAILS_ENV: test
+          BUNDLE_WITHOUT: development
           POSTGRES_USERNAME: postgres
           POSTGRES_PASSWORD: password
         run: bundle exec rspec
