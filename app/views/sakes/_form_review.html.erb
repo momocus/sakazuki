@@ -80,18 +80,20 @@
             </div>
           </div>
         </fieldset>
-        <fieldset class="col-12">
+        <fieldset class="col-12" data-controller="rating">
           <%= form.label(:rating, class: "form-label") %>
           <div class="w-100"></div>
-          <div id="rater"></div>
+          <div data-rating-target="location"></div>
           <%= form.number_field(:rating,
-                                id: "sake_rating",
                                 hidden: true,
                                 class: "form-control",
                                 min: 0,
                                 max: 5,
                                 step: 1,
-                                data: { testid: "sake_rating" }) %>
+                                data: {
+                                  "rating-target": "score",
+                                  testid: "sake_rating",
+                                }) %>
         </fieldset>
         <fieldset class="col-12">
           <div class="row gx-3">
