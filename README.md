@@ -92,7 +92,7 @@ See the [deployment](https://github.com/momocus/sakazuki/wiki/Deployment).
 - Docker イメージのビルド
 
 ```console
-$ docker-compose build
+$ docker compose build
 ...
 ```
 
@@ -101,19 +101,19 @@ $ docker-compose build
 <!-- markdownlint-disable MD013 -->
 
 ```console
-$ docker-compose run --rm web bundle exec rails db:create
+$ docker compose run --rm web bundle exec rails db:create
 Creating volume "sakazuki_db_storage" with local driver
 Creating sakazuki_db_1 ... done
 Creating sakazuki_web_run ... done
 Created database 'sakazuki_development'
 Created database 'sakazuki_test'
-$ docker-compose run --rm web bundle exec rake parallel:setup
+$ docker compose run --rm web bundle exec rake parallel:setup
 ...
-$ docker-compose run --rm web bundle exec rails db:migrate
+$ docker compose run --rm web bundle exec rails db:migrate
 Creating sakazuki_web_run ... done
 ...
 Model files unchanged.
-$ docker-compose run --rm web bundle exec rails db:seed
+$ docker compose run --rm web bundle exec rails db:seed
 Creating sakazuki_web_run ... done
 ```
 
@@ -122,11 +122,11 @@ Creating sakazuki_web_run ... done
 - Docker イメージの起動
 
 ```console
-$ docker-compose up
+$ docker compose up
 ...
 ```
 
-- Gem/Node Package の更新があった場合は、`docker-compose build`でイメージを更新する
+- Gem/Node Package の更新があった場合は、`docker compose build`でイメージを更新する
 
 ## How to Contribute
 
