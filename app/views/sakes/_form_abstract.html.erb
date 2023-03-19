@@ -10,7 +10,7 @@
     <div class="accordion-body">
       <div class="row row-cols-1 g-4">
         <fieldset class="col">
-          <div class="row g-2" data-controller="complete-meigara">
+          <div class="row g-2">
             <div class="col-12">
               <%= form.label(:name, class: "form-label") %>
               <span class="badge bg-primary ms-4"><%= t(".badge.presence") %></span>
@@ -18,14 +18,14 @@
                                   class: "form-control",
                                   required: true,
                                   data: {
-                                    "complete-meigara-target": "name",
+                                    "sake-name-target": "name",
                                     testid: "sake_name",
                                   }) %>
             </div>
             <div class="col-12 col-lg-6" data-controller="sake-kura">
               <%= form.label(:kura, class: "form-label") %>
               <input type="text" class="form-control" autocomplete="on" list="kura-list"
-                data-complete-meigara-target="kura"
+                data-sake-name-target="kura"
                 data-sake-kura-target="mixed"
                 data-testid="sake_kura_todofuken_autocompletion">
               <%= render(partial: "kura_datalist") %>
@@ -54,7 +54,10 @@
                               },
                               {},
                               class: "form-select",
-                              data: { testid: "sake_tokutei_meisho" }) %>
+                              data: {
+                                "sake-name-target": "tokuteiMeisho",
+                                testid: "sake_tokutei_meisho",
+                              }) %>
             </div>
             <div class="col-12 col-lg-3">
               <%= form.label(:seimai_buai, class: "form-label") %>
@@ -79,7 +82,10 @@
                                   class: "form-control",
                                   autocomplete: "on",
                                   list: "season-list",
-                                  data: { testid: "sake_season" }) %>
+                                  data: {
+                                    "sake-name-target": "season",
+                                    testid: "sake_season",
+                                  }) %>
               <datalist id="season-list">
                 <option value="新酒"></option>
                 <option value="立春朝搾り"></option>
