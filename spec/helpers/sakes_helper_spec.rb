@@ -89,7 +89,7 @@ RSpec.describe SakesHelper do
     end
 
     it "generates a range starting with 30 years ago" do
-      date = 30.years.ago.to_date.to_date.beginning_of_month
+      date = 30.years.ago.to_date.beginning_of_month
       year = with_japanese_era(date)
       month = I18n.l(date, format: "%B")
       candidate = ["#{year} #{month}", date.to_s]
