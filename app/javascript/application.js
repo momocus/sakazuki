@@ -9,6 +9,5 @@ import "./simple_lightbox/simple_lightbox.ts"
 import "./share/share.ts"
 
 // form
-import "./autocompletion/complete_meigara"
 import "./autocompletion/complete_detail"
 import "./controllers"

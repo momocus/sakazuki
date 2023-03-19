@@ -10,19 +10,22 @@
     <div class="accordion-body">
       <div class="row row-cols-1 g-4">
         <fieldset class="col">
-          <div class="row g-2">
+          <div class="row g-2" data-controller="complete-meigara">
             <div class="col-12">
               <%= form.label(:name, class: "form-label") %>
               <span class="badge bg-primary ms-4"><%= t(".badge.presence") %></span>
               <%= form.text_field(:name,
                                   class: "form-control",
                                   required: true,
-                                  data: { testid: "sake_name" }) %>
+                                  data: {
+                                    "complete-meigara-target": "name",
+                                    testid: "sake_name",
+                                  }) %>
             </div>
             <div class="col-12 col-lg-6" data-controller="sake-kura">
               <%= form.label(:kura, class: "form-label") %>
               <input type="text" class="form-control" autocomplete="on" list="kura-list"
-                id="sake_kura_todofuken_autocompletion"
+                data-complete-meigara-target="kura"
                 data-sake-kura-target="mixed"
                 data-testid="sake_kura_todofuken_autocompletion">
               <%= render(partial: "kura_datalist") %>
