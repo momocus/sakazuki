@@ -1,66 +1,97 @@
-// Type definitions for SimpleLightbox 2.9.0
+// Type definitions for SimpleLightbox 2.12.1
 // Project: https://github.com/andreknieriem/simplelightbox https://simplelightbox.com/
 // Definitions by: SAITOU Keita <https://github.com/yonta>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
-// TypeScript Version 4.5.5
+// TypeScript Version 4.9.5
 
 declare module "simplelightbox" {
-  export default SimpleLightbox
+  type SimpleLightboxOptions = {
+    readonly sourceAttr?: string
+    readonly overlay?: boolean
+    readonly overlayOpacity?: number
+    readonly spinner?: boolean
+    readonly nav?: boolean
+    readonly navText?: string[]
+    readonly captions?: boolean
+    readonly captionDelay?: number
+    readonly captionSelector?: string | (() => HTMLElement)
+    readonly captionType?: string
+    readonly captionsData?: string
+    readonly captionPosition?: string
+    readonly captionClass?: string
+    readonly close?: boolean
+    readonly closeText?: string
+    readonly swipeClose?: boolean
+    readonly showCounter?: boolean
+    readonly fileExt?: false | RegExp
+    readonly animationSlide?: boolean
+    readonly animationSpeed?: number
+    readonly preloading?: boolean
+    readonly enableKeyboard?: boolean
+    readonly loop?: boolean
+    readonly rel?: false | string
+    readonly docClose?: boolean
+    readonly swipeTolerance?: number
+    readonly className?: string
+    readonly widthRatio?: number
+    readonly heightRatio?: number
+    readonly scaleImageToRatio?: boolean
+    readonly disableRightClick?: boolean
+    readonly disableScroll?: boolean
+    readonly alertError?: boolean
+    readonly alertErrorMessage?: string
+    readonly additionalHtml?: boolean
+    readonly history?: boolean
+    readonly throttleInterval?: number
+    readonly doubleTapZoom?: number
+    readonly maxZoom?: number
+    readonly htmlClass?: string
+    readonly rtl?: boolean
+    readonly fixedClass?: string
+    readonly fadeSpeed?: number
+    readonly uniqueImages?: boolean
+    readonly focus?: boolean
+    readonly scrollZoom?: boolean
+    readonly scrollZoomFactor?: number
+    readonly download?: boolean
+  }
+
+  type SimpleLightboxEvents =
+    | "show.simplelightbox"
+    | "shown.simplelightbox"
+    | "close.simplelightbox"
+    | "closed.simplelightbox"
+    | "change.simplelightbox"
+    | "changed.simplelightbox"
+    | "next.simplelightbox"
+    | "nextDone.simplelightbox"
+    | "prev.simplelightbox"
+    | "prevDone.simplelightbox"
+    | "nextImageLoaded.simplelightbox"
+    | "prevImageLoaded.simplelightbox"
+    | "error.simplelightbox"
+
+  type SimpleLightboxData = {
+    currentImageIndex: number
+    currentImage: any /* TODO */ | null
+    globalScrollbarWidth: number
+  }
 
   declare class SimpleLightbox {
-    constructor(elements: string, options: SimpleLightbox.options)
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    on(events: string, callback: (arg: void | string) => any): SimpleLightbox
+    constructor(selectors: string, options: SimpleLightboxOptions)
+
+    on(
+      events: SimpleLightboxEvents,
+      callback: (event: any) => any
+    ): SimpleLightbox
+    open(elem: Element): void
+    close(): void
+    next(): void
+    prev(): void
+    destroy(): void
+    refresh(): void
+    getLighboxData(): SimpleLightboxData // typo?
   }
 
-  declare namespace SimpleLightbox {
-    interface options {
-      sourceAttr?: string
-      overlay?: boolean
-      spinner?: boolean
-      nav?: boolean
-      navText?: string[]
-      captions?: boolean
-      captionDelay?: number
-      captionSelector?: string | (() => HTMLElement)
-      captionType?: string
-      captionsData?: string
-      captionPosition?: string
-      captionClass?: string
-      close?: boolean
-      closeText?: string
-      swipeClose?: boolean
-      showCounter?: boolean
-      fileExt?: false | RegExp
-      animationSlide?: boolean
-      animationSpeed?: number
-      preloading?: boolean
-      enableKeyboard?: boolean
-      loop?: boolean
-      rel?: false | string
-      docClose?: boolean
-      swipeTolerance?: number
-      className?: string
-      widthRatio?: number
-      heightRatio?: number
-      scaleImageToRatio?: boolean
-      disableRightClick?: boolean
-      disableScroll?: boolean
-      alertError?: boolean
-      alertErrorMessage?: string
-      additionalHtml?: boolean
-      history?: boolean
-      throttleInterval?: number
-      doubleTapZoom?: number
-      maxZoom?: number
-      htmlClass?: string
-      rtl?: boolean
-      fixedClass?: string
-      fadeSpeed?: number
-      uniqueImages?: boolean
-      focus?: boolean
-      scrollZoom?: boolean
-      scrollZoomFactor?: number
-    }
-  }
+  export default SimpleLightbox
 }
