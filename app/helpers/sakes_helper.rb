@@ -52,20 +52,15 @@ module SakesHelper
     collection.push([I18n.t("sakes.form_abstract.unknown"), ""])
   end
 
-  # 指定された期間で年月のレンジを作成する
+  # 製造年月で使う30年分の年月のレンジを作成する
   #
-  # 作成されるレンジのステップは1ヶ月となる。
-  #
-  # @example 4500 mlは2升5合
-  #   month_range(Date.parse("2022-12-06", Date.parse("2023-01-06") #=> [2022-12-01, 2023-01-01]のようなレンジ
+  # 作成されるレンジのステップは1ヶ月ごととなる。
   #
   # MEMO:
-  # Dateクラスのレンジオブジェクトを作るため、効率が悪い。
+  # 途中で各日のレンジオブジェクトを作るため、効率が悪い。
   # 具体的な使用例でいうと、30年×365日分のオブジェクトが一時的に作られる。
   # 現状はコードの綺麗さを重視し、動作の重さが気になったら更新する。
   #
-  # @param first [Date] 最初の年月
-  # @param last [Date] 最後の年月
   # @return [Range<Date>] 年月のレンジオブジェクト
   def month_range
     first = Time.current.ago(start_year_limit.years)
