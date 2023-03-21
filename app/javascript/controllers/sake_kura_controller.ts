@@ -7,6 +7,7 @@ export default class SakeKuraController extends Controller<HTMLDivElement> {
   declare readonly todofukenTarget: HTMLInputElement
   declare readonly mixedTarget: HTMLInputElement
 
+  /** 隠れた蔵名・都道府県名を使って、蔵フォームを正しく埋める */
   private loadKuraTodofuken() {
     this.mixedTarget.value =
       this.kuraTarget.value && this.todofukenTarget.value
@@ -14,7 +15,15 @@ export default class SakeKuraController extends Controller<HTMLDivElement> {
         : this.kuraTarget.value
   }
 
-  private stripKuraTodofuken(kuraTodofuken: string) {
+  /**
+   * 蔵名と都道府県名を分離する
+   *
+   * @param kuraTodofuken - 入力された蔵情報
+   * @returns
+   *   蔵名と都道府県のタプル。
+   *   ただし分割失敗した場合は、第一要素に入力そのまま、第二要素に空文字を返す。
+   */
+  private stripKuraTodofuken(kuraTodofuken: string): [string, string] {
     // フォーマットは"蔵名（県名）"
     const formatRegexp = /^([^（]+)（([^）]+)）$/
     const result = formatRegexp.exec(kuraTodofuken)
@@ -23,6 +32,11 @@ export default class SakeKuraController extends Controller<HTMLDivElement> {
     else return [kuraTodofuken, ""]
   }
 
+  /**
+   * 蔵情報の同期機能をオンにする
+   *
+   * 蔵情報を入力すると、隠れた蔵名・都道府県名のフィールドに同期する
+   */
   private setSyncEvent() {
     this.mixedTarget.addEventListener("change", (_event) => {
       const autocompeted = this.mixedTarget.value
