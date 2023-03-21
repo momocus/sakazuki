@@ -18,3 +18,6 @@ application.register("sake-name", SakeNameController)
 
 import ShowTasteGraphController from "./show_taste_graph_controller"
 application.register("show-taste-graph", ShowTasteGraphController)
+
+import SimpleLightboxController from "./simple_lightbox_controller"
+application.register("simple-lightbox", SimpleLightboxController)
