@@ -1,7 +1,7 @@
-<a href="#" class="fs-3 link-dark" id="share_button">
+<a href="#" class="fs-3 link-dark" data-share-target="link">
   <i class="bi bi-share"></i>
 </a>
-<%# HACK: hideenのtextareaをshare.tsから参照する %>
-<textarea class="d-none" id="share_text">
+<%# HACK: hiddenのtextareaをシェア機能から参照する %>
+<textarea class="d-none" data-share-target="text">
   <%= t("helper.share.text", sake:) %>
 </textarea>
