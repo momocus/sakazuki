@@ -84,7 +84,7 @@
 
   <% if sake.photos.any? %>
     <div class="col-12 py-1">
-      <div class="row g-2 photo-gallery">
+      <div class="row g-2 photo-gallery" data-controller="simple-lightbox">
         <% sake.photos.each do |photo| %>
           <div class="col-lg-2 col-6" data-testid="sake_photo">
             <%= link_to(cl_image_tag(photo.image.thumb.url, class: "img-thumbnail"), photo.image.url) %>
