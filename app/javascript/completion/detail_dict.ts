@@ -9,7 +9,7 @@
 // そこで検索ワードは工夫している。
 // 具体的には、SAKAZUKI2年運用で出てきた酒名を参考にした。
 
-const tokutei_meisho = [
+const tokuteiMeisho = [
   { keywords: ["特別本醸造"], completion: "tokubetsu_honjozo" },
   { keywords: ["本醸造"], completion: "honjozo" },
   { keywords: ["純米大吟醸"], completion: "junmai_daiginjo" },
@@ -20,7 +20,7 @@ const tokutei_meisho = [
   { keywords: ["純米"], completion: "junmai" },
 ]
 
-const hiyaoroshi_keywords = [
+const hiyaoroshiKeywords = [
   "冷卸し",
   "冷やおろし",
   "ひやおろし",
@@ -34,7 +34,7 @@ const season = [
   },
   { keywords: ["立春朝搾り"], completion: "立春朝搾り" },
   { keywords: ["夏酒", "夏限定", "夏の", "の夏"], completion: "夏酒" },
-  { keywords: hiyaoroshi_keywords, completion: "ひやおろし" },
+  { keywords: hiyaoroshiKeywords, completion: "ひやおろし" },
   { keywords: ["古酒", "年熟成"], completion: "古酒" },
 ]
 
@@ -102,10 +102,10 @@ const hiire = [
     ],
     completion: "namanama",
   },
-  { keywords: hiyaoroshi_keywords.concat(["生詰"]), completion: "mae_hiire" },
+  { keywords: hiyaoroshiKeywords.concat(["生詰"]), completion: "mae_hiire" },
   { keywords: ["生貯"], completion: "ato_hiire" },
 ]
 
 const warimizu = [{ keywords: ["原酒"], completion: "genshu" }]
 
-export { tokutei_meisho, season, moto, shibori, roka, hiire, warimizu }
+export { tokuteiMeisho, season, moto, shibori, roka, hiire, warimizu }

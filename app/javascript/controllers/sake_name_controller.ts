@@ -1,8 +1,8 @@
 import { Controller } from "@hotwired/stimulus"
 import zip from "just-zip-it"
-import * as meigara_dict from "../completion/meigara_dict"
+import * as meigaraDict from "../completion/meigara_dict"
 import * as meigara from "../completion/meigara"
-import * as detail_dict from "../completion/detail_dict"
+import * as detailDict from "../completion/detail_dict"
 import * as detail from "../completion/detail"
 
 /**
@@ -75,13 +75,13 @@ export default class SakeNameController extends Controller<HTMLDivElement> {
 
       // 酒情報の補完
       const dicts = [
-        detail_dict.tokutei_meisho,
-        detail_dict.season,
-        detail_dict.moto,
-        detail_dict.shibori,
-        detail_dict.roka,
-        detail_dict.hiire,
-        detail_dict.warimizu,
+        detailDict.tokuteiMeisho,
+        detailDict.season,
+        detailDict.moto,
+        detailDict.shibori,
+        detailDict.roka,
+        detailDict.hiire,
+        detailDict.warimizu,
       ]
       const detailCompletions = dicts.map(
         (dict) => (name: string) => detail.lookup(name, dict)

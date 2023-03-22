@@ -17,13 +17,13 @@ export type Dict = {
  */
 export function lookup(name: string, dict: Dict): string {
   const words = name.split(RegExp(/\s/))
-  const matched_words = words
+  const matchedWords = words
     .map((word) => {
       return dict[word]
     })
     .filter((word) => {
       return word
     })
-  if (matched_words.length === 1) return matched_words[0]
+  if (matchedWords.length === 1) return matchedWords[0]
   else return ""
 }
