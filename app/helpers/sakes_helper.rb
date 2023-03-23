@@ -22,16 +22,14 @@ module SakesHelper
   end
 
   # 過去何年を酒情報に入力可能にするかの値
-  # @return [Integer] 年数
-  def start_year_limit
-    30
-  end
+  # @type [Integer] 年数
+  START_YEAR_LIMIT = 30
 
   # 現在日時から入力可能なBY年のレンジを作成する
   # @return [Range<Date>] 1年間隔で30年分のBYオブジェクトのレンジ
   def by_range
     this_by = to_by(Time.current).year
-    years = (this_by - start_year_limit)..this_by
+    years = (this_by - START_YEAR_LIMIT)..this_by
     years.map { |year| Date.new(year, 7) } # 7/1
   end
 
@@ -63,7 +61,7 @@ module SakesHelper
   #
   # @return [Range<Date>] 年月のレンジオブジェクト
   def month_range
-    first = Time.current.ago(start_year_limit.years)
+    first = Time.current.ago(START_YEAR_LIMIT.years)
     last = Time.current
     (first.to_date..last.to_date).map(&:beginning_of_month).uniq
   end
@@ -79,14 +77,6 @@ module SakesHelper
       month = I18n.l(d, format: "%B")
       ["#{year} #{month}", d.to_s]
     }
-  end
-
-  # どの瓶状態（bottle_level）にもマッチしない値
-  #
-  # 酒indexにおいて全ての酒を表示するために使われる。
-  # @return [Integer] -1
-  def bottom_bottle
-    -1
   end
 
   # @type [Array<String>]
