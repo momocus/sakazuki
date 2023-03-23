@@ -79,14 +79,6 @@ module SakesHelper
     }
   end
 
-  # どの瓶状態（bottle_level）にもマッチしない値
-  #
-  # 酒indexにおいて全ての酒を表示するために使われる。
-  # @return [Integer] -1
-  def bottom_bottle
-    -1
-  end
-
   # @type [Array<String>]
   UNITS = %w[合 升 斗 石].freeze
   private_constant :UNITS

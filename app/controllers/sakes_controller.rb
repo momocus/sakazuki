@@ -90,7 +90,7 @@ class SakesController < ApplicationController
   # @param query [Hash<Symbol => String] params[:q]に格納されたRansackのクエリ
   # @return [Boolean] 空き瓶も込みで表示するならtrueを返す
   def include_empty?(query)
-    !query.nil? and query[:bottle_level_not_eq] == bottom_bottle.to_s
+    !query.nil? and query[:bottle_level_not_eq] == Sake::BOTTOM_BOTTLE.to_s
   end
 
   # GET /sakes

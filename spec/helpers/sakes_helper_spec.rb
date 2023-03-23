@@ -109,12 +109,6 @@ RSpec.describe SakesHelper do
     end
   end
 
-  describe "bottom_bottle" do
-    it "must always return -1" do
-      expect(bottom_bottle).to eq(-1)
-    end
-  end
-
   describe "to_shakkan" do
     it "returns value by Shakkan" do
       expect(to_shakkan(4500)).to eq("2升5合")
