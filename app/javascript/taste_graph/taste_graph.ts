@@ -56,7 +56,7 @@ export class TasteGraph extends Chart {
   public pointZero: Point = { x: 0, y: 0 }
 
   /**
-   * グラフデータをDOMデータに変換する
+   * DOMデータをグラフデータに変換する
    */
   static fromDom(v: DomValues): Point {
     const domToPoint = (dom: string) => {
@@ -67,7 +67,7 @@ export class TasteGraph extends Chart {
   }
 
   /**
-   * DOMデータをグラフデータに変換する
+   * グラフデータをDOMデータに変換する
    */
   protected static toDom(p: Point): DomValues {
     const pointToDom = (num: number) =>
