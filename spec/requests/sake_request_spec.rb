@@ -12,31 +12,10 @@ RSpec.describe "Sakes" do
       end
     end
 
-    describe "GET /sakes.json request (index)" do
-      before do
-        get sakes_path(format: :json)
-      end
-
-      it "returns 200 response" do
-        expect(response).to have_http_status "200"
-      end
-
-      it "returns all sakes json" do
-        json = response.parsed_body
-        expect(json.present?).to be true
-      end
-    end
-
     describe "GET /sakes/[id] request (show)" do
       it "returns 200 response" do
         get sake_path(id)
         expect(response).to have_http_status "200"
-      end
-
-      it "returns 1 sake json" do
-        get sake_path(id, format: :json)
-        json = response.parsed_body
-        expect(json.present?).to be true
       end
     end
 

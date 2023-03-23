@@ -8,7 +8,6 @@ class SakesController < ApplicationController
   include SakesHelper
 
   # GET /sakes
-  # GET /sakes.json
   # rubocop:disable Metrics/AbcSize
   def index
     query = params[:q] ? params[:q].deep_dup : {} # avoid nil
@@ -30,7 +29,6 @@ class SakesController < ApplicationController
   # rubocop:enable Metrics/AbcSize
 
   # GET /sakes/1
-  # GET /sakes/1.json
   def show; end
 
   # GET /sakes/new
@@ -53,57 +51,36 @@ class SakesController < ApplicationController
   end
 
   # POST /sakes
-  # POST /sakes.json
-  # rubocop:disable Metrics/MethodLength
   def create
     @sake = Sake.new(sake_params)
 
-    respond_to do |format|
-      if @sake.save
-        store_photos
-        format.html {
-          redirect_to(@sake)
-          flash[:success] = t(".success", name: alert_link_tag(@sake.name, sake_path(@sake)))
-        }
-      else
-        format.html { render(:new, status: :unprocessable_entity) }
-      end
+    if @sake.save
+      store_photos
+      msg = t(".success", name: alert_link_tag(@sake.name, sake_path(@sake)))
+      redirect_to(@sake, flash: { success: msg })
+    else
+      render(:new, status: :unprocessable_entity)
     end
   end
-  # rubocop:enable Metrics/MethodLength
 
   # PATCH/PUT /sakes/1
-  # PATCH/PUT /sakes/1.json
-  # rubocop:disable Metrics/MethodLength
   def update
-    respond_to do |format|
-      if @sake.update(sake_params)
-        delete_photos
-        store_photos
-        format.html {
-          redirect_after_update
-          flash_after_update
-        }
-      else
-        format.html { render(:edit, status: :unprocessable_entity) }
-      end
+    if @sake.update(sake_params)
+      delete_photos
+      store_photos
+      flash_after_update
+      redirect_after_update
+    else
+      render(:edit, status: :unprocessable_entity)
     end
   end
-  # rubocop:enable Metrics/MethodLength
 
   # DELETE /sakes/1
-  # DELETE /sakes/1.json
   def destroy
     deleted_name = @sake.name
     @sake.destroy
-    respond_to do |format|
-      format.html {
-        redirect_to(sakes_url)
-        # rubocop:disable Rails/ActionControllerFlashBeforeRender
-        flash[:success] = t(".success", name: deleted_name)
-        # rubocop:enable Rails/ActionControllerFlashBeforeRender
-      }
-    end
+    redirect_to(sakes_url,
+                flash: { success: t(".success", name: deleted_name) })
   end
 
   # Viewで使える用に宣言する
