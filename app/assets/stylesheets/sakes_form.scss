@@ -1,18 +1,6 @@
 @import "./bootstrap/custom";
 @import "bootstrap/scss/bootstrap";
 
-// Railsがdatte_selectで生成する日付セレクトのスタイル
-
-.year {
-  @extend .w-50;
-  @extend .me-1;
-  @extend .me-lg-2;
-}
-
-.month {
-  @extend .w-25;
-}
-
 .select-delete-photos input[type="checkbox"] {
   display: none;
 }

@@ -77,42 +77,21 @@
                 <option value="限定酒"></option>
               </datalist>
             </div>
-            <div class="w-100 m-0"></div>
-            <div class="col-12 col-lg-6">
-              <div class="row g-2">
-                <div class="col-12">
-                  <%= form.label(:brewery_year, class: "form-label") %>
-                  <%# HACK: 不明を最後に表示するため、form.date_selectを使わない %>
-                  <%= form.select(:brewery_year,
-                                  nil,
-                                  {},
-                                  id: "sake_brewery_year_1i",
-                                  name: "sake[brewery_year(1i)]",
-                                  class: "form-select w-50",
-                                  data: { testid: "sake_brewery_year" }) do %>
-                    <% by_range.each do |by| %>
-                      <%= tag.option(with_japanese_era(by), value: by.year, selected: by.year == sake.brewery_year&.year) %>
-                    <% end %>
-                    <%= tag.option(t(".unknown"), value: "", selected: sake.brewery_year.nil?) %>
-                  <% end %>
-                  <%# 使わない月日はBY始まりの7/1とする. SEE: SakesHelper.to_by %>
-                  <input type="hidden" id="sake_<%= :brewery_year %>_2i" name="sake[<%= :brewery_year %>(2i)]" value="7">
-                  <input type="hidden" id="sake_<%= :brewery_year %>_3i" name="sake[<%= :brewery_year %>(3i)]" value="1">
-                </div>
-                <div class="col-12">
-                  <%= form.label(:bindume_on, class: "form-label") %>
-                  <div class="w-100"></div>
-                  <%= form.date_select(:bindume_on,
-                                       {
-                                         start_year: Time.current.year - start_year_limit,
-                                         end_year: Time.current.year,
-                                         year_format: ->(year) { with_japanese_era(Date.new(year, 1, 1)) },
-                                         discard_day: true,
-                                         with_css_classes: true,
-                                       },
-                                       class: "form-select d-inline-block") %>
-                </div>
-              </div>
+            <div class="col-12 col-lg-3">
+              <%= form.label(:brewery_year, class: "form-label") %>
+              <%= form.select(:brewery_year,
+                              by_collection,
+                              {},
+                              class: "form-select",
+                              data: { testid: "sake_brewery_year" }) %>
+            </div>
+            <div class="col-12 col-lg-3">
+              <%= form.label(:bindume_on, class: "form-label") %>
+              <%= form.select(:bindume_on,
+                              bindume_collection,
+                              {},
+                              class: "form-select",
+                              data: { testid: "sake_bindume_on" }) %>
             </div>
           </div>
         </fieldset>

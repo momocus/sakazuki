@@ -27,7 +27,6 @@ class SakesController < ApplicationController
     # Kaminari pager
     @sakes = @sakes.page(params[:page]) if include_empty?(query)
   end
-
   # rubocop:enable Metrics/AbcSize
 
   # GET /sakes/1
@@ -39,11 +38,11 @@ class SakesController < ApplicationController
     copied_id = params[:copied_from]
     if copied_id
       copied = Sake.find(copied_id)
-      flash[:info] = t(".copy", name: alert_link_tag(copied.name, sake_path(copied_id)))
       attr = copy_attributes(copied)
       @sake = Sake.new(attr)
+      flash[:info] = t(".copy", name: alert_link_tag(copied.name, sake_path(copied)))
     else
-      @sake = Sake.new(size: 720, brewery_year: to_by(Time.current))
+      @sake = Sake.new(default_attributes)
     end
   end
 
@@ -154,6 +153,17 @@ class SakesController < ApplicationController
     all.select { |key, _v| copy_key?(key) }
   end
 
+  # 新規酒のデフォルト情報をもったハッシュを作成する
+  #
+  # @return [Hash<Symbol => Integer, Date>] デフォルト酒情報のハッシュ
+  def default_attributes
+    {
+      size: 720,
+      brewery_year: to_by(Time.current),
+      bindume_on: Time.current.to_date.beginning_of_month,
+    }
+  end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_sake
     @sake = Sake.includes(:photos).find(params[:id])
@@ -257,5 +267,4 @@ class SakesController < ApplicationController
     view_context.link_to(text, path, { class: "alert-link" })
   end
 end
-
 # rubocop:enable Metrics/ClassLength
