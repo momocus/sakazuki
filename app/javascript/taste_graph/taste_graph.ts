@@ -1,256 +1,311 @@
-import { Chart } from "chart.js"
+import merge from "ts-deepmerge"
+import {
+  Chart,
+  ScatterController,
+  PointElement,
+  LinearScale,
+  Color,
+  ScriptableScaleContext,
+  ChartOptions,
+  ChartConfiguration,
+  ChartEvent,
+  ActiveElement,
+  BubbleDataPoint,
+  Point,
+} from "chart.js"
+import { getRelativePosition } from "chart.js/helpers"
 
-// @types/chart.jsに型宣言がないメタメソッドを使うためのインタフェース
-interface MetaChart extends Chart {
-  scales: {
-    "x-axis-1": {
-      getValueForPixel: (x: number) => number | undefined
-      getPixelForValue: (x: number) => number
-    }
-    "y-axis-1": {
-      getValueForPixel: (y: number) => number | undefined
-      getPixelForValue: (y: number) => number
-    }
-  }
-}
+Chart.register(ScatterController, PointElement, LinearScale)
 
-export type GraphP = Chart.Point | null
-
-export type DomValues = { taste: number; aroma: number }
-
-/*
- * HACK:
- *   内部データが0〜6に対してグラフデータが-3〜3のため、
- *   オフセットズレを補正するための数値
+/**
+ * DOMに保存された味・香りの数値
  */
-const middle = 3
+export type DomValues = { taste: string; aroma: string }
 
-export function fromDom(taste: number, aroma: number): GraphP {
-  // taste/aromaはNaNの可能性がある
-  return isNaN(taste) || isNaN(aroma)
-    ? null
-    : { x: taste - middle, y: aroma - middle }
+/**
+ * グラフクリックされた値に対するコールバック関数
+ */
+export type DomCallback = (d: DomValues) => void
+
+/**
+ * TasteGraphのカスタマイズ値
+ */
+export type TasteGraphConfig = {
+  lineWidth?: number
+  pointRadius?: number
 }
 
-export function toDom(p: GraphP): DomValues {
-  return p
-    ? { taste: p.x + middle, aroma: p.y + middle }
-    : { taste: NaN, aroma: NaN }
-}
-
-export const graphPZero = { x: 0, y: 0 }
-
-interface InteractiveGraph {
-  update(data: GraphP): void
-}
-
-export class TasteGraph implements InteractiveGraph {
-  public graph: Chart
-  private data: GraphP
-
-  /*
-   * HACk:
-   *   graphは常に0or1点データしか持たないという制約をしている。
-   *   そのため、1点データを持つグラフにpopを1回すれば全データが消える。
+/**
+ * 味・香りグラフ
+ *
+ * chart.jsの散布図で表示される。
+ * 表示するだけのモードと、グラフクリックで入力できるモードがある。
+ */
+export class TasteGraph extends Chart {
+  /**
+   * グラフデータとDOMデータのオフセットズレの補正値
+   *
+   * DOMデータは0〜6を仮定している。
+   * 一方でグラフデータは-3〜3を仮定している。
    */
-  private popData(): void {
-    this.graph.data.datasets?.forEach((dataset) => {
-      dataset.data?.pop()
-    })
+  static middle = 3
+
+  /**
+   * グラフ原点
+   */
+  public pointZero: Point = { x: 0, y: 0 }
+
+  /**
+   * DOMデータをグラフデータに変換する
+   */
+  static fromDom(v: DomValues): Point {
+    const domToPoint = (dom: string) => {
+      const num = parseInt(dom)
+      return isNaN(num) ? NaN : num - TasteGraph.middle
+    }
+    return { x: domToPoint(v.taste), y: domToPoint(v.aroma) }
   }
 
-  private pushData(newData: Chart.Point): void {
-    const datasets = this.graph.data.datasets
-    if (datasets != null) {
-      datasets.forEach((dataset: Chart.ChartDataSets) => {
-        const d = dataset.data as Chart.ChartPoint[]
-        d.push(newData)
-      })
-    }
+  /**
+   * グラフデータをDOMデータに変換する
+   */
+  protected static toDom(p: Point): DomValues {
+    const pointToDom = (num: number) =>
+      (num + TasteGraph.middle || "").toString()
+    return { taste: pointToDom(p.x), aroma: pointToDom(p.y) }
   }
 
-  public update(newData: GraphP): void {
-    if (this.data != null) this.popData()
-    if (newData != null) this.pushData(newData)
-    this.graph.update()
-    this.callbackUpdate(toDom(newData))
-    this.data = newData
+  /**
+   * クリックした位置のグラフデータを取得する
+   */
+  protected static getClickData(event: ChartEvent, chart: Chart) {
+    // @ts-expect-error chart.jsのhelperの都合のエラーを無視する
+    const canvasPosition = getRelativePosition(event, chart)
+    const x = chart.scales.x.getValueForPixel(canvasPosition.x) || NaN
+    const y = chart.scales.y.getValueForPixel(canvasPosition.y) || NaN
+    return { x: Math.round(x), y: Math.round(y) }
   }
 
-  private getClickedData(event: MouseEvent): GraphP {
-    const g = this.graph as MetaChart
-    let x = g.scales["x-axis-1"].getValueForPixel(event.offsetX)
-    let y = g.scales["y-axis-1"].getValueForPixel(event.offsetY)
-    // undefinedチェック
-    if (x != null && y != null) {
-      x = Math.round(x)
-      y = Math.round(y)
-      return { x, y }
-    } else return null
+  /**
+   * グラフにデータを挿入する
+   */
+  protected static pushData(chart: Chart, data: Point) {
+    chart.data.datasets[0].data.push(data)
   }
 
-  private eqGraphP(p1: GraphP, p2: GraphP) {
-    if (p1 == null && p2 == null) return true
-    else if (p1 == null || p2 == null) return false
-    else if (p1.x == p2.x && p1.y == p2.y) return true
-    else return false
+  /**
+   * chart.jsのpopが返すunion型を、Point型だけにガードする
+   */
+  protected static isPoint(
+    arg: number | [number, number] | Point | BubbleDataPoint | undefined | null
+  ): arg is Point {
+    return arg != null && typeof arg !== "number" && !("r" in arg) && "x" in arg
   }
 
-  // JSに渡すときにthis問題を防ぐため、アロー関数で書いておく
-  private onClickUpdate = (event: MouseEvent): void => {
-    let data = this.getClickedData(event)
-    if (this.data != null && this.eqGraphP(data, this.data)) data = null
-    this.update(data)
+  /**
+   * グラフにデータを削除・取得する
+   */
+  protected static popData(chart: Chart): Point {
+    const data = chart.data.datasets[0].data.pop()
+    return TasteGraph.isPoint(data) ? data : { x: NaN, y: NaN }
   }
 
-  private makeChartData(data: GraphP): Chart.ChartData {
-    const points = data != null ? [data] : []
-    const datasets: Chart.ChartDataSets = {
-      data: points,
-      // accent color: #b7282e = 183,40,46
-      pointBackgroundColor: "rgba(183, 40, 46, 0.9)",
-      pointBorderColor: "rgba(183, 40, 46, 1.0)",
-    }
-    const cd: Chart.ChartData = {
-      datasets: [datasets],
-    }
-    return cd
+  /**
+   * グラフデータの同値比較
+   */
+  protected static eqPoint(p1: Point, p2: Point) {
+    return p1.x === p2.x && p1.y === p2.y
   }
 
-  private makeChartConfiguration(
-    dataset: Chart.ChartData,
-    config: {
-      pointRadius?: number
-      zeroLineWidth?: number
+  /**
+   * @param canvas グラフ描画先
+   * @param dom 描画するグラフの初期値
+   * @param domCallback クリックされた値に対するコールバック関数を与える。
+   *                    この引数を与えると、クリックで入力可能なグラフになる。
+   * @param config グラフのカスタマイズ値
+   */
+  constructor({
+    canvas,
+    dom,
+    domCallback,
+    config,
+  }: {
+    canvas: HTMLCanvasElement
+    dom: DomValues
+    domCallback?: DomCallback
+    config?: TasteGraphConfig
+  }) {
+    // --- Data ---
+    const p = TasteGraph.fromDom(dom)
+    const data = {
+      datasets: [
+        {
+          data: [p],
+          backgroundColor: "rgba(183, 40, 46, 0.9)",
+          borderColor: "rgba(183, 40, 46, 1.0)",
+          pointRadius: config?.pointRadius ?? 10,
+        },
+      ],
     }
-  ): Chart.ChartConfiguration {
-    const defaultedConfig = {
-      ...{ pointRadius: 10, zeroLineWidth: 7 },
-      ...config,
+
+    // --- Plugin ---
+    type QuadrantsColors = {
+      topRight: Color
+      topLeft: Color
+      bottomLeft: Color
+      bottomRight: Color
     }
-    const margin = 0.2
-    const ticks: Chart.TickOptions = {
-      display: false,
-      max: middle + margin,
-      min: -middle - margin,
-      maxTicksLimit: 2,
-    }
-    const dummyGridLines: Chart.GridLineOptions = {
-      drawTicks: false,
-      drawOnChartArea: false,
-    }
-    const gridLines: Chart.GridLineOptions = {
-      drawTicks: false,
-      drawOnChartArea: true,
-      zeroLineWidth: defaultedConfig.zeroLineWidth,
-    }
-    const baseAxe: Chart.ChartXAxe = {
-      ticks: ticks,
-      gridLines: gridLines,
-    }
-    const xAxe: Chart.ChartXAxe = {
-      ...baseAxe,
-      position: "bottom",
-      scaleLabel: {
-        display: true,
-        labelString: "香りが低い",
+    /**
+     * Quadrantsプラグイン
+     *
+     * 4象限を色分けする
+     *
+     * chart.js公式が紹介している
+     * https://www.chartjs.org/docs/latest/samples/plugins/quadrants.html
+     */
+    const quadrants = {
+      id: "quadrants",
+      beforeDraw(
+        chart: Chart,
+        _args: { cancelable: boolean },
+        options: QuadrantsColors
+      ) {
+        const {
+          ctx,
+          chartArea: { left, top, right, bottom },
+          scales: { x, y },
+        } = chart
+        const midX = x.getPixelForValue(0)
+        const midY = y.getPixelForValue(0)
+        ctx.save()
+        ctx.fillStyle = options.topLeft
+        ctx.fillRect(left, top, midX - left, midY - top)
+        ctx.fillStyle = options.topRight
+        ctx.fillRect(midX, top, right - midX, midY - top)
+        ctx.fillStyle = options.bottomRight
+        ctx.fillRect(midX, midY, right - midX, bottom - midY)
+        ctx.fillStyle = options.bottomLeft
+        ctx.fillRect(left, midY, midX - left, bottom - midY)
+        ctx.restore()
       },
     }
-    const dummyXAxe: Chart.ChartXAxe = {
-      ...baseAxe,
-      position: "top",
-      scaleLabel: {
-        display: true,
-        labelString: "香りが高い",
-      },
-    }
-    const yAxe: Chart.ChartYAxe = {
-      ...baseAxe,
-      position: "left",
-      scaleLabel: {
-        display: true,
-        labelString: "味が淡い",
-      },
-    }
-    const dummyYAxe: Chart.ChartYAxe = {
-      ...baseAxe,
-      gridLines: dummyGridLines, // HACK: X軸（y=0）の二重描きを防ぐ
-      position: "right",
-      scaleLabel: {
-        display: true,
-        labelString: "味が濃い",
-      },
-    }
-    const options: Chart.ChartOptions = {
-      onClick: this.clickable
-        ? this.onClickUpdate
-        : (_event) => {
-            // do nothing
-          },
+    // primary color: #19448e = 25,68,142
+    const topRight = "rgba(25, 68, 142, 0.18)"
+    const topLeft = "rgba(25, 68, 142, 0.09)"
+    const bottomLeft = "rgba(25, 68, 142, 0.02)"
+    const bottomRight = topLeft
+    const plugins = {
       legend: { display: false },
-      elements: { point: { radius: defaultedConfig.pointRadius } },
-      // HACK: ダミーの軸を使って高低両方にラベルをつける
-      scales: { xAxes: [xAxe, dummyXAxe], yAxes: [yAxe, dummyYAxe] },
+      tooltip: { enabled: false },
+      quadrants: {
+        topRight,
+        topLeft,
+        bottomLeft,
+        bottomRight,
+      },
+    }
+
+    // --- Axis ---
+    const margin = 0.2
+    const minmax = TasteGraph.middle + margin
+    const commonAxis = {
+      title: { display: true, padding: 1 },
+      max: minmax,
+      min: -minmax,
+      grid: { drawTicks: false }, // メモリ線のはみ出し
+      ticks: { display: false }, // メモリ線のはみ出しの数値
+    }
+    const dummyAxis = merge(commonAxis, {
+      grid: { display: false }, // グラフ内のメモリ線
+      border: { display: false }, // 軸
+    })
+    const axis = merge(commonAxis, {
+      grid: {
+        lineWidth: (context: ScriptableScaleContext) => {
+          const line = config?.lineWidth ?? 5
+          // x=0/y=0だけ太くする
+          return context.tick.value === 0 ? line : 1
+        },
+      },
+      ticks: { maxTicksLimit: 3 }, // 原点と外周2線の合計3つ
+    })
+    /**
+     * データを持つx軸
+     */
+    const x = merge(axis, {
+      title: { text: "香りが低い" },
+      position: "bottom",
+    })
+    /**
+     * グラフ上方にテキスト表示するためのダミーx軸
+     */
+    const xTop = merge(dummyAxis, {
+      title: { text: "香りが高い" },
+      position: "top",
+    })
+    /**
+     * データを持つy軸
+     */
+    const y = merge(axis, {
+      title: { text: "味が淡い" },
+      position: "left",
+    })
+    /**
+     * グラフ右方にテキスト表示するためのダミーy軸
+     */
+    const yRight = merge(dummyAxis, {
+      title: { text: "味が濃い" },
+      position: "right",
+    })
+
+    // --- onClick ---
+    /**
+     * グラフクリックをしたときの動作
+     *
+     * 表示モードのときは、何もしない。
+     * 入力モードのときは、クリック位置に一番近い整数値データを入力できる。
+     * 既存のデータをクリックすると入力をリセットできる。
+     */
+    const onClick = (() => {
+      if (typeof domCallback === "undefined")
+        (_e: ChartEvent, _el: ActiveElement[], _c: Chart): void => {
+          // dummy empty lambda
+        }
+      else {
+        const syncDom = (data: Point) => {
+          const d = TasteGraph.toDom(data)
+          domCallback(d)
+        }
+        return (event: ChartEvent, _element: ActiveElement[], chart: Chart) => {
+          const oldData = TasteGraph.popData(chart)
+          let newData = TasteGraph.getClickData(event, chart)
+          if (TasteGraph.eqPoint(oldData, newData)) newData = { x: NaN, y: NaN }
+          else TasteGraph.pushData(chart, newData)
+          syncDom(newData)
+          chart.update()
+        }
+      }
+    })() // if式風に使う
+
+    // --- Options ---
+    const options: ChartOptions = {
+      scales: { x, xTop, y, yRight },
+      animation: false,
+      plugins,
       responsive: true,
       maintainAspectRatio: false,
+      events: ["click"],
+      onClick,
     }
-    // 各4象限を別々に色付けする
-    // https://github.com/chartjs/Chart.js/issues/3535
-    const backgroundColorPlugin = {
-      beforeDraw: function (chart: MetaChart, _: Chart.Easing) {
-        const ctx = chart.ctx
 
-        const left = chart.chartArea.left
-        const right = chart.chartArea.right
-        const top = chart.chartArea.top
-        const bottom = chart.chartArea.bottom
-        const midX = chart.scales["x-axis-1"].getPixelForValue(0)
-        const midY = chart.scales["y-axis-1"].getPixelForValue(0)
-
-        // primary color: #19448e = 25,68,142
-        const color1 = "rgba(25, 68, 142, 0.18)"
-        const color2 = "rgba(25, 68, 142, 0.09)"
-        const color3 = "rgba(25, 68, 142, 0.02)"
-        const color4 = color2
-
-        if (ctx != null) {
-          // Top right, quadrant 1
-          ctx.fillStyle = color1
-          ctx.fillRect(midX, top, right - midX, midY - top)
-          // Top left, quadrant 2
-          ctx.fillStyle = color2
-          ctx.fillRect(left, top, midX - left, midY - top)
-          // Bottom left, quadrant 3
-          ctx.fillStyle = color3
-          ctx.fillRect(left, midY, midX - left, bottom - midY)
-          // Bottom right, quadrant 4
-          ctx.fillStyle = color4
-          ctx.fillRect(midX, midY, right - midX, bottom - midY)
-        }
-      },
-    }
-    const chartConfig: Chart.ChartConfiguration = {
+    // --- Config ---
+    const cconfig: ChartConfiguration = {
       type: "scatter",
-      data: dataset,
-      options: options,
-      plugins: [backgroundColorPlugin],
+      data,
+      options,
+      plugins: [quadrants],
     }
-    return chartConfig
-  }
 
-  constructor(
-    canvas: HTMLCanvasElement,
-    taste: number, // NaNがありうる
-    aroma: number, // NaNがありうる
-    config: { pointRadius?: number; zeroLineWidth?: number },
-    private clickable: boolean = false,
-    private callbackUpdate: (data: DomValues) => void = (_data) => {
-      // do nothing
-    }
-  ) {
-    this.data = isNaN(taste) || isNaN(aroma) ? null : fromDom(taste, aroma)
-    const p = this.makeChartData(this.data)
-    const chartConfig = this.makeChartConfiguration(p, config)
-    this.graph = new Chart(canvas, chartConfig)
+    super(canvas, cconfig)
   }
 }
