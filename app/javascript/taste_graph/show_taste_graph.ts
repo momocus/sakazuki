@@ -11,8 +11,8 @@ function getDomValues(canvas: HTMLCanvasElement): DomValues {
   const canvases = Array.from(document.getElementsByTagName("canvas"))
   const graphCanvases = canvases.filter((c) => c.hasAttribute("id"))
   const config = { pointRadius: 6, zeroLineWidth: 3 }
-  graphCanvases.forEach((c) => {
-    const dom = getDomValues(c)
-    new TasteGraph(c, dom, config)
+  graphCanvases.forEach((canvas) => {
+    const dom = getDomValues(canvas)
+    new TasteGraph({ canvas, dom, config })
   })
 }

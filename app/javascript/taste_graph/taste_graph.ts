@@ -23,16 +23,9 @@ Chart.register(ScatterController, PointElement, LinearScale)
 export type DomValues = { taste: string; aroma: string }
 
 /**
- * 味・香りを持つHTML Element
+ * グラフクリックされた値に対するコールバック関数
  */
-export type DomElements = {
-  tasteElement: HTMLInputElement
-  aromaElement: HTMLInputElement
-}
-
-function isDomValues(arg: DomValues | DomElements): arg is DomValues {
-  return "taste" in arg && "aroma" in arg
-}
+export type DomCallback = (d: DomValues) => void
 
 /**
  * TasteGraphのカスタマイズ値
@@ -126,19 +119,24 @@ export class TasteGraph extends Chart {
 
   /**
    * @param canvas グラフ描画先
-   * @param dom DOMデータ。`DomValues`を渡すと表示のみ、`DomElements`を渡すと入力ができる
+   * @param dom 描画するグラフの初期値
+   * @param domCallback クリックされた値に対するコールバック関数を与える。
+   *                    この引数を与えると、クリックで入力可能なグラフになる。
    * @param config グラフのカスタマイズ値
    */
-  constructor(
-    canvas: HTMLCanvasElement,
-    dom: DomValues | DomElements,
+  constructor({
+    canvas,
+    dom,
+    domCallback,
+    config,
+  }: {
+    canvas: HTMLCanvasElement
+    dom: DomValues
+    domCallback?: DomCallback
     config?: TasteGraphConfig
-  ) {
+  }) {
     // --- Data ---
-    const d = isDomValues(dom)
-      ? dom
-      : { taste: dom.tasteElement.value, aroma: dom.aromaElement.value }
-    const p = TasteGraph.fromDom(d)
+    const p = TasteGraph.fromDom(dom)
     const data = {
       datasets: [
         {
@@ -269,15 +267,14 @@ export class TasteGraph extends Chart {
      * 既存のデータをクリックすると入力をリセットできる。
      */
     const onClick = (() => {
-      if (isDomValues(dom))
+      if (typeof domCallback === "undefined")
         (_e: ChartEvent, _el: ActiveElement[], _c: Chart): void => {
           // dummy empty lambda
         }
       else {
         const syncDom = (data: Point) => {
           const d = TasteGraph.toDom(data)
-          dom.tasteElement.value = d.taste
-          dom.aromaElement.value = d.aroma
+          domCallback(d)
         }
         return (event: ChartEvent, _element: ActiveElement[], chart: Chart) => {
           const oldData = TasteGraph.popData(chart)

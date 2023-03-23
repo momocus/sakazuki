@@ -1,4 +1,4 @@
-import { TasteGraph } from "./taste_graph"
+import { DomValues, TasteGraph } from "./taste_graph"
 
 // Main
 {
@@ -9,5 +9,13 @@ import { TasteGraph } from "./taste_graph"
   const aromaElement = document.getElementById(
     "sake_aroma_value"
   ) as HTMLInputElement
-  new TasteGraph(canvas, { tasteElement, aromaElement })
+
+  const taste = tasteElement.value
+  const aroma = aromaElement.value
+  const dom = { taste, aroma }
+  const domCallback = (d: DomValues) => {
+    tasteElement.value = d.taste
+    aromaElement.value = d.aroma
+  }
+  new TasteGraph({ canvas, dom, domCallback })
 }
