@@ -280,10 +280,10 @@ export class TasteGraph extends Chart {
           dom.aromaElement.value = d.aroma
         }
         return (event: ChartEvent, _element: ActiveElement[], chart: Chart) => {
-          const newData = TasteGraph.getClickData(event, chart)
           const oldData = TasteGraph.popData(chart)
-          if (!TasteGraph.eqPoint(oldData, newData))
-            TasteGraph.pushData(chart, newData)
+          let newData = TasteGraph.getClickData(event, chart)
+          if (TasteGraph.eqPoint(oldData, newData)) newData = { x: NaN, y: NaN }
+          else TasteGraph.pushData(chart, newData)
           syncDom(newData)
           chart.update()
         }
