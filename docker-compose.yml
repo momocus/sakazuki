@@ -30,6 +30,7 @@ services:
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_HOSTNAME: db
+      SELENIUM_REMOTE_HOST: selenium
     build:
       context: .
       dockerfile: dev.Dockerfile
@@ -38,6 +39,7 @@ services:
       - "3000:3000"
     depends_on:
       - db
+      - selenium
   js:
     <<: *web
     tty: true
@@ -49,3 +51,9 @@ services:
     ports:
       - 3000
     command: "yarn build:css --watch"
+  selenium:
+    image: selenium/standalone-chrome:latest
+    ports:
+      - 4444
+    volumes:
+      - /dev/shm:/dev/shm

@@ -1,7 +1,29 @@
 require "capybara/rspec"
+require "selenium-webdriver"
 
-Capybara.default_driver = :rack_test
-Capybara.javascript_driver = :selenium_headless
+Capybara.register_driver(:remote_chrome) do |app|
+  options = Selenium::WebDriver::Chrome::Options.new
+  options.add_argument("--no-sandbox")
+  options.add_argument("--disable-dev-shm-usage")
+  options.add_argument("--headless")
+  options.add_argument("--disable-gpu")
+
+  url = "http://#{ENV.fetch('SELENIUM_REMOTE_HOST', 'localhost')}:4444/wd/hub"
+
+  Capybara::Selenium::Driver.new(
+    app,
+    browser: :remote,
+    url:,
+    options:
+  )
+end
+
+Capybara.javascript_driver = :remote_chrome
+Capybara.default_driver = :remote_chrome
+
+Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
+Capybara.server_port = 4444
+Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
 
 RSpec.configure do |config|
   config.before(:each, type: :system) do |_example|
@@ -11,7 +33,6 @@ RSpec.configure do |config|
   end
 end
 
-# "data-testid"をCapybaraのclick_linkなどで使えるように、Optional attributeに登録する
 Capybara.configure do |config|
   config.test_id = "data-testid"
 end
