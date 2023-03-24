@@ -6,4 +6,5 @@ css: yarn build:css --watch
 # You need PostgreSQL configurations.
 # See also dotenv.example file.
 #
-# db: docker run --rm --name db --network sakazuki_net --env-file .env --publish 5432:5432 --mount type=volume,src=sakazuki_db,dst=/var/lib/postgresql/data postgres:13-alpine
+# db: docker run --rm --name db --env-file .env --publish 5432:5432 --mount type=volume,src=sakazuki_db_storage,dst=/var/lib/postgresql/data postgres:13
+# selenium: docker run --rm --name selenium -p 4444:4444 -p 7900:7900 --shm-size="512M" selenium/standalone-firefox:latest

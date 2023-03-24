@@ -1,28 +1,16 @@
 require "capybara/rspec"
 require "selenium-webdriver"
 
-Capybara.register_driver(:remote_chrome) do |app|
-  options = Selenium::WebDriver::Chrome::Options.new
-  options.add_argument("--no-sandbox")
-  options.add_argument("--disable-dev-shm-usage")
-  options.add_argument("--headless")
-  options.add_argument("--disable-gpu")
-
-  url = "http://#{ENV.fetch('SELENIUM_REMOTE_HOST', 'localhost')}:4444/wd/hub"
-
-  Capybara::Selenium::Driver.new(
-    app,
-    browser: :remote,
-    url:,
-    options:
-  )
+Capybara.register_driver(:remote_firefox) do |app|
+  options = Selenium::WebDriver::Firefox::Options.new
+  Capybara::Selenium::Driver.new(app, options:)
 end
 
-Capybara.javascript_driver = :remote_chrome
-Capybara.default_driver = :remote_chrome
+Capybara.javascript_driver = :remote_firefox
+Capybara.default_driver = :rack_test
 
 Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
-Capybara.server_port = 4444
+# Capybara.server_port = 3001 # 指定しなければランダムなポートが割り当てられる
 Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
 
 RSpec.configure do |config|
