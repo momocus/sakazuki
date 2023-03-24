@@ -7,7 +7,6 @@
     "sourceType": "module"
   },
   "ignorePatterns": ["/coverage/", "/app/assets/builds"],
-  "plugins": [],
   "extends": ["eslint:recommended", "prettier"],
   "rules": {
     "indent": ["error", 2],
