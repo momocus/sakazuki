@@ -18,6 +18,7 @@
       { "varsIgnorePattern": "^_", "argsIgnorePattern": "^_" }
     ]
   },
+  "reportUnusedDisableDirectives": true,
   "overrides": [
     {
       "files": ["*.ts", "*.tsx"],
