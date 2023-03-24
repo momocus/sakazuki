@@ -118,11 +118,11 @@ export class TasteGraph extends Chart {
   }
 
   /**
-   * @param canvas グラフ描画先
-   * @param dom 描画するグラフの初期値
-   * @param domCallback クリックされた値に対するコールバック関数を与える。
+   * @param canvas - グラフ描画先
+   * @param dom - 描画するグラフの初期値
+   * @param domCallback - クリックされた値に対するコールバック関数を与える。
    *                    この引数を与えると、クリックで入力可能なグラフになる。
-   * @param config グラフのカスタマイズ値
+   * @param config - グラフのカスタマイズ値
    */
   constructor({
     canvas,
