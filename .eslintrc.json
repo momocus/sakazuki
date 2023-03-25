@@ -1,13 +1,12 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2022": true
   },
   "parserOptions": {
     "sourceType": "module"
   },
   "ignorePatterns": ["/coverage/", "/app/assets/builds"],
-  "plugins": [],
   "extends": ["eslint:recommended", "prettier"],
   "rules": {
     "indent": ["error", 2],
@@ -19,13 +18,14 @@
       { "varsIgnorePattern": "^_", "argsIgnorePattern": "^_" }
     ]
   },
+  "reportUnusedDisableDirectives": true,
   "overrides": [
     {
       "files": ["*.ts", "*.tsx"],
       "parser": "@typescript-eslint/parser",
       "parserOptions": {
         "tsconfigRootDir": ".",
-        "project": ["./tsconfig.json"]
+        "project": "./tsconfig.json"
       },
       "plugins": ["@typescript-eslint"],
       "extends": [
