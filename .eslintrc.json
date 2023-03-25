@@ -27,7 +27,7 @@
         "tsconfigRootDir": ".",
         "project": "./tsconfig.json"
       },
-      "plugins": ["@typescript-eslint"],
+      "plugins": ["@typescript-eslint", "eslint-plugin-tsdoc"],
       "extends": [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
@@ -41,7 +41,8 @@
             "varsIgnorePattern": "^_",
             "argsIgnorePattern": "^_"
           }
-        ]
+        ],
+        "tsdoc/syntax": "warn"
       }
     }
   ]
