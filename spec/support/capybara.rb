@@ -2,15 +2,21 @@ require "capybara/rspec"
 require "selenium-webdriver"
 
 Capybara.register_driver(:remote_firefox) do |app|
-  options = Selenium::WebDriver::Firefox::Options.new
-  Capybara::Selenium::Driver.new(app, options:)
+  url = "http://localhost:4444/wd/hub"
+  browser_options = Selenium::WebDriver::Firefox::Options.new
+
+  Capybara::Selenium::Driver.new(app,
+                                 browser: :remote,
+                                 capabilities: browser_options,
+                                 url:)
 end
 
 Capybara.javascript_driver = :remote_firefox
 Capybara.default_driver = :rack_test
 
+# docker composeのときはCapybara.server_host=webにするかも
 Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
-# Capybara.server_port = 3001 # 指定しなければランダムなポートが割り当てられる
+Capybara.server_port = 3001 # 指定しなければランダムなポートが割り当てられる
 Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
 
 RSpec.configure do |config|
