@@ -135,13 +135,10 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
 
-  # Selenium
+  # Selenium used by Capybara
   gem "selenium-webdriver"
 
   # Simple coverage
   gem "simplecov"
   gem "simplecov-cobertura" # For CodeCov integration
-
-  # Webdriver
-  gem "webdrivers"
 end
