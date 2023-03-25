@@ -1,8 +1,28 @@
 require "capybara/rails"
 require "capybara/rspec"
+require "selenium-webdriver"
+
+Capybara.register_driver(:remote_firefox) do |app|
+  url = "http://selenium:4444/wd/hub"
+  options = Selenium::WebDriver::Firefox::Options.new
+  options.add_argument("--headless")
+  Capybara::Selenium::Driver.new(
+    app,
+    browser: :remote,
+    options:,
+    url:
+  )
+end
 
 Capybara.default_driver = :rack_test
-Capybara.javascript_driver = :selenium_headless
+
+if ENV.fetch("IN_DOCKER", nil)
+  Capybara.javascript_driver = :remote_firefox
+  Capybara.server_host = "web"
+else
+  Capybara.javascript_driver = :selenium_headless
+end
+
 RSpec.configure do |config|
   config.before(:each, type: :system) do |example|
     # context/describe/itの`js: true`でdriverを切り替える

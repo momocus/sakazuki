@@ -30,6 +30,7 @@ services:
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_HOSTNAME: db
+      IN_DOCKER: true
     build:
       context: .
       dockerfile: dev.Dockerfile
@@ -49,3 +50,10 @@ services:
     ports:
       - 3000
     command: "yarn build:css --watch"
+  selenium:
+    image: selenium/standalone-firefox:latest
+    ports:
+      - 4444:4444
+      - 7900:7900
+    environment:
+      shm-size: 512m
