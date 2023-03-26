@@ -26,13 +26,10 @@ services:
       - ./db:/sakazuki/db:cached
       - ./spec:/sakazuki/spec:cached
       - builds:/sakazuki/app/assets/builds:consistent
-    environment:
+    environment: &web_env
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_HOSTNAME: db
-      CAPYBARA_SERVER_HOST: web
-      REMOTE_DRIVER_HOST: selenium
-      REMOTE_DRIVER_PORT: 4444
     build:
       context: .
       dockerfile: dev.Dockerfile
@@ -59,3 +56,19 @@ services:
       - 4444:4444
     environment:
       shm-size: 512m
+    profiles:
+      - test
+  test:
+    <<: *web
+    environment:
+      <<: *web_env
+      CAPYBARA_SERVER_HOST: test
+      REMOTE_DRIVER_HOST: selenium
+      REMOTE_DRIVER_PORT: 4444
+    command: bash -c "yarn build && yarn build:css && bundle exec rspec"
+    depends_on:
+      - db
+      - selenium
+    profiles:
+      - test
+
