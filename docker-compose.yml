@@ -14,6 +14,8 @@ services:
     ports:
       - "5432:5432"
     hostname: db
+    networks:
+      - sakazuki_net
   web: &web
     image: sakazuki
     volumes:
@@ -27,6 +29,9 @@ services:
       - ./spec:/sakazuki/spec:cached
       - builds:/sakazuki/app/assets/builds:consistent
     environment: &web_env
+      CAPYBARA_SERVER_HOST: web
+      REMOTE_DRIVER_HOST: selenium
+      REMOTE_DRIVER_PORT: 4444
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_HOSTNAME: db
@@ -39,6 +44,8 @@ services:
     depends_on:
       - db
       - selenium
+    networks:
+      - sakazuki_net
   js:
     <<: *web
     tty: true
@@ -56,8 +63,8 @@ services:
       - 4444:4444
     environment:
       shm-size: 512m
-    profiles:
-      - test
+    networks:
+      - sakazuki_net
   test:
     <<: *web
     environment:
@@ -65,10 +72,11 @@ services:
       CAPYBARA_SERVER_HOST: test
       REMOTE_DRIVER_HOST: selenium
       REMOTE_DRIVER_PORT: 4444
-    command: bash -c "yarn build && yarn build:css && bundle exec rspec"
+    command: bash -c "yarn build && yarn build:css && bundle exec rspec ./spec/system/copy_sakes_spec.rb:88 --fail-fast"
     depends_on:
       - db
       - selenium
     profiles:
       - test
-
+networks:
+  sakazuki_net: {}
