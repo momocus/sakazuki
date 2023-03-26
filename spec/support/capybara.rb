@@ -2,23 +2,20 @@ require "capybara/rails"
 require "capybara/rspec"
 require "selenium-webdriver"
 
-Capybara.register_driver(:remote_firefox) do |app|
-  url = "http://selenium:4444/wd/hub"
-  options = Selenium::WebDriver::Firefox::Options.new
-  options.add_argument("--headless")
-  Capybara::Selenium::Driver.new(
-    app,
-    browser: :remote,
-    options:,
-    url:
-  )
-end
-
 Capybara.default_driver = :rack_test
 
-if ENV.fetch("IN_DOCKER", nil)
-  Capybara.javascript_driver = :remote_firefox
-  Capybara.server_host = "web"
+if ENV["REMOTE_DRIVER_HOST"]
+  Capybara.app_host = ENV.fetch("CAPYBARA_APP_HOST", nil)
+  Capybara.server_host = ENV.fetch("CAPYBARA_SERVER_HOST", nil)
+  Capybara.register_driver(:remote_firefox_headless) do |app|
+    host = ENV["REMOTE_DRIVER_HOST"]
+    port = ENV.fetch("REMOTE_DRIVER_PORT", 4444)
+    url = "http://#{host}:#{port}/wd/hub"
+    options = Selenium::WebDriver::Firefox::Options.new
+    options.add_argument("-headless")
+    Capybara::Selenium::Driver.new(app, browser: :remote, options:, url:)
+  end
+  Capybara.javascript_driver = :remote_firefox_headless
 else
   Capybara.javascript_driver = :selenium_headless
 end
