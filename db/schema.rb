@@ -10,12 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_16_073620) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_25_130307) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "data_migrations", primary_key: "version", id: :string, force: :cascade do |t|
-  end
 
   create_table "photos", force: :cascade do |t|
     t.string "image"
@@ -55,11 +52,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_16_073620) do
     t.integer "bottle_level", default: 0
     t.integer "hiire", default: 0
     t.integer "price"
-    t.integer "size"
+    t.integer "size", default: 720
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "opened_at", default: "2021-01-01 00:00:00", null: false
-    t.datetime "emptied_at", default: "2021-01-01 00:00:00", null: false
+    t.datetime "opened_at", null: false
+    t.datetime "emptied_at", null: false
     t.integer "rating", default: 0, null: false
   end
 
