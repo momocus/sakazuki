@@ -11,6 +11,16 @@
 POSTGRES_USERNAME=
 POSTGRES_PASSWORD=
 
+### Capybara
+
+# To test using a remote firefox, configure the following.
+# Refer to "capybara.rb" and "docker-compose.yml" in this repository.
+#
+# REMOTE_DRIVER_HOST=
+# REMOTE_DRIVER_PORT=
+# CAPYBARA_APP_HOST=
+# CAPYBARA_SERVER_HOST=
+
 ### Google AdSense
 
 # Client ID
