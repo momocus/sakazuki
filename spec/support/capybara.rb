@@ -2,22 +2,27 @@ require "capybara/rails"
 require "capybara/rspec"
 require "selenium-webdriver"
 
-Capybara.default_driver = :rack_test
-
-if ENV["REMOTE_DRIVER_HOST"]
-  Capybara.app_host = ENV.fetch("CAPYBARA_APP_HOST", nil)
-  Capybara.server_host = ENV.fetch("CAPYBARA_SERVER_HOST", nil)
-  Capybara.register_driver(:remote_firefox_headless) do |app|
-    host = ENV["REMOTE_DRIVER_HOST"]
-    port = ENV.fetch("REMOTE_DRIVER_PORT", 4444)
-    url = "http://#{host}:#{port}/wd/hub"
-    options = Selenium::WebDriver::Firefox::Options.new
-    options.add_argument("-headless")
-    Capybara::Selenium::Driver.new(app, browser: :remote, options:, url:)
+Capybara.configure do |config|
+  # driver設定: https://www.rubydoc.info/gems/capybara/Capybara#configure-class_method
+  config.default_driver = :rack_test
+  if ENV["REMOTE_DRIVER_HOST"]
+    config.app_host = ENV.fetch("CAPYBARA_APP_HOST", nil)
+    config.server_host = ENV.fetch("CAPYBARA_SERVER_HOST", nil)
+    Capybara.register_driver(:remote_firefox_headless) do |app|
+      host = ENV["REMOTE_DRIVER_HOST"]
+      port = ENV.fetch("REMOTE_DRIVER_PORT", 4444)
+      url = "http://#{host}:#{port}/wd/hub"
+      options = Selenium::WebDriver::Firefox::Options.new
+      options.add_argument("-headless")
+      Capybara::Selenium::Driver.new(app, browser: :remote, options:, url:)
+    end
+    config.javascript_driver = :remote_firefox_headless
+  else
+    config.javascript_driver = :selenium_headless
   end
-  Capybara.javascript_driver = :remote_firefox_headless
-else
-  Capybara.javascript_driver = :selenium_headless
+
+  # "data-testid"をCapybaraのclick_linkなどで使えるように、Optional attributeに登録する
+  config.test_id = "data-testid"
 end
 
 RSpec.configure do |config|
@@ -26,11 +31,6 @@ RSpec.configure do |config|
     driver = example.metadata[:js] ? Capybara.javascript_driver : Capybara.default_driver
     driven_by(driver)
   end
-end
-
-# "data-testid"をCapybaraのclick_linkなどで使えるように、Optional attributeに登録する
-Capybara.configure do |config|
-  config.test_id = "data-testid"
 end
 
 # Capybaraのカスタムセレクタ
