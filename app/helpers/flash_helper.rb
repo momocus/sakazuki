@@ -12,7 +12,7 @@ module FlashHelper
       "info"
     when :notice, :create_sake, :update_sake, :empty_sake, :delete_sake, :open_sake
       "success"
-    when :alert, :unauthenticated, :permission_denied
+    when :alert
       "danger"
     else
       "light"
@@ -59,10 +59,12 @@ module FlashHelper
   #   sake_link({ name: "ほしいずみ", id: 3 })
   #     #=> "<a class="alert-link" href="/sakes/3">ほしいずみ</a>"
   # @param sake [Hash] 酒の名前とidを持つハッシュ
-  # @return [String] リンク先、省略した場合は酒のshowへのリンクになる
+  # @return [String] 酒へのリンク
   def sake_link(sake)
-    link ||= sake_path(sake[:id])
-    link_to(sake[:name], link, { class: "alert-link" })
+    # HACK: flash経由でキーがStringに変換されることがあるため対処
+    link = sake_path(sake[:id] || sake["id"])
+    name = sake[:name] || sake["name"]
+    link_to(name, link, { class: "alert-link" })
   end
 
   # flashメッセージにおける、レビューするリンクを作成する
@@ -71,8 +73,10 @@ module FlashHelper
   # @return [String] レビューリンク
   def sake_review_link(sake)
     text = tag.i(class: "bi-chat-square-heart me-1", style: "font-size: 0.98em;") + t("helper.flash.review")
+    # HACK: flash経由でキーがStringに変換されることがあるため対処
+    id = sake[:id] || sake["id"]
     # レビュー項目に注目しアコーディオンを開くリンク
-    link = edit_sake_path(sake["id"], review: true, anchor: "headingReview")
+    link = edit_sake_path(id, review: true, anchor: "headingReview")
     link_to(text, link, { class: "alert-link" })
   end
 end

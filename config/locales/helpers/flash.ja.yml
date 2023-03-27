@@ -1,7 +1,7 @@
 ja:
   helper:
     flash:
-      copy_sake: "%{name}の内容を複製しました。画像とレビューは複製されません。"
+      copy_sake: "%{name} の内容を複製しました。画像とレビューは複製されません。"
       create_sake: "%{name} を登録しました。"
       update_sake: "%{name} を更新しました。"
       open_sake: "%{name} を開封しました。 ― %{link}"

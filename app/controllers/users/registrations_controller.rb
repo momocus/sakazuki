@@ -45,8 +45,7 @@ module Users
     private
 
     def redirect_to_root
-      redirect_to(root_url,
-                  flash: { danger: t("controllers.user.permission_denied") })
+      redirect_to(root_url, alert: t(".permission_denied"))
     end
   end
 end
