@@ -128,6 +128,14 @@ $ docker compose up
 
 - Gem/Node Package の更新があった場合は、`docker compose build`でイメージを更新する
 
+- テスト
+  - 別シェルで`docker compose up`しておくか、`docker compose up -d # バックグラウンドで起動`した状態で、以下のコマンドを実行する
+
+```console
+$ docker compose exec web bundle exec rspec
+```
+
+
 ## How to Contribute
 
 - GitHub の Issue/Pull Request にて受けつけています
