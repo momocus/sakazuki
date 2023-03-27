@@ -16,10 +16,10 @@ POSTGRES_PASSWORD=
 # To test using a remote firefox, configure the following.
 # Refer to "capybara.rb" and "docker-compose.yml" in this repository.
 #
-# REMOTE_DRIVER_HOST=
-# REMOTE_DRIVER_PORT=
-# CAPYBARA_APP_HOST=
-# CAPYBARA_SERVER_HOST=
+# CAPYBARA_APP_HOST=http://host.docker.internal
+# CAPYBARA_SERVER_HOST=0.0.0.0
+# REMOTE_DRIVER_HOST=localhost
+# REMOTE_DRIVER_PORT=4444
 
 ### Google AdSense
 
