@@ -128,6 +128,13 @@ $ docker compose up
 
 - Gem/Node Package の更新があった場合は、`docker compose build`でイメージを更新する
 
+- 起動している Docker コンテナでテストを実行する
+
+```console
+$ docker compose exec web bundle exec rspec
+...
+```
+
 ## How to Contribute
 
 - GitHub の Issue/Pull Request にて受けつけています

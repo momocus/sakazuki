@@ -30,6 +30,9 @@ services:
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_HOSTNAME: db
+      CAPYBARA_SERVER_HOST: web
+      REMOTE_DRIVER_HOST: selenium
+      REMOTE_DRIVER_PORT: 4444
     build:
       context: .
       dockerfile: dev.Dockerfile
@@ -38,6 +41,7 @@ services:
       - "3000:3000"
     depends_on:
       - db
+      - selenium
   js:
     <<: *web
     tty: true
@@ -49,3 +53,8 @@ services:
     ports:
       - 3000
     command: "yarn build:css --watch"
+  selenium:
+    image: selenium/standalone-firefox:latest
+    shm_size: 512m
+    ports:
+      - 4444:4444
