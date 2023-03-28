@@ -119,9 +119,9 @@ class Sake < ApplicationRecord
     sake.bindume_on ||= Time.current.to_date.beginning_of_month
   end
 
-  before_update do |sake|
+  before_update(if: :bottle_level_changed?) do |sake|
     sake.opened_at = sake.updated_at if bottle_level_in_database == "sealed"
-    sake.emptied_at = sake.updated_at if bottle_level_in_database == "empty"
+    sake.emptied_at = sake.updated_at if sake.emptied_at == "empty"
   end
 
   before_create do |sake|
