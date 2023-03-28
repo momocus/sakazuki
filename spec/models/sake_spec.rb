@@ -214,4 +214,28 @@ RSpec.describe Sake do
       end
     end
   end
+
+  describe "Sake.current_brewery_year" do
+    let(:sake) { create(:sake, bottle_level: "sealed", created_at: Time.zone.parse("2022-01-02 10:30:00")) }
+
+    context "when 2021-06-30" do
+      before do
+        travel_to(Time.zone.local(2021, 6, 30))
+      end
+
+      it "returns 2020 BY" do
+        expect(described_class.current_brewery_year).to eq(Date.new(2020, 7, 1))
+      end
+    end
+
+    context "when 2021-07-01" do
+      before do
+        travel_to(Time.zone.local(2021, 7, 1))
+      end
+
+      it "returns 2021 BY" do
+        expect(described_class.current_brewery_year).to eq(Date.new(2021, 7, 1))
+      end
+    end
+  end
 end

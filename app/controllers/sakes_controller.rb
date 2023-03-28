@@ -38,7 +38,7 @@ class SakesController < ApplicationController
       @sake = Sake.new(attr)
       flash[:info] = t(".copy", name: alert_link_tag(copied.name, sake_path(copied)))
     else
-      @sake = Sake.new(default_attributes)
+      @sake = Sake.new
     end
   end
 
@@ -126,15 +126,6 @@ class SakesController < ApplicationController
   def copy_attributes(sake)
     all = sake.attributes
     all.select { |key, _v| copy_key?(key) }
-  end
-
-  # 新規酒のデフォルト情報をもったハッシュを作成する
-  #
-  # @return [Hash<Symbol => Integer, Date>] デフォルト酒情報のハッシュ
-  def default_attributes
-    {
-      brewery_year: to_by(Time.current),
-    }
   end
 
   # Use callbacks to share common setup or constraints between actions.

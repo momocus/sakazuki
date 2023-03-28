@@ -117,6 +117,7 @@ class Sake < ApplicationRecord
     sake.opened_at ||= Time.current
     sake.emptied_at ||= Time.current
     sake.bindume_on ||= Time.current.to_date.beginning_of_month
+    sake.brewery_year ||= Sake.current_brewery_year
   end
 
   before_update do |sake|
@@ -203,6 +204,20 @@ class Sake < ApplicationRecord
     return nil if price.nil? || price.zero? || size.nil? || size.zero?
 
     (price.to_f / size * 180 * SELLING_RATE).ceil(-2)
+  end
+
+  # 現在の日付のBYを返す
+  # @example
+  #   Date(2021, 6, 30)
+  #       current_brewery_year #=> Date(2020, 7, 1)
+  #   Date(2021, 7, 2)
+  #       current_brewery_year #=> Date(2021, 7, 1)
+  # @return [Date] 入力された日付に対応するBY、月日はBYの始まりである7/1となる
+  def self.current_brewery_year
+    date = Time.current
+    by_year = date.year - (date.month >= 7 ? 0 : 1)
+    # BYは年のみ、使わない月日はBY始まりの7/1とする
+    Date.new(by_year, 7)
   end
 end
 # rubocop:enable Metrics/ClassLength
