@@ -119,11 +119,13 @@ class Sake < ApplicationRecord
     sake.bindume_on ||= Time.current.to_date.beginning_of_month
   end
 
+  # 酒瓶状態の変更に応じて、酒が持つ日時データを更新する
   before_update(if: :bottle_level_changed?) do |sake|
     sake.opened_at = sake.updated_at if bottle_level_in_database == "sealed"
     sake.emptied_at = sake.updated_at if sake.emptied_at == "empty"
   end
 
+  # 作成された酒の瓶状態に応じて、酒が持つ日時データを更新する
   before_create do |sake|
     sake.opened_at = sake.created_at unless sake.sealed?
     sake.emptied_at = sake.created_at if sake.empty?
