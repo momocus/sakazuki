@@ -173,4 +173,58 @@ RSpec.describe "Bottle Level Datetimes" do
       end
     end
   end
+
+  context "when updating the name of the sealed sake" do
+    let!(:sake) { create(:sake, bottle_level: :sealed, opened_at: Date.new(2000, 1, 1)) }
+
+    before do
+      visit(edit_sake_path(sake.id))
+      fill_in("sake_name",	with: "衣が浦若水　純米大吟醸")
+      click_button("form_submit")
+    end
+
+    it "does not changed the opened_at" do
+      expect { sake.reload }.not_to change(sake, :opened_at)
+    end
+
+    it "does not changed the emptied_at" do
+      expect { sake.reload }.not_to change(sake, :emptied_at)
+    end
+  end
+
+  context "when updating the name of the opened sake" do
+    let(:sake) { create(:sake, bottle_level: :opened) }
+
+    before do
+      visit(edit_sake_path(sake.id))
+      fill_in("sake_name",	with: "updated-sake-name")
+      click_button("form_submit")
+    end
+
+    it "does not changed the opened_at" do
+      expect { sake.reload }.not_to change(sake, :opened_at)
+    end
+
+    it "does not changed the emptied_at" do
+      expect { sake.reload }.not_to change(sake, :emptied_at)
+    end
+  end
+
+  context "when updating the name of the emptied sake" do
+    let(:sake) { create(:sake, bottle_level: :empty) }
+
+    before do
+      visit(edit_sake_path(sake.id))
+      fill_in("sake_name",	with: "updated-sake-name")
+      click_button("form_submit")
+    end
+
+    it "does not changed the opened_at" do
+      expect { sake.reload }.not_to change(sake, :opened_at)
+    end
+
+    it "does not changed the emptied_at" do
+      expect { sake.reload }.not_to change(sake, :emptied_at)
+    end
+  end
 end
