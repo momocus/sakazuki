@@ -1,8 +1,6 @@
 # rubocop:disable Metrics/ClassLength
 class SakesController < ApplicationController
   before_action :set_sake, only: %i[show edit update destroy]
-  after_action :update_datetime, only: %i[update]
-  after_action :create_datetime, only: %i[create]
   before_action :signed_in_user, only: %i[new create edit update destroy]
 
   include SakesHelper
@@ -142,25 +140,6 @@ class SakesController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_sake
     @sake = Sake.includes(:photos).find(params[:id])
-  end
-
-  # 酒瓶状態の変更に応じて、酒が持つ日時データを更新する
-  def update_datetime
-    case @sake.saved_change_to_attribute(:bottle_level)
-    in [old, new]
-      @sake.assign_attributes(opened_at: @sake.updated_at) if old == "sealed"
-      @sake.assign_attributes(emptied_at: @sake.updated_at) if new == "empty"
-    in nil
-      nil
-    end
-    @sake.save
-  end
-
-  # 作成された酒の瓶状態に応じて、酒が持つ日時データを更新する
-  def create_datetime
-    @sake.assign_attributes(opened_at: @sake.created_at) unless @sake.sealed?
-    @sake.assign_attributes(emptied_at: @sake.created_at) if @sake.empty?
-    @sake.save
   end
 
   # Only allow a list of trusted parameters through.

@@ -119,6 +119,15 @@ class Sake < ApplicationRecord
     sake.bindume_on ||= Time.current.to_date.beginning_of_month
   end
 
+  before_update do |sake|
+    sake.opened_at = sake.updated_at if bottle_level_in_database == :sealed
+    sake.emptied_at = sake.updated_at if bottle_level_in_database == :empty
+  end
+
+  before_create do |sake|
+    sake.opened_at = sake.created_at unless sake.sealed?
+    sake.emptied_at = sake.created_at if sake.empty?
+  end
   # rubocop:disable Layout/LineLength
   ransack_alias :all_text, :aroma_impression_or_awa_or_color_or_genryomai_or_kakemai_or_kobo_or_kura_or_name_or_nigori_or_note_or_roka_or_season_or_shibori_or_taste_impression_or_todofuken
   # rubocop:enable Layout/LineLength
