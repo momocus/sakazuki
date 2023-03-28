@@ -2,17 +2,21 @@
   <li>
     <%= link_to(tag.i(class: "bi-droplet-half", style: "font-size: 0.95em;") + t(".open"),
                 sake_path(sake, params: { sake: { bottle_level: "opened" }, flash_message_type: "open" }),
-                data: { method: :patch,
-                        confirm: t(".confirm_open", name: sake.name),
-                        testid: "open_button_#{sake.id}", }) %>
+                data: {
+                  turbo_method: :patch,
+                  turbo_confirm: t(".confirm_open", name: sake.name),
+                  testid: "open_button_#{sake.id}",
+                }) %>
   </li>
 <% end %>
 <% if sake.opened? %>
   <li>
     <%= link_to(tag.i(class: "bi-droplet", style: "font-size: 0.95em;") + t(".empty"),
                 sake_path(sake, params: { sake: { bottle_level: "empty" }, flash_message_type: "empty" }),
-                data: { method: :patch,
-                        confirm: t(".confirm_empty", name: sake.name),
-                        testid: "empty_button_#{sake.id}", }) %>
+                data: {
+                  turbo_method: :patch,
+                  turbo_confirm: t(".confirm_empty", name: sake.name),
+                  testid: "empty_button_#{sake.id}",
+                }) %>
   </li>
 <% end %>
