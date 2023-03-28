@@ -120,8 +120,8 @@ class Sake < ApplicationRecord
   end
 
   before_update do |sake|
-    sake.opened_at = sake.updated_at if bottle_level_in_database == :sealed
-    sake.emptied_at = sake.updated_at if bottle_level_in_database == :empty
+    sake.opened_at = sake.updated_at if bottle_level_in_database == "sealed"
+    sake.emptied_at = sake.updated_at if bottle_level_in_database == "empty"
   end
 
   before_create do |sake|
