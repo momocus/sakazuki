@@ -1,21 +1,4 @@
 module DeviseHelper
-  # deviseが生成するメッセージタイプをbootstrapのアラートタイプに変換する
-  #
-  # deviseが生成するメッセージタイプ3種と変換先はexampleの通り。
-  # @example
-  #   bootstrap_alert("notice") #=> "success" ex. ログイン成功
-  #   bootstrap_alert("alert") #=> "danger" ex. パスワードミス
-  #   bootstrap_alert("timedout") #=> "timedout" ex. タイムアウト
-  # @param message_type [String] deviseが生成するメッセージタイプ
-  # @return [String] bootstrapのアラートタイプ
-  def bootstrap_alert(message_type)
-    case message_type
-    when "notice" then "success"
-    when "alert" then "danger"
-    else message_type
-    end
-  end
-
   # パスワードの文字数制約メッセージ
   # @example
   #   minimum_password_message(6) #=> "（6文字以上）"
