@@ -96,8 +96,7 @@ RSpec.describe "Bottle Level Datetimes" do
 
     describe "created_at" do
       it "is not changed" do
-        new_created_at = sake.created_at
-        expect(new_created_at).to be_within(delta).of(created_at)
+        expect { sake.reload }.not_to change(sake, :created_at)
       end
     end
 
@@ -122,8 +121,7 @@ RSpec.describe "Bottle Level Datetimes" do
 
     describe "created_at" do
       it "is not changed" do
-        new_created_at = sake.created_at
-        expect(new_created_at).to be_within(delta).of(created_at)
+        expect { sake.reload }.not_to change(sake, :created_at)
       end
     end
 
@@ -157,15 +155,13 @@ RSpec.describe "Bottle Level Datetimes" do
 
     describe "created_at" do
       it "is not changed" do
-        new_created_at = sake.created_at
-        expect(new_created_at).to be_within(delta).of(created_at)
+        expect { sake.reload }.not_to change(sake, :created_at)
       end
     end
 
     describe "opened_at" do
       it "is not changed" do
-        new_opened_at = sake.opened_at
-        expect(new_opened_at).to be_within(delta).of(opened_at)
+        expect { sake.reload }.not_to change(sake, :opened_at)
       end
     end
 
