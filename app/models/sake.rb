@@ -113,7 +113,7 @@ class Sake < ApplicationRecord
   validates :emptied_at, presence: true
   validates :rating, numericality: { only_integer: true }, inclusion: 0..5
 
-  after_initialize do |sake|
+  after_initialize(if: :new_record?) do |sake|
     sake.opened_at ||= Time.current
     sake.emptied_at ||= Time.current
     sake.bindume_on ||= Time.current.to_date.beginning_of_month
