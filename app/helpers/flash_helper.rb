@@ -4,7 +4,7 @@ module FlashHelper
   #
   # RailsやDevise生成のnotice/alertにも対応している。
   #
-  # @param key [String|Symbol] flashハッシュのキー
+  # @param key [String, Symbol] flashハッシュのキー
   # @return [String] どのアラートタイプを使うかを文字列で返す
   def flash_type(key)
     case key.to_sym
@@ -21,8 +21,8 @@ module FlashHelper
 
   # flashメッセージの表示内容を生成する
   #
-  # @param key [Symbol|String] flashのキー
-  # @param value [Hash|String] 必要に応じて、酒の名前やidを持つハッシュ、または、表示するメッセージそのもの
+  # @param key [Symbol, String] flashのキー
+  # @param value [Hash, String] 必要に応じて、酒の名前やidを持つハッシュ、または、表示するメッセージそのもの
   # @return [String] 表示するメッセージ
   def flash_message(key, value) # rubocop:disable Metrics/MethodLength
     t_key = flash_t_key(key)
