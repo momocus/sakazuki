@@ -13,7 +13,7 @@ RSpec.describe "New Sake" do
     end
 
     it "has success flash message" do
-      text = I18n.t("sakes.create.success", name: sake_name)
+      text = I18n.t("helper.flash.create_sake", name: sake_name)
       expect(find(:test_id, "flash_message")).to have_text(text)
     end
 

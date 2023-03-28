@@ -18,7 +18,7 @@ RSpec.describe "Edit Sake" do
 
     it "has success flash message" do
       sake.reload
-      text = I18n.t("sakes.update.success", name: sake.name)
+      text = I18n.t("helper.flash.update_sake", name: sake.name)
       expect(find(:test_id, "flash_message")).to have_text(text)
     end
 
