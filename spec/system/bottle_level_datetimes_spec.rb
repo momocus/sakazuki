@@ -145,7 +145,7 @@ RSpec.describe "Bottle Level Datetimes" do
   context "when empting a opened sake" do
     created_at = Time.current.ago(7.days)
     opened_at = Time.current.ago(4.days)
-    let(:sake) { create(:sake, bottle_level: "sealed", created_at:, opened_at:) }
+    let(:sake) { create(:sake, bottle_level: "opened", created_at:, opened_at:) }
 
     before do
       visit edit_sake_path(sake.id)
