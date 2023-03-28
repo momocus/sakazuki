@@ -85,7 +85,7 @@ RSpec.describe "Bottle Level Datetimes" do
   end
 
   context "when opening a sealed sake" do
-    created_at = Time.current.ago(7.days)
+    created_at = 7.days.ago
     let(:sake) { create(:sake, bottle_level: "sealed", created_at:) }
 
     before do
@@ -110,7 +110,7 @@ RSpec.describe "Bottle Level Datetimes" do
   end
 
   context "when empting a sealed sake" do
-    created_at = Time.current.ago(7.days)
+    created_at = 7.days.ago
     let(:sake) { create(:sake, bottle_level: "sealed", created_at:) }
 
     before do
@@ -143,8 +143,8 @@ RSpec.describe "Bottle Level Datetimes" do
   end
 
   context "when empting a opened sake" do
-    created_at = Time.current.ago(7.days)
-    opened_at = Time.current.ago(4.days)
+    created_at = 7.days.ago
+    opened_at = 4.days.ago
     let(:sake) { create(:sake, bottle_level: "opened", created_at:, opened_at:) }
 
     before do
