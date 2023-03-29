@@ -1,7 +1,6 @@
 import { DomValues, TasteGraph } from "./taste_graph"
 
-// Main
-{
+addEventListener("turbo:load", (_event) => {
   const canvas = document.getElementById("taste_graph") as HTMLCanvasElement
   const tasteElement = document.getElementById(
     "sake_taste_value"
@@ -18,4 +17,4 @@ import { DomValues, TasteGraph } from "./taste_graph"
     aromaElement.value = d.aroma
   }
   new TasteGraph({ canvas, dom, domCallback })
-}
+})
