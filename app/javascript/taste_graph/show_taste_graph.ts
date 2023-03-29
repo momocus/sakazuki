@@ -7,13 +7,20 @@ function getDomValues(canvas: HTMLCanvasElement): DomValues {
   return { taste, aroma }
 }
 
-// Main
-{
-  const canvases = Array.from(document.getElementsByTagName("canvas"))
-  const graphCanvases = canvases.filter((c) => c.hasAttribute("id"))
-  const config = { pointRadius: 6, zeroLineWidth: 3 }
-  graphCanvases.forEach((canvas) => {
-    const dom = getDomValues(canvas)
-    new TasteGraph({ canvas, dom, config })
-  })
+function hasSakeId(canvas: HTMLCanvasElement): boolean {
+  const idRegexp = /^sake-\d+$/
+  return canvas.id.match(idRegexp) != null
 }
+
+addEventListener("turbo:load", (_event) => {
+  const canvases = Array.from(document.getElementsByTagName("canvas"))
+
+  if (canvases.length > 0) {
+    const graphCanvases = canvases.filter((c) => hasSakeId(c))
+    const config = { pointRadius: 6, zeroLineWidth: 3 }
+    graphCanvases.forEach((canvas) => {
+      const dom = getDomValues(canvas)
+      new TasteGraph({ canvas, dom, config })
+    })
+  }
+})

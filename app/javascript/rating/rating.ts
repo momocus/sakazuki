@@ -14,20 +14,24 @@ function setSakeRatingToDOM(rating: number) {
   sakeRatingForm.setAttribute("value", rating.toString())
 }
 
-{
-  const sakeRater = rater({
-    element: document.getElementById("rater") as HTMLElement,
-    starSize: 32,
-    rateCallback: function rateCallback(rating, done) {
-      // reset 0, when pushing same star
-      if (rating == sakeRater.getRating()) rating = 0
+addEventListener("turbo:load", (_event) => {
+  const element = document.getElementById("rater")
 
-      sakeRater.setRating(rating)
-      setSakeRatingToDOM(rating)
+  if (element != null) {
+    const sakeRater = rater({
+      element,
+      starSize: 32,
+      rateCallback: function rateCallback(rating, done) {
+        // reset 0, when pushing same star
+        if (rating == sakeRater.getRating()) rating = 0
 
-      if (done != null) done()
-    },
-  })
-  const rating = getSakeRatingFromDOM()
-  sakeRater.setRating(rating)
-}
+        sakeRater.setRating(rating)
+        setSakeRatingToDOM(rating)
+
+        if (done != null) done()
+      },
+    })
+    const rating = getSakeRatingFromDOM()
+    sakeRater.setRating(rating)
+  }
+})

@@ -26,7 +26,11 @@ function setSyncEvent() {
 }
 
 function loadKuraTodofuken() {
-  const kuraForm = document.getElementById("sake_kura") as HTMLInputElement
+  const kuraForm = document.getElementById(
+    "sake_kura"
+  ) as HTMLInputElement | null
+  if (kuraForm == null) return false
+
   const todofukenForm = document.getElementById(
     "sake_todofuken"
   ) as HTMLInputElement
@@ -35,12 +39,11 @@ function loadKuraTodofuken() {
   if (kuraForm.value && todofukenForm.value)
     setInputValueById(visibleId, `${kuraForm.value}（${todofukenForm.value}）`)
   else if (kuraForm.value) setInputValueById(visibleId, kuraForm.value)
+  return true
 }
 
-// Main
-{
-  loadKuraTodofuken()
-  setSyncEvent()
-}
+addEventListener("turbo:load", (_event) => {
+  loadKuraTodofuken() && setSyncEvent()
+})
 
 export {}
