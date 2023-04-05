@@ -22,7 +22,7 @@ end
 #
 # @param output_file [File] 書き込み先のファイルオブジェクト
 def write_body(output_file)
-  input_file = "kura-list.ndjson"
+  input_file = "#{__dir__}/kura-list.ndjson"
   File.foreach(input_file, chomp: true) do |line|
     json = JSON.parse(line)
     name = json["name"]
@@ -33,7 +33,7 @@ def write_body(output_file)
 end
 
 def main
-  output_file = "../app/views/sakes/_kura_datalist.html.erb"
+  output_file = "#{__dir__}/../app/views/sakes/_kura_datalist.html.erb"
   File.open(output_file, "wb") do |out|
     write_header(out)
     write_body(out)

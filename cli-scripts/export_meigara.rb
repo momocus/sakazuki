@@ -8,7 +8,7 @@ require "json"
 #
 # @return [Array<Hash<Symbol => String, Array<String>>>] 蔵、地域、銘柄を持つjsonの配列
 def read_kura
-  filename = "kura-list.ndjson"
+  filename = "#{__dir__}/kura-list.ndjson"
   file = File.new(filename)
   jsons = []
   file.each_line do |line|
@@ -118,7 +118,7 @@ def main
   jsons = add_exceptional_duplication(jsons)
   dict = to_dict(jsons)
 
-  filename = "../app/javascript/autocompletion/meigaras.ts"
+  filename = "#{__dir__}/../app/javascript/autocompletion/meigaras.ts"
   write_dict(filename, dict)
 
   puts("Done!")

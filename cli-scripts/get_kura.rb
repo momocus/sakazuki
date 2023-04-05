@@ -303,7 +303,8 @@ def main
   kuras = add_kuras(kuras)
 
   filename = "kura-list.ndjson"
-  write_ndjson(filename, kuras)
+  path = "#{__dir__}/#{filename}"
+  write_ndjson(path, kuras)
 
   puts("Done!")
   puts("Output to '#{filename}'")
