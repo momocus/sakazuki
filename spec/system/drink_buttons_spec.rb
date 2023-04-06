@@ -128,7 +128,7 @@ RSpec.describe "Drink Buttons" do
       end
 
       it "has success flash message" do
-        text = I18n.t("sakes.update.open", name: sealed_sake.name, link: I18n.t("sakes.update.review"))
+        text = I18n.t("helper.flash.open_sake", name: sealed_sake.name, link: I18n.t("helper.flash.review"))
         expect(find(:test_id, "flash_message")).to have_text(text)
       end
 
@@ -143,14 +143,14 @@ RSpec.describe "Drink Buttons" do
       end
 
       it "has flash message with link to review opened sake" do
-        text = I18n.t("sakes.update.review")
+        text = I18n.t("helper.flash.review")
         # HACK: クエリ部（?review=true）を無視するために正規表現でhref内容をマッチさせる
         link = /#{edit_sake_path(sealed_sake.id)}.*#headingReview/
         expect(find(:test_id, "flash_message")).to have_link(text, href: link)
       end
 
       it "opens review accordion after clicking review link", js: true do
-        click_on I18n.t("sakes.update.review")
+        click_on I18n.t("helper.flash.review")
         text = I18n.t("activerecord.attributes.sake.color") # レビューの中にある酒の項目の1つ
         expect(page).to have_text(text)
       end
@@ -170,7 +170,7 @@ RSpec.describe "Drink Buttons" do
       end
 
       it "has success flash message" do
-        text = I18n.t("sakes.update.empty", name: opened_sake.name)
+        text = I18n.t("helper.flash.empty_sake", name: opened_sake.name)
         expect(find(:test_id, "flash_message")).to have_text(text)
       end
 

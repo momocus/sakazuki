@@ -38,7 +38,7 @@ class SakesController < ApplicationController
       copied = Sake.find(copied_id)
       attr = copy_attributes(copied)
       @sake = Sake.new(attr)
-      flash[:info] = t(".copy", name: alert_link_tag(copied.name, sake_path(copied)))
+      flash[:copy_sake] = { name: copied.name, id: copied_id }
     else
       @sake = Sake.new(default_attributes)
     end
@@ -56,8 +56,7 @@ class SakesController < ApplicationController
 
     if @sake.save
       store_photos
-      msg = t(".success", name: alert_link_tag(@sake.name, sake_path(@sake)))
-      redirect_to(@sake, flash: { success: msg })
+      redirect_to(@sake, flash: { create_sake: { name: @sake.name, id: @sake.id } })
     else
       render(:new, status: :unprocessable_entity)
     end
@@ -77,10 +76,9 @@ class SakesController < ApplicationController
 
   # DELETE /sakes/1
   def destroy
-    deleted_name = @sake.name
+    name = @sake.name
     @sake.destroy
-    redirect_to(sakes_url,
-                flash: { success: t(".success", name: deleted_name) })
+    redirect_to(sakes_url, flash: { delete_sake: name })
   end
 
   # Viewで使える用に宣言する
@@ -212,34 +210,8 @@ class SakesController < ApplicationController
   def flash_after_update
     return unless @sake.saved_changes?
 
-    key = params[:flash_message_type] || "success"
-    key = ".#{key}"
-    name = alert_link_tag(@sake.name, sake_path(@sake))
-    link = flash_review_link(@sake)
-    # rubocop:disable Rails/ActionControllerFlashBeforeRender
-    flash[:success] = t(key, name:, link:) # HACK: key: "open"のときのみlinkが使われ、他では無視される
-    # rubocop:enable Rails/ActionControllerFlashBeforeRender
-  end
-
-  # flash内のレビューするリンクを作成する
-  #
-  # @param sake [Sake] レビュー対象の酒オブジェクト
-  # @return [String] レビューリンク
-  def flash_review_link(sake)
-    # レビュー項目に注目し、アコーディオンを開く
-    href = edit_sake_path(sake, review: true, anchor: "headingReview")
-    review = view_context.tag.i(class: "bi-chat-square-heart me-1", style: "font-size: 0.98em;") + t(".review")
-    alert_link_tag(review, href)
-  end
-
-  # flashメッセージ内に表示するリンクを生成する
-  # @example
-  #   alert_link_tag("text","path/to/somewhere") #=> "<a class="alert-link" href="path/to/somewhere">text</a>"
-  # @param text [String] 表示するテキスト
-  # @param path [String] リンクするパス
-  # @return [String] アンカーリンク
-  def alert_link_tag(text, path)
-    view_context.link_to(text, path, { class: "alert-link" })
+    key = (params["drink_button"] || :update_sake).to_sym
+    flash[key] = { name: @sake.name, id: @sake.id } # rubocop:disable Rails/ActionControllerFlashBeforeRender
   end
 end
 # rubocop:enable Metrics/ClassLength

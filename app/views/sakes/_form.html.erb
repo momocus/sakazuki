@@ -5,7 +5,7 @@
 
 <%= form_with(model: sake, id: "sake-form") do |form| %>
   <%# error message %>
-  <% flash.now[:danger] = t(".input_error") if sake.errors.any? %>
+  <% flash.now.alert = t(".input_error") if sake.errors.any? %>
   <div class="accordion my-2">
     <%= render(partial: "form_abstract", locals: { sake:, form: }) %>
     <%= render(partial: "form_detail", locals: { sake:, form: }) %>

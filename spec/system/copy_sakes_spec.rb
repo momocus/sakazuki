@@ -47,7 +47,7 @@ RSpec.describe "Copy Sakes" do
 
     describe "flash message" do
       it "has copy message" do
-        text = I18n.t("sakes.new.copy", name: sake.name)
+        text = I18n.t("helper.flash.copy_sake", name: sake.name)
         expect(find(:test_id, "flash_message")).to have_text(text)
       end
 
