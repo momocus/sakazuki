@@ -97,7 +97,8 @@ RSpec.describe "Bottle Level Datetimes" do
 
     describe "created_at" do
       it "is not changed" do
-        expect { sake.reload }.not_to change(sake, :created_at)
+        created_at = sake_from_show_path(page.current_path).created_at
+        expect(created_at).to be_within(delta).of(7.days.ago)
       end
     end
 
@@ -123,13 +124,14 @@ RSpec.describe "Bottle Level Datetimes" do
 
     describe "created_at" do
       it "is not changed" do
-        expect { sake.reload }.not_to change(sake, :created_at)
+        created_at = sake_from_show_path(page.current_path).created_at
+        expect(created_at).to be_within(delta).of(7.days.ago)
       end
     end
 
     describe "opened_at" do
       it "is changed to close to now" do
-        opened_at = sake.opened_at
+        opened_at = sake_from_show_path(page.current_path).opened_at
         now = Time.current
         expect(opened_at).to be_within(delta).of(now)
       end
@@ -137,7 +139,7 @@ RSpec.describe "Bottle Level Datetimes" do
 
     describe "emptied_at" do
       it "is changed to close to now" do
-        emptied_at = sake.emptied_at
+        emptied_at = sake_from_show_path(page.current_path).emptied_at
         now = Time.current
         expect(emptied_at).to be_within(delta).of(now)
       end
@@ -158,19 +160,21 @@ RSpec.describe "Bottle Level Datetimes" do
 
     describe "created_at" do
       it "is not changed" do
-        expect { sake.reload }.not_to change(sake, :created_at)
+        created_at = sake_from_show_path(page.current_path).created_at
+        expect(created_at).to be_within(delta).of(11.days.ago)
       end
     end
 
     describe "opened_at" do
       it "is not changed" do
-        expect { sake.reload }.not_to change(sake, :opened_at)
+        opened_at = sake_from_show_path(page.current_path).opened_at
+        expect(opened_at).to be_within(delta).of(4.days.ago)
       end
     end
 
     describe "emptied_at" do
       it "is changed to close to now" do
-        emptied_at = sake.emptied_at
+        emptied_at = sake_from_show_path(page.current_path).emptied_at
         now = Time.current
         expect(emptied_at).to be_within(delta).of(now)
       end
