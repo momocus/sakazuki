@@ -85,10 +85,11 @@ RSpec.describe "Bottle Level Datetimes" do
   end
 
   context "when opening a sealed sake" do
-    created_at = 7.days.ago
+    created_at = Time.current
     let(:sake) { create(:sake, bottle_level: "sealed", created_at:) }
 
     before do
+      travel_to(7.days.after)
       visit edit_sake_path(sake.id)
       select(I18n.t("enums.sake.bottle_level.opened"), from: "sake_bottle_level")
       click_button("form_submit")
@@ -110,10 +111,11 @@ RSpec.describe "Bottle Level Datetimes" do
   end
 
   context "when empting a sealed sake" do
-    created_at = 7.days.ago
+    created_at = Time.current
     let(:sake) { create(:sake, bottle_level: "sealed", created_at:) }
 
     before do
+      travel_to(7.days.after)
       visit edit_sake_path(sake.id)
       select(I18n.t("enums.sake.bottle_level.empty"), from: "sake_bottle_level")
       click_button("form_submit")
@@ -144,10 +146,11 @@ RSpec.describe "Bottle Level Datetimes" do
 
   context "when empting a opened sake" do
     created_at = 7.days.ago
-    opened_at = 4.days.ago
+    opened_at = Time.current
     let(:sake) { create(:sake, bottle_level: "opened", created_at:, opened_at:) }
 
     before do
+      travel_to(4.days.after)
       visit edit_sake_path(sake.id)
       select(I18n.t("enums.sake.bottle_level.empty"), from: "sake_bottle_level")
       click_button("form_submit")
