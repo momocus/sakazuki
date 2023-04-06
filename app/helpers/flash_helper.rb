@@ -7,16 +7,7 @@ module FlashHelper
   # @param key [String, Symbol] flashハッシュのキー
   # @return [String] どのアラートタイプを使うかを文字列で返す
   def flash_type(key)
-    case key.to_sym
-    when :copy_sake
-      "info"
-    when :notice, :create_sake, :update_sake, :empty_sake, :delete_sake, :open_sake
-      "success"
-    when :alert
-      "danger"
-    else
-      "light"
-    end
+    FLASH_TYPES[key.to_sym] || "light"
   end
 
   # flashメッセージの表示内容を生成する
@@ -44,6 +35,19 @@ module FlashHelper
   # 残念ながらprivateにしてもviewからは見える
   # 読みやすさのために書いておく
   private
+
+  # @type [Hash<Symbol, String>]
+  FLASH_TYPES = {
+    copy_sake: "info",
+    notice: "success",
+    create_sake: "success",
+    update_sake: "success",
+    empty_sake: "success",
+    delete_sake: "success",
+    open_sake: "success",
+    alert: "danger",
+  }.freeze
+  private_constant :FLASH_TYPES
 
   # flashのキーからI18n翻訳に使うキーを生成する
   #
