@@ -25,14 +25,6 @@ RSpec.describe "Bottle Level Datetimes" do
     click_button("form_submit")
   end
 
-  # travel_to でn日後に行く。
-  # するとログインセッションが切れるので、再ログインする。
-  def travel_and_re_sign_in(num)
-    travel_to(num.days.after)
-    visit current_path # ページをリロードしないと再ログインできない
-    sign_in(user)
-  end
-
   context "when creating a new sealed sake" do
     before do
       create_sake("sealed")
@@ -102,7 +94,9 @@ RSpec.describe "Bottle Level Datetimes" do
   context "when opening a sealed sake" do
     before do
       id = create_sake("sealed")
-      travel_and_re_sign_in(7)
+      travel_to(7.days.after)
+      visit(current_path) # ページをリロードしないと再ログインできない
+      sign_in(user)
       edit_bottle_level(id, "opened")
     end
 
@@ -125,7 +119,9 @@ RSpec.describe "Bottle Level Datetimes" do
   context "when empting a sealed sake" do
     before do
       id = create_sake("sealed")
-      travel_and_re_sign_in(7)
+      travel_to(7.days.after)
+      visit(current_path)
+      sign_in(user)
       edit_bottle_level(id, "empty")
     end
 
@@ -156,9 +152,13 @@ RSpec.describe "Bottle Level Datetimes" do
   context "when empting a opened sake" do
     before do
       id = create_sake("sealed")
-      travel_and_re_sign_in(7)
+      travel_to(7.days.after)
+      visit(current_path)
+      sign_in(user)
       edit_bottle_level(id, "opened")
-      travel_and_re_sign_in(4)
+      travel_to(4.days.after)
+      visit(current_path)
+      sign_in(user)
       edit_bottle_level(id, "empty")
     end
 
