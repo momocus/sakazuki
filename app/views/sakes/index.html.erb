@@ -41,20 +41,22 @@
       </div>
     <% end %>
   </div>
-  <%= turbo_frame_tag("sakes", target: "_top", data: { turbo_action: :advance }) do %>
-    <div class="col">
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2">
-        <%= render(partial: "sake", collection: @sakes) %>
+  <%= turbo_frame_tag("sakes", target: "_top", data: { turbo_action: :advance }, class: "col") do %>
+    <div class="row row-cols-1 g-3">
+      <div class="col">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2">
+          <%= render(partial: "sake", collection: @sakes) %>
+        </div>
       </div>
+      <% if include_empty?(params[:q]) %>
+        <div class="col d-none d-sm-block">
+          <%= paginate(@sakes) %>
+        </div>
+        <div class="col d-sm-none d-block">
+          <%# 小さい画面 %>
+          <%= paginate(@sakes, window: 1) %>
+        </div>
+      <% end %>
     </div>
-    <% if include_empty?(params[:q]) %>
-      <div class="col d-none d-sm-block">
-        <%= paginate(@sakes) %>
-      </div>
-      <div class="col d-sm-none d-block">
-        <%# 小さい画面 %>
-        <%= paginate(@sakes, window: 1) %>
-      </div>
-    <% end %>
   <% end %>
 </div>
