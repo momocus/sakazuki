@@ -1,14 +1,11 @@
 import merge from "ts-deepmerge"
-import {
-  Chart,
-  ScatterController,
-  PointElement,
-  LinearScale,
+import { Chart, ScatterController, PointElement, LinearScale } from "chart.js"
+import type {
   Color,
-  ScriptableScaleContext,
   ChartOptions,
   ChartConfiguration,
   ChartEvent,
+  ScriptableScaleContext,
   ActiveElement,
   BubbleDataPoint,
   Point,

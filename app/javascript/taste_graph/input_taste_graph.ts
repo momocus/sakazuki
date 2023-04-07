@@ -1,4 +1,5 @@
-import { DomValues, TasteGraph } from "./taste_graph"
+import { TasteGraph } from "./taste_graph"
+import type { DomValues } from "./taste_graph"
 
 // Main
 {
