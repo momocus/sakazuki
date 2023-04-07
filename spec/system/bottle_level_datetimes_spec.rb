@@ -3,18 +3,28 @@ require "rails_helper"
 RSpec.describe "Bottle Level Datetimes" do
   let(:user) { create(:user) }
 
-  delta = 1.second
+  delta = 5.seconds
 
-  before do
-    sign_in(user)
+  # 引数で指定したbottle_levelの酒を登録する
+  def create_sake(bottle_level)
+    visit new_sake_path
+    fill_in("sake_name", with: "生道井")
+    select(I18n.t("enums.sake.bottle_level.#{bottle_level}"), from: "sake_bottle_level")
+    click_button("form_submit")
+    current_path.split("/").last # 作成した酒のidを返す
+  end
+
+  # 引数で指定したsakeのbottle_levelを指定した値に更新する
+  def edit_bottle_level(id, bottle_level)
+    visit(edit_sake_path(id))
+    select(I18n.t("enums.sake.bottle_level.#{bottle_level}"), from: "sake_bottle_level")
+    click_button("form_submit")
   end
 
   context "when creating a new sealed sake" do
     before do
-      visit new_sake_path
-      fill_in("sake_name", with: "生道井")
-      select(I18n.t("enums.sake.bottle_level.sealed"), from: "sake_bottle_level")
-      click_button("form_submit")
+      sign_in(user)
+      create_sake("sealed")
     end
 
     describe "created_at" do
@@ -28,10 +38,8 @@ RSpec.describe "Bottle Level Datetimes" do
 
   context "when creating a new opened sake" do
     before do
-      visit new_sake_path
-      fill_in("sake_name", with: "生道井")
-      select(I18n.t("enums.sake.bottle_level.opened"), from: "sake_bottle_level")
-      click_button("form_submit")
+      sign_in(user)
+      create_sake("opened")
     end
 
     describe "created_at" do
@@ -53,10 +61,8 @@ RSpec.describe "Bottle Level Datetimes" do
 
   context "when creating a new empty sake" do
     before do
-      visit new_sake_path
-      fill_in("sake_name", with: "生道井")
-      select(I18n.t("enums.sake.bottle_level.empty"), from: "sake_bottle_level")
-      click_button("form_submit")
+      sign_in(user)
+      create_sake("empty")
     end
 
     describe "created_at" do
@@ -85,25 +91,26 @@ RSpec.describe "Bottle Level Datetimes" do
   end
 
   context "when opening a sealed sake" do
-    created_at = Time.current.ago(7.days)
-    let(:sake) { create(:sake, bottle_level: "sealed", created_at:) }
-
     before do
-      visit edit_sake_path(sake.id)
-      select(I18n.t("enums.sake.bottle_level.opened"), from: "sake_bottle_level")
-      click_button("form_submit")
+      id = travel_to(7.days.ago) {
+        sign_in(user)
+        create_sake("sealed")
+      }
+      visit(current_path) # ページをリロードしないと再ログインできない
+      sign_in(user)
+      edit_bottle_level(id, "opened")
     end
 
     describe "created_at" do
       it "is not changed" do
-        new_created_at = sake.created_at
-        expect(new_created_at).to be_within(delta).of(created_at)
+        created_at = sake_from_show_path(page.current_path).created_at
+        expect(created_at).to be_within(delta).of(7.days.ago)
       end
     end
 
     describe "opened_at" do
       it "is changed to close to now" do
-        opened_at = sake.opened_at
+        opened_at = sake_from_show_path(page.current_path).opened_at
         now = Time.current
         expect(opened_at).to be_within(delta).of(now)
       end
@@ -111,25 +118,26 @@ RSpec.describe "Bottle Level Datetimes" do
   end
 
   context "when empting a sealed sake" do
-    created_at = Time.current.ago(7.days)
-    let(:sake) { create(:sake, bottle_level: "sealed", created_at:) }
-
     before do
-      visit edit_sake_path(sake.id)
-      select(I18n.t("enums.sake.bottle_level.empty"), from: "sake_bottle_level")
-      click_button("form_submit")
+      id = travel_to(7.days.ago) {
+        sign_in(user)
+        create_sake("sealed")
+      }
+      visit(current_path)
+      sign_in(user)
+      edit_bottle_level(id, "empty")
     end
 
     describe "created_at" do
       it "is not changed" do
-        new_created_at = sake.created_at
-        expect(new_created_at).to be_within(delta).of(created_at)
+        created_at = sake_from_show_path(page.current_path).created_at
+        expect(created_at).to be_within(delta).of(7.days.ago)
       end
     end
 
     describe "opened_at" do
       it "is changed to close to now" do
-        opened_at = sake.opened_at
+        opened_at = sake_from_show_path(page.current_path).opened_at
         now = Time.current
         expect(opened_at).to be_within(delta).of(now)
       end
@@ -137,7 +145,7 @@ RSpec.describe "Bottle Level Datetimes" do
 
     describe "emptied_at" do
       it "is changed to close to now" do
-        emptied_at = sake.emptied_at
+        emptied_at = sake_from_show_path(page.current_path).emptied_at
         now = Time.current
         expect(emptied_at).to be_within(delta).of(now)
       end
@@ -145,33 +153,38 @@ RSpec.describe "Bottle Level Datetimes" do
   end
 
   context "when empting a opened sake" do
-    created_at = Time.current.ago(7.days)
-    opened_at = Time.current.ago(4.days)
-    let(:sake) { create(:sake, bottle_level: "sealed", created_at:, opened_at:) }
-
     before do
-      visit edit_sake_path(sake.id)
-      select(I18n.t("enums.sake.bottle_level.empty"), from: "sake_bottle_level")
-      click_button("form_submit")
+      id = travel_to(7.days.ago) {
+        sign_in(user)
+        create_sake("sealed")
+      }
+      travel_to(4.days.ago) do
+        visit(current_path)
+        sign_in(user)
+        edit_bottle_level(id, "opened")
+      end
+      visit(current_path)
+      sign_in(user)
+      edit_bottle_level(id, "empty")
     end
 
     describe "created_at" do
       it "is not changed" do
-        new_created_at = sake.created_at
-        expect(new_created_at).to be_within(delta).of(created_at)
+        created_at = sake_from_show_path(page.current_path).created_at
+        expect(created_at).to be_within(delta).of(7.days.ago)
       end
     end
 
     describe "opened_at" do
       it "is not changed" do
-        new_opened_at = sake.opened_at
-        expect(new_opened_at).to be_within(delta).of(opened_at)
+        opened_at = sake_from_show_path(page.current_path).opened_at
+        expect(opened_at).to be_within(delta).of(4.days.ago)
       end
     end
 
     describe "emptied_at" do
       it "is changed to close to now" do
-        emptied_at = sake.emptied_at
+        emptied_at = sake_from_show_path(page.current_path).emptied_at
         now = Time.current
         expect(emptied_at).to be_within(delta).of(now)
       end
