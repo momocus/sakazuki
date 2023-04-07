@@ -18,8 +18,8 @@ RSpec.describe "Bottle Level Datetimes" do
   end
 
   # 引数で指定したsakeのbottle_levelを指定した値に更新する
-  def edit_bottle_level(sake, bottle_level)
-    visit edit_sake_path(sake.id)
+  def edit_bottle_level(id, bottle_level)
+    visit(edit_sake_path(id))
     select(I18n.t("enums.sake.bottle_level.#{bottle_level}"), from: "sake_bottle_level")
     click_button("form_submit")
   end
@@ -101,9 +101,9 @@ RSpec.describe "Bottle Level Datetimes" do
   context "when opening a sealed sake" do
     before do
       create_sake("sealed")
-      sake = sake_from_show_path(page.current_path)
+      id = sake_from_show_path(page.current_path).id
       travel_and_re_sign_in(7)
-      edit_bottle_level(sake, "opened")
+      edit_bottle_level(id, "opened")
     end
 
     describe "created_at" do
@@ -125,9 +125,9 @@ RSpec.describe "Bottle Level Datetimes" do
   context "when empting a sealed sake" do
     before do
       create_sake("sealed")
-      sake = sake_from_show_path(page.current_path)
+      id = sake_from_show_path(page.current_path).id
       travel_and_re_sign_in(7)
-      edit_bottle_level(sake, "empty")
+      edit_bottle_level(id, "empty")
     end
 
     describe "created_at" do
@@ -157,11 +157,11 @@ RSpec.describe "Bottle Level Datetimes" do
   context "when empting a opened sake" do
     before do
       create_sake("sealed")
-      sake = sake_from_show_path(page.current_path)
+      id = sake_from_show_path(page.current_path).id
       travel_and_re_sign_in(7)
-      edit_bottle_level(sake, "opened")
+      edit_bottle_level(id, "opened")
       travel_and_re_sign_in(4)
-      edit_bottle_level(sake, "empty")
+      edit_bottle_level(id, "empty")
     end
 
     describe "created_at" do
