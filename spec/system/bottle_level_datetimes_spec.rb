@@ -5,10 +5,6 @@ RSpec.describe "Bottle Level Datetimes" do
 
   delta = 1.second
 
-  before do
-    sign_in(user)
-  end
-
   # 引数で指定したbottle_levelの酒を登録する
   def create_sake(bottle_level)
     visit new_sake_path
@@ -27,6 +23,7 @@ RSpec.describe "Bottle Level Datetimes" do
 
   context "when creating a new sealed sake" do
     before do
+      sign_in(user)
       create_sake("sealed")
     end
 
@@ -41,6 +38,7 @@ RSpec.describe "Bottle Level Datetimes" do
 
   context "when creating a new opened sake" do
     before do
+      sign_in(user)
       create_sake("opened")
     end
 
@@ -63,6 +61,7 @@ RSpec.describe "Bottle Level Datetimes" do
 
   context "when creating a new empty sake" do
     before do
+      sign_in(user)
       create_sake("empty")
     end
 
@@ -93,6 +92,7 @@ RSpec.describe "Bottle Level Datetimes" do
 
   context "when opening a sealed sake" do
     before do
+      sign_in(user)
       id = create_sake("sealed")
       travel_to(7.days.after)
       visit(current_path) # ページをリロードしないと再ログインできない
@@ -118,6 +118,7 @@ RSpec.describe "Bottle Level Datetimes" do
 
   context "when empting a sealed sake" do
     before do
+      sign_in(user)
       id = create_sake("sealed")
       travel_to(7.days.after)
       visit(current_path)
@@ -151,6 +152,7 @@ RSpec.describe "Bottle Level Datetimes" do
 
   context "when empting a opened sake" do
     before do
+      sign_in(user)
       id = create_sake("sealed")
       travel_to(7.days.after)
       visit(current_path)
