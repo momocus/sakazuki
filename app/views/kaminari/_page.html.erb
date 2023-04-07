@@ -6,6 +6,10 @@
   </li>
 <% else %>
   <li class="page-item">
-    <%= link_to(page, url, class: "page-link", rel: page.rel) %>
+    <%= link_to(page,
+                url,
+                class: "page-link",
+                rel: page.rel,
+                data: { turbo_frame: "_self" }) %>
   </li>
 <% end %>

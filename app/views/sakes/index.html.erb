@@ -10,7 +10,7 @@
     </h1>
   </div>
   <div class="col">
-    <%= search_form_for(@search) do |f| %>
+    <%= search_form_for(@search, html: { data: { turbo_frame: "sakes" } }) do |f| %>
       <div class="row mx-0 align-items-center">
         <div class="col ps-0 input-group">
           <%= f.label(:all_text_cont, "search word", class: "form-label visually-hidden") %>
@@ -41,18 +41,22 @@
       </div>
     <% end %>
   </div>
-  <div class="col">
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2">
-      <%= render(partial: "sake", collection: @sakes) %>
-    </div>
-  </div>
-  <% if include_empty?(params[:q]) %>
-    <div class="col d-none d-sm-block">
-      <%= paginate(@sakes) %>
-    </div>
-    <div class="col d-sm-none d-block">
-      <%# 小さい画面 %>
-      <%= paginate(@sakes, window: 1) %>
+  <%= turbo_frame_tag("sakes", target: "_top", data: { turbo_action: :advance }, class: "col") do %>
+    <div class="row row-cols-1 g-3">
+      <div class="col">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2">
+          <%= render(partial: "sake", collection: @sakes) %>
+        </div>
+      </div>
+      <% if include_empty?(params[:q]) %>
+        <div class="col d-none d-sm-block">
+          <%= paginate(@sakes) %>
+        </div>
+        <div class="col d-sm-none d-block">
+          <%# 小さい画面 %>
+          <%= paginate(@sakes, window: 1) %>
+        </div>
+      <% end %>
     </div>
   <% end %>
 </div>
