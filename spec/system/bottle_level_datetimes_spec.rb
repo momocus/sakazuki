@@ -15,6 +15,7 @@ RSpec.describe "Bottle Level Datetimes" do
     fill_in("sake_name", with: "生道井")
     select(I18n.t("enums.sake.bottle_level.#{bottle_level}"), from: "sake_bottle_level")
     click_button("form_submit")
+    current_path.split("/").last # 作成した酒のidを返す
   end
 
   # 引数で指定したsakeのbottle_levelを指定した値に更新する
@@ -100,8 +101,7 @@ RSpec.describe "Bottle Level Datetimes" do
 
   context "when opening a sealed sake" do
     before do
-      create_sake("sealed")
-      id = sake_from_show_path(page.current_path).id
+      id = create_sake("sealed")
       travel_and_re_sign_in(7)
       edit_bottle_level(id, "opened")
     end
@@ -124,8 +124,7 @@ RSpec.describe "Bottle Level Datetimes" do
 
   context "when empting a sealed sake" do
     before do
-      create_sake("sealed")
-      id = sake_from_show_path(page.current_path).id
+      id = create_sake("sealed")
       travel_and_re_sign_in(7)
       edit_bottle_level(id, "empty")
     end
@@ -156,8 +155,7 @@ RSpec.describe "Bottle Level Datetimes" do
 
   context "when empting a opened sake" do
     before do
-      create_sake("sealed")
-      id = sake_from_show_path(page.current_path).id
+      id = create_sake("sealed")
       travel_and_re_sign_in(7)
       edit_bottle_level(id, "opened")
       travel_and_re_sign_in(4)
