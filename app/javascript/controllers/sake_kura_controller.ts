@@ -28,7 +28,7 @@ export default class SakeKuraController extends Controller<HTMLDivElement> {
     const formatRegexp = /^([^（]+)（([^）]+)）$/
     const result = formatRegexp.exec(kuraTodofuken)
 
-    if (result && result[1] && result[2]) return [result[1], result[2]]
+    if (result?.[1] && result[2]) return [result[1], result[2]]
     else return [kuraTodofuken, ""]
   }
 
