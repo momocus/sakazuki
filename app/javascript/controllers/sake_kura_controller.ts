@@ -27,9 +27,9 @@ export default class SakeKuraController extends Controller<HTMLDivElement> {
     // フォーマットは"蔵名（県名）"
     const formatRegexp = /^([^（]+)（([^）]+)）$/
     const result = formatRegexp.exec(kuraTodofuken)
-
-    if (result?.[1] && result[2]) return [result[1], result[2]]
-    else return [kuraTodofuken, ""]
+    const kura = result?.[1] ?? kuraTodofuken
+    const todofuken = result?.[2] ?? ""
+    return [kura, todofuken]
   }
 
   /**
