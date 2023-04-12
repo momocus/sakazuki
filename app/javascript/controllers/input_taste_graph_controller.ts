@@ -1,5 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
-import { DomValues, TasteGraph } from "../taste_graph/taste_graph"
+import { TasteGraph } from "../taste_graph/taste_graph"
+import type { DomValues } from "../taste_graph/taste_graph"
 
 // Connects to data-controller="input-taste-graph"
 export default class InputTasteGraphController extends Controller<HTMLDivElement> {
