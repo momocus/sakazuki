@@ -4,9 +4,7 @@
  * 銘柄と蔵は数がそれなりに多い。
  * そのため、銘柄から一意の蔵が決まる辞書を使う。
  */
-export type Dict = {
-  [index: string]: string
-}
+export type Dict = Record<string, string>
 
 /**
  * 酒の名前と補完辞書から補完する文字列を探す
