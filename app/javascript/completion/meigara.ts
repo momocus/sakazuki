@@ -9,9 +9,11 @@ export type Dict = Record<string, string>
 /**
  * 酒の名前と補完辞書から補完する文字列を探す
  *
+ * 補完候補が複数ある場合は、酒名前にて先に出てきた銘柄名を優先する。
+ *
  * @param name - 酒の名前
  * @param dict - 補完辞書
- * @returns 補完できるなら補完候補、補完できないなら空文字を返す
+ * @returns 補完する蔵名、補完できないなら空文字を返す
  */
 export function lookup(name: string, dict: Dict): string {
   const words = name.split(RegExp(/\s/))
@@ -22,6 +24,5 @@ export function lookup(name: string, dict: Dict): string {
     .filter((word) => {
       return word
     })
-  if (matchedWords.length === 1) return matchedWords[0]
-  else return ""
+  return matchedWords.shift() ?? ""
 }
