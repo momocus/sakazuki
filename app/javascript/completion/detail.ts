@@ -6,7 +6,7 @@
  */
 export type Candidate = {
   /** このキーワードが含まれていたら補完を行う */
-  keywords: Array<string>
+  keywords: string[]
   /** 補完に使う文字列 */
   completion: string
 }
@@ -23,7 +23,7 @@ export type Dict = Candidate[]
  * @param keywords - 検索する複数キーワード
  * @returns 検索対象にいずれかのキーワードが1つでも含まれればtrue
  */
-function includesAny(target: string, keywords: Array<string>): boolean {
+function includesAny(target: string, keywords: string[]): boolean {
   return keywords.some((word) => {
     return target.includes(word)
   })
