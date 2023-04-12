@@ -8,7 +8,13 @@
         data-controller="share"
         data-share-title-value="<%= sake.name %>"
         data-share-url-value="<%= request.url %>">
-        <%= render(partial: "sns_share_button", locals: { sake: }) %>
+        <a href="#" class="fs-3 link-dark" data-share-target="link">
+          <i class="bi bi-share"></i>
+        </a>
+        <%# HACK: hiddenのtextareaをシェア機能から参照する %>
+        <textarea class="d-none" data-share-target="text">
+          <%= t("helper.share.text", sake:) %>
+        </textarea>
       </div>
       <div class="col-lg-12 order-lg-2 col order-1 fs-3">
         <% if sake.kura.present? %>
