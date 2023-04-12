@@ -17,12 +17,12 @@ export type Dict = Record<string, string>
  */
 export function lookup(name: string, dict: Dict): string {
   const words = name.split(RegExp(/\s/))
+  const nonNullable = <Type>(value: Type): value is NonNullable<Type> =>
+    value != null
   const matchedWords = words
     .map((word) => {
       return dict[word]
     })
-    .filter((word) => {
-      return word
-    })
+    .filter(nonNullable)
   return matchedWords.shift() ?? ""
 }
