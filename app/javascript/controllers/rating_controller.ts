@@ -11,11 +11,11 @@ export default class RatingController extends Controller<HTMLFieldSetElement> {
     const rating = parseInt(this.scoreTarget.value)
     const sakeRater = rater({
       element: this.locationTarget,
-      rateCallback: (rating, done) => {
+      rateCallback: (newRating, done) => {
         // reset 0, when pushing same star
-        if (rating === sakeRater.getRating()) rating = 0
+        if (newRating === sakeRater.getRating()) newRating = 0
 
-        sakeRater.setRating(rating)
+        sakeRater.setRating(newRating)
         this.scoreTarget.value = rating.toString()
 
         if (done != null) done()
