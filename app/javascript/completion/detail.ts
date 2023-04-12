@@ -6,13 +6,13 @@
  */
 export type Candidate = {
   /** このキーワードが含まれていたら補完を行う */
-  keywords: string[]
+  readonly keywords: readonly string[]
   /** 補完に使う文字列 */
-  completion: string
+  readonly completion: string
 }
 
 /** 酒情報の補完辞書 */
-export type Dict = Candidate[]
+export type Dict = readonly Candidate[]
 
 /**
  * 指定した複数文字列のいずれか1つでも含まれるかをチェックする
@@ -23,7 +23,7 @@ export type Dict = Candidate[]
  * @param keywords - 検索する複数キーワード
  * @returns 検索対象にいずれかのキーワードが1つでも含まれればtrue
  */
-function includesAny(target: string, keywords: string[]): boolean {
+function includesAny(target: string, keywords: readonly string[]): boolean {
   return keywords.some((word) => {
     return target.includes(word)
   })
