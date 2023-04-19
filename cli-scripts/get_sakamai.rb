@@ -92,7 +92,8 @@ def main
   ndjson = to_ndjson(rices)
 
   filename = "sakamai-list.ndjson"
-  write_ndjson(filename, ndjson)
+  path = "#{__dir__}/#{filename}"
+  write_ndjson(path, ndjson)
 
   puts("Done!")
   puts("Output to '#{filename}'")
