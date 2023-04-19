@@ -4,5 +4,5 @@
 
 import { application } from "./application"
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+import ShowTasteGraphController from "./show_taste_graph_controller"
+application.register("show-taste-graph", ShowTasteGraphController)
