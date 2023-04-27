@@ -75,8 +75,7 @@ RUN --mount=type=cache,id=dev-apt-cache,sharing=locked,target=/var/cache/apt \
 FROM build_deps as gems
 
 COPY Gemfile Gemfile.lock ./
-RUN bundle config set --local without 'development test' && \
-    bundle install && \
+RUN bundle install && \
     rm -rf vendor/bundle/ruby/*/cache
 
 #######################################################################
