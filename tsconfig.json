@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
-    "isolatedModules": true,
     "esModuleInterop": true,
     "moduleResolution": "bundler",
     "module": "esnext",
     "strict": true,
     "target": "esnext",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "verbatimModuleSyntax": true
   }
 }
