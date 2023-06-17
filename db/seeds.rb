@@ -434,7 +434,7 @@ Sake.create!(
   taste_impression: "口当たりは透明感ある淡く上品な旨さ。と思うと、舌の奥で舌にくる炭酸感や苦味が盛り上がってくるのがよい。キレイと旨さの山のかわりが最高。",
   taste_value: 2,
   todofuken: "宮城",
-  tokutei_meisho: :junmaiginjo,
+  tokutei_meisho: :junmai_ginjo,
   warimizu: :kasui,
 )
 
@@ -697,7 +697,7 @@ Sake.create!(
   brew_year: Date.new(2019),
   color: "少し黄色",
   genryomai: "ひだほまれ",
-  hiire: nil,
+  hiire: :unknown,
   kakemai: "",
   kobo: "",
   kura: "天領酒造株式会社",
