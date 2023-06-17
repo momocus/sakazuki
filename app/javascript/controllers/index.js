@@ -4,5 +4,8 @@
 
 import { application } from "./application"
 
+import InputTasteGraphController from "./input_taste_graph_controller"
+application.register("input-taste-graph", InputTasteGraphController)
+
 import ShowTasteGraphController from "./show_taste_graph_controller"
 application.register("show-taste-graph", ShowTasteGraphController)
