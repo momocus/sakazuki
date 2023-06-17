@@ -184,7 +184,7 @@ Sake.create!(
   size: 1800,
   taste_impression: "味はクリアな甘さにドドドドっと旨味がしっかり乗る。豆のような甘さ。山廃にしてはあんまや酸っぽくない味。最後は舌に苦味を残して、クドすぎない潔くほどよいキレ。",
   taste_value: 3,
-  todofuken: "長野",
+  todofuken: "長野県",
   tokutei_meisho: :junmai_ginjo,
   warimizu: :kasui,
 )
@@ -219,7 +219,7 @@ Sake.create!(
   size: 720,
   taste_impression: "ヒネ、旨味、苦味がドンとくる。ちょっと味わいが強いお酒だけど、奥にある酸がほどよい余韻で終わらせる。生と古酒が一緒にくる、すごい。",
   taste_value: 5,
-  todofuken: "長野",
+  todofuken: "長野県",
   tokutei_meisho: :junmai,
   warimizu: :kasui,
 )
@@ -256,7 +256,7 @@ Sake.create!(
   size: 720,
   taste_impression: "クリア感から始まり、苦味旨味が口の奥で広がる、奥行きある味わい。大人しめの生貯らしい味。苦味の余韻も長め。",
   taste_value: 4,
-  todofuken: "長野",
+  todofuken: "長野県",
   tokutei_meisho: :junmai_ginjo,
   warimizu: :kasui,
 )
@@ -293,7 +293,7 @@ Sake.create!(
   size: 720,
   taste_impression: "味はふたコブラクダ。先にくるのは吟醸らしく淡く儚い甘さ。あとからググッとあがるアルコール感がきて、名前の通りのキレの良さを出してる。飲み続けるとふたコブが一緒になって、よりしんみりした味わい。",
   taste_value: 1,
-  todofuken: "長野",
+  todofuken: "長野県",
   tokutei_meisho: :ginjo,
   warimizu: :genshu,
 )
@@ -328,7 +328,7 @@ Sake.create!(
   size: 720,
   taste_impression: "味は濃さを感じる旨味がグリグリくる。めちゃ濃いのに嫌な感じがせず、なぜかキレもよく爽やかに終わる。",
   taste_value: 4,
-  todofuken: "長野",
+  todofuken: "長野県",
   tokutei_meisho: :ginjo,
   warimizu: :genshu,
 )
@@ -363,7 +363,7 @@ Sake.create!(
   size: 720,
   taste_impression: "ロックのように軽やかな味わい。香りや酸で甘酸っぱさも少しあるけど、旨み中心の味。特にあとから旨味や苦味ががふわっと盛り上がるのが素敵。",
   taste_value: 2,
-  todofuken: "宮城",
+  todofuken: "宮城県",
   tokutei_meisho: :junmai,
   warimizu: :kasui,
 )
@@ -398,7 +398,7 @@ Sake.create!(
   size: 720,
   taste_impression: "口に入れると酸や複雑さがあり、急に山廃だと思い出される。しっかりした味だけど、落ち着きがあり嫌さがない綺麗さ。酸でキレもよい。",
   taste_value: 4,
-  todofuken: "宮城",
+  todofuken: "宮城県",
   tokutei_meisho: :junmai,
   warimizu: :genshu,
 )
@@ -433,7 +433,7 @@ Sake.create!(
   size: 720,
   taste_impression: "口当たりは透明感ある淡く上品な旨さ。と思うと、舌の奥で舌にくる炭酸感や苦味が盛り上がってくるのがよい。キレイと旨さの山のかわりが最高。",
   taste_value: 2,
-  todofuken: "宮城",
+  todofuken: "宮城県",
   tokutei_meisho: :junmai_ginjo,
   warimizu: :kasui,
 )
@@ -468,7 +468,7 @@ Sake.create!(
   size: 720,
   taste_impression: "柑橘やベリーのような濃厚な旨味が膨らむ。しっかりしているが落ち着いた秋らしい旨さ。ほどよく舌にピリッとくる余韻もある。",
   taste_value: 4,
-  todofuken: "宮城",
+  todofuken: "宮城県",
   tokutei_meisho: :tokubetsu_junmai,
   warimizu: :kasui,
 )
@@ -506,7 +506,7 @@ Sake.create!(
                     "味もジューシーなりんごのような甘さをベースに、アルコールの辛さと旨さが少々ずつ。"\
                     "味は広がりがありゆっくり去っていく。山はきつくなく優しい。",
   taste_value: 4,
-  todofuken: "宮城",
+  todofuken: "宮城県",
   tokutei_meisho: :tokubetsu_junmai,
   warimizu: :kasui,
 )
@@ -541,7 +541,7 @@ Sake.create!(
   size: 720,
   taste_impression: "味は旨口系で、旨味にほどよいバランスのヒネや酸味がある。どっしり系の味わいなのに強すぎず、柔らかさを感じられる。",
   taste_value: 5,
-  todofuken: "岐阜",
+  todofuken: "岐阜県",
   tokutei_meisho: :junmai_ginjo,
   warimizu: :kasui,
 )
@@ -576,7 +576,7 @@ Sake.create!(
   size: 720,
   taste_impression: "口の中で膨らむ優しい旨さが飽満。あと渋味系の味が舌をキュっと締める。さすがの落ち着き、味の山は低いけど長い。",
   taste_value: 3,
-  todofuken: "宮城",
+  todofuken: "宮城県",
   tokutei_meisho: :junmai_ginjo,
   warimizu: :kasui,
 )
@@ -611,7 +611,7 @@ Sake.create!(
   size: 1800,
   taste_impression: "秋酒だけど最初っからぱっと開くお酒。開くのはアルコール感が強く、ふくよかな旨味や少しガス感もともに膨らむ。けっこうしっかりした味が膨らむのに、不思議と飲み終わったあとは爽やか。",
   taste_value: 4,
-  todofuken: "宮城",
+  todofuken: "宮城県",
   tokutei_meisho: :tokubetsu_junmai,
   warimizu: :kasui,
 )
@@ -646,7 +646,7 @@ Sake.create!(
   size: 720,
   taste_impression: "香りに対して、びっくりするほどぱっと甘酸っぱいフルーティさはじける！旨みも確かに乗ってるけど、やはり表の甘酸っぱさが強い。",
   taste_value: 4,
-  todofuken: "宮城",
+  todofuken: "宮城県",
   tokutei_meisho: :junmai_ginjo,
   warimizu: :genshu,
 )
@@ -681,7 +681,7 @@ Sake.create!(
   size: 1800,
   taste_impression: "口に入れるとフレッシュなバナナのような旨さが広がる。舌に優しく触れるソフトな当たり。味の盛り上がりは強すぎず優しい。と思いきや、後味はアルコールや苦味が強めの余韻。",
   taste_value: 5,
-  todofuken: "宮城",
+  todofuken: "宮城県",
   tokutei_meisho: :tokubetsu_junmai,
   warimizu: :genshu,
 )
@@ -716,7 +716,7 @@ Sake.create!(
   size: 720,
   taste_impression: "柔らかな舌触りから、ほどよい酸と旨味の調和がとれた上品な味。山が優しくすーとあがり、しんみりと余韻長く去っていく。出来がよいしとてもおいしく、飲み飽きない。",
   taste_value: 3,
-  todofuken: "岐阜",
+  todofuken: "岐阜県",
   tokutei_meisho: :junmai_ginjo,
   warimizu: :genshu,
 )
@@ -751,7 +751,7 @@ Sake.create!(
   size: 720,
   taste_impression: "無濾過らしい生酒のフレッシュさが花開くうまさ。濃厚な日本酒の旨さと痺れるアルコール感と、トゲトゲしいが、舌にとろりと絡み、それが強く強く美味い。",
   taste_value: 5,
-  todofuken: "岐阜",
+  todofuken: "岐阜県",
   tokutei_meisho: :junmai_ginjo,
   warimizu: :genshu,
 )
@@ -786,7 +786,7 @@ Sake.create!(
   size: 720,
   taste_impression: "口ですぐに完熟な甘さと強い旨さがくる。そこをアルコールと苦さによる辛さが舌を強くしっかり洗い流す。味はガッツリしてるがキレもよい。",
   taste_value: 5,
-  todofuken: "愛知",
+  todofuken: "愛知県",
   tokutei_meisho: :junmai,
   warimizu: :unknown,
 )
@@ -794,7 +794,7 @@ Sake.create!(
 Sake.create!(
   name: "菊石 本醸造 もと 初しぼり生酒",
   kura: "浦野合資会社",
-  todofuken: "愛知",
+  todofuken: "愛知県",
   photos: [],
   tokutei_meisho: :honjozo,
   alcohol: 18.0,
@@ -829,7 +829,7 @@ Sake.create!(
 Sake.create!(
   name: "菊石 本醸造 もと 初しぼり生酒",
   kura: "浦野合資会社",
-  todofuken: "愛知",
+  todofuken: "愛知県",
   photos: [],
   tokutei_meisho: :honjozo,
   alcohol: 18.0,
@@ -864,7 +864,7 @@ Sake.create!(
 Sake.create!(
   name: "にごり酒 しろうま菊石 原酒生酒",
   kura: "浦野合資会社",
-  todofuken: "愛知",
+  todofuken: "愛知県",
   photos: [],
   tokutei_meisho: :none,
   alcohol: 19.0,
