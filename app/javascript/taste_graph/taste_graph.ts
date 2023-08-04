@@ -65,10 +65,15 @@ export class TasteGraph extends Chart {
 
   /**
    * グラフデータをDOMデータに変換する
+   *
+   * @param p - グラフデータ、ただし空グラフのときにNaNを含みうる
+   * @returns 文字列変換されたDOMデータ
    */
   protected static toDom(p: Point): DomValues {
-    const pointToDom = (num: number) =>
-      (num + TasteGraph.middle || "").toString()
+    const pointToDom = (num: number) => {
+      const v = num + TasteGraph.middle
+      return isNaN(v) ? "" : v.toString()
+    }
     return { taste: pointToDom(p.x), aroma: pointToDom(p.y) }
   }
 
