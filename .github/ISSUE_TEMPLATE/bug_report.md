@@ -1,38 +1,45 @@
 ---
-name: Bug report
-about: Create a report to help us improve
-title: ''
-labels: ''
-assignees: ''
-
+name: 🐞Bug report
+about: バグレポートを作成する
+title: ""
+labels: "bug"
+assignees: ""
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+## 💡 Summary
 
-**To Reproduce**
-Steps to reproduce the behavior:
+<!-- バグの内容を簡潔に説明すること。 -->
+
+## 再現方法
+
+動作を再現するための手順
+
 1. Go to '...'
 2. Click on '....'
 3. Scroll down to '....'
 4. See error
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+## 🥰 理想
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+<!-- 何が起こると予想したか。 -->
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
+## 🤬 現実
 
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
+<!-- 実際には何が起こったか。必要に応じてスクリーンショットや動画を添付すること。 -->
 
-**Additional context**
-Add any other context about the problem here.
+## 🌏 環境
+
+<!-- バグが発生した環境 -->
+
+### 💻PC
+
+- OS: [e.g. iOS]
+- Browser [e.g. chrome, safari]
+- Version [e.g. 22]
+
+### 📱 スマホ
+
+- Device: [e.g. iPhone6]
+- OS: [e.g. iOS8.1]
+- Browser [e.g. stock browser, safari]
+- Version [e.g. 22]
