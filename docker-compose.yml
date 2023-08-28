@@ -25,6 +25,7 @@ services:
       - ./lib:/sakazuki/lib:cached
       - ./db:/sakazuki/db:cached
       - ./spec:/sakazuki/spec:cached
+      - ./public:/sakazuki/public:cached
       - builds:/sakazuki/app/assets/builds:consistent
     environment:
       POSTGRES_USERNAME: postgres
