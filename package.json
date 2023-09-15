@@ -17,6 +17,7 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "@markuplint/erb-parser": ">=3.12.0 <4",
     "@typescript-eslint/eslint-plugin": ">=6.17.0 <7",
     "@typescript-eslint/parser": ">=6.17.0 <7",
     "eslint": ">=8.56.0 <9",
@@ -24,6 +25,7 @@
     "eslint-plugin-jsdoc": ">=46.10.1 <47",
     "eslint-plugin-tsdoc": ">=0.2.17 <1",
     "markdownlint-cli": ">=0.38.0 <1",
+    "markuplint": ">=3.15.0 <4",
     "prettier": ">=3.1.1 <4",
     "stylelint": ">=16.1.0 <17",
     "stylelint-config-standard": ">=36.0.0 <37",
