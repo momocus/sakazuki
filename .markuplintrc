@@ -1,0 +1,6 @@
+{
+  "extends": ["markuplint:recommended", "markuplint:recommended-static-html"],
+  "parser": {
+    "\\.erb$": "@markuplint/erb-parser"
+  }
+}
