@@ -2,5 +2,6 @@
   "extends": ["markuplint:recommended", "markuplint:recommended-static-html"],
   "parser": {
     "\\.erb$": "@markuplint/erb-parser"
-  }
+  },
+  "excludeFiles": ["app/views/layouts/mailer.html.erb"]
 }
