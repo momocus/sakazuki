@@ -32,6 +32,8 @@ ja:
       confirm_open: "%{name} の栓を開ける？"
       empty: 空にする
       confirm_empty: "%{name} を飲みきった？"
+    sns_share_button:
+      share_button: シェアボタン
     new:
       title: 新規登録
     edit:

@@ -10,6 +10,9 @@
         data-share-url-value="<%= request.url %>">
         <a href="#" class="fs-3 link-dark" data-share-target="link">
           <i class="bi bi-share"></i>
+          <span class="visually-hidden">
+            <%= t(".share_button") %>
+          </span>
         </a>
         <%# HACK: hiddenのtextareaをシェア機能から参照する %>
         <textarea class="d-none" data-share-target="text"><%= t("helper.share.text", sake:) %></textarea>
