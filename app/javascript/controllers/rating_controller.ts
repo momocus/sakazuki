@@ -16,7 +16,7 @@ export default class RatingController extends Controller<HTMLFieldSetElement> {
         if (newRating === sakeRater.getRating()) newRating = 0
 
         sakeRater.setRating(newRating)
-        this.scoreTarget.value = rating.toString()
+        this.scoreTarget.value = newRating.toString()
 
         if (done != null) done()
       },
