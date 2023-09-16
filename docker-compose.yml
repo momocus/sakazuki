@@ -4,6 +4,8 @@ volumes:
     driver: local
   builds:
     driver: local
+  uploads:
+    driver: local
 services:
   db:
     image: postgres:13
@@ -25,6 +27,8 @@ services:
       - ./lib:/sakazuki/lib:cached
       - ./db:/sakazuki/db:cached
       - ./spec:/sakazuki/spec:cached
+      - ./public:/sakazuki/public:cached
+      - uploads:/sakazuki/app/public/uploads:consistent
       - builds:/sakazuki/app/assets/builds:consistent
     environment:
       POSTGRES_USERNAME: postgres
