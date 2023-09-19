@@ -22,7 +22,8 @@
             <div class="col-12 col-lg-6" data-controller="sake-kura">
               <%= form.label(:kura, class: "form-label") %>
               <input type="text" class="form-control" autocomplete="on" list="kura-list"
-                data-sync-kura-todofuken-target="mixed"
+                id="sake_kura_todofuken_autocompletion"
+                data-sake-kura-target="mixed"
                 data-testid="sake_kura_todofuken_autocompletion">
               <%= render(partial: "kura_datalist") %>
               <%= form.text_field(:kura,
