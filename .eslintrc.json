@@ -7,7 +7,12 @@
     "sourceType": "module"
   },
   "ignorePatterns": ["/coverage/", "/app/assets/builds"],
-  "extends": ["eslint:recommended", "prettier"],
+  "plugins": ["jsdoc"],
+  "extends": [
+    "eslint:recommended",
+    "prettier",
+    "plugin:jsdoc/recommended-typescript"
+  ],
   "rules": {
     "indent": ["error", 2],
     "linebreak-style": ["error", "unix"],
