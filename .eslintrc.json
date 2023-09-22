@@ -21,7 +21,12 @@
     "no-unused-vars": [
       "error",
       { "varsIgnorePattern": "^_", "argsIgnorePattern": "^_" }
-    ]
+    ],
+    "jsdoc/require-asterisk-prefix": ["warn"],
+    "jsdoc/require-description": ["warn"],
+    "jsdoc/require-throws": ["warn"],
+    "jsdoc/sort-tags": ["warn"],
+    "jsdoc/tag-lines": ["warn", "any", { "startLines": 1 }]
   },
   "reportUnusedDisableDirectives": true,
   "overrides": [
