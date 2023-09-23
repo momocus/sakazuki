@@ -2,6 +2,3 @@
 import "@hotwired/turbo-rails"
 import "./controllers"
 import "bootstrap"
-
-// show
-import "./share/share.ts"
