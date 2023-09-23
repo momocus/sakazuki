@@ -4,9 +4,6 @@
 
 import { application } from "./application"
 
-import CompleteMeigaraController from "./complete_meigara_controller"
-application.register("complete-meigara", CompleteMeigaraController)
-
 import InputTasteGraphController from "./input_taste_graph_controller"
 application.register("input-taste-graph", InputTasteGraphController)
 
@@ -15,6 +12,9 @@ application.register("rating", RatingController)
 
 import SakeKuraController from "./sake_kura_controller"
 application.register("sake-kura", SakeKuraController)
+
+import SakeNameController from "./sake_name_controller"
+application.register("sake-name", SakeNameController)
 
 import ShowTasteGraphController from "./show_taste_graph_controller"
 application.register("show-taste-graph", ShowTasteGraphController)

@@ -118,7 +118,7 @@ def main
   jsons = add_exceptional_duplication(jsons)
   dict = to_dict(jsons)
 
-  filename = "#{__dir__}/../app/javascript/autocompletion/meigaras.ts"
+  filename = "#{__dir__}/../app/javascript/completion/meigara_dict.ts"
   write_dict(filename, dict)
 
   puts("Done!")

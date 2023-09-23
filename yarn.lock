@@ -2034,6 +2034,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"just-zip-it@npm:>=3.2.0 <4":
+  version: 3.2.0
+  resolution: "just-zip-it@npm:3.2.0"
+  checksum: 2505cd0735180f8cb61b451eee94e3700d82448998ebd263424180eb4fbe9901bfe90524f0869d18f4556a58147174d8449d9bb5128df9ab127d40801969856d
+  languageName: node
+  linkType: hard
+
 "kind-of@npm:^6.0.2, kind-of@npm:^6.0.3":
   version: 6.0.3
   resolution: "kind-of@npm:6.0.3"
@@ -2917,6 +2924,7 @@ __metadata:
     eslint: ">=8.35.0 <9"
     eslint-config-prettier: ">=8.7.0 <9"
     eslint-plugin-tsdoc: ">=0.2.17 <1"
+    just-zip-it: ">=3.2.0 <4"
     markdownlint-cli: ">=0.33.0 <1"
     prettier: ">=2.8.4 <3"
     rater-js: ">=1.0.1 <2"

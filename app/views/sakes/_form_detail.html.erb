@@ -51,7 +51,10 @@
                               },
                               {},
                               class: "form-select",
-                              data: { testid: "sake_moto" }) %>
+                              data: {
+                                "sake-name-target": "moto",
+                                testid: "sake_moto",
+                              }) %>
             </div>
             <div class="col-12">
               <%= form.label(:shibori, class: "form-label") %>
@@ -59,7 +62,10 @@
                                   class: "form-control",
                                   autocomplete: "on",
                                   list: "shibori-list",
-                                  data: { testid: "sake_shibori" }) %>
+                                  data: {
+                                    "sake-name-target": "shibori",
+                                    testid: "sake_shibori",
+                                  }) %>
               <datalist id="shibori-list">
                 <option value="ヤブタ式"></option>
                 <option value="槽搾り"></option>
@@ -82,7 +88,10 @@
                                   class: "form-control",
                                   autocomplete: "on",
                                   list: "roka-list",
-                                  data: { testid: "sake_roka" }) %>
+                                  data: {
+                                    "sake-name-target": "roka",
+                                    testid: "sake_roka",
+                                  }) %>
               <datalist id="roka-list">
                 <option value="無濾過"></option>
                 <option value="素濾過"></option>
@@ -97,7 +106,10 @@
                               {},
                               class: "form-select",
                               title: "test",
-                              data: { testid: "sake_hiire" }) %>
+                              data: {
+                                "sake-name-target": "hiire",
+                                testid: "sake_hiire",
+                              }) %>
             </div>
             <div class="col-12">
               <%= form.label(:warimizu, class: "form-label") %>
@@ -107,7 +119,10 @@
                               },
                               {},
                               class: "form-select",
-                              data: { testid: "sake_warimizu" }) %>
+                              data: {
+                                "sake-name-target": "warimizu",
+                                testid: "sake_warimizu",
+                              }) %>
             </div>
           </div>
         </fieldset>
