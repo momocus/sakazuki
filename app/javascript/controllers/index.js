@@ -10,5 +10,8 @@ application.register("input-taste-graph", InputTasteGraphController)
 import RatingController from "./rating_controller"
 application.register("rating", RatingController)
 
+import SakeKuraController from "./sake_kura_controller"
+application.register("sake-kura", SakeKuraController)
+
 import ShowTasteGraphController from "./show_taste_graph_controller"
 application.register("show-taste-graph", ShowTasteGraphController)
