@@ -84,7 +84,7 @@ export default class SakeNameController extends Controller<HTMLDivElement> {
         detailDict.warimizu,
       ]
       const detailCompletions = dicts.map(
-        (dict) => (name: string) => detail.lookup(name, dict)
+        (dict) => (name: string) => detail.lookup(name, dict),
       )
       const detailTargets: Target[] = [
         { element: this.tokuteiMeishoTarget, empty: "none" },
@@ -99,7 +99,7 @@ export default class SakeNameController extends Controller<HTMLDivElement> {
       const completions = kuraCompletions.concat(detailCompletions)
       const targets = kuraTargets.concat(detailTargets)
       zip(completions, targets).forEach(([completion, target]) =>
-        this.complete(name, completion, target)
+        this.complete(name, completion, target),
       )
     })
   }
