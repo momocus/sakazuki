@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import CompleteMeigaraController from "./complete_meigara_controller"
+application.register("complete-meigara", CompleteMeigaraController)
+
 import InputTasteGraphController from "./input_taste_graph_controller"
 application.register("input-taste-graph", InputTasteGraphController)
 
