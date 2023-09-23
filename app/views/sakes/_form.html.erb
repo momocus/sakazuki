@@ -1,12 +1,9 @@
-<% select_js("sakes_form") %>
-<% select_css("sakes_form") %>
-
 <%= render(partial: "float_button", locals: { sake: }) %>
 
 <%= form_with(model: sake, id: "sake-form") do |form| %>
   <%# error message %>
   <% flash.now.alert = t(".input_error") if sake.errors.any? %>
-  <div class="accordion my-2">
+  <div class="accordion my-2" data-controller="sake-name">
     <%= render(partial: "form_abstract", locals: { sake:, form: }) %>
     <%= render(partial: "form_detail", locals: { sake:, form: }) %>
     <%= render(partial: "form_review", locals: { sake:, form: }) %>

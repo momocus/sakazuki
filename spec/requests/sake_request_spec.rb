@@ -76,12 +76,12 @@ RSpec.describe "Sakes" do
     end
 
     describe "POST /sakes (create)" do
-      it "returns 302 response" do
+      it "returns 303 response" do
         # HACK: FactoryBotで作った適当なsakeをparamsにして使う
         #       idやcreated_atなどが含まれるが、permitされてないのでparamsで渡して問題ない
         sake_params = build(:sake).attributes
         post "/sakes", params: { sake: sake_params }
-        expect(response).to have_http_status "302" # redirect to "sakes/[new_id]"
+        expect(response).to have_http_status "303" # see other, and redirect to "sakes/[new_id]"
       end
 
       it "increase 1 sake" do

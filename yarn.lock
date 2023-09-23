@@ -270,6 +270,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hotwired/stimulus@npm:>= 3.2.1 <4":
+  version: 3.2.1
+  resolution: "@hotwired/stimulus@npm:3.2.1"
+  checksum: 2617b10fb3ca0fb05205526693cbc9ea17fca84f40d8d95d0ce8d58f903aa74e020da858adc72f056f777f4854bdd7f5ee6d69810ecb17412af43d6ffb78997e
+  languageName: node
+  linkType: hard
+
+"@hotwired/turbo-rails@npm:>=7.3.0 <8":
+  version: 7.3.0
+  resolution: "@hotwired/turbo-rails@npm:7.3.0"
+  dependencies:
+    "@hotwired/turbo": ^7.3.0
+    "@rails/actioncable": ^7.0
+  checksum: 14e29fc7abcf966b652aaa5494398bd4a18559843d57fd5f6db785b3e1d2541c09fcbb979ccbf1dd8ab50d362558ac6bf52a97ce5dc2bbf503059793058b9e97
+  languageName: node
+  linkType: hard
+
+"@hotwired/turbo@npm:^7.3.0":
+  version: 7.3.0
+  resolution: "@hotwired/turbo@npm:7.3.0"
+  checksum: ccc03c980e4b4636e48ea2132c7d28be1be4f4e6123f63905fbf871e7647369b5c6ce53301443b218d7abf68fa4897eaf614254688108ed6ae303c5040241a97
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.11.8":
   version: 0.11.8
   resolution: "@humanwhocodes/config-array@npm:0.11.8"
@@ -375,10 +399,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rails/ujs@npm:7.0.4-2":
-  version: 7.0.4-2
-  resolution: "@rails/ujs@npm:7.0.4-2"
-  checksum: 60bdd28c98e3b1bf52dce4bacfe0672b35224b72fcf5052ef3e357cd84e0a340f002b64c9bd4e7ad9085a40c76d84af7499af1761e1e8d27efbed73101726270
+"@rails/actioncable@npm:^7.0":
+  version: 7.0.4
+  resolution: "@rails/actioncable@npm:7.0.4"
+  checksum: b31cae40511a3df4d3048779255219b92f7dd89514f3c9f2da2b219b9b0635261b17b05031c7070756d319bf9165d4d6c021a820b110d53a3e6c441a062accdd
   languageName: node
   linkType: hard
 
@@ -2010,6 +2034,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"just-zip-it@npm:>=3.2.0 <4":
+  version: 3.2.0
+  resolution: "just-zip-it@npm:3.2.0"
+  checksum: 2505cd0735180f8cb61b451eee94e3700d82448998ebd263424180eb4fbe9901bfe90524f0869d18f4556a58147174d8449d9bb5128df9ab127d40801969856d
+  languageName: node
+  linkType: hard
+
 "kind-of@npm:^6.0.2, kind-of@npm:^6.0.3":
   version: 6.0.3
   resolution: "kind-of@npm:6.0.3"
@@ -2881,8 +2912,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "sakazuki@workspace:."
   dependencies:
+    "@hotwired/stimulus": ">= 3.2.1 <4"
+    "@hotwired/turbo-rails": ">=7.3.0 <8"
     "@popperjs/core": ">=2.11.6 <3"
-    "@rails/ujs": 7.0.4-2
     "@typescript-eslint/eslint-plugin": ">=5.57.1 <6"
     "@typescript-eslint/parser": ">=5.57.1 <6"
     bootstrap: ">=5.2.3 <6"
@@ -2892,6 +2924,7 @@ __metadata:
     eslint: ">=8.35.0 <9"
     eslint-config-prettier: ">=8.7.0 <9"
     eslint-plugin-tsdoc: ">=0.2.17 <1"
+    just-zip-it: ">=3.2.0 <4"
     markdownlint-cli: ">=0.33.0 <1"
     prettier: ">=2.8.4 <3"
     rater-js: ">=1.0.1 <2"

@@ -79,11 +79,11 @@
         </div>
       </div>
       <div class="col-lg-6 order-lg-2 col-12 order-1">
-        <div class="ratio ratio-4x3">
-          <canvas id="sake-<%= sake.id %>"
-            data-taste-value="<%= sake.taste_value %>"
-            data-aroma-value="<%= sake.aroma_value %>">
-          </canvas>
+        <div class="ratio ratio-4x3"
+          data-controller="show-taste-graph"
+          data-show-taste-graph-taste-value="<%= sake.taste_value %>"
+          data-show-taste-graph-aroma-value="<%= sake.aroma_value %>">
+          <canvas data-show-taste-graph-target="canvas"></canvas>
         </div>
       </div>
     </div>

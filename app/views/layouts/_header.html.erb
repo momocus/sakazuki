@@ -27,9 +27,11 @@
             <li class="nav-item">
               <%= link_to(t(".sign_out"),
                           destroy_user_session_path,
-                          method: :delete,
                           class: "nav-link",
-                          data: { testid: "sign_out" }) %>
+                          data: {
+                            turbo_method: :delete,
+                            testid: "sign_out",
+                          }) %>
             </li>
           <% else %>
             <li class="nav-item">
