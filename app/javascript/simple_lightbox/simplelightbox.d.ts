@@ -73,8 +73,7 @@ declare module "simplelightbox" {
 
   type SimpleLightboxData = {
     currentImageIndex: number
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    currentImage: any /* TODO */ | null
+    currentImage: HTMLImageElement | null
     globalScrollbarWidth: number
   }
 
