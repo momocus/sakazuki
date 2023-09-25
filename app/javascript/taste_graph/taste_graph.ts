@@ -26,6 +26,14 @@ export type TasteGraphConfig = {
   pointRadius?: number
 }
 
+/** TasteGraphのカスタマイズオプション */
+export type TasteGraphOptions = {
+  /** グラフがクリックされたときのコールバック */
+  domCallback?: DomCallback
+  /** グラフ描画のカスタマイズ */
+  config?: TasteGraphConfig
+}
+
 /**
  * 味・香りグラフ
  *
@@ -137,23 +145,18 @@ export class TasteGraph extends Chart {
   }
 
   /**
+   * コンストラクタ
+   *
    * @param canvas - グラフ描画先
    * @param dom - 描画するグラフの初期値
-   * @param domCallback - クリックされた値に対するコールバック関数を与える。
-   *                    この引数を与えると、クリックで入力可能なグラフになる。
-   * @param config - グラフのカスタマイズ値
+   * @param opts - options - グラフのカスタマイズ値
    */
-  constructor({
-    canvas,
-    dom,
-    domCallback,
-    config,
-  }: {
-    canvas: HTMLCanvasElement
-    dom: DomValues
-    domCallback?: DomCallback
-    config?: TasteGraphConfig
-  }) {
+  //eslint-enable tsdoc/syntax
+  constructor(
+    canvas: HTMLCanvasElement,
+    dom: DomValues,
+    opts: TasteGraphOptions = {}
+  ) {
     // --- Data ---
     const p = TasteGraph.fromDom(dom)
     const data = {
@@ -162,7 +165,7 @@ export class TasteGraph extends Chart {
           data: [p],
           backgroundColor: "rgba(183, 40, 46, 0.9)",
           borderColor: "rgba(183, 40, 46, 1.0)",
-          pointRadius: config?.pointRadius ?? 10,
+          pointRadius: opts.config?.pointRadius ?? 10,
         },
       ],
     }
@@ -241,7 +244,7 @@ export class TasteGraph extends Chart {
     const axis = merge(commonAxis, {
       grid: {
         lineWidth: (context: ScriptableScaleContext) => {
-          const line = config?.lineWidth ?? 5
+          const line = opts.config?.lineWidth ?? 5
           // x=0/y=0だけ太くする
           return context.tick.value === 0 ? line : 1
         },
@@ -285,6 +288,8 @@ export class TasteGraph extends Chart {
      * 入力モードのときは、クリック位置に一番近い整数値データを入力できる。
      * 既存のデータをクリックすると入力をリセットできる。
      */
+    // 型推論のためにオブジェクトを剥がす
+    const domCallback = opts.domCallback
     const onClick = (() => {
       if (typeof domCallback === "undefined")
         (_e: ChartEvent, _el: ActiveElement[], _c: Chart): void => {
@@ -318,13 +323,13 @@ export class TasteGraph extends Chart {
     }
 
     // --- Config ---
-    const cconfig: ChartConfiguration = {
+    const config: ChartConfiguration = {
       type: "scatter",
       data,
       options,
       plugins: [quadrants],
     }
 
-    super(canvas, cconfig)
+    super(canvas, config)
   }
 }

@@ -1,6 +1,10 @@
 import { Controller } from "@hotwired/stimulus"
 import { TasteGraph } from "../taste_graph/taste_graph"
-import type { DomValues } from "../taste_graph/taste_graph"
+import type {
+  DomValues,
+  DomCallback,
+  TasteGraphOptions,
+} from "../taste_graph/taste_graph"
 
 // Connects to data-controller="input-taste-graph"
 export default class InputTasteGraphController extends Controller<HTMLDivElement> {
@@ -14,10 +18,14 @@ export default class InputTasteGraphController extends Controller<HTMLDivElement
       taste: this.tasteTarget.value,
       aroma: this.aromaTarget.value,
     }
-    const domCallback = ({ taste, aroma }: Readonly<DomValues>) => {
+    const domCallback: DomCallback = ({
+      taste,
+      aroma,
+    }: Readonly<DomValues>) => {
       this.tasteTarget.value = taste
       this.aromaTarget.value = aroma
     }
-    new TasteGraph({ canvas: this.canvasTarget, dom, domCallback })
+    const opts: TasteGraphOptions = { domCallback }
+    new TasteGraph(this.canvasTarget, dom, opts)
   }
 }
