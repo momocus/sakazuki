@@ -14,19 +14,13 @@ import { getRelativePosition } from "chart.js/helpers"
 
 Chart.register(ScatterController, PointElement, LinearScale)
 
-/**
- * DOMに保存された味・香りの数値
- */
+/** DOMに保存された味・香りの数値 */
 export type DomValues = { taste: string; aroma: string }
 
-/**
- * グラフクリックされた値に対するコールバック関数
- */
+/** グラフクリックされた値に対するコールバック関数 */
 export type DomCallback = (d: DomValues) => void
 
-/**
- * TasteGraphのカスタマイズ値
- */
+/** TasteGraphのカスタマイズ値 */
 export type TasteGraphConfig = {
   lineWidth?: number
   pointRadius?: number
@@ -54,6 +48,12 @@ export class TasteGraph extends Chart {
 
   /**
    * DOMデータをグラフデータに変換する
+   *
+   * このときオフセットのズレを補正する。
+   * 具体的にはDOMでは0~6のデータだが、グラフでは-3~3となる。
+   *
+   * @param v - 文字列で表したDOMデータの組
+   * @returns チャートのPoint型に変換したデータ
    */
   static fromDom(v: DomValues): Point {
     const domToPoint = (dom: string) => {
@@ -79,6 +79,10 @@ export class TasteGraph extends Chart {
 
   /**
    * クリックした位置のグラフデータを取得する
+   *
+   * @param event - chart.jsのイベント
+   * @param chart - チャート
+   * @returns クリックした位置のデータ
    */
   protected static getClickData(event: ChartEvent, chart: Chart) {
     // @ts-expect-error chart.jsのhelperの都合のエラーを無視する
@@ -90,6 +94,9 @@ export class TasteGraph extends Chart {
 
   /**
    * グラフにデータを挿入する
+   *
+   * @param chart - チャート
+   * @param data - チャートデータ
    */
   protected static pushData(chart: Chart, data: Point) {
     chart.data.datasets[0].data.push(data)
@@ -97,6 +104,9 @@ export class TasteGraph extends Chart {
 
   /**
    * chart.jsのpopが返すunion型を、Point型だけにガードする
+   *
+   * @param arg - chart.jsのpushが返す値
+   * @returns 対象がPoint型のときのみTrue
    */
   protected static isPoint(
     arg: number | [number, number] | Point | BubbleDataPoint | undefined | null,
@@ -106,6 +116,9 @@ export class TasteGraph extends Chart {
 
   /**
    * グラフにデータを削除・取得する
+   *
+   * @param chart - チャート
+   * @returns チャートデータ
    */
   protected static popData(chart: Chart): Point {
     const data = chart.data.datasets[0].data.pop()
@@ -114,6 +127,10 @@ export class TasteGraph extends Chart {
 
   /**
    * グラフデータの同値比較
+   *
+   * @param p1 - チャートデータ
+   * @param p2 - チャートデータ
+   * @returns 引数2つのデータが等しいときのみTrue
    */
   protected static eqPoint(p1: Point, p2: Point) {
     return p1.x === p2.x && p1.y === p2.y
