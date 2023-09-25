@@ -20,7 +20,7 @@ export default class ShowTasteGraphController extends Controller<HTMLCanvasEleme
 
   connect() {
     const dom: DomValues = { taste: this.tasteValue, aroma: this.aromaValue }
-    const config: TasteGraphConfig = { pointRadius: 6, zeroLineWidth: 3 }
+    const config: TasteGraphConfig = { pointRadius: 6, lineWidth: 3 }
     const opts: TasteGraphOptions = { config }
     new TasteGraph(this.canvasTarget, dom, opts)
   }
