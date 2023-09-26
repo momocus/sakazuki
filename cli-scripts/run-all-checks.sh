@@ -36,6 +36,9 @@ yarn run lint:markdownlint
 message "##### Run stylelint"
 yarn run lint:stylelint
 
+message "##### Run Markuplint"
+yarn run lint:markuplint
+
 # gems
 
 message "##### Run Rubocop"
