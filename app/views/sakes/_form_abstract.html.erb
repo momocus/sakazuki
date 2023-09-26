@@ -24,8 +24,11 @@
                                   }) %>
             </div>
             <div class="col-12 col-lg-6" data-controller="sake-kura">
-              <%= form.label(:kura, class: "form-label") %>
-              <input type="text" class="form-control" autocomplete="on" list="kura-list"
+              <label for="sake_kura_todofuken_autocompletion" class="form-label">
+                <%= t("activerecord.attributes.sake.kura") %>
+              </label>
+              <input type="text" id="sake_kura_todofuken_autocompletion"
+                class="form-control" autocomplete="on" list="kura-list"
                 data-sake-name-target="kura"
                 data-sake-kura-target="mixed"
                 data-testid="sake_kura_todofuken_autocompletion">
