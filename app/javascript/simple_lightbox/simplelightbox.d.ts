@@ -83,7 +83,7 @@ declare module "simplelightbox" {
     on(
       events: SimpleLightboxEvents,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      callback: (event: any) => any
+      callback: (event: any) => any,
     ): SimpleLightbox
     open(elem: Element): void
     close(): void

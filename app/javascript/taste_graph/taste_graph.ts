@@ -99,7 +99,7 @@ export class TasteGraph extends Chart {
    * chart.jsのpopが返すunion型を、Point型だけにガードする
    */
   protected static isPoint(
-    arg: number | [number, number] | Point | BubbleDataPoint | undefined | null
+    arg: number | [number, number] | Point | BubbleDataPoint | undefined | null,
   ): arg is Point {
     return arg != null && typeof arg !== "number" && !("r" in arg) && "x" in arg
   }
@@ -170,7 +170,7 @@ export class TasteGraph extends Chart {
       beforeDraw(
         chart: Chart,
         _args: { cancelable: boolean },
-        options: QuadrantsColors
+        options: QuadrantsColors,
       ) {
         const {
           ctx,
