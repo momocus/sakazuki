@@ -2,11 +2,12 @@ require "rails_helper"
 
 RSpec.describe "Sake Index Order" do
   describe "sakes order in index" do
-    let!(:sealed1) { create(:sake, name: "未開封のお酒1", bottle_level: "sealed") }
-    let!(:opened1) { create(:sake, name: "開封済みのお酒1", bottle_level: "opened") }
+    # 順番に意味があるのでlet!を使う
+    let!(:sealed_old) { create(:sake, name: "古い未開封のお酒", bottle_level: "sealed") }
+    let!(:opened_old) { create(:sake, name: "古い開封済みのお酒", bottle_level: "opened") }
     let!(:empty) { create(:sake, name: "空のお酒", bottle_level: "empty") }
-    let!(:sealed2) { create(:sake, name: "未開封のお酒2", bottle_level: "sealed") }
-    let!(:opened2) { create(:sake, name: "開封済みのお酒2", bottle_level: "opened") }
+    let!(:sealed_new) { create(:sake, name: "新しい未開封のお酒", bottle_level: "sealed") }
+    let!(:opened_new) { create(:sake, name: "新しい開封済みのお酒", bottle_level: "opened") }
 
     before do
       visit sakes_path
@@ -14,7 +15,7 @@ RSpec.describe "Sake Index Order" do
 
     context "if the 'show empty bottles' checkbox is not checked" do
       it "shows opened sakes before sealed sakes" do
-        regexp = /#{sealed2.name}.*#{sealed1.name}.*#{opened2.name}.*#{opened1.name}/m
+        regexp = /#{sealed_new.name}.*#{sealed_old.name}.*#{opened_new.name}.*#{opened_old.name}/m
         expect(page.text).to match(regexp)
       end
 
@@ -24,13 +25,13 @@ RSpec.describe "Sake Index Order" do
       end
     end
 
-    context "if the 'show empty bottles' checkbox is checked", js: true do
+    context "if the 'show empty bottles' checkbox is checked", :js do
       before do
         check("check_empty_bottle") # show empty bottles
       end
 
       it "shows sakes sorted by id" do
-        regexp = /#{sealed2.name}.*#{sealed1.name}.*#{opened2.name}.*#{opened1.name}.*#{empty.name}/m
+        regexp = /#{sealed_new.name}.*#{sealed_old.name}.*#{opened_new.name}.*#{opened_old.name}.*#{empty.name}/m
         expect(page.text).to match(regexp)
       end
     end
