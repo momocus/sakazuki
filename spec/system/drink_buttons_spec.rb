@@ -38,7 +38,7 @@ RSpec.describe "Drink Buttons" do
       end
     end
 
-    context "for empty bottle", js: true do
+    context "for empty bottle", :js do
       before do
         check("check_empty_bottle")
       end
@@ -60,7 +60,7 @@ RSpec.describe "Drink Buttons" do
       sign_out(user)
     end
 
-    describe "clicking open button of sealed bottle", js: true do
+    describe "clicking open button of sealed bottle", :js do
       before do
         click_button "dropdown_toggle_#{sealed_sake.id}"
         accept_confirm do
@@ -73,7 +73,7 @@ RSpec.describe "Drink Buttons" do
         expect(page).to have_current_path(new_user_session_path)
       end
 
-      it "redirects index page after sign in", js: true do
+      it "redirects index page after sign in", :js do
         signin_process_on_signin_page(user)
         expect(page).to have_current_path(sakes_path)
       end
@@ -84,7 +84,7 @@ RSpec.describe "Drink Buttons" do
       end
     end
 
-    describe "clicking empty button of opend bottle", js: true do
+    describe "clicking empty button of opend bottle", :js do
       before do
         click_button "dropdown_toggle_#{opened_sake.id}"
         accept_confirm do
@@ -97,7 +97,7 @@ RSpec.describe "Drink Buttons" do
         expect(page).to have_current_path(new_user_session_path)
       end
 
-      it "redirects index page after sign in", js: true do
+      it "redirects index page after sign in", :js do
         signin_process_on_signin_page(user)
         expect(page).to have_current_path(sakes_path)
       end
@@ -114,7 +114,7 @@ RSpec.describe "Drink Buttons" do
       sign_in(user)
     end
 
-    describe "clicking open button of sealed bottle", js: true do
+    describe "clicking open button of sealed bottle", :js do
       before do
         click_button "dropdown_toggle_#{sealed_sake.id}"
         accept_confirm do
@@ -149,14 +149,14 @@ RSpec.describe "Drink Buttons" do
         expect(find(:test_id, "flash_message")).to have_link(text, href: link)
       end
 
-      it "opens review accordion after clicking review link", js: true do
-        click_on I18n.t("helper.flash.review")
+      it "opens review accordion after clicking review link", :js do
+        click_link I18n.t("helper.flash.review")
         text = I18n.t("activerecord.attributes.sake.color") # レビューの中にある酒の項目の1つ
         expect(page).to have_text(text)
       end
     end
 
-    describe "clicking empty button of opened bottle", js: true do
+    describe "clicking empty button of opened bottle", :js do
       before do
         click_button "dropdown_toggle_#{opened_sake.id}"
         accept_confirm do

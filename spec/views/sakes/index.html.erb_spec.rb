@@ -22,7 +22,7 @@ RSpec.describe "sakes/index", type: :system do
       end
     end
 
-    it "has image link by SimpleLightbox", js: true do
+    it "has image link by SimpleLightbox", :js do
       find(".img-thumbnail").click
       expect(page).to have_current_path(sakes_path)
     end

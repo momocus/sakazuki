@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Sake Form Completion for Detail", js: true do
+RSpec.describe "Sake Form Completion for Detail", :js do
   let(:user) { create(:user) }
 
   before do

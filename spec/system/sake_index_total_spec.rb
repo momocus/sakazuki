@@ -21,7 +21,7 @@ RSpec.describe "Sake Index Total Spec" do
       end
     end
 
-    context "with empty bottle", js: true do
+    context "with empty bottle", :js do
       before do
         check("check_empty_bottle")
       end

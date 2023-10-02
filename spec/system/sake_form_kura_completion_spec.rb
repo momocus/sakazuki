@@ -7,7 +7,7 @@ RSpec.describe "Sake Form Kura Completion" do
     sign_in(user)
   end
 
-  describe "autocompletion of kura form in new sake page", js: true do
+  describe "autocompletion of kura form in new sake page", :js do
     before do
       visit new_sake_path
     end
@@ -59,7 +59,7 @@ RSpec.describe "Sake Form Kura Completion" do
     end
   end
 
-  describe "kura form at existing sake edit page", js: true do
+  describe "kura form at existing sake edit page", :js do
     context "with sake having valid kura and todofuken" do
       let!(:sake) { create(:sake, kura: "原田酒造合資会社", todofuken: "愛知県") }
 

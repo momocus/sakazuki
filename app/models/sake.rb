@@ -164,7 +164,7 @@ class Sake < ApplicationRecord
   # @return [Integer] 酒の総量[ml]
   def self.alcohol_stock(include_empty: false)
     if include_empty
-      all.sum(:size)
+      sum(:size)
     else
       where(bottle_level: "sealed").sum(:size) + (where(bottle_level: "opened").sum(:size) / 2)
     end

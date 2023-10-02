@@ -85,7 +85,7 @@ RSpec.describe "Copy Sakes" do
 
     # special case
     describe "kura and todofuken" do
-      it "has copied kura and todofuken", js: true do
+      it "has copied kura and todofuken", :js do
         id = "sake_kura_todofuken_autocompletion"
         expect(find(:test_id, id).value).to have_text("#{sake.kura}（#{sake.todofuken}）")
       end
