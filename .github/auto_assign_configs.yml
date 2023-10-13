@@ -1,0 +1,13 @@
+# Document
+# https://github.com/marketplace/actions/auto-assign-action
+
+# Set to true to add reviewers to pull requests
+addReviewers: true
+
+# A list of reviewers to be added to pull requests (GitHub user name)
+reviewers:
+  - momocus
+  - yonta
+
+# Set addAssignees to 'author' to set the PR creator as the assignee.
+addAssignees: author
