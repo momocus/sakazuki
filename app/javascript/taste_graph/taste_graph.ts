@@ -155,7 +155,7 @@ export class TasteGraph extends Chart {
   constructor(
     canvas: HTMLCanvasElement,
     dom: DomValues,
-    opts: TasteGraphOptions = {}
+    opts: TasteGraphOptions = {},
   ) {
     // --- Data ---
     const p = TasteGraph.fromDom(dom)
