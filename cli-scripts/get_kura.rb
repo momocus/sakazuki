@@ -172,13 +172,11 @@ end
 # 区切り文字は配列で複数を受け取り、先頭から順番に分解を試す。
 # 文字2個以上に分解できたら、即その区切り文字を採用する。
 #
-# HACK: 長野県の桝一市村酒造場の「スクウェア・ワン」は特別処理する。
-#
 # @param meigaras [String] SAKETIMESに載っている代表銘柄
 # @param seps [Array<String>] 区切り文字の配列
 # @return [Array<String>] 複数の代表銘柄に分解した代表銘柄
 def try_split(meigaras, seps)
-  return [meigaras] if seps.empty? || meigaras == "スクウェア・ワン"
+  return [meigaras] if seps.empty?
 
   split_meigaras = meigaras.split(seps.first)
   if split_meigaras.length > 1  # split成功したか
@@ -195,7 +193,9 @@ end
 # - 代表銘柄が2つ以上あり、空白、読点（、）、中点（・）のいずれかで区切られている
 # - 代表銘柄自体に空白が含まれる（海外の蔵たちと山口県の村重酒造のeight knot）
 # そのため、複数の区切り文字でsplitを試す。
-# また、海外地域の銘柄は空白が含まれる、かつ、銘柄0種か1種のため、特別処理で対応している。
+#
+# 海外地域の銘柄は空白が含まれる、かつ、銘柄0種か1種のため、特別処理で対応している。
+# 長野県の桝一市村酒造場の「スクウェア・ワン」は特別処理する。
 #
 # @param meigaras [String] SAKETIMESに載っている代表銘柄
 # @param region [String] 地域
@@ -205,6 +205,7 @@ def split_meigara(meigaras, region)
 
   return [] if meigaras == ""
   return [meigaras] if oversea?(region)
+  return [meigaras] if meigaras == "スクウェア・ワン"
 
   try_split(meigaras, ["、", "・", " "])
 end
