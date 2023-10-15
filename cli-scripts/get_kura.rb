@@ -73,8 +73,8 @@ def add_kuras(kuras)
   kuras + [
     # 2020年に株式会社福井酒造場を合併し、2021年に酒造り開始
     { name: "井村屋株式会社", region: "三重県", meigaras: ["福和蔵"] },
-    # 2021年に愛知県の森山酒造が移転合併した
-    { name: "株式会社RiceWine", region: "神奈川", meigaras: ["蜂龍盃"] },
+    # 2021年に愛知県の森山酒造が神奈川県に移転し、㈱RiceWineの委託醸造をしている
+    { name: "森山酒造場", region: "神奈川", meigaras: %w[蜂龍盃 HINEMOS] },
     # 一度やめたが2022年より再開した
     { name: "伊東株式会社", region: "愛知", meigaras: ["敷嶋"] },
     # 山本合名会社が㈱山本酒造店となっている
