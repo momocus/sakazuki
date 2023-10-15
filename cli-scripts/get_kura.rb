@@ -139,7 +139,7 @@ def add_meigara(name, region, meigaras)
       meigaras + ["尊王"]
     in ["丸一酒造株式会社", "愛知県"]
       meigaras + ["ほしいずみ"]
-    in ["水谷酒造株式株式会社", "愛知県"]
+    in ["水谷酒造株式会社", "愛知県"]
       meigaras + %w[奏 めぐる]
     in ["渡辺酒造株式会社", "愛知県"]
       meigaras + ["平勇"]
