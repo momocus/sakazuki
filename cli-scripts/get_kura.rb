@@ -206,6 +206,8 @@ def split_meigara(meigaras, region)
   return [] if meigaras == ""
   return [meigaras] if oversea?(region)
   return [meigaras] if meigaras == "スクウェア・ワン"
+  # HACK: 和饗は諦めて特別処理する
+  return meigaras.delete("「").split("」") if region == "長野県" && meigaras == "「和饗」「わきょう」"
 
   try_split(meigaras, ["、", "・", " "])
 end
