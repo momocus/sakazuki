@@ -72,9 +72,14 @@ end
 def add_kuras(kuras)
   kuras + [
     # 2020年に株式会社福井酒造場を合併し、2021年に酒造り開始
-    { name: "井村屋株式会社", region: "三重県", meigaras: %w[福和蔵] },
+    { name: "井村屋株式会社", region: "三重県", meigaras: ["福和蔵"] },
     # 2021年に愛知県の森山酒造が移転合併した
-    { name: "株式会社RiceWine", region: "神奈川", meigaras: %w[蜂龍盃] },
+    { name: "株式会社RiceWine", region: "神奈川", meigaras: ["蜂龍盃"] },
+    # 一度やめたが2022年より再開した
+    { name: "伊東株式会社", region: "愛知", meigaras: ["敷嶋"] },
+    # 山本合名会社が㈱山本酒造店となっている
+    # TODO: 旧名山本合名会社を蔵一覧からまだ削除していない、SAKETIMESの対応を待つ
+    { name: "株式会社山本酒造店", region: "秋田", meigaras: %w[白瀑 山本] },
   ]
 end
 
@@ -131,6 +136,22 @@ def add_meigara(name, region, meigaras)
       meigaras + ["森民"]
     in ["麓井酒造株式会社", "山形県"]
       meigaras + ["フモトヰ"]
+    in ["東の麓酒造有限会社", "山形県"]
+      meigaras + ["天弓"]
+    in ["合名会社大谷忠吉本店", "福島県"]
+      meigaras + ["登龍"]
+    in ["宮泉銘醸株式会社", "福島県"]
+      meigaras + ["宮泉"]
+    in ["有賀醸造合資会社", "福島県"]
+      meigaras + %w[生粋左馬 陣屋]
+    in ["株式会社虎屋本店", "栃木県"]
+      meigaras + ["菊"]
+    in ["大矢孝酒造株式会社", "神奈川県"]
+      meigaras + ["残草蓬莱"]
+    in ["株式会社一本義久保本店", "福井県"]
+      meigaras + ["伝心"]
+    in ["七笑酒造株式会社", "長野県"]
+      meigaras + ["七笑"]
     in ["天領酒造株式会社", "岐阜県"]
       meigaras + ["日野屋"]
     in ["株式会社平田酒造場", "岐阜県"]
@@ -149,6 +170,10 @@ def add_meigara(name, region, meigaras)
       meigaras + ["初夢桜"]
     in ["原田酒造合資会社", "愛知県"]
       meigaras + %w[卯の花 於大の舞 衣が浦若水]
+    in ["中野BC株式会社", "和歌山県"]
+      meigaras + ["兆久"]
+    in ["文本酒造株式会社", "高知県"]
+      meigaras + %w[四万十 霧の里]
     else
       meigaras
     end
