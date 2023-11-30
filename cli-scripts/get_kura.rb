@@ -72,9 +72,14 @@ end
 def add_kuras(kuras)
   kuras + [
     # 2020年に株式会社福井酒造場を合併し、2021年に酒造り開始
-    { name: "井村屋株式会社", region: "三重県", meigaras: %w[福和蔵] },
-    # 2021年に愛知県の森山酒造が移転合併した
-    { name: "株式会社RiceWine", region: "神奈川", meigaras: %w[蜂龍盃] },
+    { name: "井村屋株式会社", region: "三重県", meigaras: ["福和蔵"] },
+    # 2021年に愛知県の森山酒造が神奈川県に移転し、㈱RiceWineの委託醸造をしている
+    { name: "森山酒造場", region: "神奈川", meigaras: %w[蜂龍盃 HINEMOS] },
+    # 一度やめたが2022年より再開した
+    { name: "伊東株式会社", region: "愛知", meigaras: ["敷嶋"] },
+    # 山本合名会社が㈱山本酒造店となっている
+    # TODO: 旧名山本合名会社を蔵一覧からまだ削除していない、SAKETIMESの対応を待つ
+    { name: "株式会社山本酒造店", region: "秋田", meigaras: %w[白瀑 山本] },
   ]
 end
 
@@ -131,6 +136,22 @@ def add_meigara(name, region, meigaras)
       meigaras + ["森民"]
     in ["麓井酒造株式会社", "山形県"]
       meigaras + ["フモトヰ"]
+    in ["東の麓酒造有限会社", "山形県"]
+      meigaras + ["天弓"]
+    in ["合名会社大谷忠吉本店", "福島県"]
+      meigaras + ["登龍"]
+    in ["宮泉銘醸株式会社", "福島県"]
+      meigaras + ["宮泉"]
+    in ["有賀醸造合資会社", "福島県"]
+      meigaras + %w[生粋左馬 陣屋]
+    in ["株式会社虎屋本店", "栃木県"]
+      meigaras + ["菊"]
+    in ["大矢孝酒造株式会社", "神奈川県"]
+      meigaras + ["残草蓬莱"]
+    in ["株式会社一本義久保本店", "福井県"]
+      meigaras + ["伝心"]
+    in ["七笑酒造株式会社", "長野県"]
+      meigaras + ["七笑"]
     in ["天領酒造株式会社", "岐阜県"]
       meigaras + ["日野屋"]
     in ["株式会社平田酒造場", "岐阜県"]
@@ -139,7 +160,7 @@ def add_meigara(name, region, meigaras)
       meigaras + ["尊王"]
     in ["丸一酒造株式会社", "愛知県"]
       meigaras + ["ほしいずみ"]
-    in ["水谷酒造株式株式会社", "愛知県"]
+    in ["水谷酒造株式会社", "愛知県"]
       meigaras + %w[奏 めぐる]
     in ["渡辺酒造株式会社", "愛知県"]
       meigaras + ["平勇"]
@@ -149,6 +170,10 @@ def add_meigara(name, region, meigaras)
       meigaras + ["初夢桜"]
     in ["原田酒造合資会社", "愛知県"]
       meigaras + %w[卯の花 於大の舞 衣が浦若水]
+    in ["中野BC株式会社", "和歌山県"]
+      meigaras + ["兆久"]
+    in ["文本酒造株式会社", "高知県"]
+      meigaras + %w[四万十 霧の里]
     else
       meigaras
     end
@@ -172,13 +197,11 @@ end
 # 区切り文字は配列で複数を受け取り、先頭から順番に分解を試す。
 # 文字2個以上に分解できたら、即その区切り文字を採用する。
 #
-# HACK: 長野県の桝一市村酒造場の「スクウェア・ワン」は特別処理する。
-#
 # @param meigaras [String] SAKETIMESに載っている代表銘柄
 # @param seps [Array<String>] 区切り文字の配列
 # @return [Array<String>] 複数の代表銘柄に分解した代表銘柄
 def try_split(meigaras, seps)
-  return [meigaras] if seps.empty? || meigaras == "スクウェア・ワン"
+  return [meigaras] if seps.empty?
 
   split_meigaras = meigaras.split(seps.first)
   if split_meigaras.length > 1  # split成功したか
@@ -192,10 +215,23 @@ end
 #
 # SAKETIMESに載っている銘柄は以下の状態が含まれる。
 # - 代表銘柄が載っておらず空文字
-# - 代表銘柄が2つ以上あり、空白、読点（、）、中点（・）のいずれかで区切られている
+# - 代表銘柄が2つ以上あり、下記のいずれかの方法で区切られている
+#   - 空白
+#     - 茨城県 株式会社笹目宗兵衛商店 「二波山 松緑」
+#     - 千葉県 青柳酒造株式会社 「金紋 篠緑」
+#   - 読点（、）
+#     - 兵庫県 八鹿酒造有限会社 「吉野、夫婦杉」
+#   - 中点（・）
+#     - 山口県 村重酒造株式会社 「金冠黒松・村重・eight knot」
+#   - 空白とスラッシュ（ / ）
+#     - 千葉県 鍋店株式会社 「仁勇 / 不動」
+#   - 銘柄が「」で囲まれている
+#     - 長野県 和饗酒造株式会社 『「和饗」「わきょう」』
 # - 代表銘柄自体に空白が含まれる（海外の蔵たちと山口県の村重酒造のeight knot）
 # そのため、複数の区切り文字でsplitを試す。
-# また、海外地域の銘柄は空白が含まれる、かつ、銘柄0種か1種のため、特別処理で対応している。
+#
+# 海外地域の銘柄は空白が含まれる、かつ、銘柄0種か1種のため、特別処理で対応している。
+# 長野県の桝一市村酒造場の「スクウェア・ワン」は特別処理する。
 #
 # @param meigaras [String] SAKETIMESに載っている代表銘柄
 # @param region [String] 地域
@@ -205,8 +241,11 @@ def split_meigara(meigaras, region)
 
   return [] if meigaras == ""
   return [meigaras] if oversea?(region)
+  return [meigaras] if meigaras == "スクウェア・ワン"
+  # HACK: 和饗は諦めて特別処理する
+  return meigaras.delete("「").split("」") if region == "長野県" && meigaras == "「和饗」「わきょう」"
 
-  try_split(meigaras, ["、", "・", " "])
+  try_split(meigaras, [" / ", "、", "・", " "])
 end
 
 # SAKETIMESの地域ページのテーブルカラムから、蔵名を作成する
