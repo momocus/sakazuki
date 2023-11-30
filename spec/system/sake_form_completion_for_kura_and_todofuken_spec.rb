@@ -8,7 +8,7 @@ RSpec.describe "Sake Form Completion for Kura and Todofuken" do
     visit new_sake_path
   end
 
-  describe "kura_todofuken", js: true do
+  describe "kura_todofuken", :js do
     context "with empty kura_todofuken" do
       before do
         fill_in("sake_name", with: "生道井 本醸造 無ろ過生原酒 袋吊り").send_keys(:tab)

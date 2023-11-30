@@ -31,7 +31,7 @@ RSpec.describe "Sake Form Validation" do
     end
   end
 
-  describe "name", js: true do
+  describe "name", :js do
     context "with empty string" do
       before do
         fill_in("sake_name", with: "")

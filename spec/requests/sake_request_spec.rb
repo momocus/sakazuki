@@ -8,14 +8,14 @@ RSpec.describe "Sakes" do
     describe "GET /sakes request (index)" do
       it "returns 200 response" do
         get sakes_path
-        expect(response).to have_http_status "200"
+        expect(response).to have_http_status :ok
       end
     end
 
     describe "GET /sakes/[id] request (show)" do
       it "returns 200 response" do
         get sake_path(id)
-        expect(response).to have_http_status "200"
+        expect(response).to have_http_status :ok
       end
     end
 
@@ -57,7 +57,7 @@ RSpec.describe "Sakes" do
     describe "GET /sakes/menu request (menu)" do
       it "returns 200 response" do
         get menu_sakes_path
-        expect(response).to have_http_status "200"
+        expect(response).to have_http_status :ok
       end
     end
   end
@@ -71,7 +71,7 @@ RSpec.describe "Sakes" do
     describe "GET /sakes/[id]/edit (edit)" do
       it "returns 200 response" do
         get edit_sake_path(id)
-        expect(response).to have_http_status "200"
+        expect(response).to have_http_status :ok
       end
     end
 
@@ -81,7 +81,7 @@ RSpec.describe "Sakes" do
         #       idやcreated_atなどが含まれるが、permitされてないのでparamsで渡して問題ない
         sake_params = build(:sake).attributes
         post "/sakes", params: { sake: sake_params }
-        expect(response).to have_http_status "303" # see other, and redirect to "sakes/[new_id]"
+        expect(response).to have_http_status :see_other # see other, and redirect to "sakes/[new_id]"
       end
 
       it "increase 1 sake" do

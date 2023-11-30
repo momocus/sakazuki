@@ -62,7 +62,7 @@ RSpec.describe "Flash Message" do
       end
     end
 
-    describe "delete sake", js: true do
+    describe "delete sake", :js do
       it "has flash message" do
         visit sake_path(sake.id)
         accept_confirm do click_link("delete_sake") end

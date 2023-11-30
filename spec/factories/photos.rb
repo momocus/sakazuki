@@ -12,6 +12,6 @@ FactoryBot.define do
   factory :photo do
     id { 1 }
     image { "temp_path" }
-    association :sake
+    sake
   end
 end
