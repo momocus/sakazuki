@@ -43,5 +43,5 @@
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --define:global=window --outdir=app/assets/builds",
     "build:css": "sass ./app/assets/stylesheets/:./app/assets/builds/ --no-source-map --load-path=node_modules"
   },
-  "packageManager": "yarn@3.6.3"
+  "packageManager": "yarn@4.0.2"
 }
