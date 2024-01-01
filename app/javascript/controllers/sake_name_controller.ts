@@ -98,9 +98,9 @@ export default class SakeNameController extends Controller<HTMLDivElement> {
 
       const completions = kuraCompletions.concat(detailCompletions)
       const targets = kuraTargets.concat(detailTargets)
-      zip(completions, targets).forEach(([completion, target]) =>
-        this.complete(name, completion, target),
-      )
+      zip(completions, targets).forEach(([completion, target]) => {
+        this.complete(name, completion, target)
+      })
     })
   }
 }
