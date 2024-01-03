@@ -96,8 +96,10 @@
       <div class="row g-2 photo-gallery" data-controller="simple-lightbox">
         <% sake.photos.each do |photo| %>
           <div class="col-lg-2 col-6" data-testid="sake_photo">
-            <% original_url = cl_image_path(photo.image.file.filename, angle: :ignore) %>
             <% thumb_tag = cl_image_tag(photo.image.thumb.url, class: "img-thumbnail") %>
+            <% image_id = Rails.env.production? ? photo.image.full_public_id : photo.image.url %>
+            <%# HACK: image_idが/upload/...のようなpathのときはangle: :ignoreが無視される %>
+            <% original_url = cl_image_path(image_id, angle: :ignore) %>
             <%= link_to(thumb_tag, original_url) %>
           </div>
         <% end %>
