@@ -97,10 +97,8 @@
         <% sake.photos.each do |photo| %>
           <div class="col-lg-2 col-6" data-testid="sake_photo">
             <% thumb_tag = cl_image_tag(photo.image.thumb.url, class: "img-thumbnail") %>
-            <% image_id = Rails.env.production? ? photo.image.full_public_id : photo.image.url %>
-            <%# HACK: image_idが/upload/...のようなpathのときはangle: :ignoreが無視される %>
-            <% original_url = cl_image_path(image_id, angle: :ignore) %>
-            <%= link_to(thumb_tag, original_url) %>
+            <% image_url = cl_image_path(photo.cl_reference, angle: :ignore) %>
+            <%= link_to(thumb_tag, image_url) %>
           </div>
         <% end %>
       </div>
