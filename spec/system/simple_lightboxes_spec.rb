@@ -9,11 +9,8 @@ RSpec.describe "Simple Lightboxes", :js do
     context "with avif photo" do
       let(:sake) { sake_with_photos }
 
-      before do
-        find(:test_id, "sake_photo").click
-      end
-
       it "has same path" do
+        find(:test_id, "sake_photo").click
         expect(page).to have_current_path(sake_path(sake.id))
       end
     end
@@ -21,11 +18,8 @@ RSpec.describe "Simple Lightboxes", :js do
     context "with jpg photo" do
       let(:sake) { sake_with_photos(file_ext: "jpg") }
 
-      before do
-        find(:test_id, "sake_photo").click
-      end
-
       it "has same path" do
+        find(:test_id, "sake_photo").click
         expect(page).to have_current_path(sake_path(sake.id))
       end
     end
