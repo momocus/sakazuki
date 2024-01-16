@@ -9,7 +9,7 @@ RSpec.describe "Simple Lightboxes", :js do
     context "with avif photo" do
       let(:sake) { sake_with_photos }
 
-      it "has same path" do
+      it "does not change current path" do
         find(:test_id, "sake_photo").click
         expect(page).to have_current_path(sake_path(sake.id))
       end
@@ -18,7 +18,7 @@ RSpec.describe "Simple Lightboxes", :js do
     context "with jpg photo" do
       let(:sake) { sake_with_photos(file_ext: "jpg") }
 
-      it "has same path" do
+      it "does not change current path" do
         find(:test_id, "sake_photo").click
         expect(page).to have_current_path(sake_path(sake.id))
       end
