@@ -1,8 +1,6 @@
 require "rails_helper"
 
 RSpec.describe "Simple Lightboxes", :js do
-  let(:sake) { sake_with_photos(photo_count: 1) }
-
   context "with sake show page" do
     before do
       visit sake_path(sake.id)
