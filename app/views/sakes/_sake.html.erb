@@ -63,7 +63,7 @@
             </div>
           </div>
         </div>
-        <div class="col-6 pe-4 align-self-center photo-gallery">
+        <div class="col-6 pe-4 align-self-center photo-gallery" data-testid="sake_photo_<%= sake.id %>">
           <% if sake.photos.any? %>
             <% image = sake.photos.first.image %>
             <%= link_to(cl_image_tag(image.thumb.url, class: "img-thumbnail img-fluid"), image.url) %>

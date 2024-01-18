@@ -31,4 +31,21 @@ RSpec.describe "Simple Lightboxes", :js do
       end
     end
   end
+
+  context "with sake index page" do
+    let!(:sakes) { sakes_with_photos(sake_count: 2) }
+
+    before do
+      visit sakes_path
+      find(:test_id, "sake_photo_#{sakes.first.id}").click
+    end
+
+    it "does not change current path" do
+      expect(page).to have_current_path(sakes_path)
+    end
+
+    it "exists only one" do
+      expect(all(:css, ".simple-lightbox").length).to eq(1)
+    end
+  end
 end
