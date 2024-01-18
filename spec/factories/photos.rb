@@ -10,7 +10,6 @@
 #
 FactoryBot.define do
   factory :photo do
-    id { 1 }
     image { "temp_path" }
     sake
   end

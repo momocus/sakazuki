@@ -16,6 +16,6 @@ RSpec.describe Photo do
 
     let(:photo) { create(:photo) }
 
-    it { is_expected.to eq "photo_delete_1" }
+    it { is_expected.to eq "photo_delete_#{photo.id}" }
   end
 end
