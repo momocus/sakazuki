@@ -55,7 +55,6 @@ EOF
 # yarn install
 COPY package.json yarn.lock .yarnrc.yml ./
 COPY .yarn/releases/ ./.yarn/releases/
-COPY .yarn/plugins/ ./.yarn/plugins/
 RUN yarn install && yarn cache clean
 
 # Add a script to be executed every time the container starts.

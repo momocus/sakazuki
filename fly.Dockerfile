@@ -86,7 +86,6 @@ FROM build_deps as node_modules
 
 COPY package.json yarn.lock .yarnrc.yml ./
 COPY .yarn/releases/ ./.yarn/releases/
-COPY .yarn/plugins/ ./.yarn/plugins/
 RUN yarn workspaces focus --all --production
 
 #######################################################################
