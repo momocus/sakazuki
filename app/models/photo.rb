@@ -15,4 +15,14 @@ class Photo < ApplicationRecord
   def chackbox_name
     "photo_delete_#{id}"
   end
+
+  # cl_image_tag/cl_image_pathで使える画像への参照を返す
+  #
+  # production環境では`full_public_id`を返す
+  # それ以外では画像ファイルのパスを返す
+  # @note production環境以外ではcl_image_tagにパスを渡すことで`angle: ignore`のような変換オプションを無視する
+  # @return [String] 画像への参照
+  def cl_reference
+    Rails.env.production? ? image.full_public_id : image.url
+  end
 end

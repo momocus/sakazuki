@@ -96,7 +96,9 @@
       <div class="row g-2 photo-gallery" data-controller="simple-lightbox">
         <% sake.photos.each do |photo| %>
           <div class="col-lg-2 col-6" data-testid="sake_photo">
-            <%= link_to(cl_image_tag(photo.image.thumb.url, class: "img-thumbnail"), photo.image.url) %>
+            <% thumb_tag = cl_image_tag(photo.image.thumb.url, class: "img-thumbnail") %>
+            <% image_url = cl_image_path(photo.cl_reference, angle: :ignore) %>
+            <%= link_to(thumb_tag, image_url) %>
           </div>
         <% end %>
       </div>
