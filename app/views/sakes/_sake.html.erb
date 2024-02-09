@@ -63,7 +63,7 @@
             </div>
           </div>
         </div>
-        <div class="col-6 pe-4 align-self-center photo-gallery" data-controller="simple-lightbox">
+        <div class="col-6 pe-4 align-self-center photo-gallery" data-testid="sake_photo_<%= sake.id %>">
           <% if sake.photos.any? %>
             <% photo = sake.photos.first %>
             <% thumb_tag = cl_image_tag(photo.image.thumb.url, class: "img-thumbnail") %>
