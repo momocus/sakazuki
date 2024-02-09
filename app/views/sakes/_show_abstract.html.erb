@@ -12,9 +12,7 @@
           <i class="bi bi-share"></i>
         </a>
         <%# HACK: hiddenのtextareaをシェア機能から参照する %>
-        <textarea class="d-none" data-share-target="text">
-          <%= t("helper.share.text", sake:) %>
-        </textarea>
+        <textarea class="d-none" data-share-target="text"><%= t("helper.share.text", sake:) %></textarea>
       </div>
       <div class="col-lg-12 order-lg-2 col order-1 fs-3">
         <% if sake.kura.present? %>
