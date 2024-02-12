@@ -95,8 +95,8 @@ export class TasteGraph extends Chart {
   protected static getClickData(event: ChartEvent, chart: Chart) {
     // @ts-expect-error chart.jsのhelperの都合のエラーを無視する
     const canvasPosition = getRelativePosition(event, chart)
-    const x = chart.scales.x.getValueForPixel(canvasPosition.x) ?? NaN
-    const y = chart.scales.y.getValueForPixel(canvasPosition.y) ?? NaN
+    const x = chart.scales.x?.getValueForPixel(canvasPosition.x) ?? NaN
+    const y = chart.scales.y?.getValueForPixel(canvasPosition.y) ?? NaN
     return { x: Math.round(x), y: Math.round(y) }
   }
 
@@ -107,7 +107,7 @@ export class TasteGraph extends Chart {
    * @param data - チャートデータ
    */
   protected static pushData(chart: Chart, data: Point) {
-    chart.data.datasets[0].data.push(data)
+    chart.data.datasets[0]?.data.push(data)
   }
 
   /**
@@ -129,7 +129,7 @@ export class TasteGraph extends Chart {
    * @returns チャートデータ
    */
   protected static popData(chart: Chart): Point {
-    const data = chart.data.datasets[0].data.pop()
+    const data = chart.data.datasets[0]?.data.pop()
     return TasteGraph.isPoint(data) ? data : { x: NaN, y: NaN }
   }
 
@@ -197,8 +197,8 @@ export class TasteGraph extends Chart {
           chartArea: { left, top, right, bottom },
           scales: { x, y },
         } = chart
-        const midX = x.getPixelForValue(0)
-        const midY = y.getPixelForValue(0)
+        const midX = x?.getPixelForValue(0) ?? 0
+        const midY = y?.getPixelForValue(0) ?? 0
         ctx.save()
         ctx.fillStyle = options.topLeft
         ctx.fillRect(left, top, midX - left, midY - top)

@@ -4,6 +4,7 @@
     "moduleResolution": "bundler",
     "module": "esnext",
     "strict": true,
+    "noUncheckedIndexedAccess": true,
     "target": "esnext",
     "skipLibCheck": true,
     "verbatimModuleSyntax": true
