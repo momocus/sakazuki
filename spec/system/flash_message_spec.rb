@@ -65,7 +65,9 @@ RSpec.describe "Flash Message" do
     describe "delete sake", :js do
       it "has flash message" do
         visit sake_path(sake.id)
-        accept_confirm do click_link("delete_sake") end
+        accept_confirm do
+          click_on("delete_sake")
+        end
         expect(page).to have_selector(:test_id, "flash_message")
       end
     end
