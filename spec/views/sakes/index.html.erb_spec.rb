@@ -46,7 +46,7 @@ RSpec.describe "sakes/index", type: :system do
     context "when searching with some word" do
       before do
         fill_in("text_search", with: "検索中の酒")
-        click_button("submit_search")
+        click_on("submit_search")
       end
 
       it "has title with searching words" do
@@ -58,7 +58,7 @@ RSpec.describe "sakes/index", type: :system do
     context "when searching with empty word" do
       before do
         fill_in("text_search", with: "")
-        click_button("submit_search")
+        click_on("submit_search")
       end
 
       it "does not have title with searching words separator" do
