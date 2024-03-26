@@ -13,7 +13,7 @@ RSpec.describe "layouts/application", type: :system do
       end
 
       it "does not exist" do
-        expect(page).not_to have_xpath('//a[@href="/letter_opener"]')
+        expect(page).to have_no_xpath('//a[@href="/letter_opener"]')
       end
     end
   end

@@ -9,7 +9,7 @@ RSpec.describe "New Sake" do
       sign_in(user)
       visit new_sake_path
       fill_in("sake_name", with: sake_name)
-      click_button("form_submit")
+      click_on("form_submit")
     end
 
     it "has success flash message" do

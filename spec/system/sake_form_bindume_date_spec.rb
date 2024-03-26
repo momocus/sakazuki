@@ -27,7 +27,7 @@ RSpec.describe "Sake Form Bindume Date" do
       fill_in("sake_name", with: "生道井")
       bindume = "#{with_japanese_era(Time.current)} #{I18n.l(Time.current, format: '%B')}"
       select(bindume, from: "sake_bindume_on")
-      click_button("form_submit")
+      click_on("form_submit")
     end
 
     it "has this year and month" do

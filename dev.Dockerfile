@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.3-labs
-FROM ruby:3.2.2-slim-bullseye
+FROM ruby:3.3.0-slim-bullseye
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
