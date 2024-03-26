@@ -6,7 +6,7 @@ require "json"
 
 # kura-list.ndjsonを読み込む
 #
-# @return [Array<Hash<Symbol => String, Array<String>>>] 蔵、地域、銘柄を持つjsonの配列
+# @return [Array<Hash{Symbol => String, Array<String>}>] 蔵、地域、銘柄を持つjsonの配列
 def read_kura
   filename = "#{__dir__}/kura-list.ndjson"
   file = File.new(filename)
@@ -25,8 +25,8 @@ end
 # 銘柄から蔵を補完するには1つの銘柄から1つの蔵が決まる必要がある。
 # そのため、この関数は入力された複数銘柄を持つjsonを1銘柄ずつにフラットに分解する。
 #
-# @param jsons [Array<Hash<Symbol => String, Array<String>>>] kura-list.ndjsonから読み取ったjsonの配列
-# @return [Array<Hash<Symbol => String>>] 銘柄をflattenしたjsonの配列
+# @param jsons [Array<Hash{Symbol => String, Array<String>}>] kura-list.ndjsonから読み取ったjsonの配列
+# @return [Array<Hash{Symbol => String}>] 銘柄をflattenしたjsonの配列
 def flatten_by_meigara(jsons)
   jsons.map { |json|
     case json
@@ -40,7 +40,7 @@ end
 
 # jsonの銘柄が銘柄リストに含まれるかどうか
 #
-# @param json [Hash<Symbol => String>] 蔵、地域、銘柄を持つjson
+# @param json [Hash{Symbol => String}] 蔵、地域、銘柄を持つjson
 # @param meigaras [Array<String>] 銘柄のリスト
 # @return [Booleann] 含まれるならtrue
 def include_meigara?(json, meigaras)
@@ -53,8 +53,8 @@ end
 # 銘柄から蔵を補完するには、銘柄から蔵が一意に決まる必要がある。
 # そのため、同じ代表銘柄を持つ蔵は補完の対象外とするため、除外する。
 #
-# @param jsons [Array<Hash<Symbol => String>>] 蔵、地域、銘柄を持つjsonの配列
-# @return [Array<Hash<Symbol => String>>] 銘柄名が重複するものが除かれた配列
+# @param jsons [Array<Hash{Symbol => String}>] 蔵、地域、銘柄を持つjsonの配列
+# @return [Array<Hash{Symbol => String}>] 銘柄名が重複するものが除かれた配列
 def remove_duplication(jsons)
   uniqed = jsons.uniq { |json| json[:meigara] }
   duplications = jsons.difference(uniqed)
@@ -69,8 +69,8 @@ end
 # 例えば銘柄「酔鯨」をつくるのは酔鯨酒造と酔鯨酒造土佐蔵の2つがある。
 # このように同じ会社の別蔵があり銘柄が重複する場合は、代表蔵で復元する。
 #
-# @param jsons [Array<Hash<Symbol => String>>] 蔵、地域、銘柄を持つjsonの配列
-# @return [Array<Hash<Symbol => String>>] 一部銘柄が復元された配列
+# @param jsons [Array<Hash{Symbol => String}>] 蔵、地域、銘柄を持つjsonの配列
+# @return [Array<Hash{Symbol => String}>] 一部銘柄が復元された配列
 def add_exceptional_duplication(jsons)
   jsons + [
     { name: "大関株式会社", region: "兵庫県", meigara: "大関" },
@@ -84,8 +84,8 @@ end
 #
 # 例えば、"生道井"がキー、"原田酒造合名会社（愛知県）"が値のような、辞書Hashを作成する。
 #
-# @param jsons [Array<Hash<Symbol => String>>] 蔵、地域、銘柄を持つjsonの配列
-# @return [Array<Hash<String => String>>] 銘柄から蔵・地域への辞書Hash
+# @param jsons [Array<Hash{Symbol => String}>] 蔵、地域、銘柄を持つjsonの配列
+# @return [Array<Hash{String => String}>] 銘柄から蔵・地域への辞書Hash
 def to_dict(jsons)
   dict = {}
   jsons.each do |json|
@@ -101,7 +101,7 @@ end
 # @note 出力されるTypeScriptはprettierされておらず手動でかける必要がある。
 #
 # @param filename [String] 出力先のファイル名
-# @param dict [Array<Hash<String => String>>] 銘柄から蔵・地域への辞書Hash
+# @param dict [Array<Hash{String => String}>] 銘柄から蔵・地域への辞書Hash
 def write_dict(filename, dict)
   File.open(filename, "wb") do |file|
     file.write("export const dict = ")

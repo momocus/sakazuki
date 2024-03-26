@@ -89,7 +89,7 @@ class SakesController < ApplicationController
   helper_method :include_empty?
   # 空き瓶を表示するかどうかを調べる
   #
-  # @param query [Hash<Symbol => String] params[:q]に格納されたRansackのクエリ
+  # @param query [Hash{Symbol => String}] params[:q]に格納されたRansackのクエリ
   # @return [Boolean] 空き瓶も込みで表示するならtrueを返す
   def include_empty?(query)
     !query.nil? and query[:bottle_level_not_eq] == Sake::BOTTOM_BOTTLE.to_s
@@ -126,7 +126,7 @@ class SakesController < ApplicationController
   # コピーする酒情報を持ったハッシュを作成する
   #
   # @param sake [Sake] コピーする対象の酒オブジェクト
-  # @return [Hash<Symbol => String, Integer, Date>] コピーする酒情報のハッシュ
+  # @return [Hash{Symbol => String, Integer, Date}] コピーする酒情報のハッシュ
   def copy_attributes(sake)
     all = sake.attributes
     all.select { |key, _v| copy_key?(key) }
@@ -134,7 +134,7 @@ class SakesController < ApplicationController
 
   # 新規酒のデフォルト情報をもったハッシュを作成する
   #
-  # @return [Hash<Symbol => Integer, Date>] デフォルト酒情報のハッシュ
+  # @return [Hash{Symbol => Integer, Date}] デフォルト酒情報のハッシュ
   def default_attributes
     {
       brewery_year: to_by(Time.current),
