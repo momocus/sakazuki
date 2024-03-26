@@ -63,7 +63,7 @@ RSpec.describe "sakes/index", type: :system do
 
       it "does not have title with searching words separator" do
         title = "- #{I18n.t('sakes.index.title')} - SAKAZUKI"
-        expect(page).not_to have_title(title)
+        expect(page).to have_no_title(title)
       end
     end
   end

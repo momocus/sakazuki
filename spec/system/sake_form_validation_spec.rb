@@ -43,7 +43,7 @@ RSpec.describe "Sake Form Validation" do
       end
 
       it "does not have flash message" do
-        expect(page).not_to have_selector(:test_id, "flash_message")
+        expect(page).to have_no_selector(:test_id, "flash_message")
       end
     end
   end
