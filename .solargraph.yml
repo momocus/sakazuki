@@ -9,11 +9,7 @@ exclude:
 require: []
 domains: []
 reporters:
-  - rubocop
-  - require_not_found:
-      exclude:
-        - spec/**/*
-  - typecheck:typed
+  - all!
 formatter:
   rubocop:
     cops: safe
