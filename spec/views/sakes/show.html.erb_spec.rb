@@ -94,4 +94,19 @@ RSpec.describe "sakes/show", type: :system do
       end
     end
   end
+
+  describe "share button" do
+    let(:sake) { create(:sake) }
+
+    before do
+      visit sake_path(sake.id)
+    end
+
+    it "has hidden text" do
+      within(:test_id, "share_button") do
+        hidden_elem = find(".visually-hidden")
+        expect(hidden_elem).to have_text(I18n.t("sakes.show_abstract.share_button"))
+      end
+    end
+  end
 end
