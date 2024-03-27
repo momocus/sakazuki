@@ -1,0 +1,19 @@
+## Generated Files
+
+# Completion
+/app/javascript/completion/meigara_dict.ts linguist-generated=true
+/app/views/sakes/_kura_datalist.html.erb linguist-generated=true
+/app/views/sakes/_sakamai_datalist.html.erb linguist-generated=true
+/cli-scripts/kura-list.ndjson linguist-generated=true
+/cli-scripts/sakamai-list.ndjson linguist-generated=true
+
+# Credentials
+/config/credentials.yml.enc linguist-generated=true
+/config/credentials/production.yml.enc linguist-generated=true
+
+# Bundler
+/Gemfile.lock linguist-generated=true
+
+# Yarn
+/yarn.lock linguist-generated=true
+/.yarn/releases/ linguist-generated=true
