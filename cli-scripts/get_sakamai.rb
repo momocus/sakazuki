@@ -66,7 +66,7 @@ end
 #   to_ndjson(["いにしえの舞", "おくほまれ"]) #=> [{name:"いにしえの舞"}, {name:"おくほまれ"}]
 #
 # @param rices [Array<String>] 酒米のリスト
-# @return [Array<Hash<Symbol => String>] nameキーに酒米の名前を持つjsonの配列
+# @return [Array<Hash{Symbol => String}>] nameキーに酒米の名前を持つjsonの配列
 def to_ndjson(rices)
   rices.map { |name|
     { name: }
