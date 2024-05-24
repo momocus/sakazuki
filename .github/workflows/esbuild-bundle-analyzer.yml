@@ -1,0 +1,30 @@
+name: ESBuild Bundle Analyzer
+
+on: [pull_request]
+
+permissions:
+  contents: read # for checkout repository
+  actions: read # for fetching base branch bundle stats
+  pull-requests: write # for comments
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: "yarn"
+      - name: Install Dependencies
+        run: yarn workspaces focus --all --production
+      - name: Run esbuld
+        run: yarn run build:metafile
+
+      # Call this action after the build
+      - name: Analyze esbuild bundle size
+        # uses: exoego/esbuild-bundle-analyzer@main # If you prefer nightly!
+        uses: exoego/esbuild-bundle-analyzer@v1
+        with:
+          metafiles: "meta.json"
