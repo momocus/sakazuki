@@ -83,7 +83,7 @@ RSpec.describe "Sake Form Completion for Detail", :js do
   context "for detail accordion" do
     # 以下テストは詳細アコーディオンの中なので、アコーディオンを開いておく
     before do
-      click_button("accordion_detail")
+      click_on("accordion_detail")
     end
 
     describe "moto" do

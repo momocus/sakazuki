@@ -36,7 +36,7 @@ RSpec.describe "Copy Sakes" do
 
   context "after click copy link" do
     before do
-      click_link "copy_sake"
+      click_on("copy_sake")
     end
 
     describe "linked page" do
@@ -59,7 +59,7 @@ RSpec.describe "Copy Sakes" do
 
   describe "copied values" do
     before do
-      click_link "copy_sake"
+      click_on("copy_sake")
     end
 
     # nomarl case
@@ -108,7 +108,7 @@ RSpec.describe "Copy Sakes" do
 
   describe "not copied values" do
     before do
-      click_link "copy_sake"
+      click_on("copy_sake")
     end
 
     # normal case

@@ -48,7 +48,7 @@ RSpec.describe "Flash Message" do
       it "has flash message" do
         visit new_sake_path
         fill_in("sake_name", with: "生道井")
-        click_button("form_submit")
+        click_on("form_submit")
         expect(page).to have_selector(:test_id, "flash_message")
       end
     end
@@ -57,7 +57,7 @@ RSpec.describe "Flash Message" do
       it "has flash message" do
         visit edit_sake_path(sake.id)
         fill_in("sake_name", with: "ほしいずみ")
-        click_button("form_submit")
+        click_on("form_submit")
         expect(page).to have_selector(:test_id, "flash_message")
       end
     end
@@ -65,7 +65,9 @@ RSpec.describe "Flash Message" do
     describe "delete sake", :js do
       it "has flash message" do
         visit sake_path(sake.id)
-        accept_confirm do click_link("delete_sake") end
+        accept_confirm do
+          click_on("delete_sake")
+        end
         expect(page).to have_selector(:test_id, "flash_message")
       end
     end
@@ -73,7 +75,7 @@ RSpec.describe "Flash Message" do
     describe "copy sake" do
       it "has flash message" do
         visit sake_path(sake.id)
-        click_link("copy_sake")
+        click_on("copy_sake")
         expect(page).to have_selector(:test_id, "flash_message")
       end
     end
@@ -82,7 +84,7 @@ RSpec.describe "Flash Message" do
     describe "logout" do
       it "has flash message" do
         visit sakes_path
-        click_link("sign_out")
+        click_on("sign_out")
         expect(page).to have_selector(:test_id, "flash_message")
       end
     end
