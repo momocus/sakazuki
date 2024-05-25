@@ -19,7 +19,8 @@
 
 ARG RUBY_VERSION=3.3.1
 ARG VARIANT=jemalloc-slim
-FROM quay.io/evl.ms/fullstaq-ruby:${RUBY_VERSION}-${VARIANT} as base
+ARG OS_VERSION=bullseye
+FROM quay.io/evl.ms/fullstaq-ruby:${RUBY_VERSION}-${OS_VERSION}-${VARIANT} as base
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
