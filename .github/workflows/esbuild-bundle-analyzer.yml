@@ -1,6 +1,6 @@
 name: ESBuild Bundle Analyzer
 
-on: [pull_request, pull_request_target]
+on: [pull_request_target]
 
 permissions:
   contents: read # for checkout repository
@@ -11,11 +11,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    if: |
-      ( github.event.pull_request.head.repo.fork && github.event_name == 'pull_request_target') ||
-      (!github.event.pull_request.head.repo.fork && github.event_name != 'pull_request_target')
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: "${{ github.event.pull_request.merge_commit_sha }}"
       - uses: actions/setup-node@v3
         with:
           node-version: "18"
