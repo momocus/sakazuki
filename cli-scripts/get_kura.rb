@@ -29,7 +29,7 @@ require "json"
 # aタグオブジェクトから地域とURLのハッシュを作る
 #
 # @param a_tag [Nokogiri::XML::Element] Nokogiriで生成したHTMLのaタグオブジェクト
-# @return [Array<Hash<Symbol => String>>] 地域とURLのハッシュ
+# @return [Array<Hash{Symbol => String}>] 地域とURLのハッシュ
 def a_to_region(a_tag)
   url = a_tag.attributes["href"].value
   # "北海道（13）"のようになっているので、括弧と数字を削る
@@ -47,7 +47,7 @@ end
 #            url: "https://jp.sake-times.com/sakagura/./hokkaido"] },
 #          ...]
 #
-# @return [Array<Hash<Symbol => String>>] 地域とURLのハッシュの配列
+# @return [Array<Hash{Symbol => String}>] 地域とURLのハッシュの配列
 def request_regions
   base_url = "https://jp.sake-times.com/sakagura/"
   html = URI.parse(base_url).open
@@ -67,8 +67,8 @@ end
 
 # SAKETIMESに載っていない酒蔵データを追加する
 #
-# @param kuras [Array<Hash<Symbol => String, Array<String>>>] 酒蔵のデータ
-# @return [Array<Hash<Symbol => String, Array<String>>>] 追加済みの酒蔵のデータ
+# @param kuras [Array<Hash{Symbol => String, Array<String>}>] 酒蔵のデータ
+# @return [Array<Hash{Symbol => String, Array<String>}>] 追加済みの酒蔵のデータ
 def add_kuras(kuras)
   kuras + [
     # 2020年に株式会社福井酒造場を合併し、2021年に酒造り開始
@@ -273,7 +273,7 @@ end
 #
 # @param table_row [Nokogiri::XML::NodeSet] SAKETIMESのテーブルカラムのオブジェクト
 # @param region [String] 地域
-# @return [Hash<Symbol => String, Array<String>>] 蔵名、地域、代表銘柄を持つハッシュ
+# @return [Hash{Symbol => String, Array<String>}] 蔵名、地域、代表銘柄を持つハッシュ
 def tr_to_kura(table_row, region)
   name = tr_to_name(table_row)
   meigaras = tr_to_meigaras(table_row, region)
@@ -290,7 +290,7 @@ end
 #
 # @param url [String] SAKETIMESの地域の酒蔵ページのURL
 # @param region [String] 地域名
-# @return [Array<Hash<Symbol => String, Array<String>>>] 蔵名、地域、代表銘柄持ったハッシュの配列
+# @return [Array<Hash{Symbol => String, Array<String>}>] 蔵名、地域、代表銘柄持ったハッシュの配列
 def request_kuras(url, region)
   html = URI.parse(url).open
   trs = Nokogiri::HTML(html).css("table tr") # テーブルのrowであるtrをすべて取得
@@ -310,8 +310,8 @@ end
 #          ...,
 #          { name: "YK3 Sake Producer Inc.", region: "北米", meigaras: ["悠(Yu)"]}]
 #
-# @param region_urls [Array<Hash<Symbol => String>>] 県名とURLのハッシュの配列
-# @return [Array<Hash<Symbol => String, Array<String>>>] 蔵名、地域、代表銘柄持ったハッシュの配列
+# @param region_urls [Array<Hash{Symbol => String}>] 県名とURLのハッシュの配列
+# @return [Array<Hash{Symbol => String, Array<String>}>] 蔵名、地域、代表銘柄持ったハッシュの配列
 def request_all_kuras(region_urls)
   region_urls.map { |r_u|
     case r_u
@@ -326,7 +326,7 @@ end
 # ファイルにNDJSON形式で保存する
 #
 # @param filename [String] 出力ファイル名
-# @param jsons [Array<Hash<Symbol => String, Array<String>>] 蔵、地域、代表銘柄を持つjsonの配列
+# @param jsons [Array<Hash{Symbol => String, Array<String>}>] 蔵、地域、代表銘柄を持つjsonの配列
 def write_ndjson(filename, jsons)
   File.open(filename, "wb") do |f|
     jsons.each do |json|

@@ -36,7 +36,7 @@ module FlashHelper
   # 読みやすさのために書いておく
   private
 
-  # @type [Hash<Symbol, String>]
+  # @type [Hash{Symbol, String}]
   FLASH_TYPES = {
     copy_sake: "info",
     notice: "success",

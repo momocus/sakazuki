@@ -181,7 +181,7 @@ class Sake < ApplicationRecord
     Time.zone.now.beginning_of_day - created_at.beginning_of_day <= new_limit
   end
 
-  # @type [float] 酒の売値を決めるために、仕入れ値にかける係数
+  # @type [Float] 酒の売値を決めるために、仕入れ値にかける係数
   SELLING_RATE = 3.0
   private_constant :SELLING_RATE
 
