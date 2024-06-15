@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Sake Form Add Tax", js: true do
+RSpec.describe "Sake Form Add Tax", :js do
   let(:user) { create(:user) }
 
   before do
