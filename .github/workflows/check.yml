@@ -44,6 +44,8 @@ jobs:
         run: yarn run lint:markdownlint
       - name: Run Stylelint
         run: yarn run lint:stylelint
+      - name: Run Markuplint
+        run: yarn run lint:markuplint
 
       # lint by rubocop
       - name: Set up Ruby

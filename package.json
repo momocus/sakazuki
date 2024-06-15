@@ -17,6 +17,7 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "@markuplint/erb-parser": ">=4.1.1 <5",
     "@typescript-eslint/eslint-plugin": ">=6.17.0 <7",
     "@typescript-eslint/parser": ">=6.17.0 <7",
     "eslint": ">=8.56.0 <9",
@@ -24,6 +25,7 @@
     "eslint-plugin-jsdoc": ">=46.10.1 <47",
     "eslint-plugin-tsdoc": ">=0.2.17 <1",
     "markdownlint-cli": ">=0.38.0 <1",
+    "markuplint": ">=4.1.1 <5",
     "prettier": ">=3.1.1 <4",
     "stylelint": ">=16.1.0 <17",
     "stylelint-config-standard": ">=36.0.0 <37",
@@ -40,6 +42,7 @@
     "lint:markdownlint:fix": "yarn run lint:markdownlint --fix",
     "lint:stylelint": "stylelint 'app/assets/stylesheets/**/*.{scss,css}' --ignore-path .gitignore",
     "lint:stylelint:fix": "yarn run lint:stylelint --fix",
+    "lint:markuplint": "markuplint \"app/views/**/*.html.erb\" \"public/*.html\"",
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --define:global=window --outdir=app/assets/builds",
     "build:metafile": "esbuild app/javascript/*.* --bundle --metafile=meta.json --outdir=app/assets/builds",
     "build:css": "sass ./app/assets/stylesheets/:./app/assets/builds/ --no-source-map --load-path=node_modules"
