@@ -21,14 +21,14 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # lint by sh scripts
       - name: End of File with Newline
         run: ./cli-scripts/check_endoffile_with_newline.sh
 
       # lint by node modules
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: "18"
           cache: "yarn"
@@ -59,10 +59,10 @@ jobs:
 
       # lint by hadolint
       - name: Run Hadolint for dev.Dockerfile
-        uses: hadolint/hadolint-action@master
+        uses: hadolint/hadolint-action@3
         with:
           dockerfile: dev.Dockerfile
       - name: Run Hadolint for fly.Dockerfile
-        uses: hadolint/hadolint-action@master
+        uses: hadolint/hadolint-action@3
         with:
           dockerfile: fly.Dockerfile
