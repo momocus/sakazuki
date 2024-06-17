@@ -1,10 +1,10 @@
 module ShareHelperJa
-  # 文末に句点がない場合は追加する
+  # 文末が句点や感嘆符でない場合は、句点を追加する
   # @param text [String] 対象テキスト
   # @param period [String] 句点、デフォルトは。
   # @return [String] 句点を追加したテキスト
-  def add_period(text, period = I18n.t("helper.share.punctuation"))
-    text.empty? || text.end_with?(period) ? text : "#{text}#{period}"
+  def add_period(text, period = I18n.t("helper.share.period"))
+    text.empty? || text.end_with?(*I18n.t("helper.share.end_of_sentence")) ? text : "#{text}#{period}"
   end
 
   # 蔵名中の法人を表す文字列を略語に変換する
@@ -49,7 +49,8 @@ end
   ja: {
     helper: {
       share: {
-        punctuation: "。",
+        end_of_sentence: %w(。 ！ ？ ! ?),
+        period: "。",
         honorific_title: "さんの",
         text: lambda { |_key, options|
           sake = options[:sake]
