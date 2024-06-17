@@ -59,10 +59,10 @@ jobs:
 
       # lint by hadolint
       - name: Run Hadolint for dev.Dockerfile
-        uses: hadolint/hadolint-action@3
+        uses: hadolint/hadolint-action@v3.1.0
         with:
           dockerfile: dev.Dockerfile
       - name: Run Hadolint for fly.Dockerfile
-        uses: hadolint/hadolint-action@3
+        uses: hadolint/hadolint-action@v3.1.0
         with:
           dockerfile: fly.Dockerfile
