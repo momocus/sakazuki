@@ -32,7 +32,7 @@ module ShareHelperJa
   def make_text(name, kura, color, aroma, taste)
     # 酒の名前のみがnon nil、他パラメータは空の場合を考慮する。
     kura = to_enclosed(kura)
-    kura = add_period(kura, I18n.t("helper.share.honorific_title"))
+    kura = add_period(kura, I18n.t("helper.share.honorific"))
     name = add_period(name)
     color = add_period(color)
     aroma = add_period(aroma)
@@ -51,7 +51,7 @@ end
       share: {
         end_of_sentence: %w(。 ！ ？ ! ?),
         period: "。",
-        honorific_title: "さんの",
+        honorific: "さんの",
         text: lambda { |_key, options|
           sake = options[:sake]
           ShareHelperJa.make_text(sake.name, sake.kura, sake.color, sake.aroma_impression, sake.taste_impression)
