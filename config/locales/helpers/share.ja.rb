@@ -1,5 +1,8 @@
 module ShareHelperJa
   # 文末が句点や感嘆符でない場合は、句点を追加する
+  #
+  # 対象が空文字列の場合は、句点の追加を行わない
+  #
   # @param text [String] 対象テキスト
   # @param period [String] 句点、デフォルトは。
   # @return [String] 句点を追加したテキスト
@@ -30,14 +33,12 @@ module ShareHelperJa
   # @param taste [String] 酒の味
   # @return [String] ツイートメッセージ
   def make_text(name, kura, color, aroma, taste)
-    # 酒の名前のみがnon nil、他パラメータは空の場合を考慮する。
-    kura = to_enclosed(kura)
-    kura = add_period(kura, I18n.t("helper.share.honorific"))
+    kura_san = "#{to_enclosed(kura)}#{I18n.t('helper.share.honorific')}" if kura.present?
     name = add_period(name)
     color = add_period(color)
     aroma = add_period(aroma)
     taste = add_period(taste)
-    "#{kura}#{name}#{color}#{aroma}#{taste} #SAKAZUKI"
+    "#{kura_san}#{name}#{color}#{aroma}#{taste} #SAKAZUKI"
   end
 
   module_function :to_enclosed
