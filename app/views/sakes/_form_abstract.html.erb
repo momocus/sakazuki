@@ -12,6 +12,41 @@
       <div class="row row-cols-1 g-4">
         <fieldset class="col">
           <div class="row g-2">
+            <div class="col-12 col-lg-6">
+              <%= form.label(:photos, class: "form-label") %>
+              <%= form.file_field(:photos,
+                                  multiple: true,
+                                  include_hidden: false,
+                                  class: "form-control",
+                                  accept: "image/*;capture=camera",
+                                  data: { testid: "sake_photos" }) %>
+            </div>
+            <% if sake.photos.any? %>
+              <div class="col-12 form-text">
+                <%= t(".select_delete_photo") %>
+              </div>
+              <div class="col-12">
+                <div class="row g-3">
+                  <% sake.photos.each do |photo| %>
+                    <div class="col-6 col-lg-2">
+                      <div class="form-check form-check-inline m-0 p-0 select-delete-photos">
+                        <%= check_box_tag(photo.chackbox_name,
+                                          "delete",
+                                          nil,
+                                          class: "form-check-input") %>
+                        <label class="form-check-label" for="<%= photo.chackbox_name %>">
+                          <%= cl_image_tag(photo.image.thumb.url, class: "img-thumbnail") %>
+                        </label>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </fieldset>
+        <fieldset class="col">
+          <div class="row g-2">
             <div class="col-12">
               <%= form.label(:name, class: "form-label") %>
               <span class="badge bg-primary ms-4"><%= t(".badge.presence") %></span>
@@ -170,41 +205,6 @@
                 <% end %>
               </div>
             </div>
-          </div>
-        </fieldset>
-        <fieldset class="col">
-          <div class="row g-2">
-            <div class="col-12 col-lg-6">
-              <%= form.label(:photos, class: "form-label") %>
-              <%= form.file_field(:photos,
-                                  multiple: true,
-                                  include_hidden: false,
-                                  class: "form-control",
-                                  accept: "image/*;capture=camera",
-                                  data: { testid: "sake_photos" }) %>
-            </div>
-            <% if sake.photos.any? %>
-              <div class="col-12 form-text">
-                <%= t(".select_delete_photo") %>
-              </div>
-              <div class="col-12">
-                <div class="row g-3">
-                  <% sake.photos.each do |photo| %>
-                    <div class="col-6 col-lg-2">
-                      <div class="form-check form-check-inline m-0 p-0 select-delete-photos">
-                        <%= check_box_tag(photo.chackbox_name,
-                                          "delete",
-                                          nil,
-                                          class: "form-check-input") %>
-                        <label class="form-check-label" for="<%= photo.chackbox_name %>">
-                          <%= cl_image_tag(photo.image.thumb.url, class: "img-thumbnail") %>
-                        </label>
-                      </div>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-            <% end %>
           </div>
         </fieldset>
         <fieldset class="col">
