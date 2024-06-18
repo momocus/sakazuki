@@ -37,7 +37,7 @@ RSpec.describe "Sake Show Share Button" do
                name: "生道井",
                kura: "原田酒造合資会社",
                todofuken: "愛知県",
-               color: "わずかに黄色",
+               color: "わずかに黄色？",
                aroma_impression: "りんご系のいい香り！",
                taste_impression: "うまい。")
       }
@@ -48,10 +48,9 @@ RSpec.describe "Sake Show Share Button" do
 
       it "is well edited and hidden" do
         target = find(:test_id, "share_text", visible: false).value
-        # 「。」「さんの」が追加される。「！」のあとは「。」が追加されない。
-        expected = "原田酒造㈾#{I18n.t('helper.share.honorific')}生道井。" \
-                   "わずかに黄色#{I18n.t('helper.share.period')}" \
-                   "りんご系のいい香り！うまい。 #SAKAZUKI"
+        # 「。」「さんの」が追加される。「！」や「？」のあとは「。」が追加されない。
+        expected = "原田酒造㈾#{I18n.t('helper.share.honorific')}生道井#{I18n.t('helper.share.period')}" \
+                   "わずかに黄色？りんご系のいい香り！うまい。 #SAKAZUKI"
         expect(target).to have_text(expected)
       end
     end
