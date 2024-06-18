@@ -49,12 +49,9 @@ RSpec.describe "Sake Show Share Button" do
       it "is well edited and hidden" do
         target = find(:test_id, "share_text", visible: false).value
         # 「。」「さんの」が追加される。「！」のあとは「。」が追加されない。
-        expected = "原田酒造㈾#{I18n.t("helper.share.honorific")}" +
-                   "生道井。" +
-                   "わずかに黄色#{I18n.t("helper.share.period")}" +
-                   "りんご系のいい香り！" +
-                   "うまい。" +
-                   " #SAKAZUKI"
+        expected = "原田酒造㈾#{I18n.t('helper.share.honorific')}生道井。" \
+                   "わずかに黄色#{I18n.t('helper.share.period')}" \
+                   "りんご系のいい香り！うまい。 #SAKAZUKI"
         expect(target).to have_text(expected)
       end
     end
