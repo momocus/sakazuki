@@ -104,6 +104,7 @@ const hiire = [
   },
   { keywords: hiyaoroshiKeywords.concat(["生詰"]), completion: "mae_hiire" },
   { keywords: ["生貯"], completion: "ato_hiire" },
+  { keywords: ["一回火入れ"], completion: "ikkai_hiire" },
 ]
 
 const warimizu = [{ keywords: ["原酒"], completion: "genshu" }]
