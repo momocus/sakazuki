@@ -55,6 +55,7 @@ class Sake < ApplicationRecord
     mae_hiire: 2,
     ato_hiire: 3,
     nido_hiire: 4,
+    ikkai_hiire: 5,
   }, _prefix: true
   enum tokutei_meisho: {
     none: 0,
@@ -196,4 +197,5 @@ class Sake < ApplicationRecord
     (price.to_f / size * 180 * SELLING_RATE).ceil(-2)
   end
 end
+
 # rubocop:enable Metrics/ClassLength
