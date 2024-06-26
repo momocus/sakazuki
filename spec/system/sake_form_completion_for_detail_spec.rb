@@ -169,6 +169,12 @@ RSpec.describe "Sake Form Completion for Detail", :js do
         selected = I18n.t("enums.sake.hiire.ato_hiire")
         expect(page).to have_select("sake_hiire", selected:)
       end
+
+      it "is completed 一回火入れ" do
+        fill_in("sake_name", with: "生道井 一回火入れ").send_keys(:tab)
+        selected = I18n.t("enums.sake.hiire.ikkai_hiire")
+        expect(page).to have_select("sake_hiire", selected:)
+      end
     end
 
     describe "warimizu" do
