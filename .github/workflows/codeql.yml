@@ -1,8 +1,6 @@
 name: "Code Scanning - Action"
 
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [main]
   schedule:
@@ -16,6 +14,7 @@ on:
     #        │  │ │ │ │
     #        *  * * * *
     - cron: "15 3 * * 6"
+  workflow_call:
 
 jobs:
   CodeQL:
