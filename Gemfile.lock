@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/ruby/net-pop.git
+  revision: e8d0afe2773b9eb6a23c39e9e437f6fc0fc7c733
+  specs:
+    net-pop (0.1.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -90,7 +96,7 @@ GEM
       debug_inspector (>= 1.2.0)
     bootsnap (1.18.3)
       msgpack (~> 1.2)
-    builder (3.2.4)
+    builder (3.3.0)
     capybara (3.40.0)
       addressable
       matrix
@@ -110,11 +116,11 @@ GEM
     carrierwave-i18n (3.0.0)
       carrierwave (>= 3.0.0, < 4)
     childprocess (5.0.0)
-    cloudinary (2.0.2)
+    cloudinary (2.1.1)
       faraday (>= 2.0.1, < 3.0.0)
       faraday-follow_redirects (~> 0.3.0)
       faraday-multipart (~> 1.0, >= 1.0.4)
-    concurrent-ruby (1.2.3)
+    concurrent-ruby (1.3.3)
     crass (1.0.6)
     cssbundling-rails (1.4.0)
       railties (>= 6.0.0)
@@ -129,7 +135,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.12.0)
+    devise-i18n (1.12.1)
       devise (>= 4.9.0)
     devise_invitable (2.0.9)
       actionmailer (>= 5.0)
@@ -150,13 +156,13 @@ GEM
       rainbow
       rubocop
       smart_properties
-    erubi (1.12.0)
+    erubi (1.13.0)
     factory_bot (6.4.6)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.4.3)
       factory_bot (~> 6.4)
       railties (>= 5.0.0)
-    faraday (2.9.0)
+    faraday (2.9.1)
       faraday-net_http (>= 2.0, < 3.2)
     faraday-follow_redirects (0.3.0)
       faraday (>= 1, < 3)
@@ -164,7 +170,11 @@ GEM
       multipart-post (~> 2)
     faraday-net_http (3.1.0)
       net-http
-    ffi (1.16.3)
+    ffi (1.17.0)
+    ffi (1.17.0-aarch64-linux-gnu)
+    ffi (1.17.0-arm64-darwin)
+    ffi (1.17.0-x86_64-darwin)
+    ffi (1.17.0-x86_64-linux-gnu)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.5)
@@ -221,40 +231,38 @@ GEM
     meta-tags (2.21.0)
       actionpack (>= 6.0.0, < 7.2)
     method_source (1.1.0)
-    mini_magick (4.12.0)
+    mini_magick (4.13.0)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.6)
-    minitest (5.23.0)
+    mini_portile2 (2.8.7)
+    minitest (5.23.1)
     msgpack (1.7.2)
     multipart-post (2.4.1)
     net-http (0.4.1)
       uri
-    net-imap (0.4.11)
+    net-imap (0.4.12)
       date
-      net-protocol
-    net-pop (0.1.2)
       net-protocol
     net-protocol (0.2.2)
       timeout
     net-smtp (0.5.0)
       net-protocol
     nio4r (2.7.3)
-    nokogiri (1.16.5)
+    nokogiri (1.16.6)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    nokogiri (1.16.5-aarch64-linux)
+    nokogiri (1.16.6-aarch64-linux)
       racc (~> 1.4)
-    nokogiri (1.16.5-arm64-darwin)
+    nokogiri (1.16.6-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.16.5-x86_64-darwin)
+    nokogiri (1.16.6-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.16.5-x86_64-linux)
+    nokogiri (1.16.6-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    parallel (1.24.0)
+    parallel (1.25.1)
     parallel_tests (4.7.1)
       parallel
-    parser (3.3.1.0)
+    parser (3.3.3.0)
       ast (~> 2.4.1)
       racc
     pg (1.5.6)
@@ -312,20 +320,20 @@ GEM
     rb-fsevent (0.11.2)
     rb-inotify (0.11.1)
       ffi (~> 1.0)
-    rdoc (6.6.3.1)
+    rdoc (6.7.0)
       psych (>= 4.0.0)
     regexp_parser (2.9.2)
-    reline (0.5.7)
+    reline (0.5.9)
       io-console (~> 0.5)
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    rexml (3.2.8)
-      strscan (>= 3.0.9)
-    rouge (4.2.1)
+    rexml (3.3.0)
+      strscan
+    rouge (4.3.0)
     rspec-core (3.13.0)
       rspec-support (~> 3.13.0)
-    rspec-expectations (3.13.0)
+    rspec-expectations (3.13.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
     rspec-mocks (3.13.1)
@@ -340,7 +348,7 @@ GEM
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
     rspec-support (3.13.1)
-    rubocop (1.63.5)
+    rubocop (1.64.1)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
       parallel (~> 1.10)
@@ -353,22 +361,20 @@ GEM
       unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.31.3)
       parser (>= 3.3.1.0)
-    rubocop-capybara (2.20.0)
+    rubocop-capybara (2.21.0)
       rubocop (~> 1.41)
-    rubocop-factory_bot (2.25.1)
-      rubocop (~> 1.41)
+    rubocop-factory_bot (2.26.1)
+      rubocop (~> 1.61)
     rubocop-rails (2.25.0)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.33.0, < 2.0)
       rubocop-ast (>= 1.31.1, < 2.0)
-    rubocop-rspec (2.29.2)
-      rubocop (~> 1.40)
-      rubocop-capybara (~> 2.17)
-      rubocop-factory_bot (~> 2.22)
-      rubocop-rspec_rails (~> 2.28)
-    rubocop-rspec_rails (2.28.3)
-      rubocop (~> 1.40)
+    rubocop-rspec (3.0.1)
+      rubocop (~> 1.61)
+    rubocop-rspec_rails (2.30.0)
+      rubocop (~> 1.61)
+      rubocop-rspec (~> 3, >= 3.0.1)
     ruby-progressbar (1.13.0)
     ruby-vips (2.2.1)
       ffi (~> 1.12)
@@ -395,7 +401,7 @@ GEM
     ssrf_filter (1.1.2)
     stimulus-rails (1.3.3)
       railties (>= 6.0.0)
-    stringio (3.1.0)
+    stringio (3.1.1)
     strscan (3.1.0)
     thor (1.3.1)
     timeout (0.4.1)
@@ -421,7 +427,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yard (0.9.36)
-    zeitwerk (2.6.14)
+    zeitwerk (2.6.15)
 
 PLATFORMS
   aarch64-linux
@@ -456,6 +462,7 @@ DEPENDENCIES
   letter_opener_web
   listen
   meta-tags
+  net-pop!
   parallel_tests
   pg
   propshaft
@@ -465,8 +472,11 @@ DEPENDENCIES
   ransack
   rspec-rails
   rubocop
+  rubocop-capybara
+  rubocop-factory_bot
   rubocop-rails
   rubocop-rspec
+  rubocop-rspec_rails
   seed_dump
   selenium-webdriver
   simplecov
@@ -479,7 +489,7 @@ DEPENDENCIES
   yard
 
 RUBY VERSION
-   ruby 3.3.1p55
+   ruby 3.3.3p89
 
 BUNDLED WITH
-   2.5.10
+   2.5.11
