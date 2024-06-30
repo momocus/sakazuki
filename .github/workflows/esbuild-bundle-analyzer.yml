@@ -14,11 +14,11 @@ jobs:
       actions: read # for fetching base branch bundle stats
       pull-requests: write # for comments
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           # This is required to fetch the commit SHA of the forked PR
           ref: "${{ github.event.pull_request.merge_commit_sha }}"
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: "18"
           cache: "yarn"
