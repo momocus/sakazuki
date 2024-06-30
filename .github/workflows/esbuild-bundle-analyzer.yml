@@ -1,6 +1,9 @@
 name: ESBuild Bundle Analyzer
 
-on: [pull_request_target]
+on:
+  push:
+    branches: [main]
+  pull_request_target:
 
 jobs:
   # PLEASE AVOID ADDING OTHER JOBS IN THIS FILE
