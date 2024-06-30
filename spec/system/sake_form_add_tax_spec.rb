@@ -25,4 +25,15 @@ RSpec.describe "Sake Form Add Tax", :js do
       expect(find(:test_id, "sake_price").value).to eq "1100"
     end
   end
+
+  context "when sake price is 1515, with fractions" do
+    before do
+      fill_in("sake_price", with: 1515)
+    end
+
+    it "changes price to 1666, floored" do
+      click_on("sake_add_tax")
+      expect(find(:test_id, "sake_price").value).to eq "1666"
+    end
+  end
 end
