@@ -149,15 +149,26 @@
             </div>
             <div class="col-12 col-lg-3">
               <%= form.label(:price, { class: "form-label" }) %>
-              <%= form.number_field(:price,
-                                    class: "form-control",
-                                    aria: { describedby: "sakePriceValidationFeedback" },
-                                    data: { testid: "sake_price" }) %>
-              <% sake.errors.full_messages_for(:price).each do |message| %>
-                <div id="sakePriceValidationFeedback" class="invalid-feedback" data-testid="sake_price_feedback">
-                  <%= message %>
-                </div>
-              <% end %>
+              <div class="input-group <%= "has-validation" if sake.errors.present? %>"
+                data-controller="add-tax">
+                <%= form.number_field(:price,
+                                      class: "form-control",
+                                      aria: { describedby: %w(sakeAddTax sakePriceValidationFeedback) },
+                                      data: {
+                                        "add-tax-target": "price",
+                                        testid: "sake_price",
+                                      }) %>
+                <button type="button" id="sakeAddTax"
+                  class="input-group-text btn btn-outline-primary"
+                  data-add-tax-target="button" data-testid="sake_add_tax">
+                  <%= t(".add_tax") %>
+                </button>
+                <% sake.errors.full_messages_for(:price).each do |message| %>
+                  <div id="sakePriceValidationFeedback" class="invalid-feedback" data-testid="sake_price_feedback">
+                    <%= message %>
+                  </div>
+                <% end %>
+              </div>
             </div>
           </div>
         </fieldset>

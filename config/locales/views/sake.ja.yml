@@ -48,6 +48,7 @@ ja:
         submit: :sakes.form.edit.submit
       input_error: 入力内容に問題があります
     form_abstract:
+      add_tax: +税
       unknown: 不明
       select_delete_photo: 削除する画像を選択してください
       abstract: 概要
