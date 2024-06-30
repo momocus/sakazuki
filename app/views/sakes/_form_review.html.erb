@@ -49,7 +49,17 @@
                 </div>
                 <div class="col-12">
                   <%= form.label(:awa, class: "form-label") %>
-                  <%= form.text_field(:awa, class: "form-control", data: { testid: "sake_awa" }) %>
+                  <%= form.text_field(:awa,
+                                      class: "form-control",
+                                      autocomplete: "on",
+                                      list: "awa-list",
+                                      data: { testid: "sake_awa" }) %>
+                  <datalist id="awa-list">
+                    <option value="強炭酸"></option>
+                    <option value="炭酸"></option>
+                    <option value="微炭酸"></option>
+                    <option value="炭酸なし"></option>
+                  </datalist>
                 </div>
               </div>
             </div>
