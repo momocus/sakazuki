@@ -164,6 +164,12 @@ h1 {
       @extend .border;
       @extend .rounded;
       @extend .p-2;
+
+      > p {
+        @extend .m-0;
+
+        white-space: pre-wrap;
+      }
     }
   }
 }

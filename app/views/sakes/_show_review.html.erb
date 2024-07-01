@@ -43,7 +43,7 @@
           <div class="col-12">
             <div class="textbox">
               <div class="label">
-                <%= Sake.human_attribute_name(:aroma_impression) %>
+                <p><%= Sake.human_attribute_name(:aroma_impression) %></p>
               </div>
               <div class="text">
                 <div class="box">
@@ -55,7 +55,7 @@
           <div class="col-12">
             <div class="textbox">
               <div class="label">
-                <%= Sake.human_attribute_name(:taste_impression) %>
+                <p><%= Sake.human_attribute_name(:taste_impression) %></p>
               </div>
               <div class="text">
                 <div class="box">
@@ -96,7 +96,7 @@
       </div>
       <div class="text">
         <div class="box">
-          <%= empty_to_default(sake.note, "　") %>
+          <p><%= empty_to_default(sake.note, "　") %></p>
         </div>
       </div>
     </div>
