@@ -28,6 +28,8 @@ ja:
     show_review:
       no_awa: 炭酸なし
       review: レビュー
+    show_note:
+      note: ノート
     drink_button:
       open: 開封する
       confirm_open: "%{name} の栓を開ける？"
