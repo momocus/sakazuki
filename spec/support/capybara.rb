@@ -23,6 +23,10 @@ Capybara.configure do |config|
 
   # "data-testid"をCapybaraのclick_linkなどで使えるように、Optional attributeに登録する
   config.test_id = "data-testid"
+
+  # Capybaraのアサーションが失敗したときに自動再試行する時間
+  # JS処理が間に合わないなどフレーキーなテストへの対応するため少し長くする
+  config.default_max_wait_time = 5
 end
 
 RSpec.configure do |config|
