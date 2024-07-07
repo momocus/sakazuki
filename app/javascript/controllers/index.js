@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import AddTaxController from "./add_tax_controller"
+application.register("add-tax", AddTaxController)
+
 import InputTasteGraphController from "./input_taste_graph_controller"
 application.register("input-taste-graph", InputTasteGraphController)
 
