@@ -1,20 +1,13 @@
 name: Fly Deploy
 on:
-  - merge_group
-
+  push:
+    branches:
+      - main
 env:
   FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 jobs:
-  check:
-    uses: ./.github/workflows/check.yml
-  test:
-    uses: ./.github/workflows/test.yml
-  codeql:
-    uses: ./.github/workflows/codeql.yml
   deploy:
     name: Deploy app
-    needs: [check, test, codeql]
-    if: ${{ success }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
