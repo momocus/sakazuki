@@ -15,7 +15,7 @@
             <%= Sake.human_attribute_name(:color) %>
           </div>
           <div class="text">
-            <div>
+            <div class="box">
               <%= empty_to_default(sake.color, "　") %>
             </div>
           </div>
@@ -27,7 +27,7 @@
             <%= Sake.human_attribute_name(:nigori) %>
           </div>
           <div class="text">
-            <div>
+            <div class="box">
               <%= empty_to_default(sake.nigori, "　") %>
             </div>
           </div>
@@ -43,10 +43,10 @@
           <div class="col-12">
             <div class="textbox">
               <div class="label">
-                <%= Sake.human_attribute_name(:aroma_impression) %>
+                <p><%= Sake.human_attribute_name(:aroma_impression) %></p>
               </div>
               <div class="text">
-                <div>
+                <div class="box">
                   <%= empty_to_default(sake.aroma_impression, "　") %>
                 </div>
               </div>
@@ -55,10 +55,10 @@
           <div class="col-12">
             <div class="textbox">
               <div class="label">
-                <%= Sake.human_attribute_name(:taste_impression) %>
+                <p><%= Sake.human_attribute_name(:taste_impression) %></p>
               </div>
               <div class="text">
-                <div>
+                <div class="box">
                   <%= empty_to_default(sake.taste_impression, "　") %>
                 </div>
               </div>
@@ -70,7 +70,7 @@
                 <%= Sake.human_attribute_name(:awa) %>
               </div>
               <div class="text">
-                <div>
+                <div class="box">
                   <%= empty_to_default(sake.awa, t(".no_awa")) %>
                 </div>
               </div>
@@ -95,8 +95,8 @@
         <%= Sake.human_attribute_name(:note) %>
       </div>
       <div class="text">
-        <div>
-          <%= empty_to_default(sake.note, "　") %>
+        <div class="box">
+          <p><%= empty_to_default(sake.note, "　") %></p>
         </div>
       </div>
     </div>

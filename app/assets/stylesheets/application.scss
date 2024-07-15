@@ -157,13 +157,19 @@ h1 {
   > .text {
     @extend .col-12;
 
-    > div {
+    > .box {
       @extend .fs-5;
       @extend .border-light;
       @extend .border-1;
       @extend .border;
       @extend .rounded;
       @extend .p-2;
+
+      > p {
+        @extend .m-0;
+
+        white-space: pre-wrap;
+      }
     }
   }
 }
