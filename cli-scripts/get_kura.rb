@@ -147,6 +147,9 @@ def add_meigara(name, region, meigaras)
       meigaras + ["菊"]
     in ["大矢孝酒造株式会社", "神奈川県"]
       meigaras + ["残草蓬莱"]
+    in ["菊水酒造株式会社", "新潟県"]
+      # 「菊水ふなくち」になったが、菊水も以前残っている
+      meigaras + ["菊水"]
     in ["株式会社一本義久保本店", "福井県"]
       meigaras + ["伝心"]
     in ["七笑酒造株式会社", "長野県"]
