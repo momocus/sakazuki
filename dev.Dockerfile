@@ -42,7 +42,7 @@ RUN mkdir tmp/ log/
 COPY Gemfile Gemfile.lock ./
 RUN <<EOF
   gem update --system
-  gem install bundler:2.3.8
+  gem install bundler:2.5.16
   gem install foreman:0.87.2
   bundle install
   rm -rf /usr/local/bundle/cache/*gem \
