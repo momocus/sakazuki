@@ -27,7 +27,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 LABEL fly_launch_runtime="rails"
 
 ARG NODE_VERSION=18.*
-ARG YARN_VERSION=3.1.1
+ARG YARN_VERSION=4.0.2
 ARG BUNDLER_VERSION=2.5.16
 
 ARG RAILS_ENV=production
