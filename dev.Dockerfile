@@ -43,7 +43,7 @@ COPY Gemfile Gemfile.lock ./
 RUN <<EOF
   gem update --system
   gem install bundler:2.5.16
-  gem install foreman:0.87.2
+  gem install foreman:0.88.1
   bundle install
   rm -rf /usr/local/bundle/cache/*gem \
     /root/.bundle/cache/* /usr/local/lib/ruby/gems/*/cache/*
