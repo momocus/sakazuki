@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1.3-labs
+# syntax=docker/dockerfile:1.4
 FROM ruby:3.3.4-slim-bullseye
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
