@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.3-labs
-FROM ruby:3.3.1-slim-bullseye
+FROM ruby:3.3.4-slim-bullseye
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
@@ -42,8 +42,8 @@ RUN mkdir tmp/ log/
 COPY Gemfile Gemfile.lock ./
 RUN <<EOF
   gem update --system
-  gem install bundler:2.3.8
-  gem install foreman:0.87.2
+  gem install bundler:2.5.16
+  gem install foreman:0.88.1
   bundle install
   rm -rf /usr/local/bundle/cache/*gem \
     /root/.bundle/cache/* /usr/local/lib/ruby/gems/*/cache/*
