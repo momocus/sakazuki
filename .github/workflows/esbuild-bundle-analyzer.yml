@@ -1,19 +1,25 @@
 name: ESBuild Bundle Analyzer
 
-on: [pull_request_target]
-
-permissions:
-  contents: read # for checkout repository
-  actions: read # for fetching base branch bundle stats
-  pull-requests: write # for comments
+on:
+  push:
+    branches: [main]
+  pull_request_target:
 
 jobs:
-  build:
+  # PLEASE AVOID ADDING OTHER JOBS IN THIS FILE
+  # BECAUSE THIS ACTION USE `pull_request_target` EVENT that grants write
+  # permissions to GitHub Actions running on PRs from forks.
+  analyze:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    permissions:
+      contents: read # for checkout repository
+      actions: read # for fetching base branch bundle stats
+      pull-requests: write # for comments
     steps:
       - uses: actions/checkout@v4
         with:
+          # This is required to fetch the commit SHA of the forked PR
           ref: "${{ github.event.pull_request.merge_commit_sha }}"
       - uses: actions/setup-node@v4
         with:
