@@ -1,11 +1,11 @@
-# syntax=docker/dockerfile:1.3-labs
+# syntax=docker/dockerfile:1.4
 FROM ruby:3.3.4-slim-bullseye
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Install build tools, posgresql-client, yarn and node
 RUN <<EOF
-  apt-get update -qq
+  apt-get update -q
   apt-get upgrade -y
   DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
     curl=7.74.* build-essential=12.9 gnupg2=2.2.*
@@ -21,9 +21,9 @@ RUN <<EOF
 
   curl -sSL https://deb.nodesource.com/setup_18.x | bash -
 
-  apt-get update -qq
+  apt-get update -q
   DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
-    nodejs=18.* postgresql-client-13=13.* libpq-dev=15.* yarn=1.22.* \
+    nodejs=18.* postgresql-client-13=13.* libpq-dev=16.* yarn=1.22.* \
     imagemagick=8:6.9.*
 
   apt-get clean
