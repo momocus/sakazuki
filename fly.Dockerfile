@@ -58,7 +58,7 @@ RUN volta install node@${NODE_VERSION} yarn@${YARN_VERSION} && \
 
 FROM base as build_deps
 
-ARG BUILD_PACKAGES="build-essential=12.9 libpq-dev=13.*"
+ARG BUILD_PACKAGES="build-essential=12.* libpq-dev=13.* libyaml-dev=0.2.*"
 ENV BUILD_PACKAGES ${BUILD_PACKAGES}
 
 # hadolint ignore=DL3008
