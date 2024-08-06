@@ -51,3 +51,9 @@ jobs:
         uses: hadolint/hadolint-action@v3.1.0
         with:
           dockerfile: fly.Dockerfile
+
+      # lint by docker check
+      - name: Run Docker Build Check for dev.Dockerfile
+        run: docker build --check --file dev.Dockerfile .
+      - name: Run Docker Build Check for fly.Dockerfile
+        run: docker build --check --file fly.Dockerfile .
