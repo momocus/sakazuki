@@ -52,8 +52,8 @@ jobs:
         with:
           dockerfile: fly.Dockerfile
 
-      # lint by docker check
-      - name: Run Docker Build Check for dev.Dockerfile
+      # lint by docker build checks
+      - name: Run Docker Build Checks for dev.Dockerfile
         run: docker build --check --file dev.Dockerfile .
-      - name: Run Docker Build Check for fly.Dockerfile
+      - name: Run Docker Build Checks for fly.Dockerfile
         run: docker build --check --file fly.Dockerfile .
