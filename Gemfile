@@ -109,9 +109,6 @@ group :development do
   # Lint ERB files
   gem "erb_lint", require: false
 
-  # Listen to file modifications
-  gem "listen"
-
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 
