@@ -410,7 +410,6 @@ GEM
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.4)
     smart_properties (1.17.0)
-    spring (4.2.1)
     ssrf_filter (1.1.2)
     stimulus-rails (1.3.3)
       railties (>= 6.0.0)
@@ -491,7 +490,6 @@ DEPENDENCIES
   selenium-webdriver
   simplecov
   simplecov-cobertura
-  spring
   stimulus-rails
   turbo-rails
   tzinfo-data
