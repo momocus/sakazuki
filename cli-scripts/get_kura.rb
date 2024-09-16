@@ -77,9 +77,6 @@ def add_kuras(kuras)
     { name: "森山酒造場", region: "神奈川", meigaras: %w[蜂龍盃 HINEMOS] },
     # 一度やめたが2022年より再開した
     { name: "伊東株式会社", region: "愛知", meigaras: ["敷嶋"] },
-    # 山本合名会社が㈱山本酒造店となっている
-    # TODO: 旧名山本合名会社を蔵一覧からまだ削除していない、SAKETIMESの対応を待つ
-    { name: "株式会社山本酒造店", region: "秋田", meigaras: %w[白瀑 山本] },
   ]
 end
 
@@ -134,6 +131,8 @@ def add_meigara(name, region, meigaras)
       meigaras + ["ZAO"]
     in ["森民酒造本家", "宮城県"]
       meigaras + ["森民"]
+    in ["株式会社山本酒造店", "秋田県"]
+      meigaras + ["白瀑"]
     in ["麓井酒造株式会社", "山形県"]
       meigaras + ["フモトヰ"]
     in ["東の麓酒造有限会社", "山形県"]
@@ -148,6 +147,9 @@ def add_meigara(name, region, meigaras)
       meigaras + ["菊"]
     in ["大矢孝酒造株式会社", "神奈川県"]
       meigaras + ["残草蓬莱"]
+    in ["菊水酒造株式会社", "新潟県"]
+      # 「菊水ふなくち」になったが、菊水も以前残っている
+      meigaras + ["菊水"]
     in ["株式会社一本義久保本店", "福井県"]
       meigaras + ["伝心"]
     in ["七笑酒造株式会社", "長野県"]

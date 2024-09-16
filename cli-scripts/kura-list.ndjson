@@ -122,7 +122,7 @@
 {"name":"舞鶴酒造株式会社","region":"秋田県","meigaras":["田从"]}
 {"name":"八重寿銘醸株式会社","region":"秋田県","meigaras":["八重寿"]}
 {"name":"八千代酒造合名会社","region":"秋田県","meigaras":["八千代"]}
-{"name":"山本合名会社","region":"秋田県","meigaras":["白瀑"]}
+{"name":"株式会社山本酒造店","region":"秋田県","meigaras":["山本","白瀑"]}
 {"name":"両関酒造株式会社","region":"秋田県","meigaras":["両関"]}
 {"name":"朝日川酒造株式会社","region":"山形県","meigaras":["朝日川"]}
 {"name":"東の麓酒造有限会社","region":"山形県","meigaras":["東の麓","天弓"]}
@@ -143,6 +143,7 @@
 {"name":"寿虎屋酒造株式会社","region":"山形県","meigaras":["霞城寿"]}
 {"name":"株式会社小屋酒造","region":"山形県","meigaras":["花羽陽"]}
 {"name":"酒田酒造株式会社","region":"山形県","meigaras":["上喜元"]}
+{"name":"桜川酒造株式会社","region":"山形県","meigaras":["小国桜川"]}
 {"name":"合名会社佐藤佐治右衛門","region":"山形県","meigaras":["やまと桜"]}
 {"name":"株式会社設楽酒造店","region":"山形県","meigaras":["一声"]}
 {"name":"有限会社秀鳳酒造場","region":"山形県","meigaras":["秀鳳"]}
@@ -161,7 +162,6 @@
 {"name":"東北銘醸株式会社","region":"山形県","meigaras":["初孫"]}
 {"name":"株式会社中沖酒造店","region":"山形県","meigaras":["羽陽一献"]}
 {"name":"長沼合名会社","region":"山形県","meigaras":["惣邑"]}
-{"name":"野澤酒造店","region":"山形県","meigaras":["羽前桜川"]}
 {"name":"羽根田酒造株式会社","region":"山形県","meigaras":["羽前白梅"]}
 {"name":"浜田株式会社","region":"山形県","meigaras":["沖正宗"]}
 {"name":"冨士酒造株式会社","region":"山形県","meigaras":["栄光冨士"]}
@@ -265,7 +265,6 @@
 {"name":"株式会社竹村酒造店","region":"茨城県","meigaras":["京の夢"]}
 {"name":"株式会社田中酒造店","region":"茨城県","meigaras":["君萬代"]}
 {"name":"株式会社月の井酒造店","region":"茨城県","meigaras":["月の井"]}
-{"name":"遠峰酒造株式会社","region":"茨城県","meigaras":["文華"]}
 {"name":"株式会社西岡本店","region":"茨城県","meigaras":["花の井"]}
 {"name":"根本酒造株式会社","region":"茨城県","meigaras":["久慈の山"]}
 {"name":"野村醸造株式会社","region":"茨城県","meigaras":["紬美人"]}
@@ -470,7 +469,7 @@
 {"name":"金升酒造株式会社","region":"新潟県","meigaras":["金升"]}
 {"name":"加茂錦酒造株式会社","region":"新潟県","meigaras":["加茂錦"]}
 {"name":"河忠酒造株式会社","region":"新潟県","meigaras":["想天坊"]}
-{"name":"菊水酒造株式会社","region":"新潟県","meigaras":["菊水"]}
+{"name":"菊水酒造株式会社","region":"新潟県","meigaras":["菊水ふなぐち","菊水"]}
 {"name":"君の井酒造株式会社","region":"新潟県","meigaras":["君の井"]}
 {"name":"麒麟山酒造株式会社","region":"新潟県","meigaras":["麒麟山"]}
 {"name":"金鵄盃酒造株式会社","region":"新潟県","meigaras":["越後杜氏"]}
@@ -757,7 +756,7 @@
 {"name":"株式会社平井酒造場","region":"岐阜県","meigaras":["東美"]}
 {"name":"有限会社平瀬酒造店","region":"岐阜県","meigaras":["久寿玉"]}
 {"name":"株式会社平田酒造場","region":"岐阜県","meigaras":["飛騨の華","やまのひかり","山の光"]}
-{"name":"平野醸造合資会社","region":"岐阜県","meigaras":["母情"]}
+{"name":"平野醸造株式会社","region":"岐阜県","meigaras":["母情"]}
 {"name":"合資会社平野本店","region":"岐阜県","meigaras":["積翠"]}
 {"name":"有限会社舩坂酒造店","region":"岐阜県","meigaras":["深山菊"]}
 {"name":"平和錦酒造株式会社","region":"岐阜県","meigaras":["金泉"]}
@@ -1565,4 +1564,3 @@
 {"name":"井村屋株式会社","region":"三重県","meigaras":["福和蔵"]}
 {"name":"森山酒造場","region":"神奈川","meigaras":["蜂龍盃","HINEMOS"]}
 {"name":"伊東株式会社","region":"愛知","meigaras":["敷嶋"]}
-{"name":"株式会社山本酒造店","region":"秋田","meigaras":["白瀑","山本"]}
