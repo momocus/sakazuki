@@ -27,7 +27,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 LABEL fly_launch_runtime="rails"
 
 ARG NODE_VERSION=18.*
-ARG YARN_VERSION=3.1.1
+ARG YARN_VERSION=4.0.2
 ARG BUNDLER_VERSION=2.5.16
 
 ARG RAILS_ENV=production
@@ -64,7 +64,7 @@ ENV BUILD_PACKAGES ${BUILD_PACKAGES}
 # hadolint ignore=DL3008
 RUN --mount=type=cache,id=dev-apt-cache,sharing=locked,target=/var/cache/apt \
     --mount=type=cache,id=dev-apt-lib,sharing=locked,target=/var/lib/apt \
-    apt-get update -qq && \
+    apt-get update -q && \
     apt-get install --no-install-recommends -y ${BUILD_PACKAGES} \
     && rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
@@ -100,7 +100,7 @@ ENV DEPLOY_PACKAGES=${DEPLOY_PACKAGES}
 # hadolint ignore=DL3008
 RUN --mount=type=cache,id=prod-apt-cache,sharing=locked,target=/var/cache/apt \
     --mount=type=cache,id=prod-apt-lib,sharing=locked,target=/var/lib/apt \
-    apt-get update -qq && \
+    apt-get update -q && \
     apt-get install --no-install-recommends -y \
     ${DEPLOY_PACKAGES} \
     && rm -rf /var/lib/apt/lists /var/cache/apt/archives
