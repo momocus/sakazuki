@@ -64,3 +64,13 @@ if [ -n "${HADOLINT}" ]; then
 else
     warning "[SKIP] Hadolint, hadolint or Docker is required."
 fi
+
+message "##### Run Docker Build Checks"
+if type docker > /dev/null 2>&1; then
+    files=$(git ls-files | grep "Dockerfile")
+    for file in ${files}; do
+        docker build --check --file "${file}" .
+    done
+else
+    warning "[SKIP] Docker Build Checks, Docker is required."
+fi
