@@ -49,7 +49,7 @@ end
 # @return [Array<String>] 酒米のリスト
 def to_rices(table)
   # HACK: テーブルヘッダがtrタグ指定なので、[1..]でヘッダを削る
-  trs = table.css("tr")[1..]
+  trs = table.css("tr").drop(1)
   rices =
     trs.flat_map { |tr|
       td = tr.css("td")[1]        # HACK: [0]の都道府県名を削る
