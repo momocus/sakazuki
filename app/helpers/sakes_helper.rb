@@ -24,6 +24,7 @@ module SakesHelper
   # 過去何年を酒情報に入力可能にするかの値
   # @type [Integer] 年数
   START_YEAR_LIMIT = 30
+  private_constant :START_YEAR_LIMIT
 
   # 現在日時から入力可能なBY年のレンジを作成する
   # @return [Range<Date>] 1年間隔で30年分のBYオブジェクトのレンジ
