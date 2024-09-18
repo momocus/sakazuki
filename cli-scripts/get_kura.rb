@@ -298,7 +298,7 @@ def request_kuras(url, region)
   trs = Nokogiri::HTML(html).css("table tr") # テーブルのrowであるtrをすべて取得
   return [] if trs.empty?                    # 地域に蔵がなければ終了
 
-  trs = trs[1..]                # ヘッダを捨てる
+  trs = trs.drop(1)                # ヘッダを捨てる
   trs.map { |tr| tr_to_kura(tr, region) }
 end
 
