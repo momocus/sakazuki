@@ -1,5 +1,6 @@
 require_relative "boot"
 
+# rubocop:disable Style/RequireOrder
 require "rails"
 # Pick the frameworks you want:
 require "active_model/railtie"
@@ -13,6 +14,7 @@ require "action_mailbox/engine"
 require "action_view/railtie"
 require "action_cable/engine"
 # require "rails/test_unit/railtie"
+# rubocop:enable Style/RequireOrder
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
