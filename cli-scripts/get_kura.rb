@@ -22,9 +22,9 @@
 #      +-- /aomori   青森県の酒蔵一覧
 #      ...
 
-require "open-uri"
-require "nokogiri"
 require "json"
+require "nokogiri"
+require "open-uri"
 
 # aタグオブジェクトから地域とURLのハッシュを作る
 #
@@ -255,7 +255,7 @@ end
 # @param table_row [Nokogiri::XML::NodeSet] SAKETIMESのテーブルカラムのオブジェクト
 # @return [String] 蔵名
 def tr_to_name(table_row)
-  name = table_row.css("span.main a")[0].content
+  name = table_row.css("span.main a").first.content
   rename(name)
 end
 
@@ -265,7 +265,7 @@ end
 # @param region [String] 地域
 # @return [Array<String>>] 代表銘柄
 def tr_to_meigaras(table_row, region)
-  meigaras_str = table_row.css("dd")[0].content
+  meigaras_str = table_row.css("dd").first.content
   split_meigara(meigaras_str, region)
 end
 
