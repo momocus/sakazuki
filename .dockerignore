@@ -21,6 +21,7 @@ app/assets/builds/*
 # required to bundle install
 !Gemfile
 !Gemfile.lock
+!.ruby-version
 
 # used only in development
 !entrypoint.sh

@@ -23,7 +23,7 @@
 
 ## Requirements
 
-- Ruby = 3.3.4
+- Ruby = (See .ruby-version file)
 - Bundler
 - Yarn🐈 >= 1.22.4
 - Node.js >= 12.20.1
@@ -92,7 +92,7 @@ See the [deployment](https://github.com/momocus/sakazuki/wiki/Deployment).
 - Docker イメージのビルド
 
 ```console
-$ docker compose build
+$ docker compose build --build-arg RUBY_VERSION=$(cat .ruby-version)
 ...
 ```
 
