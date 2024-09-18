@@ -41,22 +41,10 @@
 #  updated_at       :datetime         not null
 #
 
-# rubocop:disable Metrics/ClassLength
 class Sake < ApplicationRecord
   has_many :photos, dependent: :destroy
-  enum :bottle_level, {
-    sealed: 0,
-    opened: 1,
-    empty: 2,
-  }
-  enum :hiire, {
-    unknown: 0,
-    namanama: 1,
-    mae_hiire: 2,
-    ato_hiire: 3,
-    nido_hiire: 4,
-    ikkai_hiire: 5,
-  }, prefix: true
+  enum :bottle_level, { sealed: 0, opened: 1, empty: 2 }
+  enum :hiire, { unknown: 0, namanama: 1, mae_hiire: 2, ato_hiire: 3, nido_hiire: 4, ikkai_hiire: 5 }, prefix: true
   enum :tokutei_meisho, {
     none: 0,
     honjozo: 1,
@@ -68,18 +56,8 @@ class Sake < ApplicationRecord
     tokubetsu_honjozo: 7,
     tokubetsu_junmai: 8,
   }, prefix: true
-  enum :moto, {
-    unknown: 0,
-    kimoto: 1,
-    yamahai: 2,
-    sokujo: 3,
-    mizumoto: 4,
-  }, prefix: true
-  enum :warimizu, {
-    unknown: 0,
-    kasui: 1,
-    genshu: 2,
-  }, prefix: true
+  enum :moto, { unknown: 0, kimoto: 1, yamahai: 2, sokujo: 3, mizumoto: 4 }, prefix: true
+  enum :warimizu, { unknown: 0, kasui: 1, genshu: 2 }, prefix: true
 
   validates :name, presence: true
   validates :kura, exclusion: { in: [nil] }
@@ -192,10 +170,8 @@ class Sake < ApplicationRecord
   # 売値が計算できない場合はnilを返す。
   # @return [Integer,nil] 酒一合当たりの売値またはnil
   def selling_price
-    return nil if price.nil? || price.zero? || size.nil? || size.zero?
+    return if price.nil? || price.zero? || size.nil? || size.zero?
 
     (price.to_f / size * 180 * SELLING_RATE).ceil(-2)
   end
 end
-
-# rubocop:enable Metrics/ClassLength
