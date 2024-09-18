@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Sign-in Redirect" do
   let(:sakes) { create_list(:sake, 3) }
-  let(:id) { sakes[0].id }
+  let(:id) { sakes.first.id }
   let(:user) { create(:user) }
 
   before do

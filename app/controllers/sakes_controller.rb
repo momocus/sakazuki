@@ -77,7 +77,7 @@ class SakesController < ApplicationController
   # DELETE /sakes/1
   def destroy
     name = @sake.name
-    @sake.destroy
+    @sake.destroy!
     redirect_to(sakes_url, status: :see_other, flash: { delete_sake: name })
   end
 
@@ -153,14 +153,14 @@ class SakesController < ApplicationController
     in nil
       nil
     end
-    @sake.save
+    @sake.save!
   end
 
   # 作成された酒の瓶状態に応じて、酒が持つ日時データを更新する
   def create_datetime
     @sake.assign_attributes(opened_at: @sake.created_at) unless @sake.sealed?
     @sake.assign_attributes(emptied_at: @sake.created_at) if @sake.empty?
-    @sake.save
+    @sake.save!
   end
 
   # Only allow a list of trusted parameters through.
@@ -184,7 +184,7 @@ class SakesController < ApplicationController
 
   def delete_photos
     @sake.photos.each do |photo|
-      photo.destroy if params[photo.chackbox_name] == "delete"
+      photo.destroy! if params[photo.chackbox_name] == "delete"
     end
   end
 
