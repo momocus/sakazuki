@@ -17,18 +17,19 @@ module FlashHelper
   # @return [String] 表示するメッセージ
   def flash_message(key, value) # rubocop:disable Metrics/MethodLength
     t_key = flash_t_key(key)
-    message = case key.to_sym
-              when :copy_sake, :create_sake, :update_sake, :empty_sake
-                t(t_key, name: sake_link(value))
-              when :open_sake
-                name = sake_link(value)
-                link = sake_review_link(value)
-                t(t_key, name:, link:)
-              when :delete_sake
-                t(t_key, name: value)
-              else # RailsやDevise生成のnotice/alert
-                value
-              end
+    message =
+      case key.to_sym
+      when :copy_sake, :create_sake, :update_sake, :empty_sake
+        t(t_key, name: sake_link(value))
+      when :open_sake
+        name = sake_link(value)
+        link = sake_review_link(value)
+        t(t_key, name:, link:)
+      when :delete_sake
+        t(t_key, name: value)
+      else # RailsやDevise生成のnotice/alert
+        value
+      end
     sanitize(message, tags: %w[a i], attributes: %w[class href style])
   end
 
