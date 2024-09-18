@@ -1,6 +1,3 @@
-inherit_from:
-  - https://raw.githubusercontent.com/cookpad/styleguide/5a2d036bd80c801678c76d133662d29d42247099/.rubocop.yml
-
 require:
   - rubocop-capybara
   - rubocop-factory_bot
@@ -9,7 +6,10 @@ require:
   - rubocop-rspec_rails
 
 AllCops:
-  DisabledByDefault: false # Cookpad Styleguideの上書き
+  # すべてのCopsを有効にする
+  EnabledByDefault: true
+  # 新規追加のPendingCopsを有効化
+  NewCops: enable
   Exclude:
     - "bin/*"
     - "db/schema.rb"
@@ -19,59 +19,169 @@ AllCops:
     - "tmp/**/*"
     - "vendor/**/*"
     - ".git/**/*"
-  NewCops: enable # 新規追加のPendingCopsを有効化
+
+## Enabled
 
 # コメントをスペースで揃えるのを許す
 Layout/ExtraSpacing:
+  Enabled: true
   AllowBeforeTrailingComments: true
 
-# テストファイルは長さ制限をなくす
-Metrics/ClassLength:
+# メソッドチェーンでブロック引数があるときは改行をいれる
+# ただし、RSpecのexpect{XXX}.toなどは除外する
+Layout/SingleLineBlockChain:
+  Enabled: true
   Exclude:
     - "spec/**/*_spec.rb"
 
-Metrics/BlockLength:
-  Exclude:
-    - "spec/**/*_spec.rb"
-
-# メソッド名のエイリアスをつけるときは"alias"を使い、"alias_method"は使わない
-# aliasの方が自由度は低いが安全であるため
-Style/Alias:
-  EnforcedStyle: prefer_alias
-
-# 日本語コメントを許可
-Style/AsciiComments:
-  Enabled: false
-
-# Cookpad Styleguideに従い、eachなどの手続き型スタイルではdo/endを、mapなどの関数型スタイルでは{}を使う
+# eachなどの手続き型スタイルではdo/endを、mapなどの関数型スタイルでは{}を使う
+# Cookpad Styleguideの良い点を採用する
 # 1ライナーで{}の使用を許可する
 Style/BlockDelimiters:
+  Enabled: true
   EnforcedStyle: semantic
   AllowBracesOnProceduralOneLiners: true
 
-# ドキュメント無しを許可
-Style/Documentation:
-  Enabled: false
-
-# 先頭行のfrozen stringマジックコメントはなしでもよい
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
-# メソッド呼び出しのカッコの省略を禁止
-# ただし、specとfactoryはDSLを使って良い
+# メソッド呼び出しの括弧の省略を禁止
+# ただし、マクロとspecファイルのDSLでは括弧を省略できる
 Style/MethodCallWithArgsParentheses:
   Enabled: true
+  IgnoreMacros: true
+  AllowParenthesesInChaining: true
+  AllowParenthesesInCamelCaseMethod: true
+  AllowParenthesesInStringInterpolation: true
   Exclude:
     - "spec/**/*_spec.rb"
     - "spec/factories/*.rb"
 
 # 文字列はダブルクオート
 Style/StringLiterals:
+  Enabled: true
   EnforcedStyle: double_quotes
 
-# rubocop-rspec
+# 複数リテラルで末尾カンマを許可
+# ただし1行1項目のときに限る
+Style/TrailingCommaInArguments:
+  Enabled: true
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInArrayLiteral:
+  Enabled: true
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInHashLiteral:
+  Enabled: true
+  EnforcedStyleForMultiline: comma
+
+## Disabled
+
+Bundler/GemComment:
+  Enabled: false
+
+Bundler/GemVersion:
+  Enabled: false
+
+Gemspec/DependencyVersion:
+  Enabled: false
+
+# クラス内要素の順番強制をしない
+Layout/ClassStructure:
+  Enabled: false
+
+# ヒアドックの閉じ括弧位置を強要しない
+Layout/HeredocArgumentClosingParenthesis:
+  Enabled: false
+
+# 1行に複数要素を許可
+Layout/MultilineArrayLineBreaks:
+  Enabled: false
+
+Layout/MultilineHashKeyLineBreaks:
+  Enabled: false
+
+Layout/MultilineMethodArgumentLineBreaks:
+  Enabled: false
+
+Layout/MultilineMethodParameterLineBreaks:
+  Enabled: false
+
+# ::Userのような完全修飾を強要しない
+Lint/ConstantResolution:
+  Enabled: false
+
+# ヒアドックのメソッドコール位置を強要しない
+Lint/HeredocMethodCallPosition:
+  Enabled: false
+
+# to_iなどを許可
+Lint/NumberConversion:
+  Enabled: false
+
+# black、slaveの命名をチェックしない
+Naming/InclusiveLanguage:
+  Enabled: false
+
+# 日本語コメントを許可
+Style/AsciiComments:
+  Enabled: false
+
+# 各ファイルでコピーライトを強要しない
+Style/Copyright:
+  Enabled: false
+
+# def self.class_methodを強要しない
+Style/ClassMethodsDefinitions:
+  Enabled: false
+
+# コメントrubocp:disableを許可
+Style/DisableCopsWithinSourceCodeDirective:
+  Enabled: false
+
+# ドキュメント無しを許可
+Style/Documentation:
+  Enabled: false
+
+Style/DocumentationMethod:
+  Enabled: false
+
+# 先頭行のfrozen stringマジックコメントはなしでもよい
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# raiseでRuntimeErrorの省略を許可
+Style/ImplicitRuntimeError:
+  Enabled: false
+
+# 行末コメントを許可
+Style/InlineComment:
+  Enabled: false
+
+# unlessを許可
+Style/InvertibleUnlessCondition:
+  Enabled: false
+
+# else無しを許可
+Style/MissingElse:
+  Enabled: false
+
+# トップレベルのメソッド定義を許可
+Style/TopLevelMethodDefinition:
+  Enabled: false
+
+### rubocop-rails
+
+## Disabled
+
+# 環境変数へのアクセスを許可
+Rails/EnvironmentVariableAccess:
+  Enabled: false
+
+### rubocop-rspec
+
+## Enabled
 
 RSpec/ContextWording:
+  Enabled: true
   Prefixes:
     - when
     - with
@@ -82,3 +192,13 @@ RSpec/ContextWording:
     - before
     - after
     - during
+
+## Disabled
+
+# let式の左括弧のインデントを揃えるのを強制しない
+RSpec/AlignLeftLetBrace:
+  Enabled: false
+
+# let式の右括弧のインデントを揃えるのを強制しない
+RSpec/AlignRightLetBrace:
+  Enabled: false
