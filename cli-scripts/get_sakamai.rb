@@ -58,7 +58,7 @@ def to_rices(table)
       rices.split(/、|及び/)      # HACK: 農林水産省の一覧が「、」と「及び」で区切られている
     }
   rices = add_rices(rices)
-  rices.sort.uniq
+  rices.sort!.uniq!
 end
 
 # 酒米一覧をNDJSON形式にする
