@@ -2,7 +2,6 @@
 class SakesController < ApplicationController
   before_action :set_sake, only: %i[show edit update destroy]
   after_action :update_datetime, only: %i[update]
-  after_action :create_datetime, only: %i[create]
   before_action :signed_in_user, only: %i[new create edit update destroy]
 
   include SakesHelper
@@ -55,6 +54,7 @@ class SakesController < ApplicationController
     @sake = Sake.new(sake_params)
 
     if @sake.save
+      create_datetime
       store_photos
       redirect_to(@sake, status: :see_other, flash: { create_sake: { name: @sake.name, id: @sake.id } })
     else
