@@ -9,9 +9,9 @@
 #
 # ホームページにない酒米も一部追加している
 
-require "open-uri"
-require "nokogiri"
 require "json"
+require "nokogiri"
+require "open-uri"
 
 # 農林水産省のページから酒米のテーブルを取得する
 #

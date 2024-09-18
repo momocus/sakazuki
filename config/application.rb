@@ -45,7 +45,7 @@ module Sakazuki
     config.action_view.field_error_proc =
       lambda { |html_tag, _instance|
         doc = Nokogiri::HTML::DocumentFragment.parse(html_tag)
-        element = doc.children[0]
+        element = doc.children.first
         form_fields = %w[textarea input select]
         return html_tag unless form_fields.include?(element.name)
 
