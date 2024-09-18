@@ -82,7 +82,7 @@ RSpec.describe "Copy Sakes" do
     targets.each do |key|
       describe key.to_s do
         it "has copied value" do
-          expect(page).to have_select(test_id: "sake_#{key}", selected: sake.method("#{key}_i18n").call)
+          expect(page).to have_select(test_id: "sake_#{key}", selected: sake.method(:"#{key}_i18n").call)
         end
       end
     end
