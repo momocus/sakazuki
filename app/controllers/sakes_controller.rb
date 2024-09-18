@@ -56,9 +56,7 @@ class SakesController < ApplicationController
 
     if @sake.save
       store_photos
-      redirect_to(@sake,
-                  status: :see_other,
-                  flash: { create_sake: { name: @sake.name, id: @sake.id } })
+      redirect_to(@sake, status: :see_other, flash: { create_sake: { name: @sake.name, id: @sake.id } })
     else
       render(:new, status: :unprocessable_entity)
     end
@@ -80,9 +78,7 @@ class SakesController < ApplicationController
   def destroy
     name = @sake.name
     @sake.destroy
-    redirect_to(sakes_url,
-                status: :see_other,
-                flash: { delete_sake: name })
+    redirect_to(sakes_url, status: :see_other, flash: { delete_sake: name })
   end
 
   # Viewで使える用に宣言する
@@ -118,9 +114,11 @@ class SakesController < ApplicationController
   # @param key [Symbol] 酒カラム
   # @return [Boolean] コピー対象のキーならtrue
   def copy_key?(key)
-    %w[alcohol aminosando bindume_on brewery_year genryomai hiire kakemai kobo
-       kura moto name nihonshudo price roka sando season seimai_buai shibori
-       size todofuken tokutei_meisho warimizu].include?(key)
+    %w[
+      alcohol aminosando bindume_on brewery_year genryomai hiire kakemai kobo
+      kura moto name nihonshudo price roka sando season seimai_buai shibori
+      size todofuken tokutei_meisho warimizu
+    ].include?(key)
   end
 
   # コピーする酒情報を持ったハッシュを作成する

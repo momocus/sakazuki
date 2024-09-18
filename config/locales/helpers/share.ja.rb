@@ -50,7 +50,7 @@ end
   ja: {
     helper: {
       share: {
-        end_of_sentence: %w(。 ！ ？ ! ?),
+        end_of_sentence: %w[。 ！ ？ ! ?],
         period: "。",
         honorific: "さんの",
         text: lambda { |_key, options|
