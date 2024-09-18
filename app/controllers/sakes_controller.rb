@@ -1,7 +1,6 @@
 # rubocop:disable Metrics/ClassLength
 class SakesController < ApplicationController
   before_action :set_sake, only: %i[show edit update destroy]
-  after_action :update_datetime, only: %i[update]
   before_action :signed_in_user, only: %i[new create edit update destroy]
 
   include SakesHelper
@@ -63,16 +62,23 @@ class SakesController < ApplicationController
   end
 
   # PATCH/PUT /sakes/1
+  # rubocop:disable Metrics/MethodLength
   def update
     if @sake.update(sake_params)
       delete_photos
       store_photos
-      flash_after_update
+
+      if @sake.saved_changes?
+        update_datetime
+        flash_after_update
+      end
+
       redirect_after_update
     else
       render(:edit, status: :unprocessable_entity)
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   # DELETE /sakes/1
   def destroy
@@ -210,8 +216,6 @@ class SakesController < ApplicationController
   #
   # 開封するボタン・空にするボタンからupdateした場合は、専用のフラッシュメッセージを表示する
   def flash_after_update
-    return unless @sake.saved_changes?
-
     key = (params["drink_button"] || :update_sake).to_sym
     flash[key] = { name: @sake.name, id: @sake.id } # rubocop:disable Rails/ActionControllerFlashBeforeRender
   end
