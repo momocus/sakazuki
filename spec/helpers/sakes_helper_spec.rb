@@ -123,7 +123,7 @@ RSpec.describe SakesHelper do
     end
 
     it "returns without the not beggiest zero" do
-      expect(to_shakkan(18000)).to eq("1斗")
+      expect(to_shakkan(18_000)).to eq("1斗")
     end
 
     it "returns zero with Go" do
