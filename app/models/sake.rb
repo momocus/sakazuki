@@ -129,6 +129,7 @@ class Sake < ApplicationRecord
   #
   # 酒indexにおいて全ての酒を表示するために使われる。
   BOTTOM_BOTTLE = -1
+  public_constant :BOTTOM_BOTTLE
 
   # 酒が空か
   # @return [Boolean] 酒が空ならture、未開封や開封済みならfalse
