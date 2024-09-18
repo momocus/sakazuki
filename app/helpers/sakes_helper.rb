@@ -141,8 +141,8 @@ module SakesHelper
   # @return [String] 都府県が削除された都道府県名
   def short_todofuken(todofuken)
     todofuken = todofuken.gsub("東京都", "東京") # 京都対策
-    todofuken = todofuken.gsub("府", "")
-    todofuken.gsub("県", "")
+    todofuken = todofuken.delete("府")
+    todofuken.delete("県")
   end
 
   # 酒の瓶状態が最後に更新された日付を返す
