@@ -97,6 +97,7 @@ group :development do
   # Rubocop
   gem "rubocop", require: false
   gem "rubocop-capybara", require: false
+  gem "rubocop-erb", require: false
   gem "rubocop-factory_bot", require: false
   gem "rubocop-performance", require: false
   gem "rubocop-rails", require: false
