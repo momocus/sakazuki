@@ -372,6 +372,9 @@ GEM
       parser (>= 3.3.1.0)
     rubocop-capybara (2.21.0)
       rubocop (~> 1.41)
+    rubocop-erb (0.5.3)
+      better_html
+      rubocop (~> 1.45)
     rubocop-factory_bot (2.26.1)
       rubocop (~> 1.61)
     rubocop-performance (1.22.1)
@@ -484,6 +487,7 @@ DEPENDENCIES
   rspec-rails
   rubocop
   rubocop-capybara
+  rubocop-erb
   rubocop-factory_bot
   rubocop-performance
   rubocop-rails
