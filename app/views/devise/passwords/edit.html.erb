@@ -4,21 +4,18 @@
 
 <%= render(layout: "devise/shared/devise_layout") do %>
   <div class="col">
-    <%= form_for(resource,
-                 as: resource_name,
-                 url: password_path(resource_name),
-                 html: { method: :put }) do |f| %>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
       <%= f.hidden_field(:reset_password_token) %>
       <div class="row row-cols-1 g-3">
         <div class="col">
-          <%= f.label(:password,
-                      t("devise.passwords.edit.new_password"),
-                      class: "form-label") %>
-          <%= f.password_field(:password,
-                               class: "form-control",
-                               autofocus: true,
-                               autocomplete: "new-password",
-                               placeholder: minimum_password_message(@minimum_password_length)) %>
+          <%= f.label(:password, t("devise.passwords.edit.new_password"), class: "form-label") %>
+          <%= f.password_field(
+                :password,
+                class: "form-control",
+                autofocus: true,
+                autocomplete: "new-password",
+                placeholder: minimum_password_message(@minimum_password_length),
+              ) %>
           <% resource.errors.full_messages_for(:password).each do |message| %>
             <div id="devisePasswordValidationFeedback" class="invalid-feedback">
               <%= message %>
@@ -26,12 +23,8 @@
           <% end %>
         </div>
         <div class="col">
-          <%= f.label(:password_confirmation,
-                      t("devise.passwords.edit.confirm_new_password"),
-                      class: "form-label") %>
-          <%= f.password_field(:password_confirmation,
-                               class: "form-control",
-                               autocomplete: "new-password") %>
+          <%= f.label(:password_confirmation, t("devise.passwords.edit.confirm_new_password"), class: "form-label") %>
+          <%= f.password_field(:password_confirmation, class: "form-control", autocomplete: "new-password") %>
           <% resource.errors.full_messages_for(:password_confirmation).each do |message| %>
             <div id="devisePasswordConfirmationValidationFeedback" class="invalid-feedback">
               <%= message %>
@@ -41,8 +34,7 @@
         <div class="col">
           <div class="row justify-content-center">
             <div class="col-auto">
-              <%= f.submit(t("devise.passwords.edit.change_my_password"),
-                           class: "btn btn-primary") %>
+              <%= f.submit(t("devise.passwords.edit.change_my_password"), class: "btn btn-primary") %>
             </div>
           </div>
         </div>

@@ -1,7 +1,3 @@
 <li class="page-item <%= "disabled" if current_page.first? %>">
-  <%= link_to(tag.i(class: "bi-chevron-left"),
-              url,
-              class: "page-link",
-              rel: "prev",
-              data: { turbo_frame: "_self" }) %>
+  <%= link_to(tag.i(class: "bi-chevron-left"), url, class: "page-link", rel: "prev", data: { turbo_frame: "_self" }) %>
 </li>
