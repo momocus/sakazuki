@@ -176,21 +176,6 @@ Rails/EnvironmentVariableAccess:
 
 ### rubocop-rspec
 
-## Enabled
-
-RSpec/ContextWording:
-  Enabled: true
-  Prefixes:
-    - when
-    - with
-    - without
-    - if
-    - unless
-    - for
-    - before
-    - after
-    - during
-
 ## Disabled
 
 # let式の左括弧のインデントを揃えるのを強制しない
