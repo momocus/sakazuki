@@ -14,7 +14,7 @@ RSpec.describe "Drink Buttons" do
   empty_text = I18n.t("sakes.drink_button.empty")
 
   describe "link text" do
-    context "for sealed bottle" do
+    context "with sealed bottle" do
       it "has open button with i18n text" do
         id = "sake_buttons_#{sealed_sake.id}"
         expect(find(:test_id, id)).to have_text(open_text)
@@ -26,7 +26,7 @@ RSpec.describe "Drink Buttons" do
       end
     end
 
-    context "for opened bottle" do
+    context "with opened bottle" do
       it "does not have open button with i18n text" do
         id = "sake_buttons_#{opened_sake.id}"
         expect(find(:test_id, id)).to have_no_text(open_text)
@@ -38,7 +38,7 @@ RSpec.describe "Drink Buttons" do
       end
     end
 
-    context "for empty bottle", :js do
+    context "with empty bottle", :js do
       before do
         check("check_empty_bottle")
       end
