@@ -70,7 +70,7 @@
       <div class="col-auto ps-0">
         <%= t(".sealed") %>
       </div>
-      <% if not(sake.sealed?) %>
+      <% if !sake.sealed? %>
         <div class="w-100"></div>
         <div class="col-auto" data-testid="opened-at">
           <%= l(sake.opened_at.to_date) %>
