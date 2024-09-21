@@ -39,6 +39,8 @@ jobs:
           bundler-cache: true
       - name: Run Rubocop
         run: bundle exec rubocop
+      - name: Run Rubocop ERB
+        run: bundle exec rubocop --config .rubocop-erb.yml
       - name: Run ERB Lint
         run: bundle exec erblint --lint-all
 
