@@ -1,6 +1,5 @@
 require:
   - rubocop-capybara
-  - rubocop-erb
   - rubocop-factory_bot
   - rubocop-performance
   - rubocop-rails
