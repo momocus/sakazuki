@@ -4,19 +4,18 @@
 
 <%= render(layout: "devise/shared/devise_layout") do %>
   <div class="col">
-    <%= form_for(resource,
-                 as: resource_name,
-                 url: invitation_path(resource_name),
-                 html: { method: :post }) do |f| %>
+    <%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :post }) do |f| %>
       <div class="row row-cols-1 g-3">
         <div class="col">
           <% resource.class.invite_key_fields.each do |field| %>
             <%= f.label(field, class: "visually-hidden") %>
-            <%= f.text_field(field,
-                             class: "form-control",
-                             autofocus: true,
-                             autocomplete: "email",
-                             placeholder: "mail@example.com") %>
+            <%= f.text_field(
+                  field,
+                  class: "form-control",
+                  autofocus: true,
+                  autocomplete: "email",
+                  placeholder: "mail@example.com",
+                ) %>
             <% resource.errors.full_messages_for(field).each do |message| %>
               <div id="invitationsEmailValidationFeedback" class="invalid-feedback">
                 <%= message %>
@@ -27,8 +26,7 @@
         <div class="col">
           <div class="row justify-content-center">
             <div class="col-auto">
-              <%= f.submit(t("devise.invitations.new.submit_button"),
-                           class: "btn btn-primary") %>
+              <%= f.submit(t("devise.invitations.new.submit_button"), class: "btn btn-primary") %>
             </div>
           </div>
         </div>
