@@ -42,7 +42,7 @@ yarn run lint:markuplint
 # gems
 
 message "##### Run Rubocop"
-bundle exec rubocop --parallel
+bundle exec rubocop
 
 message "##### Run ERBLint"
 bundle exec erblint --lint-all
