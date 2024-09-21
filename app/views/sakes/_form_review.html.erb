@@ -1,12 +1,4 @@
-<% if params["review"].present?
-     collapsed = ""
-     show = "show"
-     expanded = "true"
-   else
-     collapsed = "collapsed"
-     show = ""
-     expanded = "false"
-   end %>
+<% collapsed, show, expanded = params["review"].present? ? ["", "show", "true"] : ["collapsed", "", "false"] %>
 <div class="accordion-item">
   <h2 class="accordion-header" id="headingReview">
     <button class="accordion-button <%= collapsed %>" type="button" data-bs-toggle="collapse"
