@@ -48,9 +48,6 @@ Style/BlockDelimiters:
 Style/MethodCallWithArgsParentheses:
   Enabled: true
   IgnoreMacros: true
-  AllowParenthesesInChaining: true
-  AllowParenthesesInCamelCaseMethod: true
-  AllowParenthesesInStringInterpolation: true
   Exclude:
     - "spec/**/*_spec.rb"
     - "spec/factories/*.rb"
