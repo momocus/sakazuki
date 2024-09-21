@@ -4,18 +4,17 @@
 
 <%= render(layout: "devise/shared/devise_layout") do %>
   <div class="col">
-    <%= form_for(resource,
-                 as: resource_name,
-                 url: password_path(resource_name),
-                 html: { method: :post }) do |f| %>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
       <div class="row row-cols-1 g-3">
         <div class="col">
           <%= f.label(:email, class: "visually-hidden") %>
-          <%= f.email_field(:email,
-                            class: "form-control",
-                            autofocus: true,
-                            autocomplete: "email",
-                            placeholder: "mail@example.com") %>
+          <%= f.email_field(
+                :email,
+                class: "form-control",
+                autofocus: true,
+                autocomplete: "email",
+                placeholder: "mail@example.com",
+              ) %>
           <% resource.errors.full_messages_for(:email).each do |message| %>
             <div id="deviseEmailValidationFeedback" class="invalid-feedback">
               <%= message %>
@@ -25,8 +24,7 @@
         <div class="col">
           <div class="row justify-content-center">
             <div class="col-auto">
-              <%= f.submit(t("devise.passwords.new.send_me_reset_password_instructions"),
-                           class: "btn btn-primary") %>
+              <%= f.submit(t("devise.passwords.new.send_me_reset_password_instructions"), class: "btn btn-primary") %>
             </div>
           </div>
         </div>

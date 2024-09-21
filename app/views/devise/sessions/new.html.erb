@@ -8,18 +8,22 @@
       <div class="row row-cols-1 g-3">
         <div class="col">
           <%= f.label(:email, class: "visually-hidden") %>
-          <%= f.email_field(:email,
-                            class: "form-control",
-                            autofocus: true,
-                            autocomplete: "email",
-                            placeholder: "mail@example.com") %>
+          <%= f.email_field(
+                :email,
+                class: "form-control",
+                autofocus: true,
+                autocomplete: "email",
+                placeholder: "mail@example.com",
+              ) %>
         </div>
         <div class="col">
           <%= f.label(:password, class: "visually-hidden") %>
-          <%= f.password_field(:password,
-                               class: "form-control",
-                               autocomplete: "current-password",
-                               placeholder: "password") %>
+          <%= f.password_field(
+                :password,
+                class: "form-control",
+                autocomplete: "current-password",
+                placeholder: "password",
+              ) %>
         </div>
         <% if devise_mapping.rememberable? %>
           <div class="col mx-2 mt-2">
