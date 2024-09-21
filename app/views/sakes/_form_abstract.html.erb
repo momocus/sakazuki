@@ -33,12 +33,7 @@
                 data-sake-kura-target="mixed"
                 data-testid="sake_kura_todofuken_autocompletion">
               <%= render(partial: "kura_datalist") %>
-              <%= form.text_field(:kura,
-                                  hidden: true,
-                                  data: {
-                                    "sake-kura-target": "kura",
-                                    testid: "sake_kura",
-                                  }) %>
+              <%= form.text_field(:kura, hidden: true, data: { "sake-kura-target": "kura", testid: "sake_kura", }) %>
               <%= form.text_field(:todofuken,
                                   hidden: true,
                                   data: {
@@ -153,7 +148,7 @@
                 data-controller="add-tax">
                 <%= form.number_field(:price,
                                       class: "form-control",
-                                      aria: { describedby: %w(sakeAddTax sakePriceValidationFeedback) },
+                                      aria: { describedby: %w[sakeAddTax sakePriceValidationFeedback] },
                                       data: {
                                         "add-tax-target": "price",
                                         testid: "sake_price",
@@ -192,10 +187,7 @@
                   <% sake.photos.each do |photo| %>
                     <div class="col-6 col-lg-2">
                       <div class="form-check form-check-inline m-0 p-0 select-delete-photos">
-                        <%= check_box_tag(photo.chackbox_name,
-                                          "delete",
-                                          nil,
-                                          class: "form-check-input") %>
+                        <%= check_box_tag(photo.chackbox_name, "delete", nil, class: "form-check-input") %>
                         <label class="form-check-label" for="<%= photo.chackbox_name %>">
                           <%= cl_image_tag(photo.image.thumb.url, class: "img-thumbnail") %>
                         </label>
