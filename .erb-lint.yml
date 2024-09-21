@@ -37,3 +37,7 @@ linters:
         AllowParenthesesInChaining: true
         AllowParenthesesInCamelCaseMethod: true
         AllowParenthesesInStringInterpolation: true
+  RequireScriptNonce:
+    enabled: true
+  HardCodedString:
+    enabled: true
