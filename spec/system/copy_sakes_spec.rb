@@ -36,7 +36,7 @@ RSpec.describe "Copy Sakes" do
     end
   end
 
-  context "after click copy link" do
+  context "when click copy link" do
     before do
       click_on("copy_sake")
     end
