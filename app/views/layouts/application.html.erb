@@ -7,7 +7,7 @@
     <%= display_meta_tags(default_meta_tags) %>
     <%= adsense_tags %>
     <%= stylesheet_link_tag("application", media: "all", "data-turbo-track": "reload") %>
-    <%= javascript_include_tag("application", "data-turbo-track": "reload", defer: true) %>
+    <%= javascript_include_tag("application", "data-turbo-track": "reload", defer: true, nonce: true) %>
   </head>
 
   <body>
@@ -21,7 +21,9 @@
       <div class="py-5 bg-light">
         <%= debug(params) %>
         <div>
-          <a href="/letter_opener">letter_opener</a>
+          <a href="/letter_opener">
+            letter_opener <%# erblint:disable HardCodedString %>
+          </a>
         </div>
       </div>
     <% end %>

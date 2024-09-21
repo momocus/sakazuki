@@ -92,7 +92,7 @@
   </div>
 
   <div class="col-12 fs-5">
-    <%= sake.size %> ml
+    <%= sake.size %> ml <%# erblint:disable HardCodedString %>
     <%= "‒ #{sake.price.to_fs(:delimited)} #{t('activerecord.attributes.sake.price_unit')}" if sake.price.present? %>
   </div>
 
