@@ -1,0 +1,22 @@
+inherit_mode:
+  merge:
+    - Exclude
+
+inherit_from: .rubocop.yml
+
+require:
+  - rubocop-erb
+
+AllCops:
+  Include:
+    - "**/*.html.erb"
+
+# ERBではメソッドだけでなくマクロも括弧省略を許さない
+# renderやlink_toなどが当てはまる
+Style/MethodCallWithArgsParentheses:
+  Enabled: true
+  IgnoreMacros: false
+
+# rubocop-erbが誤検知するのでオフ
+Layout/RedundantLineBreak:
+  Enabled: false
