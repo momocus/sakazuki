@@ -34,9 +34,6 @@ linters:
       Style/MethodCallWithArgsParentheses:
         Enabled: true
         IgnoreMacros: false
-        AllowParenthesesInChaining: true
-        AllowParenthesesInCamelCaseMethod: true
-        AllowParenthesesInStringInterpolation: true
   RequireScriptNonce:
     enabled: true
   HardCodedString:
