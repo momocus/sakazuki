@@ -29,13 +29,16 @@ RSpec.describe "layouts/_header", type: :system do
       end
 
       it "has invitation link" do
-        expect(find(:test_id, "navigation_list")).to have_link(I18n.t("layouts.header.invitation"),
-                                                               href: new_user_invitation_path)
+        expect(find(:test_id, "navigation_list")).to have_link(
+          I18n.t("layouts.header.invitation"),
+          href: new_user_invitation_path,
+        )
       end
 
       it "has sign out link" do
-        expect(find(:test_id, "navigation_list")).to have_link(I18n.t("layouts.header.sign_out"),
-                                                               href: destroy_user_session_path)
+        expect(find(:test_id, "navigation_list")).to have_link(
+          I18n.t("layouts.header.sign_out"), href: destroy_user_session_path
+        )
       end
     end
 
@@ -62,8 +65,9 @@ RSpec.describe "layouts/_header", type: :system do
       end
 
       it "has sign out link" do
-        expect(find(:test_id, "navigation_list")).to have_link(I18n.t("layouts.header.sign_out"),
-                                                               href: destroy_user_session_path)
+        expect(find(:test_id, "navigation_list")).to have_link(
+          I18n.t("layouts.header.sign_out"), href: destroy_user_session_path
+        )
       end
     end
 
@@ -75,8 +79,9 @@ RSpec.describe "layouts/_header", type: :system do
       include_examples "links allways exist"
 
       it "has sign in link" do
-        expect(find(:test_id, "navigation_list")).to have_link(I18n.t("layouts.header.sign_in"),
-                                                               href: new_user_session_path)
+        expect(find(:test_id, "navigation_list")).to have_link(
+          I18n.t("layouts.header.sign_in"), href: new_user_session_path
+        )
       end
 
       it "does not have user edit link" do

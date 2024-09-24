@@ -1,10 +1,10 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.3.4"
+ruby file: ".ruby-version"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "= 7.1.3.4"
+gem "rails", "= 7.2.1"
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
@@ -97,7 +97,9 @@ group :development do
   # Rubocop
   gem "rubocop", require: false
   gem "rubocop-capybara", require: false
+  gem "rubocop-erb", require: false
   gem "rubocop-factory_bot", require: false
+  gem "rubocop-performance", require: false
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
   gem "rubocop-rspec_rails", require: false
@@ -109,17 +111,11 @@ group :development do
   # Lint ERB files
   gem "erb_lint", require: false
 
-  # Listen to file modifications
-  gem "listen"
-
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
-
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  gem "spring"
 
   # Documentation
   gem "yard"

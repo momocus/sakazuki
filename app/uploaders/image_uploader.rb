@@ -15,8 +15,10 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   version :large_twitter_card do
     if Rails.env.production?
-      cloudinary_transformation(format: "webp", crop: :thumb, width: 600, height: 300, sign_url: true,
-                                gravity: :ocr_text)
+      cloudinary_transformation(
+        format: "webp", crop: :thumb, width: 600, height: 300, sign_url: true,
+        gravity: :ocr_text
+      )
     end
   end
 
