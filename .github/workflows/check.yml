@@ -30,7 +30,7 @@ jobs:
       - name: Run Stylelint
         run: yarn run lint:stylelint
       - name: Run Markuplint
-        run: yarn run lint:markuplint
+        run: yarn run lint:markuplint --format GitHub
 
       # lint by rubocop
       - name: Set up Ruby
@@ -38,9 +38,9 @@ jobs:
         with:
           bundler-cache: true
       - name: Run Rubocop
-        run: bundle exec rubocop
+        run: bundle exec rubocop --format github
       - name: Run Rubocop ERB
-        run: bundle exec rubocop --config .rubocop-erb.yml
+        run: bundle exec rubocop --format github --config .rubocop-erb.yml
       - name: Run ERB Lint
         run: bundle exec erblint --lint-all
       - name: Run Brakeman
