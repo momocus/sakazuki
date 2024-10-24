@@ -90,26 +90,26 @@ RSpec.describe FlashHelper do
 
     context "with :open_sake" do
       it "returns text including sake link" do
-        sake = { "name" => "ほしいずみ", "id" => 1 }
+        sake = { name: "ほしいずみ", id: 1 }
         link = 'href="/sakes/1'
         expect(helper.flash_message(:open_sake, sake)).to include(link)
       end
 
       it "returns text including sake name" do
-        sake = { "name" => "ほしいずみ", "id" => 1 }
+        sake = { name: "ほしいずみ", id: 1 }
         link = I18n.t("helper.flash.review")
         text = I18n.t("helper.flash.open_sake", name: "ほしいずみ", link:)
         expect(helper.flash_message(:open_sake, sake)).to have_text(text)
       end
 
       it "returns text including sake link to review" do
-        sake = { "name" => "ほしいずみ", "id" => 1 }
+        sake = { name: "ほしいずみ", id: 1 }
         link = 'href="/sakes/1/edit?review=true'
         expect(helper.flash_message(:open_sake, sake)).to include(link)
       end
 
       it "returns text including review text" do
-        sake = { "name" => "ほしいずみ", "id" => 1 }
+        sake = { name: "ほしいずみ", id: 1 }
         text = I18n.t("helper.flash.review")
         expect(helper.flash_message(:open_sake, sake)).to have_text(text)
       end
@@ -117,13 +117,13 @@ RSpec.describe FlashHelper do
 
     context "with :empty_sake" do
       it "returns text including sake link" do
-        sake = { "name" => "ほしいずみ", "id" => 1 }
+        sake = { name: "ほしいずみ", id: 1 }
         link = 'href="/sakes/1'
         expect(helper.flash_message(:empty_sake, sake)).to include(link)
       end
 
       it "returns text including sake name" do
-        sake = { "name" => "ほしいずみ", "id" => 1 }
+        sake = { name: "ほしいずみ", id: 1 }
         text = I18n.t("helper.flash.empty_sake", name: "ほしいずみ")
         expect(helper.flash_message(:empty_sake, sake)).to have_text(text)
       end
