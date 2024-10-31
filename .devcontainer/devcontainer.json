@@ -1,36 +1,33 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/ruby-rails-postgres
 {
-	"name": "Ruby on Rails & Postgres",
-	"dockerComposeFile": "docker-compose.yml",
-	"service": "app",
-	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-	"features": {
-		"ghcr.io/devcontainers/features/node:1": {
-			"nodeGypDependencies": true,
-			"installYarnUsingApt": true,
-			"version": "lts",
-			"pnpmVersion": "none",
-			"nvmVersion": "latest"
-		},
-		"ghcr.io/devcontainers-extra/features/typescript:2": {
-			"version": "latest"
-		}
-	}
+  "name": "SAKAZUKI",
+  "dockerComposeFile": "compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
 
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  "features": {
+    "ghcr.io/devcontainers-extra/features/ts-node:1": {},
+    "ghcr.io/robbert229/devcontainer-features/postgresql-client:1": {}
+  },
 
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// This can be used to network with other containers or the host.
-	// "forwardPorts": [3000, 5432],
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // This can be used to network with other containers or the host.
+  // "forwardPorts": [3000, 5432],
 
-	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "bundle install && rake db:setup",
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "bundle install && bundle exec rails db:setup && yarn install",
 
-	// Configure tool-specific properties.
-	// "customizations": {},
+  // Use 'postAttachCommand' to run commands after the container is started.
+  "postStartCommand": "bundle install && yarn install"
 
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
+  // Use 'postAttachCommand' to run commands after the container is attached.
+  // "postAttachCommand": "bundle install && yarn install"
+
+  // Configure tool-specific properties.
+  // "customizations": {},
+
+  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+  // "remoteUser": "root"
 }
