@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   app:
@@ -7,6 +7,17 @@ services:
       dockerfile: .devcontainer/Dockerfile
 
     volumes:
+      # - ../app:/workspaces/sakazuki/app:cached
+      # - ../config:/workspaces//sakazuki/config:cached
+      # - ../bin:/workspaces//sakazuki/bin:cached
+      # - ../config.ru:/workspaces//sakazuki/config.ru:cached
+      # - ../Rakefile:/workspaces//sakazuki/Rakefile:cached
+      # - ../lib:/workspaces//sakazuki/lib:cached
+      # - ../db:/workspaces//sakazuki/db:cached
+      # - ../spec:/workspaces//sakazuki/spec:cached
+      # - ../public:/workspaces//sakazuki/public:cached
+      # - uploads:/workspaces//sakazuki/app/public/uploads:consistent
+      # - builds:/workspaces//sakazuki/app/assets/builds:consistent
       - ../..:/workspaces:cached
 
     # Overrides default command so things don't shut down after the process ends.
@@ -27,7 +38,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_DB: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_PASSWORD: password
       # Your config/database.yml should use the user and password you set here,
       # and host "db" (as that's the name of this service). You can use whatever
       # database name you want. Use `bin/rails db:prepare` to create the database.
@@ -40,6 +51,8 @@ services:
       #    username: postgres
       #    password: postgres
       #    database: myapp_development
+    ports:
+      - "5432:5432"
 
     # Add "forwardPorts": ["5432"] to **devcontainer.json** to forward PostgreSQL locally.
     # (Adding the "ports" property to this file will not forward from a Codespace.)
