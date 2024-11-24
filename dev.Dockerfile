@@ -1,5 +1,7 @@
 # syntax=docker/dockerfile:1.4
-FROM ruby:3.3.4-slim-bullseye
+ARG RUBY_VERSION
+
+FROM ruby:${RUBY_VERSION}-slim-bullseye
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
@@ -39,7 +41,7 @@ WORKDIR /sakazuki
 RUN mkdir tmp/ log/
 
 # bundle install
-COPY Gemfile Gemfile.lock ./
+COPY Gemfile Gemfile.lock .ruby-version ./
 RUN <<EOF
   gem update --system
   gem install bundler:2.5.16
