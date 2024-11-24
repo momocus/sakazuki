@@ -27,6 +27,8 @@ ja:
       unknown: 不明
     show_review:
       review: レビュー
+    show_note:
+      note: ノート
     drink_button:
       open: 開封する
       confirm_open: "%{name} の栓を開ける？"
@@ -60,6 +62,8 @@ ja:
       measurement: :sakes.show_detail.measurement
     form_review:
       review: :sakes.show_review.review
+    form_note:
+      note: :sakes.show_note.note
     float_button:
       edit: :sakes.sake.edit
       copy: 複製
