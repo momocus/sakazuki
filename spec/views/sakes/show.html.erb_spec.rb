@@ -25,7 +25,7 @@ RSpec.describe "sakes/show", type: :system do
 
     context "with opened sake" do
       before do
-        sake.update(bottle_level: "opened")
+        sake.update!(bottle_level: "opened")
         visit sake_path(sake.id)
       end
 
@@ -44,7 +44,7 @@ RSpec.describe "sakes/show", type: :system do
 
     context "with empty sake" do
       before do
-        sake.update(bottle_level: "empty")
+        sake.update!(bottle_level: "empty")
         visit sake_path(sake.id)
       end
 

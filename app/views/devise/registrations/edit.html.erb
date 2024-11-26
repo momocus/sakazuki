@@ -7,20 +7,19 @@
     <div class="row row-cols-1 g-5 mt-0 mb-5">
       <div class="col">
         <h2>
-          アカウント情報
+          <%= t(".title") %>
         </h2>
-        <%= form_for(resource,
-                     as: resource_name,
-                     url: registration_path(resource_name),
-                     html: { method: :put }) do |f| %>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <div class="row row-cols-1 g-3">
             <div class="col">
               <%= f.label(:email, class: "form-label") %>
-              <%= f.email_field(:email,
-                                class: "form-control",
-                                autofocus: true,
-                                autocomplete: "email",
-                                placeholder: "mail@example.com") %>
+              <%= f.email_field(
+                    :email,
+                    class: "form-control",
+                    autofocus: true,
+                    autocomplete: "email",
+                    placeholder: "mail@example.com",
+                  ) %>
               <% resource.errors.full_messages_for(:email).each do |message| %>
                 <div id="deviseEmailValidationFeedback" class="invalid-feedback">
                   <%= message %>
@@ -38,10 +37,7 @@
               <% if @minimum_password_length %>
                 <% message = "#{message}, #{minimum_password_message(@minimum_password_length)}" %>
               <% end %>
-              <%= f.password_field(:password,
-                                   class: "form-control",
-                                   autocomplete: "new-password",
-                                   placeholder: message) %>
+              <%= f.password_field(:password, class: "form-control", autocomplete: "new-password", placeholder: message) %>
               <% resource.errors.full_messages_for(:password).each do |message| %>
                 <div id="devisePasswordValidationFeedback" class="invalid-feedback">
                   <%= message %>
@@ -49,12 +45,8 @@
               <% end %>
             </div>
             <div class="col">
-              <%= f.label(:password_confirmation,
-                          t(".password_confirmation"),
-                          class: "form-label") %>
-              <%= f.password_field(:password_confirmation,
-                                   class: "form-control",
-                                   autocomplete: "new-password") %>
+              <%= f.label(:password_confirmation, t(".password_confirmation"), class: "form-label") %>
+              <%= f.password_field(:password_confirmation, class: "form-control", autocomplete: "new-password") %>
               <% resource.errors.full_messages_for(:password_confirmation).each do |message| %>
                 <div id="devisePasswordConfirmationValidationFeedback" class="invalid-feedback">
                   <%= message %>
@@ -64,10 +56,12 @@
             <div class="col">
               <%= f.label(:current_password, class: "form-label") %>
               <% currentpass = t(".we_need_your_current_password_to_confirm_your_changes") %>
-              <%= f.password_field(:current_password,
-                                   class: "form-control",
-                                   autocomplete: "current-password",
-                                   placeholder: currentpass) %>
+              <%= f.password_field(
+                    :current_password,
+                    class: "form-control",
+                    autocomplete: "current-password",
+                    placeholder: currentpass,
+                  ) %>
               <% resource.errors.full_messages_for(:current_password).each do |message| %>
                 <div id="deviseCurrentPasswordValidationFeedback" class="invalid-feedback">
                   <%= message %>
@@ -91,15 +85,17 @@
         <%= simple_format(t(".cancel_my_account_confirmation")) %>
         <div class="row justify-content-center">
           <div class="col-auto">
-            <%= button_to(t(".cancel_my_account"),
-                          registration_path(resource_name),
-                          method: :delete,
-                          form: {
-                            data: {
-                              turbo_confirm: t(".are_you_sure"),
-                            },
-                          },
-                          class: "btn btn-danger mx-3") %>
+            <%= button_to(
+                  t(".cancel_my_account"),
+                  registration_path(resource_name),
+                  method: :delete,
+                  form: {
+                    data: {
+                      turbo_confirm: t(".are_you_sure"),
+                    },
+                  },
+                  class: "btn btn-danger mx-3",
+                ) %>
           </div>
         </div>
       </div>

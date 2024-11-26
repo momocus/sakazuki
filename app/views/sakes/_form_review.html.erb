@@ -1,12 +1,4 @@
-<% if params["review"].present?
-     collapsed = ""
-     show = "show"
-     expanded = "true"
-   else
-     collapsed = "collapsed"
-     show = ""
-     expanded = "false"
-   end %>
+<% collapsed, show, expanded = params["review"].present? ? ["", "show", "true"] : ["collapsed", "", "false"] %>
 <div class="accordion-item">
   <h2 class="accordion-header" id="headingReview">
     <button class="accordion-button <%= collapsed %>" type="button" data-bs-toggle="collapse"
@@ -37,23 +29,29 @@
               <div class="row g-2">
                 <div class="col-12">
                   <%= form.label(:aroma_impression, class: "form-label") %>
-                  <%= form.text_area(:aroma_impression,
-                                     class: "form-control",
-                                     data: { testid: "sake_aroma_impression" }) %>
+                  <%= form.text_area(
+                        :aroma_impression,
+                        class: "form-control",
+                        data: { testid: "sake_aroma_impression" },
+                      ) %>
                 </div>
                 <div class="col-12">
                   <%= form.label(:taste_impression, class: "form-label") %>
-                  <%= form.text_area(:taste_impression,
-                                     class: "form-control",
-                                     data: { testid: "sake_taste_impression" }) %>
+                  <%= form.text_area(
+                        :taste_impression,
+                        class: "form-control",
+                        data: { testid: "sake_taste_impression" },
+                      ) %>
                 </div>
                 <div class="col-12">
                   <%= form.label(:awa, class: "form-label") %>
-                  <%= form.text_field(:awa,
-                                      class: "form-control",
-                                      autocomplete: "on",
-                                      list: "awa-list",
-                                      data: { testid: "sake_awa" }) %>
+                  <%= form.text_field(
+                        :awa,
+                        class: "form-control",
+                        autocomplete: "on",
+                        list: "awa-list",
+                        data: { testid: "sake_awa" },
+                      ) %>
                   <datalist id="awa-list">
                     <option value="強炭酸"></option>
                     <option value="炭酸"></option>
@@ -68,25 +66,29 @@
               <div class="ratio ratio-4x3"
                 data-controller="input-taste-graph">
                 <canvas data-input-taste-graph-target="canvas"></canvas>
-                <%= form.number_field(:taste_value,
-                                      hidden: true,
-                                      min: 0,
-                                      max: 6,
-                                      step: 1,
-                                      data: {
-                                        "input-taste-graph-target": "taste",
-                                        testid: "sake_taste_value",
-                                      }) %>
-                <%= form.number_field(:aroma_value,
-                                      hidden: true,
-                                      min: 0,
-                                      max: 6,
-                                      step: 1,
-                                      data: {
-                                        "input-taste-graph-target": "aroma",
-                                        aroma_value: sake.aroma_value,
-                                        testid: "sake_aroma_value",
-                                      }) %>
+                <%= form.number_field(
+                      :taste_value,
+                      hidden: true,
+                      min: 0,
+                      max: 6,
+                      step: 1,
+                      data: {
+                        "input-taste-graph-target": "taste",
+                        testid: "sake_taste_value",
+                      },
+                    ) %>
+                <%= form.number_field(
+                      :aroma_value,
+                      hidden: true,
+                      min: 0,
+                      max: 6,
+                      step: 1,
+                      data: {
+                        "input-taste-graph-target": "aroma",
+                        aroma_value: sake.aroma_value,
+                        testid: "sake_aroma_value",
+                      },
+                    ) %>
               </div>
             </div>
           </div>
@@ -95,16 +97,18 @@
           <%= form.label(:rating, class: "form-label") %>
           <div class="w-100"></div>
           <div data-rating-target="location"></div>
-          <%= form.number_field(:rating,
-                                hidden: true,
-                                class: "form-control",
-                                min: 0,
-                                max: 5,
-                                step: 1,
-                                data: {
-                                  "rating-target": "score",
-                                  testid: "sake_rating",
-                                }) %>
+          <%= form.number_field(
+                :rating,
+                hidden: true,
+                class: "form-control",
+                min: 0,
+                max: 5,
+                step: 1,
+                data: {
+                  "rating-target": "score",
+                  testid: "sake_rating",
+                },
+              ) %>
         </fieldset>
       </div>
     </div>

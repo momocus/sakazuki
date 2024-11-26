@@ -14,12 +14,14 @@
           <div class="row g-2">
             <div class="col-12 col-lg-6">
               <%= form.label(:photos, class: "form-label") %>
-              <%= form.file_field(:photos,
-                                  multiple: true,
-                                  include_hidden: false,
-                                  class: "form-control",
-                                  accept: "image/*;capture=camera",
-                                  data: { testid: "sake_photos" }) %>
+              <%= form.file_field(
+                    :photos,
+                    multiple: true,
+                    include_hidden: false,
+                    class: "form-control",
+                    accept: "image/*;capture=camera",
+                    data: { testid: "sake_photos" },
+                  ) %>
             </div>
             <% if sake.photos.any? %>
               <div class="col-12 form-text">
@@ -30,10 +32,7 @@
                   <% sake.photos.each do |photo| %>
                     <div class="col-6 col-lg-2">
                       <div class="form-check form-check-inline m-0 p-0 select-delete-photos">
-                        <%= check_box_tag(photo.chackbox_name,
-                                          "delete",
-                                          nil,
-                                          class: "form-check-input") %>
+                        <%= check_box_tag(photo.chackbox_name, "delete", nil, class: "form-check-input") %>
                         <label class="form-check-label" for="<%= photo.chackbox_name %>">
                           <%= cl_image_tag(photo.image.thumb.url, class: "img-thumbnail") %>
                         </label>
@@ -50,13 +49,15 @@
             <div class="col-12">
               <%= form.label(:name, class: "form-label") %>
               <span class="badge bg-primary ms-4"><%= t(".badge.presence") %></span>
-              <%= form.text_field(:name,
-                                  class: "form-control",
-                                  required: true,
-                                  data: {
-                                    "sake-name-target": "name",
-                                    testid: "sake_name",
-                                  }) %>
+              <%= form.text_field(
+                    :name,
+                    class: "form-control",
+                    required: true,
+                    data: {
+                      "sake-name-target": "name",
+                      testid: "sake_name",
+                    },
+                  ) %>
             </div>
             <div class="col-12 col-lg-6" data-controller="sake-kura">
               <label for="sake_kura_todofuken_autocompletion" class="form-label">
@@ -68,18 +69,15 @@
                 data-sake-kura-target="mixed"
                 data-testid="sake_kura_todofuken_autocompletion">
               <%= render(partial: "kura_datalist") %>
-              <%= form.text_field(:kura,
-                                  hidden: true,
-                                  data: {
-                                    "sake-kura-target": "kura",
-                                    testid: "sake_kura",
-                                  }) %>
-              <%= form.text_field(:todofuken,
-                                  hidden: true,
-                                  data: {
-                                    "sake-kura-target": "todofuken",
-                                    testid: "sake_todofuken",
-                                  }) %>
+              <%= form.text_field(:kura, hidden: true, data: { "sake-kura-target": "kura", testid: "sake_kura" }) %>
+              <%= form.text_field(
+                    :todofuken,
+                    hidden: true,
+                    data: {
+                      "sake-kura-target": "todofuken",
+                      testid: "sake_todofuken",
+                    },
+                  ) %>
             </div>
           </div>
         </fieldset>
@@ -87,23 +85,27 @@
           <div class="row g-2 gx-3">
             <div class="col-12 col-lg-3">
               <%= form.label(:tokutei_meisho, class: "form-label") %>
-              <%= form.select(:tokutei_meisho,
-                              Sake.tokutei_meishos_i18n.keys.map { |k|
-                                [I18n.t("enums.sake.tokutei_meisho.#{k}"), k]
-                              },
-                              {},
-                              class: "form-select",
-                              data: {
-                                "sake-name-target": "tokuteiMeisho",
-                                testid: "sake_tokutei_meisho",
-                              }) %>
+              <%= form.select(
+                    :tokutei_meisho,
+                    Sake.tokutei_meishos_i18n.keys.map { |k|
+                      [I18n.t("enums.sake.tokutei_meisho.#{k}"), k]
+                    },
+                    {},
+                    class: "form-select",
+                    data: {
+                      "sake-name-target": "tokuteiMeisho",
+                      testid: "sake_tokutei_meisho",
+                    },
+                  ) %>
             </div>
             <div class="col-12 col-lg-3">
               <%= form.label(:seimai_buai, class: "form-label") %>
-              <%= form.number_field(:seimai_buai,
-                                    class: "form-control",
-                                    aria: { describedby: "sakeSeimaiBuaiValidationFeedback" },
-                                    data: { testid: "sake_seimai_buai" }) %>
+              <%= form.number_field(
+                    :seimai_buai,
+                    class: "form-control",
+                    aria: { describedby: "sakeSeimaiBuaiValidationFeedback" },
+                    data: { testid: "sake_seimai_buai" },
+                  ) %>
               <% sake.errors.full_messages_for(:seimai_buai).each do |message| %>
                 <div id="sakeSeimaiBuaiValidationFeedback" class="invalid-feedback"
                   data-testid="sake_seimai_buai_feedback">
@@ -117,14 +119,16 @@
           <div class="row g-2">
             <div class="col-12 col-lg-3">
               <%= form.label(:season, class: "form-label") %>
-              <%= form.text_field(:season,
-                                  class: "form-control",
-                                  autocomplete: "on",
-                                  list: "season-list",
-                                  data: {
-                                    "sake-name-target": "season",
-                                    testid: "sake_season",
-                                  }) %>
+              <%= form.text_field(
+                    :season,
+                    class: "form-control",
+                    autocomplete: "on",
+                    list: "season-list",
+                    data: {
+                      "sake-name-target": "season",
+                      testid: "sake_season",
+                    },
+                  ) %>
               <datalist id="season-list">
                 <option value="新酒"></option>
                 <option value="立春朝搾り"></option>
@@ -138,19 +142,23 @@
             </div>
             <div class="col-12 col-lg-3">
               <%= form.label(:brewery_year, class: "form-label") %>
-              <%= form.select(:brewery_year,
-                              by_collection,
-                              {},
-                              class: "form-select",
-                              data: { testid: "sake_brewery_year" }) %>
+              <%= form.select(
+                    :brewery_year,
+                    by_collection,
+                    {},
+                    class: "form-select",
+                    data: { testid: "sake_brewery_year" },
+                  ) %>
             </div>
             <div class="col-12 col-lg-3">
               <%= form.label(:bindume_on, class: "form-label") %>
-              <%= form.select(:bindume_on,
-                              bindume_collection,
-                              {},
-                              class: "form-select",
-                              data: { testid: "sake_bindume_on" }) %>
+              <%= form.select(
+                    :bindume_on,
+                    bindume_collection,
+                    {},
+                    class: "form-select",
+                    data: { testid: "sake_bindume_on" },
+                  ) %>
             </div>
           </div>
         </fieldset>
@@ -158,11 +166,13 @@
           <div class="row g-2 gx-3">
             <div class="col-12 col-lg-3">
               <%= form.label(:alcohol, class: "form-label") %>
-              <%= form.number_field(:alcohol,
-                                    step: "any",
-                                    class: "form-control",
-                                    aria: { describedby: "sakeAlcoholValidationFeedback" },
-                                    data: { testid: "sake_alcohol" }) %>
+              <%= form.number_field(
+                    :alcohol,
+                    step: "any",
+                    class: "form-control",
+                    aria: { describedby: "sakeAlcoholValidationFeedback" },
+                    data: { testid: "sake_alcohol" },
+                  ) %>
               <% sake.errors.full_messages_for(:alcohol).each do |message| %>
                 <div id="sakeAlcoholValidationFeedback" class="invalid-feedback" data-testid="sake_alcohol_feedback">
                   <%= message %>
@@ -171,11 +181,13 @@
             </div>
             <div class="col-12 col-lg-3">
               <%= form.label(:size, { class: "form-label" }) %>
-              <%= form.number_field(:size,
-                                    required: true,
-                                    class: "form-control",
-                                    aria: { describedby: "sakeSizeValidationFeedback" },
-                                    data: { testid: "sake_size" }) %>
+              <%= form.number_field(
+                    :size,
+                    required: true,
+                    class: "form-control",
+                    aria: { describedby: "sakeSizeValidationFeedback" },
+                    data: { testid: "sake_size" },
+                  ) %>
               <% sake.errors.full_messages_for(:size).each do |message| %>
                 <div id="sakeSizeValidationFeedback" class="invalid-feedback" data-testid="sake_size_feedback">
                   <%= message %>
@@ -186,13 +198,15 @@
               <%= form.label(:price, { class: "form-label" }) %>
               <div class="input-group <%= "has-validation" if sake.errors.present? %>"
                 data-controller="add-tax">
-                <%= form.number_field(:price,
-                                      class: "form-control",
-                                      aria: { describedby: %w(sakeAddTax sakePriceValidationFeedback) },
-                                      data: {
-                                        "add-tax-target": "price",
-                                        testid: "sake_price",
-                                      }) %>
+                <%= form.number_field(
+                      :price,
+                      class: "form-control",
+                      aria: { describedby: %w[sakeAddTax sakePriceValidationFeedback] },
+                      data: {
+                        "add-tax-target": "price",
+                        testid: "sake_price",
+                      },
+                    ) %>
                 <button type="button" id="sakeAddTax"
                   class="input-group-text btn btn-outline-primary"
                   data-add-tax-target="button" data-testid="sake_add_tax">
@@ -211,13 +225,15 @@
           <div class="row g-2">
             <div class="col-12 col-lg-3">
               <%= form.label(:bottle_level, class: "form-label") %>
-              <%= form.select(:bottle_level,
-                              Sake.bottle_levels_i18n.keys.map { |k|
-                                [I18n.t("enums.sake.bottle_level.#{k}"), k]
-                              },
-                              {},
-                              class: "form-select",
-                              data: { testid: "sake_bottle_level" }) %>
+              <%= form.select(
+                    :bottle_level,
+                    Sake.bottle_levels_i18n.keys.map { |k|
+                      [I18n.t("enums.sake.bottle_level.#{k}"), k]
+                    },
+                    {},
+                    class: "form-select",
+                    data: { testid: "sake_bottle_level" },
+                  ) %>
             </div>
           </div>
         </fieldset>
