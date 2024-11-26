@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby file: ".ruby-version"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "= 7.1.3.4"
+gem "rails", "= 7.1.4"
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
@@ -109,17 +109,11 @@ group :development do
   # Lint ERB files
   gem "erb_lint", require: false
 
-  # Listen to file modifications
-  gem "listen"
-
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
-
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  gem "spring"
 
   # Documentation
   gem "yard"
