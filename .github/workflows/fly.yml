@@ -15,6 +15,6 @@ jobs:
         id: ruby-version
         run: echo "::set-output name=RUBY_VERSION::$(cat .ruby-version)"
       - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl deploy --remote-only --dockerfile fly.Dockerfile --build-arg ${{ steps.ruby-version.outputs.RUBY_VERSION }}
+      - run: flyctl deploy --remote-only --dockerfile fly.Dockerfile --build-arg RUBY_VERSION=${{ steps.ruby-version.outputs.RUBY_VERSION }}
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
