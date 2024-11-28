@@ -3922,9 +3922,9 @@ __metadata:
   linkType: hard
 
 "simplelightbox@npm:>=2.14.2 <3":
-  version: 2.14.2
-  resolution: "simplelightbox@npm:2.14.2"
-  checksum: 4d61c5934d643d8052c83b14e05fa5d6502f05240f476bba45ff6f446c7f916cefb552fe903d68aa8550999a98ec966dd299138e5b1b4ff19b8106d4a340bd64
+  version: 2.14.3
+  resolution: "simplelightbox@npm:2.14.3"
+  checksum: f0fc0c2503c924435cad6b8e2febceee32903ccd4909f6b3a6f0d5da4c2bfa9a8f636cf8fa82cf2a2eb6a78aa5b63d36a986cec5e140e273297bf67165bdf58c
   languageName: node
   linkType: hard
 
