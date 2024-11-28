@@ -19,7 +19,7 @@
 
 ARG RUBY_VERSION
 ARG VARIANT=jemalloc-bullseye-slim
-FROM quay.io/evl.ms/fullstaq-ruby:${RUBY_VERSION}-${VARIANT} as base
+FROM quay.io/evl.ms/fullstaq-ruby:${RUBY_VERSION}-${VARIANT} AS base
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
@@ -33,21 +33,21 @@ ARG BUNDLER_VERSION=2.5.16
 ARG RAILS_ENV=production
 ENV RAILS_ENV=${RAILS_ENV}
 
-ENV RAILS_SERVE_STATIC_FILES true
-ENV RAILS_LOG_TO_STDOUT true
+ENV RAILS_SERVE_STATIC_FILES=true
+ENV RAILS_LOG_TO_STDOUT=true
 
 ARG BUNDLE_WITHOUT=development:test
 ARG BUNDLE_PATH=vendor/bundle
-ENV BUNDLE_PATH ${BUNDLE_PATH}
-ENV BUNDLE_WITHOUT ${BUNDLE_WITHOUT}
+ENV BUNDLE_PATH=${BUNDLE_PATH}
+ENV BUNDLE_WITHOUT=${BUNDLE_WITHOUT}
 
 RUN mkdir /app
 WORKDIR /app
 RUN mkdir -p tmp/pids
 
 RUN curl https://get.volta.sh | bash
-ENV VOLTA_HOME /root/.volta
-ENV PATH $VOLTA_HOME/bin:/usr/local/bin:$PATH
+ENV VOLTA_HOME=/root/.volta
+ENV PATH=$VOLTA_HOME/bin:/usr/local/bin:$PATH
 RUN volta install node@${NODE_VERSION} yarn@${YARN_VERSION} && \
     gem update --system --no-document && \
     gem install -N bundler -v ${BUNDLER_VERSION}
@@ -56,10 +56,10 @@ RUN volta install node@${NODE_VERSION} yarn@${YARN_VERSION} && \
 
 # install packages only needed at build time
 
-FROM base as build_deps
+FROM base AS build_deps
 
 ARG BUILD_PACKAGES="build-essential=12.* libpq-dev=13.* libyaml-dev=0.2.*"
-ENV BUILD_PACKAGES ${BUILD_PACKAGES}
+ENV BUILD_PACKAGES=${BUILD_PACKAGES}
 
 # hadolint ignore=DL3008
 RUN --mount=type=cache,id=dev-apt-cache,sharing=locked,target=/var/cache/apt \
@@ -72,7 +72,7 @@ RUN --mount=type=cache,id=dev-apt-cache,sharing=locked,target=/var/cache/apt \
 
 # install gems
 
-FROM build_deps as gems
+FROM build_deps AS gems
 
 COPY Gemfile Gemfile.lock .ruby-version ./
 RUN bundle install && \
@@ -82,7 +82,7 @@ RUN bundle install && \
 
 # install node modules
 
-FROM build_deps as node_modules
+FROM build_deps AS node_modules
 
 COPY package.json yarn.lock .yarnrc.yml ./
 COPY .yarn/releases/ ./.yarn/releases/
@@ -126,7 +126,7 @@ RUN chmod +x /app/bin/* && \
 # The following enable assets to precompile on the build server.  Adjust
 # as necessary.  If no combination works for you, see:
 # https://fly.io/docs/rails/getting-started/existing/#access-to-environment-variables-at-build-time
-ENV SECRET_KEY_BASE 1
+ENV SECRET_KEY_BASE=1
 # ENV AWS_ACCESS_KEY_ID=1
 # ENV AWS_SECRET_ACCESS_KEY=1
 
@@ -135,8 +135,8 @@ ARG BUILD_COMMAND="bin/rails fly:build"
 RUN ${BUILD_COMMAND}
 
 # Default server start instructions.  Generally Overridden by fly.toml.
-ENV PORT 8080
+ENV PORT=8080
 ARG SERVER_COMMAND="bin/rails fly:server"
-ENV SERVER_COMMAND ${SERVER_COMMAND}
+ENV SERVER_COMMAND=${SERVER_COMMAND}
 # hadolint ignore=DL3025
 CMD ${SERVER_COMMAND}
