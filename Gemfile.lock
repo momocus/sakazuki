@@ -120,10 +120,11 @@ GEM
     carrierwave-i18n (3.0.0)
       carrierwave (>= 3.0.0, < 4)
     childprocess (5.0.0)
-    cloudinary (2.1.1)
+    cloudinary (2.2.0)
       faraday (>= 2.0.1, < 3.0.0)
       faraday-follow_redirects (~> 0.3.0)
       faraday-multipart (~> 1.0, >= 1.0.4)
+      ostruct
     concurrent-ruby (1.3.3)
     connection_pool (2.4.1)
     crass (1.0.6)
@@ -168,14 +169,16 @@ GEM
     factory_bot_rails (6.4.3)
       factory_bot (~> 6.4)
       railties (>= 5.0.0)
-    faraday (2.9.2)
-      faraday-net_http (>= 2.0, < 3.2)
+    faraday (2.12.1)
+      faraday-net_http (>= 2.0, < 3.5)
+      json
+      logger
     faraday-follow_redirects (0.3.0)
       faraday (>= 1, < 3)
     faraday-multipart (1.0.4)
       multipart-post (~> 2)
-    faraday-net_http (3.1.0)
-      net-http
+    faraday-net_http (3.4.0)
+      net-http (>= 0.5.0)
     ffi (1.17.0)
     ffi (1.17.0-aarch64-linux-gnu)
     ffi (1.17.0-arm64-darwin)
@@ -244,7 +247,7 @@ GEM
     msgpack (1.7.2)
     multipart-post (2.4.1)
     mutex_m (0.2.0)
-    net-http (0.4.1)
+    net-http (0.5.0)
       uri
     net-imap (0.4.14)
       date
@@ -268,6 +271,7 @@ GEM
     nokogiri (1.16.6-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    ostruct (0.6.1)
     parallel (1.25.1)
     parallel_tests (4.7.1)
       parallel
@@ -426,7 +430,7 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.5.0)
-    uri (0.13.0)
+    uri (1.0.2)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.1)
