@@ -54,6 +54,12 @@ jobs:
 
       # lint by docker build checks
       - name: Run Docker Build Checks for dev.Dockerfile
-        run: docker build --check --file dev.Dockerfile .
+        # > 複数行における改行をスペースに変換する
+        # - ブロック最後の改行を削除
+        run: >-
+          docker build --build-arg RUBY_VERSION="$(cat .ruby-version)"
+          --check --file dev.Dockerfile .
       - name: Run Docker Build Checks for fly.Dockerfile
-        run: docker build --check --file fly.Dockerfile .
+        run: >-
+          docker build --build-arg RUBY_VERSION="$(cat .ruby-version)"
+          --check --file fly.Dockerfile .
