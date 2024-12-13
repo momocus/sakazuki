@@ -159,8 +159,8 @@ RSpec.describe SakesHelper do
 
     context "with search word" do
       it "returns title with search word" do
-        searched = "生路井"
-        title = "生路井 - #{I18n.t('sakes.index.title')}"
+        searched = "生道井"
+        title = "生道井 - #{I18n.t('sakes.index.title')}"
         expect(title_with_search(searched)).to eq(title)
       end
     end
