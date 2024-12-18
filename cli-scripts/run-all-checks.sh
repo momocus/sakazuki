@@ -69,7 +69,7 @@ message "##### Run Docker Build Checks"
 if type docker > /dev/null 2>&1; then
     files=$(git ls-files | grep "Dockerfile")
     for file in ${files}; do
-        docker build --check --file "${file}" .
+        docker build --build-arg RUBY_VERSION="$(cat .ruby-version)" --check --file "${file}" .
     done
 else
     warning "[SKIP] Docker Build Checks, Docker is required."
