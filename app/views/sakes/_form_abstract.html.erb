@@ -169,12 +169,14 @@
                 </div>
               <% end %>
             </div>
-            <div class="col-12 col-lg-3">
+            <div class="col-12 col-lg-3" data-controller="sake-size">
               <%= form.label(:size, { class: "form-label" }) %>
               <div class="row row-cols-auto gy-2">
                 <div class="col">
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="sake_size_check" id="sake_size_check_180">
+                    <input class="form-check-input" type="radio" name="sake_size_check" id="sake_size_check_180"
+                      data-sake-size-target="radio" data-sake-size="180"
+                      data-action="sake-size#updateOtherSizeEnablement sake-size#writeHiddenByRadio">
                     <label calss="form-check-label" for="sake_size_check_180">
                       180
                     </label>
@@ -182,7 +184,9 @@
                 </div>
                 <div class="col">
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="sake_size_check" id="sake_size_check_300">
+                    <input class="form-check-input" type="radio" name="sake_size_check" id="sake_size_check_300"
+                      data-sake-size-target="radio" data-sake-size="300"
+                      data-action="sake-size#updateOtherSizeEnablement sake-size#writeHiddenByRadio">
                     <label calss="form-check-label" for="sake_size_check_300">
                       300
                     </label>
@@ -190,7 +194,9 @@
                 </div>
                 <div class="col">
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="sake_size_check" id="sake_size_check_720">
+                    <input class="form-check-input" type="radio" name="sake_size_check" id="sake_size_check_720"
+                      data-sake-size-target="radio" data-sake-size="720"
+                      data-action="sake-size#updateOtherSizeEnablement sake-size#writeHiddenByRadio">
                     <label calss="form-check-label" for="sake_size_check_720">
                       720
                     </label>
@@ -198,7 +204,9 @@
                 </div>
                 <div class="col">
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="sake_size_check" id="sake_size_check_1800">
+                    <input class="form-check-input" type="radio" name="sake_size_check" id="sake_size_check_1800"
+                      data-sake-size-target="radio" data-sake-size="1800"
+                      data-action="sake-size#updateOtherSizeEnablement sake-size#writeHiddenByRadio">
                     <label calss="form-check-label" for="sake_size_check_1800">
                       1800
                     </label>
@@ -206,11 +214,14 @@
                 </div>
                 <div class="col-12">
                   <div class="form-check d-flex ">
-                    <input class="form-check-input me-2" type="radio" name="sake_size_check" id="sake_size_check_other">
+                    <input class="form-check-input me-2" type="radio" name="sake_size_check" id="sake_size_check_other"
+                      data-sake-size-target="otherRadio" data-sake-size="other"
+                      data-action="sake-size#updateOtherSizeEnablement sake-size#writeHiddenByRadio">
                     <label calss="form-check-label w-auto" for="sake_size_check_other">
                       <%= t(".other_size") %>
                     </label>
-                    <input class="form-control ms-3 w-50" type="number" min="0" id="sake_size_check_other">
+                    <input class="form-control ms-3 w-50" type="number" min="0" disabled id="sake_size_other"
+                      data-sake-size-target="otherSize" data-action="sake-size#writeHiddenWithOtherSize">
                   </div>
                 </div>
               </div>
@@ -219,7 +230,10 @@
                                     required: true,
                                     class: "form-control",
                                     aria: { describedby: "sakeSizeValidationFeedback" },
-                                    data: { testid: "sake_size" }) %>
+                                    data: {
+                                      "sake-size-target": "size",
+                                      testid: "sake_size",
+                                    }) %>
               <% sake.errors.full_messages_for(:size).each do |message| %>
                 <div id="sakeSizeValidationFeedback" class="invalid-feedback" data-testid="sake_size_feedback">
                   <%= message %>
