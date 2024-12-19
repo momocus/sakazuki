@@ -171,7 +171,51 @@
             </div>
             <div class="col-12 col-lg-3">
               <%= form.label(:size, { class: "form-label" }) %>
+              <div class="row row-cols-auto gy-2">
+                <div class="col">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="sake_size_check" id="sake_size_check_180">
+                    <label calss="form-check-label" for="sake_size_check_180">
+                      180
+                    </label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="sake_size_check" id="sake_size_check_300">
+                    <label calss="form-check-label" for="sake_size_check_300">
+                      300
+                    </label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="sake_size_check" id="sake_size_check_720">
+                    <label calss="form-check-label" for="sake_size_check_720">
+                      720
+                    </label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="sake_size_check" id="sake_size_check_1800">
+                    <label calss="form-check-label" for="sake_size_check_1800">
+                      1800
+                    </label>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-check d-flex ">
+                    <input class="form-check-input me-2" type="radio" name="sake_size_check" id="sake_size_check_other">
+                    <label calss="form-check-label w-auto" for="sake_size_check_other">
+                      <%= t(".other_size") %>
+                    </label>
+                    <input class="form-control ms-3 w-50" type="number" min="0" id="sake_size_check_other">
+                  </div>
+                </div>
+              </div>
               <%= form.number_field(:size,
+                                    hidden: true,
                                     required: true,
                                     class: "form-control",
                                     aria: { describedby: "sakeSizeValidationFeedback" },
