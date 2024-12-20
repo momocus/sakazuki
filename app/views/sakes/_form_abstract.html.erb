@@ -213,15 +213,21 @@
                   </div>
                 </div>
                 <div class="col-12">
-                  <div class="form-check d-flex">
-                    <input class="form-check-input me-2" type="radio" name="sake_size_check" id="sake_size_check_other"
-                      data-sake-size-target="otherRadio" data-sake-size="other"
-                      data-action="sake-size#updateOtherSizeEnablement sake-size#writeHiddenByRadio">
-                    <label class="form-check-label w-auto" for="sake_size_check_other">
-                      <%= t(".other_size") %>
-                    </label>
-                    <input class="form-control ms-3 w-50" type="number" min="0" disabled id="sake_size_other"
-                      data-sake-size-target="otherSize" data-action="sake-size#writeHiddenWithOtherSize">
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+                      <div class="form-check">
+                        <input class="form-check-input me-2" type="radio" name="sake_size_check" id="sake_size_check_other"
+                          data-sake-size-target="otherRadio" data-sake-size="other"
+                          data-action="sake-size#updateOtherSizeEnablement sake-size#writeHiddenByRadio">
+                        <label class="form-check-label" for="sake_size_check_other">
+                          <%= t(".other_size") %>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-auto col-lg">
+                      <input class="form-control" type="number" min="0" disabled id="sake_size_other"
+                        data-sake-size-target="otherSize" data-action="sake-size#writeHiddenWithOtherSize">
+                    </div>
                   </div>
                 </div>
               </div>
