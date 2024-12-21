@@ -53,7 +53,7 @@ export default class SakeSizeController extends Controller<HTMLDivElement> {
     if (matchedRadio == null) this.writeOtherSizeWithHidden()
 
     // 酒サイズに合うradioにチェックをつける
-    const radio = matchedRadio ?? this.otherSizeTarget
+    const radio = matchedRadio ?? this.otherRadioTarget
     radio.checked = true
 
     this.updateOtherSizeEnablement()
