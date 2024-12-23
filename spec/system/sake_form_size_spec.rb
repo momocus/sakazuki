@@ -190,4 +190,16 @@ RSpec.describe "Sake Form Size", :js do
       end
     end
   end
+
+  describe "default size" do
+    before do
+      visit new_sake_path
+    end
+
+    it "is 720 ml" do
+      within(:test_id, "sake_size_div") do
+        expect(page).to have_checked_field("720")
+      end
+    end
+  end
 end
