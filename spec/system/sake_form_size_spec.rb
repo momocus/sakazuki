@@ -202,4 +202,78 @@ RSpec.describe "Sake Form Size", :js do
       end
     end
   end
+
+  describe "other size form enablement" do
+    before do
+      visit new_sake_path
+    end
+
+    context "when checked 180" do
+      before do
+        within(:test_id, "sake_size_div") do
+          # 1800と区別するため、正規表現を使う
+          find("label", text: /^180$/).click
+        end
+      end
+
+      it "is disabeld" do
+        input = find("input#sake_size_other")
+        expect(input).to be_disabled
+      end
+    end
+
+    context "when checked 300" do
+      before do
+        within(:test_id, "sake_size_div") do
+          find("label", text: "300").click
+        end
+      end
+
+      it "is disabeld" do
+        input = find("input#sake_size_other")
+        expect(input).to be_disabled
+      end
+    end
+
+    context "when checked 720" do
+      before do
+        within(:test_id, "sake_size_div") do
+          find("label", text: "720").click
+        end
+      end
+
+      it "is disabeld" do
+        input = find("input#sake_size_other")
+        expect(input).to be_disabled
+      end
+    end
+
+    context "when checked 1800" do
+      before do
+        within(:test_id, "sake_size_div") do
+          find("label", text: "1800").click
+        end
+      end
+
+      it "is disabeld" do
+        input = find("input#sake_size_other")
+        expect(input).to be_disabled
+      end
+    end
+
+    context "when checked other" do
+      before do
+        within(:test_id, "sake_size_div") do
+          # その他の容量、と区別するため正規表現を使う
+          label_regexp = /^#{I18n.t('sakes.form_abstract.other_size')}$/
+          find("label", text: label_regexp).click
+        end
+      end
+
+      it "is enabled" do
+        input = find("input#sake_size_other")
+        expect(input).not_to be_disabled
+      end
+    end
+  end
 end
