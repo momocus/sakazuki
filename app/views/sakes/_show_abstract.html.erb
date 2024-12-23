@@ -89,7 +89,7 @@
     </div>
   </div>
 
-  <div class="col-12 fs-5">
+  <div class="col-12 fs-5" data-testid="sake_size_div">
     <%= sake.size %> ml
     <%= "‒ #{sake.price.to_fs(:delimited)} #{t('activerecord.attributes.sake.price_unit')}" if sake.price.present? %>
   </div>

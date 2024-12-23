@@ -19,6 +19,9 @@ application.register("sake-kura", SakeKuraController)
 import SakeNameController from "./sake_name_controller"
 application.register("sake-name", SakeNameController)
 
+import SakeSizeController from "./sake_size_controller"
+application.register("sake-size", SakeSizeController)
+
 import ShareController from "./share_controller"
 application.register("share", ShareController)
 

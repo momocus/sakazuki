@@ -64,7 +64,7 @@ RSpec.describe "Copy Sakes" do
 
     # nomarl case
     targets = %i[alcohol aminosando genryomai kakemai kobo name nihonshudo
-                 price roka sando season shibori size warimizu]
+                 price roka sando season shibori warimizu]
     targets.each do |key|
       describe key.to_s do
         it "has copied value" do
@@ -102,6 +102,14 @@ RSpec.describe "Copy Sakes" do
       it "has copied brewery_year" do
         by = with_japanese_era(sake.brewery_year)
         expect(page).to have_select(test_id: "sake_brewery_year", selected: by)
+      end
+    end
+
+    describe "size", :js do
+      it "has copied size" do
+        within(:test_id, "sake_size_div") do
+          expect(page).to have_checked_field("1800")
+        end
       end
     end
   end
