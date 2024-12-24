@@ -168,21 +168,12 @@ module SakesHelper
     value.blank? || value == "unknown" ? "lowlight-value" : "highlight-value"
   end
 
-  # ヘッダタイトル用に検索ワードつきのタイトルを生成する
-  #
-  # @param search [String, nil] 検索ワード
-  # @return [String] ヘッダタイトル
-  def title_with_search(search)
-    prefix = search.present? ? "#{search} - " : ""
-    "#{prefix}#{t('sakes.index.title')}"
-  end
-
-  # 酒index用に酒の総量つきのタイトルを生成する
+  # 酒index用に酒の総量を尺貫法を使って返す
   #
   # @param include_empty [Boolean] trueなら空き瓶込みでカウントする
-  # @return [String] 酒の総量つきタイトル
-  def title_with_stock(include_empty)
-    stock = to_shakkan(Sake.alcohol_stock(include_empty:))
-    "#{t('sakes.index.title')} - #{stock}"
+  # @return [String] 尺貫法による酒の在庫量
+  def stock(include_empty)
+    ml = Sake.alcohol_stock(include_empty:)
+    to_shakkan(ml)
   end
 end
