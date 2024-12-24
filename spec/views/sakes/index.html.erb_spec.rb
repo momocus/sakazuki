@@ -29,41 +29,71 @@ RSpec.describe "sakes/index", type: :system do
   end
 
   describe "title" do
-    it "has title with total amount of sake" do
-      title = "#{I18n.t('sakes.index.title')} - 4合"
-      expect(page).to have_text(title)
+    context "without search" do
+      it "contains total amount of sake" do
+        h1 = I18n.t("sakes.index.h1_with_stock", stock: "4合")
+        expect(page).to have_text(h1)
+      end
+    end
+
+    context "with search" do
+      search = "ヒットしない検索語句"
+
+      before do
+        fill_in("text_search", with: search)
+        click_on("submit_search")
+      end
+
+      it "contains search word and hit count" do
+        h1 = I18n.t("sakes.index.h1_with_search", search:, hit: "0")
+        expect(page).to have_text(h1)
+      end
+    end
+
+    context "with empty search" do
+      before do
+        fill_in("text_search", with: "")
+        click_on("submit_search")
+      end
+
+      it "contains total amount of sake" do
+        h1 = I18n.t("sakes.index.h1_with_stock", stock: "4合")
+        expect(page).to have_text(h1)
+      end
     end
   end
 
   describe "title meta tag" do
-    context "when not searching" do
+    context "without search" do
       it "has title" do
-        title = "#{I18n.t('sakes.index.title')} - SAKAZUKI"
-        expect(page).to have_title(title)
+        header = "#{I18n.t('sakes.index.header')} - SAKAZUKI"
+        expect(page).to have_title(header)
       end
     end
 
-    context "when searching with some word" do
+    context "with search" do
+      search = "検索中の酒"
+
       before do
-        fill_in("text_search", with: "検索中の酒")
+        fill_in("text_search", with: search)
         click_on("submit_search")
       end
 
       it "has title with searching words" do
-        title = "検索中の酒 - #{I18n.t('sakes.index.title')} - SAKAZUKI"
-        expect(page).to have_title(title)
+        header = "#{I18n.t('sakes.index.header_with_search', search:)} - SAKAZUKI"
+        expect(page).to have_title(header)
       end
     end
 
-    context "when searching with empty word" do
+    context "with empty search" do
       before do
         fill_in("text_search", with: "")
         click_on("submit_search")
       end
 
       it "does not have title with searching words separator" do
-        title = "- #{I18n.t('sakes.index.title')} - SAKAZUKI"
-        expect(page).to have_no_title(title)
+        header = "- #{I18n.t('sakes.index.header')} - SAKAZUKI"
+        expect(page).to have_no_title(header)
       end
     end
   end
