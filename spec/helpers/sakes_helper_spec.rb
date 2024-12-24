@@ -150,8 +150,10 @@ RSpec.describe SakesHelper do
   end
 
   describe "stock" do
-    let!(:sealed_sake) { create(:sake, size: 720, bottle_level: "sealed") }
-    let!(:empty_sake) { create(:sake, size: 1800, bottle_level: "empty") }
+    before do
+      create(:sake, size: 720, bottle_level: "sealed")
+      create(:sake, size: 1800, bottle_level: "empty")
+    end
 
     context "without empty bottle" do
       it "returns 4合" do
