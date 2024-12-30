@@ -21,7 +21,7 @@ ARG RUBY_VERSION
 ARG VARIANT=jemalloc-bullseye-slim
 FROM quay.io/evl.ms/fullstaq-ruby:${RUBY_VERSION}-${VARIANT} AS base
 
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+SHELL ["/bin/bash", "-e", "-o", "pipefail", "-c"]
 
 # hadolint ignore=DL3048
 LABEL fly_launch_runtime="rails"

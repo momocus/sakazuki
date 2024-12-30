@@ -3,7 +3,7 @@ ARG RUBY_VERSION
 
 FROM ruby:${RUBY_VERSION}-slim-bullseye
 
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+SHELL ["/bin/bash", "-e", "-o", "pipefail", "-c"]
 
 # Install build tools, posgresql-client, yarn and node
 RUN <<EOF
