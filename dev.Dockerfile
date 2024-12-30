@@ -25,7 +25,7 @@ RUN <<EOF
 
   apt-get update -q
   DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
-    nodejs=18.* postgresql-client-13=13.* libpq-dev=16.* yarn=1.22.* \
+    nodejs=18.* postgresql-client-13=13.* libpq-dev=17.* yarn=1.22.* \
     imagemagick=8:6.9.*
 
   apt-get clean
