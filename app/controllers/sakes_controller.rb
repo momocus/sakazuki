@@ -11,7 +11,7 @@ class SakesController < ApplicationController
     query = params[:q] ? params[:q].deep_dup : {} # avoid nil
 
     # default, not empty bottle
-    query.merge!({ bottle_level_not_eq: Sake.bottle_levels["empty"] }) unless include_empty?(query)
+    query[:bottle_level_not_eq] = Sake.bottle_levels["empty"] unless include_empty?(query)
 
     # multiple words search
     to_multi_search!(query) if query[:all_text_cont]

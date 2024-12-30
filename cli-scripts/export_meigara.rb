@@ -28,14 +28,14 @@ end
 # @param jsons [Array<Hash{Symbol => String, Array<String>}>] kura-list.ndjsonから読み取ったjsonの配列
 # @return [Array<Hash{Symbol => String}>] 銘柄をflattenしたjsonの配列
 def flatten_by_meigara(jsons)
-  jsons.map { |json|
+  jsons.flat_map { |json|
     case json
     in { name: name, region: region, meigaras: meigaras }
       meigaras.map { |meigara|
         { name:, region:, meigara: }
       }
     end
-  }.flatten(1)
+  }
 end
 
 # jsonの銘柄が銘柄リストに含まれるかどうか
