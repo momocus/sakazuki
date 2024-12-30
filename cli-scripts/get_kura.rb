@@ -298,7 +298,7 @@ def request_kuras(url, region)
   trs = Nokogiri::HTML(html).css("table tr") # テーブルのrowであるtrをすべて取得
   return [] if trs.empty?                    # 地域に蔵がなければ終了
 
-  trs = trs[1..]                # ヘッダを捨てる
+  trs = trs.drop(1)                # ヘッダを捨てる
   trs.map { |tr| tr_to_kura(tr, region) }
 end
 
@@ -315,14 +315,14 @@ end
 # @param region_urls [Array<Hash{Symbol => String}>] 県名とURLのハッシュの配列
 # @return [Array<Hash{Symbol => String, Array<String>}>] 蔵名、地域、代表銘柄持ったハッシュの配列
 def request_all_kuras(region_urls)
-  region_urls.map { |r_u|
+  region_urls.flat_map { |r_u|
     case r_u
     in { region: region, url: url }
       request_kuras(url, region)
     else
       raise(ArgumentError)
     end
-  }.flatten(1)
+  }
 end
 
 # ファイルにNDJSON形式で保存する
