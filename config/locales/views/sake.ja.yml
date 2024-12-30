@@ -58,6 +58,8 @@ ja:
       abstract: 概要
       badge:
         presence: 必須
+      other_size: その他
+      other_size_label: その他の容量
     form_detail:
       detail: :sakes.show_detail.detail
       ingredient: :sakes.show_detail.ingredient

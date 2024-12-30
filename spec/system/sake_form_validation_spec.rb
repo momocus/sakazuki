@@ -112,19 +112,24 @@ RSpec.describe "Sake Form Validation" do
     end
   end
 
-  describe "size" do
+  describe "size", :js do
     context "with negative value" do
       before do
-        fill_in("sake_size", with: "-1")
+        within(:test_id, "sake_size_div") do
+          # その他の容量、と区別するため正規表現を使う
+          label_regexp = /^#{I18n.t('sakes.form_abstract.other_size')}$/
+          find("label", text: label_regexp).click
+          fill_in("sake_size_other", with: "-1")
+        end
         click_on("form_submit")
       end
 
-      it "has style for invalid" do
-        expect(find(:test_id, "sake_size").first(:xpath, "..")).to have_css(".is-invalid")
+      it "does not move page" do
+        expect(page).to have_current_path(new_sake_path)
       end
 
-      it "has error message" do
-        expect(page).to have_selector(:test_id, "sake_size_feedback")
+      it "does not have flash message" do
+        expect(page).to have_no_selector(:test_id, "flash_message")
       end
     end
   end
