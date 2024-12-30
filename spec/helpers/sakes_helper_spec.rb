@@ -149,39 +149,22 @@ RSpec.describe SakesHelper do
     end
   end
 
-  describe "title_with_search" do
-    context "without search word" do
-      it "returns only title" do
-        title = I18n.t("sakes.index.title")
-        expect(title_with_search(nil)).to eq(title)
-      end
-    end
-
-    context "with search word" do
-      it "returns title with search word" do
-        searched = "生道井"
-        title = "生道井 - #{I18n.t('sakes.index.title')}"
-        expect(title_with_search(searched)).to eq(title)
-      end
-    end
-  end
-
-  describe "title_with_stock" do
+  describe "stock" do
     before do
       create(:sake, size: 720, bottle_level: "sealed")
       create(:sake, size: 1800, bottle_level: "empty")
     end
 
-    it "returns title with 4合" do
-      include_empty = false
-      title = "#{I18n.t('.sakes.index.title')} - 4合"
-      expect(title_with_stock(include_empty)).to eq(title)
+    context "without empty bottle" do
+      it "returns 4合" do
+        expect(stock(false)).to eq("4合")
+      end
     end
 
-    it "returns title with 1升4合" do
-      include_empty = true
-      title = "#{I18n.t('.sakes.index.title')} - 1升4合"
-      expect(title_with_stock(include_empty)).to eq(title)
+    context "with empty bottle" do
+      it "returns 1升4合" do
+        expect(stock(true)).to eq("1升4合")
+      end
     end
   end
 end

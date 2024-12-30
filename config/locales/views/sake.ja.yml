@@ -1,7 +1,10 @@
 ja:
   sakes:
     index:
-      title: 日本酒リスト
+      header: 日本酒リスト
+      header_with_search: "検索: %{search}"
+      h1_with_stock: "日本酒リスト - %{stock}"
+      h1_with_search: "検索: %{search} - %{hit}件"
       all_bottles: 空瓶を表示
     sake:
       edit: 編集
