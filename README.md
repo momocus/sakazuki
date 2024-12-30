@@ -92,7 +92,7 @@ See the [deployment](https://github.com/momocus/sakazuki/wiki/Deployment).
 - Docker イメージのビルド
 
 ```console
-$ docker compose build --build-arg RUBY_VERSION=$(cat .ruby-version)
+$ docker compose build
 ...
 ```
 
