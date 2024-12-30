@@ -1,8 +1,6 @@
 # rubocop:disable Metrics/ClassLength
 class SakesController < ApplicationController
   before_action :set_sake, only: %i[show edit update destroy]
-  after_action :update_datetime, only: %i[update]
-  after_action :create_datetime, only: %i[create]
   before_action :signed_in_user, only: %i[new create edit update destroy]
 
   include SakesHelper
@@ -55,34 +53,38 @@ class SakesController < ApplicationController
     @sake = Sake.new(sake_params)
 
     if @sake.save
+      create_datetime
       store_photos
-      redirect_to(@sake,
-                  status: :see_other,
-                  flash: { create_sake: { name: @sake.name, id: @sake.id } })
+      redirect_to(@sake, status: :see_other, flash: { create_sake: { name: @sake.name, id: @sake.id } })
     else
       render(:new, status: :unprocessable_entity)
     end
   end
 
   # PATCH/PUT /sakes/1
+  # rubocop:disable Metrics/MethodLength
   def update
     if @sake.update(sake_params)
       delete_photos
       store_photos
-      flash_after_update
+
+      if @sake.saved_changes?
+        update_datetime
+        flash_after_update
+      end
+
       redirect_after_update
     else
       render(:edit, status: :unprocessable_entity)
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   # DELETE /sakes/1
   def destroy
     name = @sake.name
-    @sake.destroy
-    redirect_to(sakes_url,
-                status: :see_other,
-                flash: { delete_sake: name })
+    @sake.destroy!
+    redirect_to(sakes_url, status: :see_other, flash: { delete_sake: name })
   end
 
   # Viewで使える用に宣言する
@@ -118,9 +120,11 @@ class SakesController < ApplicationController
   # @param key [Symbol] 酒カラム
   # @return [Boolean] コピー対象のキーならtrue
   def copy_key?(key)
-    %w[alcohol aminosando bindume_on brewery_year genryomai hiire kakemai kobo
-       kura moto name nihonshudo price roka sando season seimai_buai shibori
-       size todofuken tokutei_meisho warimizu].include?(key)
+    %w[
+      alcohol aminosando bindume_on brewery_year genryomai hiire kakemai kobo
+      kura moto name nihonshudo price roka sando season seimai_buai shibori
+      size todofuken tokutei_meisho warimizu
+    ].include?(key)
   end
 
   # コピーする酒情報を持ったハッシュを作成する
@@ -155,14 +159,14 @@ class SakesController < ApplicationController
     in nil
       nil
     end
-    @sake.save
+    @sake.save!
   end
 
   # 作成された酒の瓶状態に応じて、酒が持つ日時データを更新する
   def create_datetime
     @sake.assign_attributes(opened_at: @sake.created_at) unless @sake.sealed?
     @sake.assign_attributes(emptied_at: @sake.created_at) if @sake.empty?
-    @sake.save
+    @sake.save!
   end
 
   # Only allow a list of trusted parameters through.
@@ -186,7 +190,7 @@ class SakesController < ApplicationController
 
   def delete_photos
     @sake.photos.each do |photo|
-      photo.destroy if params[photo.chackbox_name] == "delete"
+      photo.destroy! if params[photo.chackbox_name] == "delete"
     end
   end
 
@@ -212,8 +216,6 @@ class SakesController < ApplicationController
   #
   # 開封するボタン・空にするボタンからupdateした場合は、専用のフラッシュメッセージを表示する
   def flash_after_update
-    return unless @sake.saved_changes?
-
     key = (params["drink_button"] || :update_sake).to_sym
     flash[key] = { name: @sake.name, id: @sake.id } # rubocop:disable Rails/ActionControllerFlashBeforeRender
   end

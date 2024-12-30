@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Sakes" do
   let!(:sakes) { create_list(:sake, 3) }
-  let(:id) { sakes[0].id }
+  let(:id) { sakes.first.id }
 
   context "without login" do
     describe "GET /sakes request (index)" do
@@ -91,7 +91,7 @@ RSpec.describe "Sakes" do
     end
 
     describe "GET /sakes/[id] (update)" do
-      let(:orig) { sakes[0].bottle_level }
+      let(:orig) { sakes.first.bottle_level }
       let(:updated) { "empty" }
 
       it "redirects to showing updated sake" do
@@ -102,8 +102,8 @@ RSpec.describe "Sakes" do
       it "updates sake state with patched params" do
         expect {
           patch sake_path(id, params: { sake: { bottle_level: updated } })
-          sakes[0].reload
-        }.to change(sakes[0], :bottle_level).from(orig).to(updated)
+          sakes.first.reload
+        }.to change(sakes.first, :bottle_level).from(orig).to(updated)
       end
     end
 

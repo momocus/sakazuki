@@ -33,13 +33,15 @@ RSpec.describe "Sake Show Share Button" do
 
     context "with informations" do
       let(:some_info_sake) {
-        create(:sake,
-               name: "生道井",
-               kura: "原田酒造合資会社",
-               todofuken: "愛知県",
-               color: "わずかに黄色？",
-               aroma_impression: "りんご系のいい香り！",
-               taste_impression: "うまい。")
+        create(
+          :sake,
+          name: "生道井",
+          kura: "原田酒造合資会社",
+          todofuken: "愛知県",
+          color: "わずかに黄色？",
+          aroma_impression: "りんご系のいい香り！",
+          taste_impression: "うまい。",
+        )
       }
 
       before do
