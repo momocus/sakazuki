@@ -13,7 +13,7 @@ RSpec.describe "Sake Index Order" do
       visit sakes_path
     end
 
-    context "if the 'show empty bottles' checkbox is not checked" do
+    context "without checked 'show empty bottles'" do
       it "shows opened sakes before sealed sakes" do
         regexp = /#{sealed_new.name}.*#{sealed_old.name}.*#{opened_new.name}.*#{opened_old.name}/m
         expect(page.text).to match(regexp)
@@ -25,7 +25,7 @@ RSpec.describe "Sake Index Order" do
       end
     end
 
-    context "if the 'show empty bottles' checkbox is checked", :js do
+    context "with checked 'show empty bottles'", :js do
       before do
         check("check_empty_bottle") # show empty bottles
       end

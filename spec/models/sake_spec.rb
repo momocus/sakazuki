@@ -50,25 +50,25 @@ RSpec.describe Sake do
   describe "validates" do
     subject { sake.save }
 
-    context "if name is missing" do
+    context "without name" do
       let(:sake) { build(:sake, name: "") }
 
       it { is_expected.to be_falsy }
     end
 
-    context "if kura is nil" do
+    context "without kura" do
       let(:sake) { build(:sake, kura: nil) }
 
       it { is_expected.to be_falsy }
     end
 
-    context "if opened_at is nil" do
+    context "without opened_at" do
       let(:sake) { build(:sake, opened_at: nil) }
 
       it { is_expected.to be_falsy }
     end
 
-    context "if emptied_at is nil" do
+    context "without emptied_at" do
       let(:sake) { build(:sake, emptied_at: nil) }
 
       it { is_expected.to be_falsy }
@@ -158,7 +158,7 @@ RSpec.describe Sake do
   end
 
   describe "Sake.selling_price" do
-    context "if price is nil" do
+    context "without price" do
       let(:sake) { build(:sake, price: nil, size: 100) }
 
       it "returns nil" do
@@ -166,7 +166,7 @@ RSpec.describe Sake do
       end
     end
 
-    context "if price is zero" do
+    context "without price and with zero size" do
       let(:sake) { build(:sake, price: nil, size: 0) }
 
       it "returns nil" do
@@ -174,7 +174,7 @@ RSpec.describe Sake do
       end
     end
 
-    context "if size is nil" do
+    context "without size" do
       let(:sake) { build(:sake, price: 100, size: nil) }
 
       it "returns nil" do
@@ -182,7 +182,7 @@ RSpec.describe Sake do
       end
     end
 
-    context "if size is zero" do
+    context "with zero size" do
       let(:sake) { build(:sake, price: 100, size: 0) }
 
       it "returns nil" do
@@ -190,7 +190,7 @@ RSpec.describe Sake do
       end
     end
 
-    context "if price is 1,234 yen per 720 ml and selling rate is 3" do
+    context "with 1,234 yen, 720 ml and selling rate 3" do
       let(:sake) { build(:sake, price: 1234, size: 720) }
 
       before do
@@ -202,7 +202,7 @@ RSpec.describe Sake do
       end
     end
 
-    context "if price is 1,234 yen per 720 ml and selling rate is 1.5" do
+    context "with 1,234 yen, 720 ml and selling rate 1.5" do
       let(:sake) { build(:sake, price: 1234, size: 720) }
 
       before do
