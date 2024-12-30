@@ -13,7 +13,7 @@ RSpec.describe "Sake Index Order" do
       visit sakes_path
     end
 
-    context "with not checked 'show empty bottles'" do
+    context "without checked 'show empty bottles'" do
       it "shows opened sakes before sealed sakes" do
         regexp = /#{sealed_new.name}.*#{sealed_old.name}.*#{opened_new.name}.*#{opened_old.name}/m
         expect(page.text).to match(regexp)
