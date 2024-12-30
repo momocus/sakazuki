@@ -48,9 +48,6 @@ Style/BlockDelimiters:
 Style/MethodCallWithArgsParentheses:
   Enabled: true
   IgnoreMacros: true
-  AllowParenthesesInChaining: true
-  AllowParenthesesInCamelCaseMethod: true
-  AllowParenthesesInStringInterpolation: true
   Exclude:
     - "spec/**/*_spec.rb"
     - "spec/factories/*.rb"
@@ -178,21 +175,6 @@ Rails/EnvironmentVariableAccess:
   Enabled: false
 
 ### rubocop-rspec
-
-## Enabled
-
-RSpec/ContextWording:
-  Enabled: true
-  Prefixes:
-    - when
-    - with
-    - without
-    - if
-    - unless
-    - for
-    - before
-    - after
-    - during
 
 ## Disabled
 
