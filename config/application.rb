@@ -1,5 +1,6 @@
 require_relative "boot"
 
+# rubocop:disable Style/RequireOrder
 require "rails"
 # Pick the frameworks you want:
 require "active_model/railtie"
@@ -13,6 +14,7 @@ require "action_mailbox/engine"
 require "action_view/railtie"
 require "action_cable/engine"
 # require "rails/test_unit/railtie"
+# rubocop:enable Style/RequireOrder
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -26,7 +28,7 @@ module Sakazuki
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
-    config.autoload_lib(ignore: %w(assets tasks))
+    config.autoload_lib(ignore: %w[assets tasks])
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -40,19 +42,19 @@ module Sakazuki
     config.generators.system_tests = nil
 
     # Rails error forms using Bootstrap is-invalid style
-    config.action_view.field_error_proc = lambda { |html_tag, _instance|
-      doc = Nokogiri::HTML::DocumentFragment.parse(html_tag)
-      element = doc.children[0]
-      form_fields = %w[textarea input select]
-      return html_tag unless form_fields.include?(element.name)
+    config.action_view.field_error_proc =
+      lambda { |html_tag, _instance|
+        doc = Nokogiri::HTML::DocumentFragment.parse(html_tag)
+        element = doc.children.first
+        form_fields = %w[textarea input select]
+        return html_tag unless form_fields.include?(element.name)
 
-      element[:class] = "#{element[:class]} is-invalid"
-      ActiveSupport::SafeBuffer.new(doc.to_html)
-    }
+        element[:class] = "#{element[:class]} is-invalid"
+        ActiveSupport::SafeBuffer.new(doc.to_html)
+      }
 
     # For Japanese
-    config.i18n.load_path +=
-      Dir[Rails.root.join("config/locales/**/*.ja.{rb,yml}")]
+    config.i18n.load_path += Dir[Rails.root.join("config/locales/**/*.ja.{rb,yml}")]
     config.i18n.available_locales = %i[en ja]
     config.i18n.default_locale = :ja
 
