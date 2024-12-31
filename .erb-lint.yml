@@ -10,7 +10,7 @@ linters:
     enabled: true
     rubocop_config:
       inherit_from:
-        - .rubocop.yml
+        - .rubocop-erb.yml
       # ERBでは<% %>が分離するため誤検知が多い
       # 以下、公式おすすめのオフ設定を持ってきた
       Layout/InitialIndentation:
@@ -29,11 +29,9 @@ linters:
         Enabled: false
       Rails/OutputSafety:
         Enabled: false
-      # ERBではメソッドだけでなくマクロも括弧省略を許さない
-      # renderやlink_toなどが当てはまる
-      Style/MethodCallWithArgsParentheses:
+      # rubocop-erbの都合でオフにしたのをオンにする
+      Layout/RedundantLineBreak:
         Enabled: true
-        IgnoreMacros: false
   RequireScriptNonce:
     enabled: true
   HardCodedString:
