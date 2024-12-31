@@ -44,7 +44,9 @@ jobs:
           RAILS_ENV: test
           POSTGRES_USERNAME: postgres
           POSTGRES_PASSWORD: password
-        run: bundle exec rails db:create
+        run: |
+          bundle exec rails db:create
+          bundle exec rails db:migrate
       - name: Assets precompile
         env:
           BUNDLE_WITHOUT: development
@@ -56,5 +58,14 @@ jobs:
           POSTGRES_USERNAME: postgres
           POSTGRES_PASSWORD: password
         run: bundle exec rspec
+
       - name: Upload code coverage
         uses: codecov/codecov-action@v4
+
+      - name: Keep screenshots from failed system tests
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: screenshots
+          path: ${{ github.workspace }}/tmp/screenshots
+          if-no-files-found: ignore
