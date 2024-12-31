@@ -43,6 +43,8 @@ jobs:
         run: bundle exec rubocop --config .rubocop-erb.yml
       - name: Run ERB Lint
         run: bundle exec erblint --lint-all
+      - name: Run Brakeman
+        run: bundle exec brakeman --no-pager --format github --run-all-checks
 
       # lint by hadolint
       - name: Run Hadolint for dev.Dockerfile

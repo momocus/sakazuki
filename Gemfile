@@ -94,6 +94,9 @@ group :development do
   # Auto annotation to schema
   gem "annotate"
 
+  # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
+  gem "brakeman", require: false
+
   # Rubocop
   gem "rubocop", require: false
   gem "rubocop-capybara", require: false
