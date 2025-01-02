@@ -30,7 +30,7 @@
 - PostgreSQL >= 12.0
 - ImageMagick >= 6.9
 
-## How to use
+## Setup
 
 - 依存関係のインストール
   - `bundle install`
@@ -75,19 +75,14 @@ User.create!(
     - デフォルトメールアドレス: `example@example.com`
     - デフォルトパスワード: `rootroot`
 
-### How to recieve EMail from SAKAZUKI in development environment
 
-Development 環境において、SAKAZUKI からのメール通知は letter_opener で確認する。
-
-- <http://localhost:3000/letter_opener>にアクセス
+Development 環境において、メール通知は <http://localhost:3000/letter_opener> で確認します。
 
 ## How to deploy
 
 See the [deployment](https://github.com/momocus/sakazuki/wiki/Deployment).
 
-## How to develop with Docker
-
-レポジトリを Docker Bind するため、レポジトリを WSL ファイルシステムに置くと動きません。
+## Setup on Docker
 
 - Docker イメージのビルド
 
