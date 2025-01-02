@@ -75,7 +75,6 @@ User.create!(
     - デフォルトメールアドレス: `example@example.com`
     - デフォルトパスワード: `rootroot`
 
-
 Development 環境において、メール通知は <http://localhost:3000/letter_opener> で確認します。
 
 ## How to deploy
