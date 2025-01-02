@@ -130,13 +130,6 @@ $ docker compose exec web bundle exec rspec
 ...
 ```
 
-## How to Contribute
-
-- GitHub の Issue/Pull Request にて受けつけています
-  - 現状では少数開発なので、受け入れるレベルは明確化されていません
-- Pull Request は GitHub Actions を通してください
-  - 手動でチェックを走らせる場合は`cli-scripts/run-all-checks.sh`で実行できます
-
 ## Special Thanks
 
 - 筆によるすてきな SAKAZUKI by 豆腐屋さん
