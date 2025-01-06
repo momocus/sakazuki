@@ -42,10 +42,16 @@ yarn run lint:markuplint
 # gems
 
 message "##### Run Rubocop"
-bundle exec rubocop --parallel
+bundle exec rubocop
+
+message "##### Run Rubocop ERB"
+bundle exec rubocop --config .rubocop-erb.yml
 
 message "##### Run ERBLint"
 bundle exec erblint --lint-all
+
+message "##### Run Brakeman"
+bundle exec brakeman --run-all-checks
 
 # docker
 

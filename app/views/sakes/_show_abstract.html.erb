@@ -58,9 +58,11 @@
   <div class="col-12">
     <div class="row">
       <div class="col-12 fs-5">
-        <%= t(".time_ago",
+        <%= t(
+              ".time_ago",
               count: time_ago_in_words(latest_at(sake), include_seconds: true),
-              done: t(".#{sake.bottle_level}")) %>
+              done: t(".#{sake.bottle_level}"),
+            ) %>
       </div>
       <div class="col-auto" data-testid="created-at">
         <%= l(sake.created_at.to_date) %>
@@ -68,7 +70,7 @@
       <div class="col-auto ps-0">
         <%= t(".sealed") %>
       </div>
-      <% if not(sake.sealed?) %>
+      <% if !sake.sealed? %>
         <div class="w-100"></div>
         <div class="col-auto" data-testid="opened-at">
           <%= l(sake.opened_at.to_date) %>
@@ -90,7 +92,7 @@
   </div>
 
   <div class="col-12 fs-5" data-testid="sake_size_div">
-    <%= sake.size %> ml
+    <%= sake.size %> ml <%# erblint:disable HardCodedString %>
     <%= "‒ #{sake.price.to_fs(:delimited)} #{t('activerecord.attributes.sake.price_unit')}" if sake.price.present? %>
   </div>
 

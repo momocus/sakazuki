@@ -4,10 +4,7 @@
 
 <%= render(layout: "devise/shared/devise_layout") do %>
   <div class="col">
-    <%= form_for(resource,
-                 as: resource_name,
-                 url: invitation_path(resource_name),
-                 html: { method: :put }) do |f| %>
+    <%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put }) do |f| %>
       <%= f.hidden_field(:invitation_token, readonly: true) %>
       <div class="row row-cols-1 g-3">
         <% if f.object.class.require_password_on_accepting %>
@@ -33,8 +30,7 @@
         <div class="col">
           <div class="row justify-content-center">
             <div class="col-auto">
-              <%= f.submit(t("devise.invitations.edit.submit_button"),
-                           class: "btn btn-primary") %>
+              <%= f.submit(t("devise.invitations.edit.submit_button"), class: "btn btn-primary") %>
             </div>
           </div>
         </div>

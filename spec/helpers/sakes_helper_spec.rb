@@ -4,7 +4,7 @@ RSpec.describe SakesHelper do
   include described_class
 
   describe "empty_to_default" do
-    context "if first argument is presence" do
+    context "with some first argument" do
       value = 1
       default_value = 2
 
@@ -13,7 +13,7 @@ RSpec.describe SakesHelper do
       end
     end
 
-    context "if first argument is nil" do
+    context "with nil for first argument" do
       nil_value = nil
       default_value = 2
 
@@ -22,7 +22,7 @@ RSpec.describe SakesHelper do
       end
     end
 
-    context "if first argument is empty string" do
+    context "with empty string for first argument" do
       empty_string = ""
       default_value = 2
 
@@ -43,7 +43,7 @@ RSpec.describe SakesHelper do
       expect(to_by(date).day).to eq(1)
     end
 
-    context "if date is after 7/1" do
+    context "with date after 7/1" do
       let(:date) { Date.new(2021, 7, 1) }
 
       it "returns same year" do
@@ -51,7 +51,7 @@ RSpec.describe SakesHelper do
       end
     end
 
-    context "if date is before 6/30" do
+    context "with date before 6/30" do
       let(:date) { Date.new(2021, 6, 30) }
 
       it "returns yeara ago" do
@@ -98,7 +98,7 @@ RSpec.describe SakesHelper do
   end
 
   describe "with_japanese_era" do
-    context "for normal year" do
+    context "with normal year" do
       it "returns formated year including 令和" do
         expect(with_japanese_era(Date.new(2019, 5, 1))).to eq("2019 / 令和元年")
       end
@@ -123,7 +123,7 @@ RSpec.describe SakesHelper do
     end
 
     it "returns without the not beggiest zero" do
-      expect(to_shakkan(18000)).to eq("1斗")
+      expect(to_shakkan(18_000)).to eq("1斗")
     end
 
     it "returns zero with Go" do
@@ -136,13 +136,13 @@ RSpec.describe SakesHelper do
   end
 
   describe "price_tag" do
-    context "if the argument is nil" do
+    context "with nil argument" do
       it "returns text meaning market price" do
         expect(price_tag(nil)).to eq(t("sakes.menu.market_price"))
       end
     end
 
-    context "if the argument is integer" do
+    context "with integer argument" do
       it "returns price tag with unit" do
         expect(price_tag(1234)).to eq("1234#{t('activerecord.attributes.sake.price_unit')}")
       end

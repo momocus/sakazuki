@@ -26,27 +26,33 @@
         <div class="row mx-0 align-items-center">
           <div class="col ps-0 input-group">
             <%= f.label(:all_text_cont, "search word", class: "form-label visually-hidden") %>
-            <%= f.search_field(:all_text_cont,
-                               class: "form-control",
-                               value: params.dig(:q, :all_text_cont),
-                               data: { testid: "text_search" }) %>
-            <%= tag.button(tag.i(class: "bi-search"),
-                           type: "submit",
-                           class: "btn btn-primary",
-                           data: { testid: "submit_search" }) %>
+            <%= f.search_field(
+                  :all_text_cont,
+                  class: "form-control",
+                  value: params.dig(:q, :all_text_cont),
+                  data: { testid: "text_search" },
+                ) %>
+            <%= tag.button(
+                  tag.i(class: "bi-search"),
+                  type: "submit",
+                  class: "btn btn-primary",
+                  data: { testid: "submit_search" },
+                ) %>
           </div>
           <div class="col-auto">
             <div class="form-check form-switch">
-              <%= f.check_box(:bottle_level_not_eq,
-                              { class: "form-check-input",
-                                id: "all_bottle_level",
-                                data: { testid: "check_empty_bottle" },
-                                onChange: "this.form.submit()", },
-                              Sake::BOTTOM_BOTTLE,
-                              Sake.bottle_levels["empty"]) %>
-              <%= f.label(t(".all_bottles"),
-                          class: "form-check-label",
-                          for: "all_bottle_level") %>
+              <%= f.check_box(
+                    :bottle_level_not_eq,
+                    {
+                      class: "form-check-input",
+                      id: "all_bottle_level",
+                      data: { testid: "check_empty_bottle" },
+                      onChange: "this.form.submit()",
+                    },
+                    Sake::BOTTOM_BOTTLE,
+                    Sake.bottle_levels["empty"],
+                  ) %>
+              <%= f.label(t(".all_bottles"), class: "form-check-label", for: "all_bottle_level") %>
             </div>
           </div>
           <div class="col-lg-4 d-none d-lg-block"></div>

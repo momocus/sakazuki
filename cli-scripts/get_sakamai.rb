@@ -9,9 +9,9 @@
 #
 # ホームページにない酒米も一部追加している
 
-require "open-uri"
-require "nokogiri"
 require "json"
+require "nokogiri"
+require "open-uri"
 
 # 農林水産省のページから酒米のテーブルを取得する
 #
@@ -49,15 +49,16 @@ end
 # @return [Array<String>] 酒米のリスト
 def to_rices(table)
   # HACK: テーブルヘッダがtrタグ指定なので、[1..]でヘッダを削る
-  trs = table.css("tr")[1..]
-  rices = trs.map { |tr|
-    td = tr.css("td")[1]        # HACK: [0]の都道府県名を削る
-    not_br = td.children[1]     # HACK: 農林水産省ページのtd内先頭にある<br>を削る
-    rices = not_br.text.strip   # HACK: HTMLで入りがちなスペースを削除
-    rices.split(/、|及び/)      # HACK: 農林水産省の一覧が「、」と「及び」で区切られている
-  }.flatten(1)
+  trs = table.css("tr").drop(1)
+  rices =
+    trs.flat_map { |tr|
+      td = tr.css("td")[1]        # HACK: [0]の都道府県名を削る
+      not_br = td.children[1]     # HACK: 農林水産省ページのtd内先頭にある<br>を削る
+      rices = not_br.text.strip   # HACK: HTMLで入りがちなスペースを削除
+      rices.split(/、|及び/)      # HACK: 農林水産省の一覧が「、」と「及び」で区切られている
+    }
   rices = add_rices(rices)
-  rices.sort.uniq
+  rices.sort!.uniq!
 end
 
 # 酒米一覧をNDJSON形式にする

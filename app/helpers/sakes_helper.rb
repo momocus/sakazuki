@@ -24,6 +24,7 @@ module SakesHelper
   # 過去何年を酒情報に入力可能にするかの値
   # @type [Integer] 年数
   START_YEAR_LIMIT = 30
+  private_constant :START_YEAR_LIMIT
 
   # 現在日時から入力可能なBY年のレンジを作成する
   # @return [Range<Date>] 1年間隔で30年分のBYオブジェクトのレンジ
@@ -63,7 +64,7 @@ module SakesHelper
   def month_range
     first = Time.current.ago(START_YEAR_LIMIT.years)
     last = Time.current
-    (first.to_date..last.to_date).map(&:beginning_of_month).uniq
+    (first.to_date..last.to_date).map(&:beginning_of_month).uniq!
   end
 
   # 製造年月の候補を作成する
@@ -104,7 +105,8 @@ module SakesHelper
       "0合"
     else
       # rubocop:disable Style/HashExcept
-      (amount / 180).to_s.reverse.each_char.zip(UNITS).filter { |value, _unit| value != "0" }.reverse.join
+      (amount / 180).to_s.reverse.each_char.zip(UNITS).filter { |value, _unit| value != "0" }
+                    .reverse.join
       # rubocop:enable Style/HashExcept
     end
   end
@@ -139,8 +141,8 @@ module SakesHelper
   # @return [String] 都府県が削除された都道府県名
   def short_todofuken(todofuken)
     todofuken = todofuken.gsub("東京都", "東京") # 京都対策
-    todofuken = todofuken.gsub("府", "")
-    todofuken.gsub("県", "")
+    todofuken = todofuken.delete("府")
+    todofuken.delete("県")
   end
 
   # 酒の瓶状態が最後に更新された日付を返す

@@ -92,10 +92,11 @@ RSpec.describe "Bottle Level Datetimes" do
 
   context "when opening a sealed sake" do
     before do
-      id = travel_to(7.days.ago) {
-        sign_in(user)
-        create_sake("sealed")
-      }
+      id =
+        travel_to(7.days.ago) {
+          sign_in(user)
+          create_sake("sealed")
+        }
       visit(current_path) # ページをリロードしないと再ログインできない
       sign_in(user)
       edit_bottle_level(id, "opened")
@@ -119,10 +120,11 @@ RSpec.describe "Bottle Level Datetimes" do
 
   context "when empting a sealed sake" do
     before do
-      id = travel_to(7.days.ago) {
-        sign_in(user)
-        create_sake("sealed")
-      }
+      id =
+        travel_to(7.days.ago) {
+          sign_in(user)
+          create_sake("sealed")
+        }
       visit(current_path)
       sign_in(user)
       edit_bottle_level(id, "empty")
@@ -154,10 +156,11 @@ RSpec.describe "Bottle Level Datetimes" do
 
   context "when empting a opened sake" do
     before do
-      id = travel_to(7.days.ago) {
-        sign_in(user)
-        create_sake("sealed")
-      }
+      id =
+        travel_to(7.days.ago) {
+          sign_in(user)
+          create_sake("sealed")
+        }
       travel_to(4.days.ago) do
         visit(current_path)
         sign_in(user)

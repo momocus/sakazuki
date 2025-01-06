@@ -22,9 +22,9 @@
 #      +-- /aomori   青森県の酒蔵一覧
 #      ...
 
-require "open-uri"
-require "nokogiri"
 require "json"
+require "nokogiri"
+require "open-uri"
 
 # aタグオブジェクトから地域とURLのハッシュを作る
 #
@@ -255,7 +255,7 @@ end
 # @param table_row [Nokogiri::XML::NodeSet] SAKETIMESのテーブルカラムのオブジェクト
 # @return [String] 蔵名
 def tr_to_name(table_row)
-  name = table_row.css("span.main a")[0].content
+  name = table_row.css("span.main a").first.content
   rename(name)
 end
 
@@ -265,7 +265,7 @@ end
 # @param region [String] 地域
 # @return [Array<String>>] 代表銘柄
 def tr_to_meigaras(table_row, region)
-  meigaras_str = table_row.css("dd")[0].content
+  meigaras_str = table_row.css("dd").first.content
   split_meigara(meigaras_str, region)
 end
 
@@ -298,7 +298,7 @@ def request_kuras(url, region)
   trs = Nokogiri::HTML(html).css("table tr") # テーブルのrowであるtrをすべて取得
   return [] if trs.empty?                    # 地域に蔵がなければ終了
 
-  trs = trs[1..]                # ヘッダを捨てる
+  trs = trs.drop(1)                # ヘッダを捨てる
   trs.map { |tr| tr_to_kura(tr, region) }
 end
 
@@ -315,14 +315,14 @@ end
 # @param region_urls [Array<Hash{Symbol => String}>] 県名とURLのハッシュの配列
 # @return [Array<Hash{Symbol => String, Array<String>}>] 蔵名、地域、代表銘柄持ったハッシュの配列
 def request_all_kuras(region_urls)
-  region_urls.map { |r_u|
+  region_urls.flat_map { |r_u|
     case r_u
     in { region: region, url: url }
       request_kuras(url, region)
     else
       raise(ArgumentError)
     end
-  }.flatten(1)
+  }
 end
 
 # ファイルにNDJSON形式で保存する

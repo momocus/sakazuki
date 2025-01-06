@@ -5,20 +5,22 @@ RSpec.describe "Copy Sakes" do
   include SakesHelper
 
   let!(:sake) {
-    create(:sake,
-           kura: "原田酒造合資会社", todofuken: "愛知県",
-           size: 1800, genryomai: "山田錦", kakemai: "五百万石",
-           kobo: "協会8号", season: "新酒", roka: "無濾過",
-           shibori: "雫取り", color: "黄色", nigori: "おりがらみ",
-           aroma_impression: "華やかな吟醸香",
-           taste_impression: "フレッシュな味",
-           awa: "微炭酸", note: "今年は米が硬かった",
-           bindume_on: Date.new(2002, 2, 1),
-           brewery_year: Date.new(2001, 7, 1),
-           taste_value: 5, aroma_value: 5, nihonshudo: 1.0,
-           sando: 1.3, aminosando: 0.8, tokutei_meisho: :junmai_ginjo,
-           alcohol: 18, warimizu: :genshu, moto: :sokujo, bottle_level: :empty,
-           hiire: :namanama, price: 2310, rating: 5)
+    create(
+      :sake,
+      kura: "原田酒造合資会社", todofuken: "愛知県",
+      size: 1800, genryomai: "山田錦", kakemai: "五百万石",
+      kobo: "協会8号", season: "新酒", roka: "無濾過",
+      shibori: "雫取り", color: "黄色", nigori: "おりがらみ",
+      aroma_impression: "華やかな吟醸香",
+      taste_impression: "フレッシュな味",
+      awa: "微炭酸", note: "今年は米が硬かった",
+      bindume_on: Date.new(2002, 2, 1),
+      brewery_year: Date.new(2001, 7, 1),
+      taste_value: 5, aroma_value: 5, nihonshudo: 1.0,
+      sando: 1.3, aminosando: 0.8, tokutei_meisho: :junmai_ginjo,
+      alcohol: 18, warimizu: :genshu, moto: :sokujo, bottle_level: :empty,
+      hiire: :namanama, price: 2310, rating: 5
+    )
   }
   let(:user) { create(:user) }
 
@@ -34,7 +36,7 @@ RSpec.describe "Copy Sakes" do
     end
   end
 
-  context "after click copy link" do
+  context "when click copy link" do
     before do
       click_on("copy_sake")
     end
@@ -63,8 +65,7 @@ RSpec.describe "Copy Sakes" do
     end
 
     # nomarl case
-    targets = %i[alcohol aminosando genryomai kakemai kobo name nihonshudo
-                 price roka sando season shibori warimizu]
+    targets = %i[alcohol aminosando genryomai kakemai kobo name nihonshudo price roka sando season shibori warimizu]
     targets.each do |key|
       describe key.to_s do
         it "has copied value" do
@@ -78,7 +79,7 @@ RSpec.describe "Copy Sakes" do
     targets.each do |key|
       describe key.to_s do
         it "has copied value" do
-          expect(page).to have_select(test_id: "sake_#{key}", selected: sake.method("#{key}_i18n").call)
+          expect(page).to have_select(test_id: "sake_#{key}", selected: sake.method(:"#{key}_i18n").call)
         end
       end
     end
