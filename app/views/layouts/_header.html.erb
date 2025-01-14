@@ -1,31 +1,38 @@
 <header>
   <nav class="navbar navbar-dark bg-dark">
     <div class="container-xxl">
+      <%# ロゴ %>
       <%= link_to(
             sanitize("#{image_tag('choko.svg', class: 'sakazuki-header-logo')}SAKAZUKI", tag: %w[img]),
             root_path,
             { class: "navbar-brand d-flex align-items-center" },
           ) %>
 
+      <%# ハンバーガーメニューボタン %>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav" data-testid="navigation_list">
+          <%# お品書き %>
           <li class="nav-item">
             <%= link_to(t(".sake_menu"), menu_sakes_path, class: "nav-link", data: { testid: "sake-menu" }) %>
           </li>
           <span class="border-bottom border-secondary"></span>
           <% if user_signed_in? %>
+            <%# ユーザーリンク %>
             <li class="nav-item" data-testid="user-edit">
               <%= link_to(current_user.email, edit_user_registration_path, class: "nav-link", data: { testid: "edit_user" }) %>
             </li>
             <% if current_user.admin %>
+              <%# 招待メール %>
               <li class="nav-item">
                 <%= link_to(t(".invitation"), new_user_invitation_path, class: "nav-link", data: { testid: "invitation" }) %>
               </li>
             <% end %>
+            <%# ログアウト %>
             <li class="nav-item">
               <%= link_to(
                     t(".sign_out"),
@@ -38,6 +45,7 @@
                   ) %>
             </li>
           <% else %>
+            <%# ログイン %>
             <li class="nav-item">
               <%= link_to(t(".sign_in"), new_user_session_path, class: "nav-link", data: { testid: "sign_in" }) %>
             </li>
