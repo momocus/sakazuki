@@ -25,7 +25,7 @@
     "eslint-plugin-jsdoc": ">=46.10.1 <47",
     "eslint-plugin-tsdoc": ">=0.2.17 <1",
     "markdownlint-cli": ">=0.38.0 <1",
-    "markuplint": ">=4.1.1 <5",
+    "markuplint": ">=4.11.4 <5",
     "prettier": ">=3.1.1 <4",
     "stylelint": ">=16.10.0 <17",
     "stylelint-config-standard": ">=36.0.0 <37",
