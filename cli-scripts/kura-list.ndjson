@@ -334,8 +334,6 @@
 {"name":"土田酒造株式会社","region":"群馬県","meigaras":["譽國光"]}
 {"name":"永井酒造株式会社","region":"群馬県","meigaras":["水芭蕉"]}
 {"name":"株式会社永井本家","region":"群馬県","meigaras":["利根錦"]}
-{"name":"七ッ星醸造株式会社","region":"群馬県","meigaras":["君乃松"]}
-{"name":"有限会社野田酒造店","region":"群馬県","meigaras":["加茂川"]}
 {"name":"聖酒造株式会社","region":"群馬県","meigaras":["関東の華"]}
 {"name":"分福酒造株式会社","region":"群馬県","meigaras":["分福"]}
 {"name":"牧野酒造株式会社","region":"群馬県","meigaras":["大盃"]}
@@ -424,11 +422,11 @@
 {"name":"有限会社小澤酒造場","region":"東京都","meigaras":["桑乃都"]}
 {"name":"小山酒造株式会社","region":"東京都","meigaras":["丸眞正宗"]}
 {"name":"田村酒造場","region":"東京都","meigaras":["嘉泉"]}
-{"name":"東京港醸造","region":"東京都","meigaras":["江戸開城"]}
 {"name":"豊島屋酒造株式会社","region":"東京都","meigaras":["屋守"]}
 {"name":"中村酒造","region":"東京都","meigaras":["千代鶴"]}
 {"name":"合名会社野口酒造店","region":"東京都","meigaras":["国府鶴"]}
 {"name":"野﨑酒造株式会社","region":"東京都","meigaras":["喜正"]}
+{"name":"株式会社若松（東京港醸造）","region":"東京都","meigaras":["江戸開城"]}
 {"name":"石井醸造株式会社","region":"神奈川県","meigaras":["曽我の誉"]}
 {"name":"泉橋酒造株式会社","region":"神奈川県","meigaras":["いづみ橋"]}
 {"name":"井上酒造株式会社","region":"神奈川県","meigaras":["箱根山"]}
@@ -876,7 +874,6 @@
 {"name":"上原酒造株式会社","region":"滋賀県","meigaras":["不老泉"]}
 {"name":"愛知酒造有限会社","region":"滋賀県","meigaras":["富鶴"]}
 {"name":"笑四季酒造株式会社","region":"滋賀県","meigaras":["笑四季"]}
-{"name":"近江酒造株式会社","region":"滋賀県","meigaras":["近江龍門"]}
 {"name":"太田酒造株式会社","region":"滋賀県","meigaras":["道灌"]}
 {"name":"株式会社岡村本家","region":"滋賀県","meigaras":["金亀"]}
 {"name":"音瀬酒造場","region":"滋賀県","meigaras":["猩々菊"]}
