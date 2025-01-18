@@ -1,19 +1,32 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["button"]
+  static targets = ["button", "image"]
+
+  declare readonly imageTarget: HTMLImageElement
 
   connect() {
-    this.buttonTarget.addEventListener("click", this.pickRandomDrink.bind(this))
+    this.imageTarget.addEventListener("click", this.pickRandomDrink.bind(this))
   }
 
-  pickRandomDrink() {
-    fetch("/sakes/random")
-      .then(response => response.json())
-      .then(data => {
-        if (data.id) {
-          window.location.href = `/sakes/${data.id}`
-        }
-      })
+  async pickRandomDrink() {
+    try {
+      const response = await fetch("/sakes/random")
+      const data = await response.json()
+      if (data.id) {
+        this.displayRandomDrink(data)
+      }
+    } catch (error) {
+      console.error("Error fetching random drink:", error)
+    }
+  }
+
+  displayRandomDrink(data: { id: number, name: string, description: string }) {
+    const resultContainer = document.getElementById("random-drink-result")
+    if (resultContainer) {
+      resultContainer.innerHTML = `
+        <h3>${data.name}</h3>
+      `
+    }
   }
 }
