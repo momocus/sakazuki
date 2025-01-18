@@ -102,6 +102,12 @@ class SakesController < ApplicationController
     @sakes = Sake.ransack(bottle_level_not_eq: Sake.bottle_levels["empty"], s: "id desc").result
   end
 
+  # GET /sakes/random
+  def random
+    @sake = random_sake
+    redirect_to @sake
+  end
+
   private
 
   def to_multi_search!(query)
@@ -218,6 +224,11 @@ class SakesController < ApplicationController
   def flash_after_update
     key = (params["drink_button"] || :update_sake).to_sym
     flash[key] = { name: @sake.name, id: @sake.id } # rubocop:disable Rails/ActionControllerFlashBeforeRender
+  end
+
+  # Fetch a random sake from the available stock
+  def random_sake
+    Sake.where(bottle_level: %w[sealed opened]).order("RANDOM()").first
   end
 end
 # rubocop:enable Metrics/ClassLength
