@@ -4,9 +4,11 @@ export default class extends Controller {
   static targets = ["button", "image"]
 
   declare readonly imageTarget: HTMLImageElement
+  declare readonly buttonTarget: HTMLButtonElement
 
   connect() {
     this.imageTarget.addEventListener("click", this.pickRandomDrink.bind(this))
+    this.buttonTarget.addEventListener("click", this.pickRandomDrink.bind(this))
   }
 
   async pickRandomDrink() {
@@ -25,7 +27,7 @@ export default class extends Controller {
     const resultContainer = document.getElementById("random-drink-result")
     if (resultContainer) {
       resultContainer.innerHTML = `
-        <h3>${data.name}</h3>
+        <h3><a href="/sakes/${data.id}">${data.name}</a></h3>
       `
     }
   }
