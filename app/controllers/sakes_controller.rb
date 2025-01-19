@@ -105,7 +105,7 @@ class SakesController < ApplicationController
   # GET /sakes/random
   def random
     @sake = Sake.where(bottle_level: %w[sealed opened]).order("RANDOM()").first
-    render json: @sake
+    render(json: @sake)
   end
 
   private
