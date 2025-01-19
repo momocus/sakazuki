@@ -1,18 +1,26 @@
 <div class="col d-flex">
   <div class="row flex-grow-1">
-    <div class="col-12 fs-2 align-self-start">
-      <%= link_to(sake.name, sake_path(sake.id), class: "text-decoration-none text-dark") %>
+    <div class="col-12 align-self-start">
+      <% if sake.new_arrival? %>
+        <span class="accent-text fs-5">
+          <%= t(".new_arrival") %>
+        </span>
+      <% end %>
+      <%= link_to(sake.name, sake_path(sake.id), class: "text-decoration-none text-dark fs-2") %>
     </div>
-    <div class="col-12 align-self-end">
-      <div class="row justify-content-end fs-4">
-        <div class="col-3 price-tag-border">
-          <% if sake.new_arrival? %>
-            <span class="accent-text">
-              <%= t(".new_arrival") %>
-            </span>
-          <% end %>
-        </div>
-        <div class="col-4 text-end price-tag-border">
+    <div class="col-6 align-self-start">
+      <% if sake.photos.any? %>
+        <% photo = sake.photos.first %>
+        <% thumb_tag = cl_image_tag(photo.image.thumb.url, class: "img-thumbnail") %>
+        <%= link_to(thumb_tag, sake_path(sake.id)) %>
+      <% else %>
+        <%= cl_image_tag(image_url("sake-no-photo.avif"), class: "img-thumbnail") %>
+      <% end %>
+    </div>
+
+    <div class="col-6 align-self-end">
+      <div class="row justify-content-end">
+        <div class="col-8 text-end price-tag-border fs-4">
           <%= price_tag(sake.selling_price) %>
         </div>
       </div>
