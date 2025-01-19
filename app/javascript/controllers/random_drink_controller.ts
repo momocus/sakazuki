@@ -1,5 +1,10 @@
 import { Controller } from "@hotwired/stimulus"
 
+type DrinkData = {
+  id: number;
+  name: string;
+}
+
 export default class extends Controller {
   static targets = ["button", "image", "result"]
 
@@ -8,24 +13,23 @@ export default class extends Controller {
   declare readonly resultTarget: HTMLElement
 
   connect() {
-    this.imageTarget.addEventListener("click", this.pickRandomDrink.bind(this))
-    this.buttonTarget.addEventListener("click", this.pickRandomDrink.bind(this))
+    this.imageTarget.addEventListener("click", () => {
+      this.pickRandomDrink()
+    });
+    this.buttonTarget.addEventListener("click", () => {
+      this.pickRandomDrink()
+    });
   }
 
-  async pickRandomDrink() {
+  async pickRandomDrink(): Promise<void> {
     this.showLoadingIndicator()
-    try {
-      const response = await fetch("/sakes/random")
-      const data = await response.json()
-      if (data.id) {
-        this.displayRandomDrink(data)
-      }
-    } catch (error) {
-      console.error("Error fetching random drink:", error)
-    }
+    fetch("/sakes/random")
+      .then((response) => response.json())
+      .then((data) => this.displayRandomDrink(data))
+      .catch((error) => console.error(error))
   }
 
-  displayRandomDrink(data: { id: number, name: string, description: string }) {
+  displayRandomDrink(data: DrinkData) {
     this.resultTarget.innerHTML = `
       <h3>${data.name}</h3>
       <a href="/sakes/${data.id}">詳細を見る</a>
