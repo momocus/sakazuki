@@ -10,5 +10,8 @@
     <div class="my-1">
       <%= sanitize(t(".credit"), tags: %w[a img]) %>
     </div>
+    <div class="my-1">
+      Build Date: <%= ENV['BUILD_DATE'] %> | Commit: <%= ENV['COMMIT'] %>
+    </div>
   </div>
 </footer>

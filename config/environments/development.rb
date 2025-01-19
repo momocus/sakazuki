@@ -82,5 +82,9 @@ Rails.application.configure do
 
   # DockerでBetterErrorsを動かすための設定
   BetterErrors::Middleware.allow_ip!("0.0.0.0/0")
+
+  # Set environment variables for build date and commit
+  ENV['BUILD_DATE'] = Time.now.to_s
+  ENV['COMMIT'] = `git rev-parse HEAD`.chomp
 end
 # rubocop:enable Metrics/BlockLength

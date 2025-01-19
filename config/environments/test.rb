@@ -64,4 +64,8 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions.
   config.action_controller.raise_on_missing_callback_actions = true
+
+  # Set environment variables for build date and commit
+  ENV['BUILD_DATE'] = Time.now.to_s
+  ENV['COMMIT'] = `git rev-parse HEAD`.chomp
 end
