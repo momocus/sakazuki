@@ -6,14 +6,15 @@ type DrinkData = {
 }
 
 export default class extends Controller {
-  static targets = ["button", "image", "result"]
+  static targets = ["button", "shuffle", "result"]
 
-  declare readonly imageTarget: HTMLImageElement
+
   declare readonly buttonTarget: HTMLButtonElement
+  declare readonly shuffleTarget: HTMLElement
   declare readonly resultTarget: HTMLElement
 
   connect() {
-    this.imageTarget.addEventListener("click", () => {
+    this.shuffleTarget.addEventListener("click", () => {
       this.pickRandomDrink()
     });
     this.buttonTarget.addEventListener("click", () => {

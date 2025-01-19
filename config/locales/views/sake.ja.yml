@@ -6,6 +6,7 @@ ja:
       h1_with_stock: "日本酒リスト - %{stock}"
       h1_with_search: "検索: %{search} - %{hit}件"
       all_bottles: 空瓶を表示
+      random: ガチャ
     sake:
       edit: 編集
       tokutei_meisho_none: :sakes.show_abstract.tokutei_meisho_none
