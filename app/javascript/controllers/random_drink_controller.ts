@@ -15,26 +15,29 @@ export default class extends Controller {
 
   connect() {
     this.shuffleTarget.addEventListener("click", () => {
-      this.pickRandomDrink()
+      this.pickRandomDrink().catch(error => {
+        console.error(error);
+      });
     });
     this.buttonTarget.addEventListener("click", () => {
-      this.pickRandomDrink()
+      this.pickRandomDrink().catch(error => {
+        console.error(error);
+      });
     });
   }
 
   async pickRandomDrink(): Promise<void> {
     this.showLoadingIndicator()
-    fetch("/sakes/random")
+    await fetch("/sakes/random")
       .then((response) => response.json())
-      .then((data) => this.displayRandomDrink(data))
-      .catch((error) => console.error(error))
+      .then((data: DrinkData) => { this.displayRandomDrink(data); })
+      .catch((error) => { console.error(error); })
   }
 
   displayRandomDrink(data: DrinkData) {
     this.resultTarget.innerHTML = `
-      <h3>${data.name}</h3>
-      <a href="/sakes/${data.id}">詳細を見る</a>
-    `
+      <h1><a href="/sakes/${data.id}" class="text-decoration-none">${data.name}</a></h1>
+      `
   }
 
   showLoadingIndicator() {
