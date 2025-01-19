@@ -2,7 +2,7 @@
   <a href="#" class="fs-3 link-dark" data-bs-toggle="modal" data-bs-target="#pickRamdomModal" data-random-drink-target="shuffle">
     <i class="bi bi-shuffle"></i>
     <span class="visually-hidden">
-      <%= t(".random") %>
+      <%= t(".title") %>
     </span>
   </a>
 
@@ -10,14 +10,14 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="pickRamdomModalLabel">酒ガチャ</h1>
+          <h1 class="modal-title fs-5" id="pickRamdomModalLabel"><%= t(".title") %></h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div data-random-drink-target="result" data-bs-dismiss="modal"></div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-random-drink-target="button">もう一回ガチャを回す</button>
+          <button type="button" class="btn btn-primary" data-random-drink-target="button"><%= t(".retry_gacha") %></button>
         </div>
       </div>
     </div>
