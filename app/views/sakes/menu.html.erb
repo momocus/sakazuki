@@ -6,9 +6,8 @@
   </div>
   <div class="col-12">
     <div class="row row-cols-1 row-cols-md-2 g-5">
-      <% @sakes.each_slice(2) do |sake1, sake2| %>
-        <%= render(partial: "menu_one_drink", locals: { sake: sake1 }) %>
-        <%= render(partial: "menu_one_drink", locals: { sake: sake2 }) if sake2.present? %>
+      <% @sakes.find_each do |sake| %>
+        <%= render(partial: "menu_one_drink", locals: { sake: sake }) %>
       <% end %>
     </div>
   </div>
