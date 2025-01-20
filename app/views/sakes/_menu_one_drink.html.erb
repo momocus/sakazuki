@@ -10,8 +10,8 @@
   <div class="d-flex align-items-end justify-content-between">
     <% if sake.photos.any? %>
       <% photo = sake.photos.first %>
-      <% thumb_tag = cl_image_tag(photo.image.thumb.url, class: "rounded img-fluid") %>
-      <%= link_to(thumb_tag, sake_path(sake.id), class: "w-25", style: "min-width: 140px") %>
+      <%= cl_image_tag(photo.image.thumb.url, class: "rounded img-fluid w-25", style: "min-width: 140px") %>
+
     <% else %>
       <%= cl_image_tag(image_url("sake-no-photo.avif"), class: "w-25 img-thumbnail", style: "min-width: 140px") %>
     <% end %>
