@@ -1973,14 +1973,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-prettier@npm:>=9.1.0 <10":
-  version: 9.1.0
-  resolution: "eslint-config-prettier@npm:9.1.0"
+"eslint-config-prettier@npm:>=9.1.0 <11":
+  version: 10.0.1
+  resolution: "eslint-config-prettier@npm:10.0.1"
   peerDependencies:
     eslint: ">=7.0.0"
   bin:
-    eslint-config-prettier: bin/cli.js
-  checksum: 411e3b3b1c7aa04e3e0f20d561271b3b909014956c4dba51c878bf1a23dbb8c800a3be235c46c4732c70827276e540b6eed4636d9b09b444fd0a8e07f0fcd830
+    eslint-config-prettier: build/bin/cli.js
+  checksum: ba6875df0fc4fd3c7c6e2ec9c2e6a224462f7afc662f4cf849775c598a3571c1be136a9b683b12971653b3dcf3f31472aaede3076524b46ec9a77582630158e5
   languageName: node
   linkType: hard
 
@@ -4035,7 +4035,7 @@ __metadata:
     chart.js: "npm:>=4.4.1 <5"
     esbuild: "npm:>=0.19.11 <1"
     eslint: "npm:>=8.56.0 <9"
-    eslint-config-prettier: "npm:>=9.1.0 <10"
+    eslint-config-prettier: "npm:>=9.1.0 <11"
     eslint-plugin-jsdoc: "npm:>=46.10.1 <47"
     eslint-plugin-tsdoc: "npm:>=0.2.17 <1"
     just-zip-it: "npm:>=3.2.0 <4"
