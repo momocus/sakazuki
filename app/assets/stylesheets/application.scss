@@ -182,6 +182,13 @@ $accent: #b7282e;
   font-family: "Yuji Syuku", serif;
 }
 
+.menu-img {
+  @extend .w-25;
+  @extend .img-fluid;
+
+  min-width: "140px";
+}
+
 .accent-text {
   color: $accent;
 }

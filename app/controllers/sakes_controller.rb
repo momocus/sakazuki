@@ -99,7 +99,8 @@ class SakesController < ApplicationController
 
   # GET /sakes
   def menu
-    @sakes = Sake.ransack(bottle_level_not_eq: Sake.bottle_levels["empty"], s: "id desc").result
+    query = { bottle_level_not_eq: Sake.bottle_levels["empty"], s: "id desc" }
+    @sakes = Sake.includes(:photos).ransack(query).result
   end
 
   private
