@@ -1305,9 +1305,9 @@ __metadata:
   linkType: hard
 
 "bootstrap-icons@npm:>=1.11.1 <2":
-  version: 1.11.1
-  resolution: "bootstrap-icons@npm:1.11.1"
-  checksum: a05adf5bd48fb1e945572b5fd21d16d0965c24f6442878be74c845eebd5715c8bc0e814aad457671f302b7d9a355325af6aee5cc6b3aff0545f04889f7870606
+  version: 1.11.3
+  resolution: "bootstrap-icons@npm:1.11.3"
+  checksum: 7da4e8e1fb456dddb5b460020fbfd6d223cf65160250b6196d79748889e805ddf5f3cedb33178c3e4bac732652f33ab5f68e899c4a9fa2ade1a5899689aa5172
   languageName: node
   linkType: hard
 
