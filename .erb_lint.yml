@@ -8,6 +8,8 @@ linters:
     enabled: true
   HardCodedString:
     enabled: true
+  PartialInstanceVariable:
+    enabled: true
   Rubocop:
     enabled: true
     rubocop_config:
