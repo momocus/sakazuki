@@ -1,7 +1,7 @@
 <% if @user.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-danger">
-      The form contains <%# erblint:disable HardCodedString %>
+      The form contains <%# erb_lint:disable HardCodedString %>
       <%= pluralize(@user.errors.count, "error") %>.
     </div>
     <ul>
