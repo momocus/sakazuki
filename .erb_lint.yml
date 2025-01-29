@@ -38,3 +38,5 @@ linters:
         Enabled: true
   RequireScriptNonce:
     enabled: true
+  StrictLocals:
+    enabled: true
