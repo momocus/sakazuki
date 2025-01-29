@@ -47,8 +47,8 @@ bundle exec rubocop
 message "##### Run Rubocop ERB"
 bundle exec rubocop --config .rubocop-erb.yml
 
-message "##### Run ERBLint"
-bundle exec erblint --lint-all
+message "##### Run ERB Lint"
+bundle exec erb_lint --lint-all
 
 message "##### Run Brakeman"
 bundle exec brakeman --run-all-checks
