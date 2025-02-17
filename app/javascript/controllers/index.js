@@ -30,3 +30,6 @@ application.register("show-taste-graph", ShowTasteGraphController)
 
 import SimpleLightboxController from "./simple_lightbox_controller"
 application.register("simple-lightbox", SimpleLightboxController)
+
+import RandomDrinkController from "./random_drink_controller"
+application.register("random-drink", RandomDrinkController)
