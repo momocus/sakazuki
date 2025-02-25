@@ -20,7 +20,7 @@
     "@markuplint/erb-parser": ">=4.1.1 <5",
     "@typescript-eslint/eslint-plugin": ">=6.19.0 <7",
     "@typescript-eslint/parser": ">=6.17.0 <7",
-    "eslint": ">=8.56.0 <9",
+    "eslint": ">=8.56.0 <10",
     "eslint-config-prettier": ">=9.1.0 <11",
     "eslint-plugin-jsdoc": ">=46.10.1 <51",
     "eslint-plugin-tsdoc": ">=0.2.17 <1",
