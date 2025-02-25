@@ -1,4 +1,4 @@
-import merge from "ts-deepmerge"
+import { merge } from "ts-deepmerge"
 import { Chart, ScatterController, PointElement, LinearScale } from "chart.js"
 import type {
   Color,
