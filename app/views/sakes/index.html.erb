@@ -67,12 +67,15 @@
           </div>
         </div>
         <% if include_empty?(params[:q]) %>
-          <div class="col d-none d-sm-block">
-            <%= paginate(@sakes) %>
-          </div>
-          <div class="col d-sm-none d-block">
-            <%# 小さい画面 %>
-            <%= paginate(@sakes, window: 1) %>
+          <div class="col" data-testid="pagination">
+            <div class="d-none d-sm-block">
+              <%= paginate(@sakes) %>
+            </div>
+            <div class="d-sm-none d-block">
+              <%# HACK: 小さい画面用、表示する番号の数を少なくする
+                #       kaminariを複雑にカスタムせず、2つのページネーションを生成する %>
+              <%= paginate(@sakes, window: 1) %>
+            </div>
           </div>
         <% end %>
       </div>
