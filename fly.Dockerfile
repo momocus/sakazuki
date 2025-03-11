@@ -28,8 +28,8 @@ SHELL ["/bin/bash", "-e", "-o", "pipefail", "-c"]
 # hadolint ignore=DL3048
 LABEL fly_launch_runtime="rails"
 
-ARG NODE_VERSION=18.*
-ARG YARN_VERSION=4.0.2
+ARG NODE_VERSION=22.*
+ARG YARN_VERSION=4.7.0
 ARG BUNDLER_VERSION=2.6.5
 
 ARG RAILS_ENV=production
