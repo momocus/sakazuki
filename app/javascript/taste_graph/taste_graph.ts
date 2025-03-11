@@ -93,7 +93,6 @@ export class TasteGraph extends Chart {
    * @returns クリックした位置のデータ
    */
   protected static getClickData(event: ChartEvent, chart: Chart) {
-    // @ts-expect-error chart.jsのhelperの都合のエラーを無視する
     const canvasPosition = getRelativePosition(event, chart)
     const x = chart.scales.x?.getValueForPixel(canvasPosition.x) ?? NaN
     const y = chart.scales.y?.getValueForPixel(canvasPosition.y) ?? NaN
