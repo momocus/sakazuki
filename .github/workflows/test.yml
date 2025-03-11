@@ -28,7 +28,7 @@ jobs:
           sudo apt-get install --yes imagemagick
       - uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: "22"
           cache: "yarn"
       - name: Install Yarn Dependencies
         run: yarn workspaces focus --all --production
