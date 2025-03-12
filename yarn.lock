@@ -340,7 +340,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/js@npm:9.22.0, @eslint/js@npm:^9.22.0":
+"@eslint/js@npm:9.22.0, @eslint/js@npm:>=9.22.0 <10":
   version: 9.22.0
   resolution: "@eslint/js@npm:9.22.0"
   checksum: 10/2d7725f29ee4a7c85f5b5c499945d60f7701877b41b580d3f7badef43901ac98e4f8f76e4cfaef9ba116966c5f7b67132161e31e02f2eeccb0d09b548f6ea1b2
@@ -2107,7 +2107,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^9.22.0":
+"eslint@npm:>=9.22.0 <10":
   version: 9.22.0
   resolution: "eslint@npm:9.22.0"
   dependencies:
@@ -2568,17 +2568,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"globals@npm:>=16.0.0 <17":
+  version: 16.0.0
+  resolution: "globals@npm:16.0.0"
+  checksum: 10/aa05d569af9c763d9982e6885f3ac6d21c84cd54c9a12eeace55b3334d0631128f189902d34ae2a924694311f92d700dbd3e8e62e8a9e1094a882f9f8897149a
+  languageName: node
+  linkType: hard
+
 "globals@npm:^14.0.0":
   version: 14.0.0
   resolution: "globals@npm:14.0.0"
   checksum: 10/03939c8af95c6df5014b137cac83aa909090c3a3985caef06ee9a5a669790877af8698ab38007e4c0186873adc14c0b13764acc754b16a754c216cc56aa5f021
-  languageName: node
-  linkType: hard
-
-"globals@npm:^16.0.0":
-  version: 16.0.0
-  resolution: "globals@npm:16.0.0"
-  checksum: 10/aa05d569af9c763d9982e6885f3ac6d21c84cd54c9a12eeace55b3334d0631128f189902d34ae2a924694311f92d700dbd3e8e62e8a9e1094a882f9f8897149a
   languageName: node
   linkType: hard
 
@@ -4464,7 +4464,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "sakazuki@workspace:."
   dependencies:
-    "@eslint/js": "npm:^9.22.0"
+    "@eslint/js": "npm:>=9.22.0 <10"
     "@hotwired/stimulus": "npm:>=3.2.2 <4"
     "@hotwired/turbo-rails": "npm:>=7.3.0 <8"
     "@markuplint/erb-parser": "npm:>=4.1.1 <5"
@@ -4475,11 +4475,11 @@ __metadata:
     bootstrap-icons: "npm:>=1.11.1 <2"
     chart.js: "npm:>=4.4.1 <5"
     esbuild: "npm:>=0.19.11 <1"
-    eslint: "npm:^9.22.0"
+    eslint: "npm:>=9.22.0 <10"
     eslint-config-prettier: "npm:>=10.1.1 <11"
     eslint-plugin-jsdoc: "npm:>=50.6.6 <51"
     eslint-plugin-tsdoc: "npm:>=0.4.0 <1"
-    globals: "npm:^16.0.0"
+    globals: "npm:>=16.0.0 <17"
     just-zip-it: "npm:>=3.2.0 <4"
     markdownlint-cli: "npm:>=0.38.0 <1"
     markuplint: "npm:>=4.11.4 <5"
@@ -4492,7 +4492,7 @@ __metadata:
     stylelint-config-standard-scss: "npm:>=14.0.0 <15"
     ts-deepmerge: "npm:>=7.0.2 <8"
     typescript: "npm:>=5.8.2"
-    typescript-eslint: "npm:^8.26.1"
+    typescript-eslint: "npm:>=8.26.1 <9"
   languageName: unknown
   linkType: soft
 
@@ -5044,7 +5044,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript-eslint@npm:^8.26.1":
+"typescript-eslint@npm:>=8.26.1 <9":
   version: 8.26.1
   resolution: "typescript-eslint@npm:8.26.1"
   dependencies:
