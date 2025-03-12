@@ -340,7 +340,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/js@npm:9.23.0":
+"@eslint/js@npm:9.23.0, @eslint/js@npm:^9.22.0":
   version: 9.23.0
   resolution: "@eslint/js@npm:9.23.0"
   checksum: 10/d1d38fa2c4234f6ebed8e202530c9dccf565c47283f4e3c53955a47fed2bf8c59988f535672a32b53c14fed72e456c1c5cb050cd98a45474086b9693cbfa97d6
@@ -995,7 +995,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/eslint-plugin@npm:>=8.26.1 <9":
+"@typescript-eslint/eslint-plugin@npm:8.28.0, @typescript-eslint/eslint-plugin@npm:>=8.26.1 <9":
   version: 8.28.0
   resolution: "@typescript-eslint/eslint-plugin@npm:8.28.0"
   dependencies:
@@ -1016,7 +1016,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/parser@npm:>=8.26.1 <9":
+"@typescript-eslint/parser@npm:8.28.0, @typescript-eslint/parser@npm:>=8.26.1 <9":
   version: 8.28.0
   resolution: "@typescript-eslint/parser@npm:8.28.0"
   dependencies:
@@ -2088,7 +2088,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:>=9.22.0 <10":
+"eslint@npm:^9.22.0":
   version: 9.23.0
   resolution: "eslint@npm:9.23.0"
   dependencies:
@@ -2553,6 +2553,13 @@ __metadata:
   version: 14.0.0
   resolution: "globals@npm:14.0.0"
   checksum: 10/03939c8af95c6df5014b137cac83aa909090c3a3985caef06ee9a5a669790877af8698ab38007e4c0186873adc14c0b13764acc754b16a754c216cc56aa5f021
+  languageName: node
+  linkType: hard
+
+"globals@npm:^16.0.0":
+  version: 16.0.0
+  resolution: "globals@npm:16.0.0"
+  checksum: 10/aa05d569af9c763d9982e6885f3ac6d21c84cd54c9a12eeace55b3334d0631128f189902d34ae2a924694311f92d700dbd3e8e62e8a9e1094a882f9f8897149a
   languageName: node
   linkType: hard
 
@@ -4434,6 +4441,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "sakazuki@workspace:."
   dependencies:
+    "@eslint/js": "npm:^9.22.0"
     "@hotwired/stimulus": "npm:>=3.2.2 <4"
     "@hotwired/turbo-rails": "npm:>=7.3.0 <8"
     "@markuplint/erb-parser": "npm:>=4.1.1 <5"
@@ -4444,10 +4452,11 @@ __metadata:
     bootstrap-icons: "npm:>=1.11.1 <2"
     chart.js: "npm:>=4.4.1 <5"
     esbuild: "npm:>=0.19.11 <1"
-    eslint: "npm:>=9.22.0 <10"
+    eslint: "npm:^9.22.0"
     eslint-config-prettier: "npm:>=10.1.1 <11"
     eslint-plugin-jsdoc: "npm:>=50.6.6 <51"
     eslint-plugin-tsdoc: "npm:>=0.4.0 <1"
+    globals: "npm:^16.0.0"
     just-zip-it: "npm:>=3.2.0 <4"
     markdownlint-cli: "npm:>=0.38.0 <1"
     markuplint: "npm:>=4.11.4 <5"
@@ -4460,6 +4469,7 @@ __metadata:
     stylelint-config-standard-scss: "npm:>=14.0.0 <15"
     ts-deepmerge: "npm:>=7.0.2 <8"
     typescript: "npm:>=5.8.2"
+    typescript-eslint: "npm:^8.26.1"
   languageName: unknown
   linkType: soft
 
@@ -5008,6 +5018,20 @@ __metadata:
   version: 2.7.2
   resolution: "type@npm:2.7.2"
   checksum: 10/602f1b369fba60687fa4d0af6fcfb814075bcaf9ed3a87637fb384d9ff849e2ad15bc244a431f341374562e51a76c159527ffdb1f1f24b0f1f988f35a301c41d
+  languageName: node
+  linkType: hard
+
+"typescript-eslint@npm:^8.26.1":
+  version: 8.28.0
+  resolution: "typescript-eslint@npm:8.28.0"
+  dependencies:
+    "@typescript-eslint/eslint-plugin": "npm:8.28.0"
+    "@typescript-eslint/parser": "npm:8.28.0"
+    "@typescript-eslint/utils": "npm:8.28.0"
+  peerDependencies:
+    eslint: ^8.57.0 || ^9.0.0
+    typescript: ">=4.8.4 <5.9.0"
+  checksum: 10/6ac47f886907d8187b37f9fe9cefa3433cd55b875385622e2788465fc118b400f5da0c8dbfa818195a9fb27b1cada9fb198b04d1c34591c8e10419799e0e56cf
   languageName: node
   linkType: hard
 
