@@ -995,7 +995,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/eslint-plugin@npm:8.28.0, @typescript-eslint/eslint-plugin@npm:>=8.26.1 <9":
+"@typescript-eslint/eslint-plugin@npm:8.28.0":
   version: 8.28.0
   resolution: "@typescript-eslint/eslint-plugin@npm:8.28.0"
   dependencies:
@@ -1016,7 +1016,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/parser@npm:8.28.0, @typescript-eslint/parser@npm:>=8.26.1 <9":
+"@typescript-eslint/parser@npm:8.28.0":
   version: 8.28.0
   resolution: "@typescript-eslint/parser@npm:8.28.0"
   dependencies:
@@ -4446,8 +4446,6 @@ __metadata:
     "@hotwired/turbo-rails": "npm:>=7.3.0 <8"
     "@markuplint/erb-parser": "npm:>=4.1.1 <5"
     "@popperjs/core": "npm:>=2.11.8 <3"
-    "@typescript-eslint/eslint-plugin": "npm:>=8.26.1 <9"
-    "@typescript-eslint/parser": "npm:>=8.26.1 <9"
     bootstrap: "npm:>=5.3.2 <6"
     bootstrap-icons: "npm:>=1.11.1 <2"
     chart.js: "npm:>=4.4.1 <5"
