@@ -6,11 +6,15 @@ export default class ShareController extends Controller<HTMLDivElement> {
     title: String,
     url: String,
   }
+
   declare readonly titleValue: string
+
   declare readonly urlValue: string
 
   static targets = ["text", "link"]
+
   declare readonly textTarget: HTMLTextAreaElement
+
   declare readonly linkTarget: HTMLAnchorElement
 
   connect() {

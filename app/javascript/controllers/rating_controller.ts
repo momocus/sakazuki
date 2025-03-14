@@ -4,7 +4,9 @@ import rater from "rater-js"
 // Connects to data-controller="rating"
 export default class RatingController extends Controller<HTMLFieldSetElement> {
   static targets = ["score", "location"]
+
   declare readonly scoreTarget: HTMLInputElement
+
   declare readonly locationTarget: HTMLDivElement
 
   connect() {
