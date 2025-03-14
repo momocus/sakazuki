@@ -11,8 +11,18 @@ export default [
   // ブラウザ環境を有効化
   { languageOptions: { globals: globals.browser } },
 
-  // ESLintの推奨デフォルト
+  // ESLintコアの推奨デフォルト
   pluginJs.configs.recommended,
+
+  // ESLintコアの追加・変更ルール
+  {
+    rules: {
+      "no-unused-vars": [
+        "error",
+        { varsIgnorePattern: "^_", argsIgnorePattern: "^_" },
+      ],
+    },
+  },
 
   ...tseslint.configs.recommended,
 
