@@ -1976,6 +1976,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-config-prettier@npm:>=10.1.1 <11":
+  version: 10.1.1
+  resolution: "eslint-config-prettier@npm:10.1.1"
+  peerDependencies:
+    eslint: ">=7.0.0"
+  bin:
+    eslint-config-prettier: bin/cli.js
+  checksum: 10/e78e195a4f19e0de9bf655648bb3433877d6a5368537f1b1049976b74180844a00dd7c1ba3144e3da6e8b6864f8dcdfcda6c7338a537883fcf5b212ef6dcd0e0
+  languageName: node
+  linkType: hard
+
 "eslint-scope@npm:^8.3.0":
   version: 8.3.0
   resolution: "eslint-scope@npm:8.3.0"
@@ -4282,6 +4293,7 @@ __metadata:
     chart.js: "npm:>=4.4.1 <5"
     esbuild: "npm:>=0.19.11 <1"
     eslint: "npm:>=9.22.0 <10"
+    eslint-config-prettier: "npm:>=10.1.1 <11"
     globals: "npm:>=16.0.0 <17"
     just-zip-it: "npm:>=3.2.0 <4"
     markdownlint-cli: "npm:>=0.38.0 <1"

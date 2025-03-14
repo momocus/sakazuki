@@ -1,3 +1,4 @@
+import eslintConfigPrettier from "eslint-config-prettier/flat"
 import globals from "globals"
 import pluginJs from "@eslint/js"
 import stylisticJs from "@stylistic/eslint-plugin-js"
@@ -18,10 +19,8 @@ export default [
     },
   },
 
-  // ESLintコアの推奨デフォルト
+  // ESLintコアの設定
   pluginJs.configs.recommended,
-
-  // ESLintコアの追加・変更ルール
   {
     rules: {
       "no-unused-vars": [
@@ -34,15 +33,8 @@ export default [
   ...tseslint.configs.recommended,
 
   // @stylistic-plugin-jsの設定
-  {
-    plugins: {
-      "@stylistic/js": stylisticJs,
-    },
-    rules: {
-      "@stylistic/js/indent": ["error", 2],
-      "@stylistic/js/linebreak-style": ["error", "unix"],
-      "@stylistic/js/quotes": ["error", "double", { avoidEscape: true }],
-      "@stylistic/js/semi": ["error", "never"],
-    },
-  },
+  stylisticJs.configs.all,
+
+  // eslint-config-prettierの設定
+  eslintConfigPrettier,
 ]
