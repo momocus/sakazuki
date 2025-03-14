@@ -11,6 +11,13 @@ export default [
   // ブラウザ環境を有効化
   { languageOptions: { globals: globals.browser } },
 
+  {
+    linterOptions: {
+      reportUnusedDisableDirectives: "error",
+      reportUnusedInlineConfigs: "error",
+    },
+  },
+
   // ESLintコアの推奨デフォルト
   pluginJs.configs.recommended,
 
