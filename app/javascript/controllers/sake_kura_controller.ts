@@ -3,8 +3,11 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="sake-kura"
 export default class SakeKuraController extends Controller<HTMLDivElement> {
   static targets = ["kura", "todofuken", "mixed"]
+
   declare readonly kuraTarget: HTMLInputElement
+
   declare readonly todofukenTarget: HTMLInputElement
+
   declare readonly mixedTarget: HTMLInputElement
 
   /** 隠れた蔵名・都道府県名を使って、蔵フォームを正しく埋める */

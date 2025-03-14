@@ -31,14 +31,23 @@ export default class SakeNameController extends Controller<HTMLDivElement> {
     "hiire",
     "warimizu",
   ]
+
   declare readonly nameTarget: HTMLInputElement
+
   declare readonly kuraTarget: HTMLInputElement
+
   declare readonly tokuteiMeishoTarget: HTMLSelectElement
+
   declare readonly seasonTarget: HTMLInputElement
+
   declare readonly motoTarget: HTMLSelectElement
+
   declare readonly shiboriTarget: HTMLSelectElement
+
   declare readonly rokaTarget: HTMLInputElement
+
   declare readonly hiireTarget: HTMLSelectElement
+
   declare readonly warimizuTarget: HTMLSelectElement
 
   /**
