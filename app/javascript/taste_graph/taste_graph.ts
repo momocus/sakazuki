@@ -150,7 +150,7 @@ export class TasteGraph extends Chart {
    * @param dom - 描画するグラフの初期値
    * @param opts - options - グラフのカスタマイズ値
    */
-  //eslint-enable tsdoc/syntax
+  // eslint-enable tsdoc/syntax
   constructor(
     canvas: HTMLCanvasElement,
     dom: DomValues,

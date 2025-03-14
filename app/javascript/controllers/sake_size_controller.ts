@@ -3,9 +3,13 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="sake-size"
 export default class SakeSizeController extends Controller<HTMLDivElement> {
   static targets = ["radio", "otherRadio", "otherSize", "size"]
+
   declare readonly radioTargets: HTMLInputElement[]
+
   declare readonly otherRadioTarget: HTMLInputElement
+
   declare readonly otherSizeTarget: HTMLInputElement
+
   declare readonly sizeTarget: HTMLInputElement
 
   /**
