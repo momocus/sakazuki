@@ -21,10 +21,10 @@ export default class SakeKuraController extends Controller<HTMLDivElement> {
   /**
    * 蔵名と都道府県名を分離する
    *
-   * @param kuraTodofuken - 入力された蔵情報
+   * @param kuraTodofuken 入力された蔵情報
    * @returns
-   *   蔵名と都道府県のタプル。
-   *   ただし分割失敗した場合は、第一要素に入力そのまま、第二要素に空文字を返す。
+   * 蔵名と都道府県のタプル。
+   * ただし分割失敗した場合は、第一要素に入力そのまま、第二要素に空文字を返す。
    */
   private stripKuraTodofuken(kuraTodofuken: string): [string, string] {
     // フォーマットは"蔵名（県名）"
