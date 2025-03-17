@@ -1,5 +1,6 @@
 import eslintConfigPrettier from "eslint-config-prettier/flat"
 import globals from "globals"
+import jsdoc from "eslint-plugin-jsdoc"
 import tseslint from "typescript-eslint"
 import eslint from "@eslint/js"
 import stylisticJs from "@stylistic/eslint-plugin-js"
@@ -11,7 +12,7 @@ export default tseslint.config(
   // ブラウザ環境を有効化
   { languageOptions: { globals: globals.browser } },
 
-  // 必要ないイラインディレクティブをエラーに
+  // 必要ないイラインディレクティブをエラーにする
   {
     linterOptions: {
       reportUnusedDisableDirectives: "error",
@@ -41,6 +42,7 @@ export default tseslint.config(
     },
 
     rules: {
+      // 未使用変数はアンダーバー始まりにする
       "@typescript-eslint/no-unused-vars": [
         "error",
         {
@@ -48,14 +50,31 @@ export default tseslint.config(
           argsIgnorePattern: "^_",
         },
       ],
+      // 型のインポートにはimport type構文を使う
       "@typescript-eslint/consistent-type-imports": "error",
+      // interfaceを禁止し、typeを使う
       "@typescript-eslint/consistent-type-definitions": ["error", "type"],
     },
   },
 
+  // typescript-eslintを使いつつJavaSciprtファイルに対応するために必要
   {
     files: ["**/*.{js,mjs,cjs}"],
     extends: [tseslint.configs.disableTypeChecked],
+  },
+
+  // eslint-plugin-jsdocの設定、doc系は報告レベルを警告にする
+  jsdoc.configs["flat/contents-typescript"],
+  jsdoc.configs["flat/logical-typescript"],
+  jsdoc.configs["flat/recommended-typescript"],
+  jsdoc.configs["flat/stylistic-typescript"],
+  {
+    rules: {
+      // コメントブロックと関数の間に空行をいれない
+      "jsdoc/lines-before-block": "off",
+      // 文章とタグの間に空行を1行いれる
+      "jsdoc/tag-lines": ["warn", "any", { startLines: 1 }],
+    },
   },
 
   // eslint-config-prettierの設定
