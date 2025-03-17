@@ -2026,7 +2026,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-jsdoc@npm:>50.6.7 <51":
+"eslint-plugin-jsdoc@npm:>=50.6.7 <51":
   version: 50.6.9
   resolution: "eslint-plugin-jsdoc@npm:50.6.9"
   dependencies:
@@ -4371,7 +4371,7 @@ __metadata:
     esbuild: "npm:>=0.19.11 <1"
     eslint: "npm:>=9.22.0 <10"
     eslint-config-prettier: "npm:>=10.1.1 <11"
-    eslint-plugin-jsdoc: "npm:>50.6.7 <51"
+    eslint-plugin-jsdoc: "npm:>=50.6.7 <51"
     globals: "npm:>=16.0.0 <17"
     just-zip-it: "npm:>=3.2.0 <4"
     markdownlint-cli: "npm:>=0.38.0 <1"
