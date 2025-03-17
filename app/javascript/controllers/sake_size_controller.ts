@@ -30,7 +30,7 @@ export default class SakeSizeController extends Controller<HTMLDivElement> {
   /**
    * 本当の酒サイズフォームを押されたradioボタンの数値によって書き込む
    *
-   * @param event - コントローラの呼び出し元イベント
+   * @param event コントローラの呼び出し元イベント
    */
   writeHiddenByRadio(event: Event): void {
     const elem = event.currentTarget as HTMLInputElement

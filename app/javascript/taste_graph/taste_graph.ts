@@ -60,7 +60,7 @@ export class TasteGraph extends Chart {
    * このときオフセットのズレを補正する。
    * 具体的にはDOMでは0~6のデータだが、グラフでは-3~3となる。
    *
-   * @param v - 文字列で表したDOMデータの組
+   * @param v 文字列で表したDOMデータの組
    * @returns チャートのPoint型に変換したデータ
    */
   static fromDom(v: DomValues): Point {
@@ -74,7 +74,7 @@ export class TasteGraph extends Chart {
   /**
    * グラフデータをDOMデータに変換する
    *
-   * @param p - グラフデータ、ただし空グラフのときにNaNを含みうる
+   * @param p グラフデータ、ただし空グラフのときにNaNを含みうる
    * @returns 文字列変換されたDOMデータ
    */
   protected static toDom(p: Point): DomValues {
@@ -88,8 +88,8 @@ export class TasteGraph extends Chart {
   /**
    * クリックした位置のグラフデータを取得する
    *
-   * @param event - chart.jsのイベント
-   * @param chart - チャート
+   * @param event chart.jsのイベント
+   * @param chart チャート
    * @returns クリックした位置のデータ
    */
   protected static getClickData(event: ChartEvent, chart: Chart) {
@@ -102,8 +102,8 @@ export class TasteGraph extends Chart {
   /**
    * グラフにデータを挿入する
    *
-   * @param chart - チャート
-   * @param data - チャートデータ
+   * @param chart チャート
+   * @param data チャートデータ
    */
   protected static pushData(chart: Chart, data: Point) {
     chart.data.datasets[0]?.data.push(data)
@@ -112,7 +112,7 @@ export class TasteGraph extends Chart {
   /**
    * chart.jsのpopが返すunion型を、Point型だけにガードする
    *
-   * @param arg - chart.jsのpushが返す値
+   * @param arg chart.jsのpushが返す値
    * @returns 対象がPoint型のときのみTrue
    */
   protected static isPoint(
@@ -124,7 +124,7 @@ export class TasteGraph extends Chart {
   /**
    * グラフにデータを削除・取得する
    *
-   * @param chart - チャート
+   * @param chart チャート
    * @returns チャートデータ
    */
   protected static popData(chart: Chart): Point {
@@ -135,8 +135,8 @@ export class TasteGraph extends Chart {
   /**
    * グラフデータの同値比較
    *
-   * @param p1 - チャートデータ
-   * @param p2 - チャートデータ
+   * @param p1 チャートデータ
+   * @param p2 チャートデータ
    * @returns 引数2つのデータが等しいときのみTrue
    */
   protected static eqPoint(p1: Point, p2: Point) {
@@ -146,9 +146,9 @@ export class TasteGraph extends Chart {
   /**
    * コンストラクタ
    *
-   * @param canvas - グラフ描画先
-   * @param dom - 描画するグラフの初期値
-   * @param opts - options - グラフのカスタマイズ値
+   * @param canvas グラフ描画先
+   * @param dom 描画するグラフの初期値
+   * @param opts options - グラフのカスタマイズ値
    */
   // eslint-enable tsdoc/syntax
   constructor(
