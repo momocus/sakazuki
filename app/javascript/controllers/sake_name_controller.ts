@@ -56,9 +56,9 @@ export default class SakeNameController extends Controller<HTMLDivElement> {
    * 補完対象が空のときのみ補完を行う。
    * 未入力状態かは補完対象の`target.element`の値が`target.empty`と同じかで判定する。
    *
-   * @param name - 酒の名前
-   * @param completion - 補完機構
-   * @param target - 補完対象
+   * @param name 酒の名前
+   * @param completion 補完機構
+   * @param target 補完対象
    */
   private complete(name: string, completion: Completion, target: Target) {
     console.log("target:", target)
