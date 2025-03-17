@@ -1,9 +1,9 @@
-import eslintConfigPrettier from "eslint-config-prettier/flat"
-import globals from "globals"
-import jsdoc from "eslint-plugin-jsdoc"
-import tseslint from "typescript-eslint"
 import eslint from "@eslint/js"
+import globals from "globals"
 import stylisticJs from "@stylistic/eslint-plugin-js"
+import tseslint from "typescript-eslint"
+import jsdoc from "eslint-plugin-jsdoc"
+import eslintConfigPrettier from "eslint-config-prettier/flat"
 
 export default tseslint.config(
   // 対象ファイル
