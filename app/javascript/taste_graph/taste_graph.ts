@@ -291,7 +291,7 @@ export class TasteGraph extends Chart {
     const domCallback = opts.domCallback
     const onClick = (() => {
       if (typeof domCallback === "undefined")
-        (_e: ChartEvent, _el: ActiveElement[], _c: Chart): void => {
+        return (_e: ChartEvent, _el: ActiveElement[], _c: Chart): void => {
           // dummy empty lambda
         }
       else {
