@@ -21,14 +21,6 @@ export default tseslint.config(
 
   // ESLintコアの設定
   eslint.configs.recommended,
-  {
-    rules: {
-      "no-unused-vars": [
-        "error",
-        { varsIgnorePattern: "^_", argsIgnorePattern: "^_" },
-      ],
-    },
-  },
 
   // @stylistic/eslint-plugin-jsの設定
   stylisticJs.configs.all,
