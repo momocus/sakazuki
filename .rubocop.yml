@@ -4,8 +4,6 @@ plugins:
   - rubocop-rails
   - rubocop-rspec
   - rubocop-rspec_rails
-
-require:
   - rubocop-capybara
 
 AllCops:
