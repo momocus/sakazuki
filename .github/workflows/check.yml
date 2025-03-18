@@ -34,7 +34,7 @@ jobs:
 
       # lint by rubocop
       - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
+        uses: ruby/setup-ruby@922ebc4c5262cd14e07bb0e1db020984b6c064fe
         with:
           bundler-cache: true
       - name: Run Rubocop
@@ -48,11 +48,11 @@ jobs:
 
       # lint by hadolint
       - name: Run Hadolint for dev.Dockerfile
-        uses: hadolint/hadolint-action@v3.1.0
+        uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf
         with:
           dockerfile: dev.Dockerfile
       - name: Run Hadolint for fly.Dockerfile
-        uses: hadolint/hadolint-action@v3.1.0
+        uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf
         with:
           dockerfile: fly.Dockerfile
 

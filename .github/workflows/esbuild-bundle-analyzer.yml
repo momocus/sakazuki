@@ -33,6 +33,6 @@ jobs:
       # Call this action after the build
       - name: Analyze esbuild bundle size
         # uses: exoego/esbuild-bundle-analyzer@main # If you prefer nightly!
-        uses: exoego/esbuild-bundle-analyzer@v1
+        uses: exoego/esbuild-bundle-analyzer@57891f264e6d0536d890e99267cb88890f4b67d7
         with:
           metafiles: "meta.json"

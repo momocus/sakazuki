@@ -35,7 +35,7 @@ jobs:
       - name: Set up Ruby
         env:
           BUNDLE_WITHOUT: development
-        uses: ruby/setup-ruby@v1
+        uses: ruby/setup-ruby@922ebc4c5262cd14e07bb0e1db020984b6c064fe
         with:
           bundler-cache: true
       - name: Setup Database
@@ -60,7 +60,7 @@ jobs:
         run: bundle exec rspec
 
       - name: Upload code coverage
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@b9fd7d16f6d7d1b5d2bec1a2887e65ceed900238
 
       - name: Keep screenshots from failed system tests
         uses: actions/upload-artifact@v4
