@@ -38,9 +38,9 @@ EOF
 
 # Install node
 RUN <<EOF
-  curl -sSL https://deb.nodesource.com/setup_18.x | bash -
+  curl -sSL https://deb.nodesource.com/setup_22.x | bash -
   apt-get update -q
-  DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends nodejs=18.*
+  DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends nodejs=22.*
   apt-get clean
   rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/* /tmp/* /var/tmp/*
   truncate -s 0 /var/log/**/*log
@@ -57,7 +57,7 @@ RUN mkdir tmp/ log/
 COPY Gemfile Gemfile.lock .ruby-version ./
 RUN <<EOF
   gem update --system
-  gem install bundler:2.5.16 foreman:0.88.1
+  gem install foreman:0.88.1
   bundle install
   rm -rf /usr/local/bundle/cache/*gem \
     /root/.bundle/cache/* /usr/local/lib/ruby/gems/*/cache/*

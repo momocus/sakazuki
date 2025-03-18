@@ -25,8 +25,7 @@
 
 - Ruby = (See .ruby-version file)
 - Bundler
-- Yarn🐈 >= 1.22.4
-- Node.js >= 12.20.1
+- Node.js >= 22
 - PostgreSQL >= 12.0
 - ImageMagick >= 6.9
 
@@ -34,7 +33,7 @@
 
 - 依存関係のインストール
   - `bundle install`
-  - `yarn install`
+  - `corepack enable && yarn install`
 - .env ファイルの作成
   - PostgreSQL の設定
   - Google AdSense のクライアント ID の設定（Google AdSense を使う場合）
@@ -86,7 +85,7 @@ See the [deployment](https://github.com/momocus/sakazuki/wiki/Deployment).
 - Docker イメージのビルド
 
 ```console
-$ docker compose build
+$ docker compose build --build-arg RUBY_VERSION=$(cat .ruby-version)
 ...
 ```
 
