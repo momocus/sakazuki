@@ -1,6 +1,6 @@
 require "rails_helper"
 
-# rubocop:disable RSpec/RSpec/MultipleMemoizedHelpers
+# rubocop:disable RSpec/MultipleMemoizedHelpers
 # letでの準備はデフォルト5つまで、どうしても12本以上の酒がいるのでdisabledする
 RSpec.describe "Sake Index Pagination" do
   # rubocop:disable RSpec/LetSetup
@@ -92,4 +92,4 @@ RSpec.describe "Sake Index Pagination" do
     end
   end
 end
-# rubocop:enable RSpec/RSpec/MultipleMemoizedHelpers
+# rubocop:enable RSpec/MultipleMemoizedHelpers
