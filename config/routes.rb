@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root "sakes#index"
   resources :sakes do
     get :menu, on: :collection
+    get :random, on: :collection
   end
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" unless Rails.env.production?
