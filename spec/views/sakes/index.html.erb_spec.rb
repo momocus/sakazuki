@@ -41,7 +41,7 @@ RSpec.describe "sakes/index", type: :system do
 
       before do
         fill_in("text_search", with: search)
-        click_on("submit_search")
+        click_button("submit_search")
       end
 
       it "contains search word and hit count" do
@@ -53,7 +53,7 @@ RSpec.describe "sakes/index", type: :system do
     context "with empty search" do
       before do
         fill_in("text_search", with: "")
-        click_on("submit_search")
+        click_button("submit_search")
       end
 
       it "contains total amount of sake" do
@@ -76,7 +76,7 @@ RSpec.describe "sakes/index", type: :system do
 
       before do
         fill_in("text_search", with: search)
-        click_on("submit_search")
+        click_button("submit_search")
       end
 
       it "has title with searching words" do
@@ -88,7 +88,7 @@ RSpec.describe "sakes/index", type: :system do
     context "with empty search" do
       before do
         fill_in("text_search", with: "")
-        click_on("submit_search")
+        click_button("submit_search")
       end
 
       it "does not have title with searching words separator" do

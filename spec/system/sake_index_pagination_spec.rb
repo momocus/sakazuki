@@ -76,7 +76,7 @@ RSpec.describe "Sake Index Pagination" do
     context "with page 2" do
       before do
         within(:test_id, "pagination") do
-          click_on("2")
+          click_link("2")
         end
       end
 

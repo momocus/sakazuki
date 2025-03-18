@@ -9,7 +9,7 @@ RSpec.describe "Edit Sake" do
       sign_in(user)
       visit edit_sake_path(sake.id)
       fill_in("sake_name", with: "ほしいずみ")
-      click_on("form_submit")
+      click_button("form_submit")
     end
 
     it "redirect to sake page" do

@@ -10,7 +10,7 @@ RSpec.describe "Sake Form Add Tax", :js do
 
   context "when sake price is empty" do
     it "does nothing" do
-      click_on("sake_add_tax")
+      click_button("sake_add_tax")
       expect(find(:test_id, "sake_price").value).to eq ""
     end
   end
@@ -21,7 +21,7 @@ RSpec.describe "Sake Form Add Tax", :js do
     end
 
     it "changes price to 1100" do
-      click_on("sake_add_tax")
+      click_button("sake_add_tax")
       expect(find(:test_id, "sake_price").value).to eq "1100"
     end
   end
@@ -32,7 +32,7 @@ RSpec.describe "Sake Form Add Tax", :js do
     end
 
     it "changes price to 1666, floored" do
-      click_on("sake_add_tax")
+      click_button("sake_add_tax")
       expect(find(:test_id, "sake_price").value).to eq "1666"
     end
   end
