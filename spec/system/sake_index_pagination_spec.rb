@@ -2,7 +2,7 @@ require "rails_helper"
 
 # rubocop:disable RSpec/RSpec/MultipleMemoizedHelpers
 # letでの準備はデフォルト5つまで、どうしても12本以上の酒がいるのでdisabledする
-RSpec.describe "Sake Index Pagenation" do
+RSpec.describe "Sake Index Pagination" do
   # rubocop:disable RSpec/LetSetup
   # 変数内を呼び出す前にページにアクセスするため、let!で確実に生成する
 
@@ -35,7 +35,7 @@ RSpec.describe "Sake Index Pagenation" do
 
   context "without empty bottles" do
     it "does not exist" do
-      expect(page).to have_no_css('[testid="pagenation"]')
+      expect(page).to have_no_css('[testid="pagination"]')
     end
 
     describe "listed sakes" do
