@@ -44,6 +44,11 @@ Capybara.add_selector(:test_id) do
   css { |val| %([data-testid="#{val}"]) }
 end
 
+# CapybaraのSeleniumu呼び出しでの警告を抑える
+# 以下Issueで報告されているが、カピバラのバージョンタグのアップデートが1年以上されていない。
+# https://github.com/teamcapybara/capybara/issues/2779
+Selenium::WebDriver.logger.ignore(:clear_local_storage, :clear_session_storage)
+
 # ページ遷移を待つ
 #
 # Capybaraでselenium driverなどを使うと、テスト処理にページ遷移が追いつかずテストが落ちることがある。
