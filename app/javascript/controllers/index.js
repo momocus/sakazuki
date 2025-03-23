@@ -10,6 +10,9 @@ application.register("add-tax", AddTaxController)
 import InputTasteGraphController from "./input_taste_graph_controller"
 application.register("input-taste-graph", InputTasteGraphController)
 
+import RandomDrinkController from "./random_drink_controller"
+application.register("random-drink", RandomDrinkController)
+
 import RatingController from "./rating_controller"
 application.register("rating", RatingController)
 
@@ -30,6 +33,3 @@ application.register("show-taste-graph", ShowTasteGraphController)
 
 import SimpleLightboxController from "./simple_lightbox_controller"
 application.register("simple-lightbox", SimpleLightboxController)
-
-import RandomDrinkController from "./random_drink_controller"
-application.register("random-drink", RandomDrinkController)
