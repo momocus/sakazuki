@@ -341,20 +341,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hotwired/turbo-rails@npm:>=7.3.0 <9":
-  version: 8.0.13
-  resolution: "@hotwired/turbo-rails@npm:8.0.13"
+"@hotwired/turbo-rails@npm:>=7.3.0 <8":
+  version: 7.3.0
+  resolution: "@hotwired/turbo-rails@npm:7.3.0"
   dependencies:
-    "@hotwired/turbo": "npm:^8.0.13"
+    "@hotwired/turbo": "npm:^7.3.0"
     "@rails/actioncable": "npm:^7.0"
-  checksum: 7d56c1168f7462085093b45d530c82a5fa9ed3cef5c834f9aa099bbebd672b6b781b5a05ba5ab9a948371a0fd7f3b4b925288346a001662cb3113f09a64b85e6
+  checksum: f8586a73580d7869d6cba6d7cf115b2764537d7f1a0dc07a40f065fae72b9455109c3a10cd4aafd950bd7a8589864edf259daa1d2dba0df24f46ea3dc1a1b247
   languageName: node
   linkType: hard
 
-"@hotwired/turbo@npm:^8.0.13":
-  version: 8.0.13
-  resolution: "@hotwired/turbo@npm:8.0.13"
-  checksum: e0677ac2b9ae97ee773f8fd60ec013dfea610c2b2f02583a00cb4a10c7f888a5ef05c7c330d557c9d3e377502afcda7e2627f0cbd2ebebaed40656fc1851853e
+"@hotwired/turbo@npm:^7.3.0":
+  version: 7.3.0
+  resolution: "@hotwired/turbo@npm:7.3.0"
+  checksum: 2c2db0738c1fe9e97baf9d5fab7d88d47719ea1fa36a639426a11595d1c0f1cc53141036136ade4fcf970235ee61c2e002bb546061ca8fae55d4d48cc4b75f0e
   languageName: node
   linkType: hard
 
@@ -4503,7 +4503,7 @@ __metadata:
   resolution: "sakazuki@workspace:."
   dependencies:
     "@hotwired/stimulus": "npm:>=3.2.2 <4"
-    "@hotwired/turbo-rails": "npm:>=7.3.0 <9"
+    "@hotwired/turbo-rails": "npm:>=7.3.0 <8"
     "@markuplint/erb-parser": "npm:>=4.1.1 <5"
     "@popperjs/core": "npm:>=2.11.8 <3"
     "@typescript-eslint/eslint-plugin": "npm:>=6.19.0 <7"
