@@ -3,7 +3,7 @@
 # https://qiita.com/youcune/items/fcfb4ad3d7c1edf9dc96
 # -euでエラーか未定義変数でストップする
 
-cd $(cd $(dirname $0); pwd)/../ # cd to project root
+cd "$(cd "$(dirname "$0")"; pwd)/../" # cd to project root
 
 NORMAL=$(tput sgr0)
 YELLOW=$(tput setaf 3)
@@ -90,7 +90,7 @@ message "##### Run Actionlint"
 if type actionlint > /dev/null 2>&1; then
     actionlint
 elif type docker > /dev/null 2>&1; then
-    docker run --rm --mount type=bind,src=$(pwd),dst=/repo,readonly --workdir /repo rhysd/actionlint:latest -color
+    docker run --rm --mount type=bind,src="$(pwd)",dst=/repo,readonly --workdir /repo rhysd/actionlint:latest -color
 else
     warning "[SKIP] Actionlint, actionlint or Docker is required."
 fi
