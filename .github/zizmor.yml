@@ -1,0 +1,6 @@
+rules:
+  dangerous-triggers:
+    ignore:
+      # ignore line 3 in esbuild-bundle-analyzer.yml
+      # bundleサイズをコメントするためトリガーを変えられないので無視
+      - esbuild-bundle-analyzer.yml:3
