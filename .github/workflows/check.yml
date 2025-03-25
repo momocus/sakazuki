@@ -71,3 +71,9 @@ jobs:
       # lint by actionlint
       - name: Run Actionlint
         uses: raven-actions/actionlint@01fce4f43a270a612932cb1c64d40505a029f821
+
+      # lint by ghalint
+      - name: Install ghalint
+        uses: Lucky3028/install-ghalint@b623e2c9f9238b88ba13dbf30fb3b65320c42ce9
+      - name: Run ghalint
+        run: ghalint run
