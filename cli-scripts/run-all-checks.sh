@@ -94,3 +94,10 @@ elif type docker > /dev/null 2>&1; then
 else
     warning "[SKIP] Actionlint, actionlint or Docker is required."
 fi
+
+message "##### Run ghalint"
+if type ghalint > /dev/null 2>&1; then
+    ghalint run
+else
+    warning "[SKIP] ghalint, ghalint is required."
+fi
