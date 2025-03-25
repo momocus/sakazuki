@@ -5,9 +5,12 @@ on:
 jobs:
   fix:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions: {}
     steps:
       - uses: actions/checkout@v4
         with:
+          persist-credentials: false
           ref: ${{ github.event.client_payload.pull_request.head.ref }}
 
       - uses: actions/setup-node@v4
