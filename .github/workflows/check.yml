@@ -5,8 +5,12 @@ on: [pull_request]
 jobs:
   check:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions: {}
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       # lint by sh scripts
       - name: End of File with Newline

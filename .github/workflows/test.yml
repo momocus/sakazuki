@@ -5,6 +5,8 @@ on: [pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions: {}
 
     services:
       postgres:
@@ -22,6 +24,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - name: Install libvips
         run: |
           sudo apt-get update
