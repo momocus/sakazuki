@@ -90,7 +90,11 @@ message "##### Run Actionlint"
 if type actionlint > /dev/null 2>&1; then
     actionlint
 elif type docker > /dev/null 2>&1; then
-    docker run --rm --mount type=bind,src="$(pwd)",dst=/repo,readonly --workdir /repo rhysd/actionlint:latest -color
+    docker run --rm \
+           --mount type=bind,src="$(pwd)",dst=/repo,readonly \
+           --workdir /repo \
+           rhysd/actionlint:latest \
+           -color
 else
     warning "[SKIP] Actionlint, actionlint or Docker is required."
 fi
@@ -100,4 +104,17 @@ if type ghalint > /dev/null 2>&1; then
     ghalint run
 else
     warning "[SKIP] ghalint, ghalint is required."
+fi
+
+message "##### Run zizmor"
+if type zizmor > /dev/null 2>&1; then
+    zizmor --offline --collect=default .
+elif type docker > /dev/null 2>&1; then
+    docker run --rm --tty \
+           --mount type=bind,src="$(pwd)",dst=/repo,readonly \
+           --workdir /repo \
+           ghcr.io/woodruffw/zizmor:latest \
+           --offline --collect=default .
+else
+    warning "[SKIP] zizmor, zizmor or Docker is required."
 fi
