@@ -81,3 +81,9 @@ jobs:
         uses: Lucky3028/install-ghalint@b623e2c9f9238b88ba13dbf30fb3b65320c42ce9
       - name: Run ghalint
         run: ghalint run
+
+      # lint by zizmor
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@22695119d769bdb6f7032ad67b9bca0ef8c4a174
+      - name: Run zizmor 🌈
+        run: uvx zizmor --offline --collect=default .
