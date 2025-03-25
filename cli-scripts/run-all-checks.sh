@@ -1,4 +1,7 @@
-#!/bin/bash
+#!/bin/bash -eu
+
+# https://qiita.com/youcune/items/fcfb4ad3d7c1edf9dc96
+# -euでエラーか未定義変数でストップする
 
 cd $(cd $(dirname $0); pwd)/../ # cd to project root
 
