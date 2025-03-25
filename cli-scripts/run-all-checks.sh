@@ -83,3 +83,14 @@ if type docker > /dev/null 2>&1; then
 else
     warning "[SKIP] Docker Build Checks, Docker is required."
 fi
+
+# GitHub Actions
+
+message "##### Run Actionlint"
+if type actionlint > /dev/null 2>&1; then
+    actionlint
+elif type docker > /dev/null 2>&1; then
+    docker run --rm --mount type=bind,src=$(pwd),dst=/repo,readonly --workdir /repo rhysd/actionlint:latest -color
+else
+    warning "[SKIP] Actionlint, actionlint or Docker is required."
+fi
