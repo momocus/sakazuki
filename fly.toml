@@ -41,11 +41,30 @@ swap_size_mb = 512
     handlers = ["tls", "http"]
     port = 443
 
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 8080
+
   [[services.tcp_checks]]
     grace_period = "1s"
     interval = "15s"
     restart_limit = 0
     timeout = "2s"
+
+[checks]
+  [checks.status]
+    port = 3000
+    type = "http"
+    interval = "5s"
+    timeout = "2s"
+    grace_period = "5s"
+    method = "GET"
+    path = "/up"
+    protocol = "http"
+    tls_skip_verify = false
+
+    [checks.status.headers]
+      X-Forwarded-Proto = "https"
 
 [[statics]]
   guest_path = "/app/public"
