@@ -2,12 +2,12 @@ name: Test
 
 on: [pull_request]
 
+permissions: {}
+
 jobs:
   test:
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    permissions: {}
-
     services:
       postgres:
         image: postgres:13

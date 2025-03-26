@@ -3,12 +3,14 @@ on:
   push:
     branches:
       - main
+
+permissions: {}
+
 jobs:
   deploy:
     name: Deploy app
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    permissions: {}
     concurrency:
       group: fly-deploy
     steps:

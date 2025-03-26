@@ -2,11 +2,13 @@ name: Fix Command
 on:
   repository_dispatch:
     types: [fix-command]
+
+permissions: {}
+
 jobs:
   fix:
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    permissions: {}
     steps:
       - uses: actions/checkout@v4
         with:
