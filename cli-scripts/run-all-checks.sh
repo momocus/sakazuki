@@ -108,13 +108,13 @@ fi
 
 message "##### Run zizmor"
 if type zizmor > /dev/null 2>&1; then
-    zizmor --offline --persona pedantic --collect default .
+    zizmor --offline --persona auditor --collect default .
 elif type docker > /dev/null 2>&1; then
     docker run --rm --tty \
            --mount type=bind,src="$(pwd)",dst=/repo,readonly \
            --workdir /repo \
            ghcr.io/woodruffw/zizmor:latest \
-           --offline --persona pedantic --collect default .
+           --offline --persona auditor --collect default .
 else
     warning "[SKIP] zizmor, zizmor or Docker is required."
 fi
