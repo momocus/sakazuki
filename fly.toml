@@ -20,3 +20,7 @@ swap_size_mb = 512
   timeout = "2s"
   path = "/sakes"
   protocol = "https"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "256mb"
