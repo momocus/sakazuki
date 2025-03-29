@@ -5,6 +5,8 @@ on:
     branches: [main]
   pull_request_target:
 
+permissions: {}
+
 jobs:
   # PLEASE AVOID ADDING OTHER JOBS IN THIS FILE
   # BECAUSE THIS ACTION USE `pull_request_target` EVENT that grants write
@@ -19,6 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          persist-credentials: false
           # This is required to fetch the commit SHA of the forked PR
           ref: "${{ github.event.pull_request.merge_commit_sha }}"
       - uses: actions/setup-node@v4
