@@ -7,7 +7,7 @@ swap_size_mb = 512
   dockerfile = "fly.Dockerfile"
 
 [deploy]
-  release_command = "bin/rails fly:release"
+  release_command = "./bin/rails db:prepare"
 
 [env]
   PORT = "8080"
