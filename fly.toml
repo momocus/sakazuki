@@ -1,6 +1,7 @@
 # fly.toml file generated for sakazuki on 2022-11-10T22:48:21+09:00
 
 app = "sakazuki"
+primary_region = "nrt"
 swap_size_mb = 512
 
 [build]
