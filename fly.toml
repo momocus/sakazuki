@@ -7,6 +7,8 @@ processes = []
 swap_size_mb = 512
 
 [build]
+  dockerfile = "fly.Dockerfile"
+
   [build.args]
     BUILD_COMMAND = "bin/rails fly:build"
     SERVER_COMMAND = "bin/rails fly:server"
