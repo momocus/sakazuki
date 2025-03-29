@@ -1,27 +1,16 @@
 # fly.toml file generated for sakazuki on 2022-11-10T22:48:21+09:00
 
 app = "sakazuki"
-kill_signal = "SIGINT"
-kill_timeout = 5
-processes = []
 swap_size_mb = 512
 
 [build]
   dockerfile = "fly.Dockerfile"
-
-  [build.args]
-    BUILD_COMMAND = "bin/rails fly:build"
-    SERVER_COMMAND = "bin/rails fly:server"
 
 [deploy]
   release_command = "bin/rails fly:release"
 
 [env]
   PORT = "8080"
-
-[experimental]
-  allowed_public_ports = []
-  auto_rollback = true
 
 [[services]]
   http_checks = []
@@ -48,7 +37,3 @@ swap_size_mb = 512
     interval = "15s"
     restart_limit = 0
     timeout = "2s"
-
-[[statics]]
-  guest_path = "/app/public"
-  url_prefix = "/"
