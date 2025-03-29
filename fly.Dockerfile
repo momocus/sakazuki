@@ -134,7 +134,5 @@ ENV SECRET_KEY_BASE=1
 
 # Default server start instructions.  Generally Overridden by fly.toml.
 ENV PORT=8080
-ARG SERVER_COMMAND="bin/rails fly:server"
-ENV SERVER_COMMAND=${SERVER_COMMAND}
-# hadolint ignore=DL3025
-CMD ${SERVER_COMMAND}
+
+CMD ["./bin/rails", "server"]
