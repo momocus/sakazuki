@@ -134,5 +134,6 @@ ENV SECRET_KEY_BASE=1
 
 # Default server start instructions.  Generally Overridden by fly.toml.
 ENV PORT=8080
+EXPOSE ${PORT}
 
 CMD ["./bin/rails", "server"]
