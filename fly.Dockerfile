@@ -85,7 +85,7 @@ RUN groupadd --system --gid 1000 rails && \
 USER 1000:1000
 
 # Entrypoint sets up the container.
-ENTRYPOINT ["/rails/bin/docker-entrypoint"]
+ENTRYPOINT ["/rails/bin/fly.docker-entrypoint"]
 
 # Start the server by default, this can be overwritten at runtime
 ENV PORT="8080"
