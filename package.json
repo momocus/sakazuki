@@ -47,5 +47,5 @@
     "build:metafile": "esbuild app/javascript/*.* --bundle --metafile=meta.json --outdir=app/assets/builds",
     "build:css": "sass ./app/assets/stylesheets/:./app/assets/builds/ --no-source-map --load-path=node_modules"
   },
-  "packageManager": "yarn@4.0.2"
+  "packageManager": "yarn@4.7.0"
 }
