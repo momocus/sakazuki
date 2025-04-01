@@ -75,13 +75,15 @@ Rails.application.configure do
   # メール設定
   config.action_mailer.default_url_options = { host: "sakazuki.fly.dev" }
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    user_name: Rails.application.credentials.mail[:user_name],
-    address: Rails.application.credentials.mail[:smtp],
-    password: Rails.application.credentials.mail[:password],
-    port: Rails.application.credentials.mail[:port],
-    authentication: "login",
-  }
+  if Rails.application.credentials.mail.present?
+    config.action_mailer.smtp_settings = {
+      user_name: Rails.application.credentials.mail[:user_name],
+      address: Rails.application.credentials.mail[:smtp],
+      password: Rails.application.credentials.mail[:password],
+      port: Rails.application.credentials.mail[:port],
+      authentication: "login",
+    }
+  end
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
