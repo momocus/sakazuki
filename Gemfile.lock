@@ -150,6 +150,8 @@ GEM
       devise (>= 4.6)
     diff-lcs (1.6.0)
     docile (1.4.1)
+    dockerfile-rails (1.7.9)
+      rails (>= 3.0.0)
     dotenv (3.1.7)
     dotenv-rails (3.1.7)
       dotenv (= 3.1.7)
@@ -490,6 +492,7 @@ DEPENDENCIES
   devise
   devise-i18n
   devise_invitable
+  dockerfile-rails
   dotenv-rails
   enum_help
   era_ja
