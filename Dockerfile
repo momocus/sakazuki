@@ -35,13 +35,12 @@ RUN apt-get update --quiet && \
 
 # Install JavaScript dependencies
 ARG NODE_VERSION=22.14.0
-ARG YARN_VERSION=4.0.2
+ARG YARN_VERSION=1.22.22
 ENV PATH=/usr/local/node/bin:$PATH
 RUN curl --silent --location https://github.com/nodenv/node-build/archive/master.tar.gz | \
     tar xz --directory=/tmp/ && \
     /tmp/node-build-master/bin/node-build "${NODE_VERSION}" /usr/local/node && \
-    corepack enable && \
-    corepack prepare yarn@$YARN_VERSION --activate && \
+    npm install --global yarn@$YARN_VERSION && \
     rm -rf /tmp/node-build-master
 
 # Install application gems
@@ -51,7 +50,8 @@ RUN bundle install && \
     bundle exec bootsnap precompile --gemfile
 
 # Install node modules
-COPY package.json yarn.lock ./
+COPY package.json yarn.lock .yarnrc.yml ./
+COPY .yarn/releases/ ./.yarn/releases/
 RUN yarn install --immutable
 
 # Copy application code
