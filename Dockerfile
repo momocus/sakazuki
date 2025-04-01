@@ -10,11 +10,11 @@ WORKDIR /rails
 
 # Update gems and bundler
 RUN gem update --system --no-document && \
-    gem install -N bundler
+    gem install --no-document bundler
 
 # Install base packages
-RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl libjemalloc2 libvips postgresql-client && \
+RUN apt-get update --quiet && \
+    apt-get install --no-install-recommends --yes curl libjemalloc2 libvips postgresql-client && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Set production environment
@@ -28,15 +28,17 @@ ENV BUNDLE_DEPLOYMENT="1" \
 FROM base AS build
 
 # Install packages needed to build gems and node modules
-RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential libffi-dev libpq-dev libyaml-dev node-gyp pkg-config python-is-python3 && \
+RUN apt-get update --quiet && \
+    apt-get install --no-install-recommends --yes \
+    build-essential libffi-dev libpq-dev libyaml-dev node-gyp pkg-config python-is-python3 && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Install JavaScript dependencies
 ARG NODE_VERSION=22.14.0
 ARG YARN_VERSION=4.0.2
 ENV PATH=/usr/local/node/bin:$PATH
-RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz -C /tmp/ && \
+RUN curl --silent --location https://github.com/nodenv/node-build/archive/master.tar.gz | \
+    tar xz --directory=/tmp/ && \
     /tmp/node-build-master/bin/node-build "${NODE_VERSION}" /usr/local/node && \
     corepack enable && \
     corepack prepare yarn@$YARN_VERSION --activate && \
@@ -77,7 +79,7 @@ COPY --from=build /rails /rails
 # Run and own only the runtime files as a non-root user for security
 RUN groupadd --system --gid 1000 rails && \
     useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
-    chown -R 1000:1000 db log storage tmp
+    chown --recursive 1000:1000 db log storage tmp
 USER 1000:1000
 
 # Entrypoint sets up the container.
