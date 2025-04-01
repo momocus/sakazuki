@@ -2,11 +2,16 @@ name: Check
 
 on: [pull_request]
 
+permissions: {}
+
 jobs:
   check:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       # lint by sh scripts
       - name: End of File with Newline
@@ -67,3 +72,19 @@ jobs:
         run: >-
           docker build --build-arg RUBY_VERSION="$(cat .ruby-version)"
           --check --file fly.Dockerfile .
+
+      # lint by actionlint
+      - name: Run Actionlint
+        uses: raven-actions/actionlint@01fce4f43a270a612932cb1c64d40505a029f821
+
+      # lint by ghalint
+      - name: Install ghalint
+        uses: Lucky3028/install-ghalint@b623e2c9f9238b88ba13dbf30fb3b65320c42ce9
+      - name: Run ghalint
+        run: ghalint run
+
+      # lint by zizmor
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@22695119d769bdb6f7032ad67b9bca0ef8c4a174
+      - name: Run zizmor 🌈
+        run: uvx zizmor --offline --persona auditor --collect default .

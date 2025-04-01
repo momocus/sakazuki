@@ -1,6 +1,9 @@
-#!/bin/bash
+#!/bin/bash -eu
 
-cd $(cd $(dirname $0); pwd)/../ # cd to project root
+# https://qiita.com/youcune/items/fcfb4ad3d7c1edf9dc96
+# -euでエラーか未定義変数でストップする
+
+cd "$(cd "$(dirname "$0")"; pwd)/../" # cd to project root
 
 NORMAL=$(tput sgr0)
 YELLOW=$(tput setaf 3)
@@ -79,4 +82,39 @@ if type docker > /dev/null 2>&1; then
     done
 else
     warning "[SKIP] Docker Build Checks, Docker is required."
+fi
+
+# GitHub Actions
+
+message "##### Run Actionlint"
+if type actionlint > /dev/null 2>&1; then
+    actionlint
+elif type docker > /dev/null 2>&1; then
+    docker run --rm \
+           --mount type=bind,src="$(pwd)",dst=/repo,readonly \
+           --workdir /repo \
+           rhysd/actionlint:latest \
+           -color
+else
+    warning "[SKIP] Actionlint, actionlint or Docker is required."
+fi
+
+message "##### Run ghalint"
+if type ghalint > /dev/null 2>&1; then
+    ghalint run
+else
+    warning "[SKIP] ghalint, ghalint is required."
+fi
+
+message "##### Run zizmor"
+if type zizmor > /dev/null 2>&1; then
+    zizmor --offline --persona auditor --collect default .
+elif type docker > /dev/null 2>&1; then
+    docker run --rm --tty \
+           --mount type=bind,src="$(pwd)",dst=/repo,readonly \
+           --workdir /repo \
+           ghcr.io/woodruffw/zizmor:latest \
+           --offline --persona auditor --collect default .
+else
+    warning "[SKIP] zizmor, zizmor or Docker is required."
 fi

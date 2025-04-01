@@ -15,9 +15,12 @@ on:
     #        *  * * * *
     - cron: "15 3 * * 6"
 
+permissions: {}
+
 jobs:
   CodeQL:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
 
     permissions:
       # required for all workflows
@@ -26,6 +29,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
