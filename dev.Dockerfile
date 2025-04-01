@@ -72,9 +72,8 @@ COPY .yarn/releases/ ./.yarn/releases/
 RUN yarn install && yarn cache clean
 
 # Add a script to be executed every time the container starts.
-COPY entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
+COPY bin/dev.entrypoint /usr/bin/
+ENTRYPOINT ["dev.entrypoint"]
 EXPOSE 3000
 
 # Start the main process.
