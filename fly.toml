@@ -34,7 +34,7 @@ swap_size_mb = 512
   X-Forwarded-Proto = "https"
 
 [[statics]]
-  guest_path = "/app/public"
+  guest_path = "/rails/public"
   url_prefix = "/"
 
 [[vm]]
