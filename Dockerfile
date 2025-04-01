@@ -16,7 +16,8 @@ RUN gem update --system --no-document && \
 
 # Install base packages
 RUN apt-get update --quiet && \
-    apt-get install --no-install-recommends --yes curl libjemalloc2 libvips postgresql-client && \
+    apt-get install --no-install-recommends --yes \
+    curl=7.* libjemalloc2=5.* libvips42=8.* postgresql-client-13=13.* && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Set production environment
@@ -32,7 +33,8 @@ FROM base AS build
 # Install packages needed to build gems and node modules
 RUN apt-get update --quiet && \
     apt-get install --no-install-recommends --yes \
-    build-essential libffi-dev libpq-dev libyaml-dev node-gyp pkg-config python-is-python3 && \
+    build-essential=12.* libffi-dev=3.* libpq-dev=13.* libyaml-dev=0.2.* \
+    node-gyp=7.* pkg-config=0.29.* python-is-python3=3.* && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Install JavaScript dependencies
