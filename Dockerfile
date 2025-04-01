@@ -12,7 +12,7 @@ WORKDIR /rails
 
 # Update gems and bundler
 RUN gem update --system --no-document && \
-    gem install --no-document bundler
+    gem install --no-document bundler:2.6.6
 
 # Install base packages
 RUN apt-get update --quiet && \
