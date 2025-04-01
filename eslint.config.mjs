@@ -12,7 +12,7 @@ export default tseslint.config(
   // ブラウザ環境を有効化
   { languageOptions: { globals: globals.browser } },
 
-  // 必要ないイラインディレクティブをエラーにする
+  // 必要ないインラインディレクティブをエラーにする
   {
     linterOptions: {
       reportUnusedDisableDirectives: "error",
