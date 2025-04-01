@@ -30,6 +30,8 @@ ENV BUNDLE_DEPLOYMENT="1" \
 # Throw-away build stage to reduce size of final image
 FROM base AS build
 
+SHELL ["/bin/bash", "-e", "-o", "pipefail", "-c"]
+
 # Install packages needed to build gems and node modules
 RUN apt-get update --quiet && \
     apt-get install --no-install-recommends --yes \
