@@ -1,51 +1,49 @@
-# See https://docs.docker.com/engine/reference/builder/#dockerignore-file for more about ignoring files.
+# Ignore all
+*
 
-# Ignore git directory.
-/.git/
-/.gitignore
+# Add application
+!app
+!config
+!bin
+!config.ru
+!Rakefile
+!lib
+!db
+!public/*.html
+!public/robots.txt
 
-# Ignore bundler config.
-/.bundle
+# Ignore credential key
+/config/credentials/production.key
 
-# Ignore all environment files.
-/.env*
-
-# Ignore all default key files.
-/config/master.key
-/config/credentials/*.key
-
-# Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
+# Ignore all logfiles and tempfiles, but keep the directories.
 !/log/.keep
 !/tmp/.keep
 
 # Ignore pidfiles, but keep the directory.
-/tmp/pids/*
 !/tmp/pids/.keep
 
-# Ignore storage (uploaded files in development and any SQLite databases).
-/storage/*
+# Ignore storage (uploaded files in development and any SQLite databases), but keep the direcotry.
 !/storage/.keep
-/tmp/storage/*
 !/tmp/storage/.keep
 
-# Ignore assets.
-/node_modules/
-/app/assets/builds/*
+# Ignore assets, but keep the directory.
+app/assets/builds/*
 !/app/assets/builds/.keep
-/public/assets
 
-# Ignore CI service files.
-/.github
+# Add yarn files.
+!package.json
+!yarn.lock
+!.yarnrc.yml
+!.yarn/releases
 
-# Ignore Kamal files.
-/config/deploy*.yml
-/.kamal
+# Add bundler files.
+!Gemfile
+!Gemfile.lock
+!.ruby-version
 
-# Ignore development files
-/.devcontainer
+# Add development docker files.
+!entrypoint.sh
 
-# Ignore Docker-related files
-/.dockerignore
-/Dockerfile*
+# Add production build files.
+!fly.Dockerfile
+!fly.toml
