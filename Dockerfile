@@ -5,6 +5,8 @@
 ARG RUBY_VERSION=3.4.1
 FROM docker.io/library/ruby:${RUBY_VERSION}-slim-bullseye AS base
 
+LABEL fly_launch_runtime="rails"
+
 # Rails app lives here
 WORKDIR /rails
 
