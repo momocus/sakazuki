@@ -10,6 +10,7 @@ swap_size_mb = 512
 
 [build]
   dockerfile = "fly.Dockerfile"
+  build-target = "production"
 
 [deploy]
   release_command = "./bin/rails db:prepare"
