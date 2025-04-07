@@ -39,7 +39,7 @@ services:
       REMOTE_DRIVER_PORT: 4444
     build:
       context: .
-      dockerfile: dev.Dockerfile
+      target: development
       args:
         - RUBY_VERSION
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
