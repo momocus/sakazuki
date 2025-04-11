@@ -42,6 +42,7 @@ app/assets/builds/*
 !.ruby-version
 
 # Add development docker files.
+!Procfile.dev
 
 # Add production build files.
 !Dockerfile
