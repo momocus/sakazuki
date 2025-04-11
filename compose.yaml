@@ -41,23 +41,13 @@ services:
       target: development
       args:
         - RUBY_VERSION
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    tty: true
+    command: bash -c "rm -f tmp/pids/server.pid && bin/dev"
     ports:
       - "3000:3000"
     depends_on:
       - db
       - selenium
-  js:
-    <<: *web
-    tty: true
-    ports:
-      - 3000
-    command: "yarn build --watch"
-  css:
-    <<: *web
-    ports:
-      - 3000
-    command: "yarn build:css --watch"
   selenium:
     image: selenium/standalone-firefox:latest
     shm_size: 512m
