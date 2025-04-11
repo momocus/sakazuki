@@ -27,7 +27,7 @@
 - Bundler
 - Node.js >= 22
 - PostgreSQL >= 12.0
-- ImageMagick >= 6.9
+- libvips (devlopment only)
 
 ## Setup
 

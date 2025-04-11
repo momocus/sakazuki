@@ -2,7 +2,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   if Rails.env.production?
     include Cloudinary::CarrierWave
   else
-    include CarrierWave::MiniMagick
+    include CarrierWave::Vips
     storage :file
   end
 

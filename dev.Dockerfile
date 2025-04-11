@@ -12,7 +12,7 @@ RUN <<EOF
   apt-get update -q
   apt-get upgrade -y
   DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
-    curl=7.74.* build-essential=12.9 gnupg2=2.2.* imagemagick=8:6.9.*
+    curl=7.74.* build-essential=12.9 gnupg2=2.2.* libvips42=8.*
 EOF
 
 # Install posgresql-client
