@@ -18,17 +18,17 @@ services:
   web: &web
     image: sakazuki
     volumes:
-      - ./app:/sakazuki/app:cached
-      - ./config:/sakazuki/config:cached
-      - ./bin:/sakazuki/bin:cached
-      - ./config.ru:/sakazuki/config.ru:cached
-      - ./Rakefile:/sakazuki/Rakefile:cached
-      - ./lib:/sakazuki/lib:cached
-      - ./db:/sakazuki/db:cached
-      - ./spec:/sakazuki/spec:cached
-      - ./public:/sakazuki/public:cached
-      - uploads:/sakazuki/app/public/uploads:consistent
-      - builds:/sakazuki/app/assets/builds:consistent
+      - ./app:/rails/app:cached
+      - ./config:/rails/config:cached
+      - ./bin:/rails/bin:cached
+      - ./config.ru:/rails/config.ru:cached
+      - ./Rakefile:/rails/Rakefile:cached
+      - ./lib:/rails/lib:cached
+      - ./db:/rails/db:cached
+      - ./spec:/rails/spec:cached
+      - ./public:/rails/public:cached
+      - uploads:/rails/app/public/uploads:consistent
+      - builds:/rails/app/assets/builds:consistent
     environment:
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: password
