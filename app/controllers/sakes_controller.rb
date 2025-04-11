@@ -181,7 +181,7 @@ class SakesController < ApplicationController
                   :kobo, :alcohol, :aminosando, :season,
                   :warimizu, :moto, :seimai_buai, :roka,
                   :shibori, :note, :bottle_level, :hiire,
-                  :size, :price, :rating)
+                  :size, :price, :rating, photos: [])
   end
 
   def store_photos
