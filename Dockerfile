@@ -108,16 +108,20 @@ CMD ["./bin/rails", "server"]
 # Final stage for development image
 FROM build-base AS development
 
-# Copy application code
-COPY . .
-
 # Install application gems
+COPY Gemfile Gemfile.lock .ruby-version ./
 RUN bundle install && \
+    gem install foreman:0.88.1 && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile --gemfile
 
 # Install node modules
+COPY package.json yarn.lock .yarnrc.yml ./
+COPY .yarn/releases/ ./.yarn/releases/
 RUN yarn install && yarn cache clean
+
+# Copy application code
+COPY . .
 
 # Entrypoint sets up the container.
 ENTRYPOINT ["/rails/bin/dev.docker-entrypoint"]
