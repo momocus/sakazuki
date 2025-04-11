@@ -50,7 +50,7 @@ class SakesController < ApplicationController
 
   # POST /sakes
   def create
-    @sake = Sake.new(sake_params)
+    @sake = Sake.new(sake_params.except(:photos))
 
     if @sake.save
       create_datetime
@@ -64,7 +64,7 @@ class SakesController < ApplicationController
   # PATCH/PUT /sakes/1
   # rubocop:disable Metrics/MethodLength
   def update
-    if @sake.update(sake_params)
+    if @sake.update(sake_params.except(:photos))
       delete_photos
       store_photos
 
