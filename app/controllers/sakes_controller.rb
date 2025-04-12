@@ -68,7 +68,7 @@ class SakesController < ApplicationController
       delete_photos
       store_photos
 
-      if @sake.saved_changes?
+      if @sake.saved_changes? || delete_photos? || store_photos?
         update_datetime
         flash_after_update
       end
@@ -184,9 +184,17 @@ class SakesController < ApplicationController
                   :size, :price, :rating, photos: [])
   end
 
+  def store_photos?
+    sake_params[:photos].present?
+  end
+
   def store_photos
     photos = sake_params[:photos]
     photos&.each { |photo| @sake.photos.create(image: photo) }
+  end
+
+  def delete_photos?
+    @sake.photos.any? { |photo| params[photo.checkbox_name].present? }
   end
 
   def delete_photos
