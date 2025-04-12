@@ -12,7 +12,7 @@ RUN <<EOF
   apt-get update -q
   apt-get upgrade -y
   DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
-    curl=7.74.* build-essential=12.9 gnupg2=2.2.* imagemagick=8:6.9.*
+    curl=7.74.* build-essential=12.9 gnupg2=2.2.* libvips42=8.*
 EOF
 
 # Install posgresql-client
@@ -38,9 +38,9 @@ EOF
 
 # Install node
 RUN <<EOF
-  curl -sSL https://deb.nodesource.com/setup_18.x | bash -
+  curl -sSL https://deb.nodesource.com/setup_22.x | bash -
   apt-get update -q
-  DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends nodejs=18.*
+  DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends nodejs=22.*
   apt-get clean
   rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/* /tmp/* /var/tmp/*
   truncate -s 0 /var/log/**/*log

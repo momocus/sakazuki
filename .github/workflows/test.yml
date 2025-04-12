@@ -2,13 +2,16 @@ name: Test
 
 on: [pull_request]
 
+permissions: {}
+
 jobs:
   test:
     runs-on: ubuntu-latest
-
+    timeout-minutes: 5
     services:
       postgres:
-        image: postgres:13
+        # postgres:13.21-bookworm
+        image: postgres@sha256:9b6a9504a4b804c8f0cf52f4d16477289f8e1dfa269a689d778feaca6fbe1f4f
         env:
           POSTGRES_USERNAME: postgres
           POSTGRES_PASSWORD: password
@@ -22,13 +25,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Install ImageMagick
+        with:
+          persist-credentials: false
+      - name: Install libvips
         run: |
           sudo apt-get update
-          sudo apt-get install --yes imagemagick
+          sudo apt-get install --yes libvips
       - uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: "22"
           cache: "yarn"
       - name: Install Yarn Dependencies
         run: yarn workspaces focus --all --production
@@ -60,7 +65,9 @@ jobs:
         run: bundle exec rspec
 
       - name: Upload code coverage
-        uses: codecov/codecov-action@b9fd7d16f6d7d1b5d2bec1a2887e65ceed900238
+        uses: codecov/codecov-action@0565863a31f2c772f9f0395002a31e3f06189574
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Keep screenshots from failed system tests
         uses: actions/upload-artifact@v4

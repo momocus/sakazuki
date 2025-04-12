@@ -100,7 +100,8 @@ h1 {
   @extend .text-danger;
   @extend .fs-1;
 
-  content: "✖";
+  content: "✕";
+  font-weight: bold;
   display: block;
   margin-top: -3ex;
   margin-left: 1ex;

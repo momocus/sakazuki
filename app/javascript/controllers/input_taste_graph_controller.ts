@@ -9,8 +9,11 @@ import type {
 // Connects to data-controller="input-taste-graph"
 export default class InputTasteGraphController extends Controller<HTMLDivElement> {
   static targets = ["canvas", "taste", "aroma"]
+
   declare readonly canvasTarget: HTMLCanvasElement
+
   declare readonly tasteTarget: HTMLInputElement
+
   declare readonly aromaTarget: HTMLInputElement
 
   connect() {

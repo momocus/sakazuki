@@ -25,16 +25,15 @@
 
 - Ruby = (See .ruby-version file)
 - Bundler
-- Yarn🐈 >= 1.22.4
-- Node.js >= 12.20.1
+- Node.js >= 22
 - PostgreSQL >= 12.0
-- ImageMagick >= 6.9
+- libvips (devlopment only)
 
 ## Setup
 
 - 依存関係のインストール
   - `bundle install`
-  - `yarn install`
+  - `corepack enable && yarn install`
 - .env ファイルの作成
   - PostgreSQL の設定
   - Google AdSense のクライアント ID の設定（Google AdSense を使う場合）
