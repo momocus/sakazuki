@@ -42,6 +42,8 @@
 cp dotenv.example .env
 ```
 
+aaa
+
 ```shell
 # .env
 POSTGRES_USERNAME=[YOUR POSTGRESQL NAME]
