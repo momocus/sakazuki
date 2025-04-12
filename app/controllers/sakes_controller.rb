@@ -185,7 +185,7 @@ class SakesController < ApplicationController
   end
 
   def store_photos
-    photos = params[:sake][:photos]
+    photos = sake_params[:photos]
     photos&.each { |photo| @sake.photos.create(image: photo) }
   end
 
