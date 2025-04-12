@@ -12,10 +12,13 @@ export default class ShowTasteGraphController extends Controller<HTMLCanvasEleme
     taste: String,
     aroma: String,
   }
+
   declare tasteValue: string
+
   declare aromaValue: string
 
   static targets = ["canvas"]
+
   declare readonly canvasTarget: HTMLCanvasElement
 
   connect() {
