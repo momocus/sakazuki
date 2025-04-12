@@ -12,7 +12,7 @@ class Photo < ApplicationRecord
   belongs_to :sake
   mount_uploader :image, ImageUploader
 
-  def chackbox_name
+  def checkbox_name
     "photo_delete_#{id}"
   end
 

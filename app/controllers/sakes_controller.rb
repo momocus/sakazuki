@@ -191,7 +191,7 @@ class SakesController < ApplicationController
 
   def delete_photos
     @sake.photos.each do |photo|
-      photo.destroy! if params[photo.chackbox_name] == "delete"
+      photo.destroy! if params[photo.checkbox_name] == "delete"
     end
   end
 
