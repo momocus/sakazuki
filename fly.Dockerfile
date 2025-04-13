@@ -1,144 +1,94 @@
-# syntax = docker/dockerfile:experimental
+# syntax=docker/dockerfile:1
+# check=error=true
 
-# Dockerfile used to build a deployable image for a Rails application.
-# Adjust as required.
-#
-# Common adjustments you may need to make over time:
-#  * Modify version numbers for Ruby, Bundler, and other products.
-#  * Add library packages needed at build time for your gems, node modules.
-#  * Add deployment packages needed by your application
-#  * Add (often fake) secrets needed to compile your assets
-
-#######################################################################
-
-# Learn more about the chosen Ruby stack, Fullstaq Ruby, here:
-#   https://github.com/evilmartians/fullstaq-ruby-docker.
-#
-# We recommend using the highest patch level for better security and
-# performance.
-
-# GitHub Actionsで.ruby_versionが参照されるため、3.3が呼び出されることはない
-ARG RUBY_VERSION=3.3
-ARG VARIANT=jemalloc-bullseye-slim
-
-FROM quay.io/evl.ms/fullstaq-ruby:${RUBY_VERSION}-${VARIANT} AS base
-
-SHELL ["/bin/bash", "-e", "-o", "pipefail", "-c"]
+# Make sure RUBY_VERSION matches the Ruby version in .ruby-version
+ARG RUBY_VERSION=3.4.1
+FROM docker.io/library/ruby:${RUBY_VERSION}-slim-bullseye AS base
 
 # hadolint ignore=DL3048
 LABEL fly_launch_runtime="rails"
 
-ARG NODE_VERSION=22.*
-ARG YARN_VERSION=4.7.0
-ARG BUNDLER_VERSION=2.6.5
+# Rails app lives here
+WORKDIR /rails
 
-ARG RAILS_ENV=production
-ENV RAILS_ENV=${RAILS_ENV}
+# Update gems and bundler
+RUN gem update --system --no-document && \
+    gem install --no-document bundler:2.6.6
 
-ENV RAILS_SERVE_STATIC_FILES=true
-ENV RAILS_LOG_TO_STDOUT=true
+# Install base packages
+RUN apt-get update --quiet && \
+    apt-get install --no-install-recommends --yes \
+    curl=7.* libjemalloc2=5.* libvips42=8.* postgresql-client-13=13.* && \
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
-ARG BUNDLE_WITHOUT=development:test
-ARG BUNDLE_PATH=vendor/bundle
-ENV BUNDLE_PATH=${BUNDLE_PATH}
-ENV BUNDLE_WITHOUT=${BUNDLE_WITHOUT}
+# Set production environment
+ENV BUNDLE_DEPLOYMENT="1" \
+    BUNDLE_PATH="/usr/local/bundle" \
+    BUNDLE_WITHOUT="development:test" \
+    RAILS_ENV="production"
 
-RUN mkdir /app
-WORKDIR /app
-RUN mkdir -p tmp/pids
 
-RUN curl https://get.volta.sh | bash
-ENV VOLTA_HOME=/root/.volta
-ENV PATH=$VOLTA_HOME/bin:/usr/local/bin:$PATH
-RUN volta install node@${NODE_VERSION} yarn@${YARN_VERSION} && \
-    gem update --system --no-document && \
-    gem install -N bundler -v ${BUNDLER_VERSION}
+# Throw-away build stage to reduce size of final image
+FROM base AS build
 
-#######################################################################
+SHELL ["/bin/bash", "-e", "-o", "pipefail", "-c"]
 
-# install packages only needed at build time
+# Install packages needed to build gems and node modules
+RUN apt-get update --quiet && \
+    apt-get install --no-install-recommends --yes \
+    build-essential=12.* libffi-dev=3.* libpq-dev=13.* libyaml-dev=0.2.* \
+    node-gyp=7.* pkg-config=0.29.* python-is-python3=3.* && \
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
-FROM base AS build_deps
+# Install JavaScript dependencies
+ARG NODE_VERSION=22.14.0
+ARG YARN_VERSION=1.22.22
+ENV PATH=/usr/local/node/bin:$PATH
+RUN curl --silent --location https://github.com/nodenv/node-build/archive/master.tar.gz | \
+    tar xz --directory=/tmp/ && \
+    /tmp/node-build-master/bin/node-build "${NODE_VERSION}" /usr/local/node && \
+    npm install --global yarn@$YARN_VERSION && \
+    rm -rf /tmp/node-build-master
 
-ARG BUILD_PACKAGES="build-essential=12.* libpq-dev=13.* libyaml-dev=0.2.*"
-ENV BUILD_PACKAGES=${BUILD_PACKAGES}
-
-# hadolint ignore=DL3008
-RUN --mount=type=cache,id=dev-apt-cache,sharing=locked,target=/var/cache/apt \
-    --mount=type=cache,id=dev-apt-lib,sharing=locked,target=/var/lib/apt \
-    apt-get update -q && \
-    apt-get install --no-install-recommends -y ${BUILD_PACKAGES} \
-    && rm -rf /var/lib/apt/lists /var/cache/apt/archives
-
-#######################################################################
-
-# install gems
-
-FROM build_deps AS gems
-
+# Install application gems
 COPY Gemfile Gemfile.lock .ruby-version ./
 RUN bundle install && \
-    rm -rf vendor/bundle/ruby/*/cache
+    rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
+    bundle exec bootsnap precompile --gemfile
 
-#######################################################################
-
-# install node modules
-
-FROM build_deps AS node_modules
-
+# Install node modules
 COPY package.json yarn.lock .yarnrc.yml ./
 COPY .yarn/releases/ ./.yarn/releases/
-RUN yarn workspaces focus --all --production
+RUN yarn install --immutable
 
-#######################################################################
-
-# install deployment packages
-
-FROM base
-
-ARG DEPLOY_PACKAGES="postgresql-client-13=13.*"
-ENV DEPLOY_PACKAGES=${DEPLOY_PACKAGES}
-
-# hadolint ignore=DL3008
-RUN --mount=type=cache,id=prod-apt-cache,sharing=locked,target=/var/cache/apt \
-    --mount=type=cache,id=prod-apt-lib,sharing=locked,target=/var/lib/apt \
-    apt-get update -q && \
-    apt-get install --no-install-recommends -y \
-    ${DEPLOY_PACKAGES} \
-    && rm -rf /var/lib/apt/lists /var/cache/apt/archives
-
-# copy installed gems
-COPY --from=gems /app /app
-COPY --from=gems /usr/lib/fullstaq-ruby/versions /usr/lib/fullstaq-ruby/versions
-COPY --from=gems /usr/local/bundle /usr/local/bundle
-
-# copy installed node modules
-COPY --from=node_modules /app/node_modules /app/node_modules
-
-#######################################################################
-
-# Deploy your application
+# Copy application code
 COPY . .
 
-# Adjust binstubs to run on Linux and set current working directory
-RUN chmod +x /app/bin/* && \
-    sed -i 's/ruby.exe/ruby/' /app/bin/* && \
-    sed -i '/^#!/aDir.chdir File.expand_path("..", __dir__)' /app/bin/*
+# Precompile bootsnap code for faster boot times
+RUN bundle exec bootsnap precompile app/ lib/
 
-# The following enable assets to precompile on the build server.  Adjust
-# as necessary.  If no combination works for you, see:
-# https://fly.io/docs/rails/getting-started/existing/#access-to-environment-variables-at-build-time
-ENV SECRET_KEY_BASE=1
-# ENV AWS_ACCESS_KEY_ID=1
-# ENV AWS_SECRET_ACCESS_KEY=1
+# Precompiling assets for production without requiring secret RAILS_MASTER_KEY
+RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile && \
+    rm -rf node_modules
 
-# Run build task defined in lib/tasks/fly.rake
-ARG BUILD_COMMAND="bin/rails fly:build"
-RUN ${BUILD_COMMAND}
 
-# Default server start instructions.  Generally Overridden by fly.toml.
-ENV PORT=8080
-ARG SERVER_COMMAND="bin/rails fly:server"
-ENV SERVER_COMMAND=${SERVER_COMMAND}
-# hadolint ignore=DL3025
-CMD ${SERVER_COMMAND}
+# Final stage for app image
+FROM base
+
+# Copy built artifacts: gems, application
+COPY --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"
+COPY --from=build /rails /rails
+
+# Run and own only the runtime files as a non-root user for security
+RUN groupadd --system --gid 1000 rails && \
+    useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
+    chown --recursive 1000:1000 db log storage tmp
+USER 1000:1000
+
+# Entrypoint sets up the container.
+ENTRYPOINT ["/rails/bin/fly.docker-entrypoint"]
+
+# Start the server by default, this can be overwritten at runtime
+ENV PORT="8080"
+EXPOSE 8080
+CMD ["./bin/rails", "server"]
