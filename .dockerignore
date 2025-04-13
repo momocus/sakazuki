@@ -42,8 +42,8 @@ app/assets/builds/*
 !.ruby-version
 
 # Add development docker files.
-!entrypoint.sh
+!Procfile.dev
 
 # Add production build files.
-!fly.Dockerfile
+!Dockerfile
 !fly.toml

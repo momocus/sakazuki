@@ -47,23 +47,9 @@ jobs:
         run: bundle exec brakeman --no-pager --format github --run-all-checks
 
       # lint by hadolint
-      - name: Run Hadolint for dev.Dockerfile
+      - name: Run Hadolint
         uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf
-        with:
-          dockerfile: dev.Dockerfile
-      - name: Run Hadolint for fly.Dockerfile
-        uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf
-        with:
-          dockerfile: fly.Dockerfile
 
       # lint by docker build checks
-      - name: Run Docker Build Checks for dev.Dockerfile
-        # > 複数行における改行をスペースに変換する
-        # - ブロック最後の改行を削除
-        run: >-
-          docker build --build-arg RUBY_VERSION="$(cat .ruby-version)"
-          --check --file dev.Dockerfile .
-      - name: Run Docker Build Checks for fly.Dockerfile
-        run: >-
-          docker build --build-arg RUBY_VERSION="$(cat .ruby-version)"
-          --check --file fly.Dockerfile .
+      - name: Run Docker Build Checks
+        run: docker build --build-arg RUBY_VERSION="$(cat .ruby-version)" --check .
