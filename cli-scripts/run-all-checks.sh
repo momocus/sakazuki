@@ -54,7 +54,7 @@ message "##### Run ERB Lint"
 bundle exec erb_lint --lint-all
 
 message "##### Run Brakeman"
-bundle exec brakeman --run-all-checks
+bundle exec brakeman --no-pager --run-all-checks
 
 # docker
 
