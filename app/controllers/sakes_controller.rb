@@ -4,6 +4,7 @@ class SakesController < ApplicationController
   before_action :signed_in_user, only: %i[new create edit update destroy]
 
   include SakesHelper
+  include Sakes::Search
 
   # GET /sakes
   # rubocop:disable Metrics/AbcSize
@@ -104,17 +105,6 @@ class SakesController < ApplicationController
   end
 
   private
-
-  def to_multi_search!(query)
-    words = query.delete(:all_text_cont)
-    query[:groupings] = separate_words(words)
-  end
-
-  def separate_words(words)
-    # 全角空白または半角空白で区切ることを許可
-    # { :name_cont => "" }があり得るがransackがSQL変換で削除するのでOK
-    words.split(/[ 　]/).map { |word| { all_text_cont: word } }
-  end
 
   # コピー機能の対象キーかどうか
   #
