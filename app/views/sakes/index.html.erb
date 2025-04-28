@@ -1,7 +1,5 @@
 <%= render(partial: "float_button", locals: { sake: @sake }) %>
 
-<%# raise %>
-
 <%= turbo_frame_tag("sakes", target: "_top", data: { turbo_action: :advance }) do %>
   <div class="row row-cols-1 g-3">
     <div class="col">
