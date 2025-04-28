@@ -85,6 +85,6 @@ jobs:
 
       # lint by zizmor
       - name: Install the latest version of uv
-        uses: astral-sh/setup-uv@22695119d769bdb6f7032ad67b9bca0ef8c4a174
+        uses: astral-sh/setup-uv@c7f87aa956e4c323abf06d5dec078e358f6b4d04
       - name: Run zizmor 🌈
         run: uvx zizmor --offline --persona auditor --collect default .
