@@ -39,7 +39,7 @@ jobs:
 
       # lint by rubocop
       - name: Set up Ruby
-        uses: ruby/setup-ruby@1a615958ad9d422dd932dc1d5823942ee002799f
+        uses: ruby/setup-ruby@eaecf785f6a34567a6d97f686bbb7bccc1ac1e5c
         with:
           bundler-cache: true
       - name: Run Rubocop
