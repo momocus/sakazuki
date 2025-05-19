@@ -23,7 +23,7 @@ jobs:
         run: yarn install --immutable
 
       - name: Set up Ruby
-        uses: ruby/setup-ruby@1a615958ad9d422dd932dc1d5823942ee002799f
+        uses: ruby/setup-ruby@c95ae3725f6ebdd095f2bd19caed7ebc14435ba5
         with:
           bundler-cache: true
 
