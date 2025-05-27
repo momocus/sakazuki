@@ -34,7 +34,8 @@
                     <div class="col-6 col-lg-2">
                       <div class="form-check form-check-inline m-0 p-0 select-delete-photos">
                         <%= check_box_tag(photo.checkbox_name, "delete", nil, class: "form-check-input") %>
-                        <label class="form-check-label" for="<%= photo.checkbox_name %>">
+                        <label class="form-check-label" for="<%= photo.checkbox_name %>"
+                          data-testid="<%= photo.checkbox_name %>">
                           <%= cl_image_tag(photo.image.thumb.url, class: "img-thumbnail") %>
                         </label>
                       </div>
