@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Flash Message" do
   let(:user) { create(:user) }
-  let(:sake) { create(:sake) }
+  let(:sake) { sake_with_photos }
 
   context "without login" do
     # sake
@@ -77,6 +77,30 @@ RSpec.describe "Flash Message" do
         visit sake_path(sake.id)
         click_link("copy_sake")
         expect(page).to have_selector(:test_id, "flash_message")
+      end
+    end
+
+    # 画像
+    describe "add photo to sake", :js do
+      it "has flash message" do
+        visit edit_sake_path(sake.id)
+        # ファイルアップロードフィールドに画像を添付
+        attach_file("sake_photos", Rails.root.join("spec/system/files/sake_photo1.avif"))
+        click_button("form_submit")
+        expect(page).to have_selector(:test_id, "flash_message")
+        # expect(page).to have_content("#{sake.name} を更新しました。")
+      end
+    end
+
+    describe "delete photo from sake", :js do
+      it "has flash message" do
+        visit edit_sake_path(sake.id)
+        # チェックボックスにチェックを入れて削除
+        photo = sake.photos.first
+        check(photo.checkbox_name)
+        click_button("form_submit")
+        expect(page).to have_selector(:test_id, "flash_message")
+        # expect(page).to have_content("#{sake.name} を更新しました。")
       end
     end
 
