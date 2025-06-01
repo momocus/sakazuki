@@ -19,17 +19,17 @@ services:
   web: &web
     image: sakazuki
     volumes:
-      - ./app:/sakazuki/app:cached
-      - ./config:/sakazuki/config:cached
-      - ./bin:/sakazuki/bin:cached
-      - ./config.ru:/sakazuki/config.ru:cached
-      - ./Rakefile:/sakazuki/Rakefile:cached
-      - ./lib:/sakazuki/lib:cached
-      - ./db:/sakazuki/db:cached
-      - ./spec:/sakazuki/spec:cached
-      - ./public:/sakazuki/public:cached
-      - uploads:/sakazuki/app/public/uploads:consistent
-      - builds:/sakazuki/app/assets/builds:consistent
+      - ./app:/rails/app:cached
+      - ./config:/rails/config:cached
+      - ./bin:/rails/bin:cached
+      - ./config.ru:/rails/config.ru:cached
+      - ./Rakefile:/rails/Rakefile:cached
+      - ./lib:/rails/lib:cached
+      - ./db:/rails/db:cached
+      - ./spec:/rails/spec:cached
+      - ./public:/rails/public:cached
+      - uploads:/rails/app/public/uploads:consistent
+      - builds:/rails/app/assets/builds:consistent
     environment:
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: password
@@ -39,26 +39,16 @@ services:
       REMOTE_DRIVER_PORT: 4444
     build:
       context: .
-      dockerfile: dev.Dockerfile
+      target: development
       args:
         - RUBY_VERSION
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    tty: true
+    command: bash -c "rm -f tmp/pids/server.pid && bin/dev"
     ports:
       - "3000:3000"
     depends_on:
       - db
       - selenium
-  js:
-    <<: *web
-    tty: true
-    ports:
-      - 3000
-    command: "yarn build --watch"
-  css:
-    <<: *web
-    ports:
-      - 3000
-    command: "yarn build:css --watch"
   selenium:
     image: selenium/standalone-firefox:latest
     shm_size: 512m

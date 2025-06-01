@@ -1,5 +1,6 @@
 require "active_support/core_ext/integer/time"
 
+# rubocop:disable Metrics/BlockLength
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -21,7 +22,7 @@ Rails.application.configure do
   # config.require_master_key = true
 
   # Disable serving static files from `public/`, relying on NGINX/Apache to do so instead.
-  # config.public_file_server.enabled = false
+  config.public_file_server.enabled = false
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = "http://assets.example.com"
@@ -75,13 +76,15 @@ Rails.application.configure do
   # メール設定
   config.action_mailer.default_url_options = { host: "sakazuki.fly.dev" }
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    user_name: Rails.application.credentials.mail[:user_name],
-    address: Rails.application.credentials.mail[:smtp],
-    password: Rails.application.credentials.mail[:password],
-    port: Rails.application.credentials.mail[:port],
-    authentication: "login",
-  }
+  if Rails.application.credentials.mail.present?
+    config.action_mailer.smtp_settings = {
+      user_name: Rails.application.credentials.mail[:user_name],
+      address: Rails.application.credentials.mail[:smtp],
+      password: Rails.application.credentials.mail[:password],
+      port: Rails.application.credentials.mail[:port],
+      authentication: "login",
+    }
+  end
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -105,3 +108,4 @@ Rails.application.configure do
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 end
+# rubocop:enable Metrics/BlockLength

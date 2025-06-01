@@ -94,6 +94,9 @@ group :development do
   # Auto annotation to schema
   gem "annotate"
 
+  # Generate dockerfile for fly deploy
+  gem "dockerfile-rails"
+
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
 
