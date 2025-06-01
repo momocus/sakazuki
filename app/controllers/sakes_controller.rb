@@ -4,7 +4,7 @@ class SakesController < ApplicationController
   before_action :signed_in_user, only: %i[new create edit update destroy]
 
   include SakesHelper
-  include Sakes::Search
+  include SakesSearch
 
   # Viewで使える用に宣言する
   helper_method :include_empty?
