@@ -7,7 +7,8 @@ volumes:
     driver: local
 services:
   db:
-    image: postgres:13
+    # postgres:13.21-bookworm
+    image: postgres@sha256:9b6a9504a4b804c8f0cf52f4d16477289f8e1dfa269a689d778feaca6fbe1f4f
     volumes:
       - db_storage:/var/lib/postgresql/data
     environment:
