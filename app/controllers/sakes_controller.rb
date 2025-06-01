@@ -5,6 +5,7 @@ class SakesController < ApplicationController
 
   include SakesHelper
   include SakesSearch
+  include SakesPhotos
 
   # Viewで使える用に宣言する
   helper_method :include_empty?
@@ -162,17 +163,6 @@ class SakesController < ApplicationController
                   :warimizu, :moto, :seimai_buai, :roka,
                   :shibori, :note, :bottle_level, :hiire,
                   :size, :price, :rating, photos: [])
-  end
-
-  def store_photos
-    photos = sake_params[:photos]
-    photos&.each { |photo| @sake.photos.create(image: photo) }
-  end
-
-  def delete_photos
-    @sake.photos.each do |photo|
-      photo.destroy! if params[photo.chackbox_name] == "delete"
-    end
   end
 
   # update後のリダイレクト処理
