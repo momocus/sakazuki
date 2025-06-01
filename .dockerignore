@@ -22,7 +22,7 @@
 # Ignore pidfiles, but keep the directory.
 !/tmp/pids/.keep
 
-# Ignore storage (uploaded files in development and any SQLite databases), but keep the direcotry.
+# Ignore storage (uploaded files in development and any SQLite databases), but keep the directory.
 !/storage/.keep
 !/tmp/storage/.keep
 
