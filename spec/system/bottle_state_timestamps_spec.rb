@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Bottle Level Datetimes" do
+RSpec.describe "Bottle State Timestamps" do
   let(:user) { create(:user) }
 
   delta = 5.seconds
