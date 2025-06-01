@@ -5,6 +5,7 @@ class SakesController < ApplicationController
 
   include SakesHelper
   include SakesSearch
+  include SakesPhotos
 
   # Viewで使える用に宣言する
   helper_method :include_empty?
@@ -55,7 +56,7 @@ class SakesController < ApplicationController
 
     if @sake.save
       create_datetime
-      store_photos
+      store_photos(@sake, sake_params)
       redirect_to(@sake, status: :see_other, flash: { create_sake: { name: @sake.name, id: @sake.id } })
     else
       render(:new, status: :unprocessable_entity)
@@ -66,10 +67,11 @@ class SakesController < ApplicationController
   # rubocop:disable Metrics/MethodLength
   def update
     if @sake.update(sake_params.except(:photos))
-      delete_photos
-      store_photos
 
-      if @sake.saved_changes? || delete_photos? || store_photos?
+      delete_photos(@sake, params)
+      store_photos(@sake, sake_params)
+
+      if @sake.saved_changes? || delete_photos?(@sake, params) || store_photos?(sake_params)
         update_datetime
         flash_after_update
       end
@@ -160,37 +162,6 @@ class SakesController < ApplicationController
         :note, :bottle_level, :hiire, :size, :price, :rating, { photos: [] }
       ],
     )
-  end
-
-  # 写真が追加されているかどうかを判定する
-  #
-  # @return [Boolean] 写真が追加されていればtrueを返す
-  def store_photos?
-    sake_params[:photos].present?
-  end
-
-  # 酒に紐づく写真を保存する
-  #
-  # @note sake_paramsから写真を取り出して、酒に紐づく写真として保存する
-  def store_photos
-    photos = sake_params[:photos]
-    photos&.each { |photo| @sake.photos.create(image: photo) }
-  end
-
-  # 写真が削除されているかどうかを判定する
-  #
-  # @return [Boolean] 削除対象の写真があればtrueを返す
-  def delete_photos?
-    @sake.photos.any? { |photo| params[photo.checkbox_name].present? }
-  end
-
-  # 酒に紐づく写真を削除する
-  #
-  # @note 各写真に対応するチェックボックスが「delete」にチェックされていた場合、その写真を削除する
-  def delete_photos
-    @sake.photos.each do |photo|
-      photo.destroy! if params[photo.checkbox_name] == "delete"
-    end
   end
 
   # update後のリダイレクト処理
