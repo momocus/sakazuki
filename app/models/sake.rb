@@ -42,6 +42,8 @@
 #
 
 class Sake < ApplicationRecord
+  include BottleStateTimestampable
+
   has_many :photos, dependent: :destroy
   enum :bottle_level, { sealed: 0, opened: 1, empty: 2 }
   enum :hiire, { unknown: 0, namanama: 1, mae_hiire: 2, ato_hiire: 3, nido_hiire: 4, ikkai_hiire: 5 }, prefix: true
