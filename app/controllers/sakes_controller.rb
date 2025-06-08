@@ -13,7 +13,7 @@ class SakesController < ApplicationController
   def index
     # コピーとnil防止
     query = initialize_query(params[:q])
-    # avlデフォルトは空き瓶なし
+    # デフォルトは空き瓶なし
     to_default_bottle!(query) unless include_empty?(query)
     # 空白区切りでandサーチ
     to_multi_search!(query) if query[:all_text_cont]
