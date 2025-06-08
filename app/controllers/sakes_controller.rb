@@ -4,16 +4,18 @@ class SakesController < ApplicationController
   before_action :signed_in_user, only: %i[new create edit update destroy]
 
   include SakesHelper
+  include SakesSearch
+
+  # Viewで使える用に宣言する
+  helper_method :include_empty?
 
   # GET /sakes
-  # rubocop:disable Metrics/AbcSize
   def index
-    query = params[:q] ? params[:q].deep_dup : {} # avoid nil
-
-    # default, not empty bottle
-    query[:bottle_level_not_eq] = Sake.bottle_levels["empty"] unless include_empty?(query)
-
-    # multiple words search
+    # コピーとnil防止
+    query = initialize_query(params[:q])
+    # デフォルトは空き瓶なし
+    to_default_bottle!(query) unless include_empty?(query)
+    # 空白区切りでandサーチ
     to_multi_search!(query) if query[:all_text_cont]
 
     # Ransack search and sort
@@ -24,7 +26,6 @@ class SakesController < ApplicationController
     # Kaminari pager
     @sakes = @sakes.page(params[:page]) if include_empty?(query)
   end
-  # rubocop:enable Metrics/AbcSize
 
   # GET /sakes/1
   def show; end
@@ -87,16 +88,6 @@ class SakesController < ApplicationController
     redirect_to(sakes_url, status: :see_other, flash: { delete_sake: name })
   end
 
-  # Viewで使える用に宣言する
-  helper_method :include_empty?
-  # 空き瓶を表示するかどうかを調べる
-  #
-  # @param query [Hash{Symbol => String}] params[:q]に格納されたRansackのクエリ
-  # @return [Boolean] 空き瓶も込みで表示するならtrueを返す
-  def include_empty?(query)
-    !query.nil? and query[:bottle_level_not_eq] == Sake::BOTTOM_BOTTLE.to_s
-  end
-
   # GET /sakes
   def menu
     query = { bottle_level_not_eq: Sake.bottle_levels["empty"], s: "id desc" }
@@ -104,17 +95,6 @@ class SakesController < ApplicationController
   end
 
   private
-
-  def to_multi_search!(query)
-    words = query.delete(:all_text_cont)
-    query[:groupings] = separate_words(words)
-  end
-
-  def separate_words(words)
-    # 全角空白または半角空白で区切ることを許可
-    # { :name_cont => "" }があり得るがransackがSQL変換で削除するのでOK
-    words.split(/[ 　]/).map { |word| { all_text_cont: word } }
-  end
 
   # コピー機能の対象キーかどうか
   #
