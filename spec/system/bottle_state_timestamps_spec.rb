@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "Bottle State Timestamps" do
   let(:user) { create(:user) }
 
-  delta = 5.seconds
+  let(:delta) { 5.seconds }
 
   # 引数で指定したbottle_levelの酒を登録する
   def create_sake(bottle_level)
