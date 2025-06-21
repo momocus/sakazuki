@@ -116,13 +116,13 @@ class Sake < ApplicationRecord
   end
 
   # 酒が未開封か
-  # @return [Boolean] 酒が未開封ならture、さもなくばfalse
+  # @return [Boolean] 酒が未開封ならtrue、さもなくばfalse
   def sealed?
     bottle_level == "sealed"
   end
 
   # 酒が開封されてまだ残っているか
-  # @return [Boolean] 酒が開封済みで中身が残っていたらture、未開封や空ならfalse
+  # @return [Boolean] 酒が開封済みで中身が残っていたらtrue、未開封や空ならfalse
   def opened?
     bottle_level == "opened"
   end
@@ -134,7 +134,7 @@ class Sake < ApplicationRecord
   public_constant :BOTTOM_BOTTLE
 
   # 酒が空か
-  # @return [Boolean] 酒が空ならture、未開封や開封済みならfalse
+  # @return [Boolean] 酒が空ならtrue、未開封や開封済みならfalse
   def empty?
     bottle_level == "empty"
   end
@@ -152,7 +152,7 @@ class Sake < ApplicationRecord
     end
   end
 
-  # 酒が新着ならture、さもなくばfalse
+  # 酒が新着ならtrue、さもなくばfalse
   #
   # 下記のいずれかに当てはまる場合は新着と判定する
   # - 未開封かつ4週間以内に購入した
