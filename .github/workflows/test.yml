@@ -40,7 +40,7 @@ jobs:
       - name: Set up Ruby
         env:
           BUNDLE_WITHOUT: development
-        uses: ruby/setup-ruby@1a615958ad9d422dd932dc1d5823942ee002799f
+        uses: ruby/setup-ruby@e851ebd3adcc861aa9e9763c26a9025811f77cd9
         with:
           bundler-cache: true
       - name: Setup Database
@@ -74,5 +74,5 @@ jobs:
         if: failure()
         with:
           name: screenshots
-          path: ${{ github.workspace }}/tmp/screenshots
+          path: ${{ github.workspace }}/tmp/capybara
           if-no-files-found: ignore

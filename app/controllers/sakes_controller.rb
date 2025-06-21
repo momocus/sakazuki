@@ -172,16 +172,14 @@ class SakesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def sake_params
-    params.require(:sake)
-          .permit(:name, :kura, :bindume_on, :brewery_year,
-                  :todofuken, :taste_value, :aroma_value,
-                  :nihonshudo, :sando, :aroma_impression,
-                  :color, :taste_impression, :nigori, :awa,
-                  :tokutei_meisho, :genryomai, :kakemai,
-                  :kobo, :alcohol, :aminosando, :season,
-                  :warimizu, :moto, :seimai_buai, :roka,
-                  :shibori, :note, :bottle_level, :hiire,
-                  :size, :price, :rating, photos: [])
+    params.expect(
+      sake: [
+        :name, :kura, :bindume_on, :brewery_year, :todofuken, :taste_value, :aroma_value, :nihonshudo,
+        :sando, :aroma_impression, :color, :taste_impression, :nigori, :awa, :tokutei_meisho, :genryomai,
+        :kakemai, :kobo, :alcohol, :aminosando, :season, :warimizu, :moto, :seimai_buai, :roka, :shibori,
+        :note, :bottle_level, :hiire, :size, :price, :rating, { photos: [] }
+      ],
+    )
   end
 
   # 写真が追加されているかどうかを判定する
