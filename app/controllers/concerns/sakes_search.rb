@@ -20,7 +20,7 @@ module SakesSearch
   # @param query [Hash{Symbol => String}] クエリパラメータ
   # @return [Boolean] 空き瓶を表示するならtrue
   def include_empty?(query)
-    !query.nil? and query[:bottle_level_not_eq] == Sake::BOTTOM_BOTTLE.to_s
+    !query.nil? && query[:bottle_level_not_eq] == Sake::BOTTOM_BOTTLE.to_s
   end
 
   # クエリにデフォルトの瓶状態を設定する
