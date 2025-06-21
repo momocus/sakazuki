@@ -27,7 +27,7 @@
 - Bundler
 - Node.js >= 22
 - PostgreSQL >= 12.0
-- libvips (devlopment only)
+- libvips (development only)
 
 ## Setup
 
