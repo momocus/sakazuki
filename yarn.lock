@@ -378,20 +378,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hotwired/turbo-rails@npm:>=7.3.0 <8":
-  version: 7.3.0
-  resolution: "@hotwired/turbo-rails@npm:7.3.0"
+"@hotwired/turbo-rails@npm:>=8.0.16 <9":
+  version: 8.0.16
+  resolution: "@hotwired/turbo-rails@npm:8.0.16"
   dependencies:
-    "@hotwired/turbo": "npm:^7.3.0"
-    "@rails/actioncable": "npm:^7.0"
-  checksum: 10/f8586a73580d7869d6cba6d7cf115b2764537d7f1a0dc07a40f065fae72b9455109c3a10cd4aafd950bd7a8589864edf259daa1d2dba0df24f46ea3dc1a1b247
+    "@hotwired/turbo": "npm:^8.0.13"
+    "@rails/actioncable": "npm:>=7.0"
+  checksum: 10/500c7d50e054779f2cc9715798d17bd33142146ac6841f655742c0acb331117f982b6c8b76fb4aad0ab65e42b12d07054038666afcc9482a13728aad01c2d3ce
   languageName: node
   linkType: hard
 
-"@hotwired/turbo@npm:^7.3.0":
-  version: 7.3.0
-  resolution: "@hotwired/turbo@npm:7.3.0"
-  checksum: 10/2c2db0738c1fe9e97baf9d5fab7d88d47719ea1fa36a639426a11595d1c0f1cc53141036136ade4fcf970235ee61c2e002bb546061ca8fae55d4d48cc4b75f0e
+"@hotwired/turbo@npm:^8.0.13":
+  version: 8.0.13
+  resolution: "@hotwired/turbo@npm:8.0.13"
+  checksum: 10/e0677ac2b9ae97ee773f8fd60ec013dfea610c2b2f02583a00cb4a10c7f888a5ef05c7c330d557c9d3e377502afcda7e2627f0cbd2ebebaed40656fc1851853e
   languageName: node
   linkType: hard
 
@@ -890,10 +890,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rails/actioncable@npm:^7.0":
-  version: 7.0.4
-  resolution: "@rails/actioncable@npm:7.0.4"
-  checksum: 10/fc2b886d07df6729b217cfa5aba9a15128e6e1d999f755b5630aa19d14d06b7675fae2b97e8b64e15a085fd3c315f116d51d594fbf757b5055fae062e91b1d33
+"@rails/actioncable@npm:>=7.0":
+  version: 8.0.200
+  resolution: "@rails/actioncable@npm:8.0.200"
+  checksum: 10/3ecb53aed4dddd75a3427c3b7e670934c221450097b2296d986a85bbdf5223771486815af6558cb0ed31bf24ed18a5991aa39dc3aa37dedff97a35e0f3b1e579
   languageName: node
   linkType: hard
 
@@ -4361,7 +4361,7 @@ __metadata:
   dependencies:
     "@eslint/js": "npm:>=9.22.0 <10"
     "@hotwired/stimulus": "npm:>=3.2.2 <4"
-    "@hotwired/turbo-rails": "npm:>=7.3.0 <8"
+    "@hotwired/turbo-rails": "npm:>=8.0.16 <9"
     "@markuplint/erb-parser": "npm:>=4.1.1 <5"
     "@popperjs/core": "npm:>=2.11.8 <3"
     "@stylistic/eslint-plugin-js": "npm:>=4.2.0 <5"
