@@ -27,6 +27,9 @@ Capybara.configure do |config|
   # Capybaraのアサーションが失敗したときに自動再試行する時間
   # JS処理が間に合わないなどフレーキーなテストへの対応するため少し長くする
   config.default_max_wait_time = 5
+
+  # テスト失敗時にテストリトライを行うまでの時間
+  config.default_retry_interval = 0.25
 end
 
 RSpec.configure do |config|
