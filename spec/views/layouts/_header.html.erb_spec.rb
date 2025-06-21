@@ -18,7 +18,7 @@ RSpec.describe "layouts/_header", type: :system do
         visit root_path
       end
 
-      include_examples "links allways exist"
+      it_behaves_like "links allways exist"
 
       it "does not have sign in link" do
         expect { find(:test_id, "sign_in") }.to raise_error(Capybara::ElementNotFound)
@@ -50,7 +50,7 @@ RSpec.describe "layouts/_header", type: :system do
         visit root_path
       end
 
-      include_examples "links allways exist"
+      it_behaves_like "links allways exist"
 
       it "does not have sign in link" do
         expect { find(:test_id, "sign_in") }.to raise_error(Capybara::ElementNotFound)
@@ -76,7 +76,7 @@ RSpec.describe "layouts/_header", type: :system do
         visit root_path
       end
 
-      include_examples "links allways exist"
+      it_behaves_like "links allways exist"
 
       it "has sign in link" do
         expect(find(:test_id, "navigation_list")).to have_link(
