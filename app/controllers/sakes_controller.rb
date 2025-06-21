@@ -55,7 +55,7 @@ class SakesController < ApplicationController
     @sake = Sake.new(sake_params.except(:photos))
 
     if @sake.save
-      create_datetime
+      @sake.initialize_bottle_state_timestamps
       store_photos(@sake, sake_params)
       redirect_to(@sake, status: :see_other, flash: { create_sake: { name: @sake.name, id: @sake.id } })
     else
@@ -72,7 +72,7 @@ class SakesController < ApplicationController
       store_photos(@sake, sake_params)
 
       if @sake.saved_changes? || delete_photos?(@sake, params) || store_photos?(sake_params)
-        update_datetime
+        @sake.update_bottle_state_timestamps
         flash_after_update
       end
 
@@ -131,25 +131,6 @@ class SakesController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_sake
     @sake = Sake.includes(:photos).find(params[:id])
-  end
-
-  # 酒瓶状態の変更に応じて、酒が持つ日時データを更新する
-  def update_datetime
-    case @sake.saved_change_to_attribute(:bottle_level)
-    in [old, new]
-      @sake.assign_attributes(opened_at: @sake.updated_at) if old == "sealed"
-      @sake.assign_attributes(emptied_at: @sake.updated_at) if new == "empty"
-    in nil
-      nil
-    end
-    @sake.save!
-  end
-
-  # 作成された酒の瓶状態に応じて、酒が持つ日時データを更新する
-  def create_datetime
-    @sake.assign_attributes(opened_at: @sake.created_at) unless @sake.sealed?
-    @sake.assign_attributes(emptied_at: @sake.created_at) if @sake.empty?
-    @sake.save!
   end
 
   # Only allow a list of trusted parameters through.
