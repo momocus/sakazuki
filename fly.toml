@@ -14,6 +14,12 @@ swap_size_mb = 512
 [deploy]
   release_command = "./bin/rails db:prepare"
 
+[env]
+RAILS_ENV="production"
+LANG="ja_JP.UTF-8"
+TZ="Asia/Tokyo"
+RAILS_LOG_TO_STDOUT = "true"
+
 [http_service]
   processes = ["app"]
   internal_port = 8080
