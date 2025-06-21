@@ -4,16 +4,19 @@ class SakesController < ApplicationController
   before_action :signed_in_user, only: %i[new create edit update destroy]
 
   include SakesHelper
+  include SakesSearch
+  include SakesPhotos
+
+  # Viewで使える用に宣言する
+  helper_method :include_empty?
 
   # GET /sakes
-  # rubocop:disable Metrics/AbcSize
   def index
-    query = params[:q] ? params[:q].deep_dup : {} # avoid nil
-
-    # default, not empty bottle
-    query[:bottle_level_not_eq] = Sake.bottle_levels["empty"] unless include_empty?(query)
-
-    # multiple words search
+    # コピーとnil防止
+    query = initialize_query(params[:q])
+    # デフォルトは空き瓶なし
+    to_default_bottle!(query) unless include_empty?(query)
+    # 空白区切りでandサーチ
     to_multi_search!(query) if query[:all_text_cont]
 
     # Ransack search and sort
@@ -24,7 +27,6 @@ class SakesController < ApplicationController
     # Kaminari pager
     @sakes = @sakes.page(params[:page]) if include_empty?(query)
   end
-  # rubocop:enable Metrics/AbcSize
 
   # GET /sakes/1
   def show; end
@@ -53,8 +55,8 @@ class SakesController < ApplicationController
     @sake = Sake.new(sake_params.except(:photos))
 
     if @sake.save
-      create_datetime
-      store_photos
+      @sake.initialize_bottle_state_timestamps
+      store_photos(@sake, sake_params)
       redirect_to(@sake, status: :see_other, flash: { create_sake: { name: @sake.name, id: @sake.id } })
     else
       render(:new, status: :unprocessable_entity)
@@ -65,11 +67,12 @@ class SakesController < ApplicationController
   # rubocop:disable Metrics/MethodLength
   def update
     if @sake.update(sake_params.except(:photos))
-      delete_photos
-      store_photos
 
-      if @sake.saved_changes? || delete_photos? || store_photos?
-        update_datetime
+      delete_photos(@sake, params)
+      store_photos(@sake, sake_params)
+
+      if @sake.saved_changes? || delete_photos?(@sake, params) || store_photos?(sake_params)
+        @sake.update_bottle_state_timestamps
         flash_after_update
       end
 
@@ -87,16 +90,6 @@ class SakesController < ApplicationController
     redirect_to(sakes_url, status: :see_other, flash: { delete_sake: name })
   end
 
-  # Viewで使える用に宣言する
-  helper_method :include_empty?
-  # 空き瓶を表示するかどうかを調べる
-  #
-  # @param query [Hash{Symbol => String}] params[:q]に格納されたRansackのクエリ
-  # @return [Boolean] 空き瓶も込みで表示するならtrueを返す
-  def include_empty?(query)
-    !query.nil? and query[:bottle_level_not_eq] == Sake::BOTTOM_BOTTLE.to_s
-  end
-
   # GET /sakes
   def menu
     query = { bottle_level_not_eq: Sake.bottle_levels["empty"], s: "id desc" }
@@ -104,17 +97,6 @@ class SakesController < ApplicationController
   end
 
   private
-
-  def to_multi_search!(query)
-    words = query.delete(:all_text_cont)
-    query[:groupings] = separate_words(words)
-  end
-
-  def separate_words(words)
-    # 全角空白または半角空白で区切ることを許可
-    # { :name_cont => "" }があり得るがransackがSQL変換で削除するのでOK
-    words.split(/[ 　]/).map { |word| { all_text_cont: word } }
-  end
 
   # コピー機能の対象キーかどうか
   #
@@ -151,25 +133,6 @@ class SakesController < ApplicationController
     @sake = Sake.includes(:photos).find(params[:id])
   end
 
-  # 酒瓶状態の変更に応じて、酒が持つ日時データを更新する
-  def update_datetime
-    case @sake.saved_change_to_attribute(:bottle_level)
-    in [old, new]
-      @sake.assign_attributes(opened_at: @sake.updated_at) if old == "sealed"
-      @sake.assign_attributes(emptied_at: @sake.updated_at) if new == "empty"
-    in nil
-      nil
-    end
-    @sake.save!
-  end
-
-  # 作成された酒の瓶状態に応じて、酒が持つ日時データを更新する
-  def create_datetime
-    @sake.assign_attributes(opened_at: @sake.created_at) unless @sake.sealed?
-    @sake.assign_attributes(emptied_at: @sake.created_at) if @sake.empty?
-    @sake.save!
-  end
-
   # Only allow a list of trusted parameters through.
   def sake_params
     params.expect(
@@ -180,37 +143,6 @@ class SakesController < ApplicationController
         :note, :bottle_level, :hiire, :size, :price, :rating, { photos: [] }
       ],
     )
-  end
-
-  # 写真が追加されているかどうかを判定する
-  #
-  # @return [Boolean] 写真が追加されていればtrueを返す
-  def store_photos?
-    sake_params[:photos].present?
-  end
-
-  # 酒に紐づく写真を保存する
-  #
-  # @note sake_paramsから写真を取り出して、酒に紐づく写真として保存する
-  def store_photos
-    photos = sake_params[:photos]
-    photos&.each { |photo| @sake.photos.create(image: photo) }
-  end
-
-  # 写真が削除されているかどうかを判定する
-  #
-  # @return [Boolean] 削除対象の写真があればtrueを返す
-  def delete_photos?
-    @sake.photos.any? { |photo| params[photo.checkbox_name].present? }
-  end
-
-  # 酒に紐づく写真を削除する
-  #
-  # @note 各写真に対応するチェックボックスが「delete」にチェックされていた場合、その写真を削除する
-  def delete_photos
-    @sake.photos.each do |photo|
-      photo.destroy! if params[photo.checkbox_name] == "delete"
-    end
   end
 
   # update後のリダイレクト処理
