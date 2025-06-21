@@ -124,7 +124,7 @@ RSpec.describe Sake do
       travel_to(Time.zone.parse("2022-01-30 20:30:00"))
     end
 
-    context "when sake is seald and created within 4 weeks" do
+    context "when sake is sealed and created within 4 weeks" do
       let(:sake) { create(:sake, bottle_level: "sealed", created_at: Time.zone.parse("2022-01-02 10:30:00")) }
 
       it "returns true" do
@@ -132,7 +132,7 @@ RSpec.describe Sake do
       end
     end
 
-    context "when sake is seald and created more than 4 weeks ago" do
+    context "when sake is sealed and created more than 4 weeks ago" do
       let(:sake) { create(:sake, bottle_level: "sealed", created_at: Time.zone.parse("2022-01-01 10:30:00")) }
 
       it "returns false" do
@@ -140,7 +140,7 @@ RSpec.describe Sake do
       end
     end
 
-    context "when sake is opened and created within 2 week" do
+    context "when sake is opened and created within 2 weeks" do
       let(:sake) { create(:sake, bottle_level: "opened", created_at: Time.zone.parse("2022-01-16 10:30:00")) }
 
       it "returns true" do
