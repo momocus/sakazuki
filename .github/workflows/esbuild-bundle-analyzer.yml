@@ -12,6 +12,7 @@ jobs:
   # BECAUSE THIS ACTION USE `pull_request_target` EVENT that grants write
   # permissions to GitHub Actions running on PRs from forks.
   analyze:
+    name: analyze
     runs-on: ubuntu-latest
     timeout-minutes: 5
     permissions:
