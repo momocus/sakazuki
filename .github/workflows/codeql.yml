@@ -19,6 +19,7 @@ permissions: {}
 
 jobs:
   CodeQL:
+    name: CodeQL
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
