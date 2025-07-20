@@ -45,6 +45,8 @@ module SakesHelper
 
   # BYの候補を作成する
   #
+  # フォーマットは 「2025 / 令和7年」
+  #
   # @return [Array<[String, String]>] BYセレクタで使う、表示用文字列と日付データ
   def by_collection
     collection = by_range.map { |d| [with_japanese_era(d), d.to_s] }
@@ -70,14 +72,17 @@ module SakesHelper
   # 製造年月の候補を作成する
   #
   # 現在の日付から30年分を生成する
+  # フォーマットは 「2025 / 令和7年 7月」
   #
   # @return [Array<[String, String]>] 製造年月セレクタで使う、表示用文字列と日付データ
   def bindume_collection
-    month_range.map { |d|
-      year = with_japanese_era(d)
-      month = I18n.l(d, format: "%B")
-      ["#{year} #{month}", d.to_s]
-    }
+    collection =
+      month_range.map { |d|
+        year = with_japanese_era(d)
+        month = I18n.l(d, format: "%B")
+        ["#{year} #{month}", d.to_s]
+      }
+    collection.push([I18n.t("sakes.form_abstract.unknown"), ""])
   end
 
   # @type [Array<String>]
