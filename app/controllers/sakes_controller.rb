@@ -124,7 +124,8 @@ class SakesController < ApplicationController
   # @return [Hash{Symbol => Integer, Date}] デフォルト酒情報のハッシュ
   def default_attributes
     {
-      brewery_year: to_by(Time.current),
+      brewery_year: to_by(Date.current),
+      bindume_on: Date.current.beginning_of_month,
     }
   end
 

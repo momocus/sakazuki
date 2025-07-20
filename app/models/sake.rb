@@ -97,7 +97,6 @@ class Sake < ApplicationRecord
   after_initialize do |sake|
     sake.opened_at ||= Time.current
     sake.emptied_at ||= Time.current
-    sake.bindume_on ||= Time.current.to_date.beginning_of_month
   end
 
   # rubocop:disable Layout/LineLength
