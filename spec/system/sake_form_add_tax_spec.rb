@@ -4,7 +4,7 @@ RSpec.describe "Sake Form Add Tax", :js do
   let(:user) { create(:user) }
 
   before do
-    sign_in(user)
+    login_as(user)
     visit new_sake_path
   end
 

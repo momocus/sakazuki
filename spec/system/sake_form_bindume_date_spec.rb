@@ -7,7 +7,7 @@ RSpec.describe "Sake Form Bindume Date" do
   let(:user) { create(:user) }
 
   before do
-    sign_in user
+    login_as(user)
   end
 
   context "when visiting new sake page" do

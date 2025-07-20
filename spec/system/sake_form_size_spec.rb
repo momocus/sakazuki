@@ -4,7 +4,7 @@ RSpec.describe "Sake Form Size", :js do
   let(:user) { create(:user) }
 
   before do
-    sign_in(user)
+    login_as(user)
   end
 
   context "when creating new sake" do

@@ -6,7 +6,7 @@ RSpec.describe "New Sake" do
 
   describe "create sake" do
     before do
-      sign_in(user)
+      login_as(user)
       visit new_sake_path
       fill_in("sake_name", with: sake_name)
       click_button("form_submit")

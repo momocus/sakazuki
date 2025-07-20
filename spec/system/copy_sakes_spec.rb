@@ -25,7 +25,7 @@ RSpec.describe "Copy Sakes" do
   let(:user) { create(:user) }
 
   before do
-    sign_in(user)
+    login_as(user)
     visit sake_path(sake.id)
   end
 
