@@ -22,7 +22,7 @@ RSpec.describe "Bottle State Timestamps" do
 
   context "when creating a new sealed sake" do
     before do
-      sign_in(user)
+      login_as(user)
       create_sake("sealed")
     end
 
@@ -37,7 +37,7 @@ RSpec.describe "Bottle State Timestamps" do
 
   context "when creating a new opened sake" do
     before do
-      sign_in(user)
+      login_as(user)
       create_sake("opened")
     end
 
@@ -60,7 +60,7 @@ RSpec.describe "Bottle State Timestamps" do
 
   context "when creating a new empty sake" do
     before do
-      sign_in(user)
+      login_as(user)
       create_sake("empty")
     end
 
@@ -93,11 +93,11 @@ RSpec.describe "Bottle State Timestamps" do
     before do
       id =
         travel_to(7.days.ago) {
-          sign_in(user)
+          login_as(user)
           create_sake("sealed")
         }
       visit(current_path) # ページをリロードしないと再ログインできない
-      sign_in(user)
+      login_as(user)
       edit_bottle_level(id, "opened")
     end
 
@@ -121,11 +121,11 @@ RSpec.describe "Bottle State Timestamps" do
     before do
       id =
         travel_to(7.days.ago) {
-          sign_in(user)
+          login_as(user)
           create_sake("sealed")
         }
       visit(current_path)
-      sign_in(user)
+      login_as(user)
       edit_bottle_level(id, "empty")
     end
 
@@ -157,16 +157,16 @@ RSpec.describe "Bottle State Timestamps" do
     before do
       id =
         travel_to(7.days.ago) {
-          sign_in(user)
+          login_as(user)
           create_sake("sealed")
         }
       travel_to(4.days.ago) do
         visit(current_path)
-        sign_in(user)
+        login_as(user)
         edit_bottle_level(id, "opened")
       end
       visit(current_path)
-      sign_in(user)
+      login_as(user)
       edit_bottle_level(id, "empty")
     end
 

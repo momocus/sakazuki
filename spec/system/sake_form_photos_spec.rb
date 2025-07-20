@@ -4,7 +4,7 @@ RSpec.describe "Sake Form Photos" do
   let(:user) { create(:user) }
 
   before do
-    sign_in(user)
+    login_as(user)
     visit new_sake_path
     fill_in("sake_name", with: "生道井")
   end

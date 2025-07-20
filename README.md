@@ -61,8 +61,7 @@ User.create!(
 ```
 
 - DB の作成
-  - `bundle exec rails db:create`
-  - `bundle exec rails db:migrate`
+  - `bundle exec rails db:prepare`
   - `bundle exec rake parallel:setup`、並列テストを使う場合
 - 管理者ユーザの作成
   - `bundle exec rails db:seed`
@@ -94,16 +93,13 @@ $ docker compose build --build-arg RUBY_VERSION=$(cat .ruby-version)
 <!-- markdownlint-disable MD013 -->
 
 ```console
-$ docker compose run --rm web bundle exec rails db:create
+$ docker compose run --rm web bundle exec rails db:prepare
 Creating volume "sakazuki_db_storage" with local driver
 Creating sakazuki_db_1 ... done
 Creating sakazuki_web_run ... done
 Created database 'sakazuki_development'
 Created database 'sakazuki_test'
 $ docker compose run --rm web bundle exec rake parallel:setup
-...
-$ docker compose run --rm web bundle exec rails db:migrate
-Creating sakazuki_web_run ... done
 ...
 Model files unchanged.
 $ docker compose run --rm web bundle exec rails db:seed

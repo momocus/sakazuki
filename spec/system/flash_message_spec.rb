@@ -40,7 +40,7 @@ RSpec.describe "Flash Message" do
 
   context "with login" do
     before do
-      sign_in(user)
+      login_as(user)
     end
 
     # sake

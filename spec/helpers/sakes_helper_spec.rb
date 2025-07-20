@@ -80,12 +80,17 @@ RSpec.describe SakesHelper do
   end
 
   describe "bindume_collection" do
-    it "generates a range ending with current" do
+    it "generates a range ending with unknown" do
+      candidate = [I18n.t("sakes.form_abstract.unknown"), ""]
+      expect(by_collection.last).to eq(candidate)
+    end
+
+    it "generates a range having current in second from last" do
       date = Time.current.to_date.beginning_of_month
       year = with_japanese_era(date)
       month = I18n.l(date, format: "%B")
       candidate = ["#{year} #{month}", date.to_s]
-      expect(bindume_collection.last).to eq(candidate)
+      expect(bindume_collection[-2]).to eq(candidate)
     end
 
     it "generates a range starting with 30 years ago" do

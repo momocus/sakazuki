@@ -14,7 +14,7 @@ RSpec.describe "layouts/_header", type: :system do
       let(:user) { create(:user, admin: true) }
 
       before do
-        sign_in(user)
+        login_as(user)
         visit root_path
       end
 
@@ -46,7 +46,7 @@ RSpec.describe "layouts/_header", type: :system do
       let(:user) { create(:user, admin: false) }
 
       before do
-        sign_in(user)
+        login_as(user)
         visit root_path
       end
 

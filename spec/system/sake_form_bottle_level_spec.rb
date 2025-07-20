@@ -7,7 +7,7 @@ RSpec.describe "Sake Form Bottle Level" do
   let(:empty_sake) { create(:sake, bottle_level: :empty) }
 
   before do
-    sign_in(user)
+    login_as(user)
   end
 
   describe "updating sake from sealed to opened" do

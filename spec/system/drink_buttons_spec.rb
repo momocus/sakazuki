@@ -111,7 +111,7 @@ RSpec.describe "Drink Buttons" do
 
   context "with login" do
     before do
-      sign_in(user)
+      login_as(user)
     end
 
     describe "clicking open button of sealed bottle", :js do
