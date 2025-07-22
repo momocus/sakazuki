@@ -55,7 +55,9 @@
             <div class="col-12">
               <%= sake.bottle_level_i18n %>
               <span class="text-muted">
-                ‒ <%= t(".time_ago", count: time_ago_in_words(latest_at(sake))) %>
+                ‒ <span data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-datetime-tooltip" title="<%= absolute_date(sake) %>">
+                  <%= t(".time_ago", count: time_ago_in_words(latest_at(sake))) %>
+                </span>
               </span>
             </div>
             <div class="col-12">
