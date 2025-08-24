@@ -183,4 +183,15 @@ module SakesHelper
     ml = Sake.alcohol_stock(include_empty:)
     to_shakkan(ml)
   end
+
+  # 酒の最終更新日を現在日時との差に応じて適切な日付フォーマットで返す
+  #
+  # Railsのデフォルトi18nキーによる標準形式で表示する。
+  #
+  # @param sake [Sake] 酒オブジェクト
+  # @return [String] フォーマットされた日付文字列
+  def absolute_date(sake)
+    date = latest_at(sake).to_date
+    I18n.l(date)
+  end
 end

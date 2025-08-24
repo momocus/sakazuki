@@ -85,6 +85,12 @@ h1 {
   border-top: none;
 }
 
+// 絶対日時のtooltip
+.custom-datetime-tooltip {
+  --bs-tooltip-color: var(--bs-dark);
+  --bs-tooltip-bg: var(--bs-light);
+}
+
 // ------ form ------
 
 .select-delete-photos input[type="checkbox"] {
