@@ -186,20 +186,12 @@ module SakesHelper
 
   # 酒の最終更新日を現在日時との差に応じて適切な日付フォーマットで返す
   #
-  # 同じ年なら短縮形式、違う年なら標準形式を表示する。
-  # Railsのデフォルトi18nキーを使用する。
+  # Railsのデフォルトi18nキーによる標準形式で表示する。
   #
   # @param sake [Sake] 酒オブジェクト
   # @return [String] フォーマットされた日付文字列
   def absolute_date(sake)
     date = latest_at(sake).to_date
-    current_year = Time.current.year
-    date_year = date.year
-
-    if current_year == date_year
-      I18n.l(date, format: :short)
-    else
-      I18n.l(date, format: :default)
-    end
+    I18n.l(date)
   end
 end
