@@ -27,7 +27,7 @@ RSpec.describe "Sake Index Absolute Date" do
       end
 
       it "displays short format date on hover" do
-        expected_date = I18n.l(current_year_sake.created_at.to_date, format: :short)
+        expected_date = I18n.l(current_year_sake.created_at.to_date, format: :default)
         tooltip = find(".tooltip")
         expect(tooltip).to have_text(expected_date)
       end
