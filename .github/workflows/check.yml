@@ -44,9 +44,9 @@ jobs:
         with:
           bundler-cache: true
       - name: Run Rubocop
-        run: bundle exec rubocop --format github
+        run: bundle exec rubocop --format progress --format github
       - name: Run Rubocop ERB
-        run: bundle exec rubocop --format github --config .rubocop-erb.yml
+        run: bundle exec rubocop --format progress --format github --config .rubocop-erb.yml
       - name: Run ERB Lint
         run: bundle exec erb_lint --lint-all
       - name: Run Brakeman
