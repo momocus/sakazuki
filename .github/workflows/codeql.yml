@@ -24,8 +24,7 @@ jobs:
     timeout-minutes: 5
 
     permissions:
-      # required for all workflows
-      security-events: write
+      security-events: write # required for all workflows
 
     steps:
       - name: Checkout repository
