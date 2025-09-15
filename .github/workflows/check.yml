@@ -81,5 +81,8 @@ jobs:
 
       - name: Install the latest version of uv
         uses: astral-sh/setup-uv@b75a909f75acd358c2196fb9a5f1299a9a8868a4
+        with:
+          # ワンライナー uvx のみを使うので、キャッシュは無効化
+          enable-cache: false
       - name: Run zizmor 🌈
         run: uvx zizmor --offline --persona auditor --collect default .
