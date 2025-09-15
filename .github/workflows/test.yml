@@ -52,7 +52,7 @@ jobs:
           POSTGRES_PASSWORD: password
         run: |
           bundle exec rails db:create
-          bundle exec rails db:migrate
+          bundle exec rails db:schema:load
       - name: Assets precompile
         env:
           BUNDLE_WITHOUT: development
