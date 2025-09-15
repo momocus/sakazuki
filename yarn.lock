@@ -1555,11 +1555,11 @@ __metadata:
   linkType: hard
 
 "chart.js@npm:>=4.4.1 <5":
-  version: 4.4.8
-  resolution: "chart.js@npm:4.4.8"
+  version: 4.5.0
+  resolution: "chart.js@npm:4.5.0"
   dependencies:
     "@kurkle/color": "npm:^0.3.0"
-  checksum: 10/48d06f4f78931e2981d80d2316df8bc5a9f1e3e586de81b7083bf34a1d6aca74529212c69283c80151b3fd83a0e55982121fd0ac2ade7ede70d80c5626a9371f
+  checksum: 10/3561fd996dbe20256f69d5e8b968f98b5bd0e3455e3a6336edba1d03c396fc9604e82dd48d92a87c04a187f7b7a0718a5512c9fc95ff755ca77bf571f88efe54
   languageName: node
   linkType: hard
 
