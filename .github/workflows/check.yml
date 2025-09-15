@@ -5,20 +5,24 @@ on: [pull_request]
 permissions: {}
 
 jobs:
-  check:
-    name: check
+  eof-newline:
+    name: End of File with Newline
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v5
         with:
           persist-credentials: false
+      - run: ./cli-scripts/check_endoffile_with_newline.sh
 
-      # lint by sh scripts
-      - name: End of File with Newline
-        run: ./cli-scripts/check_endoffile_with_newline.sh
-
-      # lint by node modules
+  node-lints:
+    name: Node Linters
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@v5
         with:
           node-version: "22"
@@ -38,7 +42,14 @@ jobs:
       - name: Run Markuplint
         run: yarn run lint:markuplint --format GitHub
 
-      # lint by rubocop
+  ruby-lints:
+    name: Ruby Linters
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
       - name: Set up Ruby
         uses: ruby/setup-ruby@44511735964dcb71245e7e55f72539531f7bc0eb
         with:
@@ -52,25 +63,60 @@ jobs:
       - name: Run Brakeman
         run: bundle exec brakeman --no-pager --format github --run-all-checks
 
-      # lint by hadolint
+  hadolint:
+    name: Hadolint
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
       - name: Run Hadolint
         uses: hadolint/hadolint-action@3fc49fb50d59c6ab7917a2e4195dba633e515b29
 
-      # lint by docker build checks
+  docker-build-checks:
+    name: Docker Build Checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
       - name: Run Docker Build Checks
         run: docker build --build-arg RUBY_VERSION="$(cat .ruby-version)" --check .
 
-      # lint by actionlint
+  actionlint:
+    name: Actionlint
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
       - name: Run Actionlint
         uses: raven-actions/actionlint@3a24062651993d40fed1019b58ac6fbdfbf276cc
 
-      # lint by ghalint
+  ghalint:
+    name: ghalint
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
       - name: Install ghalint
         uses: Lucky3028/install-ghalint@b623e2c9f9238b88ba13dbf30fb3b65320c42ce9
       - name: Run ghalint
         run: ghalint run
 
-      # lint by zizmor
+  zizmor:
+    name: zizmor
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
       - name: Install the latest version of uv
         uses: astral-sh/setup-uv@b75a909f75acd358c2196fb9a5f1299a9a8868a4
       - name: Run zizmor 🌈
