@@ -54,7 +54,7 @@ jobs:
 
       # lint by hadolint
       - name: Run Hadolint
-        uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf
+        uses: hadolint/hadolint-action@3fc49fb50d59c6ab7917a2e4195dba633e515b29
 
       # lint by docker build checks
       - name: Run Docker Build Checks
