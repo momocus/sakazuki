@@ -16,6 +16,8 @@ export default class InputTasteGraphController extends Controller<HTMLDivElement
 
   declare readonly aromaTarget: HTMLInputElement
 
+  private tasteGraph: TasteGraph | null = null
+
   connect() {
     const dom: DomValues = {
       taste: this.tasteTarget.value,
@@ -29,6 +31,13 @@ export default class InputTasteGraphController extends Controller<HTMLDivElement
       this.aromaTarget.value = aroma
     }
     const opts: TasteGraphOptions = { domCallback }
-    new TasteGraph(this.canvasTarget, dom, opts)
+    this.tasteGraph = new TasteGraph(this.canvasTarget, dom, opts)
+  }
+
+  disconnect() {
+    if (this.tasteGraph !== null) {
+      this.tasteGraph.destroy()
+      this.tasteGraph = null
+    }
   }
 }

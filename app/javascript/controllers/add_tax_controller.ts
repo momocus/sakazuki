@@ -8,7 +8,7 @@ export default class AddTaxController extends Controller<HTMLDivElement> {
 
   declare readonly buttonTarget: HTMLButtonElement
 
-  private addTax(): void {
+  private addTax = () => {
     const price = this.priceTarget.valueAsNumber
     if (isNaN(price)) return
 
@@ -18,6 +18,10 @@ export default class AddTaxController extends Controller<HTMLDivElement> {
   }
 
   connect() {
-    this.buttonTarget.addEventListener("click", this.addTax.bind(this))
+    this.buttonTarget.addEventListener("click", this.addTax)
+  }
+
+  disconnect() {
+    this.buttonTarget.removeEventListener("click", this.addTax)
   }
 }

@@ -72,44 +72,53 @@ export default class SakeNameController extends Controller<HTMLDivElement> {
     }
   }
 
-  connect() {
-    this.nameTarget.addEventListener("change", (_event) => {
-      const name = this.nameTarget.value
+  /**
+   * 酒名を入力されたときに各種酒情報の補完を行う
+   */
+  private readonly handleNameChange = () => {
+    const name = this.nameTarget.value
 
-      // 蔵名の補完
-      const kuraCompletions = [
-        (name: string) => meigara.lookup(name, meigaraDict.dict),
-      ]
-      const kuraTargets: Target[] = [{ element: this.kuraTarget, empty: "" }]
+    // 蔵名の補完
+    const kuraCompletions = [
+      (name: string) => meigara.lookup(name, meigaraDict.dict),
+    ]
+    const kuraTargets: Target[] = [{ element: this.kuraTarget, empty: "" }]
 
-      // 酒情報の補完
-      const dicts = [
-        detailDict.tokuteiMeisho,
-        detailDict.season,
-        detailDict.moto,
-        detailDict.shibori,
-        detailDict.roka,
-        detailDict.hiire,
-        detailDict.warimizu,
-      ]
-      const detailCompletions = dicts.map(
-        (dict) => (name: string) => detail.lookup(name, dict),
-      )
-      const detailTargets: Target[] = [
-        { element: this.tokuteiMeishoTarget, empty: "none" },
-        { element: this.seasonTarget, empty: "" },
-        { element: this.motoTarget, empty: "unknown" },
-        { element: this.shiboriTarget, empty: "" },
-        { element: this.rokaTarget, empty: "" },
-        { element: this.hiireTarget, empty: "unknown" },
-        { element: this.warimizuTarget, empty: "unknown" },
-      ]
+    // 酒情報の補完
+    const dicts = [
+      detailDict.tokuteiMeisho,
+      detailDict.season,
+      detailDict.moto,
+      detailDict.shibori,
+      detailDict.roka,
+      detailDict.hiire,
+      detailDict.warimizu,
+    ]
+    const detailCompletions = dicts.map(
+      (dict) => (name: string) => detail.lookup(name, dict),
+    )
+    const detailTargets: Target[] = [
+      { element: this.tokuteiMeishoTarget, empty: "none" },
+      { element: this.seasonTarget, empty: "" },
+      { element: this.motoTarget, empty: "unknown" },
+      { element: this.shiboriTarget, empty: "" },
+      { element: this.rokaTarget, empty: "" },
+      { element: this.hiireTarget, empty: "unknown" },
+      { element: this.warimizuTarget, empty: "unknown" },
+    ]
 
-      const completions = kuraCompletions.concat(detailCompletions)
-      const targets = kuraTargets.concat(detailTargets)
-      zip(completions, targets).forEach(([completion, target]) => {
-        this.complete(name, completion, target)
-      })
+    const completions = kuraCompletions.concat(detailCompletions)
+    const targets = kuraTargets.concat(detailTargets)
+    zip(completions, targets).forEach(([completion, target]) => {
+      this.complete(name, completion, target)
     })
+  }
+
+  connect() {
+    this.nameTarget.addEventListener("change", this.handleNameChange)
+  }
+
+  disconnect() {
+    this.nameTarget.removeEventListener("change", this.handleNameChange)
   }
 }
