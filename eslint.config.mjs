@@ -1,6 +1,6 @@
 import eslint from "@eslint/js"
 import globals from "globals"
-import stylisticJs from "@stylistic/eslint-plugin-js"
+import stylistic from "@stylistic/eslint-plugin"
 import tseslint from "typescript-eslint"
 import jsdoc from "eslint-plugin-jsdoc"
 import eslintConfigPrettier from "eslint-config-prettier/flat"
@@ -23,8 +23,8 @@ export default tseslint.config(
   // ESLintコアの設定
   eslint.configs.recommended,
 
-  // @stylistic/eslint-plugin-jsの設定
-  stylisticJs.configs.all,
+  // @stylistic/eslint-pluginの設定
+  stylistic.configs.all,
 
   // typescript-eslintの設定
   tseslint.configs.strictTypeChecked,
