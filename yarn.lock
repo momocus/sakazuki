@@ -982,14 +982,14 @@ __metadata:
   linkType: hard
 
 "@stylistic/eslint-plugin-js@npm:>=4.2.0 <5":
-  version: 4.2.0
-  resolution: "@stylistic/eslint-plugin-js@npm:4.2.0"
+  version: 4.4.1
+  resolution: "@stylistic/eslint-plugin-js@npm:4.4.1"
   dependencies:
     eslint-visitor-keys: "npm:^4.2.0"
     espree: "npm:^10.3.0"
   peerDependencies:
     eslint: ">=9.0.0"
-  checksum: 10/129cb1a9adeaebd71997fe5ba036ee751326abff37bc3c697a48d1edb8c7b8d3bedb4cac373278d4c712237fad3dba8c11e23f0efb1dcd1068d688c46a3dcdf0
+  checksum: 10/b1428020c663b9e85a8f0ce6e059110031793cc947ba401087ea7ec5ed6b0a3f4cdf92274196d92b600e3c2670060bc19c0664fa1cef260b6450ae6bc5c0a5a7
   languageName: node
   linkType: hard
 
