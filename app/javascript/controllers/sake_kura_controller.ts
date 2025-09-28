@@ -41,8 +41,8 @@ export default class SakeKuraController extends Controller<HTMLDivElement> {
    * 蔵情報を入力すると、隠れた蔵名・都道府県名のフィールドに同期する
    */
   private readonly handleMixedChange = () => {
-    const autocompleted = this.mixedTarget.value
-    const [kura, todofuken] = this.stripKuraTodofuken(autocompleted)
+    const autoCompleted = this.mixedTarget.value
+    const [kura, todofuken] = this.stripKuraTodofuken(autoCompleted)
     this.kuraTarget.value = kura
     this.todofukenTarget.value = todofuken
   }
