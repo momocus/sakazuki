@@ -66,7 +66,7 @@ jobs:
         run: ./cli-scripts/check_endoffile_with_newline.sh
 
       - name: Run Hadolint
-        uses: hadolint/hadolint-action@3fc49fb50d59c6ab7917a2e4195dba633e515b29
+        uses: hadolint/hadolint-action@2332a7b74a6de0dda2e2221d575162eba76ba5e5
 
       - name: Run Docker Build Checks
         run: docker build --build-arg RUBY_VERSION="$(cat .ruby-version)" --check .
