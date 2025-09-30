@@ -32,3 +32,6 @@ application.register("show-taste-graph", ShowTasteGraphController)
 
 import SimpleLightboxController from "./simple_lightbox_controller"
 application.register("simple-lightbox", SimpleLightboxController)
+
+import TooltipController from "./tooltip_controller"
+application.register("tooltip", TooltipController)
