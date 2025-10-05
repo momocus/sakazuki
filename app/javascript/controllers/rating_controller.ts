@@ -9,15 +9,19 @@ export default class RatingController extends Controller<HTMLFieldSetElement> {
 
   declare readonly locationTarget: HTMLDivElement
 
+  private sakeRater: Rater | null = null
+
   connect() {
     const rating = parseInt(this.scoreTarget.value)
-    const sakeRater = rater({
+    this.sakeRater = rater({
       element: this.locationTarget,
       rateCallback: (newRating, done) => {
-        // reset 0, when pushing same star
-        if (newRating === sakeRater.getRating()) newRating = 0
+        if (this.sakeRater === null) return
 
-        sakeRater.setRating(newRating)
+        // reset 0, when pushing same star
+        if (newRating === this.sakeRater.getRating()) newRating = 0
+
+        this.sakeRater.setRating(newRating)
         this.scoreTarget.value = newRating.toString()
 
         if (done != null) done()
@@ -25,5 +29,12 @@ export default class RatingController extends Controller<HTMLFieldSetElement> {
       rating,
       starSize: 32,
     })
+  }
+
+  disconnect() {
+    if (this.sakeRater !== null) {
+      this.sakeRater.dispose()
+      this.sakeRater = null
+    }
   }
 }
