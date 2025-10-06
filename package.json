@@ -31,7 +31,7 @@
     "stylelint": ">=16.10.0 <17",
     "stylelint-config-standard": ">=37.0.0 <40",
     "stylelint-config-standard-scss": ">=14.0.0 <17",
-    "typescript": ">=5.9.2",
+    "typescript": ">=5.9.3",
     "typescript-eslint": ">=8.26.1 <9"
   },
   "prettier": {
