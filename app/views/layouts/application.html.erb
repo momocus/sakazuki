@@ -3,6 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
+    <%= tag.meta(name: "turbo-cache-control", content: "no-preview") %>
     <%= csp_meta_tag %>
     <%= display_meta_tags(default_meta_tags) %>
     <%= adsense_tags %>
