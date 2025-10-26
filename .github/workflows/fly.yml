@@ -6,13 +6,15 @@ on:
 
 permissions: {}
 
+concurrency:
+  group: fly-deploy
+  cancel-in-progress: true
+
 jobs:
   deploy:
     name: Deploy app
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    concurrency:
-      group: fly-deploy
     steps:
       - uses: actions/checkout@v5
         with:
