@@ -109,6 +109,8 @@ fi
 message "##### Run zizmor"
 if type zizmor > /dev/null 2>&1; then
     zizmor --offline --persona auditor --collect default -- .
+elif type uvx > /dev/null 2>&1; then
+    uvx zizmor --offline --persona auditor --collect default -- .
 elif type docker > /dev/null 2>&1; then
     docker run --rm --tty \
            --mount type=bind,src="$(pwd)",dst=/repo,readonly \
