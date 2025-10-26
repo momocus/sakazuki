@@ -85,4 +85,4 @@ jobs:
           # ワンライナー uvx のみを使うので、キャッシュは無効化
           enable-cache: false
       - name: Run zizmor 🌈
-        run: uvx zizmor --offline --persona auditor --collect default .
+        run: uvx zizmor --offline --persona auditor --collect default -- .
