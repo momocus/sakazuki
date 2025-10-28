@@ -404,19 +404,19 @@ __metadata:
   linkType: hard
 
 "@hotwired/turbo-rails@npm:>=8.0.16 <9":
-  version: 8.0.16
-  resolution: "@hotwired/turbo-rails@npm:8.0.16"
+  version: 8.0.18
+  resolution: "@hotwired/turbo-rails@npm:8.0.18"
   dependencies:
-    "@hotwired/turbo": "npm:^8.0.13"
+    "@hotwired/turbo": "npm:^8.0.18"
     "@rails/actioncable": "npm:>=7.0"
-  checksum: 10/500c7d50e054779f2cc9715798d17bd33142146ac6841f655742c0acb331117f982b6c8b76fb4aad0ab65e42b12d07054038666afcc9482a13728aad01c2d3ce
+  checksum: 10/7f2e660a226b79062ebc7fd96528daaf3c0128db4ea04aabfcf9009cc1dda2739d68b76ba0f3b7e6a9771524849df30baaecf8622083147f2d662c3cd64baca2
   languageName: node
   linkType: hard
 
-"@hotwired/turbo@npm:^8.0.13":
-  version: 8.0.13
-  resolution: "@hotwired/turbo@npm:8.0.13"
-  checksum: 10/e0677ac2b9ae97ee773f8fd60ec013dfea610c2b2f02583a00cb4a10c7f888a5ef05c7c330d557c9d3e377502afcda7e2627f0cbd2ebebaed40656fc1851853e
+"@hotwired/turbo@npm:^8.0.18":
+  version: 8.0.18
+  resolution: "@hotwired/turbo@npm:8.0.18"
+  checksum: 10/7e886b9d3ddf30be0aa8ec506eb2fe21713e16732265761efbfa9fcc38c1d79b5e04dee0e704ecc0322fe77a4fe5f34c7ff74686b6de24824d395e01fd5e55e7
   languageName: node
   linkType: hard
 
