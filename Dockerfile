@@ -3,8 +3,8 @@
 
 # ============== base =================
 # Make sure RUBY_VERSION matches the Ruby version in .ruby-version
-ARG RUBY_VERSION=3.4.1
-FROM docker.io/library/ruby:${RUBY_VERSION}-slim-bullseye AS base
+ARG RUBY_VERSION=3.4.7
+FROM docker.io/library/ruby:${RUBY_VERSION}-slim-trixie AS base
 
 # hadolint ignore=DL3048
 LABEL fly_launch_runtime="rails"
@@ -19,7 +19,7 @@ RUN gem update --system --no-document && \
 # Install base packages
 RUN apt-get update --quiet && \
     apt-get install --no-install-recommends --yes \
-    curl=7.* libjemalloc2=5.* libvips42=8.* postgresql-client-13=13.* && \
+    curl=8.* libjemalloc2=5.* libvips42t64=8.* postgresql-client-17=17.* && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # ============== build-base =================
@@ -31,8 +31,8 @@ SHELL ["/bin/bash", "-e", "-o", "pipefail", "-c"]
 # Install packages needed to build gems and node modules
 RUN apt-get update --quiet && \
     apt-get install --no-install-recommends --yes \
-    build-essential=12.* libffi-dev=3.* libpq-dev=13.* libyaml-dev=0.2.* \
-    node-gyp=7.* pkg-config=0.29.* python-is-python3=3.* && \
+    build-essential=12.* libffi-dev=3.* libpq-dev=17.* libyaml-dev=0.2.* \
+    node-gyp=11.* pkg-config=1.* python-is-python3=3.* && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Install JavaScript dependencies
