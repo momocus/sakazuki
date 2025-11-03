@@ -44,7 +44,7 @@
     "lint:tsc": "yarn run tsc --noEmit",
     "lint:prettier": "prettier --ignore-path .gitignore --check . \"!.yarn/**/*\"",
     "lint:prettier:fix": "prettier --ignore-path .gitignore --write . \"!.yarn/**/*\"",
-    "lint:markdownlint": "markdownlint --ignore-path .gitignore --dot .",
+    "lint:markdownlint": "markdownlint --ignore-path .gitignore --ignore AGENTS.md --ignore CLAUDE.md --dot .",
     "lint:markdownlint:fix": "yarn run lint:markdownlint --fix",
     "lint:stylelint": "stylelint 'app/assets/stylesheets/**/*.{scss,css}' --ignore-path .gitignore",
     "lint:stylelint:fix": "yarn run lint:stylelint --fix",
