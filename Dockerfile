@@ -108,11 +108,6 @@ CMD ["./bin/rails", "server"]
 # Final stage for development image
 FROM build-base AS development
 
-# Install packages needed to convert images
-RUN apt-get update --quiet && \
-    apt-get install --no-install-recommends --yes imagemagick=8:6.9.* && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
-
 # Install application gems
 COPY Gemfile Gemfile.lock .ruby-version ./
 RUN bundle install && \
