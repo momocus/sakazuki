@@ -52,4 +52,12 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions.
   config.action_controller.raise_on_missing_callback_actions = true
+
+  # Feature flags
+  config.x.cloudinary_enabled = false
+  config.x.adsense_enabled = false
+  config.x.letter_opener_enabled = false
+  config.x.annotate_models_enabled = false
+  config.x.fast_password_hashing = true
+  config.x.dev_tools_enabled = false
 end
