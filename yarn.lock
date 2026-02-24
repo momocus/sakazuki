@@ -4390,7 +4390,7 @@ __metadata:
     markuplint: "npm:^4.13.1"
     prettier: "npm:^3.6.2"
     rater-js: "npm:^1.0.1"
-    sass: "npm:^1.93.3"
+    sass: "npm:^1.95.0"
     simplelightbox: "npm:^2.14.3"
     stylelint: "npm:^16.25.0"
     stylelint-config-standard: "npm:^39.0.1"
@@ -4401,9 +4401,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"sass@npm:^1.93.3":
-  version: 1.94.2
-  resolution: "sass@npm:1.94.2"
+"sass@npm:^1.95.0":
+  version: 1.96.0
+  resolution: "sass@npm:1.96.0"
   dependencies:
     "@parcel/watcher": "npm:^2.4.1"
     chokidar: "npm:^4.0.0"
@@ -4414,7 +4414,7 @@ __metadata:
       optional: true
   bin:
     sass: sass.js
-  checksum: 10/e60c214ea93677740c9ddfad55c77fd433255bbfdd9faba137acf1215bed5ba6ad9d83efea81feb87a89283931d01f0435227e3fff37c65c263e0ee05f885328
+  checksum: 10/be4c0030f8f973fff5ee10bc4fdf5026a63a66a06bc540c9efffb91bead7b22c13174af765196cb73d2f175dd5f4f879afd027312bf600158c7ced6c2de1c1aa
   languageName: node
   linkType: hard
 
