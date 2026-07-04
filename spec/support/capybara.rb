@@ -2,15 +2,7 @@ require "capybara-playwright-driver"
 require "capybara/rails"
 require "capybara/rspec"
 
-Capybara.register_driver(:playwright) do |app|
-  Capybara::Playwright::Driver.new(app, browser_type: :firefox, headless: true)
-end
-
 Capybara.configure do |config|
-  # driver設定: https://www.rubydoc.info/gems/capybara/Capybara#configure-class_method
-  config.default_driver = :rack_test
-  config.javascript_driver = :playwright
-
   # "data-testid"をCapybaraのclick_linkなどで使えるように、Optional attributeに登録する
   config.test_id = "data-testid"
 
@@ -24,9 +16,12 @@ end
 
 RSpec.configure do |config|
   config.before(:each, type: :system) do |example|
-    # context/describe/itの`js: true`でdriverを切り替える
-    driver = example.metadata[:js] ? Capybara.javascript_driver : Capybara.default_driver
-    driven_by(driver)
+    if example.metadata[:js]
+      # Rails標準のPlaywrightサポートを使う
+      driven_by(:playwright, options: { browser_type: :firefox, headless: true })
+    else
+      driven_by(:rack_test)
+    end
   end
 end
 
