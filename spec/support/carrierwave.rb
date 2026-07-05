@@ -8,7 +8,8 @@ end
 RSpec.configure do |config|
   config.after(:suite) do
     root = CarrierWave::Uploader::Base.root&.to_s
-    next unless root&.start_with?(Rails.root.join("tmp", "carrierwave").to_s)
+    next unless root&.start_with?(Rails.root.join("tmp/carrierwave").to_s)
+
     FileUtils.rm_rf(root)
   end
 end
