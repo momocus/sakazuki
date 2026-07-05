@@ -39,6 +39,7 @@
     "semi": false
   },
   "scripts": {
+    "postinstall": "playwright install firefox",
     "lint": "./cli-scripts/run-all-checks.sh",
     "lint:eslint": "eslint --max-warnings=0 ./app/javascript/",
     "lint:eslint:fix": "yarn run lint:eslint --fix",
