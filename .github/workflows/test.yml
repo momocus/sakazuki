@@ -13,7 +13,7 @@ jobs:
   changes:
     name: changes
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     permissions:
       pull-requests: read # Needed to read changes to skip test or not
     outputs:
