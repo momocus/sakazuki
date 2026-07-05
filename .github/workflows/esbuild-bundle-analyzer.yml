@@ -34,8 +34,7 @@ jobs:
           node-version: "22"
           cache: "yarn"
       - name: Install Dependencies
-        # postinstall の praywrite インストールを避ける
-        run: YARN_ENABLE_SCRIPTS=false yarn workspaces focus --all --production
+        run: yarn workspaces focus --all --production
       - name: Run esbuld
         run: yarn run build:metafile
 
