@@ -22,7 +22,7 @@ jobs:
           node-version: "22"
           cache: "yarn"
       - name: Install Dependencies
-        run: yarn install --imutable
+        run: yarn install --immutable
       - name: Run ESLint
         run: yarn run lint:eslint
       - name: Run tsc
