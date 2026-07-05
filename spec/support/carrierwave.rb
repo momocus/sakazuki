@@ -1,15 +1,10 @@
-# テスト中のアップロード先をpublic/uploadsからtmp以下に変更する
-# トランザクションのロールバックではCarrierWaveのファイル削除コールバックが動かないため、
-# public以下に保存するとテスト後にファイルが残り続ける
-CarrierWave.configure do |config|
-  config.root = Rails.root.join("tmp/carrierwave#{ENV.fetch('TEST_ENV_NUMBER', '')}")
-end
-
+# テストの画像アップロード先を削除する
+# 安全のため "_test" で終わるディレクトリのみ削除する
 RSpec.configure do |config|
   config.after(:suite) do
-    root = CarrierWave::Uploader::Base.root&.to_s
-    next unless root&.start_with?(Rails.root.join("tmp/carrierwave").to_s)
-
-    FileUtils.rm_rf(root)
+    temp_dir = Rails.application.config.x.uploads_dir.to_s
+    if Rails.application.config.x.temp_uploads_dir_enabled && temp_dir.end_with?("_test")
+      FileUtils.rm_rf(Rails.public_path.join(temp_dir))
+    end
   end
 end

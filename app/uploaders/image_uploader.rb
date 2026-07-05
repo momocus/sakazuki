@@ -26,7 +26,10 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    # テストでは画像アップロードパスを変更する
+    # carrierwave.rb によりテスト実行後に削除される
+    root_dir = Rails.application.config.x.uploads_dir.to_s
+    "#{root_dir}/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
   def extension_allowlist

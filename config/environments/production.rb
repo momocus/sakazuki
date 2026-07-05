@@ -102,6 +102,8 @@ Rails.application.configure do
 
   # Feature flags
   config.x.cloudinary_enabled = true
+  config.x.uploads_dir = "uploads"
+  config.x.temp_uploads_dir_enabled = false
   config.x.adsense_enabled = true
   config.x.letter_opener_enabled = false
   config.x.fast_password_hashing = false
