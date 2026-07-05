@@ -26,6 +26,7 @@
 - Ruby = (See .ruby-version file)
 - Bundler
 - Node.js >= 22
+- Yarn 🐈 = 1.22
 - PostgreSQL >= 18
 - libvips (development only)
 
@@ -33,7 +34,8 @@
 
 - 依存関係のインストール
   - `bundle install`
-  - `corepack enable && yarn install`
+  - `yarn install`
+  - `yarn run playwright install firefox`（Test を走らせる場合）
 - .env ファイルの作成
   - PostgreSQL の設定
   - Google AdSense のクライアント ID の設定（Google AdSense を使う場合）
