@@ -18,7 +18,7 @@ RSpec.configure do |config|
   config.before(:each, type: :system) do |example|
     if example.metadata[:js]
       # Rails標準のPlaywrightサポートを使う
-      driven_by(:playwright, options: { browser_type: :firefox, headless: true })
+      driven_by(:playwright, options: { browser_type: :chromium, headless: true })
     else
       driven_by(:rack_test)
     end

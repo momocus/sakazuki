@@ -72,7 +72,7 @@ jobs:
       - name: Install Yarn Dependencies
         run: yarn install --immutable
       - name: Install Playwright browsers
-        run: yarn run playwright install firefox
+        run: yarn run playwright install chromium
       - name: Set up Ruby
         env:
           BUNDLE_WITHOUT: development

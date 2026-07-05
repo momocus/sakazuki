@@ -35,7 +35,7 @@
 - 依存関係のインストール
   - `bundle install`
   - `yarn install`
-  - `yarn run playwright install firefox`（Test を走らせる場合）
+  - `yarn run playwright install chromium`（Test を走らせる場合）
 - .env ファイルの作成
   - PostgreSQL の設定
   - Google AdSense のクライアント ID の設定（Google AdSense を使う場合）
