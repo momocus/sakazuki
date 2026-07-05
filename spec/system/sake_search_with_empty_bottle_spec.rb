@@ -12,6 +12,8 @@ RSpec.describe "Search With Empty Bottle" do
       fill_in("text_search", with: "生道井")
       click_button("submit_search")
     end
+    # HACK: 検索結果にしかないテキストを使いTurbo Frameの置換完了を待つ
+    find(:test_id, "total_sake", text: I18n.t("sakes.index.h1_with_search", search: "生道井", hit: 2))
   end
 
   # 検索ボタン経由（commit）はサーバ側でデフォルトON判定するため、JSなしで成立する
