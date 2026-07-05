@@ -70,7 +70,7 @@ jobs:
           node-version: "22"
           cache: "yarn"
       - name: Install Yarn Dependencies
-        run: yarn workspaces focus --all
+        run: yarn install --immutable
       - name: Install Playwright browsers
         run: yarn run playwright install firefox
       - name: Set up Ruby
