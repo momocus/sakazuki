@@ -85,9 +85,8 @@ jobs:
           RAILS_ENV: test
           POSTGRES_USERNAME: postgres
           POSTGRES_PASSWORD: password
-        run: |
-          bundle exec rails db:create
-          bundle exec rails db:schema:load
+        # seed 流し込みを実行しない prepare
+        run: bundle exec rails db:test:prepare
       - name: Assets precompile
         env:
           BUNDLE_WITHOUT: development
