@@ -41,7 +41,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.src == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
     services:
       postgres:
         # postgres:18.0-trixie
