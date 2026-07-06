@@ -41,7 +41,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.src == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
     services:
       postgres:
         # postgres:18.0-trixie
@@ -72,7 +72,7 @@ jobs:
       - name: Install Yarn Dependencies
         run: yarn install --immutable
       - name: Install Playwright browsers
-        run: yarn run playwright install firefox
+        run: yarn run playwright install chromium
       - name: Set up Ruby
         env:
           BUNDLE_WITHOUT: development

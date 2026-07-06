@@ -120,9 +120,9 @@ COPY package.json yarn.lock .yarnrc.yml ./
 COPY .yarn/releases/ ./.yarn/releases/
 RUN yarn install && yarn cache clean
 
-# Install Playwright browsers and system dependencies for system tests
+# Install Playwright browsers for system tests
 # hadolint ignore=DL3060 # not yarn install
-RUN yarn run playwright install firefox
+RUN yarn run playwright install chromium
 
 # Copy application code
 COPY . .
