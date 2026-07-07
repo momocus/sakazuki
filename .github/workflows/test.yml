@@ -76,7 +76,7 @@ jobs:
       - name: Set up Ruby
         env:
           BUNDLE_WITHOUT: development
-        uses: ruby/setup-ruby@9eb537ca036ebaed86729dcb9309076e4c5c3b74
+        uses: ruby/setup-ruby@0dafeac902942906541bc140009cdbf32665b601
         with:
           bundler-cache: true
       - name: Setup Database
